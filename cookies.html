@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - Forge APIs</title>
+    <meta name="description" content="Forge APIs cookie policy. Learn about how we use cookies and similar technologies.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --white: #FFFFFF;
+            --success: #10B981;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: white;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo::before {
+            content: "🔨";
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Legal Content */
+        .legal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0 60px;
+            color: white;
+        }
+        
+        .legal-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .legal-header .last-updated {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .legal-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .legal-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--dark);
+        }
+        
+        .legal-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: var(--dark);
+        }
+        
+        .legal-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #374151;
+        }
+        
+        .legal-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .legal-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            color: #374151;
+        }
+        
+        .legal-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Cookie Table */
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-table thead {
+            background: var(--light-gray);
+        }
+        
+        .cookie-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cookie-table td {
+            padding: 16px;
+            border-top: 1px solid var(--light-gray);
+            color: #374151;
+        }
+        
+        .cookie-table tr:hover {
+            background: #FAFAFA;
+        }
+        
+        .cookie-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .cookie-type.essential {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+        
+        .cookie-type.analytics {
+            background: #E0E7FF;
+            color: #3730A3;
+        }
+        
+        .cookie-type.functional {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box p {
+            margin: 0;
+            color: #1E40AF;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .toc h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: var(--gray);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .toc a:hover {
+            color: var(--primary);
+        }
+        
+        .toc a::before {
+            content: "→";
+            margin-right: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand p {
+            color: #9CA3AF;
+            margin: 12px 0;
+        }
+        
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: #9CA3AF;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #6B7280;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .legal-header h1 {
+                font-size: 36px;
+            }
+            
+            .cookie-table {
+                font-size: 14px;
+            }
+            
+            .cookie-table th,
+            .cookie-table td {
+                padding: 12px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Forge APIs</a>
+            <div class="nav-links">
+                <a href="/#products">Products</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="mailto:hello@forgeapis.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="legal-header">
+        <div class="container">
+            <h1>Cookie Policy</h1>
+            <p class="last-updated">Last updated: December 2024</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="legal-content">
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#what">What Are Cookies</a></li>
+                <li><a href="#how">How We Use Cookies</a></li>
+                <li><a href="#types">Types of Cookies</a></li>
+                <li><a href="#specific">Specific Cookies We Use</a></li>
+                <li><a href="#manage">Managing Cookies</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <h2 id="what">What Are Cookies</h2>
+        <p>Cookies are small text files that are placed on your device when you visit our website or use our services. They help us provide you with a better experience by remembering your preferences and understanding how you use our services.</p>
+        <p>This Cookie Policy explains what cookies are, how we use them, and how you can manage your cookie preferences.</p>
+
+        <h2 id="how">How We Use Cookies</h2>
+        <p>Forge APIs uses cookies and similar tracking technologies for the following purposes:</p>
+        <ul>
+            <li><strong>Authentication:</strong> To keep you signed in to your account</li>
+            <li><strong>Security:</strong> To detect and prevent fraudulent activity</li>
+            <li><strong>Preferences:</strong> To remember your settings and preferences</li>
+            <li><strong>Analytics:</strong> To understand how our services are used and improve them</li>
+            <li><strong>Performance:</strong> To monitor and optimize the performance of our APIs</li>
+        </ul>
+
+        <div class="info-box">
+            <p><strong>Note:</strong> We use cookies minimally and only when necessary. Our API services themselves do not use cookies - they use API key authentication.</p>
+        </div>
+
+        <h2 id="types">Types of Cookies</h2>
+        
+        <h3>Essential Cookies</h3>
+        <p>These cookies are necessary for our website to function properly. They enable core functionality such as security, network management, and accessibility. You cannot opt-out of these cookies as they are strictly necessary for delivering services to you.</p>
+
+        <h3>Analytics Cookies</h3>
+        <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. We use this information to improve our services and user experience.</p>
+
+        <h3>Functional Cookies</h3>
+        <p>These cookies enable enhanced functionality and personalization, such as remembering your preferences and settings. If you do not allow these cookies, some or all of these services may not function properly.</p>
+
+        <h2 id="specific">Specific Cookies We Use</h2>
+        
+        <table class="cookie-table">
+            <thead>
+                <tr>
+                    <th>Cookie Name</th>
+                    <th>Type</th>
+                    <th>Purpose</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>session_id</strong></td>
+                    <td><span class="cookie-type essential">Essential</span></td>
+                    <td>Maintains your session state when logged in to the dashboard</td>
+                    <td>Session</td>
+                </tr>
+                <tr>
+                    <td><strong>api_auth</strong></td>
+                    <td><span class="cookie-type essential">Essential</span></td>
+                    <td>Authenticates your API dashboard access</td>
+                    <td>7 days</td>
+                </tr>
+                <tr>
+                    <td><strong>csrf_token</strong></td>
+                    <td><span class="cookie-type essential">Essential</span></td>
+                    <td>Security token to prevent cross-site request forgery</td>
+                    <td>Session</td>
+                </tr>
+                <tr>
+                    <td><strong>preferences</strong></td>
+                    <td><span class="cookie-type functional">Functional</span></td>
+                    <td>Stores your dashboard preferences and settings</td>
+                    <td>1 year</td>
+                </tr>
+                <tr>
+                    <td><strong>_ga</strong></td>
+                    <td><span class="cookie-type analytics">Analytics</span></td>
+                    <td>Google Analytics - tracks unique visitors</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td><strong>_ga_*</strong></td>
+                    <td><span class="cookie-type analytics">Analytics</span></td>
+                    <td>Google Analytics - maintains session state</td>
+                    <td>2 years</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="third">Third-Party Cookies</h2>
+        <p>We use the following third-party services that may set cookies:</p>
+        <ul>
+            <li><strong>Stripe:</strong> For payment processing (only on checkout pages)</li>
+            <li><strong>Google Analytics:</strong> For website analytics (optional)</li>
+            <li><strong>Cloudflare:</strong> For security and performance optimization</li>
+        </ul>
+        <p>These third parties have their own privacy policies addressing how they use such information.</p>
+
+        <h2 id="manage">Managing Cookies</h2>
+        
+        <h3>Browser Settings</h3>
+        <p>Most web browsers allow you to control cookies through their settings. You can:</p>
+        <ul>
+            <li>View what cookies are stored on your device</li>
+            <li>Delete cookies individually or entirely</li>
+            <li>Block third-party cookies</li>
+            <li>Block all cookies from specific websites</li>
+            <li>Block all cookies entirely</li>
+        </ul>
+
+        <h3>How to Manage Cookies in Popular Browsers</h3>
+        <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+            <li><a href="https://support.microsoft.com/en-us/help/4027947" target="_blank" rel="noopener">Microsoft Edge</a></li>
+        </ul>
+
+        <div class="info-box">
+            <p><strong>Important:</strong> Blocking all cookies may prevent you from accessing certain features of our website, particularly the dashboard and account management areas.</p>
+        </div>
+
+        <h3>Opt-Out Options</h3>
+        <p>You can opt out of analytics cookies by:</p>
+        <ul>
+            <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-Out Browser Add-on</a></li>
+            <li>Using your browser's "Do Not Track" setting</li>
+            <li>Contacting us to request exclusion from analytics tracking</li>
+        </ul>
+
+        <h2 id="api">API Services and Cookies</h2>
+        <p>It's important to note that our API services themselves <strong>do not use cookies</strong>. API authentication is handled through API keys passed in request headers. This means:</p>
+        <ul>
+            <li>No cookies are set when making API requests</li>
+            <li>API responses do not include cookie headers</li>
+            <li>Your API integrations are not affected by cookie settings</li>
+            <li>GDPR cookie consent is not required for API usage</li>
+        </ul>
+
+        <h2 id="changes">Changes to This Policy</h2>
+        <p>We may update this Cookie Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
+
+        <h2 id="contact">Contact Us</h2>
+        <p>If you have questions about our use of cookies or this Cookie Policy, please contact us:</p>
+        <ul>
+            <li><strong>Email:</strong> hello@forgeapis.com</li>
+            <li><strong>Website:</strong> forgeapis.com</li>
+            <li><strong>Location:</strong> London, England, United Kingdom</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">🔨 Forge APIs</div>
+                    <p>Production-ready APIs for modern applications.</p>
+                    <p style="margin-top: 20px;">© 2024 Forge APIs. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <a href="/riskscore">RiskScore API</a>
+                    <a href="/#products">All Products</a>
+                    <a href="/#pricing">Pricing</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms of Service</a>
+                    <a href="/cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Building the future of APIs, one endpoint at a time.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
