@@ -1022,6 +1022,37 @@
             .nav-links {
                 display: none;
             }
+
+            .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.forge-link {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.forge-link:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .nav-left {
+        gap: 16px;
+    }
+    
+    .forge-link {
+        font-size: 12px;
+    }
+}
             
             /* Hero Section Mobile */
             .hero {
