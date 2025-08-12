@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge APIs - Ship Faster with Production-Ready APIs</title>
+    <meta name="description" content="Production-ready APIs for modern applications. Fraud detection, email validation, data enrichment, and more.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo::before {
+            content: "🔨";
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
+            border-radius: 24px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: var(--gray);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card.live {
+            border-color: var(--success);
+        }
+        
+        .product-card.live::before {
+            content: "LIVE";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-card.coming-soon {
+            opacity: 0.8;
+        }
+        
+        .product-card.coming-soon::before {
+            content: "COMING SOON";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--warning);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .product-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .product-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .product-features li::before {
+            content: "✓";
+            color: var(--success);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .product-price span {
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-disabled {
+            background: var(--light-gray);
+            color: var(--gray);
+            cursor: not-allowed;
+            border: 2px solid var(--light-gray);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 60px;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+        }
+        
+        .feature h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .feature p {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9f0ff 100%);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand p {
+            color: #9CA3AF;
+            margin: 12px 0;
+        }
+        
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: #9CA3AF;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #6B7280;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Forge APIs</a>
+            <div class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#pricing">Pricing</a>
+                <a href="mailto:hello@forgeapis.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Ship Faster with Production-Ready APIs</h1>
+            <p>Developer tools that actually work. No complexity, just results.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">OUR PRODUCTS</span>
+                <h2>APIs That Solve Real Problems</h2>
+                <p>Start with our free tier. Scale as you grow.</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- RiskScore API - Live -->
+                <div class="product-card live">
+                    <div class="product-icon">🛡️</div>
+                    <h3>RiskScore API</h3>
+                    <p>AI-powered fraud detection that identifies risky users through email, IP, and phone analysis.</p>
+                    
+                    <ul class="product-features">
+                        <li>97% fraud detection accuracy</li>
+                        <li>Real-time risk scoring</li>
+                        <li>72,000+ threat patterns</li>
+                        <li>100 free API calls/month</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        From $29<span>/month</span>
+                    </div>
+                    
+                    <a href="/riskscore" class="btn btn-primary">View Details →</a>
+                </div>
+                
+                <!-- EmailVerify API - Coming Soon -->
+                <div class="product-card coming-soon">
+                    <div class="product-icon">📧</div>
+                    <h3>EmailVerify API</h3>
+                    <p>Comprehensive email validation with deliverability checks and domain verification.</p>
+                    
+                    <ul class="product-features">
+                        <li>Syntax & MX validation</li>
+                        <li>Disposable email detection</li>
+                        <li>Role account identification</li>
+                        <li>Bulk verification support</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        From $19<span>/month</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-disabled">Coming January 2025</a>
+                </div>
+                
+                <!-- DataEnrich API - Coming Soon -->
+                <div class="product-card coming-soon">
+                    <div class="product-icon">🔍</div>
+                    <h3>DataEnrich API</h3>
+                    <p>Transform emails into complete customer profiles with social and company data.</p>
+                    
+                    <ul class="product-features">
+                        <li>Social profile matching</li>
+                        <li>Company information</li>
+                        <li>Technology stack detection</li>
+                        <li>GDPR compliant</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        From $49<span>/month</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-disabled">Coming February 2025</a>
+                </div>
+                
+                <!-- GeoLocate API - Coming Soon -->
+                <div class="product-card coming-soon">
+                    <div class="product-icon">📍</div>
+                    <h3>GeoLocate API</h3>
+                    <p>Precise IP geolocation with VPN detection and timezone information.</p>
+                    
+                    <ul class="product-features">
+                        <li>City-level accuracy</li>
+                        <li>VPN/Proxy detection</li>
+                        <li>ISP information</li>
+                        <li>Timezone data</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        From $9<span>/month</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-disabled">Coming Q2 2025</a>
+                </div>
+                
+                <!-- TextAnalyze API - Coming Soon -->
+                <div class="product-card coming-soon">
+                    <div class="product-icon">💭</div>
+                    <h3>TextAnalyze API</h3>
+                    <p>Sentiment analysis and content moderation powered by advanced NLP.</p>
+                    
+                    <ul class="product-features">
+                        <li>Sentiment scoring</li>
+                        <li>Toxicity detection</li>
+                        <li>Language identification</li>
+                        <li>Keyword extraction</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        From $39<span>/month</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-disabled">Coming Q2 2025</a>
+                </div>
+                
+                <!-- More Coming -->
+                <div class="product-card coming-soon">
+                    <div class="product-icon">🚀</div>
+                    <h3>More Coming...</h3>
+                    <p>We're constantly building new APIs based on developer needs.</p>
+                    
+                    <ul class="product-features">
+                        <li>Have a suggestion?</li>
+                        <li>Need a specific API?</li>
+                        <li>Want early access?</li>
+                        <li>Join our waitlist!</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        Get notified
+                    </div>
+                    
+                    <a href="mailto:hello@forgeapis.com" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">WHY FORGE</span>
+                <h2>Built for Developers, By Developers</h2>
+                <p>Everything you need to integrate and scale.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Sub-100ms response times with global CDN distribution and optimized code.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Simple Integration</h3>
+                    <p>RESTful APIs with clear documentation. Get running in under 5 minutes.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Fair Pricing</h3>
+                    <p>Start free, scale as you grow. No surprises, no hidden fees.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure by Default</h3>
+                    <p>Enterprise-grade security with encryption, rate limiting, and compliance.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Monitor usage, track performance, and optimize with detailed insights.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Scale</h3>
+                    <p>Built to handle millions of requests with 99.9% uptime guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">🔨 Forge APIs</div>
+                    <p>Production-ready APIs for modern applications.</p>
+                    <p style="margin-top: 20px;">© 2024 Forge APIs. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <a href="/riskscore">RiskScore API</a>
+                    <a href="#">EmailVerify (Coming Soon)</a>
+                    <a href="#">DataEnrich (Coming Soon)</a>
+                    <a href="#">View Roadmap</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Developers</h4>
+                    <a href="/riskscore#docs">Documentation</a>
+                    <a href="/riskscore#pricing">Pricing</a>
+                    <a href="https://github.com/mfjoe">GitHub</a>
+                    <a href="mailto:hello@forgeapis.com">Support</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Building the future of APIs, one endpoint at a time.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
