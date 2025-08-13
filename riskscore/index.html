@@ -94,6 +94,26 @@
             gap: 40px;
             align-items: center;
         }
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.forge-link {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.forge-link:hover {
+    color: var(--primary);
+}
         
         .nav-links a {
             color: var(--dark);
@@ -1030,6 +1050,14 @@
                 padding: 0 16px;
                 max-width: 100%;
             }
+
+            .nav-left {
+    gap: 16px;
+}
+
+.forge-link {
+    font-size: 12px;
+}
             
             .nav-links {
                 display: none;
@@ -1304,28 +1332,19 @@
 <!-- Navigation -->
 <nav>
     <div class="container">
-<a href="#top" class="logo">
-    <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
-        <!-- Digital/Tech Anvil with Crossed Hammers -->
-        <g transform="translate(15, 15)">
-            <!-- [Full SVG content from paste-2.txt lines 294-344] -->
-        </g>
-        <!-- Text: Forge -->
-        <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#0A0E27">
-            Forge
-        </text>
-        <!-- Text: APIs -->
-        <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#6B7280">
-            APIs
-        </text>
-        <!-- Tagline -->
-        <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">
-            PRODUCTION-READY APIS
-        </text>
-    </svg>
-</a>
+        <div class="nav-left">
+            <a href="#top" class="logo">
+                <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- [Keep existing SVG content] -->
+                </svg>
+            </a>
+            <a href="https://forgeapis.com" class="forge-link">← Back to Forge</a>
+        </div>
         <div class="nav-links">
-            [navigation links]
+            <a href="#features">Features</a>
+            <a href="#demo">Demo</a>
+            <a href="#pricing">Pricing</a>
+            <a href="https://web-production-2c40.up.railway.app/docs" class="btn btn-primary">Get Started</a>
         </div>
     </div>
 </nav>
