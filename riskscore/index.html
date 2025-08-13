@@ -1505,33 +1505,6 @@
     <div>&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">riskData</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) <span class="code-keyword">return</span> <span class="code-variable">res</span>.<span class="code-function">json</span>({<span class="code-key">verification_required</span>: <span class="code-value">true</span>});</div>
     <div>});</div>
 </div>
-                        
-                        <!-- Python Tab -->
-                        <div class="code-panel python" id="python-panel">
-                            <div class="code-comment"># Perfect for Django/Flask apps</div>
-                            <div><span class="code-variable">risk</span> = <span class="code-variable">riskscore</span>.<span class="code-function">check</span>(</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">email</span>=<span class="code-variable">user</span>.<span class="code-key">email</span>,</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ip</span>=<span class="code-variable">request</span>.<span class="code-key">remote_addr</span></div>
-                            <div>)</div>
-                            <div></div>
-                            <div><span class="code-keyword">if</span> <span class="code-variable">risk</span>.<span class="code-key">score</span> > <span class="code-value">70</span>:</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-function">redirect</span>(<span class="code-string">'additional_verification'</span>)</div>
-                        </div>
-                        
-                        <!-- Node.js Tab -->
-                        <div class="code-panel javascript" id="nodejs-panel">
-                            <div class="code-comment">// Perfect for Express.js APIs</div>
-                            <div><span class="code-variable">app</span>.<span class="code-function">post</span>(<span class="code-string">'/signup'</span>, <span class="code-keyword">async</span> (<span class="code-variable">req</span>, <span class="code-variable">res</span>) => {</div>
-                            <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">risk</span> = <span class="code-keyword">await</span> <span class="code-function">riskScore</span>.<span class="code-function">check</span>({</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">email</span>: <span class="code-variable">req</span>.<span class="code-key">body</span>.<span class="code-key">email</span>,</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ip</span>: <span class="code-variable">req</span>.<span class="code-key">ip</span></div>
-                            <div>&nbsp;&nbsp;});</div>
-                            <div></div>
-                            <div>&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-variable">risk</span>.<span class="code-key">score</span> > <span class="code-value">70</span> ?</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">res</span>.<span class="code-function">json</span>({<span class="code-key">requires_verification</span>: <span class="code-value">true</span>}) :</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">createAccount</span>(<span class="code-variable">req</span>.<span class="code-key">body</span>);</div>
-                            <div>});</div>
-                        </div>
                     </div>
                     
                     <div class="response-preview">
