@@ -1449,19 +1449,62 @@
                     
                     <div class="code-content">
                         <!-- React Tab -->
-                        <div class="code-panel jsx active" id="react-panel">
-                            <div class="code-comment">// Perfect for React apps</div>
-                            <div><span class="code-keyword">const</span> <span class="code-variable">checkUser</span> = <span class="code-keyword">async</span> (<span class="code-variable">userEmail</span>) => {</div>
-                            <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-function">riskScore</span>.<span class="code-function">check</span>({</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">email</span>: <span class="code-variable">userEmail</span>,</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ip</span>: <span class="code-variable">request</span>.<span class="code-key">ip</span></div>
-                            <div>&nbsp;&nbsp;});</div>
-                            <div></div>
-                            <div>&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">response</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) {</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">setShowVerification</span>(<span class="code-value">true</span>);</div>
-                            <div>&nbsp;&nbsp;}</div>
-                            <div>};</div>
-                        </div>
+<!-- React Tab -->
+<div class="code-panel jsx active" id="react-panel">
+    <div class="code-comment">// Perfect for React apps</div>
+    <div><span class="code-keyword">const</span> <span class="code-variable">checkUser</span> = <span class="code-keyword">async</span> (<span class="code-variable">userEmail</span>, <span class="code-variable">userIP</span>) => {</div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(<span class="code-string">'https://api.riskscore.com/v1/check'</span>, {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">method</span>: <span class="code-string">'POST'</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>: {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Authorization'</span>: <span class="code-string">'Bearer YOUR_API_KEY'</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;},</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">body</span>: <span class="code-variable">JSON</span>.<span class="code-function">stringify</span>({ <span class="code-key">email</span>: <span class="code-variable">userEmail</span>, <span class="code-key">ip</span>: <span class="code-variable">userIP</span> })</div>
+    <div>&nbsp;&nbsp;});</div>
+    <div></div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">data</span> = <span class="code-keyword">await</span> <span class="code-variable">response</span>.<span class="code-function">json</span>();</div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">data</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) <span class="code-function">setShowVerification</span>(<span class="code-value">true</span>);</div>
+    <div>};</div>
+</div>
+
+<!-- Python Tab -->
+<div class="code-panel python" id="python-panel">
+    <div class="code-comment"># Perfect for Django/Flask apps</div>
+    <div><span class="code-keyword">import</span> <span class="code-variable">requests</span></div>
+    <div></div>
+    <div><span class="code-keyword">def</span> <span class="code-function">check_risk_score</span>(<span class="code-variable">email</span>, <span class="code-variable">ip_address</span>):</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">response</span> = <span class="code-variable">requests</span>.<span class="code-function">post</span>(<span class="code-string">'https://api.riskscore.com/v1/check'</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>={</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Authorization'</span>: <span class="code-string">'Bearer YOUR_API_KEY'</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">json</span>={<span class="code-string">'email'</span>: <span class="code-variable">email</span>, <span class="code-string">'ip'</span>: <span class="code-variable">ip_address</span>})</div>
+    <div></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">risk_data</span> = <span class="code-variable">response</span>.<span class="code-function">json</span>()</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> <span class="code-variable">risk_data</span>[<span class="code-string">'risk_score'</span>] > <span class="code-value">70</span>:</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-function">redirect</span>(<span class="code-string">'verification'</span>)</div>
+</div>
+
+<!-- Node.js Tab -->
+<div class="code-panel javascript" id="nodejs-panel">
+    <div class="code-comment">// Perfect for Express.js APIs</div>
+    <div><span class="code-variable">app</span>.<span class="code-function">post</span>(<span class="code-string">'/signup'</span>, <span class="code-keyword">async</span> (<span class="code-variable">req</span>, <span class="code-variable">res</span>) => {</div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> { <span class="code-variable">email</span> } = <span class="code-variable">req</span>.<span class="code-key">body</span>;</div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">userIP</span> = <span class="code-variable">req</span>.<span class="code-key">ip</span>;</div>
+    <div></div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">riskResponse</span> = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(<span class="code-string">'https://api.riskscore.com/v1/check'</span>, {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">method</span>: <span class="code-string">'POST'</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>: {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Authorization'</span>: <span class="code-string">'Bearer '</span> + <span class="code-variable">process</span>.<span class="code-key">env</span>.<span class="code-key">API_KEY</span>,</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;},</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">body</span>: <span class="code-variable">JSON</span>.<span class="code-function">stringify</span>({ <span class="code-key">email</span>, <span class="code-key">ip</span>: <span class="code-variable">userIP</span> })</div>
+    <div>&nbsp;&nbsp;});</div>
+    <div></div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">riskData</span> = <span class="code-keyword">await</span> <span class="code-variable">riskResponse</span>.<span class="code-function">json</span>();</div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">riskData</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) <span class="code-keyword">return</span> <span class="code-variable">res</span>.<span class="code-function">json</span>({<span class="code-key">verification_required</span>: <span class="code-value">true</span>});</div>
+    <div>});</div>
+</div>
                         
                         <!-- Python Tab -->
                         <div class="code-panel python" id="python-panel">
