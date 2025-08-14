@@ -276,18 +276,19 @@
         .dot-yellow { background: #FFBD2E; }
         .dot-green { background: #28CA42; }
         
-        .code-content {
-            font-family: 'Space Mono', 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            letter-spacing: -0.5px;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-        }
-        
+.code-content {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    min-height: 300px;  /* Changed from height: 200px */
+    max-height: 400px;  /* Add max height */
+    position: relative;
+    overflow-y: auto;  /* Changed from overflow: hidden */
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
         .code-comment {
             color: #6B7280;
         }
