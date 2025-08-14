@@ -1964,45 +1964,61 @@
     
     <!-- Footer -->
 <footer class="footer">
-    <div class="container">  <!-- Use the regular container class -->
+    <div class="container">
         <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">RiskScore</div>
-                    <p>Intelligent risk assessment for modern applications</p>
-                    <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#demo">Live Demo</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="https://web-production-2c40.up.railway.app/docs" target="_blank">Documentation</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="https://web-production-2c40.up.railway.app/dashboard" target="_blank">Dashboard</a>
-                        <a href="https://web-production-2c40.up.railway.app/docs" target="_blank">API Reference</a>
-                        <a href="#demo">Get Started</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="https://forgeapis.com">Forge APIs</a>
-                        <a href="mailto:hello@forgeapis.com">Contact Sales</a>
-                        <a href="mailto:hello@forgeapis.com">Support</a>
-                    </div>
-                </div>
+            <div class="footer-brand">
+                <div class="logo">RiskScore</div>
+                <p>Intelligent risk assessment for modern applications</p>
+                <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
             </div>
             
-            <div class="footer-bottom">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#demo">Live Demo</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="https://web-production-2c40.up.railway.app/docs" target="_blank">Documentation</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="https://web-production-2c40.up.railway.app/dashboard" target="_blank">Dashboard</a>
+                    <a href="https://web-production-2c40.up.railway.app/docs" target="_blank">API Reference</a>
+                    <a href="#demo">Get Started</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="https://forgeapis.com">Forge APIs</a>
+                    <a href="mailto:hello@forgeapis.com">Contact Sales</a>
+                    <a href="mailto:hello@forgeapis.com">Support</a>
+                </div>
+                
+                <!-- NEW: Legal column -->
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="/privacy" onclick="showLegalPage('privacy'); return false;">Privacy Policy</a>
+                    <a href="/cookies" onclick="showLegalPage('cookies'); return false;">Cookie Policy</a>
+                    <a href="/terms" onclick="showLegalPage('terms'); return false;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
                 <p>&copy; 2024 Forge APIs. All rights reserved.</p>
                 <p class="footer-note">Risk intelligence only. Not for legal compliance verification.</p>
             </div>
+            <!-- NEW: Legal links in footer bottom -->
+            <div class="footer-legal-links">
+                <a href="/privacy" onclick="showLegalPage('privacy'); return false;">Privacy</a>
+                <a href="/cookies" onclick="showLegalPage('cookies'); return false;">Cookies</a>
+                <a href="/terms" onclick="showLegalPage('terms'); return false;">Terms</a>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
     
     <script>
         // Smooth scrolling for navigation links
