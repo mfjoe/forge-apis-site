@@ -171,12 +171,12 @@
 
         
         /* Hero Section */
-        .hero {
-            padding: 140px 0 100px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            position: relative;
-            overflow: hidden;
-        }
+.hero {
+    padding: 160px 0 100px;  /* Increased from 140px to 160px */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    overflow: hidden;
+}
         
         .hero::before {
             content: "";
@@ -278,22 +278,21 @@
         
 .code-content {
     font-family: 'Space Mono', 'Courier New', monospace;
-    font-size: 13px;  /* Slightly smaller */
-    line-height: 1.3;  /* Reduced from 1.6 */
-    letter-spacing: -0.5px;
-    height: 280px;  /* Fixed height */
+    font-size: 12px;  /* Even smaller */
+    line-height: 1.2;  /* Even tighter */
+    letter-spacing: -0.3px;
+    height: 240px;  /* Smaller height */
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
     word-wrap: break-word;
     white-space: pre-wrap;
-    padding-right: 10px;  /* Add some padding for scrollbar */
+    padding-right: 10px;
 }
 
-/* Add this new rule for the divs inside code-content */
 .code-content div {
-    line-height: 1.3;  /* Ensure divs also have tighter spacing */
-    margin: 0;  /* Remove any default margins */
+    line-height: 1.15;  /* Very tight line spacing */
+    margin: 0;
 }
         .code-comment {
             color: #6B7280;
@@ -1460,56 +1459,45 @@
     <div class="code-comment">// Perfect for React apps</div>
     <div><span class="code-keyword">import</span> { <span class="code-variable">useState</span> } <span class="code-keyword">from</span> <span class="code-string">'react'</span>;</div>
     <div><span class="code-keyword">import</span> <span class="code-variable">axios</span> <span class="code-keyword">from</span> <span class="code-string">'axios'</span>;</div>
-    <div></div>
     <div><span class="code-keyword">const</span> <span class="code-function">SignupForm</span> = () => {</div>
     <div>&nbsp;&nbsp;<span class="code-keyword">const</span> [<span class="code-variable">loading</span>, <span class="code-variable">setLoading</span>] = <span class="code-function">useState</span>(<span class="code-value">false</span>);</div>
-    <div></div>
     <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-function">checkUser</span> = <span class="code-keyword">async</span> (<span class="code-variable">email</span>, <span class="code-variable">ipAddress</span>) => {</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">setLoading</span>(<span class="code-value">true</span>);</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">try</span> {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-variable">axios</span>.<span class="code-function">post</span>(<span class="code-string">'https://api.riskscore.com/v1/check'</span>, {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-variable">axios</span>.<span class="code-function">post</span>(<span class="code-string">'/api/check'</span>, {</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">email</span>: <span class="code-variable">email</span>,</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ip</span>: <span class="code-variable">ipAddress</span></div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>: { <span class="code-string">'Authorization'</span>: <span class="code-string">`Bearer ${process.env.REACT_APP_API_KEY}`</span> }</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div>
-    <div></div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">response</span>.<span class="code-key">data</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// High risk - require additional verification</span></div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> { <span class="code-key">requiresVerification</span>: <span class="code-value">true</span>, ...<span class="code-variable">response</span>.<span class="code-key">data</span> };</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// High risk - require verification</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> { <span class="code-key">requiresVerification</span>: <span class="code-value">true</span> };</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;} <span class="code-keyword">catch</span> (<span class="code-variable">error</span>) {</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">console</span>.<span class="code-function">error</span>(<span class="code-string">'Risk check failed:'</span>, <span class="code-variable">error</span>);</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
     <div>&nbsp;&nbsp;};</div>
+    <div>};</div>
 </div>
 
 <!-- Python Tab -->
 <div class="code-panel python" id="python-panel">
     <div class="code-comment"># Perfect for Django/Flask apps</div>
     <div><span class="code-keyword">import</span> <span class="code-variable">requests</span></div>
-    <div><span class="code-keyword">import</span> <span class="code-variable">os</span></div>
     <div><span class="code-keyword">from</span> <span class="code-variable">flask</span> <span class="code-keyword">import</span> <span class="code-variable">Flask</span>, <span class="code-variable">request</span>, <span class="code-variable">jsonify</span></div>
-    <div></div>
     <div><span class="code-variable">app</span> = <span class="code-function">Flask</span>(<span class="code-variable">__name__</span>)</div>
-    <div><span class="code-variable">API_KEY</span> = <span class="code-variable">os</span>.<span class="code-function">getenv</span>(<span class="code-string">'RISKSCORE_API_KEY'</span>)</div>
-    <div></div>
     <div><span class="code-keyword">@</span><span class="code-variable">app</span>.<span class="code-function">route</span>(<span class="code-string">'/api/signup'</span>, <span class="code-key">methods</span>=[<span class="code-string">'POST'</span>])</div>
     <div><span class="code-keyword">def</span> <span class="code-function">signup</span>():</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">data</span> = <span class="code-variable">request</span>.<span class="code-function">get_json</span>()</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">email</span> = <span class="code-variable">data</span>.<span class="code-function">get</span>(<span class="code-string">'email'</span>)</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">user_ip</span> = <span class="code-variable">request</span>.<span class="code-key">remote_addr</span></div>
-    <div></div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># Check risk score</span></div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">response</span> = <span class="code-variable">requests</span>.<span class="code-function">post</span>(</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'https://api.riskscore.com/v1/check'</span>,</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>={<span class="code-string">'Authorization'</span>: <span class="code-string">f'Bearer {API_KEY}'</span>},</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">json</span>={<span class="code-string">'email'</span>: <span class="code-variable">email</span>, <span class="code-string">'ip'</span>: <span class="code-variable">user_ip</span>}</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;)</div>
-    <div></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">json</span>={<span class="code-string">'email'</span>: <span class="code-variable">email</span>, <span class="code-string">'ip'</span>: <span class="code-variable">user_ip</span>})</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-variable">risk_data</span> = <span class="code-variable">response</span>.<span class="code-function">json</span>()</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> <span class="code-variable">risk_data</span>[<span class="code-string">'risk_score'</span>] > <span class="code-value">70</span>:</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-function">jsonify</span>({<span class="code-string">'error'</span>: <span class="code-string">'High risk detected'</span>}), <span class="code-value">403</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-function">jsonify</span>({<span class="code-string">'error'</span>: <span class="code-string">'High risk'</span>}), <span class="code-value">403</span></div>
 </div>
 
 <!-- Node.js Tab -->
@@ -1518,26 +1506,16 @@
     <div><span class="code-keyword">const</span> <span class="code-variable">express</span> = <span class="code-function">require</span>(<span class="code-string">'express'</span>);</div>
     <div><span class="code-keyword">const</span> <span class="code-variable">axios</span> = <span class="code-function">require</span>(<span class="code-string">'axios'</span>);</div>
     <div><span class="code-keyword">const</span> <span class="code-variable">app</span> = <span class="code-function">express</span>();</div>
-    <div></div>
     <div><span class="code-variable">app</span>.<span class="code-function">use</span>(<span class="code-variable">express</span>.<span class="code-function">json</span>());</div>
-    <div></div>
     <div><span class="code-variable">app</span>.<span class="code-function">post</span>(<span class="code-string">'/api/signup'</span>, <span class="code-keyword">async</span> (<span class="code-variable">req</span>, <span class="code-variable">res</span>) => {</div>
     <div>&nbsp;&nbsp;<span class="code-keyword">const</span> { <span class="code-variable">email</span> } = <span class="code-variable">req</span>.<span class="code-key">body</span>;</div>
-    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">userIP</span> = <span class="code-variable">req</span>.<span class="code-key">ip</span> || <span class="code-variable">req</span>.<span class="code-key">connection</span>.<span class="code-key">remoteAddress</span>;</div>
-    <div></div>
+    <div>&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">userIP</span> = <span class="code-variable">req</span>.<span class="code-key">ip</span>;</div>
     <div>&nbsp;&nbsp;<span class="code-keyword">try</span> {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">riskCheck</span> = <span class="code-keyword">await</span> <span class="code-variable">axios</span>.<span class="code-function">post</span>(<span class="code-string">'https://api.riskscore.com/v1/check'</span>, {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-variable">riskCheck</span> = <span class="code-keyword">await</span> <span class="code-variable">axios</span>.<span class="code-function">post</span>(<span class="code-string">'/api/check'</span>, {</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">email</span>: <span class="code-variable">email</span>,</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ip</span>: <span class="code-variable">userIP</span></div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;}, {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">headers</span>: {</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Authorization'</span>: <span class="code-string">`Bearer ${process.env.RISKSCORE_API_KEY}`</span>,</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span></div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;});</div>
-    <div></div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> { <span class="code-variable">risk_score</span>, <span class="code-variable">recommendation</span> } = <span class="code-variable">riskCheck</span>.<span class="code-key">data</span>;</div>
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">risk_score</span> > <span class="code-value">70</span>) {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-variable">riskCheck</span>.<span class="code-key">data</span>.<span class="code-key">risk_score</span> > <span class="code-value">70</span>) {</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-variable">res</span>.<span class="code-function">status</span>(<span class="code-value">403</span>).<span class="code-function">json</span>({ <span class="code-key">requiresVerification</span>: <span class="code-value">true</span> });</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
     <div>&nbsp;&nbsp;} <span class="code-keyword">catch</span> (<span class="code-variable">error</span>) {</div>
