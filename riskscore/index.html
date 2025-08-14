@@ -944,19 +944,14 @@
         }
         
         /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-            margin-top: 100px;
-        }
-    .footer-container {
-    max-width: 1400px;  /* Wider than regular container */
-    margin: 0 auto;
-    padding: 0 40px;    /* More padding for better spacing */
-    width: 100%;
-    box-sizing: border-box;
+.footer {
+    background: var(--dark);
+    color: white;
+    padding: 60px 0 20px;
+    margin-top: 100px;
+    width: 100%;  /* Ensure full width */
 }
+/* Remove .footer-container entirely and use .container instead */
         
         .footer-content {
             display: grid;
@@ -1957,7 +1952,7 @@
     
     <!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
+    <div class="container">  <!-- Use the regular container class -->
         <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">RiskScore</div>
