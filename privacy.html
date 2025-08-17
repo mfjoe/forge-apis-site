@@ -26,6 +26,8 @@
             --gray: #6B7280;
             --light-gray: #F3F4F6;
             --white: #FFFFFF;
+            --warning: #F59E0B;
+            --danger: #EF4444;
         }
         
         body {
@@ -127,6 +129,13 @@
             color: var(--dark);
         }
         
+        .legal-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px;
+            color: var(--dark);
+        }
+        
         .legal-content p {
             margin-bottom: 20px;
             line-height: 1.8;
@@ -151,6 +160,98 @@
         
         .legal-content a:hover {
             text-decoration: underline;
+        }
+        
+        .legal-content strong {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Important Box */
+        .important-box {
+            background: #FEF3C7;
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .important-box p {
+            margin: 0 0 10px 0;
+            color: #92400E;
+            font-weight: 500;
+        }
+        
+        .important-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Critical Notice Box */
+        .critical-notice {
+            background: #FEE2E2;
+            border: 2px solid var(--danger);
+            padding: 24px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+        
+        .critical-notice h4 {
+            color: var(--danger);
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .critical-notice h4::before {
+            content: "⚠️";
+            font-size: 24px;
+        }
+        
+        .critical-notice p,
+        .critical-notice li {
+            color: #991B1B;
+            font-weight: 500;
+        }
+        
+        .critical-notice ul {
+            margin: 12px 0;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: var(--light-gray);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--gray);
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #E5E7EB;
         }
         
         /* Table of Contents */
@@ -253,6 +354,14 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -262,7 +371,7 @@
         <div class="container">
             <a href="/" class="logo">Forge APIs</a>
             <div class="nav-links">
-                <a href="/#products">Products</a>  
+                <a href="/#products">Products</a>
                 <a href="mailto:hello@forgeapis.com">Contact</a>
             </div>
         </div>
@@ -272,30 +381,40 @@
     <div class="legal-header">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Last updated: December 2024</p>
+            <p class="last-updated">Version 1.1 - Last updated: August 17, 2025</p>
         </div>
     </div>
 
     <!-- Content -->
     <div class="legal-content">
+        
+        <div class="important-box">
+            <p><strong>Overview:</strong> At Forge APIs ("we", "our", or "us"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our API services, website, and related products.</p>
+            <p>By using our services, you agree to the collection and use of information in accordance with this policy.</p>
+        </div>
+
         <div class="toc">
             <h3>Table of Contents</h3>
             <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#information">Information We Collect</a></li>
-                <li><a href="#usage">How We Use Your Information</a></li>
+                <li><a href="#information-collect">Information We Collect</a></li>
+                <li><a href="#legal-basis">Legal Basis for Processing</a></li>
+                <li><a href="#how-we-use">How We Use Your Information</a></li>
+                <li><a href="#api-data">Data Processed Through Our APIs</a></li>
                 <li><a href="#sharing">Information Sharing</a></li>
+                <li><a href="#international">International Data Transfers</a></li>
                 <li><a href="#security">Data Security</a></li>
-                <li><a href="#rights">Your Rights</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#retention">Data Retention</a></li>
+                <li><a href="#your-rights">Your Rights</a></li>
+                <li><a href="#gdpr">GDPR Compliance</a></li>
+                <li><a href="#ccpa">California Privacy Rights</a></li>
+                <li><a href="#age">Age Restrictions</a></li>
+                <li><a href="#breach">Data Breach Notification</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact Information</a></li>
             </ul>
         </div>
 
-        <h2 id="overview">Overview</h2>
-        <p>At Forge APIs ("we", "our", or "us"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our API services, website, and related products.</p>
-        <p>By using our services, you agree to the collection and use of information in accordance with this policy.</p>
-
-        <h2 id="information">Information We Collect</h2>
+        <h2 id="information-collect">Information We Collect</h2>
         
         <h3>Information You Provide</h3>
         <ul>
@@ -312,10 +431,16 @@
             <li><strong>Cookies:</strong> Essential cookies for authentication and analytics (see our Cookie Policy)</li>
         </ul>
 
-        <h3>Information Processed Through Our APIs</h3>
-        <p>When you use our APIs (such as RiskScore), you may send us data to analyze. We process this data solely to provide the requested service and do not store it beyond what's necessary for service delivery and debugging (typically 30 days).</p>
+        <h2 id="legal-basis">Legal Basis for Processing (GDPR)</h2>
+        <p>We process personal data based on the following legal grounds:</p>
+        <ul>
+            <li><strong>Contract Performance:</strong> To provide the API services you've subscribed to</li>
+            <li><strong>Legitimate Interests:</strong> For fraud prevention, security, and service improvement</li>
+            <li><strong>Legal Obligation:</strong> To comply with applicable laws and regulations</li>
+            <li><strong>Consent:</strong> For marketing communications (where applicable)</li>
+        </ul>
 
-        <h2 id="usage">How We Use Your Information</h2>
+        <h2 id="how-we-use">How We Use Your Information</h2>
         <p>We use the collected information for:</p>
         <ul>
             <li>Providing and maintaining our API services</li>
@@ -327,34 +452,74 @@
             <li>Complying with legal obligations</li>
         </ul>
 
+        <h2 id="api-data">Data Processed Through Our APIs</h2>
+        
+        <div class="critical-notice">
+            <h4>Important for RiskScore and Other API Users</h4>
+            <p>When you submit data through our APIs:</p>
+            <ul>
+                <li>We process data ONLY as instructed by you (as a data processor)</li>
+                <li>You remain the data controller for all submitted data</li>
+                <li>We do NOT store submitted data beyond 30 days (for debugging purposes only)</li>
+                <li>We do NOT use submitted data for any other purpose</li>
+                <li>We do NOT share submitted data with third parties</li>
+                <li>We do NOT verify the accuracy or legality of submitted data</li>
+                <li>You warrant you have legal basis to submit all data</li>
+                <li>We are NOT responsible for the content you submit</li>
+            </ul>
+        </div>
+
+        <h3>RiskScore Specific Privacy Notice</h3>
+        <ul>
+            <li>Risk scores are generated using pattern analysis algorithms</li>
+            <li>We do NOT create persistent profiles of individuals</li>
+            <li>We do NOT make automated decisions about individuals</li>
+            <li>Customers are solely responsible for how they use risk scores</li>
+            <li>We do NOT determine or verify actual ages or identities</li>
+        </ul>
+
         <h2 id="sharing">Information Sharing</h2>
         <p>We do not sell, trade, or rent your personal information. We may share information with:</p>
         <ul>
-            <li><strong>Service Providers:</strong> Stripe for payments, Cloudflare for hosting and security</li>
-            <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-            <li><strong>Business Transfers:</strong> In connection with a merger or acquisition</li>
+            <li><strong>Service Providers:</strong> Stripe for payments, Cloudflare for hosting and security, Railway for infrastructure</li>
+            <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
+            <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
             <li><strong>Your Consent:</strong> When you explicitly agree to sharing</li>
+            <li><strong>Aggregated Data:</strong> We may share anonymized, aggregated data that cannot identify you</li>
+        </ul>
+
+        <h2 id="international">International Data Transfers</h2>
+        <p>Your data may be transferred to and processed in countries other than your own:</p>
+        <ul>
+            <li>Our primary servers are located in the United States</li>
+            <li>We use Standard Contractual Clauses for EU/UK data transfers</li>
+            <li>We ensure appropriate safeguards are in place for all transfers</li>
+            <li>By using our services, you consent to these transfers</li>
         </ul>
 
         <h2 id="security">Data Security</h2>
         <p>We implement appropriate technical and organizational measures to protect your data:</p>
         <ul>
-            <li>All data transmission is encrypted using HTTPS/TLS</li>
-            <li>API keys are hashed and stored securely</li>
-            <li>Regular security audits and updates</li>
+            <li>All data transmission is encrypted using HTTPS/TLS 1.3</li>
+            <li>API keys are hashed using industry-standard algorithms</li>
+            <li>Regular security audits and vulnerability assessments</li>
             <li>Limited access to personal data on a need-to-know basis</li>
+            <li>Secure data centers with physical security controls</li>
+            <li>Regular backups with encrypted storage</li>
         </ul>
         <p>However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
 
         <h2 id="retention">Data Retention</h2>
         <p>We retain your information for as long as necessary to provide our services and comply with legal obligations:</p>
         <ul>
-            <li><strong>Account Data:</strong> Retained while your account is active</li>
-            <li><strong>API Logs:</strong> Typically retained for 30 days</li>
-            <li><strong>Payment Records:</strong> Retained as required for tax and accounting purposes</li>
+            <li><strong>Account Data:</strong> Retained while your account is active plus 90 days</li>
+            <li><strong>API Request Logs:</strong> Retained for 30 days for debugging and security</li>
+            <li><strong>Payment Records:</strong> Retained for 7 years as required for tax and accounting</li>
+            <li><strong>Support Communications:</strong> Retained for 2 years after resolution</li>
+            <li><strong>Submitted API Data:</strong> Automatically deleted after 30 days</li>
         </ul>
 
-        <h2 id="rights">Your Rights</h2>
+        <h2 id="your-rights">Your Rights</h2>
         <p>Depending on your location, you may have certain rights regarding your personal data:</p>
         <ul>
             <li><strong>Access:</strong> Request a copy of your personal data</li>
@@ -362,30 +527,97 @@
             <li><strong>Deletion:</strong> Request deletion of your data (subject to legal requirements)</li>
             <li><strong>Portability:</strong> Request your data in a portable format</li>
             <li><strong>Objection:</strong> Object to certain processing of your data</li>
+            <li><strong>Restriction:</strong> Request restriction of processing</li>
+            <li><strong>Withdraw Consent:</strong> Where processing is based on consent</li>
         </ul>
-        <p>To exercise these rights, please contact us at hello@forgeapis.com.</p>
+        <p>To exercise these rights, please contact us at privacy@forgeapis.com.</p>
 
         <h2 id="gdpr">GDPR Compliance</h2>
         <p>For users in the European Economic Area (EEA) and United Kingdom:</p>
         <ul>
             <li>We process data based on legitimate interests, contract fulfillment, or consent</li>
             <li>You have additional rights under GDPR including data portability and erasure</li>
-            <li>We respond to all valid requests within one month</li>
+            <li>We respond to all valid requests within 30 days</li>
+            <li>You have the right to lodge a complaint with your supervisory authority</li>
+            <li>We maintain records of processing activities as required</li>
         </ul>
 
-        <h2 id="children">Children's Privacy</h2>
-        <p>Our services are not directed to individuals under 18. We do not knowingly collect personal information from children.</p>
+        <h2 id="ccpa">California Privacy Rights (CCPA)</h2>
+        <p>California residents have additional rights under the California Consumer Privacy Act:</p>
+        <ul>
+            <li><strong>Right to Know:</strong> What personal information we collect, use, and share</li>
+            <li><strong>Right to Delete:</strong> Request deletion of your personal information</li>
+            <li><strong>Right to Opt-Out:</strong> We do NOT sell personal information</li>
+            <li><strong>Right to Non-Discrimination:</strong> Equal service regardless of privacy choices</li>
+        </ul>
+        <p>To exercise these rights, California residents can contact privacy@forgeapis.com.</p>
+
+        <h2 id="age">Age Restrictions</h2>
+        <div class="important-box">
+            <p><strong>Our services are strictly for users 18 years and older.</strong></p>
+            <p>We do not knowingly collect personal information from individuals under 18. If you believe we have inadvertently collected information from a minor, please contact us immediately at privacy@forgeapis.com for deletion.</p>
+        </div>
+
+        <h2 id="breach">Data Breach Notification</h2>
+        <p>In the event of a data breach that poses risk to your rights and freedoms:</p>
+        <ul>
+            <li>We will notify affected users within 72 hours of discovery</li>
+            <li>We will notify relevant supervisory authorities as required by law</li>
+            <li>We will document all breaches and measures taken</li>
+            <li>We will provide information about the nature and impact of the breach</li>
+            <li>We will advise on steps you can take to protect yourself</li>
+        </ul>
+
+        <h2 id="cookie-consent">Cookie Consent</h2>
+        <ul>
+            <li>EU/UK visitors will be asked for consent before setting non-essential cookies</li>
+            <li>Essential cookies do not require consent as they're necessary for service operation</li>
+            <li>You can withdraw cookie consent at any time</li>
+            <li>See our <a href="/cookies.html">Cookie Policy</a> for details</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>API Note</h4>
+            <p>Our API endpoints do not use cookies. Authentication is handled via API keys in request headers, making our APIs privacy-compliant by design.</p>
+        </div>
+
+        <h2 id="dpo">Data Protection Contact</h2>
+        <p>For privacy concerns or to exercise your rights, contact our data protection team:</p>
+        <ul>
+            <li><strong>Email:</strong> privacy@forgeapis.com</li>
+            <li><strong>Response Time:</strong> Within 30 days</li>
+            <li><strong>Postal Address:</strong> Forge APIs, London, England, United Kingdom</li>
+        </ul>
 
         <h2 id="changes">Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
-
-        <h2 id="contact">Contact Us</h2>
-        <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
         <ul>
-            <li><strong>Email:</strong> hello@forgeapis.com</li>
+            <li><strong>Current Version:</strong> 1.1</li>
+            <li><strong>Effective Date:</strong> August 17, 2025</li>
+            <li>Material changes will be notified via email to registered users</li>
+            <li>Continued use after changes constitutes acceptance</li>
+            <li>Previous versions available upon request</li>
+        </ul>
+
+        <h2 id="contact">Contact Information</h2>
+        <p>For questions about this Privacy Policy or our data practices:</p>
+        <ul>
+            <li><strong>Email:</strong> privacy@forgeapis.com</li>
+            <li><strong>General Inquiries:</strong> hello@forgeapis.com</li>
             <li><strong>Website:</strong> forgeapis.com</li>
             <li><strong>Location:</strong> London, England, United Kingdom</li>
         </ul>
+
+        <div class="critical-notice" style="margin-top: 40px;">
+            <h4>Final Important Notice</h4>
+            <p>By using Forge APIs services, you acknowledge that:</p>
+            <ul>
+                <li>You have read and understood this Privacy Policy</li>
+                <li>You agree to our data processing practices</li>
+                <li>You are responsible for the data you submit through our APIs</li>
+                <li>You will comply with applicable privacy laws for your own users</li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- Footer -->

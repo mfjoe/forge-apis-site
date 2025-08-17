@@ -26,6 +26,8 @@
             --gray: #6B7280;
             --light-gray: #F3F4F6;
             --white: #FFFFFF;
+            --warning: #F59E0B;
+            --danger: #EF4444;
         }
         
         body {
@@ -127,6 +129,13 @@
             color: var(--dark);
         }
         
+        .legal-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px;
+            color: var(--dark);
+        }
+        
         .legal-content p {
             margin-bottom: 20px;
             line-height: 1.8;
@@ -173,6 +182,54 @@
             font-weight: 500;
         }
         
+        /* Critical Notice Box */
+        .critical-notice {
+            background: #FEE2E2;
+            border: 2px solid var(--danger);
+            padding: 24px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+        
+        .critical-notice h4 {
+            color: var(--danger);
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .critical-notice h4::before {
+            content: "⚠️";
+            font-size: 24px;
+        }
+        
+        .critical-notice p,
+        .critical-notice li {
+            color: #991B1B;
+            font-weight: 500;
+        }
+        
+        .critical-notice ul {
+            margin: 12px 0;
+        }
+        
+        /* Service Specific Box */
+        .service-specific {
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .service-specific h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
         /* Table of Contents */
         .toc {
             background: var(--light-gray);
@@ -211,6 +268,15 @@
         .toc a::before {
             content: "→";
             margin-right: 8px;
+        }
+        
+        .toc .service-link {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        
+        .toc .service-link a {
+            color: var(--primary);
         }
         
         /* Footer */
@@ -292,34 +358,47 @@
     <div class="legal-header">
         <div class="container">
             <h1>Terms of Service</h1>
-            <p class="last-updated">Last updated: December 2024</p>
+            <p class="last-updated">Last updated: August 17, 2025</p>
         </div>
     </div>
 
     <!-- Content -->
     <div class="legal-content">
+        
+        <div class="important-box">
+            <p><strong>IMPORTANT NOTICE:</strong> These Terms consist of General Terms (Sections 1-15) that apply to all services, and Service-Specific Terms (Section 16) with additional requirements for specific APIs. Make sure to read both sections relevant to your use.</p>
+        </div>
+
         <div class="toc">
             <h3>Table of Contents</h3>
             <ul>
-                <li><a href="#agreement">Agreement to Terms</a></li>
-                <li><a href="#use">Use of Services</a></li>
-                <li><a href="#accounts">Accounts</a></li>
-                <li><a href="#payment">Payment Terms</a></li>
-                <li><a href="#api">API Usage</a></li>
-                <li><a href="#restrictions">Restrictions</a></li>
-                <li><a href="#intellectual">Intellectual Property</a></li>
-                <li><a href="#liability">Limitation of Liability</a></li>
-                <li><a href="#termination">Termination</a></li>
-                <li><a href="#contact">Contact Information</a></li>
+                <li><a href="#agreement">1. Agreement to Terms</a></li>
+                <li><a href="#use">2. Use of Services</a></li>
+                <li><a href="#accounts">3. Accounts</a></li>
+                <li><a href="#payment">4. Payment Terms</a></li>
+                <li><a href="#api">5. API Usage</a></li>
+                <li><a href="#restrictions">6. Restrictions</a></li>
+                <li><a href="#intellectual">7. Intellectual Property</a></li>
+                <li><a href="#liability">8. Limitation of Liability</a></li>
+                <li><a href="#indemnification">9. Indemnification</a></li>
+                <li><a href="#termination">10. Termination</a></li>
+                <li><a href="#changes">11. Changes to Terms</a></li>
+                <li><a href="#governing">12. Governing Law</a></li>
+                <li><a href="#severability">13. Severability</a></li>
+                <li><a href="#entire">14. Entire Agreement</a></li>
+                <li><a href="#contact">15. Contact Information</a></li>
+                <li><a href="#service-specific"><strong>16. SERVICE-SPECIFIC TERMS</strong></a></li>
+                <li class="service-link"><a href="#riskscore">→ RiskScore API Terms</a></li>
             </ul>
         </div>
 
+        <!-- GENERAL TERMS -->
         <h2 id="agreement">1. Agreement to Terms</h2>
         <p>By accessing or using Forge APIs services ("Services"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access our Services.</p>
         <p>These Terms apply to all visitors, users, and customers who access or use our Services.</p>
 
         <h2 id="use">2. Use of Services</h2>
-        <p>Forge APIs provides API services including but not limited to fraud detection, data validation, and other developer tools. By using our Services, you represent that:</p>
+        <p>Forge APIs provides API services including but not limited to fraud detection, risk assessment, data validation, and other developer tools. By using our Services, you represent that:</p>
         <ul>
             <li>You are at least 18 years old</li>
             <li>You have the legal capacity to enter into these Terms</li>
@@ -382,7 +461,7 @@
         </ul>
 
         <div class="important-box">
-            <p><strong>Important:</strong> Our APIs provide risk assessment and data analysis services. They are not intended to be the sole basis for legal compliance or critical business decisions. You are responsible for how you use the data we provide.</p>
+            <p><strong>Important:</strong> Our APIs provide data analysis and risk assessment services. They are not intended to be the sole basis for legal compliance or critical business decisions. You are responsible for how you use the data we provide.</p>
         </div>
 
         <h2 id="restrictions">6. Restrictions</h2>
@@ -417,15 +496,17 @@
             <li>Errors or inaccuracies in our Services</li>
             <li>Damages resulting from your use of our Services</li>
         </ul>
-        <p>Our total liability shall not exceed the amount you paid us in the twelve (12) months prior to the claim.</p>
+        <p><strong>Our total liability shall not exceed the amount you paid us in the three (3) months prior to the claim.</strong></p>
 
         <h2 id="indemnification">9. Indemnification</h2>
-        <p>You agree to indemnify and hold harmless Forge APIs, its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including reasonable attorneys' fees) arising from:</p>
+        <p>You agree to indemnify, defend, and hold harmless Forge APIs, its officers, directors, employees, and agents from any claims, damages, losses, fines, penalties, or expenses (including reasonable attorneys' fees) arising from:</p>
         <ul>
             <li>Your use of our Services</li>
             <li>Your violation of these Terms</li>
             <li>Your violation of any third-party rights</li>
             <li>Any content or data you submit through our Services</li>
+            <li>Your failure to comply with applicable laws and regulations</li>
+            <li>Any regulatory investigations or enforcement actions related to your use of our Services</li>
         </ul>
 
         <h2 id="termination">10. Termination</h2>
@@ -442,7 +523,7 @@
         <p>We reserve the right to modify these Terms at any time. Material changes will be notified via email or through our Services. Continued use after changes constitutes acceptance of the modified Terms.</p>
 
         <h2 id="governing">12. Governing Law</h2>
-        <p>These Terms shall be governed by and construed in accordance with the laws of England and Wales, without regard to its conflict of law provisions. Any disputes shall be resolved in the courts of England.</p>
+        <p>These Terms shall be governed by and construed in accordance with the laws of England and Wales, without regard to its conflict of law provisions. Any disputes shall be resolved through binding arbitration in London, England, except where prohibited by law.</p>
 
         <h2 id="severability">13. Severability</h2>
         <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will remain in full effect.</p>
@@ -457,6 +538,96 @@
             <li><strong>Website:</strong> forgeapis.com</li>
             <li><strong>Location:</strong> London, England, United Kingdom</li>
         </ul>
+
+        <!-- SERVICE-SPECIFIC TERMS -->
+        <h2 id="service-specific">16. SERVICE-SPECIFIC TERMS</h2>
+        <p>The following additional terms apply to specific Forge APIs services. By using any of these services, you agree to both the General Terms above AND the specific terms below.</p>
+
+        <div class="service-specific">
+            <h3 id="riskscore">16.1 RISKSCORE API ADDITIONAL TERMS</h3>
+            
+            <div class="critical-notice">
+                <h4>CRITICAL DISCLAIMERS - PLEASE READ CAREFULLY</h4>
+                <p><strong>The RiskScore API is NOT an age verification service and does NOT comply with any age verification laws.</strong></p>
+                <ul>
+                    <li>RiskScore provides risk assessment signals ONLY</li>
+                    <li>It does NOT verify or determine actual ages</li>
+                    <li>It does NOT verify identities</li>
+                    <li>It does NOT guarantee compliance with any laws</li>
+                    <li>It does NOT replace proper age verification procedures</li>
+                    <li>It is NOT sufficient for legal compliance</li>
+                </ul>
+            </div>
+
+            <h4>16.1.1 Your Sole Responsibility for Compliance</h4>
+            <p>By using the RiskScore API, you acknowledge and agree that:</p>
+            <ul>
+                <li><strong>You are SOLELY responsible</strong> for compliance with all applicable age verification, data protection, and online safety laws</li>
+                <li><strong>You MUST implement</strong> appropriate age verification measures beyond RiskScore</li>
+                <li><strong>You MUST NOT</strong> use RiskScore as your only age verification method</li>
+                <li><strong>You MUST include</strong> human review for any age-related decisions</li>
+                <li><strong>You warrant</strong> that you have obtained appropriate legal advice about your compliance obligations</li>
+            </ul>
+
+            <h4>16.1.2 Prohibited Uses - RiskScore</h4>
+            <p>You specifically may NOT use RiskScore to:</p>
+            <ul>
+                <li>Claim or imply that you have verified someone's age</li>
+                <li>Market your service as having "age verification" based on RiskScore</li>
+                <li>Make automated decisions about age without human review</li>
+                <li>Comply with age verification laws or regulations</li>
+                <li>Grant or deny access to age-restricted content based solely on RiskScore</li>
+                <li>Process data of individuals you know to be under 13</li>
+            </ul>
+
+            <h4>16.1.3 Enhanced Indemnification for RiskScore</h4>
+            <p><strong>You specifically agree to indemnify, defend, and hold Forge APIs completely harmless from:</strong></p>
+            <ul>
+                <li>Any claims related to minors accessing your services</li>
+                <li>All regulatory fines, penalties, or enforcement actions</li>
+                <li>Claims that you failed to properly verify ages</li>
+                <li>Any damages arising from your age verification practices</li>
+                <li>Legal costs arising from age-related compliance issues</li>
+                <li>Any misrepresentation of RiskScore's capabilities</li>
+            </ul>
+
+            <h4>16.1.4 Specific Liability Exclusions - RiskScore</h4>
+            <p><strong>Forge APIs is NOT liable for:</strong></p>
+            <ul>
+                <li>Any age verification compliance failures</li>
+                <li>Minors accessing age-restricted content or services</li>
+                <li>Regulatory fines or penalties of any kind</li>
+                <li>Inaccurate risk scores or assessments</li>
+                <li>Any decisions you make based on our risk scores</li>
+                <li>Any damages arising from your use of RiskScore</li>
+            </ul>
+
+            <h4>16.1.5 Data Processing</h4>
+            <ul>
+                <li>We process data solely as a data processor</li>
+                <li>You are the data controller and responsible for data legality</li>
+                <li>You warrant you have legal basis to submit all data</li>
+                <li>We make no representations about data accuracy</li>
+            </ul>
+
+            <h4>16.1.6 No Warranty of Accuracy</h4>
+            <p>Risk scores are statistical estimates based on pattern analysis. They are not factual determinations and may be inaccurate. We make NO warranties about accuracy, reliability, or fitness for any purpose.</p>
+
+            <h4>16.1.7 Acknowledgment of Risk</h4>
+            <p><strong>By using RiskScore, you acknowledge that:</strong></p>
+            <ul>
+                <li>Age verification carries significant legal risks and penalties</li>
+                <li>RiskScore alone is insufficient for legal compliance</li>
+                <li>You have implemented comprehensive compliance measures</li>
+                <li>You will not hold Forge APIs liable for any compliance failures</li>
+                <li>You are using RiskScore at your own risk</li>
+            </ul>
+        </div>
+
+        <div class="important-box" style="margin-top: 40px;">
+            <p><strong>By using any Forge APIs service, you confirm that you have read, understood, and agree to all applicable terms including any Service-Specific Terms.</strong></p>
+        </div>
+
     </div>
 
     <!-- Footer -->
