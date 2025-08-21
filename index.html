@@ -2,6 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Security Headers -->
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' https:;
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: https:;
+    connect-src 'self' https://api.riskscore.com https://web-production-2c40.up.railway.app;
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self' https://buy.stripe.com https://web-production-2c40.up.railway.app;
+">
+
+<!-- Prevent clickjacking -->
+<meta http-equiv="X-Frame-Options" content="DENY">
+
+<!-- Prevent MIME type sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- Control referrer information -->
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<!-- Force HTTPS (if not already enforced by server) -->
+<meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+
+<!-- Prevent XSS attacks in older browsers -->
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+<!-- DNS Prefetch for performance (optional but safe) -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://buy.stripe.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forge APIs - Ship Faster with Production-Ready APIs</title>
     <meta name="description" content="Production-ready APIs for modern applications. Fraud detection, email validation, data enrichment, and more.">
@@ -920,46 +951,15 @@
             </p>
         </div>
         <div style="display: flex; gap: 10px;">
-            <button onclick="acceptCookies()" style="background: #00D4AA; color: #1a1a2e; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 600; cursor: pointer;">
-                Accept All
-            </button>
-            <button onclick="rejectCookies()" style="background: transparent; color: white; border: 1px solid white; padding: 10px 20px; border-radius: 5px; font-weight: 600; cursor: pointer;">
-                Reject Non-Essential
-            </button>
+<button id="cookie-accept-btn" style="background: #00D4AA; color: #1a1a2e; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 600; cursor: pointer;">
+    Accept All
+</button>
+<button id="cookie-reject-btn" style="background: transparent; color: white; border: 1px solid white; padding: 10px 20px; border-radius: 5px; font-weight: 600; cursor: pointer;">
+    Reject Non-Essential
+</button>
         </div>
     </div>
 </div>
-
-<script>
-// Check if consent was already given
-window.onload = function() {
-    if (!localStorage.getItem('cookieConsent')) {
-        document.getElementById('cookieConsent').style.display = 'block';
-    } else if (localStorage.getItem('cookieConsent') === 'accepted') {
-        // Load Google Analytics only if accepted
-        loadGoogleAnalytics();
-    }
-}
-
-function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
-    document.getElementById('cookieConsent').style.display = 'none';
-    loadGoogleAnalytics();
-}
-
-function rejectCookies() {
-    localStorage.setItem('cookieConsent', 'rejected');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
-    document.getElementById('cookieConsent').style.display = 'none';
-    // Don't load Google Analytics
-}
-
-function loadGoogleAnalytics() {
-    // Only load GA if consent given
-    // Add your Google Analytics code here
-    console.log('Loading Google Analytics...');
-}
-</script>
+<script src="cookie-consent-secure.js" defer></script>
 </body>
 </html>
