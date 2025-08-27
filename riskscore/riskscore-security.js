@@ -326,7 +326,6 @@ ${signals}
         initTabSwitcher();
         initDemoButtons();
         
-        console.log('✅ RiskScore security JS loaded');
     });
 
 })();
