@@ -1158,6 +1158,14 @@
                 const headers = {};
                 if (authToken) {
                     headers['Authorization'] = `Bearer ${authToken}`;
+                } else {
+                    // For anonymous users, use a device token
+                    let deviceToken = localStorage.getItem('dupecheck_device_token');
+                    if (!deviceToken) {
+                        deviceToken = 'anon_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+                        localStorage.setItem('dupecheck_device_token', deviceToken);
+                    }
+                    headers['X-User-Token'] = deviceToken;
                 }
                 
                 const response = await fetch(`${API_URL}/api/analyze`, {
@@ -1174,8 +1182,13 @@
                 const data = await response.json();
                 
                 // Update remaining checks if provided
-                if (data.checks_remaining !== undefined && currentUser) {
-                    currentUser.checks_remaining = data.checks_remaining;
+                if (data.checks_remaining !== undefined) {
+                    if (currentUser) {
+                        currentUser.checks_remaining = data.checks_remaining;
+                    } else {
+                        // For anonymous users, update the counter
+                        document.getElementById('checksRemaining').textContent = data.checks_remaining;
+                    }
                     updateUI();
                 }
                 
