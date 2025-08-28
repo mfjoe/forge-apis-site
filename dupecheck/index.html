@@ -409,6 +409,27 @@
         .features-list .check {
             color: var(--secondary);
         }
+
+        .nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    width: 250px;
+    height: 83px;
+}
+
+.product-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
         
         /* Footer */
         .footer {
@@ -496,44 +517,43 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🔍</div>
-                DupeCheck
-            </div>
-            <div class="nav-links">
-                <div class="usage-counter" id="usageCounter">
-                    <span class="count" id="checksRemaining">3</span>
-                    <span>free checks today</span>
-                </div>
-                <button class="btn btn-ghost" onclick="showPricing()">Pricing</button>
-                <a href="http://localhost:8000/docs" target="_blank" class="btn btn-ghost">API Docs</a>
-            </div>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="https://forgeapis.com" class="logo">
+                <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Your ForgeAPIs logo SVG code here (same as RiskScore) -->
+                    <!-- ... full SVG content ... -->
+                </svg>
+            </a>
         </div>
-    </nav>
+        <div class="nav-links">
+            <div class="usage-counter" id="usageCounter">
+                <span class="count" id="checksRemaining">3</span>
+                <span>free checks today</span>
+            </div>
+            <a href="#pricing" class="btn btn-ghost">Pricing</a>
+            <a href="http://localhost:8000/docs" target="_blank" class="btn btn-ghost">API Docs</a>
+        </div>
+    </div>
+</nav>
     
     <!-- Main Container -->
     <div class="container">
         <!-- Hero Section -->
-        <div class="hero">
-            <h1>Catch Duplicate Invoices Instantly</h1>
-            <p>No signup required. Just upload and check.</p>
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <span class="icon">✓</span>
-                    <span>No credit card needed</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="icon">💰</span>
-                    <span>$2.3M duplicates found</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="icon">🔒</span>
-                    <span>Data deleted after processing</span>
-                </div>
-            </div>
-        </div>
+<!-- Hero Section -->
+<div class="hero">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px;">
+        <div class="product-icon" style="font-size: 64px;">🔍</div>
+        <span style="font-size: 32px; font-weight: 700; color: var(--primary);">DupeCheck</span>
+    </div>
+    <h1>Catch Duplicate Invoices Instantly</h1>
+    <p>No signup required. Just upload and check.</p>
+    <div class="trust-badges">
+        <!-- ... existing trust badges ... -->
+    </div>
+</div>
         
         <!-- Upload Card -->
         <div class="upload-card">
