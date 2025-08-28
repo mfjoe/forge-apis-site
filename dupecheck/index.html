@@ -1181,8 +1181,11 @@
                 
                 const data = await response.json();
                 
+                console.log('Analysis response:', data); // Debug log
+                
                 // Update remaining checks if provided
                 if (data.checks_remaining !== undefined) {
+                    console.log('Updating checks remaining to:', data.checks_remaining); // Debug log
                     if (currentUser) {
                         currentUser.checks_remaining = data.checks_remaining;
                     } else {
