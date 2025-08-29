@@ -1630,6 +1630,8 @@
         document.getElementById("pricingSection").classList.add("active");
       });
 
+      
+
       // Check anonymous user usage
       async function checkAnonymousUsage() {
         let deviceToken = localStorage.getItem("dupecheck_device_token");
@@ -1670,6 +1672,42 @@
           console.error("Failed to check usage:", error);
         }
       }
+
+      // Check for payment status in URL
+const urlParams = new URLSearchParams(window.location.search);
+const paymentStatus = urlParams.get('payment');
+
+if (paymentStatus === 'success') {
+    // Clear the URL parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Show success message
+    setTimeout(() => {
+        showModal({
+            type: 'success',
+            title: 'Payment Successful!',
+            message: 'Your credits have been added to your account. You can now run more duplicate checks!',
+            onOk: () => {
+                // Refresh credit balance
+                if (authToken) {
+                    fetchCreditBalance();
+                }
+            }
+        });
+    }, 500);
+} else if (paymentStatus === 'cancelled') {
+    // Clear the URL parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Show cancellation message
+    setTimeout(() => {
+        showModal({
+            type: 'info',
+            title: 'Payment Cancelled',
+            message: 'Your payment was cancelled. No charges were made.',
+        });
+    }, 500);
+}
 
       // Auth functions
       function showAuthModal(mode) {
@@ -1730,8 +1768,7 @@
           }
 
           // Store token
-          authToken = data.access_token;
-          localStorage.setItem("dupecheck_token", authToken);
+localStorage.setItem("dupecheck_email", email);
 
           // Update user info
           currentUser = {
@@ -2089,6 +2126,8 @@
         const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
+
+
 SUMMARY
 =======
 Total Invoices: ${analysisResults.total_invoices}
@@ -2130,6 +2169,76 @@ Visit dupecheck.forgeapis.com for more
         });
         toggleUserDropdown();
       }
+
+      async function upgrade(plan) {
+    if (!authToken) {
+        showModal({
+            type: 'warning',
+            title: 'Login Required',
+            message: 'Please create an account or login to purchase credits',
+            okText: 'Login',
+            onOk: () => showAuthModal('login')
+        });
+        return;
+    }
+
+    // Map plan names to package names for the API
+    const packageMap = {
+        'starter': 'starter',
+        'professional': 'professional',
+        'business': 'business'
+    };
+
+    const packageName = packageMap[plan];
+    
+    if (plan === 'business') {
+        // Business plan needs subscription setup (not implemented yet)
+        showModal({
+            type: 'info',
+            title: 'Business Plan',
+            message: 'The Business subscription plan is coming soon. For now, try our credit packages!',
+        });
+        return;
+    }
+
+    // Show loading
+    showModal({
+        type: 'info',
+        title: 'Redirecting to checkout...',
+        message: 'Please wait while we prepare your secure checkout session',
+    });
+
+    try {
+        const response = await fetch(`${API_URL}/api/credits/checkout`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ package: packageName })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Failed to create checkout session');
+        }
+
+        const data = await response.json();
+        
+        // Redirect to Stripe Checkout
+        window.location.href = data.checkout_url;
+        
+    } catch (error) {
+        closeModal();
+        setTimeout(() => {
+            showModal({
+                type: 'error',
+                title: 'Checkout Error',
+                message: error.message || 'Failed to start checkout. Please try again.',
+            });
+        }, 100);
+    }
+}
 
       // Add smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
