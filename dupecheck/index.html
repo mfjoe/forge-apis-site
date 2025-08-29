@@ -645,6 +645,143 @@
             opacity: 0.7;
         }
         
+        /* Custom Modal System */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
+        }
+        
+        .custom-modal.active {
+            display: flex;
+        }
+        
+        .custom-modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .custom-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .custom-modal-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .custom-modal-icon.error {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+        }
+        
+        .custom-modal-icon.info {
+            background: rgba(88, 101, 242, 0.15);
+            color: var(--primary);
+        }
+        
+        .custom-modal-icon.success {
+            background: rgba(87, 242, 135, 0.15);
+            color: var(--secondary);
+        }
+        
+        .custom-modal-icon.warning {
+            background: rgba(254, 231, 92, 0.15);
+            color: var(--warning);
+        }
+        
+        .custom-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .custom-modal-message {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .custom-modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        .custom-modal-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 80px;
+        }
+        
+        .custom-modal-btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .custom-modal-btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        
+        .custom-modal-btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .custom-modal-btn-secondary:hover {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Loading */
         .loading-overlay {
             display: none;
@@ -1033,9 +1170,96 @@
         </div>
     </div>
     
+    <!-- Custom Modal -->
+    <div class="custom-modal" id="customModal">
+        <div class="custom-modal-content">
+            <div class="custom-modal-header">
+                <div class="custom-modal-icon" id="modalIcon">
+                    <span id="modalIconSymbol">ℹ️</span>
+                </div>
+                <h3 class="custom-modal-title" id="modalTitle">Notice</h3>
+            </div>
+            <div class="custom-modal-message" id="modalMessage">
+                Message goes here
+            </div>
+            <div class="custom-modal-footer">
+                <button class="custom-modal-btn custom-modal-btn-secondary" id="modalCancelBtn" style="display: none;">Cancel</button>
+                <button class="custom-modal-btn custom-modal-btn-primary" id="modalOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    
     <script>
         // Configuration
         const API_URL = 'https://dupecheck-production.up.railway.app';
+        
+        // Custom Modal System
+        function showModal(options = {}) {
+            const modal = document.getElementById('customModal');
+            const icon = document.getElementById('modalIcon');
+            const iconSymbol = document.getElementById('modalIconSymbol');
+            const title = document.getElementById('modalTitle');
+            const message = document.getElementById('modalMessage');
+            const okBtn = document.getElementById('modalOkBtn');
+            const cancelBtn = document.getElementById('modalCancelBtn');
+            
+            // Set type (error, info, success, warning)
+            const type = options.type || 'info';
+            icon.className = `custom-modal-icon ${type}`;
+            
+            // Set icon based on type
+            const icons = {
+                error: '❌',
+                info: 'ℹ️',
+                success: '✅',
+                warning: '⚠️'
+            };
+            iconSymbol.textContent = icons[type] || icons.info;
+            
+            // Set title and message
+            title.textContent = options.title || 'Notice';
+            message.textContent = options.message || '';
+            
+            // Handle buttons
+            if (options.showCancel) {
+                cancelBtn.style.display = 'block';
+                cancelBtn.onclick = () => {
+                    closeModal();
+                    if (options.onCancel) options.onCancel();
+                };
+            } else {
+                cancelBtn.style.display = 'none';
+            }
+            
+            okBtn.textContent = options.okText || 'OK';
+            okBtn.onclick = () => {
+                closeModal();
+                if (options.onOk) options.onOk();
+            };
+            
+            // Show modal
+            modal.classList.add('active');
+            
+            // Close on backdrop click
+            modal.onclick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            };
+        }
+        
+        function closeModal() {
+            document.getElementById('customModal').classList.remove('active');
+        }
+        
+        // Replace alert with custom modal
+        function customAlert(message, type = 'info') {
+            showModal({
+                type: type,
+                title: type === 'error' ? 'Error' : 'Notice',
+                message: message
+            });
+        }
         
         // State management
         let currentUser = null;
@@ -1325,10 +1549,12 @@
                 
             } catch (error) {
                 console.error('Error:', error);
-                alert(error.message);
+                customAlert(error.message, 'error');
                 
                 if (error.message.includes('Daily limit reached')) {
-                    showAuthModal('signup');
+                    setTimeout(() => {
+                        showAuthModal('signup');
+                    }, 1500);
                 }
             } finally {
                 document.getElementById('loadingOverlay').classList.remove('active');
@@ -1440,12 +1666,21 @@ Visit dupecheck.forgeapis.com for more
         }
         
         function viewHistory() {
-            alert('Analysis history coming soon!');
+            showModal({
+                type: 'info',
+                title: 'Coming Soon',
+                message: 'Analysis history feature is under development. You\'ll be able to view all your past analyses here soon!'
+            });
             toggleUserDropdown();
         }
         
         function upgrade(plan) {
-            alert(`Stripe integration coming soon for ${plan} plan!`);
+            showModal({
+                type: 'info',
+                title: 'Coming Soon',
+                message: `The ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan subscription will be available soon. We're currently integrating Stripe for secure payments.`,
+                okText: 'Got it'
+            });
             // window.location.href = `https://buy.stripe.com/your_${plan}_link`;
         }
         
