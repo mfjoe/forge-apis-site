@@ -1182,17 +1182,36 @@
                 const data = await response.json();
                 
                 console.log('Analysis response:', data); // Debug log
+                console.log('Checks remaining in response:', data.checks_remaining); // More specific log
                 
                 // Update remaining checks if provided
-                if (data.checks_remaining !== undefined) {
+                if (data.checks_remaining !== undefined && data.checks_remaining !== null) {
                     console.log('Updating checks remaining to:', data.checks_remaining); // Debug log
-                    if (currentUser) {
-                        currentUser.checks_remaining = data.checks_remaining;
+                    
+                    // Directly update the counter for anonymous users
+                    if (!currentUser) {
+                        const counterElement = document.getElementById('checksRemaining');
+                        if (counterElement) {
+                            counterElement.textContent = data.checks_remaining;
+                            console.log('Updated counter element to:', data.checks_remaining);
+                        } else {
+                            console.error('Counter element not found!');
+                        }
+                        
+                        // Also show warning if needed
+                        const limitWarning = document.getElementById('limitWarning');
+                        if (data.checks_remaining === 1) {
+                            limitWarning.textContent = "⚠️ You have 1 free check remaining today";
+                            limitWarning.classList.add('active');
+                        } else if (data.checks_remaining === 0) {
+                            limitWarning.textContent = "You've used all free checks today. Come back tomorrow or create an account!";
+                            limitWarning.classList.add('active');
+                        }
                     } else {
-                        // For anonymous users, update the counter
-                        document.getElementById('checksRemaining').textContent = data.checks_remaining;
+                        // For logged in users
+                        currentUser.checks_remaining = data.checks_remaining;
+                        updateUI();
                     }
-                    updateUI();
                 }
                 
                 // Display results
