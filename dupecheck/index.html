@@ -1061,6 +1061,18 @@
                 </p>
             </div>
         </div>
+
+        <!-- Temporary test section - remove after testing -->
+<div style="background: var(--bg-card); padding: 2rem; margin: 2rem 0; border-radius: 16px; text-align: center;">
+    <h3>Credit System Test</h3>
+    <button class="btn btn-primary" onclick="testCreditPurchase()">
+        Add 100 Test Credits
+    </button>
+    <button class="btn btn-ghost" onclick="checkBalance()">
+        Check Balance
+    </button>
+    <div id="creditTestResult" style="margin-top: 1rem; color: var(--text-secondary);"></div>
+</div>
         
         <!-- Results Card -->
         <div class="results-card" id="resultsCard">
@@ -1508,6 +1520,8 @@
                 authButtons.style.display = 'none';
                 userMenu.style.display = 'block';
                 
+                  fetchCreditBalance();
+                
                 // Show email (truncated if too long)
                 const email = localStorage.getItem('dupecheck_email') || 'User';
                 document.getElementById('userEmail').textContent = 
@@ -1869,6 +1883,100 @@ async function buyCredits(package) {
                 document.getElementById('userDropdown').classList.remove('active');
             }
         });
+
+        async function testCreditPurchase() {
+    if (!authToken) {
+        customAlert('Please login first', 'warning');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/api/credits/add`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('creditTestResult').innerHTML = 
+                `✅ Added ${data.credits_added} credits! New balance: ${data.new_balance}`;
+            fetchCreditBalance();
+        } else {
+            const error = await response.json();
+            document.getElementById('creditTestResult').innerHTML = 
+                `❌ Error: ${error.detail}`;
+        }
+    } catch (error) {
+        document.getElementById('creditTestResult').innerHTML = 
+            `❌ Error: ${error.message}`;
+    }
+}
+
+async function checkBalance() {
+    if (!authToken) {
+        customAlert('Please login first', 'warning');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/api/credits/balance`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('creditTestResult').innerHTML = 
+                `💰 Current balance: ${data.balance} credits`;
+        }
+    } catch (error) {
+        document.getElementById('creditTestResult').innerHTML = 
+            `❌ Error: ${error.message}`;
+    }
+}
+
+async function fetchCreditBalance() {
+    if (!authToken) return;
+    
+    try {
+        const response = await fetch(`${API_URL}/api/credits/balance`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            const counterElement = document.getElementById('usageCounter');
+            
+            if (data.balance > 0) {
+                // User has credits - show credit count
+                counterElement.innerHTML = 
+                    `<span class="count" id="checksRemaining">${data.balance}</span><span>credits remaining</span>`;
+            } else {
+                // No credits - check free tier usage
+                const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                
+                if (usageResponse.ok) {
+                    const usageData = await usageResponse.json();
+                    const remaining = usageData.checks_remaining || 0;
+                    counterElement.innerHTML = 
+                        `<span class="count" id="checksRemaining">${remaining}</span><span>free checks today</span>`;
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Failed to fetch credit balance:', error);
+    }
+}
     </script>
 </body>
 </html>
