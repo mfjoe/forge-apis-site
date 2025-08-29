@@ -2354,18 +2354,6 @@ Visit dupecheck.forgeapis.com for more
         }
       }
 
-      function upgrade(plan) {
-        showModal({
-          type: "info",
-          title: "Coming Soon",
-          message: `The ${
-            plan.charAt(0).toUpperCase() + plan.slice(1)
-          } plan subscription will be available soon. We're currently integrating Stripe for secure payments.`,
-          okText: "Got it",
-        });
-        // window.location.href = `https://buy.stripe.com/your_${plan}_link`;
-      }
-
       // Close dropdown when clicking outside
       document.addEventListener("click", (e) => {
         const userMenu = document.getElementById("userMenu");
