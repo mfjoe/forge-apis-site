@@ -1272,11 +1272,53 @@
         document.addEventListener('DOMContentLoaded', () => {
             if (authToken) {
                 checkAuth();
+            } else {
+                // Check anonymous user's remaining count
+                checkAnonymousUsage();
             }
             updateUI();
             // Show pricing section always
             document.getElementById('pricingSection').classList.add('active');
         });
+        
+        // Check anonymous user usage
+        async function checkAnonymousUsage() {
+            let deviceToken = localStorage.getItem('dupecheck_device_token');
+            if (!deviceToken) {
+                // New user, they have 3 checks
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/api/check-usage`, {
+                    method: 'GET',
+                    headers: {
+                        'X-User-Token': deviceToken
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    // Update the counter with actual remaining checks
+                    const counterElement = document.getElementById('checksRemaining');
+                    if (counterElement && data.checks_remaining !== undefined) {
+                        counterElement.textContent = data.checks_remaining;
+                        
+                        // Show warning if needed
+                        const limitWarning = document.getElementById('limitWarning');
+                        if (data.checks_remaining === 1) {
+                            limitWarning.textContent = "⚠️ You have 1 free check remaining today";
+                            limitWarning.classList.add('active');
+                        } else if (data.checks_remaining === 0) {
+                            limitWarning.textContent = "You've used all free checks today. Come back tomorrow or create an account!";
+                            limitWarning.classList.add('active');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to check usage:', error);
+            }
+        }
         
         // Auth functions
         function showAuthModal(mode) {
