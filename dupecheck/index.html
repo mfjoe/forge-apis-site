@@ -1,1748 +1,2092 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DupeCheck - Free Duplicate Invoice Detector</title>
     <style>
-        :root {
-            --primary: #5865F2;
-            --primary-dark: #4752C4;
-            --secondary: #57F287;
-            --warning: #FEE75C;
-            --danger: #ED4245;
-            --bg-dark: #1a1b26;
-            --bg-card: #2C2F33;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B9BBBE;
-            --border: rgba(255, 255, 255, 0.1);
+      :root {
+        --primary: #5865f2;
+        --primary-dark: #4752c4;
+        --secondary: #57f287;
+        --warning: #fee75c;
+        --danger: #ed4245;
+        --bg-dark: #1a1b26;
+        --bg-card: #2c2f33;
+        --text-primary: #ffffff;
+        --text-secondary: #b9bbbe;
+        --border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
+          Roboto, Oxygen, Ubuntu, sans-serif;
+        background: linear-gradient(135deg, #1a1b26 0%, #2c2f33 100%);
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      nav {
+        padding: 1rem 2rem;
+        background: rgba(26, 27, 38, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
+
+      .logo:hover {
+        opacity: 0.8;
+      }
+
+      .logo svg {
+        width: 250px;
+        height: 83px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      /* Auth Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        background: var(--bg-dark);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .auth-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .auth-tab {
+        padding: 0.5rem 1rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .auth-tab.active {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+      }
+
+      /* Usage Counter */
+      .usage-counter {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .usage-counter .count {
+        color: var(--secondary);
+        font-weight: 600;
+      }
+
+      .user-menu {
+        position: relative;
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .user-info:hover {
+        background: var(--bg-card);
+        border-color: var(--primary);
+      }
+
+      .user-info::after {
+        content: "▾";
+        font-size: 12px;
+        color: var(--text-secondary);
+        transition: transform 0.2s;
+      }
+
+      .user-info.active::after {
+        transform: rotate(180deg);
+      }
+
+      .user-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.75rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        min-width: 180px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .user-dropdown.active {
+        display: block;
+      }
+
+      .user-dropdown a,
+      .user-dropdown button {
+        display: block;
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        text-align: left;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .user-dropdown a:hover,
+      .user-dropdown button:hover {
+        background: rgba(88, 101, 242, 0.1);
+        color: var(--primary);
+        padding-left: 1.5rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 8rem 2rem 3rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .product-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .trust-badge .icon {
+        color: var(--secondary);
+        font-size: 1.2rem;
+      }
+
+      /* Main Upload Card */
+      .upload-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .free-badge {
+        position: absolute;
+        top: -12px;
+        right: 2rem;
+        background: var(--secondary);
+        color: var(--bg-dark);
+        padding: 0.25rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+
+      /* Upload Area */
+      .upload-area {
+        background: var(--bg-dark);
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .upload-area:hover {
+        border-color: var(--primary);
+        background: rgba(88, 101, 242, 0.05);
+      }
+
+      .upload-area.dragging {
+        border-color: var(--primary);
+        background: rgba(88, 101, 242, 0.1);
+        transform: scale(1.02);
+      }
+
+      .upload-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+      }
+
+      .btn-ghost:hover {
+        background: var(--bg-card);
+      }
+
+      .btn-block {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      /* Results Section */
+      .results-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        display: none;
+        margin-bottom: 2rem;
+      }
+
+      .results-card.active {
+        display: block;
+        animation: fadeInUp 0.5s ease;
+      }
+
+      /* Summary Stats */
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: var(--bg-dark);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .stat-card.highlight .stat-value {
+        color: var(--secondary);
+      }
+
+      /* Alert Messages */
+      .alert {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .alert.active {
+        display: block;
+      }
+
+      .alert-error {
+        background: rgba(237, 66, 69, 0.1);
+        border: 1px solid rgba(237, 66, 69, 0.3);
+        color: var(--danger);
+      }
+
+      .alert-warning {
+        background: rgba(254, 231, 92, 0.1);
+        border: 1px solid rgba(254, 231, 92, 0.3);
+        color: var(--warning);
+      }
+
+      .alert-success {
+        background: rgba(87, 242, 135, 0.1);
+        border: 1px solid rgba(87, 242, 135, 0.3);
+        color: var(--secondary);
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        margin: 4rem 0;
+        display: none;
+      }
+
+      .pricing-section.active {
+        display: block;
+      }
+
+      .pricing-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 48px;
+      }
+
+      .pricing-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease;
+        display: flex; /* Add this */
+        flex-direction: column; /* Add this */
+      }
+
+      .pricing-card .btn-block {
+        margin-top: auto; /* Pushes button to bottom */
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-4px); /* Move up on hover */
+      }
+
+      .pricing-card.featured {
+        border-color: var(--primary);
+        border-width: 2px;
+        transform: scale(1.05);
+      }
+
+      .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-4px); /* Maintain scale and add lift */
+      }
+
+      .pricing-card .badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .price {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+
+      .price .currency {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+      }
+
+      .price .period {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .features-list {
+        list-style: none;
+        margin: 2rem 0;
+        text-align: left;
+        flex-grow: 1; /* This makes the list expand to fill available space */
+      }
+
+      .features-list li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .features-list .check {
+        color: var(--secondary);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark);
+        color: white;
+        padding: 60px 0 20px;
+        margin-top: 100px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 60px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin: 12px 0;
+        font-size: 16px;
+      }
+
+      .footer-powered {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        color: white;
+      }
+
+      .footer-column a {
+        display: block;
+        color: #9ca3af;
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: color 0.3s;
+        font-size: 15px;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .footer-note {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+
+      /* Free tier banner */
+      .free-tier-banner {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .free-tier-banner .icon {
+        color: var(--secondary);
+        font-size: 1.5rem;
+      }
+
+      .free-tier-banner h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+      }
+
+      .free-tier-banner p {
+        margin: 0;
+        color: var(--text-secondary);
+      }
+
+      /* Custom Modal System */
+      .custom-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .custom-modal.active {
+        display: flex;
+      }
+
+      .custom-modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        width: 90%;
+        max-width: 420px;
+        position: relative;
+        animation: slideUp 0.3s ease;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .custom-modal-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .custom-modal-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .custom-modal-icon.error {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+
+      .custom-modal-icon.info {
+        background: rgba(88, 101, 242, 0.15);
+        color: var(--primary);
+      }
+
+      .custom-modal-icon.success {
+        background: rgba(87, 242, 135, 0.15);
+        color: var(--secondary);
+      }
+
+      .custom-modal-icon.warning {
+        background: rgba(254, 231, 92, 0.15);
+        color: var(--warning);
+      }
+
+      .custom-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .custom-modal-message {
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+
+      .custom-modal-footer {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      .custom-modal-btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        min-width: 80px;
+      }
+
+      .custom-modal-btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .custom-modal-btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .custom-modal-btn-secondary {
+        background: transparent;
+        color: var(--text-secondary);
+        border: 1px solid var(--border);
+      }
+
+      .custom-modal-btn-secondary:hover {
+        background: var(--bg-dark);
+        color: var(--text-primary);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        to {
+          opacity: 1;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1b26 0%, #2C2F33 100%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.6;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        
-        /* Navigation */
-        nav {
-            padding: 1rem 2rem;
-            background: rgba(26, 27, 38, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+      }
+
+      /* Loading */
+      .loading-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 27, 38, 0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loading-overlay.active {
+        display: flex;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--border);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
-        
-        .nav-left {
-            display: flex;
-            align-items: center;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
         }
 
-        .logo {
-            text-decoration: none;
-            transition: opacity 0.3s;
+        .pricing-grid {
+          grid-template-columns: 1fr;
         }
-        
-        .logo:hover {
-            opacity: 0.8;
+
+        .pricing-card.featured {
+          transform: scale(1);
         }
 
         .logo svg {
-            width: 250px;
-            height: 83px;
+          width: 200px;
+          height: 66px;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        
-        /* Auth Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .auth-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .auth-tab {
-            padding: 0.5rem 1rem;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .auth-tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-        
-        /* Usage Counter */
-        .usage-counter {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .usage-counter .count {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-        
-        .user-menu {
-            position: relative;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            cursor: pointer;
-        }
-        
-        .user-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 0.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            min-width: 200px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .user-dropdown.active {
-            display: block;
-        }
-        
-        .user-dropdown a,
-        .user-dropdown button {
-            display: block;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .user-dropdown a:hover,
-        .user-dropdown button:hover {
-            background: var(--bg-dark);
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem 3rem;
-        }
-        
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .product-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 16px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .trust-badge .icon {
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-        
-        /* Main Upload Card */
-        .upload-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .free-badge {
-            position: absolute;
-            top: -12px;
-            right: 2rem;
-            background: var(--secondary);
-            color: var(--bg-dark);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        
-        /* Upload Area */
-        .upload-area {
-            background: var(--bg-dark);
-            border: 2px dashed var(--border);
-            border-radius: 12px;
-            padding: 3rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .upload-area:hover {
-            border-color: var(--primary);
-            background: rgba(88, 101, 242, 0.05);
-        }
-        
-        .upload-area.dragging {
-            border-color: var(--primary);
-            background: rgba(88, 101, 242, 0.1);
-            transform: scale(1.02);
-        }
-        
-        .upload-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-        }
-        
-        input[type="file"] {
-            display: none;
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-        }
-        
-        .btn-primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
-        }
-        
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-ghost:hover {
-            background: var(--bg-card);
-        }
-        
-        .btn-block {
-            width: 100%;
-            text-align: center;
-            justify-content: center; 
-        }
-        
-        /* Results Section */
-        .results-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: none;
-            margin-bottom: 2rem;
-        }
-        
-        .results-card.active {
-            display: block;
-            animation: fadeInUp 0.5s ease;
-        }
-        
-        /* Summary Stats */
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-        
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .stat-card.highlight .stat-value {
-            color: var(--secondary);
-        }
-        
-        /* Alert Messages */
-        .alert {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-        
-        .alert.active {
-            display: block;
-        }
-        
-        .alert-error {
-            background: rgba(237, 66, 69, 0.1);
-            border: 1px solid rgba(237, 66, 69, 0.3);
-            color: var(--danger);
-        }
-        
-        .alert-warning {
-            background: rgba(254, 231, 92, 0.1);
-            border: 1px solid rgba(254, 231, 92, 0.3);
-            color: var(--warning);
-        }
-        
-        .alert-success {
-            background: rgba(87, 242, 135, 0.1);
-            border: 1px solid rgba(87, 242, 135, 0.3);
-            color: var(--secondary);
-        }
-        
-        /* Pricing Section */
-        .pricing-section {
-            margin: 4rem 0;
-            display: none;
-        }
-        
-        .pricing-section.active {
-            display: block;
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 48px;
-        }
-        
-.pricing-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s ease;
-    display: flex;           /* Add this */
-    flex-direction: column;  /* Add this */
-}
 
-.pricing-card .btn-block {
-    margin-top: auto; /* Pushes button to bottom */
-}
-
-.pricing-card:hover {
-    transform: translateY(-4px); /* Move up on hover */
-}
-        
-        .pricing-card.featured {
-            border-color: var(--primary);
-            border-width: 2px;
-            transform: scale(1.05);
-        }
-        
-.pricing-card.featured:hover {
-    transform: scale(1.05) translateY(-4px); /* Maintain scale and add lift */
-}
-        
-        .pricing-card .badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 1rem 0;
-        }
-        
-        .price .currency {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-        }
-        
-        .price .period {
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-        
-.features-list {
-    list-style: none;
-    margin: 2rem 0;
-    text-align: left;
-    flex-grow: 1; /* This makes the list expand to fill available space */
-}
-        
-        .features-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-        }
-        
-        .features-list .check {
-            color: var(--secondary);
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-            margin-top: 100px;
-        }
-        
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: 60px;
-            margin-bottom: 40px;
+          grid-template-columns: 1fr;
+          gap: 40px;
         }
-        
-        .footer-brand {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        
-        .footer-brand p {
-            color: #9CA3AF;
-            margin: 12px 0;
-            font-size: 16px;
-        }
-        
-        .footer-powered {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        
+
         .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+          grid-template-columns: 1fr;
+          gap: 24px;
         }
-        
-        .footer-column h4 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            color: white;
-        }
-        
-        .footer-column a {
-            display: block;
-            color: #9CA3AF;
-            text-decoration: none;
-            margin-bottom: 12px;
-            transition: color 0.3s;
-            font-size: 15px;
-        }
-        
-        .footer-column a:hover {
-            color: white;
-        }
-        
+
         .footer-bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
         }
-        
-        .footer-bottom p {
-            color: #6B7280;
-            font-size: 14px;
-            margin: 0;
-        }
-        
-        .footer-note {
-            font-size: 12px;
-            opacity: 0.7;
-        }
+      }
 
-        /* Free tier banner */
-.free-tier-banner {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        font-size: 16px;
+        padding: 0;
+      }
 
-.free-tier-banner .icon {
-    color: var(--secondary);
-    font-size: 1.5rem;
-}
-
-.free-tier-banner h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-}
-
-.free-tier-banner p {
-    margin: 0;
-    color: var(--text-secondary);
-}
-        
-        /* Custom Modal System */
-        .custom-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.2s ease;
-        }
-        
-        .custom-modal.active {
-            display: flex;
-        }
-        
-        .custom-modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            width: 90%;
-            max-width: 420px;
-            position: relative;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        
-        .custom-modal-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        
-        .custom-modal-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        
-        .custom-modal-icon.error {
-            background: rgba(239, 68, 68, 0.15);
-            color: var(--danger);
-        }
-        
-        .custom-modal-icon.info {
-            background: rgba(88, 101, 242, 0.15);
-            color: var(--primary);
-        }
-        
-        .custom-modal-icon.success {
-            background: rgba(87, 242, 135, 0.15);
-            color: var(--secondary);
-        }
-        
-        .custom-modal-icon.warning {
-            background: rgba(254, 231, 92, 0.15);
-            color: var(--warning);
-        }
-        
-        .custom-modal-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-        
-        .custom-modal-message {
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-        
-        .custom-modal-footer {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-        
-        .custom-modal-btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-width: 80px;
-        }
-        
-        .custom-modal-btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .custom-modal-btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-        
-        .custom-modal-btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-        
-        .custom-modal-btn-secondary:hover {
-            background: var(--bg-dark);
-            color: var(--text-primary);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Loading */
-        .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 27, 38, 0.95);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .loading-overlay.active {
-            display: flex;
-        }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-            
-            .logo svg {
-                width: 200px;
-                height: 66px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-            padding: 0;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="https://forgeapis.com" class="logo">
-                    <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Logo SVG content (same as before) -->
-                        <g transform="translate(15, 15)">
-                            <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#0066FF" stroke-width="0.5"/>
-                            <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
-                            <rect x="16" y="28" width="28" height="2" fill="#475569"/>
-                            <line x1="20" y1="32" x2="40" y2="32" stroke="#0066FF" stroke-width="0.5" opacity="0.6"/>
-                            <line x1="22" y1="34" x2="38" y2="34" stroke="#00D4AA" stroke-width="0.5" opacity="0.6"/>
-                            <g transform="rotate(-30 30 25)">
-                                <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
-                                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
-                                <rect x="24" y="13" width="2" height="2" fill="#00D4AA"/>
-                                <rect x="34" y="13" width="2" height="2" fill="#00D4AA"/>
-                            </g>
-                            <g transform="rotate(30 30 25)">
-                                <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
-                                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
-                                <rect x="24" y="13" width="2" height="2" fill="#00D4AA"/>
-                                <rect x="34" y="13" width="2" height="2" fill="#00D4AA"/>
-                            </g>
-                            <path d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z" fill="#FF6B35" opacity="0.9"/>
-                            <path d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z" fill="#FFA500" opacity="0.8"/>
-                            <path d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z" fill="#FFA500" opacity="0.8"/>
-                            <rect x="12" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
-                            <rect x="46" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
-                            <rect x="10" y="25" width="1.5" height="1.5" fill="#FFD700" opacity="0.7"/>
-                            <rect x="48" y="25" width="1.5" height="1.5" fill="#FFD700" opacity="0.7"/>
-                        </g>
-                        <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">
-                            Forge
-                        </text>
-                        <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9CA3AF">
-                            APIs
-                        </text>
-                        <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">
-                            PRODUCTION-READY APIS
-                        </text>
-                    </svg>
-                </a>
-            </div>
-            <div class="nav-links">
-                <div class="usage-counter" id="usageCounter">
-                    <span class="count" id="checksRemaining">3</span>
-                    <span>free checks today</span>
-                </div>
-                <div id="authButtons">
-                    <button class="btn btn-ghost" onclick="showAuthModal('login')">Login</button>
-                    <button class="btn btn-primary" onclick="showAuthModal('signup')">Sign Up</button>
-                </div>
-                <div id="userMenu" class="user-menu" style="display: none;">
-                    <div class="user-info" onclick="toggleUserDropdown()">
-                        <span id="userEmail"></span>
-                        <span>▼</span>
-                    </div>
-                    <div class="user-dropdown" id="userDropdown">
-                        <a href="#" onclick="viewHistory()">Analysis History</a>
-                        <a href="#pricing">Upgrade Plan</a>
-                        <button onclick="logout()">Logout</button>
-                    </div>
-                </div>
-<a href="#pricingSection">Pricing</a>
-            </div>
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="https://forgeapis.com" class="logo">
+            <svg
+              width="300"
+              height="100"
+              viewBox="0 0 240 80"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Logo SVG content (same as before) -->
+              <g transform="translate(15, 15)">
+                <path
+                  d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                  fill="#1E293B"
+                  stroke="#0066FF"
+                  stroke-width="0.5"
+                />
+                <rect
+                  x="18"
+                  y="30"
+                  width="24"
+                  height="5"
+                  fill="#334155"
+                  rx="1"
+                />
+                <rect x="16" y="28" width="28" height="2" fill="#475569" />
+                <line
+                  x1="20"
+                  y1="32"
+                  x2="40"
+                  y2="32"
+                  stroke="#0066FF"
+                  stroke-width="0.5"
+                  opacity="0.6"
+                />
+                <line
+                  x1="22"
+                  y1="34"
+                  x2="38"
+                  y2="34"
+                  stroke="#00D4AA"
+                  stroke-width="0.5"
+                  opacity="0.6"
+                />
+                <g transform="rotate(-30 30 25)">
+                  <rect
+                    x="28"
+                    y="15"
+                    width="4"
+                    height="18"
+                    fill="#0066FF"
+                    rx="0.5"
+                  />
+                  <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                  <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                  <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                </g>
+                <g transform="rotate(30 30 25)">
+                  <rect
+                    x="28"
+                    y="15"
+                    width="4"
+                    height="18"
+                    fill="#0066FF"
+                    rx="0.5"
+                  />
+                  <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                  <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                  <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                </g>
+                <path
+                  d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                  fill="#FF6B35"
+                  opacity="0.9"
+                />
+                <path
+                  d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                  fill="#FFA500"
+                  opacity="0.8"
+                />
+                <path
+                  d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                  fill="#FFA500"
+                  opacity="0.8"
+                />
+                <rect
+                  x="12"
+                  y="20"
+                  width="2"
+                  height="2"
+                  fill="#00D4AA"
+                  opacity="0.8"
+                />
+                <rect
+                  x="46"
+                  y="20"
+                  width="2"
+                  height="2"
+                  fill="#00D4AA"
+                  opacity="0.8"
+                />
+                <rect
+                  x="10"
+                  y="25"
+                  width="1.5"
+                  height="1.5"
+                  fill="#FFD700"
+                  opacity="0.7"
+                />
+                <rect
+                  x="48"
+                  y="25"
+                  width="1.5"
+                  height="1.5"
+                  fill="#FFD700"
+                  opacity="0.7"
+                />
+              </g>
+              <text
+                x="75"
+                y="45"
+                font-family="Inter, system-ui, -apple-system, sans-serif"
+                font-size="28"
+                font-weight="800"
+                fill="#FFFFFF"
+              >
+                Forge
+              </text>
+              <text
+                x="150"
+                y="45"
+                font-family="Inter, system-ui, -apple-system, sans-serif"
+                font-size="28"
+                font-weight="400"
+                fill="#9CA3AF"
+              >
+                APIs
+              </text>
+              <text
+                x="75"
+                y="63"
+                font-family="Inter, system-ui, -apple-system, sans-serif"
+                font-size="9"
+                fill="#9CA3AF"
+                letter-spacing="0.5"
+              >
+                PRODUCTION-READY APIS
+              </text>
+            </svg>
+          </a>
         </div>
+        <div class="nav-links">
+          <div class="usage-counter" id="usageCounter">
+            <span class="count" id="checksRemaining">3</span>
+            <span>free checks today</span>
+          </div>
+          <div id="authButtons">
+            <button class="btn btn-ghost" onclick="showAuthModal('login')">
+              Login
+            </button>
+            <button class="btn btn-primary" onclick="showAuthModal('signup')">
+              Sign Up
+            </button>
+          </div>
+          <div id="userMenu" class="user-menu" style="display: none">
+            <div class="user-info" onclick="toggleUserDropdown()">
+              <span id="userEmail"></span>
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+              <a href="#" onclick="viewHistory()">Analysis History</a>
+              <a href="#pricing">Upgrade Plan</a>
+              <button onclick="logout()">Logout</button>
+            </div>
+          </div>
+          <a href="#pricingSection">Pricing</a>
+        </div>
+      </div>
     </nav>
-    
+
     <!-- Auth Modal -->
     <div class="modal" id="authModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeAuthModal()">×</button>
-            <div class="auth-tabs">
-                <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Login</button>
-                <button class="auth-tab" id="signupTab" onclick="switchAuthTab('signup')">Sign Up</button>
-            </div>
-            <form id="authForm" onsubmit="handleAuth(event)">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <span id="authButtonText">Login</span>
-                </button>
-            </form>
-            <div class="alert alert-error" id="authError"></div>
-            <div class="alert alert-success" id="authSuccess"></div>
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeAuthModal()">×</button>
+        <div class="auth-tabs">
+          <button
+            class="auth-tab active"
+            id="loginTab"
+            onclick="switchAuthTab('login')"
+          >
+            Login
+          </button>
+          <button
+            class="auth-tab"
+            id="signupTab"
+            onclick="switchAuthTab('signup')"
+          >
+            Sign Up
+          </button>
         </div>
+        <form id="authForm" onsubmit="handleAuth(event)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            <span id="authButtonText">Login</span>
+          </button>
+        </form>
+        <div class="alert alert-error" id="authError"></div>
+        <div class="alert alert-success" id="authSuccess"></div>
+      </div>
     </div>
-    
+
     <!-- Main Container -->
     <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px;">
-                <div class="product-icon">🔍</div>
-                <span style="font-size: 32px; font-weight: 700; color: var(--primary);">DupeCheck</span>
-            </div>
-            <h1>Catch Duplicate Invoices Instantly</h1>
-            <p>No signup required for 3 free checks. Create an account for more!</p>
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <span class="icon">✓</span>
-                    <span>No credit card needed</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="icon">💰</span>
-                    <span>$2.3M duplicates found</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="icon">🔒</span>
-                    <span>Data deleted after processing</span>
-                </div>
-            </div>
+      <!-- Hero Section -->
+      <div class="hero">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+          "
+        >
+          <div class="product-icon">🔍</div>
+          <span style="font-size: 32px; font-weight: 700; color: var(--primary)"
+            >DupeCheck</span
+          >
         </div>
-        
-        <!-- Upload Card -->
-        <div class="upload-card">
-            <div class="free-badge">100% FREE</div>
-            
-            <div class="alert alert-warning" id="limitWarning"></div>
-            
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📁</div>
-                <h3>Drop your CSV or Excel file here</h3>
-                <p style="color: var(--text-secondary); margin: 0.5rem 0;">
-                    Or click to browse
-                </p>
-                <label for="fileInput" class="btn btn-primary" style="margin-top: 1rem;">
-                    Choose File
-                </label>
-                <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
-                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
-                    Up to 100 invoices • CSV or Excel • Instant results
-                </p>
+        <h1>Catch Duplicate Invoices Instantly</h1>
+        <p>No signup required for 3 free checks. Create an account for more!</p>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <span class="icon">✓</span>
+            <span>No credit card needed</span>
+          </div>
+          <div class="trust-badge">
+            <span class="icon">💰</span>
+            <span>$2.3M duplicates found</span>
+          </div>
+          <div class="trust-badge">
+            <span class="icon">🔒</span>
+            <span>Data deleted after processing</span>
+          </div>
+        </div>
+        <!-- How It Works Section - more compact -->
+        <div style="text-align: center; margin: 2rem 0 3rem 0">
+          <h2 style="margin-bottom: 1.5rem">How It Works</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 2rem;
+              max-width: 900px;
+              margin: 0 auto;
+            "
+          >
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.5rem">📤</div>
+              <h3 style="margin-bottom: 0.5rem">1. Upload</h3>
+              <p
+                style="
+                  margin: 0;
+                  color: var(--text-secondary);
+                  font-size: 0.9rem;
+                "
+              >
+                Drop your invoice file (CSV or Excel)
+              </p>
             </div>
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.5rem">🔍</div>
+              <h3 style="margin-bottom: 0.5rem">2. Analyze</h3>
+              <p
+                style="
+                  margin: 0;
+                  color: var(--text-secondary);
+                  font-size: 0.9rem;
+                "
+              >
+                AI checks vendor names, amounts & invoice numbers
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.5rem">💰</div>
+              <h3 style="margin-bottom: 0.5rem">3. Save</h3>
+              <p
+                style="
+                  margin: 0;
+                  color: var(--text-secondary);
+                  font-size: 0.9rem;
+                "
+              >
+                Download report with flagged duplicates
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Card -->
+      <div class="upload-card">
+        <div class="free-badge">100% FREE</div>
+
+        <div class="alert alert-warning" id="limitWarning"></div>
+
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-icon">📁</div>
+          <h3>Drop your CSV or Excel file here</h3>
+          <p style="color: var(--text-secondary); margin: 0.5rem 0">
+            Or click to browse
+          </p>
+          <label
+            for="fileInput"
+            class="btn btn-primary"
+            style="margin-top: 1rem"
+          >
+            Choose File
+          </label>
+          <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" />
+          <p
+            style="
+              color: var(--text-secondary);
+              font-size: 0.85rem;
+              margin-top: 1rem;
+            "
+          >
+            Up to 100 invoices • CSV or Excel • Instant results
+          </p>
+        </div>
+      </div>
+
+      <!-- Results Card -->
+      <div class="results-card" id="resultsCard">
+        <h2 style="margin-bottom: 1.5rem">Analysis Complete!</h2>
+
+        <div class="summary-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="totalInvoices">0</div>
+            <div class="stat-label">Total Invoices</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="duplicatesFound">0</div>
+            <div class="stat-label">Duplicates Found</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-value" id="potentialSavings">$0</div>
+            <div class="stat-label">Potential Savings</div>
+          </div>
         </div>
 
-        <!-- Temporary test section - remove after testing -->
-<div style="background: var(--bg-card); padding: 2rem; margin: 2rem 0; border-radius: 16px; text-align: center;">
-    <h3>Credit System Test</h3>
-    <button class="btn btn-primary" onclick="testCreditPurchase()">
-        Add 100 Test Credits
-    </button>
-    <button class="btn btn-ghost" onclick="checkBalance()">
-        Check Balance
-    </button>
-    <div id="creditTestResult" style="margin-top: 1rem; color: var(--text-secondary);"></div>
-</div>
-        
-        <!-- Results Card -->
-        <div class="results-card" id="resultsCard">
-            <h2 style="margin-bottom: 1.5rem;">Analysis Complete!</h2>
-            
-            <div class="summary-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="totalInvoices">0</div>
-                    <div class="stat-label">Total Invoices</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="duplicatesFound">0</div>
-                    <div class="stat-label">Duplicates Found</div>
-                </div>
-                <div class="stat-card highlight">
-                    <div class="stat-value" id="potentialSavings">$0</div>
-                    <div class="stat-label">Potential Savings</div>
-                </div>
-            </div>
-            
-            <div id="duplicatesList"></div>
-            
-            <button class="btn btn-primary" onclick="downloadReport()" style="width: 100%; margin-top: 1rem;">
-                📥 Download Full Report
-            </button>
-        </div>
-        
-        <!-- Pricing Section -->
+        <div id="duplicatesList"></div>
+
+        <button
+          class="btn btn-primary"
+          onclick="downloadReport()"
+          style="width: 100%; margin-top: 1rem"
+        >
+          📥 Download Full Report
+        </button>
+      </div>
+
       <!-- Pricing Section -->
-<div class="pricing-section" id="pricingSection">
-    <div class="pricing-header">
-        <h2>Simple, Transparent Pricing</h2>
-        <p style="color: var(--text-secondary);">Start free, upgrade when you need more</p>
-    </div>
-    
-    <!-- Free Tier Banner -->
-    <div class="free-tier-banner">
-        <span class="icon">✓</span>
-        <div>
+      <!-- Pricing Section -->
+      <div class="pricing-section" id="pricingSection">
+        <div class="pricing-header">
+          <h2>Simple, Transparent Pricing</h2>
+          <p style="color: var(--text-secondary)">
+            Start free, upgrade when you need more
+          </p>
+        </div>
+
+        <!-- Free Tier Banner -->
+        <div class="free-tier-banner">
+          <span class="icon">✓</span>
+          <div>
             <h3>Already getting 3 free checks daily</h3>
             <p>No signup required • Up to 100 invoices per file</p>
-        </div>
-    </div>
-    
-    <div class="pricing-grid">
-        <!-- Starter Tier -->
-        <div class="pricing-card">
-            <h3>Starter</h3>
-            <div class="price">
-                <span class="currency">$</span>5
-            </div>
-            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-                100 credits
-            </p>
-            <ul class="features-list">
-                <li><span class="check">✓</span> 100 check credits</li>
-                <li><span class="check">✓</span> Up to 1,000 invoices/file</li>
-                <li><span class="check">✓</span> Excel & PDF reports</li>
-                <li><span class="check">✓</span> Never expire</li>
-            </ul>
-            <button class="btn btn-primary btn-block" onclick="upgrade('starter')">
-                Buy Credits
-            </button>
+          </div>
         </div>
 
-        <!-- Professional Tier -->
-        <div class="pricing-card featured">
+        <div class="pricing-grid">
+          <!-- Starter Tier -->
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price"><span class="currency">$</span>5</div>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              100 credits
+            </p>
+            <ul class="features-list">
+              <li><span class="check">✓</span> 100 check credits</li>
+              <li><span class="check">✓</span> Up to 1,000 invoices/file</li>
+              <li><span class="check">✓</span> Excel & PDF reports</li>
+              <li><span class="check">✓</span> Never expire</li>
+            </ul>
+            <button
+              class="btn btn-primary btn-block"
+              onclick="upgrade('starter')"
+            >
+              Buy Credits
+            </button>
+          </div>
+
+          <!-- Professional Tier -->
+          <div class="pricing-card featured">
             <div class="badge">BEST VALUE</div>
             <h3>Professional</h3>
-            <div class="price">
-                <span class="currency">$</span>15
-            </div>
-            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-                500 credits
+            <div class="price"><span class="currency">$</span>15</div>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              500 credits
             </p>
             <ul class="features-list">
-                <li><span class="check">✓</span> <strong>500 check credits</strong></li>
-                <li><span class="check">✓</span> Up to 2,500 invoices/file</li>
-                <li><span class="check">✓</span> Excel & PDF reports</li>
-                <li><span class="check">✓</span> Confidence scoring</li>
-                <li><span class="check">✓</span> 90-day history</li>
+              <li>
+                <span class="check">✓</span> <strong>500 check credits</strong>
+              </li>
+              <li><span class="check">✓</span> Up to 2,500 invoices/file</li>
+              <li><span class="check">✓</span> Excel & PDF reports</li>
+              <li><span class="check">✓</span> Confidence scoring</li>
+              <li><span class="check">✓</span> 90-day history</li>
             </ul>
-            <button class="btn btn-primary btn-block" onclick="upgrade('professional')">
-                Buy Credits
+            <button
+              class="btn btn-primary btn-block"
+              onclick="upgrade('professional')"
+            >
+              Buy Credits
             </button>
-        </div>
+          </div>
 
-        <!-- Business Tier -->
-        <div class="pricing-card">
+          <!-- Business Tier -->
+          <div class="pricing-card">
             <h3>Business</h3>
             <div class="price">
-                <span class="currency">$</span>29<span class="period">/month</span>
+              <span class="currency">$</span>29<span class="period"
+                >/month</span
+              >
             </div>
-            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-                Unlimited checks
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              Unlimited checks
             </p>
             <ul class="features-list">
-                <li><span class="check">✓</span> <strong>Unlimited checks</strong></li>
-                <li><span class="check">✓</span> Up to 5,000 invoices/file</li>
-                <li><span class="check">✓</span> White-label reports</li>
-                <li><span class="check">✓</span> Bulk processing</li>
-                <li><span class="check">✓</span> Priority support</li>
+              <li>
+                <span class="check">✓</span> <strong>Unlimited checks</strong>
+              </li>
+              <li><span class="check">✓</span> Up to 5,000 invoices/file</li>
+              <li><span class="check">✓</span> White-label reports</li>
+              <li><span class="check">✓</span> Bulk processing</li>
             </ul>
-            <button class="btn btn-primary btn-block" onclick="upgrade('business')">
-                Start 14-day Trial
+            <button
+              class="btn btn-primary btn-block"
+              onclick="upgrade('business')"
+            >
+              Start 14-day Trial
             </button>
+          </div>
         </div>
-    </div>
-</div>
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand-section">
-                        <div class="footer-brand">DupeCheck</div>
-                        <p>Instant duplicate invoice detection for modern businesses</p>
-                        <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-                    </div>
-                    
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Product</h4>
-                            <a href="#features">Features</a>
-                            <a href="#pricing">Pricing</a>
-                            <a href="https://dupecheck-production.up.railway.app/docs" target="_blank">API Docs</a>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h4>Resources</h4>
-                            <a href="#demo">Try Demo</a>
-                            <a href="#how-it-works">How It Works</a>
-                            <a href="mailto:hello@forgeapis.com">Support</a>
-                        </div>
-                        
-                        <div class="footer-column">
-                            <h4>Company</h4>
-                            <a href="https://forgeapis.com">Forge APIs</a>
-                            <a href="https://forgeapis.com/about">About</a>
-                            <a href="mailto:hello@forgeapis.com">Contact</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-bottom">
-                    <div>
-                        <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-                        <p class="footer-note">Your data is deleted immediately after processing. We never store invoice information.</p>
-                    </div>
-                </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-brand-section">
+              <div class="footer-brand">DupeCheck</div>
+              <p>Instant duplicate invoice detection</p>
+              <p class="footer-powered">
+                Built by
+                <a href="https://forgeapis.com" style="color: var(--primary)"
+                  >Forge APIs</a
+                >
+              </p>
             </div>
-        </footer>
+
+            <div class="footer-links" style="display: flex; gap: 4rem">
+              <div class="footer-column">
+                <h4>Product</h4>
+                <a href="#pricingSection">Pricing</a>
+                <a href="#how-it-works">How It Works</a>
+              </div>
+
+              <div class="footer-column">
+                <h4>Support</h4>
+                <a href="mailto:hello@forgeapis.com">Contact Us</a>
+                <a href="https://forgeapis.com">About Forge APIs</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div>
+              <p>&copy; 2024 Forge APIs. All rights reserved.</p>
+              <p class="footer-note">
+                Your data is deleted immediately after processing. We never
+                store invoice information.
+              </p>
+            </div>
+            <div style="display: flex; gap: 1.5rem; font-size: 0.85rem">
+              <a
+                href="https://forgeapis.com/privacy"
+                style="color: var(--text-secondary)"
+                >Privacy Policy</a
+              >
+              <a
+                href="https://forgeapis.com/terms"
+                style="color: var(--text-secondary)"
+                >Terms of Service</a
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-    
+
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div style="text-align: center;">
-            <div class="spinner"></div>
-            <p style="margin-top: 1rem;">Analyzing invoices...</p>
-        </div>
+      <div style="text-align: center">
+        <div class="spinner"></div>
+        <p style="margin-top: 1rem">Analyzing invoices...</p>
+      </div>
     </div>
-    
+
     <!-- Custom Modal -->
     <div class="custom-modal" id="customModal">
-        <div class="custom-modal-content">
-            <div class="custom-modal-header">
-                <div class="custom-modal-icon" id="modalIcon">
-                    <span id="modalIconSymbol">ℹ️</span>
-                </div>
-                <h3 class="custom-modal-title" id="modalTitle">Notice</h3>
-            </div>
-            <div class="custom-modal-message" id="modalMessage">
-                Message goes here
-            </div>
-            <div class="custom-modal-footer">
-                <button class="custom-modal-btn custom-modal-btn-secondary" id="modalCancelBtn" style="display: none;">Cancel</button>
-                <button class="custom-modal-btn custom-modal-btn-primary" id="modalOkBtn">OK</button>
-            </div>
+      <div class="custom-modal-content">
+        <div class="custom-modal-header">
+          <div class="custom-modal-icon" id="modalIcon">
+            <span id="modalIconSymbol">ℹ️</span>
+          </div>
+          <h3 class="custom-modal-title" id="modalTitle">Notice</h3>
         </div>
+        <div class="custom-modal-message" id="modalMessage">
+          Message goes here
+        </div>
+        <div class="custom-modal-footer">
+          <button
+            class="custom-modal-btn custom-modal-btn-secondary"
+            id="modalCancelBtn"
+            style="display: none"
+          >
+            Cancel
+          </button>
+          <button
+            class="custom-modal-btn custom-modal-btn-primary"
+            id="modalOkBtn"
+          >
+            OK
+          </button>
+        </div>
+      </div>
     </div>
-    
+
     <script>
-        // Configuration
-        const API_URL = 'https://dupecheck-production.up.railway.app';
-        
-        // Custom Modal System
-        function showModal(options = {}) {
-            const modal = document.getElementById('customModal');
-            const icon = document.getElementById('modalIcon');
-            const iconSymbol = document.getElementById('modalIconSymbol');
-            const title = document.getElementById('modalTitle');
-            const message = document.getElementById('modalMessage');
-            const okBtn = document.getElementById('modalOkBtn');
-            const cancelBtn = document.getElementById('modalCancelBtn');
-            
-            // Set type (error, info, success, warning)
-            const type = options.type || 'info';
-            icon.className = `custom-modal-icon ${type}`;
-            
-            // Set icon based on type
-            const icons = {
-                error: '❌',
-                info: 'ℹ️',
-                success: '✅',
-                warning: '⚠️'
-            };
-            iconSymbol.textContent = icons[type] || icons.info;
-            
-            // Set title and message
-            title.textContent = options.title || 'Notice';
-            message.textContent = options.message || '';
-            
-            // Handle buttons
-            if (options.showCancel) {
-                cancelBtn.style.display = 'block';
-                cancelBtn.onclick = () => {
-                    closeModal();
-                    if (options.onCancel) options.onCancel();
-                };
-            } else {
-                cancelBtn.style.display = 'none';
-            }
-            
-            okBtn.textContent = options.okText || 'OK';
-            okBtn.onclick = () => {
-                closeModal();
-                if (options.onOk) options.onOk();
-            };
-            
-            // Show modal
-            modal.classList.add('active');
-            
-            // Close on backdrop click
-            modal.onclick = (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            };
+      // Configuration
+      const API_URL = "https://dupecheck-production.up.railway.app";
+
+      // Custom Modal System
+      function showModal(options = {}) {
+        const modal = document.getElementById("customModal");
+        const icon = document.getElementById("modalIcon");
+        const iconSymbol = document.getElementById("modalIconSymbol");
+        const title = document.getElementById("modalTitle");
+        const message = document.getElementById("modalMessage");
+        const okBtn = document.getElementById("modalOkBtn");
+        const cancelBtn = document.getElementById("modalCancelBtn");
+
+        // Set type (error, info, success, warning)
+        const type = options.type || "info";
+        icon.className = `custom-modal-icon ${type}`;
+
+        // Set icon based on type
+        const icons = {
+          error: "❌",
+          info: "ℹ️",
+          success: "✅",
+          warning: "⚠️",
+        };
+        iconSymbol.textContent = icons[type] || icons.info;
+
+        // Set title and message
+        title.textContent = options.title || "Notice";
+        message.textContent = options.message || "";
+
+        // Handle buttons
+        if (options.showCancel) {
+          cancelBtn.style.display = "block";
+          cancelBtn.onclick = () => {
+            closeModal();
+            if (options.onCancel) options.onCancel();
+          };
+        } else {
+          cancelBtn.style.display = "none";
         }
-        
-        function closeModal() {
-            document.getElementById('customModal').classList.remove('active');
-        }
-        
-        // Replace alert with custom modal
-        function customAlert(message, type = 'info') {
-            showModal({
-                type: type,
-                title: type === 'error' ? 'Error' : 'Notice',
-                message: message
-            });
-        }
-        
-        // State management
-        let currentUser = null;
-        let authToken = localStorage.getItem('dupecheck_token');
-        let authMode = 'login';
-        let uploadedFile = null;
-        let analysisResults = null;
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            if (authToken) {
-                checkAuth();
-            } else {
-                // Check anonymous user's remaining count
-                checkAnonymousUsage();
-            }
-            updateUI();
-            // Show pricing section always
-            document.getElementById('pricingSection').classList.add('active');
+
+        okBtn.textContent = options.okText || "OK";
+        okBtn.onclick = () => {
+          closeModal();
+          if (options.onOk) options.onOk();
+        };
+
+        // Show modal
+        modal.classList.add("active");
+
+        // Close on backdrop click
+        modal.onclick = (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        };
+      }
+
+      function closeModal() {
+        document.getElementById("customModal").classList.remove("active");
+      }
+
+      // Replace alert with custom modal
+      function customAlert(message, type = "info") {
+        showModal({
+          type: type,
+          title: type === "error" ? "Error" : "Notice",
+          message: message,
         });
-        
-        // Check anonymous user usage
-        async function checkAnonymousUsage() {
-            let deviceToken = localStorage.getItem('dupecheck_device_token');
+      }
+
+      // State management
+      let currentUser = null;
+      let authToken = localStorage.getItem("dupecheck_token");
+      let authMode = "login";
+      let uploadedFile = null;
+      let analysisResults = null;
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        if (authToken) {
+          checkAuth();
+        } else {
+          // Check anonymous user's remaining count
+          checkAnonymousUsage();
+        }
+        updateUI();
+        // Show pricing section always
+        document.getElementById("pricingSection").classList.add("active");
+      });
+
+      // Check anonymous user usage
+      async function checkAnonymousUsage() {
+        let deviceToken = localStorage.getItem("dupecheck_device_token");
+        if (!deviceToken) {
+          // New user, they have 3 checks
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/api/check-usage`, {
+            method: "GET",
+            headers: {
+              "X-User-Token": deviceToken,
+            },
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            // Update the counter with actual remaining checks
+            const counterElement = document.getElementById("checksRemaining");
+            if (counterElement && data.checks_remaining !== undefined) {
+              counterElement.textContent = data.checks_remaining;
+
+              // Show warning if needed
+              const limitWarning = document.getElementById("limitWarning");
+              if (data.checks_remaining === 1) {
+                limitWarning.textContent =
+                  "⚠️ You have 1 free check remaining today";
+                limitWarning.classList.add("active");
+              } else if (data.checks_remaining === 0) {
+                limitWarning.textContent =
+                  "You've used all free checks today. Come back tomorrow or create an account!";
+                limitWarning.classList.add("active");
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Failed to check usage:", error);
+        }
+      }
+
+      // Auth functions
+      function showAuthModal(mode) {
+        authMode = mode;
+        document.getElementById("authModal").classList.add("active");
+        switchAuthTab(mode);
+      }
+
+      function closeAuthModal() {
+        document.getElementById("authModal").classList.remove("active");
+        document.getElementById("authError").classList.remove("active");
+        document.getElementById("authSuccess").classList.remove("active");
+      }
+
+      function switchAuthTab(mode) {
+        authMode = mode;
+        const loginTab = document.getElementById("loginTab");
+        const signupTab = document.getElementById("signupTab");
+        const buttonText = document.getElementById("authButtonText");
+
+        if (mode === "login") {
+          loginTab.classList.add("active");
+          signupTab.classList.remove("active");
+          buttonText.textContent = "Login";
+        } else {
+          loginTab.classList.remove("active");
+          signupTab.classList.add("active");
+          buttonText.textContent = "Sign Up";
+        }
+      }
+
+      async function handleAuth(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const errorDiv = document.getElementById("authError");
+        const successDiv = document.getElementById("authSuccess");
+
+        errorDiv.classList.remove("active");
+        successDiv.classList.remove("active");
+
+        try {
+          const endpoint =
+            authMode === "login" ? "/api/auth/login" : "/api/auth/signup";
+          const response = await fetch(`${API_URL}${endpoint}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.detail || "Authentication failed");
+          }
+
+          // Store token
+          authToken = data.access_token;
+          localStorage.setItem("dupecheck_token", authToken);
+
+          // Update user info
+          currentUser = {
+            email: email,
+            subscription_tier: data.subscription_tier,
+            checks_remaining: data.checks_remaining,
+          };
+
+          successDiv.textContent =
+            authMode === "login"
+              ? "Login successful!"
+              : "Account created successfully!";
+          successDiv.classList.add("active");
+
+          setTimeout(() => {
+            closeAuthModal();
+            updateUI();
+          }, 1500);
+        } catch (error) {
+          errorDiv.textContent = error.message;
+          errorDiv.classList.add("active");
+        }
+      }
+
+      async function checkAuth() {
+        if (!authToken) return;
+
+        try {
+          const response = await fetch(`${API_URL}/api/user/usage`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Invalid token");
+          }
+
+          const data = await response.json();
+          currentUser = {
+            subscription_tier: data.subscription_tier,
+            checks_remaining: data.checks_remaining,
+            can_analyze: data.can_analyze,
+          };
+
+          updateUI();
+        } catch (error) {
+          // Invalid token, clear it
+          localStorage.removeItem("dupecheck_token");
+          authToken = null;
+          currentUser = null;
+          updateUI();
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("dupecheck_token");
+        authToken = null;
+        currentUser = null;
+        updateUI();
+        toggleUserDropdown();
+      }
+
+      function toggleUserDropdown() {
+        const dropdown = document.getElementById("userDropdown");
+        const userInfo = document.querySelector(".user-info");
+
+        dropdown.classList.toggle("active");
+        userInfo.classList.toggle("active");
+      }
+
+      document.addEventListener("click", (e) => {
+        const userMenu = document.getElementById("userMenu");
+        if (userMenu && !userMenu.contains(e.target)) {
+          document.getElementById("userDropdown").classList.remove("active");
+          document.querySelector(".user-info")?.classList.remove("active");
+        }
+      });
+
+      function updateUI() {
+        const authButtons = document.getElementById("authButtons");
+        const userMenu = document.getElementById("userMenu");
+        const checksRemaining = document.getElementById("checksRemaining");
+        const limitWarning = document.getElementById("limitWarning");
+
+        if (currentUser) {
+          authButtons.style.display = "none";
+          userMenu.style.display = "block";
+
+          fetchCreditBalance();
+
+          // Show email (truncated if too long)
+          const email = localStorage.getItem("dupecheck_email") || "User";
+          document.getElementById("userEmail").textContent =
+            email.length > 20 ? email.substring(0, 20) + "..." : email;
+
+          // Update usage counter
+          if (currentUser.subscription_tier === "free") {
+            checksRemaining.textContent = currentUser.checks_remaining || 0;
+
+            if (currentUser.checks_remaining === 1) {
+              limitWarning.textContent =
+                "⚠️ You have 1 free check remaining today";
+              limitWarning.classList.add("active");
+            } else if (currentUser.checks_remaining === 0) {
+              limitWarning.textContent =
+                "You've used all free checks today. Come back tomorrow or upgrade!";
+              limitWarning.classList.add("active");
+            }
+          } else {
+            checksRemaining.textContent = "∞";
+            checksRemaining.parentElement.innerHTML =
+              '<span class="count">∞</span><span>unlimited checks</span>';
+          }
+        } else {
+          authButtons.style.display = "flex";
+          authButtons.style.gap = "1rem";
+          userMenu.style.display = "none";
+          checksRemaining.textContent = "3";
+        }
+      }
+
+      // File upload handling
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("fileInput");
+
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("dragging");
+      });
+
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragging");
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragging");
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFile(files[0]);
+        }
+      });
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          handleFile(e.target.files[0]);
+        }
+      });
+
+      async function handleFile(file) {
+        uploadedFile = file;
+
+        // Show loading
+        document.getElementById("loadingOverlay").classList.add("active");
+
+        // Process file
+        await processFile(file);
+      }
+
+      async function processFile(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+          const headers = {};
+          if (authToken) {
+            headers["Authorization"] = `Bearer ${authToken}`;
+          } else {
+            // For anonymous users, use a device token
+            let deviceToken = localStorage.getItem("dupecheck_device_token");
             if (!deviceToken) {
-                // New user, they have 3 checks
-                return;
+              deviceToken =
+                "anon_" +
+                Math.random().toString(36).substring(2) +
+                Date.now().toString(36);
+              localStorage.setItem("dupecheck_device_token", deviceToken);
             }
-            
-            try {
-                const response = await fetch(`${API_URL}/api/check-usage`, {
-                    method: 'GET',
-                    headers: {
-                        'X-User-Token': deviceToken
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    // Update the counter with actual remaining checks
-                    const counterElement = document.getElementById('checksRemaining');
-                    if (counterElement && data.checks_remaining !== undefined) {
-                        counterElement.textContent = data.checks_remaining;
-                        
-                        // Show warning if needed
-                        const limitWarning = document.getElementById('limitWarning');
-                        if (data.checks_remaining === 1) {
-                            limitWarning.textContent = "⚠️ You have 1 free check remaining today";
-                            limitWarning.classList.add('active');
-                        } else if (data.checks_remaining === 0) {
-                            limitWarning.textContent = "You've used all free checks today. Come back tomorrow or create an account!";
-                            limitWarning.classList.add('active');
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error('Failed to check usage:', error);
-            }
-        }
-        
-        // Auth functions
-        function showAuthModal(mode) {
-            authMode = mode;
-            document.getElementById('authModal').classList.add('active');
-            switchAuthTab(mode);
-        }
-        
-        function closeAuthModal() {
-            document.getElementById('authModal').classList.remove('active');
-            document.getElementById('authError').classList.remove('active');
-            document.getElementById('authSuccess').classList.remove('active');
-        }
-        
-        function switchAuthTab(mode) {
-            authMode = mode;
-            const loginTab = document.getElementById('loginTab');
-            const signupTab = document.getElementById('signupTab');
-            const buttonText = document.getElementById('authButtonText');
-            
-            if (mode === 'login') {
-                loginTab.classList.add('active');
-                signupTab.classList.remove('active');
-                buttonText.textContent = 'Login';
+            headers["X-User-Token"] = deviceToken;
+          }
+
+          const response = await fetch(`${API_URL}/api/analyze`, {
+            method: "POST",
+            headers: headers,
+            body: formData,
+          });
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || "Analysis failed");
+          }
+
+          const data = await response.json();
+
+          console.log("Analysis response:", data); // Debug log
+          console.log("Checks remaining in response:", data.checks_remaining); // More specific log
+
+          // Update remaining checks if provided
+          if (
+            data.checks_remaining !== undefined &&
+            data.checks_remaining !== null
+          ) {
+            console.log("Updating checks remaining to:", data.checks_remaining); // Debug log
+
+            // Directly update the counter for anonymous users
+            if (!currentUser) {
+              const counterElement = document.getElementById("checksRemaining");
+              if (counterElement) {
+                counterElement.textContent = data.checks_remaining;
+                console.log(
+                  "Updated counter element to:",
+                  data.checks_remaining
+                );
+              } else {
+                console.error("Counter element not found!");
+              }
+
+              // Also show warning if needed
+              const limitWarning = document.getElementById("limitWarning");
+              if (data.checks_remaining === 1) {
+                limitWarning.textContent =
+                  "⚠️ You have 1 free check remaining today";
+                limitWarning.classList.add("active");
+              } else if (data.checks_remaining === 0) {
+                limitWarning.textContent =
+                  "You've used all free checks today. Come back tomorrow or create an account!";
+                limitWarning.classList.add("active");
+              }
             } else {
-                loginTab.classList.remove('active');
-                signupTab.classList.add('active');
-                buttonText.textContent = 'Sign Up';
+              // For logged in users
+              currentUser.checks_remaining = data.checks_remaining;
+              updateUI();
             }
+          }
+
+          // Display results
+          displayResults(data);
+        } catch (error) {
+          console.error("Error:", error);
+          customAlert(error.message, "error");
+
+          if (error.message.includes("Daily limit reached")) {
+            setTimeout(() => {
+              showAuthModal("signup");
+            }, 1500);
+          }
+        } finally {
+          document.getElementById("loadingOverlay").classList.remove("active");
         }
-        
-        async function handleAuth(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('authError');
-            const successDiv = document.getElementById('authSuccess');
-            
-            errorDiv.classList.remove('active');
-            successDiv.classList.remove('active');
-            
-            try {
-                const endpoint = authMode === 'login' ? '/api/auth/login' : '/api/auth/signup';
-                const response = await fetch(`${API_URL}${endpoint}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password })
-                });
-                
-                const data = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(data.detail || 'Authentication failed');
-                }
-                
-                // Store token
-                authToken = data.access_token;
-                localStorage.setItem('dupecheck_token', authToken);
-                
-                // Update user info
-                currentUser = {
-                    email: email,
-                    subscription_tier: data.subscription_tier,
-                    checks_remaining: data.checks_remaining
-                };
-                
-                successDiv.textContent = authMode === 'login' ? 'Login successful!' : 'Account created successfully!';
-                successDiv.classList.add('active');
-                
-                setTimeout(() => {
-                    closeAuthModal();
-                    updateUI();
-                }, 1500);
-                
-            } catch (error) {
-                errorDiv.textContent = error.message;
-                errorDiv.classList.add('active');
-            }
-        }
-        
-        async function checkAuth() {
-            if (!authToken) return;
-            
-            try {
-                const response = await fetch(`${API_URL}/api/user/usage`, {
-                    headers: {
-                        'Authorization': `Bearer ${authToken}`
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Invalid token');
-                }
-                
-                const data = await response.json();
-                currentUser = {
-                    subscription_tier: data.subscription_tier,
-                    checks_remaining: data.checks_remaining,
-                    can_analyze: data.can_analyze
-                };
-                
-                updateUI();
-                
-            } catch (error) {
-                // Invalid token, clear it
-                localStorage.removeItem('dupecheck_token');
-                authToken = null;
-                currentUser = null;
-                updateUI();
-            }
-        }
-        
-        function logout() {
-            localStorage.removeItem('dupecheck_token');
-            authToken = null;
-            currentUser = null;
-            updateUI();
-            toggleUserDropdown();
-        }
-        
-        function toggleUserDropdown() {
-            document.getElementById('userDropdown').classList.toggle('active');
-        }
-        
-        function updateUI() {
-            const authButtons = document.getElementById('authButtons');
-            const userMenu = document.getElementById('userMenu');
-            const checksRemaining = document.getElementById('checksRemaining');
-            const limitWarning = document.getElementById('limitWarning');
-            
-            if (currentUser) {
-                authButtons.style.display = 'none';
-                userMenu.style.display = 'block';
-                
-                  fetchCreditBalance();
-                
-                // Show email (truncated if too long)
-                const email = localStorage.getItem('dupecheck_email') || 'User';
-                document.getElementById('userEmail').textContent = 
-                    email.length > 20 ? email.substring(0, 20) + '...' : email;
-                
-                // Update usage counter
-                if (currentUser.subscription_tier === 'free') {
-                    checksRemaining.textContent = currentUser.checks_remaining || 0;
-                    
-                    if (currentUser.checks_remaining === 1) {
-                        limitWarning.textContent = "⚠️ You have 1 free check remaining today";
-                        limitWarning.classList.add('active');
-                    } else if (currentUser.checks_remaining === 0) {
-                        limitWarning.textContent = "You've used all free checks today. Come back tomorrow or upgrade!";
-                        limitWarning.classList.add('active');
-                    }
-                } else {
-                    checksRemaining.textContent = '∞';
-                    checksRemaining.parentElement.innerHTML = '<span class="count">∞</span><span>unlimited checks</span>';
-                }
-            } else {
-                authButtons.style.display = 'flex';
-                authButtons.style.gap = '1rem';
-                userMenu.style.display = 'none';
-                checksRemaining.textContent = '3';
-            }
-        }
-        
-        // File upload handling
-        const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('fileInput');
-        
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragging');
-        });
-        
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragging');
-        });
-        
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragging');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFile(files[0]);
-            }
-        });
-        
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFile(e.target.files[0]);
-            }
-        });
-        
-        async function handleFile(file) {
-            uploadedFile = file;
-            
-            // Show loading
-            document.getElementById('loadingOverlay').classList.add('active');
-            
-            // Process file
-            await processFile(file);
-        }
-        
-        async function processFile(file) {
-            const formData = new FormData();
-            formData.append('file', file);
-            
-            try {
-                const headers = {};
-                if (authToken) {
-                    headers['Authorization'] = `Bearer ${authToken}`;
-                } else {
-                    // For anonymous users, use a device token
-                    let deviceToken = localStorage.getItem('dupecheck_device_token');
-                    if (!deviceToken) {
-                        deviceToken = 'anon_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
-                        localStorage.setItem('dupecheck_device_token', deviceToken);
-                    }
-                    headers['X-User-Token'] = deviceToken;
-                }
-                
-                const response = await fetch(`${API_URL}/api/analyze`, {
-                    method: 'POST',
-                    headers: headers,
-                    body: formData
-                });
-                
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.detail || 'Analysis failed');
-                }
-                
-                const data = await response.json();
-                
-                console.log('Analysis response:', data); // Debug log
-                console.log('Checks remaining in response:', data.checks_remaining); // More specific log
-                
-                // Update remaining checks if provided
-                if (data.checks_remaining !== undefined && data.checks_remaining !== null) {
-                    console.log('Updating checks remaining to:', data.checks_remaining); // Debug log
-                    
-                    // Directly update the counter for anonymous users
-                    if (!currentUser) {
-                        const counterElement = document.getElementById('checksRemaining');
-                        if (counterElement) {
-                            counterElement.textContent = data.checks_remaining;
-                            console.log('Updated counter element to:', data.checks_remaining);
-                        } else {
-                            console.error('Counter element not found!');
-                        }
-                        
-                        // Also show warning if needed
-                        const limitWarning = document.getElementById('limitWarning');
-                        if (data.checks_remaining === 1) {
-                            limitWarning.textContent = "⚠️ You have 1 free check remaining today";
-                            limitWarning.classList.add('active');
-                        } else if (data.checks_remaining === 0) {
-                            limitWarning.textContent = "You've used all free checks today. Come back tomorrow or create an account!";
-                            limitWarning.classList.add('active');
-                        }
-                    } else {
-                        // For logged in users
-                        currentUser.checks_remaining = data.checks_remaining;
-                        updateUI();
-                    }
-                }
-                
-                // Display results
-                displayResults(data);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                customAlert(error.message, 'error');
-                
-                if (error.message.includes('Daily limit reached')) {
-                    setTimeout(() => {
-                        showAuthModal('signup');
-                    }, 1500);
-                }
-            } finally {
-                document.getElementById('loadingOverlay').classList.remove('active');
-            }
-        }
-        
-        function displayResults(data) {
-            analysisResults = data;
-            
-            document.getElementById('totalInvoices').textContent = data.total_invoices;
-            document.getElementById('duplicatesFound').textContent = data.duplicates_found;
-            document.getElementById('potentialSavings').textContent = 
-                '$' + data.potential_savings.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            
-            const duplicatesList = document.getElementById('duplicatesList');
-            duplicatesList.innerHTML = '';
-            
-            if (data.duplicates_found > 0) {
-                // Show first 3 duplicates
-                const toShow = Math.min(3, data.duplicates.length);
-                for (let i = 0; i < toShow; i++) {
-                    const dup = data.duplicates[i];
-                    const item = document.createElement('div');
-                    item.style.cssText = 'background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;';
-                    
-                    const vendor = dup.invoice1.vendor || dup.invoice1.Vendor || 'Unknown';
-                    item.innerHTML = `
+      }
+
+      function displayResults(data) {
+        analysisResults = data;
+
+        document.getElementById("resultsCard").classList.add("active");
+        document.getElementById("totalInvoices").textContent =
+          data.total_invoices;
+        document.getElementById("duplicatesFound").textContent =
+          data.duplicates_found;
+        document.getElementById("potentialSavings").textContent =
+          "$" +
+          data.potential_savings
+            .toFixed(2)
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        const duplicatesList = document.getElementById("duplicatesList");
+        duplicatesList.innerHTML = "";
+
+        if (data.duplicates_found > 0) {
+          // Show first 3 duplicates
+          const toShow = Math.min(3, data.duplicates.length);
+          for (let i = 0; i < toShow; i++) {
+            const dup = data.duplicates[i];
+            const item = document.createElement("div");
+            item.style.cssText =
+              "background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;";
+
+            const vendor =
+              dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
+            item.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <strong>Duplicate #${i + 1}</strong> - ${vendor}
                                 <div style="color: var(--text-secondary); font-size: 0.9rem;">
-                                    Amount: $${dup.potential_savings.toFixed(2)} • 
-                                    Confidence: ${Math.round(dup.confidence_score)}%
+                                    Amount: $${dup.potential_savings.toFixed(
+                                      2
+                                    )} • 
+                                    Confidence: ${Math.round(
+                                      dup.confidence_score
+                                    )}%
                                 </div>
                             </div>
                             <span style="color: var(--danger);">⚠️</span>
                         </div>
                     `;
-                    duplicatesList.appendChild(item);
-                }
-                
-                if (data.duplicates.length > 3) {
-                    const more = document.createElement('p');
-                    more.style.cssText = 'text-align: center; color: var(--text-secondary); margin-top: 1rem;';
-                    more.textContent = `+ ${data.duplicates.length - 3} more duplicates found`;
-                    duplicatesList.appendChild(more);
-                }
-                
-                // Show upgrade prompt for non-logged in users
-                if (!currentUser && data.duplicates_found > 0) {
-                    setTimeout(() => {
-                        const msg = document.createElement('div');
-                        msg.className = 'alert alert-success active';
-                        msg.style.marginTop = '1rem';
-                        msg.innerHTML = `
+            duplicatesList.appendChild(item);
+          }
+
+          if (data.duplicates.length > 3) {
+            const more = document.createElement("p");
+            more.style.cssText =
+              "text-align: center; color: var(--text-secondary); margin-top: 1rem;";
+            more.textContent = `+ ${
+              data.duplicates.length - 3
+            } more duplicates found`;
+            duplicatesList.appendChild(more);
+          }
+
+          // Show upgrade prompt for non-logged in users
+          if (!currentUser && data.duplicates_found > 0) {
+            setTimeout(() => {
+              const msg = document.createElement("div");
+              msg.className = "alert alert-success active";
+              msg.style.marginTop = "1rem";
+              msg.innerHTML = `
                             Found ${data.duplicates_found} duplicates! 
                             <a href="#" onclick="showAuthModal('signup')" style="color: var(--secondary); text-decoration: underline;">
                                 Create an account
                             </a> to save your analysis and get more checks.
                         `;
-                        duplicatesList.appendChild(msg);
-                    }, 500);
-                }
-            } else {
-                duplicatesList.innerHTML = `
+              duplicatesList.appendChild(msg);
+            }, 500);
+          }
+        } else {
+          duplicatesList.innerHTML = `
                     <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
                         <h3>No duplicates found!</h3>
                         <p>Your invoices look clean</p>
                     </div>
                 `;
-            }
-            
-            document.getElementById('resultsCard').classList.add('active');
         }
-        
-        function downloadReport() {
-            if (!analysisResults) return;
-            
-            const report = `DupeCheck Analysis Report
+
+        document.getElementById("resultsCard").classList.add("active");
+        setTimeout(() => {
+          const resultsCard = document.getElementById("resultsCard");
+          const navHeight = document.querySelector("nav").offsetHeight;
+          const targetPosition = resultsCard.offsetTop - navHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }, 100);
+
+        // Update credit balance if logged in
+        if (currentUser) {
+          fetchCreditBalance();
+        }
+      }
+
+      function downloadReport() {
+        if (!analysisResults) return;
+
+        const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
 SUMMARY
@@ -1753,230 +2097,244 @@ Potential Savings: $${analysisResults.potential_savings.toFixed(2)}
 
 DUPLICATE DETAILS
 =================
-${analysisResults.duplicates.map((dup, i) => `
+${analysisResults.duplicates
+  .map(
+    (dup, i) => `
 Duplicate #${i + 1}
 Confidence: ${Math.round(dup.confidence_score)}%
 Amount: $${dup.potential_savings.toFixed(2)}
-Reasons: ${dup.match_reasons.join(', ')}
-`).join('\n')}
+Reasons: ${dup.match_reasons.join(", ")}
+`
+  )
+  .join("\n")}
 
 ---
 Analyzed by DupeCheck
 Visit dupecheck.forgeapis.com for more
 `;
-            
-            const blob = new Blob([report], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `dupecheck-report-${Date.now()}.txt`;
-            a.click();
-        }
-        
-        function viewHistory() {
-            showModal({
-                type: 'info',
-                title: 'Coming Soon',
-                message: 'Analysis history feature is under development. You\'ll be able to view all your past analyses here soon!'
-            });
-            toggleUserDropdown();
-        }
 
-        // Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const navHeight = document.querySelector('nav').offsetHeight;
+        const blob = new Blob([report], { type: "text/plain" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `dupecheck-report-${Date.now()}.txt`;
+        a.click();
+      }
+
+      function viewHistory() {
+        showModal({
+          type: "info",
+          title: "Coming Soon",
+          message:
+            "Analysis history feature is under development. You'll be able to view all your past analyses here soon!",
+        });
+        toggleUserDropdown();
+      }
+
+      // Add smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const navHeight = document.querySelector("nav").offsetHeight;
             const targetPosition = target.offsetTop - navHeight - 20; // 20px extra padding
             window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+              top: targetPosition,
+              behavior: "smooth",
             });
-        }
-    });
-});
-
-// Update the updateUI function
-function updateUI() {
-    const authButtons = document.getElementById('authButtons');
-    const userMenu = document.getElementById('userMenu');
-    const checksRemaining = document.getElementById('checksRemaining');
-    const limitWarning = document.getElementById('limitWarning');
-    
-    if (currentUser) {
-        // Fetch credit balance
-        fetchCreditBalance();
-        
-        authButtons.style.display = 'none';
-        userMenu.style.display = 'block';
-        
-        // ... rest of your existing code
-    }
-}
-
-async function fetchCreditBalance() {
-    if (!authToken) return;
-    
-    try {
-        const response = await fetch(`${API_URL}/api/credits/balance`, {
-            headers: {
-                'Authorization': `Bearer ${authToken}`
-            }
+          }
         });
-        
-        if (response.ok) {
+      });
+
+      async function updateUserDropdown() {
+        const dropdown = document.getElementById("userDropdown");
+
+        try {
+          const response = await fetch(`${API_URL}/api/credits/balance`, {
+            headers: { Authorization: `Bearer ${authToken}` },
+          });
+
+          const data = await response.json();
+
+          dropdown.innerHTML = `
+            <a href="#pricingSection" onclick="toggleUserDropdown()">
+                ${data.balance > 0 ? "Buy More Credits" : "Get Credits"}
+            </a>
+            <div style="border-top: 1px solid var(--border); margin: 0.5rem 0;"></div>
+            <button onclick="logout()">Sign Out</button>
+        `;
+        } catch (error) {
+          dropdown.innerHTML = `
+            <a href="#pricingSection" onclick="toggleUserDropdown()">Get Credits</a>
+            <div style="border-top: 1px solid var(--border); margin: 0.5rem 0;"></div>
+            <button onclick="logout()">Sign Out</button>
+        `;
+        }
+      }
+
+      // Update the updateUI function
+      function updateUI() {
+        const authButtons = document.getElementById("authButtons");
+        const userMenu = document.getElementById("userMenu");
+
+        if (currentUser) {
+          authButtons.style.display = "none";
+          userMenu.style.display = "block";
+
+          // Update the user-info display
+          const email = localStorage.getItem("dupecheck_email") || "User";
+          document.getElementById("userEmail").textContent =
+            email.length > 20 ? email.substring(0, 20) + "..." : email;
+
+          // Fetch and update credit balance
+          fetchCreditBalance();
+
+          // Update dropdown menu
+          updateUserDropdown();
+        }
+        // ... rest of code
+      }
+
+      async function fetchCreditBalance() {
+        if (!authToken) return;
+
+        try {
+          const response = await fetch(`${API_URL}/api/credits/balance`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          if (response.ok) {
             const data = await response.json();
-            const checksRemaining = document.getElementById('checksRemaining');
-            
+            const checksRemaining = document.getElementById("checksRemaining");
+
             if (data.balance > 0) {
-                checksRemaining.textContent = data.balance;
-                checksRemaining.parentElement.innerHTML = 
-                    `<span class="count">${data.balance}</span><span>credits remaining</span>`;
+              checksRemaining.textContent = data.balance;
+              checksRemaining.parentElement.innerHTML = `<span class="count">${data.balance}</span><span>credits remaining</span>`;
             }
+          }
+        } catch (error) {
+          console.error("Failed to fetch credit balance:", error);
         }
-    } catch (error) {
-        console.error('Failed to fetch credit balance:', error);
-    }
-}
+      }
 
-// Test function to add credits (replace with Stripe later)
-async function buyCredits(package) {
-    try {
-        const response = await fetch(`${API_URL}/api/credits/add`, {
-            method: 'POST',
+      // Test function to add credits (replace with Stripe later)
+      async function buyCredits(package) {
+        try {
+          const response = await fetch(`${API_URL}/api/credits/add`, {
+            method: "POST",
             headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        if (response.ok) {
+              Authorization: `Bearer ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (response.ok) {
             const data = await response.json();
             showModal({
-                type: 'success',
-                title: 'Credits Added!',
-                message: `Successfully added ${data.credits_added} credits. New balance: ${data.new_balance}`
+              type: "success",
+              title: "Credits Added!",
+              message: `Successfully added ${data.credits_added} credits. New balance: ${data.new_balance}`,
             });
             fetchCreditBalance();
+          }
+        } catch (error) {
+          customAlert("Failed to add credits", "error");
         }
-    } catch (error) {
-        customAlert('Failed to add credits', 'error');
-    }
-}
-        
-        function upgrade(plan) {
-            showModal({
-                type: 'info',
-                title: 'Coming Soon',
-                message: `The ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan subscription will be available soon. We're currently integrating Stripe for secure payments.`,
-                okText: 'Got it'
-            });
-            // window.location.href = `https://buy.stripe.com/your_${plan}_link`;
-        }
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            const userMenu = document.getElementById('userMenu');
-            if (userMenu && !userMenu.contains(e.target)) {
-                document.getElementById('userDropdown').classList.remove('active');
-            }
-        });
+      }
 
-        async function testCreditPurchase() {
-    if (!authToken) {
-        customAlert('Please login first', 'warning');
-        return;
-    }
-    
-    try {
-        const response = await fetch(`${API_URL}/api/credits/add`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json'
-            }
+      function upgrade(plan) {
+        showModal({
+          type: "info",
+          title: "Coming Soon",
+          message: `The ${
+            plan.charAt(0).toUpperCase() + plan.slice(1)
+          } plan subscription will be available soon. We're currently integrating Stripe for secure payments.`,
+          okText: "Got it",
         });
-        
-        if (response.ok) {
+        // window.location.href = `https://buy.stripe.com/your_${plan}_link`;
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        const userMenu = document.getElementById("userMenu");
+        if (userMenu && !userMenu.contains(e.target)) {
+          document.getElementById("userDropdown").classList.remove("active");
+        }
+      });
+
+      async function testCreditPurchase() {
+        if (!authToken) {
+          customAlert("Please login first", "warning");
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/api/credits/add`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (response.ok) {
             const data = await response.json();
-            document.getElementById('creditTestResult').innerHTML = 
-                `✅ Added ${data.credits_added} credits! New balance: ${data.new_balance}`;
+            document.getElementById(
+              "creditTestResult"
+            ).innerHTML = `✅ Added ${data.credits_added} credits! New balance: ${data.new_balance}`;
             fetchCreditBalance();
-        } else {
+          } else {
             const error = await response.json();
-            document.getElementById('creditTestResult').innerHTML = 
-                `❌ Error: ${error.detail}`;
+            document.getElementById(
+              "creditTestResult"
+            ).innerHTML = `❌ Error: ${error.detail}`;
+          }
+        } catch (error) {
+          document.getElementById(
+            "creditTestResult"
+          ).innerHTML = `❌ Error: ${error.message}`;
         }
-    } catch (error) {
-        document.getElementById('creditTestResult').innerHTML = 
-            `❌ Error: ${error.message}`;
-    }
-}
+      }
 
-async function checkBalance() {
-    if (!authToken) {
-        customAlert('Please login first', 'warning');
-        return;
-    }
-    
-    try {
-        const response = await fetch(`${API_URL}/api/credits/balance`, {
-            headers: {
-                'Authorization': `Bearer ${authToken}`
-            }
-        });
-        
-        if (response.ok) {
-            const data = await response.json();
-            document.getElementById('creditTestResult').innerHTML = 
-                `💰 Current balance: ${data.balance} credits`;
-        }
-    } catch (error) {
-        document.getElementById('creditTestResult').innerHTML = 
-            `❌ Error: ${error.message}`;
-    }
-}
+      async function fetchCreditBalance() {
+        if (!authToken) return;
 
-async function fetchCreditBalance() {
-    if (!authToken) return;
-    
-    try {
-        const response = await fetch(`${API_URL}/api/credits/balance`, {
+        try {
+          const response = await fetch(`${API_URL}/api/credits/balance`, {
             headers: {
-                'Authorization': `Bearer ${authToken}`
-            }
-        });
-        
-        if (response.ok) {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          if (response.ok) {
             const data = await response.json();
-            const counterElement = document.getElementById('usageCounter');
-            
+            const counterElement = document.getElementById("usageCounter");
+
             if (data.balance > 0) {
-                // User has credits - show credit count
-                counterElement.innerHTML = 
-                    `<span class="count" id="checksRemaining">${data.balance}</span><span>credits remaining</span>`;
+              // User has credits - show credit count
+              counterElement.innerHTML = `<span class="count" id="checksRemaining">${data.balance}</span><span>credits remaining</span>`;
             } else {
-                // No credits - check free tier usage
-                const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
-                    headers: {
-                        'Authorization': `Bearer ${authToken}`
-                    }
-                });
-                
-                if (usageResponse.ok) {
-                    const usageData = await usageResponse.json();
-                    const remaining = usageData.checks_remaining || 0;
-                    counterElement.innerHTML = 
-                        `<span class="count" id="checksRemaining">${remaining}</span><span>free checks today</span>`;
-                }
+              // No credits - check free tier usage
+              const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                },
+              });
+
+              if (usageResponse.ok) {
+                const usageData = await usageResponse.json();
+                const remaining = usageData.checks_remaining || 0;
+                counterElement.innerHTML = `<span class="count" id="checksRemaining">${remaining}</span><span>free checks today</span>`;
+              }
             }
+          }
+        } catch (error) {
+          console.error("Failed to fetch credit balance:", error);
         }
-    } catch (error) {
-        console.error('Failed to fetch credit balance:', error);
-    }
-}
+      }
     </script>
-</body>
+  </body>
 </html>
