@@ -1767,7 +1767,9 @@ if (paymentStatus === 'success') {
             throw new Error(data.detail || "Authentication failed");
           }
 
-          // Store token
+// Store token
+authToken = data.access_token;  // ADD THIS LINE
+localStorage.setItem("dupecheck_token", authToken);
 localStorage.setItem("dupecheck_email", email);
 
           // Update user info
