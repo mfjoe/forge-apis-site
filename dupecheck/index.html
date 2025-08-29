@@ -398,6 +398,7 @@
         .btn-block {
             width: 100%;
             text-align: center;
+            justify-content: center; 
         }
         
         /* Results Section */
@@ -500,14 +501,25 @@
             margin-bottom: 48px;
         }
         
-        .pricing-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-        }
+.pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    display: flex;           /* Add this */
+    flex-direction: column;  /* Add this */
+}
+
+.pricing-card .btn-block {
+    margin-top: auto; /* Pushes button to bottom */
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px); /* Move up on hover */
+}
         
         .pricing-card.featured {
             border-color: var(--primary);
@@ -515,9 +527,9 @@
             transform: scale(1.05);
         }
         
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-4px);
-        }
+.pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-4px); /* Maintain scale and add lift */
+}
         
         .pricing-card .badge {
             position: absolute;
@@ -548,11 +560,12 @@
             color: var(--text-secondary);
         }
         
-        .features-list {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
+.features-list {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+    flex-grow: 1; /* This makes the list expand to fill available space */
+}
         
         .features-list li {
             padding: 0.5rem 0;
@@ -644,6 +657,36 @@
             font-size: 12px;
             opacity: 0.7;
         }
+
+        /* Free tier banner */
+.free-tier-banner {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.free-tier-banner .icon {
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.free-tier-banner h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.free-tier-banner p {
+    margin: 0;
+    color: var(--text-secondary);
+}
         
         /* Custom Modal System */
         .custom-modal {
@@ -940,8 +983,7 @@
                         <button onclick="logout()">Logout</button>
                     </div>
                 </div>
-                <a href="#pricing">Pricing</a>
-                <a href="https://dupecheck-production.up.railway.app/docs" target="_blank">API Docs</a>
+<a href="#pricingSection">Pricing</a>
             </div>
         </div>
     </nav>
@@ -1047,77 +1089,87 @@
         </div>
         
         <!-- Pricing Section -->
-        <div class="pricing-section" id="pricingSection">
-            <div class="pricing-header">
-                <h2>Simple, Transparent Pricing</h2>
-                <p style="color: var(--text-secondary);">No hidden fees. Cancel anytime.</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <!-- Free Tier -->
-                <div class="pricing-card">
-                    <h3>Free</h3>
-                    <div class="price">
-                        <span class="currency">$</span>0
-                    </div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> 3 checks per day</li>
-                        <li><span class="check">✓</span> Up to 100 invoices per file</li>
-                        <li><span class="check">✓</span> Basic detection</li>
-                        <li><span class="check">✓</span> CSV support</li>
-                        <li><span class="check">✓</span> No signup required</li>
-                    </ul>
-                    <button class="btn btn-ghost btn-block">
-                        Current Plan
-                    </button>
-                </div>
-                
-                <!-- Pro Tier -->
-                <div class="pricing-card featured">
-                    <div class="badge">MOST POPULAR</div>
-                    <h3>Pro</h3>
-                    <div class="price">
-                        <span class="currency">$</span>29<span class="period">/month</span>
-                    </div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> <strong>Unlimited checks</strong></li>
-                        <li><span class="check">✓</span> Up to 5,000 invoices per file</li>
-                        <li><span class="check">✓</span> Advanced AI detection</li>
-                        <li><span class="check">✓</span> Excel + CSV support</li>
-                        <li><span class="check">✓</span> API access (100 calls/mo)</li>
-                        <li><span class="check">✓</span> Email reports</li>
-                        <li><span class="check">✓</span> 30-day history</li>
-                    </ul>
-                    <button class="btn btn-primary btn-block" onclick="upgrade('pro')">
-                        Start Free Trial
-                    </button>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; text-align: center;">
-                        No credit card required
-                    </p>
-                </div>
-                
-                <!-- Business Tier -->
-                <div class="pricing-card">
-                    <h3>Business</h3>
-                    <div class="price">
-                        <span class="currency">$</span>99<span class="period">/month</span>
-                    </div>
-                    <ul class="features-list">
-                        <li><span class="check">✓</span> Everything in Pro</li>
-                        <li><span class="check">✓</span> Unlimited API calls</li>
-                        <li><span class="check">✓</span> Bulk processing</li>
-                        <li><span class="check">✓</span> Custom rules</li>
-                        <li><span class="check">✓</span> Webhook alerts</li>
-                        <li><span class="check">✓</span> White-label reports</li>
-                        <li><span class="check">✓</span> Priority support</li>
-                    </ul>
-                    <button class="btn btn-primary btn-block" onclick="upgrade('business')">
-                        Start Free Trial
-                    </button>
-                </div>
-            </div>
+      <!-- Pricing Section -->
+<div class="pricing-section" id="pricingSection">
+    <div class="pricing-header">
+        <h2>Simple, Transparent Pricing</h2>
+        <p style="color: var(--text-secondary);">Start free, upgrade when you need more</p>
+    </div>
+    
+    <!-- Free Tier Banner -->
+    <div class="free-tier-banner">
+        <span class="icon">✓</span>
+        <div>
+            <h3>Already getting 3 free checks daily</h3>
+            <p>No signup required • Up to 100 invoices per file</p>
         </div>
-        
+    </div>
+    
+    <div class="pricing-grid">
+        <!-- Starter Tier -->
+        <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">
+                <span class="currency">$</span>5
+            </div>
+            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
+                100 credits
+            </p>
+            <ul class="features-list">
+                <li><span class="check">✓</span> 100 check credits</li>
+                <li><span class="check">✓</span> Up to 1,000 invoices/file</li>
+                <li><span class="check">✓</span> Excel & PDF reports</li>
+                <li><span class="check">✓</span> Never expire</li>
+            </ul>
+            <button class="btn btn-primary btn-block" onclick="upgrade('starter')">
+                Buy Credits
+            </button>
+        </div>
+
+        <!-- Professional Tier -->
+        <div class="pricing-card featured">
+            <div class="badge">BEST VALUE</div>
+            <h3>Professional</h3>
+            <div class="price">
+                <span class="currency">$</span>15
+            </div>
+            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
+                500 credits
+            </p>
+            <ul class="features-list">
+                <li><span class="check">✓</span> <strong>500 check credits</strong></li>
+                <li><span class="check">✓</span> Up to 2,500 invoices/file</li>
+                <li><span class="check">✓</span> Excel & PDF reports</li>
+                <li><span class="check">✓</span> Confidence scoring</li>
+                <li><span class="check">✓</span> 90-day history</li>
+            </ul>
+            <button class="btn btn-primary btn-block" onclick="upgrade('professional')">
+                Buy Credits
+            </button>
+        </div>
+
+        <!-- Business Tier -->
+        <div class="pricing-card">
+            <h3>Business</h3>
+            <div class="price">
+                <span class="currency">$</span>29<span class="period">/month</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
+                Unlimited checks
+            </p>
+            <ul class="features-list">
+                <li><span class="check">✓</span> <strong>Unlimited checks</strong></li>
+                <li><span class="check">✓</span> Up to 5,000 invoices/file</li>
+                <li><span class="check">✓</span> White-label reports</li>
+                <li><span class="check">✓</span> Bulk processing</li>
+                <li><span class="check">✓</span> Priority support</li>
+            </ul>
+            <button class="btn btn-primary btn-block" onclick="upgrade('business')">
+                Start 14-day Trial
+            </button>
+        </div>
+    </div>
+</div>
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -1715,6 +1767,22 @@ Visit dupecheck.forgeapis.com for more
             });
             toggleUserDropdown();
         }
+
+        // Add smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight - 20; // 20px extra padding
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
         
         function upgrade(plan) {
             showModal({
