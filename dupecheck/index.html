@@ -2601,6 +2601,86 @@ function showForgotPassword(event) {
         customAlert('Failed to send reset email', 'error');
     });
 }
+
+// Check for password reset token in URL
+const resetToken = urlParams.get('reset');
+if (resetToken) {
+    // Clear the URL parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Show password reset modal
+    showPasswordResetModal(resetToken);
+}
+
+// Add this new function
+function showPasswordResetModal(token) {
+    const modal = document.createElement('div');
+    modal.className = 'modal active';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+            <h2>Reset Your Password</h2>
+            <form onsubmit="handlePasswordReset(event, '${token}')">
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Reset Password
+                </button>
+            </form>
+            <div class="alert alert-error" id="resetError"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+async function handlePasswordReset(event, token) {
+    event.preventDefault();
+    
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const errorDiv = document.getElementById('resetError');
+    
+    if (newPassword !== confirmPassword) {
+        errorDiv.textContent = "Passwords don't match";
+        errorDiv.classList.add('active');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/api/auth/reset-password`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                token: token,
+                password: newPassword
+            })
+        });
+        
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Reset failed');
+        }
+        
+        // Success - close modal and show login
+        document.querySelector('.modal.active').remove();
+        showModal({
+            type: 'success',
+            title: 'Password Reset',
+            message: 'Your password has been reset successfully. You can now login.',
+            onOk: () => showAuthModal('login')
+        });
+        
+    } catch (error) {
+        errorDiv.textContent = error.message;
+        errorDiv.classList.add('active');
+    }
+}
     </script>
   </body>
 </html>
