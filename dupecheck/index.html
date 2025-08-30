@@ -2568,7 +2568,11 @@ function showDuplicatesModal(content, totalCount) {
     };
 }
 function showForgotPassword(event) {
-    if (event) event.preventDefault();
+    // Prevent default action if event exists
+    if (event && event.preventDefault) {
+        event.preventDefault();
+    }
+    
     closeAuthModal();
     
     const email = prompt('Enter your email address:');
@@ -2579,7 +2583,12 @@ function showForgotPassword(event) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email})
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+        return response.json();
+    })
     .then(data => {
         showModal({
             type: 'success',
@@ -2588,6 +2597,7 @@ function showForgotPassword(event) {
         });
     })
     .catch(error => {
+        console.error('Error:', error);
         customAlert('Failed to send reset email', 'error');
     });
 }
