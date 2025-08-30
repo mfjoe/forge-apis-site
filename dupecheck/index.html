@@ -1632,6 +1632,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     const authButtons = document.getElementById("authButtons");
     const userMenu = document.getElementById("userMenu");
     const usageCounter = document.getElementById("usageCounter");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('payment');
+    
+    // Check for password reset token
+    const resetToken = urlParams.get('reset');
+    if (resetToken) {
+        // Clear the URL parameter
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Show password reset modal after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+            showPasswordResetModal(resetToken);
+        }, 100);
+    }
     
     authButtons.style.display = "none";
     userMenu.style.display = "none";
@@ -1651,10 +1666,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateUI();
     // Show pricing section always
     document.getElementById("pricingSection").classList.add("active");
-    
-    // Check for payment status in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const paymentStatus = urlParams.get('payment');
     // ... rest of payment status code
 });
       
