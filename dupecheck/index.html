@@ -1173,6 +1173,11 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required />
           </div>
+          <div style="text-align: right; margin-bottom: 1rem;" id="forgotPasswordLink">
+    <a href="#" onclick="showForgotPassword(event)" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">
+        Forgot password?
+    </a>
+</div>
           <button type="submit" class="btn btn-primary" style="width: 100%">
             <span id="authButtonText">Login</span>
           </button>
@@ -2370,53 +2375,6 @@ function downloadTextReport() {
         }
       }
 
-      // Update the updateUI function
-      function updateUI() {
-        const authButtons = document.getElementById("authButtons");
-        const userMenu = document.getElementById("userMenu");
-
-        if (currentUser) {
-          authButtons.style.display = "none";
-          userMenu.style.display = "block";
-
-          // Update the user-info display
-          const email = localStorage.getItem("dupecheck_email") || "User";
-          document.getElementById("userEmail").textContent =
-            email.length > 20 ? email.substring(0, 20) + "..." : email;
-
-          // Fetch and update credit balance
-          fetchCreditBalance();
-
-          // Update dropdown menu
-          updateUserDropdown();
-        }
-        // ... rest of code
-      }
-
-      async function fetchCreditBalance() {
-        if (!authToken) return;
-
-        try {
-          const response = await fetch(`${API_URL}/api/credits/balance`, {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            const checksRemaining = document.getElementById("checksRemaining");
-
-            if (data.balance > 0) {
-              checksRemaining.textContent = data.balance;
-              checksRemaining.parentElement.innerHTML = `<span class="count">${data.balance}</span><span>credits remaining</span>`;
-            }
-          }
-        } catch (error) {
-          console.error("Failed to fetch credit balance:", error);
-        }
-      }
-
       // Test function to add credits (replace with Stripe later)
       async function buyCredits(package) {
         try {
@@ -2608,6 +2566,30 @@ function showDuplicatesModal(content, totalCount) {
             modal.remove();
         }
     };
+}
+function showForgotPassword(event) {
+    if (event) event.preventDefault();
+    closeAuthModal();
+    
+    const email = prompt('Enter your email address:');
+    if (!email) return;
+    
+    fetch(`${API_URL}/api/auth/forgot-password`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email})
+    })
+    .then(response => response.json())
+    .then(data => {
+        showModal({
+            type: 'success',
+            title: 'Check Your Email',
+            message: 'If that email is registered, we\'ve sent a password reset link.'
+        });
+    })
+    .catch(error => {
+        customAlert('Failed to send reset email', 'error');
+    });
 }
     </script>
   </body>
