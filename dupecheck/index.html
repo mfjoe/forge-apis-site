@@ -1618,18 +1618,30 @@
       let analysisResults = null;
 
       // Initialize
-      document.addEventListener("DOMContentLoaded", () => {
-        if (authToken) {
-          checkAuth();
-        } else {
-          // Check anonymous user's remaining count
-          checkAnonymousUsage();
-        }
-        updateUI();
-        // Show pricing section always
-        document.getElementById("pricingSection").classList.add("active");
-      });
-
+document.addEventListener("DOMContentLoaded", async () => {
+    // Hide auth buttons initially to prevent flash
+    const authButtons = document.getElementById("authButtons");
+    const userMenu = document.getElementById("userMenu");
+    authButtons.style.display = "none";
+    userMenu.style.display = "none";
+    
+    if (authToken) {
+        // Wait for auth check to complete
+        await checkAuth();
+    } else {
+        // Check anonymous user's remaining count
+        checkAnonymousUsage();
+    }
+    
+    updateUI();
+    // Show pricing section always
+    document.getElementById("pricingSection").classList.add("active");
+    
+    // Check for payment status in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('payment');
+    // ... rest of payment status code
+});
       
 
       // Check anonymous user usage
@@ -1795,36 +1807,41 @@ localStorage.setItem("dupecheck_email", email);
         }
       }
 
-      async function checkAuth() {
-        if (!authToken) return;
+async function checkAuth() {
+    if (!authToken) return Promise.resolve();
 
-        try {
-          const response = await fetch(`${API_URL}/api/user/usage`, {
+    try {
+        const response = await fetch(`${API_URL}/api/user/usage`, {
             headers: {
-              Authorization: `Bearer ${authToken}`,
+                Authorization: `Bearer ${authToken}`,
             },
-          });
+        });
 
-          if (!response.ok) {
+        if (!response.ok) {
             throw new Error("Invalid token");
-          }
+        }
 
-          const data = await response.json();
-          currentUser = {
+        const data = await response.json();
+        currentUser = {
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
             can_analyze: data.can_analyze,
-          };
-
-          updateUI();
-        } catch (error) {
-          // Invalid token, clear it
-          localStorage.removeItem("dupecheck_token");
-          authToken = null;
-          currentUser = null;
-          updateUI();
+        };
+        
+        // Get email from localStorage
+        const email = localStorage.getItem("dupecheck_email");
+        if (email) {
+            currentUser.email = email;
         }
-      }
+
+    } catch (error) {
+        // Invalid token, clear it
+        localStorage.removeItem("dupecheck_token");
+        localStorage.removeItem("dupecheck_email");
+        authToken = null;
+        currentUser = null;
+    }
+}
 
       function logout() {
         localStorage.removeItem("dupecheck_token");
