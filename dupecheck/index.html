@@ -2613,16 +2613,6 @@ function showForgotPassword(event) {
     });
 }
 
-// Check for password reset token in URL
-const resetToken = urlParams.get('reset');
-if (resetToken) {
-    // Clear the URL parameter
-    window.history.replaceState({}, document.title, window.location.pathname);
-    
-    // Show password reset modal
-    showPasswordResetModal(resetToken);
-}
-
 // Add this new function
 function showPasswordResetModal(token) {
     const modal = document.createElement('div');
