@@ -2095,15 +2095,19 @@ async function checkAuth() {
             duplicatesList.appendChild(item);
           }
 
-          if (data.duplicates.length > 3) {
-            const more = document.createElement("p");
-            more.style.cssText =
-              "text-align: center; color: var(--text-secondary); margin-top: 1rem;";
-            more.textContent = `+ ${
-              data.duplicates.length - 3
-            } more duplicates found`;
-            duplicatesList.appendChild(more);
-          }
+if (data.duplicates.length > 3) {
+    const moreSection = document.createElement("div");
+    moreSection.style.cssText = "text-align: center; margin-top: 1rem;";
+    moreSection.innerHTML = `
+        <p style="color: var(--text-secondary); margin-bottom: 8px;">
+            + ${data.duplicates.length - 3} more duplicates found
+        </p>
+        <button class="btn btn-primary" onclick="showAllDuplicates()">
+            View All ${data.duplicates.length} Duplicates
+        </button>
+    `;
+    duplicatesList.appendChild(moreSection);
+}
 
           // Show upgrade prompt for non-logged in users
           if (!currentUser && data.duplicates_found > 0) {
@@ -2512,6 +2516,95 @@ function downloadTextReport() {
           console.error("Failed to fetch credit balance:", error);
         }
       }
+
+      function showAllDuplicates() {
+    if (!analysisResults || !analysisResults.duplicates) return;
+    
+    const duplicates = analysisResults.duplicates;
+    
+    let duplicatesHTML = `
+        <div style="max-height: 500px; overflow-y: auto;">
+    `;
+    
+    duplicates.forEach((dup, index) => {
+        const vendor1 = dup.invoice1.vendor || dup.invoice1.Vendor || 'Unknown';
+        const vendor2 = dup.invoice2.vendor || dup.invoice2.Vendor || 'Unknown';
+        const invoice1Num = dup.invoice1.invoice_number || dup.invoice1['Invoice Number'] || 'N/A';
+        const invoice2Num = dup.invoice2.invoice_number || dup.invoice2['Invoice Number'] || 'N/A';
+        
+        duplicatesHTML += `
+            <div style="background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h4 style="margin: 0; color: var(--primary);">Duplicate Set #${index + 1}</h4>
+                    <span style="background: ${dup.confidence_score >= 80 ? '#57f287' : dup.confidence_score >= 60 ? '#fee75c' : '#ed4245'}; 
+                                 color: var(--bg-dark); padding: 4px 12px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;">
+                        ${Math.round(dup.confidence_score)}% confidence
+                    </span>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px;">
+                    <div style="background: var(--bg-card); padding: 8px; border-radius: 4px;">
+                        <div style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Invoice 1</div>
+                        <div><strong>Vendor:</strong> ${vendor1}</div>
+                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(2)}</div>
+                        <div><strong>Invoice #:</strong> ${invoice1Num}</div>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 8px; border-radius: 4px;">
+                        <div style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Invoice 2</div>
+                        <div><strong>Vendor:</strong> ${vendor2}</div>
+                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(2)}</div>
+                        <div><strong>Invoice #:</strong> ${invoice2Num}</div>
+                    </div>
+                </div>
+                
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                    <strong>Match reasons:</strong> ${dup.match_reasons.join(' • ')}
+                </div>
+            </div>
+        `;
+    });
+    
+    duplicatesHTML += '</div>';
+    
+    // Show in modal
+    showDuplicatesModal(duplicatesHTML, duplicates.length);
+}
+
+function showDuplicatesModal(content, totalCount) {
+    const modal = document.createElement('div');
+    modal.className = 'custom-modal active';
+    modal.innerHTML = `
+        <div class="custom-modal-content" style="max-width: 800px;">
+            <div class="custom-modal-header">
+                <div class="custom-modal-icon warning">
+                    <span>🔍</span>
+                </div>
+                <h3 class="custom-modal-title">All ${totalCount} Duplicate Sets Found</h3>
+            </div>
+            <div style="margin: 20px 0;">
+                ${content}
+            </div>
+            <div style="margin: 16px 0; padding: 12px; background: var(--bg-dark); border-radius: 8px; text-align: center;">
+                <strong style="color: var(--secondary);">Total Potential Savings: $${analysisResults.potential_savings.toFixed(2)}</strong>
+            </div>
+            <div class="custom-modal-footer">
+                <button class="custom-modal-btn custom-modal-btn-secondary" onclick="downloadReport('pdf')">
+                    📄 Download PDF
+                </button>
+                <button class="custom-modal-btn custom-modal-btn-primary" onclick="this.closest('.custom-modal').remove()">
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    };
+}
     </script>
   </body>
 </html>
