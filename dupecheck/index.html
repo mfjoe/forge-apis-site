@@ -1619,19 +1619,25 @@
 
       // Initialize
 document.addEventListener("DOMContentLoaded", async () => {
-    // Hide auth buttons initially to prevent flash
+    // Hide all UI elements that depend on auth state
     const authButtons = document.getElementById("authButtons");
     const userMenu = document.getElementById("userMenu");
+    const usageCounter = document.getElementById("usageCounter");
+    
     authButtons.style.display = "none";
     userMenu.style.display = "none";
+    usageCounter.style.display = "none";  // Hide counter initially
     
     if (authToken) {
         // Wait for auth check to complete
         await checkAuth();
     } else {
         // Check anonymous user's remaining count
-        checkAnonymousUsage();
+        await checkAnonymousUsage();  // Make this await too
     }
+    
+    // Now show the counter with correct data
+    usageCounter.style.display = "flex";  // Show counter after check
     
     updateUI();
     // Show pricing section always
@@ -1645,45 +1651,47 @@ document.addEventListener("DOMContentLoaded", async () => {
       
 
       // Check anonymous user usage
-      async function checkAnonymousUsage() {
-        let deviceToken = localStorage.getItem("dupecheck_device_token");
-        if (!deviceToken) {
-          // New user, they have 3 checks
-          return;
-        }
+ async function checkAnonymousUsage() {
+    let deviceToken = localStorage.getItem("dupecheck_device_token");
+    if (!deviceToken) {
+        // New user, they have 3 checks
+        return Promise.resolve();
+    }
 
-        try {
-          const response = await fetch(`${API_URL}/api/check-usage`, {
+    try {
+        const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
             headers: {
-              "X-User-Token": deviceToken,
+                "X-User-Token": deviceToken,
             },
-          });
+        });
 
-          if (response.ok) {
+        if (response.ok) {
             const data = await response.json();
             // Update the counter with actual remaining checks
             const counterElement = document.getElementById("checksRemaining");
             if (counterElement && data.checks_remaining !== undefined) {
-              counterElement.textContent = data.checks_remaining;
+                counterElement.textContent = data.checks_remaining;
 
-              // Show warning if needed
-              const limitWarning = document.getElementById("limitWarning");
-              if (data.checks_remaining === 1) {
-                limitWarning.textContent =
-                  "⚠️ You have 1 free check remaining today";
-                limitWarning.classList.add("active");
-              } else if (data.checks_remaining === 0) {
-                limitWarning.textContent =
-                  "You've used all free checks today. Come back tomorrow or create an account!";
-                limitWarning.classList.add("active");
-              }
+                // Show warning if needed
+                const limitWarning = document.getElementById("limitWarning");
+                if (data.checks_remaining === 1) {
+                    limitWarning.textContent =
+                        "⚠️ You have 1 free check remaining today";
+                    limitWarning.classList.add("active");
+                } else if (data.checks_remaining === 0) {
+                    limitWarning.textContent =
+                        "You've used all free checks today. Come back tomorrow or create an account!";
+                    limitWarning.classList.add("active");
+                }
             }
-          }
-        } catch (error) {
-          console.error("Failed to check usage:", error);
         }
-      }
+    } catch (error) {
+        console.error("Failed to check usage:", error);
+    }
+    
+    return Promise.resolve();
+}
 
       // Check for payment status in URL
 const urlParams = new URLSearchParams(window.location.search);
