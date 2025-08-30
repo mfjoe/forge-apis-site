@@ -1324,12 +1324,15 @@
 
         <div id="duplicatesList"></div>
 
-<div style="display: flex; gap: 1rem; margin-top: 1rem;">
-    <button class="btn btn-primary" onclick="downloadReport('pdf')" style="flex: 1;">
-        📄 Download PDF Report
+<div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+    <button class="btn btn-primary" onclick="downloadReport('excel')" style="flex: 1; min-width: 200px;">
+        📊 Download Excel
     </button>
-    <button class="btn btn-ghost" onclick="downloadReport('text')" style="flex: 1;">
-        📝 Download Text Report
+    <button class="btn btn-primary" onclick="downloadReport('pdf')" style="flex: 1; min-width: 200px;">
+        📄 Download PDF
+    </button>
+    <button class="btn btn-ghost" onclick="downloadReport('text')" style="flex: 1; min-width: 200px;">
+        📝 Download Text
     </button>
 </div>
       </div>
@@ -2156,16 +2159,19 @@ async function downloadReport(format = 'pdf') {
     if (!analysisResults) return;
     
     if (format === 'text') {
-        // Keep existing text download code
         downloadTextReport();
-    } else if (format === 'pdf') {
+    } else if (format === 'pdf' || format === 'excel') {
         try {
+            const endpoint = format === 'pdf' 
+                ? '/api/analyze/download-pdf' 
+                : '/api/analyze/download-excel';
+            
             const headers = {};
             if (authToken) {
                 headers['Authorization'] = `Bearer ${authToken}`;
             }
             
-            const response = await fetch(`${API_URL}/api/analyze/download-pdf`, {
+            const response = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: {
                     ...headers,
@@ -2175,27 +2181,25 @@ async function downloadReport(format = 'pdf') {
             });
             
             if (!response.ok) {
-                throw new Error('Failed to generate PDF');
+                throw new Error(`Failed to generate ${format.toUpperCase()}`);
             }
             
-            // Download the PDF
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `dupecheck-report-${Date.now()}.pdf`;
+            const extension = format === 'pdf' ? 'pdf' : 'xlsx';
+            a.download = `dupecheck-report-${Date.now()}.${extension}`;
             a.click();
             window.URL.revokeObjectURL(url);
             
         } catch (error) {
-            console.error('PDF generation error:', error);
-            // Fallback to text if PDF fails
-            customAlert('PDF generation failed, downloading text report instead', 'warning');
+            console.error(`${format.toUpperCase()} generation error:`, error);
+            customAlert(`${format.toUpperCase()} generation failed, downloading text report instead`, 'warning');
             downloadTextReport();
         }
     }
 }
-
 function downloadTextReport() {
     // Your existing text download code - just move it here
     const report = `DupeCheck Analysis Report
