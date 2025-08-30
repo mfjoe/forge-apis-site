@@ -2310,20 +2310,29 @@ function downloadTextReport() {
 }
 
       // Add smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
+// Add smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        
+        // Skip if href is just "#" or empty
+        if (!href || href === "#") {
+            e.preventDefault();
+            return;
+        }
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
             const navHeight = document.querySelector("nav").offsetHeight;
-            const targetPosition = target.offsetTop - navHeight - 20; // 20px extra padding
+            const targetPosition = target.offsetTop - navHeight - 20;
             window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
+                top: targetPosition,
+                behavior: "smooth",
             });
-          }
-        });
-      });
+        }
+    });
+});
 
       async function updateUserDropdown() {
         const dropdown = document.getElementById("userDropdown");
