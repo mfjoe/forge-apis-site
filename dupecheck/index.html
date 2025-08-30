@@ -1173,11 +1173,22 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required />
           </div>
-          <div style="text-align: right; margin-bottom: 1rem;" id="forgotPasswordLink">
-    <a href="#" onclick="showForgotPassword(event)" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">
-        Forgot password?
-    </a>
-</div>
+          <div
+            style="text-align: right; margin-bottom: 1rem"
+            id="forgotPasswordLink"
+          >
+            <a
+              href="#"
+              onclick="showForgotPassword(event)"
+              style="
+                color: var(--primary);
+                text-decoration: none;
+                font-size: 0.9rem;
+              "
+            >
+              Forgot password?
+            </a>
+          </div>
           <button type="submit" class="btn btn-primary" style="width: 100%">
             <span id="authButtonText">Login</span>
           </button>
@@ -1329,17 +1340,31 @@
 
         <div id="duplicatesList"></div>
 
-<div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-    <button class="btn btn-primary" onclick="downloadReport('excel')" style="flex: 1; min-width: 200px;">
-        📊 Download Excel
-    </button>
-    <button class="btn btn-primary" onclick="downloadReport('pdf')" style="flex: 1; min-width: 200px;">
-        📄 Download PDF
-    </button>
-    <button class="btn btn-ghost" onclick="downloadReport('text')" style="flex: 1; min-width: 200px;">
-        📝 Download Text
-    </button>
-</div>
+        <div
+          style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap"
+        >
+          <button
+            class="btn btn-primary"
+            onclick="downloadReport('excel')"
+            style="flex: 1; min-width: 200px"
+          >
+            📊 Download Excel
+          </button>
+          <button
+            class="btn btn-primary"
+            onclick="downloadReport('pdf')"
+            style="flex: 1; min-width: 200px"
+          >
+            📄 Download PDF
+          </button>
+          <button
+            class="btn btn-ghost"
+            onclick="downloadReport('text')"
+            style="flex: 1; min-width: 200px"
+          >
+            📝 Download Text
+          </button>
+        </div>
       </div>
 
       <!-- Pricing Section -->
@@ -1356,15 +1381,15 @@
         <div class="free-tier-banner">
           <span class="icon">✓</span>
           <div>
-            <h3>Already getting 3 free checks daily</h3>
-            <p>No signup required • Up to 100 invoices per file</p>
+            <h3>Free Tier: 3 analyses daily • 100 invoices max per file</h3>
+            <p>No signup required • Perfect for small checks</p>
           </div>
         </div>
 
         <div class="pricing-grid">
-          <!-- Starter Tier -->
+          <!-- Starter Pack -->
           <div class="pricing-card">
-            <h3>Starter</h3>
+            <h3>Starter Pack</h3>
             <div class="price"><span class="currency">$</span>5</div>
             <p
               style="
@@ -1376,10 +1401,18 @@
               100 credits
             </p>
             <ul class="features-list">
-              <li><span class="check">✓</span> 100 check credits</li>
-              <li><span class="check">✓</span> Up to 1,000 invoices/file</li>
-              <li><span class="check">✓</span> Excel & PDF reports</li>
+              <li>
+                <span class="check">✓</span> <strong>100 analyses</strong>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <strong style="color: var(--secondary)"
+                  >2,500 invoices per file</strong
+                >
+              </li>
               <li><span class="check">✓</span> Never expire</li>
+              <li><span class="check">✓</span> PDF & Excel reports</li>
+              <li><span class="check">✓</span> 30-day history</li>
             </ul>
             <button
               class="btn btn-primary btn-block"
@@ -1389,11 +1422,11 @@
             </button>
           </div>
 
-          <!-- Professional Tier -->
+          <!-- Pro Pack -->
           <div class="pricing-card featured">
             <div class="badge">BEST VALUE</div>
-            <h3>Professional</h3>
-            <div class="price"><span class="currency">$</span>15</div>
+            <h3>Pro Pack</h3>
+            <div class="price"><span class="currency">$</span>19</div>
             <p
               style="
                 color: var(--text-secondary);
@@ -1405,51 +1438,21 @@
             </p>
             <ul class="features-list">
               <li>
-                <span class="check">✓</span> <strong>500 check credits</strong>
+                <span class="check">✓</span> <strong>500 analyses</strong>
               </li>
-              <li><span class="check">✓</span> Up to 2,500 invoices/file</li>
-              <li><span class="check">✓</span> Excel & PDF reports</li>
-              <li><span class="check">✓</span> Confidence scoring</li>
-              <li><span class="check">✓</span> 90-day history</li>
-            </ul>
-            <button
-              class="btn btn-primary btn-block"
-              onclick="upgrade('professional')"
-            >
-              Buy Credits
-            </button>
-          </div>
-
-          <!-- Business Tier -->
-          <div class="pricing-card">
-            <h3>Business</h3>
-            <div class="price">
-              <span class="currency">$</span>29<span class="period"
-                >/month</span
-              >
-            </div>
-            <p
-              style="
-                color: var(--text-secondary);
-                margin-top: -0.5rem;
-                margin-bottom: 1rem;
-              "
-            >
-              Unlimited checks
-            </p>
-            <ul class="features-list">
               <li>
-                <span class="check">✓</span> <strong>Unlimited checks</strong>
+                <span class="check">✓</span>
+                <strong style="color: var(--secondary)"
+                  >2,500 invoices per file</strong
+                >
               </li>
-              <li><span class="check">✓</span> Up to 5,000 invoices/file</li>
-              <li><span class="check">✓</span> White-label reports</li>
-              <li><span class="check">✓</span> Bulk processing</li>
+              <li><span class="check">✓</span> Never expire</li>
+              <li><span class="check">✓</span> PDF & Excel reports</li>
+              <li><span class="check">✓</span> 90-day history</li>
+              <li><span class="check">✓</span> Priority support</li>
             </ul>
-            <button
-              class="btn btn-primary btn-block"
-              onclick="upgrade('business')"
-            >
-              Start 14-day Trial
+            <button class="btn btn-primary btn-block" onclick="upgrade('pro')">
+              Buy Credits
             </button>
           </div>
         </div>
@@ -1627,92 +1630,94 @@
       let analysisResults = null;
 
       // Initialize
-document.addEventListener("DOMContentLoaded", async () => {
-    // Hide all UI elements that depend on auth state
-    const authButtons = document.getElementById("authButtons");
-    const userMenu = document.getElementById("userMenu");
-    const usageCounter = document.getElementById("usageCounter");
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Hide all UI elements that depend on auth state
+        const authButtons = document.getElementById("authButtons");
+        const userMenu = document.getElementById("userMenu");
+        const usageCounter = document.getElementById("usageCounter");
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const paymentStatus = urlParams.get('payment');
-    
-    // Check for password reset token
-    const resetToken = urlParams.get('reset');
-    if (resetToken) {
-        // Clear the URL parameter
-        window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Show password reset modal after a brief delay to ensure DOM is ready
-        setTimeout(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get("payment");
+
+        // Check for password reset token
+        const resetToken = urlParams.get("reset");
+        if (resetToken) {
+          // Clear the URL parameter
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
+
+          // Show password reset modal after a brief delay to ensure DOM is ready
+          setTimeout(() => {
             showPasswordResetModal(resetToken);
-        }, 100);
-    }
-    
-    authButtons.style.display = "none";
-    userMenu.style.display = "none";
-    usageCounter.style.display = "none";  // Hide counter initially
-    
-    if (authToken) {
-        // Wait for auth check to complete
-        await checkAuth();
-    } else {
-        // Check anonymous user's remaining count
-        await checkAnonymousUsage();  // Make this await too
-    }
-    
-    // Now show the counter with correct data
-    usageCounter.style.display = "flex";  // Show counter after check
-    
-    updateUI();
-    // Show pricing section always
-    document.getElementById("pricingSection").classList.add("active");
-    // ... rest of payment status code
-});
-      
+          }, 100);
+        }
+
+        authButtons.style.display = "none";
+        userMenu.style.display = "none";
+        usageCounter.style.display = "none"; // Hide counter initially
+
+        if (authToken) {
+          // Wait for auth check to complete
+          await checkAuth();
+        } else {
+          // Check anonymous user's remaining count
+          await checkAnonymousUsage(); // Make this await too
+        }
+
+        // Now show the counter with correct data
+        usageCounter.style.display = "flex"; // Show counter after check
+
+        updateUI();
+        // Show pricing section always
+        document.getElementById("pricingSection").classList.add("active");
+        // ... rest of payment status code
+      });
 
       // Check anonymous user usage
- async function checkAnonymousUsage() {
-    let deviceToken = localStorage.getItem("dupecheck_device_token");
-    if (!deviceToken) {
-        // New user, they have 3 checks
-        return Promise.resolve();
-    }
+      async function checkAnonymousUsage() {
+        let deviceToken = localStorage.getItem("dupecheck_device_token");
+        if (!deviceToken) {
+          // New user, they have 3 checks
+          return Promise.resolve();
+        }
 
-    try {
-        const response = await fetch(`${API_URL}/api/check-usage`, {
+        try {
+          const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
             headers: {
-                "X-User-Token": deviceToken,
+              "X-User-Token": deviceToken,
             },
-        });
+          });
 
-        if (response.ok) {
+          if (response.ok) {
             const data = await response.json();
             // Update the counter with actual remaining checks
             const counterElement = document.getElementById("checksRemaining");
             if (counterElement && data.checks_remaining !== undefined) {
-                counterElement.textContent = data.checks_remaining;
+              counterElement.textContent = data.checks_remaining;
 
-                // Show warning if needed
-                const limitWarning = document.getElementById("limitWarning");
-                if (data.checks_remaining === 1) {
-                    limitWarning.textContent =
-                        "⚠️ You have 1 free check remaining today";
-                    limitWarning.classList.add("active");
-                } else if (data.checks_remaining === 0) {
-                    limitWarning.textContent =
-                        "You've used all free checks today. Come back tomorrow or create an account!";
-                    limitWarning.classList.add("active");
-                }
+              // Show warning if needed
+              const limitWarning = document.getElementById("limitWarning");
+              if (data.checks_remaining === 1) {
+                limitWarning.textContent =
+                  "⚠️ You have 1 free check remaining today";
+                limitWarning.classList.add("active");
+              } else if (data.checks_remaining === 0) {
+                limitWarning.textContent =
+                  "You've used all free checks today. Come back tomorrow or create an account!";
+                limitWarning.classList.add("active");
+              }
             }
+          }
+        } catch (error) {
+          console.error("Failed to check usage:", error);
         }
-    } catch (error) {
-        console.error("Failed to check usage:", error);
-    }
-    
-    return Promise.resolve();
-}
 
+        return Promise.resolve();
+      }
 
       // Auth functions
       function showAuthModal(mode) {
@@ -1772,10 +1777,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             throw new Error(data.detail || "Authentication failed");
           }
 
-// Store token
-authToken = data.access_token;  // ADD THIS LINE
-localStorage.setItem("dupecheck_token", authToken);
-localStorage.setItem("dupecheck_email", email);
+          // Store token
+          authToken = data.access_token; // ADD THIS LINE
+          localStorage.setItem("dupecheck_token", authToken);
+          localStorage.setItem("dupecheck_email", email);
 
           // Update user info
           currentUser = {
@@ -1800,41 +1805,40 @@ localStorage.setItem("dupecheck_email", email);
         }
       }
 
-async function checkAuth() {
-    if (!authToken) return Promise.resolve();
+      async function checkAuth() {
+        if (!authToken) return Promise.resolve();
 
-    try {
-        const response = await fetch(`${API_URL}/api/user/usage`, {
+        try {
+          const response = await fetch(`${API_URL}/api/user/usage`, {
             headers: {
-                Authorization: `Bearer ${authToken}`,
+              Authorization: `Bearer ${authToken}`,
             },
-        });
+          });
 
-        if (!response.ok) {
+          if (!response.ok) {
             throw new Error("Invalid token");
-        }
+          }
 
-        const data = await response.json();
-        currentUser = {
+          const data = await response.json();
+          currentUser = {
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
             can_analyze: data.can_analyze,
-        };
-        
-        // Get email from localStorage
-        const email = localStorage.getItem("dupecheck_email");
-        if (email) {
-            currentUser.email = email;
-        }
+          };
 
-    } catch (error) {
-        // Invalid token, clear it
-        localStorage.removeItem("dupecheck_token");
-        localStorage.removeItem("dupecheck_email");
-        authToken = null;
-        currentUser = null;
-    }
-}
+          // Get email from localStorage
+          const email = localStorage.getItem("dupecheck_email");
+          if (email) {
+            currentUser.email = email;
+          }
+        } catch (error) {
+          // Invalid token, clear it
+          localStorage.removeItem("dupecheck_token");
+          localStorage.removeItem("dupecheck_email");
+          authToken = null;
+          currentUser = null;
+        }
+      }
 
       function logout() {
         localStorage.removeItem("dupecheck_token");
@@ -1863,43 +1867,28 @@ async function checkAuth() {
       function updateUI() {
         const authButtons = document.getElementById("authButtons");
         const userMenu = document.getElementById("userMenu");
-        const checksRemaining = document.getElementById("checksRemaining");
+        const usageCounter = document.getElementById("usageCounter");
         const limitWarning = document.getElementById("limitWarning");
 
         if (currentUser) {
           authButtons.style.display = "none";
           userMenu.style.display = "block";
 
-          fetchCreditBalance();
-
-          // Show email (truncated if too long)
+          // Show email
           const email = localStorage.getItem("dupecheck_email") || "User";
           document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
 
-          // Update usage counter
-          if (currentUser.subscription_tier === "free") {
-            checksRemaining.textContent = currentUser.checks_remaining || 0;
-
-            if (currentUser.checks_remaining === 1) {
-              limitWarning.textContent =
-                "⚠️ You have 1 free check remaining today";
-              limitWarning.classList.add("active");
-            } else if (currentUser.checks_remaining === 0) {
-              limitWarning.textContent =
-                "You've used all free checks today. Come back tomorrow or upgrade!";
-              limitWarning.classList.add("active");
-            }
-          } else {
-            checksRemaining.textContent = "∞";
-            checksRemaining.parentElement.innerHTML =
-              '<span class="count">∞</span><span>unlimited checks</span>';
-          }
+          // Fetch and display credit balance
+          fetchCreditBalance();
         } else {
           authButtons.style.display = "flex";
           authButtons.style.gap = "1rem";
           userMenu.style.display = "none";
-          checksRemaining.textContent = "3";
+
+          // Show free tier counter for anonymous users
+          usageCounter.innerHTML =
+            '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
         }
       }
 
@@ -2079,10 +2068,10 @@ async function checkAuth() {
             duplicatesList.appendChild(item);
           }
 
-if (data.duplicates.length > 3) {
-    const moreSection = document.createElement("div");
-    moreSection.style.cssText = "text-align: center; margin-top: 1rem;";
-    moreSection.innerHTML = `
+          if (data.duplicates.length > 3) {
+            const moreSection = document.createElement("div");
+            moreSection.style.cssText = "text-align: center; margin-top: 1rem;";
+            moreSection.innerHTML = `
         <p style="color: var(--text-secondary); margin-bottom: 8px;">
             + ${data.duplicates.length - 3} more duplicates found
         </p>
@@ -2090,8 +2079,8 @@ if (data.duplicates.length > 3) {
             View All ${data.duplicates.length} Duplicates
         </button>
     `;
-    duplicatesList.appendChild(moreSection);
-}
+            duplicatesList.appendChild(moreSection);
+          }
 
           // Show upgrade prompt for non-logged in users
           if (!currentUser && data.duplicates_found > 0) {
@@ -2136,54 +2125,57 @@ if (data.duplicates.length > 3) {
         }
       }
 
-async function downloadReport(format = 'pdf') {
-    if (!analysisResults) return;
-    
-    if (format === 'text') {
-        downloadTextReport();
-    } else if (format === 'pdf' || format === 'excel') {
-        try {
-            const endpoint = format === 'pdf' 
-                ? '/api/analyze/download-pdf' 
-                : '/api/analyze/download-excel';
-            
+      async function downloadReport(format = "pdf") {
+        if (!analysisResults) return;
+
+        if (format === "text") {
+          downloadTextReport();
+        } else if (format === "pdf" || format === "excel") {
+          try {
+            const endpoint =
+              format === "pdf"
+                ? "/api/analyze/download-pdf"
+                : "/api/analyze/download-excel";
+
             const headers = {};
             if (authToken) {
-                headers['Authorization'] = `Bearer ${authToken}`;
+              headers["Authorization"] = `Bearer ${authToken}`;
             }
-            
+
             const response = await fetch(`${API_URL}${endpoint}`, {
-                method: 'POST',
-                headers: {
-                    ...headers,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(analysisResults)
+              method: "POST",
+              headers: {
+                ...headers,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(analysisResults),
             });
-            
+
             if (!response.ok) {
-                throw new Error(`Failed to generate ${format.toUpperCase()}`);
+              throw new Error(`Failed to generate ${format.toUpperCase()}`);
             }
-            
+
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
+            const a = document.createElement("a");
             a.href = url;
-            const extension = format === 'pdf' ? 'pdf' : 'xlsx';
+            const extension = format === "pdf" ? "pdf" : "xlsx";
             a.download = `dupecheck-report-${Date.now()}.${extension}`;
             a.click();
             window.URL.revokeObjectURL(url);
-            
-        } catch (error) {
+          } catch (error) {
             console.error(`${format.toUpperCase()} generation error:`, error);
-            customAlert(`${format.toUpperCase()} generation failed, downloading text report instead`, 'warning');
+            customAlert(
+              `${format.toUpperCase()} generation failed, downloading text report instead`,
+              "warning"
+            );
             downloadTextReport();
+          }
         }
-    }
-}
-function downloadTextReport() {
-    // Your existing text download code - just move it here
-    const report = `DupeCheck Analysis Report
+      }
+      function downloadTextReport() {
+        // Your existing text download code - just move it here
+        const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
 SUMMARY
@@ -2210,24 +2202,24 @@ Analyzed by DupeCheck
 Visit dupecheck.forgeapis.com for more
 `;
 
-    const blob = new Blob([report], { type: "text/plain" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dupecheck-report-${Date.now()}.txt`;
-    a.click();
-}
+        const blob = new Blob([report], { type: "text/plain" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `dupecheck-report-${Date.now()}.txt`;
+        a.click();
+      }
 
-function downloadTextReport() {
-    // Move your existing text download code here
-    const report = `DupeCheck Analysis Report...`; // Your existing code
-    const blob = new Blob([report], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `dupecheck-report-${Date.now()}.txt`;
-    a.click();
-}
+      function downloadTextReport() {
+        // Move your existing text download code here
+        const report = `DupeCheck Analysis Report...`; // Your existing code
+        const blob = new Blob([report], { type: "text/plain" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `dupecheck-report-${Date.now()}.txt`;
+        a.click();
+      }
 
       function viewHistory() {
         showModal({
@@ -2240,99 +2232,102 @@ function downloadTextReport() {
       }
 
       async function upgrade(plan) {
-    if (!authToken) {
-        showModal({
-            type: 'warning',
-            title: 'Login Required',
-            message: 'Please create an account or login to purchase credits',
-            okText: 'Login',
-            onOk: () => showAuthModal('login')
-        });
-        return;
-    }
-
-    // Map plan names to package names for the API
-    const packageMap = {
-        'starter': 'starter',
-        'professional': 'professional',
-        'business': 'business'
-    };
-
-    const packageName = packageMap[plan];
-    
-    if (plan === 'business') {
-        // Business plan needs subscription setup (not implemented yet)
-        showModal({
-            type: 'info',
-            title: 'Business Plan',
-            message: 'The Business subscription plan is coming soon. For now, try our credit packages!',
-        });
-        return;
-    }
-
-    // Show loading
-    showModal({
-        type: 'info',
-        title: 'Redirecting to checkout...',
-        message: 'Please wait while we prepare your secure checkout session',
-    });
-
-    try {
-        const response = await fetch(`${API_URL}/api/credits/checkout`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ package: packageName })
-        });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.detail || 'Failed to create checkout session');
+        if (!authToken) {
+          showModal({
+            type: "warning",
+            title: "Login Required",
+            message: "Please create an account or login to purchase credits",
+            okText: "Login",
+            onOk: () => showAuthModal("login"),
+          });
+          return;
         }
 
-        const data = await response.json();
-        
-        // Redirect to Stripe Checkout
-        window.location.href = data.checkout_url;
-        
-    } catch (error) {
-        closeModal();
-        setTimeout(() => {
+        // Map plan names to package names for the API
+        const packageMap = {
+          starter: "starter",
+          professional: "professional",
+          business: "business",
+        };
+
+        const packageName = packageMap[plan];
+
+        if (plan === "business") {
+          // Business plan needs subscription setup (not implemented yet)
+          showModal({
+            type: "info",
+            title: "Business Plan",
+            message:
+              "The Business subscription plan is coming soon. For now, try our credit packages!",
+          });
+          return;
+        }
+
+        // Show loading
+        showModal({
+          type: "info",
+          title: "Redirecting to checkout...",
+          message: "Please wait while we prepare your secure checkout session",
+        });
+
+        try {
+          const response = await fetch(`${API_URL}/api/credits/checkout`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ package: packageName }),
+          });
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(
+              error.detail || "Failed to create checkout session"
+            );
+          }
+
+          const data = await response.json();
+
+          // Redirect to Stripe Checkout
+          window.location.href = data.checkout_url;
+        } catch (error) {
+          closeModal();
+          setTimeout(() => {
             showModal({
-                type: 'error',
-                title: 'Checkout Error',
-                message: error.message || 'Failed to start checkout. Please try again.',
+              type: "error",
+              title: "Checkout Error",
+              message:
+                error.message || "Failed to start checkout. Please try again.",
             });
-        }, 100);
-    }
-}
+          }, 100);
+        }
+      }
 
       // Add smooth scrolling for anchor links
-// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        const href = this.getAttribute("href");
-        
-        // Skip if href is just "#" or empty
-        if (!href || href === "#") {
+      // Add smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+
+          // Skip if href is just "#" or empty
+          if (!href || href === "#") {
             e.preventDefault();
             return;
-        }
-        
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
+          }
+
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
             const navHeight = document.querySelector("nav").offsetHeight;
             const targetPosition = target.offsetTop - navHeight - 20;
             window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth",
+              top: targetPosition,
+              behavior: "smooth",
             });
-        }
-    });
-});
+          }
+        });
+      });
 
       async function updateUserDropdown() {
         const dropdown = document.getElementById("userDropdown");
@@ -2442,8 +2437,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             const counterElement = document.getElementById("usageCounter");
 
             if (data.balance > 0) {
-              // User has credits - show credit count
-              counterElement.innerHTML = `<span class="count" id="checksRemaining">${data.balance}</span><span>credits remaining</span>`;
+              // User has PAID credits - show credit count with clear benefits
+              counterElement.innerHTML = `
+                    <span class="count" style="color: var(--secondary);">${data.balance}</span>
+                    <span>credits • <strong>2,500 invoices/file</strong></span>
+                `;
             } else {
               // No credits - check free tier usage
               const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
@@ -2455,7 +2453,22 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
               if (usageResponse.ok) {
                 const usageData = await usageResponse.json();
                 const remaining = usageData.checks_remaining || 0;
-                counterElement.innerHTML = `<span class="count" id="checksRemaining">${remaining}</span><span>free checks today</span>`;
+
+                // Make it clear this is FREE tier with limitations
+                counterElement.innerHTML = `
+                        <span class="count">${remaining}</span>
+                        <span>free today • <strong style="color: var(--warning);">100 invoices max</strong></span>
+                    `;
+
+                // Show upgrade prompt if low on free checks
+                if (remaining <= 1) {
+                  const limitWarning = document.getElementById("limitWarning");
+                  limitWarning.innerHTML =
+                    remaining === 0
+                      ? '⚠️ No free analyses left today. <a href="#pricingSection" style="color: var(--secondary);">Buy credits</a> for instant access & larger files!'
+                      : '⚠️ Only 1 free analysis left today. <a href="#pricingSection" style="color: var(--secondary);">Buy credits</a> for more!';
+                  limitWarning.classList.add("active");
+                }
               }
             }
           }
@@ -2465,25 +2478,41 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       }
 
       function showAllDuplicates() {
-    if (!analysisResults || !analysisResults.duplicates) return;
-    
-    const duplicates = analysisResults.duplicates;
-    
-    let duplicatesHTML = `
+        if (!analysisResults || !analysisResults.duplicates) return;
+
+        const duplicates = analysisResults.duplicates;
+
+        let duplicatesHTML = `
         <div style="max-height: 500px; overflow-y: auto;">
     `;
-    
-    duplicates.forEach((dup, index) => {
-        const vendor1 = dup.invoice1.vendor || dup.invoice1.Vendor || 'Unknown';
-        const vendor2 = dup.invoice2.vendor || dup.invoice2.Vendor || 'Unknown';
-        const invoice1Num = dup.invoice1.invoice_number || dup.invoice1['Invoice Number'] || 'N/A';
-        const invoice2Num = dup.invoice2.invoice_number || dup.invoice2['Invoice Number'] || 'N/A';
-        
-        duplicatesHTML += `
+
+        duplicates.forEach((dup, index) => {
+          const vendor1 =
+            dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
+          const vendor2 =
+            dup.invoice2.vendor || dup.invoice2.Vendor || "Unknown";
+          const invoice1Num =
+            dup.invoice1.invoice_number ||
+            dup.invoice1["Invoice Number"] ||
+            "N/A";
+          const invoice2Num =
+            dup.invoice2.invoice_number ||
+            dup.invoice2["Invoice Number"] ||
+            "N/A";
+
+          duplicatesHTML += `
             <div style="background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <h4 style="margin: 0; color: var(--primary);">Duplicate Set #${index + 1}</h4>
-                    <span style="background: ${dup.confidence_score >= 80 ? '#57f287' : dup.confidence_score >= 60 ? '#fee75c' : '#ed4245'}; 
+                    <h4 style="margin: 0; color: var(--primary);">Duplicate Set #${
+                      index + 1
+                    }</h4>
+                    <span style="background: ${
+                      dup.confidence_score >= 80
+                        ? "#57f287"
+                        : dup.confidence_score >= 60
+                        ? "#fee75c"
+                        : "#ed4245"
+                    }; 
                                  color: var(--bg-dark); padding: 4px 12px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;">
                         ${Math.round(dup.confidence_score)}% confidence
                     </span>
@@ -2493,34 +2522,40 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                     <div style="background: var(--bg-card); padding: 8px; border-radius: 4px;">
                         <div style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Invoice 1</div>
                         <div><strong>Vendor:</strong> ${vendor1}</div>
-                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(2)}</div>
+                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(
+                          2
+                        )}</div>
                         <div><strong>Invoice #:</strong> ${invoice1Num}</div>
                     </div>
                     <div style="background: var(--bg-card); padding: 8px; border-radius: 4px;">
                         <div style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px;">Invoice 2</div>
                         <div><strong>Vendor:</strong> ${vendor2}</div>
-                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(2)}</div>
+                        <div><strong>Amount:</strong> $${dup.potential_savings.toFixed(
+                          2
+                        )}</div>
                         <div><strong>Invoice #:</strong> ${invoice2Num}</div>
                     </div>
                 </div>
                 
                 <div style="color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong>Match reasons:</strong> ${dup.match_reasons.join(' • ')}
+                    <strong>Match reasons:</strong> ${dup.match_reasons.join(
+                      " • "
+                    )}
                 </div>
             </div>
         `;
-    });
-    
-    duplicatesHTML += '</div>';
-    
-    // Show in modal
-    showDuplicatesModal(duplicatesHTML, duplicates.length);
-}
+        });
 
-function showDuplicatesModal(content, totalCount) {
-    const modal = document.createElement('div');
-    modal.className = 'custom-modal active';
-    modal.innerHTML = `
+        duplicatesHTML += "</div>";
+
+        // Show in modal
+        showDuplicatesModal(duplicatesHTML, duplicates.length);
+      }
+
+      function showDuplicatesModal(content, totalCount) {
+        const modal = document.createElement("div");
+        modal.className = "custom-modal active";
+        modal.innerHTML = `
         <div class="custom-modal-content" style="max-width: 800px;">
             <div class="custom-modal-header">
                 <div class="custom-modal-icon warning">
@@ -2532,7 +2567,9 @@ function showDuplicatesModal(content, totalCount) {
                 ${content}
             </div>
             <div style="margin: 16px 0; padding: 12px; background: var(--bg-dark); border-radius: 8px; text-align: center;">
-                <strong style="color: var(--secondary);">Total Potential Savings: $${analysisResults.potential_savings.toFixed(2)}</strong>
+                <strong style="color: var(--secondary);">Total Potential Savings: $${analysisResults.potential_savings.toFixed(
+                  2
+                )}</strong>
             </div>
             <div class="custom-modal-footer">
                 <button class="custom-modal-btn custom-modal-btn-secondary" onclick="downloadReport('pdf')">
@@ -2544,54 +2581,55 @@ function showDuplicatesModal(content, totalCount) {
             </div>
         </div>
     `;
-    document.body.appendChild(modal);
-    
-    modal.onclick = (e) => {
-        if (e.target === modal) {
-            modal.remove();
-        }
-    };
-}
-function showForgotPassword(event) {
-    // Prevent default action if event exists
-    if (event && event.preventDefault) {
-        event.preventDefault();
-    }
-    
-    closeAuthModal();
-    
-    const email = prompt('Enter your email address:');
-    if (!email) return;
-    
-    fetch(`${API_URL}/api/auth/forgot-password`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email})
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Request failed');
-        }
-        return response.json();
-    })
-    .then(data => {
-        showModal({
-            type: 'success',
-            title: 'Check Your Email',
-            message: 'If that email is registered, we\'ve sent a password reset link.'
-        });
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        customAlert('Failed to send reset email', 'error');
-    });
-}
+        document.body.appendChild(modal);
 
-// Add this new function
-function showPasswordResetModal(token) {
-    const modal = document.createElement('div');
-    modal.className = 'modal active';
-    modal.innerHTML = `
+        modal.onclick = (e) => {
+          if (e.target === modal) {
+            modal.remove();
+          }
+        };
+      }
+      function showForgotPassword(event) {
+        // Prevent default action if event exists
+        if (event && event.preventDefault) {
+          event.preventDefault();
+        }
+
+        closeAuthModal();
+
+        const email = prompt("Enter your email address:");
+        if (!email) return;
+
+        fetch(`${API_URL}/api/auth/forgot-password`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Request failed");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            showModal({
+              type: "success",
+              title: "Check Your Email",
+              message:
+                "If that email is registered, we've sent a password reset link.",
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            customAlert("Failed to send reset email", "error");
+          });
+      }
+
+      // Add this new function
+      function showPasswordResetModal(token) {
+        const modal = document.createElement("div");
+        modal.className = "modal active";
+        modal.innerHTML = `
         <div class="modal-content">
             <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
             <h2>Reset Your Password</h2>
@@ -2611,51 +2649,52 @@ function showPasswordResetModal(token) {
             <div class="alert alert-error" id="resetError"></div>
         </div>
     `;
-    document.body.appendChild(modal);
-}
+        document.body.appendChild(modal);
+      }
 
-async function handlePasswordReset(event, token) {
-    event.preventDefault();
-    
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const errorDiv = document.getElementById('resetError');
-    
-    if (newPassword !== confirmPassword) {
-        errorDiv.textContent = "Passwords don't match";
-        errorDiv.classList.add('active');
-        return;
-    }
-    
-    try {
-        const response = await fetch(`${API_URL}/api/auth/reset-password`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                token: token,
-                password: newPassword
-            })
-        });
-        
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.detail || 'Reset failed');
+      async function handlePasswordReset(event, token) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const errorDiv = document.getElementById("resetError");
+
+        if (newPassword !== confirmPassword) {
+          errorDiv.textContent = "Passwords don't match";
+          errorDiv.classList.add("active");
+          return;
         }
-        
-        // Success - close modal and show login
-        document.querySelector('.modal.active').remove();
-        showModal({
-            type: 'success',
-            title: 'Password Reset',
-            message: 'Your password has been reset successfully. You can now login.',
-            onOk: () => showAuthModal('login')
-        });
-        
-    } catch (error) {
-        errorDiv.textContent = error.message;
-        errorDiv.classList.add('active');
-    }
-}
+
+        try {
+          const response = await fetch(`${API_URL}/api/auth/reset-password`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              token: token,
+              password: newPassword,
+            }),
+          });
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || "Reset failed");
+          }
+
+          // Success - close modal and show login
+          document.querySelector(".modal.active").remove();
+          showModal({
+            type: "success",
+            title: "Password Reset",
+            message:
+              "Your password has been reset successfully. You can now login.",
+            onOk: () => showAuthModal("login"),
+          });
+        } catch (error) {
+          errorDiv.textContent = error.message;
+          errorDiv.classList.add("active");
+        }
+      }
     </script>
   </body>
 </html>
