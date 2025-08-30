@@ -1713,41 +1713,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return Promise.resolve();
 }
 
-      // Check for payment status in URL
-const urlParams = new URLSearchParams(window.location.search);
-const paymentStatus = urlParams.get('payment');
-
-if (paymentStatus === 'success') {
-    // Clear the URL parameter
-    window.history.replaceState({}, document.title, window.location.pathname);
-    
-    // Show success message
-    setTimeout(() => {
-        showModal({
-            type: 'success',
-            title: 'Payment Successful!',
-            message: 'Your credits have been added to your account. You can now run more duplicate checks!',
-            onOk: () => {
-                // Refresh credit balance
-                if (authToken) {
-                    fetchCreditBalance();
-                }
-            }
-        });
-    }, 500);
-} else if (paymentStatus === 'cancelled') {
-    // Clear the URL parameter
-    window.history.replaceState({}, document.title, window.location.pathname);
-    
-    // Show cancellation message
-    setTimeout(() => {
-        showModal({
-            type: 'info',
-            title: 'Payment Cancelled',
-            message: 'Your payment was cancelled. No charges were made.',
-        });
-    }, 500);
-}
 
       // Auth functions
       function showAuthModal(mode) {
