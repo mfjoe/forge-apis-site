@@ -1514,9 +1514,43 @@
 
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
-      <div style="text-align: center">
+      <div style="text-align: center; max-width: 400px">
         <div class="spinner"></div>
-        <p style="margin-top: 1rem">Analyzing invoices...</p>
+        <p style="margin-top: 1rem; font-size: 1.1rem; font-weight: 600">
+          Analyzing invoices...
+        </p>
+
+        <!-- Progress bar -->
+        <div
+          style="
+            background: var(--bg-card);
+            border-radius: 8px;
+            height: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+          "
+        >
+          <div
+            id="progressBar"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--primary),
+                var(--secondary)
+              );
+              height: 100%;
+              width: 0%;
+              transition: width 0.3s ease;
+              border-radius: 8px;
+            "
+          ></div>
+        </div>
+        <p
+          id="progressText"
+          style="color: var(--text-secondary); font-size: 0.9rem"
+        >
+          Uploading file...
+        </p>
       </div>
     </div>
 
@@ -1920,106 +1954,99 @@
         }
       });
 
-      async function handleFile(file) {
-        uploadedFile = file;
+async function handleFile(file) {
+    uploadedFile = file;
+    
+    // Reset and show loading with progress
+    document.getElementById("loadingOverlay").classList.add("active");
+    updateProgress(0, "Uploading file...");
+    
+    // Start progress animation
+    simulateProgress(file);
+    
+    // Process file
+    await processFile(file);
+}
 
-        // Show loading
-        document.getElementById("loadingOverlay").classList.add("active");
+function updateProgress(percent, text) {
+    document.getElementById("progressBar").style.width = percent + "%";
+    document.getElementById("progressText").textContent = text;
+}
 
-        // Process file
-        await processFile(file);
-      }
+function simulateProgress(file) {
+    // Estimate time based on file size (rough estimate)
+    const fileSizeMB = file.size / (1024 * 1024);
+    const estimatedTime = Math.min(Math.max(fileSizeMB * 2, 3), 15) * 1000; // 3-15 seconds
+    
+    const stages = [
+        { percent: 10, text: "Uploading file...", time: 0.1 },
+        { percent: 25, text: "Reading invoice data...", time: 0.2 },
+        { percent: 40, text: "Parsing records...", time: 0.3 },
+        { percent: 60, text: "Analyzing duplicates...", time: 0.5 },
+        { percent: 80, text: "Calculating matches...", time: 0.7 },
+        { percent: 95, text: "Generating report...", time: 0.9 }
+    ];
+    
+    stages.forEach(stage => {
+        setTimeout(() => {
+            // Only update if still loading
+            if (document.getElementById("loadingOverlay").classList.contains("active")) {
+                updateProgress(stage.percent, stage.text);
+            }
+        }, estimatedTime * stage.time);
+    });
+}
 
-      async function processFile(file) {
-        const formData = new FormData();
-        formData.append("file", file);
+     async function processFile(file) {
+    const formData = new FormData();
+    formData.append("file", file);
 
-        try {
-          const headers = {};
-          if (authToken) {
+    try {
+        const headers = {};
+        if (authToken) {
             headers["Authorization"] = `Bearer ${authToken}`;
-          } else {
-            // For anonymous users, use a device token
+        } else {
             let deviceToken = localStorage.getItem("dupecheck_device_token");
             if (!deviceToken) {
-              deviceToken =
-                "anon_" +
-                Math.random().toString(36).substring(2) +
-                Date.now().toString(36);
-              localStorage.setItem("dupecheck_device_token", deviceToken);
+                deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+                localStorage.setItem("dupecheck_device_token", deviceToken);
             }
             headers["X-User-Token"] = deviceToken;
-          }
+        }
 
-          const response = await fetch(`${API_URL}/api/analyze`, {
+        const response = await fetch(`${API_URL}/api/analyze`, {
             method: "POST",
             headers: headers,
             body: formData,
-          });
+        });
 
-          if (!response.ok) {
+        if (!response.ok) {
             const error = await response.json();
             throw new Error(error.detail || "Analysis failed");
-          }
-
-          const data = await response.json();
-
-          console.log("Analysis response:", data); // Debug log
-          console.log("Checks remaining in response:", data.checks_remaining); // More specific log
-
-          // Update remaining checks if provided
-          if (
-            data.checks_remaining !== undefined &&
-            data.checks_remaining !== null
-          ) {
-            console.log("Updating checks remaining to:", data.checks_remaining); // Debug log
-
-            // Directly update the counter for anonymous users
-            if (!currentUser) {
-              const counterElement = document.getElementById("checksRemaining");
-              if (counterElement) {
-                counterElement.textContent = data.checks_remaining;
-                console.log(
-                  "Updated counter element to:",
-                  data.checks_remaining
-                );
-              } else {
-                console.error("Counter element not found!");
-              }
-
-              // Also show warning if needed
-              const limitWarning = document.getElementById("limitWarning");
-              if (data.checks_remaining === 1) {
-                limitWarning.textContent =
-                  "⚠️ You have 1 free check remaining today";
-                limitWarning.classList.add("active");
-              } else if (data.checks_remaining === 0) {
-                limitWarning.textContent =
-                  "You've used all free checks today. Come back tomorrow or create an account!";
-                limitWarning.classList.add("active");
-              }
-            } else {
-              // For logged in users
-              currentUser.checks_remaining = data.checks_remaining;
-              updateUI();
-            }
-          }
-
-          // Display results
-          displayResults(data);
-        } catch (error) {
-          console.error("Error:", error);
-          customAlert(error.message, "error");
-
-          if (error.message.includes("Daily limit reached")) {
-            setTimeout(() => {
-              showAuthModal("signup");
-            }, 1500);
-          }
-        } finally {
-          document.getElementById("loadingOverlay").classList.remove("active");
         }
-      }
+
+        const data = await response.json();
+        
+        // Complete progress
+        updateProgress(100, "Complete!");
+        
+        // Short delay to show completion
+        setTimeout(() => {
+            document.getElementById("loadingOverlay").classList.remove("active");
+            displayResults(data);
+        }, 500);
+        
+    } catch (error) {
+        document.getElementById("loadingOverlay").classList.remove("active");
+        customAlert(error.message, "error");
+        
+        if (error.message.includes("Daily limit reached")) {
+            setTimeout(() => {
+                showAuthModal("signup");
+            }, 1500);
+        }
+    }
+}
 
       function displayResults(data) {
         analysisResults = data;
