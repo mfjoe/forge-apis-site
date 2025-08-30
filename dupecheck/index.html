@@ -2025,6 +2025,8 @@
         analysisResults = data;
 
         document.getElementById("resultsCard").classList.add("active");
+
+        // Show summary stats (keep this)
         document.getElementById("totalInvoices").textContent =
           data.total_invoices;
         document.getElementById("duplicatesFound").textContent =
@@ -2036,20 +2038,105 @@
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
         const duplicatesList = document.getElementById("duplicatesList");
-        duplicatesList.innerHTML = "";
 
         if (data.duplicates_found > 0) {
-          // Show first 3 duplicates
-          const toShow = Math.min(3, data.duplicates.length);
-          for (let i = 0; i < toShow; i++) {
-            const dup = data.duplicates[i];
+          // Show top 5 high-value duplicates only
+          const topDuplicates = data.duplicates
+            .sort((a, b) => b.potential_savings - a.potential_savings)
+            .slice(0, 5);
+
+          duplicatesList.innerHTML = `
+            <h3 style="margin-bottom: 1rem;">Top ${Math.min(
+              5,
+              data.duplicates_found
+            )} High-Value Duplicates</h3>
+        `;
+
+          topDuplicates.forEach((dup, i) => {
+            const vendor =
+              dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
             const item = document.createElement("div");
             item.style.cssText =
               "background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;";
-
-            const vendor =
-              dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
             item.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong>Duplicate #${i + 1}</strong> - ${vendor}
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Amount: $${dup.potential_savings.toFixed(2)} • 
+                            Confidence: ${Math.round(dup.confidence_score)}%
+                        </div>
+                    </div>
+                    <span style="color: var(--danger);">⚠️</span>
+                </div>
+            `;
+            duplicatesList.appendChild(item);
+          });
+
+          // Add summary message
+          if (data.duplicates_found > 5) {
+            const msg = document.createElement("div");
+            msg.style.cssText =
+              "text-align: center; margin-top: 1.5rem; padding: 1rem; background: var(--bg-dark); border-radius: 8px;";
+            msg.innerHTML = `
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Showing top 5 of ${data.duplicates_found} duplicates by value
+                </p>
+                <p style="color: var(--warning); font-weight: 600;">
+                    Download the full report below to see all duplicates
+                </p>
+            `;
+            duplicatesList.appendChild(msg);
+          }
+        } else {
+          duplicatesList.innerHTML = `
+            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                <h3>No duplicates found!</h3>
+                <p>Your invoices look clean</p>
+            </div>
+        `;
+        }
+
+        // Scroll to results
+        document.getElementById("resultsCard").classList.add("active");
+        setTimeout(() => {
+          const resultsCard = document.getElementById("resultsCard");
+          const navHeight = document.querySelector("nav").offsetHeight;
+          const targetPosition = resultsCard.offsetTop - navHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+      analysisResults = data;
+
+      document.getElementById("resultsCard").classList.add("active");
+      document.getElementById("totalInvoices").textContent =
+        data.total_invoices;
+      document.getElementById("duplicatesFound").textContent =
+        data.duplicates_found;
+      document.getElementById("potentialSavings").textContent =
+        "$" +
+        data.potential_savings.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      const duplicatesList = document.getElementById("duplicatesList");
+      duplicatesList.innerHTML = "";
+
+      if (data.duplicates_found > 0) {
+        // Show first 3 duplicates
+        const toShow = Math.min(3, data.duplicates.length);
+        for (let i = 0; i < toShow; i++) {
+          const dup = data.duplicates[i];
+          const item = document.createElement("div");
+          item.style.cssText =
+            "background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;";
+
+          const vendor =
+            dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
+          item.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <strong>Duplicate #${i + 1}</strong> - ${vendor}
@@ -2065,13 +2152,13 @@
                             <span style="color: var(--danger);">⚠️</span>
                         </div>
                     `;
-            duplicatesList.appendChild(item);
-          }
+          duplicatesList.appendChild(item);
+        }
 
-          if (data.duplicates.length > 3) {
-            const moreSection = document.createElement("div");
-            moreSection.style.cssText = "text-align: center; margin-top: 1rem;";
-            moreSection.innerHTML = `
+        if (data.duplicates.length > 3) {
+          const moreSection = document.createElement("div");
+          moreSection.style.cssText = "text-align: center; margin-top: 1rem;";
+          moreSection.innerHTML = `
         <p style="color: var(--text-secondary); margin-bottom: 8px;">
             + ${data.duplicates.length - 3} more duplicates found
         </p>
@@ -2079,50 +2166,49 @@
             View All ${data.duplicates.length} Duplicates
         </button>
     `;
-            duplicatesList.appendChild(moreSection);
-          }
+          duplicatesList.appendChild(moreSection);
+        }
 
-          // Show upgrade prompt for non-logged in users
-          if (!currentUser && data.duplicates_found > 0) {
-            setTimeout(() => {
-              const msg = document.createElement("div");
-              msg.className = "alert alert-success active";
-              msg.style.marginTop = "1rem";
-              msg.innerHTML = `
+        // Show upgrade prompt for non-logged in users
+        if (!currentUser && data.duplicates_found > 0) {
+          setTimeout(() => {
+            const msg = document.createElement("div");
+            msg.className = "alert alert-success active";
+            msg.style.marginTop = "1rem";
+            msg.innerHTML = `
                             Found ${data.duplicates_found} duplicates! 
                             <a href="#" onclick="showAuthModal('signup')" style="color: var(--secondary); text-decoration: underline;">
                                 Create an account
                             </a> to save your analysis and get more checks.
                         `;
-              duplicatesList.appendChild(msg);
-            }, 500);
-          }
-        } else {
-          duplicatesList.innerHTML = `
+            duplicatesList.appendChild(msg);
+          }, 500);
+        }
+      } else {
+        duplicatesList.innerHTML = `
                     <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
                         <h3>No duplicates found!</h3>
                         <p>Your invoices look clean</p>
                     </div>
                 `;
-        }
+      }
 
-        document.getElementById("resultsCard").classList.add("active");
-        setTimeout(() => {
-          const resultsCard = document.getElementById("resultsCard");
-          const navHeight = document.querySelector("nav").offsetHeight;
-          const targetPosition = resultsCard.offsetTop - navHeight - 20;
+      document.getElementById("resultsCard").classList.add("active");
+      setTimeout(() => {
+        const resultsCard = document.getElementById("resultsCard");
+        const navHeight = document.querySelector("nav").offsetHeight;
+        const targetPosition = resultsCard.offsetTop - navHeight - 20;
 
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }, 100);
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }, 100);
 
-        // Update credit balance if logged in
-        if (currentUser) {
-          fetchCreditBalance();
-        }
+      // Update credit balance if logged in
+      if (currentUser) {
+        fetchCreditBalance();
       }
 
       async function downloadReport(format = "pdf") {
