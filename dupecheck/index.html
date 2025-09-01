@@ -1696,7 +1696,9 @@
       });
 
       // Check anonymous user usage
-    async function checkAnonymousUsage() {
+  async function checkAnonymousUsage() {
+    console.log("=== CHECK ANONYMOUS USAGE START ===");
+    
     const counterElement = document.getElementById("checksRemaining");
     const usageCounter = document.getElementById("usageCounter");
     
@@ -1706,16 +1708,19 @@
     }
     
     let deviceToken = localStorage.getItem("dupecheck_device_token");
+    console.log("Token from localStorage:", deviceToken);
     
     // ALWAYS generate a token if we don't have one
-    // This ensures we can track the user even in incognito
     if (!deviceToken) {
         deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
         localStorage.setItem("dupecheck_device_token", deviceToken);
+        console.log("Generated new token:", deviceToken);
     }
     
     // ALWAYS check with backend, never assume
     try {
+        console.log("Sending token to backend:", deviceToken);
+        
         const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
             headers: {
@@ -1723,12 +1728,15 @@
             },
         });
         
+        console.log("Response status:", response.status);
+        
         if (response.ok) {
             const data = await response.json();
-            console.log("Usage check response:", data);
+            console.log("Backend response data:", data);
             
             // Update counter with actual backend value
             const remaining = data.checks_remaining !== undefined ? data.checks_remaining : 3;
+            console.log("Checks remaining:", remaining);
             
             if (counterElement) {
                 counterElement.textContent = remaining;
@@ -1748,6 +1756,7 @@
                 limitWarning.classList.remove("active");
             }
         } else {
+            console.error("Backend returned error:", response.status);
             // Backend error - show default
             if (counterElement) {
                 counterElement.textContent = "3";
@@ -1763,7 +1772,72 @@
         usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
     }
     
+    console.log("=== CHECK ANONYMOUS USAGE END ===");
     return Promise.resolve();
+}
+
+// Also add debugging to processFile function:
+async function processFile(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    
+    console.log("=== PROCESS FILE START ===");
+
+    try {
+        const headers = {};
+        if (authToken) {
+            headers["Authorization"] = `Bearer ${authToken}`;
+            console.log("Using auth token");
+        } else {
+            let deviceToken = localStorage.getItem("dupecheck_device_token");
+            if (!deviceToken) {
+                deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+                localStorage.setItem("dupecheck_device_token", deviceToken);
+                console.log("Generated new token for processing:", deviceToken);
+            }
+            headers["X-User-Token"] = deviceToken;
+            console.log("Sending anonymous token:", deviceToken);
+        }
+
+        const response = await fetch(`${API_URL}/api/analyze`, {
+            method: "POST",
+            headers: headers,
+            body: formData,
+        });
+
+        console.log("Analyze response status:", response.status);
+
+        if (!response.ok) {
+            const error = await response.json();
+            console.error("Analyze error:", error);
+            throw new Error(error.detail || "Analysis failed");
+        }
+
+        const data = await response.json();
+        console.log("Analysis complete, checks remaining:", data.checks_remaining);
+        
+        // Complete progress
+        updateProgress(100, "Complete!");
+        
+        // Short delay to show completion
+        setTimeout(() => {
+            document.getElementById("loadingOverlay").classList.remove("active");
+            displayResults(data);
+        }, 500);
+        
+    } catch (error) {
+        console.error("Process file error:", error);
+        document.getElementById("loadingOverlay").classList.remove("active");
+        customAlert(error.message, "error");
+        
+        if (error.message.includes("Daily limit reached")) {
+            setTimeout(() => {
+                showAuthModal("signup");
+            }, 1500);
+        }
+    }
+    
+    console.log("=== PROCESS FILE END ===");
 }
 
       // Auth functions
