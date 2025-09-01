@@ -1696,47 +1696,75 @@
       });
 
       // Check anonymous user usage
-      async function checkAnonymousUsage() {
-        let deviceToken = localStorage.getItem("dupecheck_device_token");
-        if (!deviceToken) {
-          // New user, they have 3 checks
-          return Promise.resolve();
-        }
-
-        try {
-          const response = await fetch(`${API_URL}/api/check-usage`, {
+    async function checkAnonymousUsage() {
+    const counterElement = document.getElementById("checksRemaining");
+    const usageCounter = document.getElementById("usageCounter");
+    
+    // Show loading state
+    if (counterElement) {
+        counterElement.textContent = "...";
+    }
+    
+    let deviceToken = localStorage.getItem("dupecheck_device_token");
+    
+    // ALWAYS generate a token if we don't have one
+    // This ensures we can track the user even in incognito
+    if (!deviceToken) {
+        deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+        localStorage.setItem("dupecheck_device_token", deviceToken);
+    }
+    
+    // ALWAYS check with backend, never assume
+    try {
+        const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
             headers: {
-              "X-User-Token": deviceToken,
+                "X-User-Token": deviceToken,
             },
-          });
-
-          if (response.ok) {
+        });
+        
+        if (response.ok) {
             const data = await response.json();
-            // Update the counter with actual remaining checks
-            const counterElement = document.getElementById("checksRemaining");
-            if (counterElement && data.checks_remaining !== undefined) {
-              counterElement.textContent = data.checks_remaining;
-
-              // Show warning if needed
-              const limitWarning = document.getElementById("limitWarning");
-              if (data.checks_remaining === 1) {
-                limitWarning.textContent =
-                  "⚠️ You have 1 free check remaining today";
-                limitWarning.classList.add("active");
-              } else if (data.checks_remaining === 0) {
-                limitWarning.textContent =
-                  "You've used all free checks today. Come back tomorrow or create an account!";
-                limitWarning.classList.add("active");
-              }
+            console.log("Usage check response:", data);
+            
+            // Update counter with actual backend value
+            const remaining = data.checks_remaining !== undefined ? data.checks_remaining : 3;
+            
+            if (counterElement) {
+                counterElement.textContent = remaining;
             }
-          }
-        } catch (error) {
-          console.error("Failed to check usage:", error);
+            
+            usageCounter.innerHTML = `<span class="count" id="checksRemaining">${remaining}</span><span>free analyses today (100 invoices max)</span>`;
+            
+            // Show warnings
+            const limitWarning = document.getElementById("limitWarning");
+            if (remaining === 0) {
+                limitWarning.innerHTML = '⚠️ You\'ve used all free checks today. Come back tomorrow or <a href="#" onclick="showAuthModal(\'signup\')" style="color: var(--secondary);">create an account</a>!';
+                limitWarning.classList.add("active");
+            } else if (remaining === 1) {
+                limitWarning.textContent = "⚠️ You have 1 free check remaining today";
+                limitWarning.classList.add("active");
+            } else {
+                limitWarning.classList.remove("active");
+            }
+        } else {
+            // Backend error - show default
+            if (counterElement) {
+                counterElement.textContent = "3";
+            }
+            usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
         }
-
-        return Promise.resolve();
-      }
+    } catch (error) {
+        console.error("Failed to check usage:", error);
+        // On error, show default
+        if (counterElement) {
+            counterElement.textContent = "3";
+        }
+        usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
+    }
+    
+    return Promise.resolve();
+}
 
       // Auth functions
       function showAuthModal(mode) {
