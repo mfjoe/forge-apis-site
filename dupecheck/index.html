@@ -215,6 +215,36 @@
         transform: rotate(180deg);
       }
 
+      .modal-content .alert {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.modal-content .alert.active {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Improve modal form styling */
+.modal-content form {
+    margin-top: 1rem;
+}
+
+.modal-content input:focus {
+    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
+}
+
+/* Success state for inputs */
+.modal-content .alert-success.active {
+    background: rgba(87, 242, 135, 0.15);
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
       .user-dropdown {
         display: none;
         position: absolute;
@@ -1665,54 +1695,113 @@
       let analysisResults = null;
 
       // Initialize
-      document.addEventListener("DOMContentLoaded", async () => {
-        // Hide all UI elements that depend on auth state
-        const authButtons = document.getElementById("authButtons");
-        const userMenu = document.getElementById("userMenu");
-        const usageCounter = document.getElementById("usageCounter");
+   // Initialize
+document.addEventListener("DOMContentLoaded", async () => {
+    // Hide all UI elements that depend on auth state
+    const authButtons = document.getElementById("authButtons");
+    const userMenu = document.getElementById("userMenu");
+    const usageCounter = document.getElementById("usageCounter");
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const paymentStatus = urlParams.get("payment");
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get("payment");
+    const sessionId = urlParams.get("session_id");
+    const resetToken = urlParams.get("reset");
 
-        // Check for password reset token
-        const resetToken = urlParams.get("reset");
-        if (resetToken) {
-          // Clear the URL parameter
-          window.history.replaceState(
+    // Handle payment status FIRST (before any other URL param handling)
+    if (paymentStatus === "success") {
+        // Clean URL immediately
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Show success message after a brief delay
+        setTimeout(() => {
+            showModal({
+                type: "success",
+                title: "Payment Successful! 🎉",
+                message: "Your credits have been added to your account. You can now analyze files up to 2,500 invoices!",
+                onOk: () => {
+                    // Refresh credit balance if logged in
+                    if (authToken) {
+                        fetchCreditBalance();
+                    }
+                }
+            });
+        }, 500);
+    } else if (paymentStatus === "cancelled") {
+        // Clean URL immediately
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Show cancelled message
+        setTimeout(() => {
+            showModal({
+                type: "info",
+                title: "Payment Cancelled",
+                message: "Your payment was cancelled. You can purchase credits anytime from the pricing section.",
+            });
+        }, 500);
+    }
+
+    // Check for password reset token
+    if (resetToken) {
+        // Clear the URL parameter
+        window.history.replaceState(
             {},
             document.title,
             window.location.pathname
-          );
+        );
 
-          // Show password reset modal after a brief delay to ensure DOM is ready
-          setTimeout(() => {
+        // Show password reset modal after a brief delay to ensure DOM is ready
+        setTimeout(() => {
             showPasswordResetModal(resetToken);
-          }, 100);
-        }
+        }, 100);
+    }
 
-        authButtons.style.display = "none";
-        userMenu.style.display = "none";
-        usageCounter.style.display = "none"; // Hide counter initially
+    // Initially hide UI elements
+    authButtons.style.display = "none";
+    userMenu.style.display = "none";
+    usageCounter.style.display = "none"; // Hide counter initially
 
-        if (authToken) {
-          // Wait for auth check to complete
-          await checkAuth();
-        } else {
-          // Check anonymous user's remaining count
-          await checkAnonymousUsage(); // Make this await too
-        }
+    // Check authentication status
+    if (authToken) {
+        // Wait for auth check to complete
+        await checkAuth();
+    } else {
+        // Check anonymous user's remaining count
+        await checkAnonymousUsage();
+    }
 
-        // Now show the counter with correct data
-        usageCounter.style.display = "flex"; // Show counter after check
+    // Now show the counter with correct data
+    usageCounter.style.display = "flex"; // Show counter after check
 
-        updateUI();
-        // Show pricing section always
-        // ... rest of payment status code
-      });
+    // Update UI based on authentication status
+    updateUI();
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+
+            // Skip if href is just "#" or empty
+            if (!href || href === "#") {
+                e.preventDefault();
+                return;
+            }
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const navHeight = document.querySelector("nav").offsetHeight;
+                const targetPosition = target.offsetTop - navHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
+});
 
       // Check anonymous user usage
   async function checkAnonymousUsage() {
-    console.log("=== CHECK ANONYMOUS USAGE START ===");
     
     const counterElement = document.getElementById("checksRemaining");
     const usageCounter = document.getElementById("usageCounter");
@@ -1727,7 +1816,6 @@
     
     // ALWAYS check with backend
     try {
-        console.log("Sending token to backend:", deviceToken);
         
         const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
@@ -1736,14 +1824,11 @@
             },
         });
         
-        console.log("Response status:", response.status);
         
         if (response.ok) {
             const data = await response.json();
-            console.log("Backend response data:", data);
             
             const remaining = data.checks_remaining !== undefined ? data.checks_remaining : 3;
-            console.log("Checks remaining:", remaining);
             
             if (counterElement) {
                 counterElement.textContent = remaining;
@@ -1777,17 +1862,7 @@
         usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
     }
     
-    console.log("=== CHECK ANONYMOUS USAGE END ===");
     return Promise.resolve();
-}
-
-let checkUsageCallCount = 0;
-const originalCheckAnonymousUsage = checkAnonymousUsage;
-checkAnonymousUsage = async function() {
-    checkUsageCallCount++;
-    console.log(`checkAnonymousUsage called ${checkUsageCallCount} times`);
-    console.trace('Called from:');
-    return originalCheckAnonymousUsage();
 }
 
 // Also add debugging to processFile function:
@@ -1940,40 +2015,35 @@ async function processFile(file) {
         }
       }
 
-      async function checkAuth() {
-        if (!authToken) return Promise.resolve();
+   async function checkAuth() {
+    if (!authToken) return Promise.resolve();
 
-        try {
-          const response = await fetch(`${API_URL}/api/user/usage`, {
+    try {
+        const response = await fetch(`${API_URL}/api/user/usage`, {
             headers: {
-              Authorization: `Bearer ${authToken}`,
+                Authorization: `Bearer ${authToken}`,
             },
-          });
+        });
 
-          if (!response.ok) {
+        if (!response.ok) {
             throw new Error("Invalid token");
-          }
+        }
 
-          const data = await response.json();
-          currentUser = {
+        const data = await response.json();
+        currentUser = {
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
             can_analyze: data.can_analyze,
-          };
-
-          // Get email from localStorage
-          const email = localStorage.getItem("dupecheck_email");
-          if (email) {
-            currentUser.email = email;
-          }
-        } catch (error) {
-          // Invalid token, clear it
-          localStorage.removeItem("dupecheck_token");
-          localStorage.removeItem("dupecheck_email");
-          authToken = null;
-          currentUser = null;
-        }
-      }
+            email: localStorage.getItem("dupecheck_email") // FIX: Always include email
+        };
+    } catch (error) {
+        // Invalid token, clear it
+        localStorage.removeItem("dupecheck_token");
+        localStorage.removeItem("dupecheck_email");
+        authToken = null;
+        currentUser = null;
+    }
+}
 
       function logout() {
         localStorage.removeItem("dupecheck_token");
@@ -2000,7 +2070,7 @@ async function processFile(file) {
         }
       });
 
-     function updateUI() {
+function updateUI() {
     const authButtons = document.getElementById("authButtons");
     const userMenu = document.getElementById("userMenu");
     const usageCounter = document.getElementById("usageCounter");
@@ -2010,8 +2080,8 @@ async function processFile(file) {
         authButtons.style.display = "none";
         userMenu.style.display = "block";
 
-        // Show email
-        const email = localStorage.getItem("dupecheck_email") || "User";
+        // FIX: Get email from currentUser object OR localStorage
+        const email = currentUser.email || localStorage.getItem("dupecheck_email") || "User";
         document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
 
@@ -2021,10 +2091,6 @@ async function processFile(file) {
         authButtons.style.display = "flex";
         authButtons.style.gap = "1rem";
         userMenu.style.display = "none";
-
-        // DON'T reset the counter for anonymous users!
-        // checkAnonymousUsage() has already set it correctly
-        // Just ensure the counter is visible
         usageCounter.style.display = "flex";
     }
 }
@@ -2103,18 +2169,15 @@ function simulateProgress(file) {
     const formData = new FormData();
     formData.append("file", file);
     
-    console.log("=== PROCESS FILE START ===");
 
     try {
         const headers = {};
         if (authToken) {
             headers["Authorization"] = `Bearer ${authToken}`;
-            console.log("Using auth token");
         } else {
             // Use the same function to get token
             const deviceToken = getOrCreateDeviceToken();
             headers["X-User-Token"] = deviceToken;
-            console.log("Sending anonymous token:", deviceToken);
         }
 
         const response = await fetch(`${API_URL}/api/analyze`, {
@@ -2123,7 +2186,6 @@ function simulateProgress(file) {
             body: formData,
         });
 
-        console.log("Analyze response status:", response.status);
 
         if (!response.ok) {
             const error = await response.json();
@@ -2132,7 +2194,6 @@ function simulateProgress(file) {
         }
 
         const data = await response.json();
-        console.log("Analysis complete, checks remaining:", data.checks_remaining);
         
         // Complete progress
         updateProgress(100, "Complete!");
@@ -2144,7 +2205,6 @@ function simulateProgress(file) {
         }, 500);
         
     } catch (error) {
-        console.error("Process file error:", error);
         document.getElementById("loadingOverlay").classList.remove("active");
         customAlert(error.message, "error");
         
@@ -2155,7 +2215,6 @@ function simulateProgress(file) {
         }
     }
     
-    console.log("=== PROCESS FILE END ===");
 }
 
 
@@ -2772,31 +2831,42 @@ Visit dupecheck.forgeapis.com for more
       }
 
       // Add this new function
-      function showPasswordResetModal(token) {
-        const modal = document.createElement("div");
-        modal.className = "modal active";
-        modal.innerHTML = `
+function showPasswordResetModal(token) {
+    const modal = document.createElement("div");
+    modal.className = "modal active";
+    modal.innerHTML = `
         <div class="modal-content">
             <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
-            <h2>Reset Your Password</h2>
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Reset Your Password</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Enter your new password below. It must be at least 6 characters long.
+            </p>
             <form onsubmit="handlePasswordReset(event, '${token}')">
                 <div class="form-group">
                     <label for="newPassword">New Password</label>
-                    <input type="password" id="newPassword" required minlength="6">
+                    <input type="password" id="newPassword" required minlength="6" 
+                           placeholder="Enter new password">
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" required minlength="6">
+                    <input type="password" id="confirmPassword" required minlength="6"
+                           placeholder="Confirm new password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Reset Password
                 </button>
             </form>
             <div class="alert alert-error" id="resetError"></div>
+            <div class="alert alert-success" id="resetSuccess"></div>
         </div>
     `;
-        document.body.appendChild(modal);
-      }
+    document.body.appendChild(modal);
+    
+    // Focus on first input
+    setTimeout(() => {
+        document.getElementById("newPassword").focus();
+    }, 100);
+}
 
       function scrollToUpload() {
   const uploadCard = document.querySelector('.upload-card');
@@ -2810,49 +2880,132 @@ Visit dupecheck.forgeapis.com for more
   }
 }
 
-      async function handlePasswordReset(event, token) {
-        event.preventDefault();
-
-        const newPassword = document.getElementById("newPassword").value;
-        const confirmPassword =
-          document.getElementById("confirmPassword").value;
-        const errorDiv = document.getElementById("resetError");
-
-        if (newPassword !== confirmPassword) {
-          errorDiv.textContent = "Passwords don't match";
-          errorDiv.classList.add("active");
-          return;
-        }
-
-        try {
-          const response = await fetch(`${API_URL}/api/auth/reset-password`, {
+    async function handlePasswordReset(event, token) {
+    event.preventDefault();
+    
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorDiv = document.getElementById("resetError");
+    const successDiv = document.getElementById("resetSuccess");
+    
+    // Clear previous messages
+    errorDiv.classList.remove("active");
+    successDiv.classList.remove("active");
+    
+    if (newPassword !== confirmPassword) {
+        errorDiv.textContent = "Passwords don't match. Please try again.";
+        errorDiv.classList.add("active");
+        return;
+    }
+    
+    if (newPassword.length < 6) {
+        errorDiv.textContent = "Password must be at least 6 characters long.";
+        errorDiv.classList.add("active");
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = "Resetting...";
+    submitButton.disabled = true;
+    
+    try {
+        const response = await fetch(`${API_URL}/api/auth/reset-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              token: token,
-              password: newPassword,
+                token: token,
+                password: newPassword,
             }),
-          });
-
-          if (!response.ok) {
+        });
+        
+        if (!response.ok) {
             const error = await response.json();
             throw new Error(error.detail || "Reset failed");
-          }
-
-          // Success - close modal and show login
-          document.querySelector(".modal.active").remove();
-          showModal({
-            type: "success",
-            title: "Password Reset",
-            message:
-              "Your password has been reset successfully. You can now login.",
-            onOk: () => showAuthModal("login"),
-          });
-        } catch (error) {
-          errorDiv.textContent = error.message;
-          errorDiv.classList.add("active");
         }
-      }
+        
+        // Success
+        successDiv.textContent = "Password reset successfully! Redirecting to login...";
+        successDiv.classList.add("active");
+        
+        // Close modal and show login after delay
+        setTimeout(() => {
+            document.querySelector(".modal.active").remove();
+            showAuthModal("login");
+            
+            // Show success message in login modal
+            setTimeout(() => {
+                const authSuccess = document.getElementById("authSuccess");
+                authSuccess.textContent = "Password reset successful! You can now login with your new password.";
+                authSuccess.classList.add("active");
+            }, 100);
+        }, 2000);
+        
+    } catch (error) {
+        errorDiv.textContent = error.message;
+        errorDiv.classList.add("active");
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }
+}
+function showForgotPassword(event) {
+    if (event && event.preventDefault) {
+        event.preventDefault();
+    }
+    
+    closeAuthModal();
+    
+    // Create a nice modal for email input
+    showModal({
+        type: "info",
+        title: "Reset Password",
+        message: "Enter your email address and we'll send you a password reset link.",
+        showCancel: true,
+        okText: "Send Reset Link",
+        onOk: async () => {
+            const email = prompt("Enter your email address:");
+            if (!email) return;
+            
+            // Show loading
+            showModal({
+                type: "info",
+                title: "Sending...",
+                message: "Sending password reset email..."
+            });
+            
+            try {
+                const response = await fetch(`${API_URL}/api/auth/forgot-password`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email }),
+                });
+                
+                if (!response.ok) {
+                    throw new Error("Request failed");
+                }
+                
+                closeModal();
+                setTimeout(() => {
+                    showModal({
+                        type: "success",
+                        title: "Check Your Email",
+                        message: "If an account exists with that email, we've sent a password reset link. Please check your inbox and spam folder.",
+                    });
+                }, 100);
+            } catch (error) {
+                closeModal();
+                setTimeout(() => {
+                    showModal({
+                        type: "error",
+                        title: "Error",
+                        message: "Failed to send reset email. Please try again later.",
+                    });
+                }, 100);
+            }
+        }
+    });
+}
     </script>
   </body>
 </html>
