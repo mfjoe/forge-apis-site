@@ -1780,6 +1780,16 @@
     console.log("=== CHECK ANONYMOUS USAGE END ===");
     return Promise.resolve();
 }
+
+let checkUsageCallCount = 0;
+const originalCheckAnonymousUsage = checkAnonymousUsage;
+checkAnonymousUsage = async function() {
+    checkUsageCallCount++;
+    console.log(`checkAnonymousUsage called ${checkUsageCallCount} times`);
+    console.trace('Called from:');
+    return originalCheckAnonymousUsage();
+}
+
 // Also add debugging to processFile function:
 async function processFile(file) {
     const formData = new FormData();
