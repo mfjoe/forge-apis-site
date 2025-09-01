@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Forge APIs</title>
-    <meta name="description" content="Forge APIs privacy policy. Learn how we collect, use, and protect your data.">
+    <meta name="description" content="Forge APIs privacy policy. Learn how we collect, use, and protect your data across all our products including DupeCheck and RiskScore API.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,24 +234,19 @@
             margin-top: 0;
         }
         
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Product-specific box */
+        .product-box {
+            background: #F0FDF4;
+            border: 1px solid #86EFAC;
+            border-radius: 8px;
+            padding: 20px;
             margin: 20px 0;
         }
         
-        th {
-            background: var(--light-gray);
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid var(--gray);
-        }
-        
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #E5E7EB;
+        .product-box h4 {
+            color: #166534;
+            margin-top: 0;
+            margin-bottom: 12px;
         }
         
         /* Table of Contents */
@@ -354,14 +349,6 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            
-            table {
-                font-size: 14px;
-            }
-            
-            th, td {
-                padding: 8px;
-            }
         }
     </style>
 </head>
@@ -381,7 +368,7 @@
     <div class="legal-header">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Version 1.1 - Last updated: August 17, 2025</p>
+            <p class="last-updated">Version 1.2 - Last updated: January 2025</p>
         </div>
     </div>
 
@@ -389,7 +376,7 @@
     <div class="legal-content">
         
         <div class="important-box">
-            <p><strong>Overview:</strong> At Forge APIs ("we", "our", or "us"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our API services, website, and related products.</p>
+            <p><strong>Overview:</strong> At Forge APIs ("we", "our", or "us"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our products including DupeCheck, RiskScore API, and other services.</p>
             <p>By using our services, you agree to the collection and use of information in accordance with this policy.</p>
         </div>
 
@@ -397,16 +384,16 @@
             <h3>Table of Contents</h3>
             <ul>
                 <li><a href="#information-collect">Information We Collect</a></li>
+                <li><a href="#product-specific">Product-Specific Data Handling</a></li>
                 <li><a href="#legal-basis">Legal Basis for Processing</a></li>
                 <li><a href="#how-we-use">How We Use Your Information</a></li>
-                <li><a href="#api-data">Data Processed Through Our APIs</a></li>
                 <li><a href="#sharing">Information Sharing</a></li>
-                <li><a href="#international">International Data Transfers</a></li>
                 <li><a href="#security">Data Security</a></li>
                 <li><a href="#retention">Data Retention</a></li>
                 <li><a href="#your-rights">Your Rights</a></li>
                 <li><a href="#gdpr">GDPR Compliance</a></li>
                 <li><a href="#ccpa">California Privacy Rights</a></li>
+                <li><a href="#cookies">Cookies & Local Storage</a></li>
                 <li><a href="#age">Age Restrictions</a></li>
                 <li><a href="#breach">Data Breach Notification</a></li>
                 <li><a href="#changes">Changes to This Policy</a></li>
@@ -420,21 +407,58 @@
         <ul>
             <li><strong>Account Information:</strong> Email address, name, and company name when you sign up</li>
             <li><strong>Payment Information:</strong> Processed securely through Stripe (we don't store card details)</li>
-            <li><strong>API Usage Data:</strong> API keys, request logs, and usage metrics</li>
+            <li><strong>API Usage Data:</strong> API keys, request logs, and usage metrics (API products only)</li>
+            <li><strong>Uploaded Files:</strong> Temporarily processed files for analysis (DupeCheck)</li>
             <li><strong>Support Communications:</strong> Information you provide when contacting support</li>
         </ul>
 
         <h3>Information Collected Automatically</h3>
         <ul>
             <li><strong>Log Data:</strong> IP addresses, browser type, operating system, and request timestamps</li>
-            <li><strong>API Analytics:</strong> Endpoint usage, response times, and error rates</li>
-            <li><strong>Cookies:</strong> Essential cookies for authentication and analytics (see our Cookie Policy)</li>
+            <li><strong>Usage Analytics:</strong> Feature usage, response times, and error rates</li>
+            <li><strong>Device Information:</strong> Anonymous device identifiers for usage tracking</li>
+            <li><strong>Local Storage:</strong> Authentication tokens and user preferences</li>
         </ul>
+
+        <h2 id="product-specific">Product-Specific Data Handling</h2>
+        
+        <div class="product-box">
+            <h4>🔍 DupeCheck - Duplicate Invoice Detector</h4>
+            <p><strong>What we process:</strong></p>
+            <ul>
+                <li>Invoice files (CSV/Excel) are processed in server memory only</li>
+                <li>Files are analyzed for duplicate patterns and immediately discarded</li>
+                <li>We NEVER store your actual invoice data, vendor information, or amounts</li>
+            </ul>
+            <p><strong>What we store:</strong></p>
+            <ul>
+                <li><strong>Registered Users:</strong> Analysis summaries (filename, counts, date) for 90 days</li>
+                <li><strong>Paid Users Only:</strong> Top 20 duplicate summaries (no sensitive data) for 90 days</li>
+                <li><strong>Anonymous Users:</strong> Device token for 7 days (usage tracking only)</li>
+                <li><strong>All Users:</strong> No raw invoice data is ever stored</li>
+            </ul>
+        </div>
+
+        <div class="product-box">
+            <h4>📊 RiskScore API</h4>
+            <p><strong>What we process:</strong></p>
+            <ul>
+                <li>API request data for risk scoring algorithms</li>
+                <li>Pattern analysis without creating persistent profiles</li>
+                <li>No automated decision-making about individuals</li>
+            </ul>
+            <p><strong>What we store:</strong></p>
+            <ul>
+                <li>API request logs for 30 days (debugging and security)</li>
+                <li>Aggregated usage metrics (non-identifiable)</li>
+                <li>No personal profiles or individual tracking</li>
+            </ul>
+        </div>
 
         <h2 id="legal-basis">Legal Basis for Processing (GDPR)</h2>
         <p>We process personal data based on the following legal grounds:</p>
         <ul>
-            <li><strong>Contract Performance:</strong> To provide the API services you've subscribed to</li>
+            <li><strong>Contract Performance:</strong> To provide the services you've subscribed to</li>
             <li><strong>Legitimate Interests:</strong> For fraud prevention, security, and service improvement</li>
             <li><strong>Legal Obligation:</strong> To comply with applicable laws and regulations</li>
             <li><strong>Consent:</strong> For marketing communications (where applicable)</li>
@@ -443,7 +467,7 @@
         <h2 id="how-we-use">How We Use Your Information</h2>
         <p>We use the collected information for:</p>
         <ul>
-            <li>Providing and maintaining our API services</li>
+            <li>Providing and maintaining our services</li>
             <li>Processing payments and managing subscriptions</li>
             <li>Sending service updates and technical notices</li>
             <li>Responding to support requests</li>
@@ -452,71 +476,52 @@
             <li>Complying with legal obligations</li>
         </ul>
 
-        <h2 id="api-data">Data Processed Through Our APIs</h2>
-        
-        <div class="critical-notice">
-            <h4>Important for RiskScore and Other API Users</h4>
-            <p>When you submit data through our APIs:</p>
-            <ul>
-                <li>We process data ONLY as instructed by you (as a data processor)</li>
-                <li>You remain the data controller for all submitted data</li>
-                <li>We do NOT store submitted data beyond 30 days (for debugging purposes only)</li>
-                <li>We do NOT use submitted data for any other purpose</li>
-                <li>We do NOT share submitted data with third parties</li>
-                <li>We do NOT verify the accuracy or legality of submitted data</li>
-                <li>You warrant you have legal basis to submit all data</li>
-                <li>We are NOT responsible for the content you submit</li>
-            </ul>
-        </div>
-
-        <h3>RiskScore Specific Privacy Notice</h3>
-        <ul>
-            <li>Risk scores are generated using pattern analysis algorithms</li>
-            <li>We do NOT create persistent profiles of individuals</li>
-            <li>We do NOT make automated decisions about individuals</li>
-            <li>Customers are solely responsible for how they use risk scores</li>
-            <li>We do NOT determine or verify actual ages or identities</li>
-        </ul>
-
         <h2 id="sharing">Information Sharing</h2>
         <p>We do not sell, trade, or rent your personal information. We may share information with:</p>
         <ul>
-            <li><strong>Service Providers:</strong> Stripe for payments, Cloudflare for hosting and security, Railway for infrastructure</li>
+            <li><strong>Service Providers:</strong> 
+                <ul>
+                    <li>Stripe - Payment processing</li>
+                    <li>Railway - Application and database hosting</li>
+                    <li>Cloudflare - CDN and security</li>
+                </ul>
+            </li>
             <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
             <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
             <li><strong>Your Consent:</strong> When you explicitly agree to sharing</li>
             <li><strong>Aggregated Data:</strong> We may share anonymized, aggregated data that cannot identify you</li>
         </ul>
 
-        <h2 id="international">International Data Transfers</h2>
-        <p>Your data may be transferred to and processed in countries other than your own:</p>
-        <ul>
-            <li>Our primary servers are located in the United States</li>
-            <li>We use Standard Contractual Clauses for EU/UK data transfers</li>
-            <li>We ensure appropriate safeguards are in place for all transfers</li>
-            <li>By using our services, you consent to these transfers</li>
-        </ul>
-
         <h2 id="security">Data Security</h2>
         <p>We implement appropriate technical and organizational measures to protect your data:</p>
         <ul>
-            <li>All data transmission is encrypted using HTTPS/TLS 1.3</li>
-            <li>API keys are hashed using industry-standard algorithms</li>
+            <li>All data transmission is encrypted using HTTPS/TLS</li>
+            <li>Passwords are hashed using bcrypt (never stored in plain text)</li>
+            <li>API keys are encrypted and securely stored</li>
             <li>Regular security audits and vulnerability assessments</li>
             <li>Limited access to personal data on a need-to-know basis</li>
             <li>Secure data centers with physical security controls</li>
-            <li>Regular backups with encrypted storage</li>
+            <li>Rate limiting to prevent abuse</li>
         </ul>
         <p>However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
 
         <h2 id="retention">Data Retention</h2>
         <p>We retain your information for as long as necessary to provide our services and comply with legal obligations:</p>
+        
+        <h3>DupeCheck Specific:</h3>
         <ul>
-            <li><strong>Account Data:</strong> Retained while your account is active plus 90 days</li>
-            <li><strong>API Request Logs:</strong> Retained for 30 days for debugging and security</li>
-            <li><strong>Payment Records:</strong> Retained for 7 years as required for tax and accounting</li>
-            <li><strong>Support Communications:</strong> Retained for 2 years after resolution</li>
-            <li><strong>Submitted API Data:</strong> Automatically deleted after 30 days</li>
+            <li><strong>Analysis Summaries:</strong> 90 days (automatically deleted)</li>
+            <li><strong>Anonymous Usage:</strong> 7 days (automatically deleted)</li>
+            <li><strong>Uploaded Files:</strong> Immediately deleted after processing</li>
+        </ul>
+        
+        <h3>General:</h3>
+        <ul>
+            <li><strong>Account Data:</strong> Active account + 90 days after closure</li>
+            <li><strong>API Request Logs:</strong> 30 days</li>
+            <li><strong>Payment Records:</strong> 7 years (legal requirement)</li>
+            <li><strong>Support Communications:</strong> 2 years after resolution</li>
+            <li><strong>Password Reset Tokens:</strong> 1 hour</li>
         </ul>
 
         <h2 id="your-rights">Your Rights</h2>
@@ -540,6 +545,7 @@
             <li>We respond to all valid requests within 30 days</li>
             <li>You have the right to lodge a complaint with your supervisory authority</li>
             <li>We maintain records of processing activities as required</li>
+            <li>Data transfers outside the EEA use Standard Contractual Clauses</li>
         </ul>
 
         <h2 id="ccpa">California Privacy Rights (CCPA)</h2>
@@ -551,6 +557,23 @@
             <li><strong>Right to Non-Discrimination:</strong> Equal service regardless of privacy choices</li>
         </ul>
         <p>To exercise these rights, California residents can contact privacy@forgeapis.com.</p>
+
+        <h2 id="cookies">Cookies & Local Storage</h2>
+        <p>We use minimal browser storage for functionality:</p>
+        
+        <h3>DupeCheck:</h3>
+        <ul>
+            <li><strong>Authentication:</strong> JWT tokens in localStorage</li>
+            <li><strong>Device Tracking:</strong> Anonymous identifier for free usage limits</li>
+            <li><strong>User Preferences:</strong> Email for display purposes</li>
+            <li><strong>No tracking cookies:</strong> We don't use analytics or advertising cookies</li>
+        </ul>
+        
+        <h3>API Products:</h3>
+        <ul>
+            <li>APIs don't use cookies - authentication via headers</li>
+            <li>Dashboard may use session cookies for login</li>
+        </ul>
 
         <h2 id="age">Age Restrictions</h2>
         <div class="important-box">
@@ -568,31 +591,10 @@
             <li>We will advise on steps you can take to protect yourself</li>
         </ul>
 
-        <h2 id="cookie-consent">Cookie Consent</h2>
-        <ul>
-            <li>EU/UK visitors will be asked for consent before setting non-essential cookies</li>
-            <li>Essential cookies do not require consent as they're necessary for service operation</li>
-            <li>You can withdraw cookie consent at any time</li>
-            <li>See our <a href="/cookies.html">Cookie Policy</a> for details</li>
-        </ul>
-
-        <div class="info-box">
-            <h4>API Note</h4>
-            <p>Our API endpoints do not use cookies. Authentication is handled via API keys in request headers, making our APIs privacy-compliant by design.</p>
-        </div>
-
-        <h2 id="dpo">Data Protection Contact</h2>
-        <p>For privacy concerns or to exercise your rights, contact our data protection team:</p>
-        <ul>
-            <li><strong>Email:</strong> privacy@forgeapis.com</li>
-            <li><strong>Response Time:</strong> Within 30 days</li>
-            <li><strong>Postal Address:</strong> Forge APIs, London, England, United Kingdom</li>
-        </ul>
-
         <h2 id="changes">Changes to This Policy</h2>
         <ul>
-            <li><strong>Current Version:</strong> 1.1</li>
-            <li><strong>Effective Date:</strong> August 17, 2025</li>
+            <li><strong>Current Version:</strong> 1.2</li>
+            <li><strong>Effective Date:</strong> January 2025</li>
             <li>Material changes will be notified via email to registered users</li>
             <li>Continued use after changes constitutes acceptance</li>
             <li>Previous versions available upon request</li>
@@ -604,7 +606,7 @@
             <li><strong>Email:</strong> privacy@forgeapis.com</li>
             <li><strong>General Inquiries:</strong> hello@forgeapis.com</li>
             <li><strong>Website:</strong> forgeapis.com</li>
-            <li><strong>Location:</strong> London, England, United Kingdom</li>
+            <li><strong>Response Time:</strong> Within 48 hours</li>
         </ul>
 
         <div class="critical-notice" style="margin-top: 40px;">
@@ -613,7 +615,7 @@
             <ul>
                 <li>You have read and understood this Privacy Policy</li>
                 <li>You agree to our data processing practices</li>
-                <li>You are responsible for the data you submit through our APIs</li>
+                <li>You are responsible for any data you submit to our services</li>
                 <li>You will comply with applicable privacy laws for your own users</li>
             </ul>
         </div>
@@ -626,22 +628,22 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">🔨 Forge APIs</div>
-                    <p>Production-ready APIs for modern applications.</p>
-                    <p style="margin-top: 20px;">© 2024 Forge APIs. All rights reserved.</p>
+                    <p>Production-ready APIs and tools for modern applications.</p>
+                    <p style="margin-top: 20px;">© 2025 Forge APIs. All rights reserved.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Products</h4>
+                    <a href="/dupecheck">DupeCheck</a>
                     <a href="/riskscore">RiskScore API</a>
-                    <a href="/#products">All Products</a>
                     <a href="/#pricing">Pricing</a>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Legal</h4>
-                    <a href="/privacy.html">Privacy Policy</a>
-                    <a href="/terms.html">Terms of Service</a>
-                    <a href="/cookies.html">Cookie Policy</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
                 </div>
             </div>
             
