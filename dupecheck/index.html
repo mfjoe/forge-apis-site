@@ -1574,6 +1574,21 @@
       // Configuration
       const API_URL = "https://dupecheck-production.up.railway.app";
 
+      function getOrCreateDeviceToken() {
+    let deviceToken = localStorage.getItem("dupecheck_device_token");
+    
+    if (!deviceToken) {
+        // Generate ONCE and store immediately
+        deviceToken = "anon_" + Math.random().toString(36).substring(2, 10) + Date.now().toString(36).substring(-6);
+        localStorage.setItem("dupecheck_device_token", deviceToken);
+        console.log("Created new device token:", deviceToken);
+    } else {
+        console.log("Using existing device token:", deviceToken);
+    }
+    
+    return deviceToken;
+}
+
       // Custom Modal System
       function showModal(options = {}) {
         const modal = document.getElementById("customModal");
@@ -1707,17 +1722,10 @@
         counterElement.textContent = "...";
     }
     
-    let deviceToken = localStorage.getItem("dupecheck_device_token");
-    console.log("Token from localStorage:", deviceToken);
+    // Get or create token ONCE
+    const deviceToken = getOrCreateDeviceToken();
     
-    // ALWAYS generate a token if we don't have one
-    if (!deviceToken) {
-        deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
-        localStorage.setItem("dupecheck_device_token", deviceToken);
-        console.log("Generated new token:", deviceToken);
-    }
-    
-    // ALWAYS check with backend, never assume
+    // ALWAYS check with backend
     try {
         console.log("Sending token to backend:", deviceToken);
         
@@ -1734,7 +1742,6 @@
             const data = await response.json();
             console.log("Backend response data:", data);
             
-            // Update counter with actual backend value
             const remaining = data.checks_remaining !== undefined ? data.checks_remaining : 3;
             console.log("Checks remaining:", remaining);
             
@@ -1757,7 +1764,6 @@
             }
         } else {
             console.error("Backend returned error:", response.status);
-            // Backend error - show default
             if (counterElement) {
                 counterElement.textContent = "3";
             }
@@ -1765,7 +1771,6 @@
         }
     } catch (error) {
         console.error("Failed to check usage:", error);
-        // On error, show default
         if (counterElement) {
             counterElement.textContent = "3";
         }
@@ -1775,7 +1780,6 @@
     console.log("=== CHECK ANONYMOUS USAGE END ===");
     return Promise.resolve();
 }
-
 // Also add debugging to processFile function:
 async function processFile(file) {
     const formData = new FormData();
@@ -2085,21 +2089,22 @@ function simulateProgress(file) {
     });
 }
 
-     async function processFile(file) {
+   async function processFile(file) {
     const formData = new FormData();
     formData.append("file", file);
+    
+    console.log("=== PROCESS FILE START ===");
 
     try {
         const headers = {};
         if (authToken) {
             headers["Authorization"] = `Bearer ${authToken}`;
+            console.log("Using auth token");
         } else {
-            let deviceToken = localStorage.getItem("dupecheck_device_token");
-            if (!deviceToken) {
-                deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
-                localStorage.setItem("dupecheck_device_token", deviceToken);
-            }
+            // Use the same function to get token
+            const deviceToken = getOrCreateDeviceToken();
             headers["X-User-Token"] = deviceToken;
+            console.log("Sending anonymous token:", deviceToken);
         }
 
         const response = await fetch(`${API_URL}/api/analyze`, {
@@ -2108,12 +2113,16 @@ function simulateProgress(file) {
             body: formData,
         });
 
+        console.log("Analyze response status:", response.status);
+
         if (!response.ok) {
             const error = await response.json();
+            console.error("Analyze error:", error);
             throw new Error(error.detail || "Analysis failed");
         }
 
         const data = await response.json();
+        console.log("Analysis complete, checks remaining:", data.checks_remaining);
         
         // Complete progress
         updateProgress(100, "Complete!");
@@ -2125,16 +2134,20 @@ function simulateProgress(file) {
         }, 500);
         
     } catch (error) {
+        console.error("Process file error:", error);
         document.getElementById("loadingOverlay").classList.remove("active");
         customAlert(error.message, "error");
         
-        if (error.message.includes("Daily limit reached")) {
+        if (error.message.includes("used your 3 free daily analyses")) {
             setTimeout(() => {
                 showAuthModal("signup");
             }, 1500);
         }
     }
+    
+    console.log("=== PROCESS FILE END ===");
 }
+
 
  function displayResults(data) {
     analysisResults = data;  // Store globally for later use
