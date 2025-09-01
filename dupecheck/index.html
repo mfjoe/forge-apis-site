@@ -187,6 +187,260 @@ nav {
     position: relative;
 }
 
+.user-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 40px;
+    max-width: 280px;
+    padding: 0 12px 0 6px;
+    background: rgba(44, 47, 51, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-family: inherit;
+    backdrop-filter: blur(10px);
+}
+
+.user-button:hover {
+    background: rgba(44, 47, 51, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.user-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.5);
+}
+
+.user-button.active {
+    background: rgba(44, 47, 51, 0.95);
+    border-color: var(--primary);
+}
+
+/* Avatar with initials */
+.user-avatar {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Button content */
+.user-button-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.user-email {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-primary);
+}
+
+.user-separator {
+    color: var(--text-secondary);
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.user-plan {
+    flex-shrink: 0;
+    padding: 2px 8px;
+    background: rgba(88, 101, 242, 0.15);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-plan.pro {
+    background: rgba(87, 242, 135, 0.15);
+    border-color: rgba(87, 242, 135, 0.3);
+    color: var(--secondary);
+}
+
+/* Caret icon */
+.user-caret {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.user-button.active .user-caret {
+    transform: rotate(180deg);
+}
+
+/* Enhanced Dropdown */
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 280px;
+    background: rgba(44, 47, 51, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    animation: dropdownSlide 0.2s ease;
+}
+
+.user-dropdown.active {
+    display: block;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-header {
+    padding: 16px;
+    background: rgba(26, 27, 38, 0.4);
+}
+
+.dropdown-email {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.dropdown-plan {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.dropdown-credits {
+    padding: 2px 6px;
+    background: rgba(88, 101, 242, 0.1);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--primary);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(88, 101, 242, 0.1);
+    color: var(--primary);
+    padding-left: 20px;
+}
+
+.dropdown-signout {
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    color: var(--danger);
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.dropdown-signout:hover {
+    background: rgba(237, 66, 69, 0.1);
+    padding-left: 20px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .user-button {
+        max-width: 200px;
+        height: 36px;
+        padding: 0 10px 0 4px;
+    }
+    
+    .user-avatar {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+    }
+    
+    .user-email {
+        max-width: 100px;
+        font-size: 13px;
+    }
+    
+    .user-separator {
+        display: none;
+    }
+    
+    .user-plan {
+        display: none; /* Hide on mobile to save space */
+    }
+    
+    .user-dropdown {
+        width: 260px;
+        right: -10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-button {
+        max-width: 160px;
+    }
+    
+    .user-email {
+        max-width: 80px;
+    }
+}
+
 .user-info {
     display: flex;
     align-items: center;
@@ -1020,7 +1274,7 @@ input[type="file"] {
     
     /* Container padding adjustment */
     .container {
-        padding: 6rem 1rem 2rem;
+        padding: 7rem 1rem 2rem;
     }
     
     /* Hero Section */
@@ -1501,16 +1755,37 @@ input[type="file"] {
               Sign Up
             </button>
           </div>
-          <div id="userMenu" class="user-menu" style="display: none">
-            <div class="user-info" onclick="toggleUserDropdown()">
-              <span id="userEmail"></span>
+<div id="userMenu" class="user-menu" style="display: none">
+    <button class="user-button" onclick="toggleUserDropdown()" aria-haspopup="menu" aria-expanded="false" id="userButton">
+        <span class="user-avatar" id="userAvatar">TE</span>
+        <div class="user-button-content">
+            <span class="user-email" id="userEmail">test@example.com</span>
+            <span class="user-separator">•</span>
+            <span class="user-plan" id="userPlan">Free</span>
+        </div>
+        <svg class="user-caret" id="userCaret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
+        </svg>
+    </button>
+    
+    <div class="user-dropdown" id="userDropdown">
+        <div class="dropdown-header">
+            <div class="dropdown-email" id="dropdownEmail">test@example.com</div>
+            <div class="dropdown-plan">
+                <span id="dropdownPlanText">Free tier</span>
+                <span class="dropdown-credits" id="dropdownCredits">3 checks/day</span>
             </div>
-            <div class="user-dropdown" id="userDropdown">
-              <a href="#" onclick="viewHistory()">Analysis History</a>
-              <a href="#pricing">Upgrade Plan</a>
-              <button onclick="logout()">Logout</button>
-            </div>
-          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <ul class="dropdown-menu">
+            <li><a href="#" onclick="viewHistory()">Analysis History</a></li>
+            <li><a href="#pricing" onclick="toggleUserDropdown()">Upgrade Plan</a></li>
+            <li><a href="#" onclick="viewSettings()">Settings</a></li>
+        </ul>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-signout" onclick="logout()">Sign out</button>
+    </div>
+</div>
           <a href="#pricingSection">Pricing</a>
         </div>
       </div>
@@ -2394,39 +2669,57 @@ async function processFile(file) {
         window.location.reload();
       }
 
-      function toggleUserDropdown() {
-        const dropdown = document.getElementById("userDropdown");
-        const userInfo = document.querySelector(".user-info");
+    function toggleUserDropdown() {
+    const dropdown = document.getElementById("userDropdown");
+    const userButton = document.getElementById("userButton");
+    
+    const isOpen = dropdown.classList.contains("active");
+    
+    if (isOpen) {
+        dropdown.classList.remove("active");
+        userButton.classList.remove("active");
+        userButton.setAttribute("aria-expanded", "false");
+    } else {
+        dropdown.classList.add("active");
+        userButton.classList.add("active");
+        userButton.setAttribute("aria-expanded", "true");
+    }
+}
 
-        dropdown.classList.toggle("active");
-        userInfo.classList.toggle("active");
-      }
-
-      document.addEventListener("click", (e) => {
-        const userMenu = document.getElementById("userMenu");
-        if (userMenu && !userMenu.contains(e.target)) {
-          document.getElementById("userDropdown").classList.remove("active");
-          document.querySelector(".user-info")?.classList.remove("active");
-        }
-      });
+document.addEventListener("click", (e) => {
+    const userMenu = document.getElementById("userMenu");
+    if (userMenu && !userMenu.contains(e.target)) {
+        document.getElementById("userDropdown").classList.remove("active");
+        document.getElementById("userButton")?.classList.remove("active");
+        document.getElementById("userButton")?.setAttribute("aria-expanded", "false");
+    }
+});
 
 function updateUI() {
     const authButtons = document.getElementById("authButtons");
     const userMenu = document.getElementById("userMenu");
     const usageCounter = document.getElementById("usageCounter");
-    const limitWarning = document.getElementById("limitWarning");
 
     if (currentUser) {
         authButtons.style.display = "none";
         userMenu.style.display = "block";
 
-        // FIX: Get email from currentUser object OR localStorage
+        // Get email from currentUser object OR localStorage
         const email = currentUser.email || localStorage.getItem("dupecheck_email") || "User";
-        document.getElementById("userEmail").textContent =
+        
+        // Create avatar initials from email
+        const initials = email.substring(0, 2).toUpperCase();
+        document.getElementById("userAvatar").textContent = initials;
+        
+        // Set email in button and dropdown
+        document.getElementById("userEmail").textContent = 
             email.length > 20 ? email.substring(0, 20) + "..." : email;
-
-        // Fetch and display credit balance
-        fetchCreditBalance();
+        document.getElementById("dropdownEmail").textContent = email;
+        
+        // Determine plan based on credits
+        fetchCreditBalance().then(() => {
+            // This will update the plan badge after fetching credits
+        });
     } else {
         authButtons.style.display = "flex";
         authButtons.style.gap = "1rem";
@@ -2434,6 +2727,7 @@ function updateUI() {
         usageCounter.style.display = "flex";
     }
 }
+
       // File upload handling
       const uploadArea = document.getElementById("uploadArea");
       const fileInput = document.getElementById("fileInput");
@@ -2967,60 +3261,65 @@ Visit dupecheck.forgeapis.com for more
         }
       }
 
-      async function fetchCreditBalance() {
-        if (!authToken) return;
+   async function fetchCreditBalance() {
+    if (!authToken) return;
 
-        try {
-          const response = await fetch(`${API_URL}/api/credits/balance`, {
+    try {
+        const response = await fetch(`${API_URL}/api/credits/balance`, {
             headers: {
-              Authorization: `Bearer ${authToken}`,
+                Authorization: `Bearer ${authToken}`,
             },
-          });
+        });
 
-          if (response.ok) {
+        if (response.ok) {
             const data = await response.json();
             const counterElement = document.getElementById("usageCounter");
+            const planElement = document.getElementById("userPlan");
+            const dropdownPlanText = document.getElementById("dropdownPlanText");
+            const dropdownCredits = document.getElementById("dropdownCredits");
 
             if (data.balance > 0) {
-              // User has PAID credits - show credit count with clear benefits
-              counterElement.innerHTML = `
+                // User has PAID credits
+                counterElement.innerHTML = `
                     <span class="count" style="color: var(--secondary);">${data.balance}</span>
                     <span>credits • <strong>2,500 invoices/file</strong></span>
                 `;
+                
+                // Update plan badge
+                planElement.textContent = "PRO";
+                planElement.className = "user-plan pro";
+                dropdownPlanText.textContent = "Pro tier";
+                dropdownCredits.textContent = `${data.balance} credits`;
+                dropdownCredits.style.color = "var(--secondary)";
             } else {
-              // No credits - check free tier usage
-              const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
-                headers: {
-                  Authorization: `Bearer ${authToken}`,
-                },
-              });
+                // No credits - free tier
+                const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                });
 
-              if (usageResponse.ok) {
-                const usageData = await usageResponse.json();
-                const remaining = usageData.checks_remaining || 0;
+                if (usageResponse.ok) {
+                    const usageData = await usageResponse.json();
+                    const remaining = usageData.checks_remaining || 0;
 
-                // Make it clear this is FREE tier with limitations
-                counterElement.innerHTML = `
+                    counterElement.innerHTML = `
                         <span class="count">${remaining}</span>
                         <span>free today • <strong style="color: var(--warning);">100 invoices max</strong></span>
                     `;
-
-                // Show upgrade prompt if low on free checks
-                if (remaining <= 1) {
-                  const limitWarning = document.getElementById("limitWarning");
-                  limitWarning.innerHTML =
-                    remaining === 0
-                      ? '⚠️ No free analyses left today. <a href="#pricingSection" style="color: var(--secondary);">Buy credits</a> for instant access & larger files!'
-                      : '⚠️ Only 1 free analysis left today. <a href="#pricingSection" style="color: var(--secondary);">Buy credits</a> for more!';
-                  limitWarning.classList.add("active");
+                    
+                    // Update plan badge
+                    planElement.textContent = "FREE";
+                    planElement.className = "user-plan";
+                    dropdownPlanText.textContent = "Free tier";
+                    dropdownCredits.textContent = `${remaining}/3 daily checks`;
                 }
-              }
             }
-          }
-        } catch (error) {
-          console.error("Failed to fetch credit balance:", error);
         }
-      }
+    } catch (error) {
+        console.error("Failed to fetch credit balance:", error);
+    }
+}
 
       function showAllDuplicates() {
         if (!analysisResults || !analysisResults.duplicates) return;
@@ -3169,6 +3468,15 @@ Visit dupecheck.forgeapis.com for more
             customAlert("Failed to send reset email", "error");
           });
       }
+
+      function viewSettings() {
+    showModal({
+        type: "info",
+        title: "Settings",
+        message: "Settings page is under development. You can manage your account and preferences here soon!",
+    });
+    toggleUserDropdown();
+}
 
       // Add this new function
 function showPasswordResetModal(token) {
