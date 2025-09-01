@@ -2000,34 +2000,34 @@ async function processFile(file) {
         }
       });
 
-      function updateUI() {
-        const authButtons = document.getElementById("authButtons");
-        const userMenu = document.getElementById("userMenu");
-        const usageCounter = document.getElementById("usageCounter");
-        const limitWarning = document.getElementById("limitWarning");
+     function updateUI() {
+    const authButtons = document.getElementById("authButtons");
+    const userMenu = document.getElementById("userMenu");
+    const usageCounter = document.getElementById("usageCounter");
+    const limitWarning = document.getElementById("limitWarning");
 
-        if (currentUser) {
-          authButtons.style.display = "none";
-          userMenu.style.display = "block";
+    if (currentUser) {
+        authButtons.style.display = "none";
+        userMenu.style.display = "block";
 
-          // Show email
-          const email = localStorage.getItem("dupecheck_email") || "User";
-          document.getElementById("userEmail").textContent =
+        // Show email
+        const email = localStorage.getItem("dupecheck_email") || "User";
+        document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
 
-          // Fetch and display credit balance
-          fetchCreditBalance();
-        } else {
-          authButtons.style.display = "flex";
-          authButtons.style.gap = "1rem";
-          userMenu.style.display = "none";
+        // Fetch and display credit balance
+        fetchCreditBalance();
+    } else {
+        authButtons.style.display = "flex";
+        authButtons.style.gap = "1rem";
+        userMenu.style.display = "none";
 
-          // Show free tier counter for anonymous users
-          usageCounter.innerHTML =
-            '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
-        }
-      }
-
+        // DON'T reset the counter for anonymous users!
+        // checkAnonymousUsage() has already set it correctly
+        // Just ensure the counter is visible
+        usageCounter.style.display = "flex";
+    }
+}
       // File upload handling
       const uploadArea = document.getElementById("uploadArea");
       const fileInput = document.getElementById("fileInput");
