@@ -184,8 +184,22 @@ nav {
 }
 
 .user-menu {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
+.user-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(44, 47, 51, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+}
+
 
 .user-button {
     display: inline-flex;
@@ -225,15 +239,15 @@ nav {
 /* Avatar with initials */
 .user-avatar {
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -249,12 +263,43 @@ nav {
 }
 
 .user-email {
-    max-width: 140px;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 500;
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: var(--text-primary);
 }
+
+.user-credits {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.user-credits.has-credits {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.btn-signout {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-signout:hover {
+    background: rgba(237, 66, 69, 0.1);
+    border-color: rgba(237, 66, 69, 0.3);
+    color: var(--danger);
+}
+
 
 .user-separator {
     color: var(--text-secondary);
@@ -273,6 +318,92 @@ nav {
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.user-plan.credits {
+    background: rgba(87, 242, 135, 0.15);
+    border-color: rgba(87, 242, 135, 0.3);
+    color: var(--secondary);
+}
+
+.user-plan.free {
+    background: rgba(88, 101, 242, 0.15);
+    border-color: rgba(88, 101, 242, 0.3);
+    color: var(--primary);
+}
+
+/* When daily limit is exhausted */
+.user-plan.exhausted {
+    background: rgba(254, 231, 92, 0.15);
+    border-color: rgba(254, 231, 92, 0.3);
+    color: var(--warning);
+}
+
+@media (min-width: 769px) {
+    .user-plan {
+        min-width: fit-content;
+        white-space: nowrap;
+    }
+}
+
+/* On mobile, show shortened version */
+@media (max-width: 768px) {
+   .user-menu {
+        gap: 0.5rem;
+    }
+    
+    .user-display {
+        padding: 0.4rem 0.75rem;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+    
+    .user-email {
+        max-width: 100px;
+        font-size: 13px;
+    }
+    
+    .user-credits {
+        font-size: 11px;
+    }
+    
+    .btn-signout {
+        padding: 0.4rem 0.75rem;
+        font-size: 13px;
+    }
+    
+    /* Hide the word "CREDITS" or "FREE" on very small screens */
+    .user-plan.credits::after {
+        content: " CR";
+    }
+    
+    .user-plan.free::after {
+        content: " FREE";
+    }
+    
+    /* Only show the number */
+    @media (max-width: 480px) {
+        .user-plan {
+            /* This will show just "100" instead of "100 CREDITS" */
+        }
+            .user-menu {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .user-display {
+        justify-content: center;
+    }
+    
+    .btn-signout {
+        width: 100%;
+    }
+    }
 }
 
 .user-plan.pro {
@@ -451,6 +582,12 @@ nav {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+}
+
+.user-info-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
 .user-info:hover {
@@ -1756,36 +1893,16 @@ input[type="file"] {
             </button>
           </div>
 <div id="userMenu" class="user-menu" style="display: none">
-    <button class="user-button" onclick="toggleUserDropdown()" aria-haspopup="menu" aria-expanded="false" id="userButton">
+    <div class="user-display">
         <span class="user-avatar" id="userAvatar">TE</span>
-        <div class="user-button-content">
+        <div class="user-info-text">
             <span class="user-email" id="userEmail">test@example.com</span>
-            <span class="user-separator">•</span>
-            <span class="user-plan" id="userPlan">Free</span>
+            <span class="user-credits" id="userCredits">3 free checks</span>
         </div>
-        <svg class="user-caret" id="userCaret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
-        </svg>
-    </button>
-    
-    <div class="user-dropdown" id="userDropdown">
-        <div class="dropdown-header">
-            <div class="dropdown-email" id="dropdownEmail">test@example.com</div>
-            <div class="dropdown-plan">
-                <span id="dropdownPlanText">Free tier</span>
-                <span class="dropdown-credits" id="dropdownCredits">3 checks/day</span>
-            </div>
-        </div>
-        <div class="dropdown-divider"></div>
-        <ul class="dropdown-menu">
-            <li><a href="#" onclick="viewHistory()">Analysis History</a></li>
-            <li><a href="#pricing" onclick="toggleUserDropdown()">Upgrade Plan</a></li>
-            <li><a href="#" onclick="viewSettings()">Settings</a></li>
-        </ul>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-signout" onclick="logout()">Sign out</button>
     </div>
+    <button class="btn-signout" onclick="logout()">Sign out</button>
 </div>
+
           <a href="#pricingSection">Pricing</a>
         </div>
       </div>
@@ -2702,7 +2819,7 @@ function updateUI() {
 
     if (currentUser) {
         authButtons.style.display = "none";
-        userMenu.style.display = "block";
+        userMenu.style.display = "flex"; // Changed from "block" to "flex"
 
         // Get email from currentUser object OR localStorage
         const email = currentUser.email || localStorage.getItem("dupecheck_email") || "User";
@@ -2711,15 +2828,12 @@ function updateUI() {
         const initials = email.substring(0, 2).toUpperCase();
         document.getElementById("userAvatar").textContent = initials;
         
-        // Set email in button and dropdown
+        // Set email
         document.getElementById("userEmail").textContent = 
             email.length > 20 ? email.substring(0, 20) + "..." : email;
-        document.getElementById("dropdownEmail").textContent = email;
         
-        // Determine plan based on credits
-        fetchCreditBalance().then(() => {
-            // This will update the plan badge after fetching credits
-        });
+        // Fetch and display credit balance
+        fetchCreditBalance();
     } else {
         authButtons.style.display = "flex";
         authButtons.style.gap = "1rem";
@@ -3261,7 +3375,9 @@ Visit dupecheck.forgeapis.com for more
         }
       }
 
-   async function fetchCreditBalance() {
+   // UPDATE YOUR fetchCreditBalance FUNCTION to show credits instead of tiers:
+
+async function fetchCreditBalance() {
     if (!authToken) return;
 
     try {
@@ -3274,9 +3390,7 @@ Visit dupecheck.forgeapis.com for more
         if (response.ok) {
             const data = await response.json();
             const counterElement = document.getElementById("usageCounter");
-            const planElement = document.getElementById("userPlan");
-            const dropdownPlanText = document.getElementById("dropdownPlanText");
-            const dropdownCredits = document.getElementById("dropdownCredits");
+            const creditsElement = document.getElementById("userCredits");
 
             if (data.balance > 0) {
                 // User has PAID credits
@@ -3285,14 +3399,10 @@ Visit dupecheck.forgeapis.com for more
                     <span>credits • <strong>2,500 invoices/file</strong></span>
                 `;
                 
-                // Update plan badge
-                planElement.textContent = "PRO";
-                planElement.className = "user-plan pro";
-                dropdownPlanText.textContent = "Pro tier";
-                dropdownCredits.textContent = `${data.balance} credits`;
-                dropdownCredits.style.color = "var(--secondary)";
+                creditsElement.textContent = `${data.balance} credits remaining`;
+                creditsElement.className = "user-credits has-credits";
             } else {
-                // No credits - free tier
+                // No credits - check free tier usage
                 const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`,
@@ -3308,18 +3418,23 @@ Visit dupecheck.forgeapis.com for more
                         <span>free today • <strong style="color: var(--warning);">100 invoices max</strong></span>
                     `;
                     
-                    // Update plan badge
-                    planElement.textContent = "FREE";
-                    planElement.className = "user-plan";
-                    dropdownPlanText.textContent = "Free tier";
-                    dropdownCredits.textContent = `${remaining}/3 daily checks`;
+                    if (remaining > 0) {
+                        creditsElement.textContent = `${remaining} free checks today`;
+                        creditsElement.className = "user-credits";
+                    } else {
+                        creditsElement.textContent = "No checks remaining";
+                        creditsElement.className = "user-credits";
+                    }
                 }
             }
         }
     } catch (error) {
         console.error("Failed to fetch credit balance:", error);
+        document.getElementById("userCredits").textContent = "Free tier";
     }
 }
+
+// Also update the CSS for the new badge styles:
 
       function showAllDuplicates() {
         if (!analysisResults || !analysisResults.duplicates) return;
@@ -3469,14 +3584,6 @@ Visit dupecheck.forgeapis.com for more
           });
       }
 
-      function viewSettings() {
-    showModal({
-        type: "info",
-        title: "Settings",
-        message: "Settings page is under development. You can manage your account and preferences here soon!",
-    });
-    toggleUserDropdown();
-}
 
       // Add this new function
 function showPasswordResetModal(token) {
