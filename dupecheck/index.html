@@ -2,1727 +2,1739 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
     <title>DupeCheck - Free Duplicate Invoice Detector</title>
     <style>
       :root {
-    --primary: #5865f2;
-    --primary-dark: #4752c4;
-    --secondary: #57f287;
-    --warning: #fee75c;
-    --danger: #ed4245;
-    --bg-dark: #1a1b26;
-    --bg-card: #2c2f33;
-    --text-primary: #ffffff;
-    --text-secondary: #b9bbbe;
-    --border: rgba(255, 255, 255, 0.1);
-}
+        --primary: #5865f2;
+        --primary-dark: #4752c4;
+        --secondary: #57f287;
+        --warning: #fee75c;
+        --danger: #ed4245;
+        --bg-dark: #1a1b26;
+        --bg-card: #2c2f33;
+        --text-primary: #ffffff;
+        --text-secondary: #b9bbbe;
+        --border: rgba(255, 255, 255, 0.1);
+      }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
-        Roboto, Oxygen, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #1a1b26 0%, #2c2f33 100%);
-    color: var(--text-primary);
-    min-height: 100vh;
-    line-height: 1.6;
-}
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
+          Roboto, Oxygen, Ubuntu, sans-serif;
+        background: linear-gradient(135deg, #1a1b26 0%, #2c2f33 100%);
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
 
-/* Navigation */
-nav {
-    padding: 1rem 2rem;
-    background: rgba(26, 27, 38, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
+      /* Navigation */
+      nav {
+        padding: 1rem 2rem;
+        background: rgba(26, 27, 38, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+      }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-}
+      .nav-left {
+        display: flex;
+        align-items: center;
+      }
 
-.logo {
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
+      .logo {
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
 
-.logo:hover {
-    opacity: 0.8;
-}
+      .logo:hover {
+        opacity: 0.8;
+      }
 
-.logo svg {
-    width: 250px;
-    height: 83px;
-}
+      .logo svg {
+        width: 250px;
+        height: 83px;
+      }
 
-.nav-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
 
-/* Auth Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-size: 1rem;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-.auth-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.auth-tab {
-    padding: 0.5rem 1rem;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s;
-}
-
-.auth-tab.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-}
-
-/* Usage Counter */
-.usage-counter {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.usage-counter .count {
-    color: var(--secondary);
-    font-weight: 600;
-}
-
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.user-display {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: rgba(44, 47, 51, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    backdrop-filter: blur(10px);
-}
-
-
-.user-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    height: 40px;
-    max-width: 280px;
-    padding: 0 12px 0 6px;
-    background: rgba(44, 47, 51, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 14px;
-    font-family: inherit;
-    backdrop-filter: blur(10px);
-}
-
-.user-button:hover {
-    background: rgba(44, 47, 51, 0.9);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.user-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.5);
-}
-
-.user-button.active {
-    background: rgba(44, 47, 51, 0.95);
-    border-color: var(--primary);
-}
-
-/* Avatar with initials */
-.user-avatar {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Button content */
-.user-button-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-width: 0;
-    flex: 1;
-}
-
-.user-email {
-    font-size: 14px;
-    color: var(--text-primary);
-    font-weight: 500;
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.user-credits {
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-
-.user-credits.has-credits {
-    color: var(--secondary);
-    font-weight: 600;
-}
-
-.btn-signout {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.btn-signout:hover {
-    background: rgba(237, 66, 69, 0.1);
-    border-color: rgba(237, 66, 69, 0.3);
-    color: var(--danger);
-}
-
-
-.user-separator {
-    color: var(--text-secondary);
-    font-size: 12px;
-    opacity: 0.6;
-}
-
-.user-plan {
-    flex-shrink: 0;
-    padding: 2px 8px;
-    background: rgba(88, 101, 242, 0.15);
-    border: 1px solid rgba(88, 101, 242, 0.3);
-    border-radius: 10px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.user-plan.credits {
-    background: rgba(87, 242, 135, 0.15);
-    border-color: rgba(87, 242, 135, 0.3);
-    color: var(--secondary);
-}
-
-.user-plan.free {
-    background: rgba(88, 101, 242, 0.15);
-    border-color: rgba(88, 101, 242, 0.3);
-    color: var(--primary);
-}
-
-/* When daily limit is exhausted */
-.user-plan.exhausted {
-    background: rgba(254, 231, 92, 0.15);
-    border-color: rgba(254, 231, 92, 0.3);
-    color: var(--warning);
-}
-
-@media (min-width: 769px) {
-    .user-plan {
-        min-width: fit-content;
-        white-space: nowrap;
-    }
-}
-
-/* On mobile, show shortened version */
-@media (max-width: 768px) {
-   .user-menu {
-        gap: 0.5rem;
-    }
-    
-    .user-display {
-        padding: 0.4rem 0.75rem;
-    }
-    
-    .user-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
-    
-    .user-email {
-        max-width: 100px;
-        font-size: 13px;
-    }
-    
-    .user-credits {
-        font-size: 11px;
-    }
-    
-    .btn-signout {
-        padding: 0.4rem 0.75rem;
-        font-size: 13px;
-    }
-    
-    /* Hide the word "CREDITS" or "FREE" on very small screens */
-    .user-plan.credits::after {
-        content: " CR";
-    }
-    
-    .user-plan.free::after {
-        content: " FREE";
-    }
-    
-    /* Only show the number */
-    @media (max-width: 480px) {
-        .user-plan {
-            /* This will show just "100" instead of "100 CREDITS" */
-        }
-            .user-menu {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-    }
-    
-    .user-display {
-        justify-content: center;
-    }
-    
-    .btn-signout {
-        width: 100%;
-    }
-    }
-}
-
-.user-plan.pro {
-    background: rgba(87, 242, 135, 0.15);
-    border-color: rgba(87, 242, 135, 0.3);
-    color: var(--secondary);
-}
-
-/* Caret icon */
-.user-caret {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    color: var(--text-secondary);
-    transition: transform 0.2s ease;
-}
-
-.user-button.active .user-caret {
-    transform: rotate(180deg);
-}
-
-/* Enhanced Dropdown */
-.user-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    width: 280px;
-    background: rgba(44, 47, 51, 0.98);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(20px);
-    overflow: hidden;
-    animation: dropdownSlide 0.2s ease;
-}
-
-.user-dropdown.active {
-    display: block;
-}
-
-@keyframes dropdownSlide {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.dropdown-header {
-    padding: 16px;
-    background: rgba(26, 27, 38, 0.4);
-}
-
-.dropdown-email {
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-    word-break: break-all;
-}
-
-.dropdown-plan {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-secondary);
-}
-
-.dropdown-credits {
-    padding: 2px 6px;
-    background: rgba(88, 101, 242, 0.1);
-    border-radius: 4px;
-    font-size: 11px;
-    color: var(--primary);
-}
-
-.dropdown-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.dropdown-menu {
-    list-style: none;
-    padding: 4px 0;
-    margin: 0;
-}
-
-.dropdown-menu li a {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.15s ease;
-}
-
-.dropdown-menu li a:hover {
-    background: rgba(88, 101, 242, 0.1);
-    color: var(--primary);
-    padding-left: 20px;
-}
-
-.dropdown-signout {
-    width: 100%;
-    padding: 12px 16px;
-    background: none;
-    border: none;
-    color: var(--danger);
-    text-align: left;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.dropdown-signout:hover {
-    background: rgba(237, 66, 69, 0.1);
-    padding-left: 20px;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .user-button {
-        max-width: 200px;
-        height: 36px;
-        padding: 0 10px 0 4px;
-    }
-    
-    .user-avatar {
-        width: 26px;
-        height: 26px;
-        font-size: 10px;
-    }
-    
-    .user-email {
-        max-width: 100px;
-        font-size: 13px;
-    }
-    
-    .user-separator {
+      /* Auth Modal */
+      .modal {
         display: none;
-    }
-    
-    .user-plan {
-        display: none; /* Hide on mobile to save space */
-    }
-    
-    .user-dropdown {
-        width: 260px;
-        right: -10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .user-button {
-        max-width: 160px;
-    }
-    
-    .user-email {
-        max-width: 80px;
-    }
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.user-info-text {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-.user-info:hover {
-    background: var(--bg-card);
-    border-color: var(--primary);
-}
-
-.user-info::after {
-    content: "▾";
-    font-size: 12px;
-    color: var(--text-secondary);
-    transition: transform 0.2s;
-}
-
-.user-info.active::after {
-    transform: rotate(180deg);
-}
-
-.modal-content .alert {
-    margin-top: 1rem;
-    margin-bottom: 0;
-}
-
-.modal-content .alert.active {
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Improve modal form styling */
-.modal-content form {
-    margin-top: 1rem;
-}
-
-.modal-content input:focus {
-    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
-}
-
-/* Success state for inputs */
-.modal-content .alert-success.active {
-    background: rgba(87, 242, 135, 0.15);
-    border-color: var(--secondary);
-    color: var(--secondary);
-}
-
-.user-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 0.75rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    min-width: 180px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-}
-
-.user-dropdown.active {
-    display: block;
-}
-
-.user-dropdown a,
-.user-dropdown button {
-    display: block;
-    width: 100%;
-    padding: 0.875rem 1.25rem;
-    text-align: left;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.user-dropdown a:hover,
-.user-dropdown button:hover {
-    background: rgba(88, 101, 242, 0.1);
-    color: var(--primary);
-    padding-left: 1.5rem;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 8rem 2rem 3rem;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.product-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(
-        135deg,
-        var(--primary) 0%,
-        var(--primary-dark) 100%
-    );
-    border-radius: 16px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(
-        135deg,
-        var(--primary) 0%,
-        var(--secondary) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.trust-badges {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.trust-badge .icon {
-    color: var(--secondary);
-    font-size: 1.2rem;
-}
-
-/* Main Upload Card */
-.upload-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-.free-badge {
-    position: absolute;
-    top: -12px;
-    right: 2rem;
-    background: var(--secondary);
-    color: var(--bg-dark);
-    padding: 0.25rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.85rem;
-}
-
-/* Upload Area */
-.upload-area {
-    background: var(--bg-dark);
-    border: 2px dashed var(--border);
-    border-radius: 12px;
-    padding: 3rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.upload-area:hover {
-    border-color: var(--primary);
-    background: rgba(88, 101, 242, 0.05);
-}
-
-.upload-area.dragging {
-    border-color: var(--primary);
-    background: rgba(88, 101, 242, 0.1);
-    transform: scale(1.02);
-}
-
-.upload-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(
-        135deg,
-        var(--primary) 0%,
-        var(--primary-dark) 100%
-    );
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-/* Buttons */
-.btn {
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-primary {
-    background: linear-gradient(
-        135deg,
-        var(--primary) 0%,
-        var(--primary-dark) 100%
-    );
-    color: white;
-}
-
-.btn-primary:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
-}
-
-.btn-primary:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.btn-ghost {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-}
-
-.btn-ghost:hover {
-    background: var(--bg-card);
-}
-
-.btn-block {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-}
-
-/* Results Section */
-.results-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    display: none;
-    margin-bottom: 2rem;
-}
-
-.results-card.active {
-    display: block;
-    animation: fadeInUp 0.5s ease;
-}
-
-/* Summary Stats */
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.stat-card {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.stat-label {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.stat-card.highlight .stat-value {
-    color: var(--secondary);
-}
-
-/* Alert Messages */
-.alert {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    display: none;
-}
-
-.alert.active {
-    display: block;
-}
-
-.alert-error {
-    background: rgba(237, 66, 69, 0.1);
-    border: 1px solid rgba(237, 66, 69, 0.3);
-    color: var(--danger);
-}
-
-.alert-warning {
-    background: rgba(254, 231, 92, 0.1);
-    border: 1px solid rgba(254, 231, 92, 0.3);
-    color: var(--warning);
-}
-
-.alert-success {
-    background: rgba(87, 242, 135, 0.1);
-    border: 1px solid rgba(87, 242, 135, 0.3);
-    color: var(--secondary);
-}
-
-/* Pricing Section */
-.pricing-section {
-    margin: 4rem 0;
-}
-
-.pricing-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 48px;
-}
-
-.pricing-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.pricing-card .btn-block {
-    margin-top: auto;
-}
-
-.pricing-card:hover {
-    transform: translateY(-4px);
-}
-
-.pricing-card.featured {
-    border-color: var(--primary);
-    border-width: 2px;
-    transform: scale(1.05);
-}
-
-.pricing-card.featured:hover {
-    transform: scale(1.05) translateY(-4px);
-}
-
-.pricing-card .badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 0.25rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 1rem 0;
-}
-
-.price .currency {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-}
-
-.price .period {
-    font-size: 1rem;
-    color: var(--text-secondary);
-}
-
-.features-list {
-    list-style: none;
-    margin: 2rem 0;
-    text-align: left;
-    flex-grow: 1;
-}
-
-.features-list li {
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-}
-
-.features-list .check {
-    color: var(--secondary);
-}
-
-/* Footer */
-.footer {
-    background: var(--dark);
-    color: white;
-    padding: 60px 0 20px;
-    margin-top: 100px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 60px;
-    margin-bottom: 40px;
-}
-
-.footer-brand {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.footer-brand p {
-    color: #9ca3af;
-    margin: 12px 0;
-    font-size: 16px;
-}
-
-.footer-powered {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-.footer-column h4 {
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-    color: white;
-}
-
-.footer-column a {
-    display: block;
-    color: #9ca3af;
-    text-decoration: none;
-    margin-bottom: 12px;
-    transition: color 0.3s;
-    font-size: 15px;
-}
-
-.footer-column a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-bottom p {
-    color: #6b7280;
-    font-size: 14px;
-    margin: 0;
-}
-
-.footer-note {
-    font-size: 12px;
-    opacity: 0.7;
-}
-
-/* Free tier banner */
-.free-tier-banner {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.free-tier-banner .icon {
-    color: var(--secondary);
-    font-size: 1.5rem;
-}
-
-.free-tier-banner h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-}
-
-.free-tier-banner p {
-    margin: 0;
-    color: var(--text-secondary);
-}
-
-/* Custom Modal System */
-.custom-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.2s ease;
-}
-
-.custom-modal.active {
-    display: flex;
-}
-
-.custom-modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    width: 90%;
-    max-width: 420px;
-    position: relative;
-    animation: slideUp 0.3s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.custom-modal-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-.custom-modal-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.custom-modal-icon.error {
-    background: rgba(239, 68, 68, 0.15);
-    color: var(--danger);
-}
-
-.custom-modal-icon.info {
-    background: rgba(88, 101, 242, 0.15);
-    color: var(--primary);
-}
-
-.custom-modal-icon.success {
-    background: rgba(87, 242, 135, 0.15);
-    color: var(--secondary);
-}
-
-.custom-modal-icon.warning {
-    background: rgba(254, 231, 92, 0.15);
-    color: var(--warning);
-}
-
-.custom-modal-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-}
-
-.custom-modal-message {
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-
-.custom-modal-footer {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
-}
-
-.custom-modal-btn {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    min-width: 80px;
-}
-
-.custom-modal-btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.custom-modal-btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-}
-
-.custom-modal-btn-secondary {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-}
-
-.custom-modal-btn-secondary:hover {
-    background: var(--bg-dark);
-    color: var(--text-primary);
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Loading */
-.loading-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 27, 38, 0.95);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-}
-
-.loading-overlay.active {
-    display: flex;
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid var(--border);
-    border-top-color: var(--primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto; 
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.nav-links a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    font-size: 16px;
-    padding: 0;
-}
-
-.nav-links a:hover {
-    color: var(--primary);
-}
-
-/* ============================================
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        background: var(--bg-dark);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .auth-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .auth-tab {
+        padding: 0.5rem 1rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .auth-tab.active {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+      }
+
+      /* Usage Counter */
+      .usage-counter {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .usage-counter .count {
+        color: var(--secondary);
+        font-weight: 600;
+      }
+
+      .user-menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .user-display {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: rgba(44, 47, 51, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        backdrop-filter: blur(10px);
+      }
+
+      .user-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        height: 40px;
+        max-width: 280px;
+        padding: 0 12px 0 6px;
+        background: rgba(44, 47, 51, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        font-family: inherit;
+        backdrop-filter: blur(10px);
+      }
+
+      .user-button:hover {
+        background: rgba(44, 47, 51, 0.9);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .user-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.5);
+      }
+
+      .user-button.active {
+        background: rgba(44, 47, 51, 0.95);
+        border-color: var(--primary);
+      }
+
+      /* Avatar with initials */
+      .user-avatar {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Button content */
+      .user-button-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 0;
+        flex: 1;
+      }
+
+      .user-email {
+        font-size: 14px;
+        color: var(--text-primary);
+        font-weight: 500;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .user-credits {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      .user-credits.has-credits {
+        color: var(--secondary);
+        font-weight: 600;
+      }
+
+      .btn-signout {
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-signout:hover {
+        background: rgba(237, 66, 69, 0.1);
+        border-color: rgba(237, 66, 69, 0.3);
+        color: var(--danger);
+      }
+
+      .user-separator {
+        color: var(--text-secondary);
+        font-size: 12px;
+        opacity: 0.6;
+      }
+
+      .user-plan {
+        flex-shrink: 0;
+        padding: 2px 8px;
+        background: rgba(88, 101, 242, 0.15);
+        border: 1px solid rgba(88, 101, 242, 0.3);
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .user-plan.credits {
+        background: rgba(87, 242, 135, 0.15);
+        border-color: rgba(87, 242, 135, 0.3);
+        color: var(--secondary);
+      }
+
+      .user-plan.free {
+        background: rgba(88, 101, 242, 0.15);
+        border-color: rgba(88, 101, 242, 0.3);
+        color: var(--primary);
+      }
+
+      /* When daily limit is exhausted */
+      .user-plan.exhausted {
+        background: rgba(254, 231, 92, 0.15);
+        border-color: rgba(254, 231, 92, 0.3);
+        color: var(--warning);
+      }
+
+      @media (min-width: 769px) {
+        .user-plan {
+          min-width: fit-content;
+          white-space: nowrap;
+        }
+      }
+
+      /* On mobile, show shortened version */
+      @media (max-width: 768px) {
+        .user-menu {
+          gap: 0.5rem;
+        }
+
+        .user-display {
+          padding: 0.4rem 0.75rem;
+        }
+
+        .user-avatar {
+          width: 28px;
+          height: 28px;
+          font-size: 11px;
+        }
+
+        .user-email {
+          max-width: 100px;
+          font-size: 13px;
+        }
+
+        .user-credits {
+          font-size: 11px;
+        }
+
+        .btn-signout {
+          padding: 0.4rem 0.75rem;
+          font-size: 13px;
+        }
+
+        /* Hide the word "CREDITS" or "FREE" on very small screens */
+        .user-plan.credits::after {
+          content: " CR";
+        }
+
+        .user-plan.free::after {
+          content: " FREE";
+        }
+
+        /* Only show the number */
+        @media (max-width: 480px) {
+          .user-plan {
+            /* This will show just "100" instead of "100 CREDITS" */
+          }
+          .user-menu {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+          }
+
+          .user-display {
+            justify-content: center;
+          }
+
+          .btn-signout {
+            width: 100%;
+          }
+        }
+      }
+
+      .user-plan.pro {
+        background: rgba(87, 242, 135, 0.15);
+        border-color: rgba(87, 242, 135, 0.3);
+        color: var(--secondary);
+      }
+
+      /* Caret icon */
+      .user-caret {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        color: var(--text-secondary);
+        transition: transform 0.2s ease;
+      }
+
+      .user-button.active .user-caret {
+        transform: rotate(180deg);
+      }
+
+      /* Enhanced Dropdown */
+      .user-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: 280px;
+        background: rgba(44, 47, 51, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(20px);
+        overflow: hidden;
+        animation: dropdownSlide 0.2s ease;
+      }
+
+      .user-dropdown.active {
+        display: block;
+      }
+
+      @keyframes dropdownSlide {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .dropdown-header {
+        padding: 16px;
+        background: rgba(26, 27, 38, 0.4);
+      }
+
+      .dropdown-email {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+        word-break: break-all;
+      }
+
+      .dropdown-plan {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      .dropdown-credits {
+        padding: 2px 6px;
+        background: rgba(88, 101, 242, 0.1);
+        border-radius: 4px;
+        font-size: 11px;
+        color: var(--primary);
+      }
+
+      .dropdown-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .dropdown-menu {
+        list-style: none;
+        padding: 4px 0;
+        margin: 0;
+      }
+
+      .dropdown-menu li a {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.15s ease;
+      }
+
+      .dropdown-menu li a:hover {
+        background: rgba(88, 101, 242, 0.1);
+        color: var(--primary);
+        padding-left: 20px;
+      }
+
+      .dropdown-signout {
+        width: 100%;
+        padding: 12px 16px;
+        background: none;
+        border: none;
+        color: var(--danger);
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .dropdown-signout:hover {
+        background: rgba(237, 66, 69, 0.1);
+        padding-left: 20px;
+      }
+
+      /* Mobile responsive adjustments */
+      @media (max-width: 768px) {
+        .user-button {
+          max-width: 200px;
+          height: 36px;
+          padding: 0 10px 0 4px;
+        }
+
+        .user-avatar {
+          width: 26px;
+          height: 26px;
+          font-size: 10px;
+        }
+
+        .user-email {
+          max-width: 100px;
+          font-size: 13px;
+        }
+
+        .user-separator {
+          display: none;
+        }
+
+        .user-plan {
+          display: none; /* Hide on mobile to save space */
+        }
+
+        .user-dropdown {
+          width: 260px;
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .user-button {
+          max-width: 160px;
+        }
+
+        .user-email {
+          max-width: 80px;
+        }
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .user-info-text {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .user-info:hover {
+        background: var(--bg-card);
+        border-color: var(--primary);
+      }
+
+      .user-info::after {
+        content: "▾";
+        font-size: 12px;
+        color: var(--text-secondary);
+        transition: transform 0.2s;
+      }
+
+      .user-info.active::after {
+        transform: rotate(180deg);
+      }
+
+      .modal-content .alert {
+        margin-top: 1rem;
+        margin-bottom: 0;
+      }
+
+      .modal-content .alert.active {
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Improve modal form styling */
+      .modal-content form {
+        margin-top: 1rem;
+      }
+
+      .modal-content input:focus {
+        box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
+      }
+
+      /* Success state for inputs */
+      .modal-content .alert-success.active {
+        background: rgba(87, 242, 135, 0.15);
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+
+      .user-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.75rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        min-width: 180px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .user-dropdown.active {
+        display: block;
+      }
+
+      .user-dropdown a,
+      .user-dropdown button {
+        display: block;
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        text-align: left;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .user-dropdown a:hover,
+      .user-dropdown button:hover {
+        background: rgba(88, 101, 242, 0.1);
+        color: var(--primary);
+        padding-left: 1.5rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 8rem 2rem 3rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 2rem 0 !important; /* override top/bottom spacing */
+        min-height: auto !important; /* kill any forced tall height */
+      }
+      .product-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .trust-badge .icon {
+        color: var(--secondary);
+        font-size: 1.2rem;
+      }
+
+      /* Main Upload Card */
+      .upload-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .free-badge {
+        position: absolute;
+        top: -12px;
+        right: 2rem;
+        background: var(--secondary);
+        color: var(--bg-dark);
+        padding: 0.25rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+
+      /* Upload Area */
+      .upload-area {
+        background: var(--bg-dark);
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .upload-area:hover {
+        border-color: var(--primary);
+        background: rgba(88, 101, 242, 0.05);
+      }
+
+      .upload-area.dragging {
+        border-color: var(--primary);
+        background: rgba(88, 101, 242, 0.1);
+        transform: scale(1.02);
+      }
+
+      .upload-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+      }
+
+      .btn-ghost:hover {
+        background: var(--bg-card);
+      }
+
+      .btn-block {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      /* Results Section */
+      .results-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        display: none;
+        margin-bottom: 2rem;
+      }
+
+      .results-card.active {
+        display: block;
+        animation: fadeInUp 0.5s ease;
+      }
+
+      /* Summary Stats */
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: var(--bg-dark);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .stat-card.highlight .stat-value {
+        color: var(--secondary);
+      }
+
+      /* Alert Messages */
+      .alert {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .alert.active {
+        display: block;
+      }
+
+      .alert-error {
+        background: rgba(237, 66, 69, 0.1);
+        border: 1px solid rgba(237, 66, 69, 0.3);
+        color: var(--danger);
+      }
+
+      .alert-warning {
+        background: rgba(254, 231, 92, 0.1);
+        border: 1px solid rgba(254, 231, 92, 0.3);
+        color: var(--warning);
+      }
+
+      .alert-success {
+        background: rgba(87, 242, 135, 0.1);
+        border: 1px solid rgba(87, 242, 135, 0.3);
+        color: var(--secondary);
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        margin: 4rem 0;
+      }
+
+      .pricing-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 48px;
+      }
+
+      .pricing-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card .btn-block {
+        margin-top: auto;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .pricing-card.featured {
+        border-color: var(--primary);
+        border-width: 2px;
+        transform: scale(1.05);
+      }
+
+      .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-4px);
+      }
+
+      .pricing-card .badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .price {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+
+      .price .currency {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+      }
+
+      .price .period {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .features-list {
+        list-style: none;
+        margin: 2rem 0;
+        text-align: left;
+        flex-grow: 1;
+      }
+
+      .features-list li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .features-list .check {
+        color: var(--secondary);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark);
+        color: white;
+        padding: 60px 0 20px;
+        margin-top: 100px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 60px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin: 12px 0;
+        font-size: 16px;
+      }
+
+      .footer-powered {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        color: white;
+      }
+
+      .footer-column a {
+        display: block;
+        color: #9ca3af;
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: color 0.3s;
+        font-size: 15px;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .footer-note {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+
+      /* Free tier banner */
+      .free-tier-banner {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .free-tier-banner .icon {
+        color: var(--secondary);
+        font-size: 1.5rem;
+      }
+
+      .free-tier-banner h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+      }
+
+      .free-tier-banner p {
+        margin: 0;
+        color: var(--text-secondary);
+      }
+
+      /* Custom Modal System */
+      .custom-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .custom-modal.active {
+        display: flex;
+      }
+
+      .custom-modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        width: 90%;
+        max-width: 420px;
+        position: relative;
+        animation: slideUp 0.3s ease;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .custom-modal-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .custom-modal-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .custom-modal-icon.error {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+
+      .custom-modal-icon.info {
+        background: rgba(88, 101, 242, 0.15);
+        color: var(--primary);
+      }
+
+      .custom-modal-icon.success {
+        background: rgba(87, 242, 135, 0.15);
+        color: var(--secondary);
+      }
+
+      .custom-modal-icon.warning {
+        background: rgba(254, 231, 92, 0.15);
+        color: var(--warning);
+      }
+
+      .custom-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .custom-modal-message {
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+
+      .custom-modal-footer {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      .custom-modal-btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        min-width: 80px;
+      }
+
+      .custom-modal-btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .custom-modal-btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .custom-modal-btn-secondary {
+        background: transparent;
+        color: var(--text-secondary);
+        border: 1px solid var(--border);
+      }
+
+      .custom-modal-btn-secondary:hover {
+        background: var(--bg-dark);
+        color: var(--text-primary);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Loading */
+      .loading-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 27, 38, 0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loading-overlay.active {
+        display: flex;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--border);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        font-size: 16px;
+        padding: 0;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* ============================================
    MOBILE RESPONSIVE FIXES
    ============================================ */
 
-/* Mobile Navigation Fixes */
-@media (max-width: 768px) {
-    /* Navigation container */
-    nav {
-        padding: 0.75rem 1rem;
-    }
-    
-    .nav-container {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-    
-    .nav-left {
-        flex: 1;
-        min-width: 150px;
-    }
-    
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 0.5rem;
-        width: 100%;
-        order: 3;
-        margin-top: 0.5rem;
-    }
-    
-    /* Logo sizing */
-    .logo svg {
-        width: 150px;
-        height: 50px;
-    }
-    
-    /* Usage counter - make it more compact */
-    .usage-counter {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        max-width: 100%;
-        text-align: center;
-    }
-    
-    .usage-counter .count {
-        font-size: 0.9rem;
-    }
-    
-    /* Auth buttons */
-    #authButtons {
-        display: flex;
-        gap: 0.5rem !important;
-    }
-    
-    #authButtons .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-    
-    /* User menu */
-    .user-info {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-    }
-    
-    .user-dropdown {
-        right: -10px;
-        min-width: 160px;
-        position: fixed;
-        right: 1rem;
-        left: 1rem;
-        width: auto;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    /* Container padding adjustment */
-    .container {
-        padding: 7rem 1rem 2rem;
-    }
-    
-    /* Hero Section */
-    .hero h1 {
-        font-size: 1.75rem;
-        line-height: 1.2;
-        margin-bottom: 0.75rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .product-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-    }
-    
-    /* Trust badges */
-    .trust-badges {
-        gap: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .trust-badge {
-        font-size: 0.8rem;
-        flex: 1 1 100%;
-        justify-content: center;
-    }
-    
-    /* How it works section */
-    .hero > div:last-child > div {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem;
-    }
-    
-    /* Upload Card */
-    .upload-card {
-        padding: 1.5rem 1rem;
-        margin: 0 0.5rem 1.5rem;
-    }
-    
-    .free-badge {
-        right: 1rem;
-        font-size: 0.75rem;
-        padding: 0.2rem 0.8rem;
-    }
-    
-    .upload-area {
-        padding: 2rem 1rem;
-    }
-    
-    .upload-area h3 {
-        font-size: 1.1rem;
-    }
-    
-    .upload-area p {
-        font-size: 0.9rem;
-    }
-    
-    /* Results Card */
-    .results-card {
-        padding: 1.5rem 1rem;
-        margin: 0 0.5rem 1.5rem;
-    }
-    
-    .summary-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .stat-card {
-        padding: 1rem;
-    }
-    
-    .stat-value {
-        font-size: 1.5rem;
-    }
-    
-    /* Download buttons */
-    .results-card > div:last-child {
-        flex-direction: column;
-    }
-    
-    .results-card .btn {
-        width: 100%;
-        min-width: unset !important;
-    }
-    
-    /* Pricing Section */
-    .pricing-section {
-        margin: 2rem 0;
-    }
-    
-    .pricing-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .pricing-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-        padding: 0 0.5rem;
-    }
-    
-    .pricing-card {
-        padding: 1.5rem;
-    }
-    
-    .pricing-card.featured {
-        transform: scale(1) !important;
-    }
-    
-    .price {
-        font-size: 2rem;
-    }
-    
-    .features-list {
-        font-size: 0.9rem;
-    }
-    
-    /* Free tier banner */
-    .free-tier-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-        margin: 0 0.5rem 1.5rem;
-    }
-    
-    .free-tier-banner h3 {
-        font-size: 0.95rem;
-    }
-    
-    .free-tier-banner p {
-        font-size: 0.85rem;
-    }
-    
-    /* Modals */
-    .modal-content {
-        width: 95%;
-        max-width: 95%;
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .custom-modal-content {
-        width: 95%;
-        max-width: 95%;
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .auth-tabs {
-        gap: 0.5rem;
-    }
-    
-    .auth-tab {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.75rem;
-    }
-    
-    /* Forms */
-    .form-group input {
-        font-size: 16px; /* Prevents zoom on iOS */
-        padding: 0.6rem;
-    }
-    
-    /* Buttons */
-    .btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Footer */
-    .footer {
-        padding: 40px 0 20px;
-        margin-top: 60px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .footer-links {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    /* Loading overlay */
-    .loading-overlay > div {
-        padding: 0 1rem;
-        max-width: 90%;
-    }
-    
-    .spinner {
-        width: 40px;
-        height: 40px;
-    }
-    
-    /* Alerts */
-    .alert {
-        font-size: 0.9rem;
-        padding: 0.75rem;
-    }
-    
-    /* Fix horizontal scrolling issues */
-    body {
-        overflow-x: hidden;
-    }
-    
-    * {
-        max-width: 100vw;
-    }
-}
+      /* Mobile Navigation Fixes */
+      @media (max-width: 768px) {
+        /* Navigation container */
+        nav {
+          padding: 0.75rem 1rem;
+        }
 
-/* Extra small devices (phones in portrait) */
-@media (max-width: 480px) {
-    /* Even more compact navigation */
-    .nav-container {
-        padding: 0;
-    }
-    
-    .logo svg {
-        width: 120px;
-        height: 40px;
-    }
-    
-    /* Stack auth buttons vertically if needed */
-    #authButtons {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    #authButtons .btn {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
-    
-    /* Hero adjustments */
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero p {
-        font-size: 0.9rem;
-    }
-    
-    /* Make pricing cards more compact */
-    .pricing-card {
-        padding: 1.25rem;
-    }
-    
-    .price {
-        font-size: 1.75rem;
-    }
-    
-    /* Modal adjustments */
-    .modal-content {
-        padding: 1.25rem;
-    }
-    
-    .custom-modal-content {
-        padding: 1.25rem;
-    }
-}
+        .nav-container {
+          flex-wrap: wrap;
+          gap: 0.75rem;
+        }
 
-/* Landscape orientation fixes */
-@media (max-height: 600px) and (orientation: landscape) {
-    nav {
-        padding: 0.5rem 1rem;
-    }
-    
-    .container {
-        padding-top: 5rem;
-    }
-    
-    .hero h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .upload-card {
-        padding: 1rem;
-    }
-    
-    .upload-area {
-        padding: 1.5rem;
-    }
-}
+        .nav-left {
+          flex: 1;
+          min-width: 150px;
+        }
 
-/* Fix for iOS Safari viewport issues */
-@supports (-webkit-touch-callout: none) {
-    /* iOS only styles */
-    body {
-        -webkit-text-size-adjust: 100%;
-    }
-    
-    input[type="file"] {
-        font-size: 16px;
-    }
-}
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 0.5rem;
+          width: 100%;
+          order: 3;
+          margin-top: 0.5rem;
+        }
+
+        /* Logo sizing */
+        .logo svg {
+          width: 150px;
+          height: 50px;
+        }
+
+        /* Usage counter - make it more compact */
+        .usage-counter {
+          font-size: 0.8rem;
+          padding: 0.4rem 0.8rem;
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .usage-counter .count {
+          font-size: 0.9rem;
+        }
+
+        /* Auth buttons */
+        #authButtons {
+          display: flex;
+          gap: 0.5rem !important;
+        }
+
+        #authButtons .btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        /* User menu */
+        .user-info {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+
+        .user-dropdown {
+          right: -10px;
+          min-width: 160px;
+          position: fixed;
+          right: 1rem;
+          left: 1rem;
+          width: auto;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        /* Container padding adjustment */
+        .container {
+          padding: 7rem 1rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero h1 {
+          font-size: 1.75rem;
+          line-height: 1.2;
+          margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+
+        .product-icon {
+          width: 48px;
+          height: 48px;
+          font-size: 1.5rem;
+        }
+
+        /* Trust badges */
+        .trust-badges {
+          gap: 1rem;
+          padding: 0 1rem;
+        }
+
+        .trust-badge {
+          font-size: 0.8rem;
+          flex: 1 1 100%;
+          justify-content: center;
+        }
+
+        /* How it works section */
+        .hero > div:last-child > div {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+          padding: 0 1rem;
+        }
+
+        /* Upload Card */
+        .upload-card {
+          padding: 1.5rem 1rem;
+          margin: 0 0.5rem 1.5rem;
+        }
+
+        .free-badge {
+          right: 1rem;
+          font-size: 0.75rem;
+          padding: 0.2rem 0.8rem;
+        }
+
+        .upload-area {
+          padding: 2rem 1rem;
+        }
+
+        .upload-area h3 {
+          font-size: 1.1rem;
+        }
+
+        .upload-area p {
+          font-size: 0.9rem;
+        }
+
+        /* Results Card */
+        .results-card {
+          padding: 1.5rem 1rem;
+          margin: 0 0.5rem 1.5rem;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .stat-card {
+          padding: 1rem;
+        }
+
+        .stat-value {
+          font-size: 1.5rem;
+        }
+
+        /* Download buttons */
+        .results-card > div:last-child {
+          flex-direction: column;
+        }
+
+        .results-card .btn {
+          width: 100%;
+          min-width: unset !important;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+          margin: 2rem 0;
+        }
+
+        .pricing-header h2 {
+          font-size: 1.5rem;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem;
+          padding: 0 0.5rem;
+        }
+
+        .pricing-card {
+          padding: 1.5rem;
+        }
+
+        .pricing-card.featured {
+          transform: scale(1) !important;
+        }
+
+        .price {
+          font-size: 2rem;
+        }
+
+        .features-list {
+          font-size: 0.9rem;
+        }
+
+        /* Free tier banner */
+        .free-tier-banner {
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+          margin: 0 0.5rem 1.5rem;
+        }
+
+        .free-tier-banner h3 {
+          font-size: 0.95rem;
+        }
+
+        .free-tier-banner p {
+          font-size: 0.85rem;
+        }
+
+        /* Modals */
+        .modal-content {
+          width: 95%;
+          max-width: 95%;
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .custom-modal-content {
+          width: 95%;
+          max-width: 95%;
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .auth-tabs {
+          gap: 0.5rem;
+        }
+
+        .auth-tab {
+          font-size: 0.9rem;
+          padding: 0.5rem 0.75rem;
+        }
+
+        /* Forms */
+        .form-group input {
+          font-size: 16px; /* Prevents zoom on iOS */
+          padding: 0.6rem;
+        }
+
+        /* Buttons */
+        .btn {
+          padding: 0.6rem 1.5rem;
+          font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+          padding: 40px 0 20px;
+          margin-top: 60px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+          gap: 1rem;
+        }
+
+        /* Loading overlay */
+        .loading-overlay > div {
+          padding: 0 1rem;
+          max-width: 90%;
+        }
+
+        .spinner {
+          width: 40px;
+          height: 40px;
+        }
+
+        /* Alerts */
+        .alert {
+          font-size: 0.9rem;
+          padding: 0.75rem;
+        }
+
+        /* Fix horizontal scrolling issues */
+        body {
+          overflow-x: hidden;
+        }
+
+        * {
+          max-width: 100vw;
+        }
+      }
+
+      /* Extra small devices (phones in portrait) */
+      @media (max-width: 480px) {
+        /* Even more compact navigation */
+        .nav-container {
+          padding: 0;
+        }
+
+        .logo svg {
+          width: 120px;
+          height: 40px;
+        }
+
+        /* Stack auth buttons vertically if needed */
+        #authButtons {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        #authButtons .btn {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+        }
+
+        /* Hero adjustments */
+        .hero h1 {
+          font-size: 1.5rem;
+        }
+
+        .hero p {
+          font-size: 0.9rem;
+        }
+
+        /* Make pricing cards more compact */
+        .pricing-card {
+          padding: 1.25rem;
+        }
+
+        .price {
+          font-size: 1.75rem;
+        }
+
+        /* Modal adjustments */
+        .modal-content {
+          padding: 1.25rem;
+        }
+
+        .custom-modal-content {
+          padding: 1.25rem;
+        }
+      }
+
+      /* Landscape orientation fixes */
+      @media (max-height: 600px) and (orientation: landscape) {
+        nav {
+          padding: 0.5rem 1rem;
+        }
+
+        .container {
+          padding-top: 5rem;
+        }
+
+        .hero h1 {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .upload-card {
+          padding: 1rem;
+        }
+
+        .upload-area {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Fix for iOS Safari viewport issues */
+      @supports (-webkit-touch-callout: none) {
+        /* iOS only styles */
+        body {
+          -webkit-text-size-adjust: 100%;
+        }
+
+        input[type="file"] {
+          font-size: 16px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1892,16 +1904,16 @@ input[type="file"] {
               Sign Up
             </button>
           </div>
-<div id="userMenu" class="user-menu" style="display: none">
-    <div class="user-display">
-        <span class="user-avatar" id="userAvatar">TE</span>
-        <div class="user-info-text">
-            <span class="user-email" id="userEmail">test@example.com</span>
-            <span class="user-credits" id="userCredits">3 free checks</span>
-        </div>
-    </div>
-    <button class="btn-signout" onclick="logout()">Sign out</button>
-</div>
+          <div id="userMenu" class="user-menu" style="display: none">
+            <div class="user-display">
+              <span class="user-avatar" id="userAvatar">TE</span>
+              <div class="user-info-text">
+                <span class="user-email" id="userEmail">test@example.com</span>
+                <span class="user-credits" id="userCredits">3 free checks</span>
+              </div>
+            </div>
+            <button class="btn-signout" onclick="logout()">Sign out</button>
+          </div>
 
           <a href="#pricingSection">Pricing</a>
         </div>
@@ -2150,88 +2162,112 @@ input[type="file"] {
           </div>
         </div>
 
-<div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
-  <!-- Free Tier -->
-  <div class="pricing-card">
-    <h3>Free Tier</h3>
-    <div class="price">
-      <span class="currency">$</span>0
-    </div>
-    <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-      No credit card required
-    </p>
-    <ul class="features-list">
-      <li>
-        <span class="check">✓</span> <strong>3 analyses per day</strong>
-      </li>
-      <li>
-        <span class="check">✓</span> 100 invoices per file
-      </li>
-      <li><span class="check">✓</span> Instant results</li>
-      <li><span class="check">✓</span> Basic duplicate detection</li>
-      <li style="color: var(--danger);">
-        <span style="opacity: 0.5;">✗</span> No analysis history
-      </li>
-      <li style="color: var(--danger);">
-        <span style="opacity: 0.5;">✗</span> No saved reports
-      </li>
-    </ul>
-    <button class="btn btn-primary btn-block" onclick="scrollToUpload()" style="border: 2px solid var(--border);">
-      Try Now
-    </button>
-  </div>
+        <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr)">
+          <!-- Free Tier -->
+          <div class="pricing-card">
+            <h3>Free Tier</h3>
+            <div class="price"><span class="currency">$</span>0</div>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              No credit card required
+            </p>
+            <ul class="features-list">
+              <li>
+                <span class="check">✓</span> <strong>3 analyses per day</strong>
+              </li>
+              <li><span class="check">✓</span> 100 invoices per file</li>
+              <li><span class="check">✓</span> Instant results</li>
+              <li><span class="check">✓</span> Basic duplicate detection</li>
+              <li style="color: var(--danger)">
+                <span style="opacity: 0.5">✗</span> No analysis history
+              </li>
+              <li style="color: var(--danger)">
+                <span style="opacity: 0.5">✗</span> No saved reports
+              </li>
+            </ul>
+            <button
+              class="btn btn-primary btn-block"
+              onclick="scrollToUpload()"
+              style="border: 2px solid var(--border)"
+            >
+              Try Now
+            </button>
+          </div>
 
-  <!-- Starter Pack -->
-  <div class="pricing-card">
-    <h3>Starter Pack</h3>
-    <div class="price">
-      <span class="currency">$</span>5
-    </div>
-    <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-      100 credits
-    </p>
-    <ul class="features-list">
-      <li>
-        <span class="check">✓</span> <strong>100 analyses</strong>
-      </li>
-      <li>
-        <span class="check">✓</span>
-        <strong style="color: var(--secondary)">2,500 invoices per file</strong>
-      </li>
-      <li><span class="check">✓</span> Never expire</li>
-      <li><span class="check">✓</span> PDF & Excel reports</li>
-    </ul>
-    <button class="btn btn-primary btn-block" onclick="upgrade('starter')">
-      Buy Credits
-    </button>
-  </div>
+          <!-- Starter Pack -->
+          <div class="pricing-card">
+            <h3>Starter Pack</h3>
+            <div class="price"><span class="currency">$</span>5</div>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              100 credits
+            </p>
+            <ul class="features-list">
+              <li>
+                <span class="check">✓</span> <strong>100 analyses</strong>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <strong style="color: var(--secondary)"
+                  >2,500 invoices per file</strong
+                >
+              </li>
+              <li><span class="check">✓</span> Never expire</li>
+              <li><span class="check">✓</span> PDF & Excel reports</li>
+            </ul>
+            <button
+              class="btn btn-primary btn-block"
+              onclick="upgrade('starter')"
+            >
+              Buy Credits
+            </button>
+          </div>
 
-  <!-- Pro Pack -->
-  <div class="pricing-card featured">
-    <div class="badge">BEST VALUE</div>
-    <h3>Professional Pack</h3>
-    <div class="price">
-      <span class="currency">$</span>19
-    </div>
-    <p style="color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">
-      500 credits
-    </p>
-    <ul class="features-list">
-      <li>
-        <span class="check">✓</span> <strong>500 analyses</strong>
-      </li>
-      <li>
-        <span class="check">✓</span>
-        <strong style="color: var(--secondary)">2,500 invoices per file</strong>
-      </li>
-      <li><span class="check">✓</span> Never expire</li>
-      <li><span class="check">✓</span> PDF & Excel reports</li>
-    </ul>
-    <button class="btn btn-primary btn-block" onclick="upgrade('professional')">
-      Buy Credits
-    </button>
-  </div>
-</div>
+          <!-- Pro Pack -->
+          <div class="pricing-card featured">
+            <div class="badge">BEST VALUE</div>
+            <h3>Professional Pack</h3>
+            <div class="price"><span class="currency">$</span>19</div>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+              "
+            >
+              500 credits
+            </p>
+            <ul class="features-list">
+              <li>
+                <span class="check">✓</span> <strong>500 analyses</strong>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <strong style="color: var(--secondary)"
+                  >2,500 invoices per file</strong
+                >
+              </li>
+              <li><span class="check">✓</span> Never expire</li>
+              <li><span class="check">✓</span> PDF & Excel reports</li>
+            </ul>
+            <button
+              class="btn btn-primary btn-block"
+              onclick="upgrade('professional')"
+            >
+              Buy Credits
+            </button>
+          </div>
+        </div>
       </div>
       <!-- Footer -->
       <footer class="footer">
@@ -2288,21 +2324,56 @@ input[type="file"] {
       </footer>
     </div>
 
-<!-- Loading Overlay -->
-<div class="loading-overlay" id="loadingOverlay">
-    <div style="text-align: center; max-width: 400px; margin: 0 auto;">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-            <div class="spinner"></div>
-            <p style="font-size: 1.1rem; font-weight: 600; margin: 0;">Analyzing invoices...</p>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div style="text-align: center; max-width: 400px; margin: 0 auto">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+          "
+        >
+          <div class="spinner"></div>
+          <p style="font-size: 1.1rem; font-weight: 600; margin: 0">
+            Analyzing invoices...
+          </p>
         </div>
-        
+
         <!-- Progress bar -->
-        <div style="background: var(--bg-card); border-radius: 8px; height: 8px; margin: 1.5rem 0 0.5rem 0; overflow: hidden;">
-            <div id="progressBar" style="background: linear-gradient(90deg, var(--primary), var(--secondary)); height: 100%; width: 0%; transition: width 0.3s ease; border-radius: 8px;"></div>
+        <div
+          style="
+            background: var(--bg-card);
+            border-radius: 8px;
+            height: 8px;
+            margin: 1.5rem 0 0.5rem 0;
+            overflow: hidden;
+          "
+        >
+          <div
+            id="progressBar"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--primary),
+                var(--secondary)
+              );
+              height: 100%;
+              width: 0%;
+              transition: width 0.3s ease;
+              border-radius: 8px;
+            "
+          ></div>
         </div>
-        <p id="progressText" style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Uploading file...</p>
+        <p
+          id="progressText"
+          style="color: var(--text-secondary); font-size: 0.9rem; margin: 0"
+        >
+          Uploading file...
+        </p>
+      </div>
     </div>
-</div>
 
     <!-- Custom Modal -->
     <div class="custom-modal" id="customModal">
@@ -2339,16 +2410,19 @@ input[type="file"] {
       const API_URL = "https://dupecheck-production.up.railway.app";
 
       function getOrCreateDeviceToken() {
-    let deviceToken = localStorage.getItem("dupecheck_device_token");
-    
-    if (!deviceToken) {
-        // Generate ONCE and store immediately
-        deviceToken = "anon_" + Math.random().toString(36).substring(2, 10) + Date.now().toString(36).substring(-6);
-        localStorage.setItem("dupecheck_device_token", deviceToken);
-        console.log("Created new device token:", deviceToken);
-    }
-    return deviceToken;
-}
+        let deviceToken = localStorage.getItem("dupecheck_device_token");
+
+        if (!deviceToken) {
+          // Generate ONCE and store immediately
+          deviceToken =
+            "anon_" +
+            Math.random().toString(36).substring(2, 10) +
+            Date.now().toString(36).substring(-6);
+          localStorage.setItem("dupecheck_device_token", deviceToken);
+          console.log("Created new device token:", deviceToken);
+        }
+        return deviceToken;
+      }
 
       // Custom Modal System
       function showModal(options = {}) {
@@ -2426,239 +2500,258 @@ input[type="file"] {
       let analysisResults = null;
 
       // Initialize
-   // Initialize
-document.addEventListener("DOMContentLoaded", async () => {
-    // Hide all UI elements that depend on auth state
-    const authButtons = document.getElementById("authButtons");
-    const userMenu = document.getElementById("userMenu");
-    const usageCounter = document.getElementById("usageCounter");
+      // Initialize
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Hide all UI elements that depend on auth state
+        const authButtons = document.getElementById("authButtons");
+        const userMenu = document.getElementById("userMenu");
+        const usageCounter = document.getElementById("usageCounter");
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const paymentStatus = urlParams.get("payment");
-    const sessionId = urlParams.get("session_id");
-    const resetToken = urlParams.get("reset");
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get("payment");
+        const sessionId = urlParams.get("session_id");
+        const resetToken = urlParams.get("reset");
 
-    // Handle payment status FIRST (before any other URL param handling)
-    if (paymentStatus === "success") {
-        // Clean URL immediately
-        window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Show success message after a brief delay
-        setTimeout(() => {
-            showModal({
-                type: "success",
-                title: "Payment Successful! 🎉",
-                message: "Your credits have been added to your account. You can now analyze files up to 2,500 invoices!",
-                onOk: () => {
-                    // Refresh credit balance if logged in
-                    if (authToken) {
-                        fetchCreditBalance();
-                    }
-                }
-            });
-        }, 500);
-    } else if (paymentStatus === "cancelled") {
-        // Clean URL immediately
-        window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Show cancelled message
-        setTimeout(() => {
-            showModal({
-                type: "info",
-                title: "Payment Cancelled",
-                message: "Your payment was cancelled. You can purchase credits anytime from the pricing section.",
-            });
-        }, 500);
-    }
-
-    // Check for password reset token
-    if (resetToken) {
-        // Clear the URL parameter
-        window.history.replaceState(
+        // Handle payment status FIRST (before any other URL param handling)
+        if (paymentStatus === "success") {
+          // Clean URL immediately
+          window.history.replaceState(
             {},
             document.title,
             window.location.pathname
-        );
+          );
 
-        // Show password reset modal after a brief delay to ensure DOM is ready
-        setTimeout(() => {
+          // Show success message after a brief delay
+          setTimeout(() => {
+            showModal({
+              type: "success",
+              title: "Payment Successful! 🎉",
+              message:
+                "Your credits have been added to your account. You can now analyze files up to 2,500 invoices!",
+              onOk: () => {
+                // Refresh credit balance if logged in
+                if (authToken) {
+                  fetchCreditBalance();
+                }
+              },
+            });
+          }, 500);
+        } else if (paymentStatus === "cancelled") {
+          // Clean URL immediately
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
+
+          // Show cancelled message
+          setTimeout(() => {
+            showModal({
+              type: "info",
+              title: "Payment Cancelled",
+              message:
+                "Your payment was cancelled. You can purchase credits anytime from the pricing section.",
+            });
+          }, 500);
+        }
+
+        // Check for password reset token
+        if (resetToken) {
+          // Clear the URL parameter
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
+
+          // Show password reset modal after a brief delay to ensure DOM is ready
+          setTimeout(() => {
             showPasswordResetModal(resetToken);
-        }, 100);
-    }
+          }, 100);
+        }
 
-    // Initially hide UI elements
-    authButtons.style.display = "none";
-    userMenu.style.display = "none";
-    usageCounter.style.display = "none"; // Hide counter initially
+        // Initially hide UI elements
+        authButtons.style.display = "none";
+        userMenu.style.display = "none";
+        usageCounter.style.display = "none"; // Hide counter initially
 
-    // Check authentication status
-    if (authToken) {
-        // Wait for auth check to complete
-        await checkAuth();
-    } else {
-        // Check anonymous user's remaining count
-        await checkAnonymousUsage();
-    }
+        // Check authentication status
+        if (authToken) {
+          // Wait for auth check to complete
+          await checkAuth();
+        } else {
+          // Check anonymous user's remaining count
+          await checkAnonymousUsage();
+        }
 
-    // Now show the counter with correct data
-    usageCounter.style.display = "flex"; // Show counter after check
+        // Now show the counter with correct data
+        usageCounter.style.display = "flex"; // Show counter after check
 
-    // Update UI based on authentication status
-    updateUI();
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
+        // Update UI based on authentication status
+        updateUI();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
             const href = this.getAttribute("href");
 
             // Skip if href is just "#" or empty
             if (!href || href === "#") {
-                e.preventDefault();
-                return;
+              e.preventDefault();
+              return;
             }
 
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                const navHeight = document.querySelector("nav").offsetHeight;
-                const targetPosition = target.offsetTop - navHeight - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth",
-                });
+              const navHeight = document.querySelector("nav").offsetHeight;
+              const targetPosition = target.offsetTop - navHeight - 20;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
             }
+          });
         });
-    });
-});
+      });
 
       // Check anonymous user usage
-  async function checkAnonymousUsage() {
-    
-    const counterElement = document.getElementById("checksRemaining");
-    const usageCounter = document.getElementById("usageCounter");
-    
-    // Show loading state
-    if (counterElement) {
-        counterElement.textContent = "...";
-    }
-    
-    // Get or create token ONCE
-    const deviceToken = getOrCreateDeviceToken();
-    
-    // ALWAYS check with backend
-    try {
-        
-        const response = await fetch(`${API_URL}/api/check-usage`, {
+      async function checkAnonymousUsage() {
+        const counterElement = document.getElementById("checksRemaining");
+        const usageCounter = document.getElementById("usageCounter");
+
+        // Show loading state
+        if (counterElement) {
+          counterElement.textContent = "...";
+        }
+
+        // Get or create token ONCE
+        const deviceToken = getOrCreateDeviceToken();
+
+        // ALWAYS check with backend
+        try {
+          const response = await fetch(`${API_URL}/api/check-usage`, {
             method: "GET",
             headers: {
-                "X-User-Token": deviceToken,
+              "X-User-Token": deviceToken,
             },
-        });
-        
-        
-        if (response.ok) {
+          });
+
+          if (response.ok) {
             const data = await response.json();
-            
-            const remaining = data.checks_remaining !== undefined ? data.checks_remaining : 3;
-            
+
+            const remaining =
+              data.checks_remaining !== undefined ? data.checks_remaining : 3;
+
             if (counterElement) {
-                counterElement.textContent = remaining;
+              counterElement.textContent = remaining;
             }
-            
+
             usageCounter.innerHTML = `<span class="count" id="checksRemaining">${remaining}</span><span>free analyses today (100 invoices max)</span>`;
-            
+
             // Show warnings
             const limitWarning = document.getElementById("limitWarning");
             if (remaining === 0) {
-                limitWarning.innerHTML = '⚠️ You\'ve used all free checks today. Come back tomorrow or <a href="#" onclick="showAuthModal(\'signup\')" style="color: var(--secondary);">create an account</a>!';
-                limitWarning.classList.add("active");
+              limitWarning.innerHTML =
+                '⚠️ You\'ve used all free checks today. Come back tomorrow or <a href="#" onclick="showAuthModal(\'signup\')" style="color: var(--secondary);">create an account</a>!';
+              limitWarning.classList.add("active");
             } else if (remaining === 1) {
-                limitWarning.textContent = "⚠️ You have 1 free check remaining today";
-                limitWarning.classList.add("active");
+              limitWarning.textContent =
+                "⚠️ You have 1 free check remaining today";
+              limitWarning.classList.add("active");
             } else {
-                limitWarning.classList.remove("active");
+              limitWarning.classList.remove("active");
             }
-        } else {
+          } else {
             console.error("Backend returned error:", response.status);
             if (counterElement) {
-                counterElement.textContent = "3";
+              counterElement.textContent = "3";
             }
-            usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
-        }
-    } catch (error) {
-        console.error("Failed to check usage:", error);
-        if (counterElement) {
+            usageCounter.innerHTML =
+              '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
+          }
+        } catch (error) {
+          console.error("Failed to check usage:", error);
+          if (counterElement) {
             counterElement.textContent = "3";
+          }
+          usageCounter.innerHTML =
+            '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
         }
-        usageCounter.innerHTML = '<span class="count" id="checksRemaining">3</span><span>free analyses today (100 invoices max)</span>';
-    }
-    
-    return Promise.resolve();
-}
 
-// Also add debugging to processFile function:
-async function processFile(file) {
-    const formData = new FormData();
-    formData.append("file", file);
-    
-    console.log("=== PROCESS FILE START ===");
+        return Promise.resolve();
+      }
 
-    try {
-        const headers = {};
-        if (authToken) {
+      // Also add debugging to processFile function:
+      async function processFile(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        console.log("=== PROCESS FILE START ===");
+
+        try {
+          const headers = {};
+          if (authToken) {
             headers["Authorization"] = `Bearer ${authToken}`;
             console.log("Using auth token");
-        } else {
+          } else {
             let deviceToken = localStorage.getItem("dupecheck_device_token");
             if (!deviceToken) {
-                deviceToken = "anon_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
-                localStorage.setItem("dupecheck_device_token", deviceToken);
-                console.log("Generated new token for processing:", deviceToken);
+              deviceToken =
+                "anon_" +
+                Math.random().toString(36).substring(2) +
+                Date.now().toString(36);
+              localStorage.setItem("dupecheck_device_token", deviceToken);
+              console.log("Generated new token for processing:", deviceToken);
             }
             headers["X-User-Token"] = deviceToken;
             console.log("Sending anonymous token:", deviceToken);
-        }
+          }
 
-        const response = await fetch(`${API_URL}/api/analyze`, {
+          const response = await fetch(`${API_URL}/api/analyze`, {
             method: "POST",
             headers: headers,
             body: formData,
-        });
+          });
 
-        console.log("Analyze response status:", response.status);
+          console.log("Analyze response status:", response.status);
 
-        if (!response.ok) {
+          if (!response.ok) {
             const error = await response.json();
             console.error("Analyze error:", error);
             throw new Error(error.detail || "Analysis failed");
+          }
+
+          const data = await response.json();
+          console.log(
+            "Analysis complete, checks remaining:",
+            data.checks_remaining
+          );
+
+          // Complete progress
+          updateProgress(100, "Complete!");
+
+          // Short delay to show completion
+          setTimeout(() => {
+            document
+              .getElementById("loadingOverlay")
+              .classList.remove("active");
+            displayResults(data);
+          }, 500);
+        } catch (error) {
+          console.error("Process file error:", error);
+          document.getElementById("loadingOverlay").classList.remove("active");
+          customAlert(error.message, "error");
+
+          if (error.message.includes("Daily limit reached")) {
+            setTimeout(() => {
+              showAuthModal("signup");
+            }, 1500);
+          }
         }
 
-        const data = await response.json();
-        console.log("Analysis complete, checks remaining:", data.checks_remaining);
-        
-        // Complete progress
-        updateProgress(100, "Complete!");
-        
-        // Short delay to show completion
-        setTimeout(() => {
-            document.getElementById("loadingOverlay").classList.remove("active");
-            displayResults(data);
-        }, 500);
-        
-    } catch (error) {
-        console.error("Process file error:", error);
-        document.getElementById("loadingOverlay").classList.remove("active");
-        customAlert(error.message, "error");
-        
-        if (error.message.includes("Daily limit reached")) {
-            setTimeout(() => {
-                showAuthModal("signup");
-            }, 1500);
-        }
-    }
-    
-    console.log("=== PROCESS FILE END ===");
-}
+        console.log("=== PROCESS FILE END ===");
+      }
 
       // Auth functions
       function showAuthModal(mode) {
@@ -2746,35 +2839,35 @@ async function processFile(file) {
         }
       }
 
-   async function checkAuth() {
-    if (!authToken) return Promise.resolve();
+      async function checkAuth() {
+        if (!authToken) return Promise.resolve();
 
-    try {
-        const response = await fetch(`${API_URL}/api/user/usage`, {
+        try {
+          const response = await fetch(`${API_URL}/api/user/usage`, {
             headers: {
-                Authorization: `Bearer ${authToken}`,
+              Authorization: `Bearer ${authToken}`,
             },
-        });
+          });
 
-        if (!response.ok) {
+          if (!response.ok) {
             throw new Error("Invalid token");
-        }
+          }
 
-        const data = await response.json();
-        currentUser = {
+          const data = await response.json();
+          currentUser = {
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
             can_analyze: data.can_analyze,
-            email: localStorage.getItem("dupecheck_email") // FIX: Always include email
-        };
-    } catch (error) {
-        // Invalid token, clear it
-        localStorage.removeItem("dupecheck_token");
-        localStorage.removeItem("dupecheck_email");
-        authToken = null;
-        currentUser = null;
-    }
-}
+            email: localStorage.getItem("dupecheck_email"), // FIX: Always include email
+          };
+        } catch (error) {
+          // Invalid token, clear it
+          localStorage.removeItem("dupecheck_token");
+          localStorage.removeItem("dupecheck_email");
+          authToken = null;
+          currentUser = null;
+        }
+      }
 
       function logout() {
         localStorage.removeItem("dupecheck_token");
@@ -2785,61 +2878,70 @@ async function processFile(file) {
         window.location.reload();
       }
 
-    function toggleUserDropdown() {
-    const dropdown = document.getElementById("userDropdown");
-    const userButton = document.getElementById("userButton");
-    
-    const isOpen = dropdown.classList.contains("active");
-    
-    if (isOpen) {
-        dropdown.classList.remove("active");
-        userButton.classList.remove("active");
-        userButton.setAttribute("aria-expanded", "false");
-    } else {
-        dropdown.classList.add("active");
-        userButton.classList.add("active");
-        userButton.setAttribute("aria-expanded", "true");
-    }
-}
+      function toggleUserDropdown() {
+        const dropdown = document.getElementById("userDropdown");
+        const userButton = document.getElementById("userButton");
+
+        const isOpen = dropdown.classList.contains("active");
+
+        if (isOpen) {
+          dropdown.classList.remove("active");
+          userButton.classList.remove("active");
+          userButton.setAttribute("aria-expanded", "false");
+        } else {
+          dropdown.classList.add("active");
+          userButton.classList.add("active");
+          userButton.setAttribute("aria-expanded", "true");
+        }
+      }
 
 document.addEventListener("click", (e) => {
     const userMenu = document.getElementById("userMenu");
     if (userMenu && !userMenu.contains(e.target)) {
-        document.getElementById("userDropdown").classList.remove("active");
-        document.getElementById("userButton")?.classList.remove("active");
-        document.getElementById("userButton")?.setAttribute("aria-expanded", "false");
+        const userDropdown = document.getElementById("userDropdown");
+        if (userDropdown) {
+            userDropdown.classList.remove("active");
+        }
+        const userButton = document.getElementById("userButton");
+        if (userButton) {
+            userButton.classList.remove("active");
+            userButton.setAttribute("aria-expanded", "false");
+        }
     }
 });
 
-function updateUI() {
-    const authButtons = document.getElementById("authButtons");
-    const userMenu = document.getElementById("userMenu");
-    const usageCounter = document.getElementById("usageCounter");
+      function updateUI() {
+        const authButtons = document.getElementById("authButtons");
+        const userMenu = document.getElementById("userMenu");
+        const usageCounter = document.getElementById("usageCounter");
 
-    if (currentUser) {
-        authButtons.style.display = "none";
-        userMenu.style.display = "flex"; // Changed from "block" to "flex"
+        if (currentUser) {
+          authButtons.style.display = "none";
+          userMenu.style.display = "flex"; // Changed from "block" to "flex"
 
-        // Get email from currentUser object OR localStorage
-        const email = currentUser.email || localStorage.getItem("dupecheck_email") || "User";
-        
-        // Create avatar initials from email
-        const initials = email.substring(0, 2).toUpperCase();
-        document.getElementById("userAvatar").textContent = initials;
-        
-        // Set email
-        document.getElementById("userEmail").textContent = 
+          // Get email from currentUser object OR localStorage
+          const email =
+            currentUser.email ||
+            localStorage.getItem("dupecheck_email") ||
+            "User";
+
+          // Create avatar initials from email
+          const initials = email.substring(0, 2).toUpperCase();
+          document.getElementById("userAvatar").textContent = initials;
+
+          // Set email
+          document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
-        
-        // Fetch and display credit balance
-        fetchCreditBalance();
-    } else {
-        authButtons.style.display = "flex";
-        authButtons.style.gap = "1rem";
-        userMenu.style.display = "none";
-        usageCounter.style.display = "flex";
-    }
-}
+
+          // Fetch and display credit balance
+          fetchCreditBalance();
+        } else {
+          authButtons.style.display = "flex";
+          authButtons.style.gap = "1rem";
+          userMenu.style.display = "none";
+          usageCounter.style.display = "flex";
+        }
+      }
 
       // File upload handling
       const uploadArea = document.getElementById("uploadArea");
@@ -2869,147 +2971,166 @@ function updateUI() {
         }
       });
 
-async function handleFile(file) {
-    uploadedFile = file;
-    
-    // Reset and show loading with progress
-    document.getElementById("loadingOverlay").classList.add("active");
-    updateProgress(0, "Uploading file...");
-    
-    // Start progress animation
-    simulateProgress(file);
-    
-    // Process file
-    await processFile(file);
-}
+      async function handleFile(file) {
+        uploadedFile = file;
 
-function updateProgress(percent, text) {
-    document.getElementById("progressBar").style.width = percent + "%";
-    document.getElementById("progressText").textContent = text;
-}
+        // Reset and show loading with progress
+        document.getElementById("loadingOverlay").classList.add("active");
+        updateProgress(0, "Uploading file...");
 
-function simulateProgress(file) {
-    // Estimate time based on file size (rough estimate)
-    const fileSizeMB = file.size / (1024 * 1024);
-    const estimatedTime = Math.min(Math.max(fileSizeMB * 2, 3), 15) * 1000; // 3-15 seconds
-    
-    const stages = [
-        { percent: 10, text: "Uploading file...", time: 0.1 },
-        { percent: 25, text: "Reading invoice data...", time: 0.2 },
-        { percent: 40, text: "Parsing records...", time: 0.3 },
-        { percent: 60, text: "Analyzing duplicates...", time: 0.5 },
-        { percent: 80, text: "Calculating matches...", time: 0.7 },
-        { percent: 95, text: "Generating report...", time: 0.9 }
-    ];
-    
-    stages.forEach(stage => {
-        setTimeout(() => {
+        // Start progress animation
+        simulateProgress(file);
+
+        // Process file
+        await processFile(file);
+      }
+
+      function updateProgress(percent, text) {
+        document.getElementById("progressBar").style.width = percent + "%";
+        document.getElementById("progressText").textContent = text;
+      }
+
+      function simulateProgress(file) {
+        // Estimate time based on file size (rough estimate)
+        const fileSizeMB = file.size / (1024 * 1024);
+        const estimatedTime = Math.min(Math.max(fileSizeMB * 2, 3), 15) * 1000; // 3-15 seconds
+
+        const stages = [
+          { percent: 10, text: "Uploading file...", time: 0.1 },
+          { percent: 25, text: "Reading invoice data...", time: 0.2 },
+          { percent: 40, text: "Parsing records...", time: 0.3 },
+          { percent: 60, text: "Analyzing duplicates...", time: 0.5 },
+          { percent: 80, text: "Calculating matches...", time: 0.7 },
+          { percent: 95, text: "Generating report...", time: 0.9 },
+        ];
+
+        stages.forEach((stage) => {
+          setTimeout(() => {
             // Only update if still loading
-            if (document.getElementById("loadingOverlay").classList.contains("active")) {
-                updateProgress(stage.percent, stage.text);
+            if (
+              document
+                .getElementById("loadingOverlay")
+                .classList.contains("active")
+            ) {
+              updateProgress(stage.percent, stage.text);
             }
-        }, estimatedTime * stage.time);
-    });
-}
+          }, estimatedTime * stage.time);
+        });
+      }
 
-   async function processFile(file) {
-    const formData = new FormData();
-    formData.append("file", file);
-    
+      async function processFile(file) {
+        const formData = new FormData();
+        formData.append("file", file);
 
-    try {
-        const headers = {};
-        if (authToken) {
+        try {
+          const headers = {};
+          if (authToken) {
             headers["Authorization"] = `Bearer ${authToken}`;
-        } else {
+          } else {
             // Use the same function to get token
             const deviceToken = getOrCreateDeviceToken();
             headers["X-User-Token"] = deviceToken;
-        }
+          }
 
-        const response = await fetch(`${API_URL}/api/analyze`, {
+          const response = await fetch(`${API_URL}/api/analyze`, {
             method: "POST",
             headers: headers,
             body: formData,
-        });
+          });
 
-
-        if (!response.ok) {
+          if (!response.ok) {
             const error = await response.json();
             console.error("Analyze error:", error);
             throw new Error(error.detail || "Analysis failed");
-        }
+          }
 
-        const data = await response.json();
-        
-        // Complete progress
-        updateProgress(100, "Complete!");
-        
-        // Short delay to show completion
-        setTimeout(() => {
-            document.getElementById("loadingOverlay").classList.remove("active");
+          const data = await response.json();
+
+          // Complete progress
+          updateProgress(100, "Complete!");
+
+          // Short delay to show completion
+          setTimeout(() => {
+            document
+              .getElementById("loadingOverlay")
+              .classList.remove("active");
             displayResults(data);
-        }, 500);
-        
-    } catch (error) {
-        document.getElementById("loadingOverlay").classList.remove("active");
-        customAlert(error.message, "error");
-        
-        if (error.message.includes("used your 3 free daily analyses")) {
+          }, 500);
+        } catch (error) {
+          document.getElementById("loadingOverlay").classList.remove("active");
+          customAlert(error.message, "error");
+
+          if (error.message.includes("used your 3 free daily analyses")) {
             setTimeout(() => {
-                showAuthModal("signup");
+              showAuthModal("signup");
             }, 1500);
+          }
         }
-    }
-    
-}
+      }
 
+      function displayResults(data) {
+        analysisResults = data; // Store globally for later use
 
- function displayResults(data) {
-    analysisResults = data;  // Store globally for later use
-    
-    document.getElementById("resultsCard").classList.add("active");
-    
-    // Show summary stats
-    document.getElementById("totalInvoices").textContent = data.total_invoices;
-    document.getElementById("duplicatesFound").textContent = data.duplicates_found;
-    document.getElementById("potentialSavings").textContent = "$" + data.potential_savings.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    
-    const duplicatesList = document.getElementById("duplicatesList");
-    
-    if (data.duplicates_found > 0) {
-        // Show top 5 high-value duplicates only
-        const topDuplicates = data.duplicates
-            .sort((a, b) => b.potential_savings - a.potential_savings)
-            .slice(0, 5);
-        
-        duplicatesList.innerHTML = `
-            <h3 style="margin-bottom: 1rem;">Top ${Math.min(5, data.duplicates_found)} High-Value Duplicates</h3>
+        document.getElementById("resultsCard").classList.add("active");
+
+        // Show summary stats
+        document.getElementById("totalInvoices").textContent =
+          data.total_invoices;
+        document.getElementById("duplicatesFound").textContent =
+          data.duplicates_found;
+        document.getElementById("potentialSavings").textContent =
+          "$" +
+          data.potential_savings
+            .toFixed(2)
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        const duplicatesList = document.getElementById("duplicatesList");
+
+        if (data.duplicates_found > 0) {
+          // The backend only sends summary data, not full invoice details
+          duplicatesList.innerHTML = `
+            <h3 style="margin-bottom: 1rem;">Top ${Math.min(
+              5,
+              data.duplicates_found
+            )} High-Value Duplicates</h3>
         `;
-        
-        topDuplicates.forEach((dup, i) => {
-            const vendor = dup.invoice1.vendor || dup.invoice1.Vendor || "Unknown";
-            const item = document.createElement("div");
-            item.style.cssText = "background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;";
-            item.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <strong>Duplicate #${i + 1}</strong> - ${vendor}
-                        <div style="color: var(--text-secondary); font-size: 0.9rem;">
-                            Amount: $${dup.potential_savings.toFixed(2)} • 
-                            Confidence: ${Math.round(dup.confidence_score)}%
+
+          // Check if we have duplicates array with data
+          if (data.duplicates && data.duplicates.length > 0) {
+            data.duplicates.forEach((dup, i) => {
+              const item = document.createElement("div");
+              item.style.cssText =
+                "background: var(--bg-dark); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;";
+              item.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>Duplicate #${i + 1}</strong>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                Amount: $${dup.potential_savings.toFixed(2)} • 
+                                Confidence: ${Math.round(dup.confidence_score)}%
+                            </div>
+                            ${
+                              dup.match_reasons && dup.match_reasons.length > 0
+                                ? `
+                                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                                    ${dup.match_reasons.join(" • ")}
+                                </div>
+                            `
+                                : ""
+                            }
                         </div>
+                        <span style="color: var(--danger);">⚠️</span>
                     </div>
-                    <span style="color: var(--danger);">⚠️</span>
-                </div>
-            `;
-            duplicatesList.appendChild(item);
-        });
-        
-        // Add summary message
-        if (data.duplicates_found > 5) {
+                `;
+              duplicatesList.appendChild(item);
+            });
+          }
+
+          // Add summary message if there are more than 5 duplicates
+          if (data.duplicates_found > 5) {
             const msg = document.createElement("div");
-            msg.style.cssText = "text-align: center; margin-top: 1.5rem; padding: 1rem; background: var(--bg-dark); border-radius: 8px;";
+            msg.style.cssText =
+              "text-align: center; margin-top: 1.5rem; padding: 1rem; background: var(--bg-dark); border-radius: 8px;";
             msg.innerHTML = `
                 <p style="color: var(--text-secondary); margin-bottom: 1rem;">
                     Showing top 5 of ${data.duplicates_found} duplicates by value
@@ -3019,64 +3140,67 @@ function simulateProgress(file) {
                 </p>
             `;
             duplicatesList.appendChild(msg);
-        }
-        
-        // Show upgrade prompt for non-logged in users
-        if (!currentUser && data.duplicates_found > 0) {
+          }
+
+          // Show upgrade prompt for non-logged in users
+          if (!currentUser && data.duplicates_found > 0) {
             setTimeout(() => {
-                const msg = document.createElement("div");
-                msg.className = "alert alert-success active";
-                msg.style.marginTop = "1rem";
-                msg.innerHTML = `
+              const msg = document.createElement("div");
+              msg.className = "alert alert-success active";
+              msg.style.marginTop = "1rem";
+              msg.innerHTML = `
                     Found ${data.duplicates_found} duplicates! 
                     <a href="#" onclick="showAuthModal('signup')" style="color: var(--secondary); text-decoration: underline;">
                         Create an account
                     </a> to save your analysis and get more checks.
                 `;
-                duplicatesList.appendChild(msg);
+              duplicatesList.appendChild(msg);
             }, 500);
-        }
-    } else {
-        duplicatesList.innerHTML = `
+          }
+        } else {
+          duplicatesList.innerHTML = `
             <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
                 <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
                 <h3>No duplicates found!</h3>
                 <p>Your invoices look clean</p>
             </div>
         `;
-    }
-    
-    // Scroll to results
-    setTimeout(() => {
-        const resultsCard = document.getElementById("resultsCard");
-        const navHeight = document.querySelector("nav").offsetHeight;
-        const targetPosition = resultsCard.offsetTop - navHeight - 20;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth"
-        });
-    }, 100);
-    
-    // Update remaining checks for anonymous users
-    if (!currentUser && data.checks_remaining !== undefined) {
-        document.getElementById("checksRemaining").textContent = data.checks_remaining;
-        
-        const limitWarning = document.getElementById("limitWarning");
-        if (data.checks_remaining === 0) {
-            limitWarning.innerHTML = '⚠️ You\'ve used all 3 free checks today. <a href="#" onclick="showAuthModal(\'signup\')" style="color: var(--secondary);">Create an account</a> for more!';
-            limitWarning.classList.add("active");
-        } else if (data.checks_remaining === 1) {
-            limitWarning.textContent = "⚠️ You have 1 free check remaining today";
-            limitWarning.classList.add("active");
         }
-    }
-    
-    // Update credit balance if logged in
-    if (currentUser) {
-        fetchCreditBalance();
-    }
-}
+
+        // Scroll to results
+        setTimeout(() => {
+          const resultsCard = document.getElementById("resultsCard");
+          const navHeight = document.querySelector("nav").offsetHeight;
+          const targetPosition = resultsCard.offsetTop - navHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }, 100);
+
+        // UPDATE USAGE COUNTER FOR ANONYMOUS USERS
+        if (!currentUser && data.checks_remaining !== undefined) {
+          document.getElementById("checksRemaining").textContent =
+            data.checks_remaining;
+
+          const limitWarning = document.getElementById("limitWarning");
+          if (data.checks_remaining === 0) {
+            limitWarning.innerHTML =
+              '⚠️ You\'ve used all 3 free checks today. <a href="#" onclick="showAuthModal(\'signup\')" style="color: var(--secondary);">Create an account</a> for more!';
+            limitWarning.classList.add("active");
+          } else if (data.checks_remaining === 1) {
+            limitWarning.textContent =
+              "⚠️ You have 1 free check remaining today";
+            limitWarning.classList.add("active");
+          }
+        }
+
+        // Update credit balance if logged in
+        if (currentUser) {
+          fetchCreditBalance();
+        }
+      }
       async function downloadReport(format = "pdf") {
         if (!analysisResults) return;
 
@@ -3126,7 +3250,29 @@ function simulateProgress(file) {
         }
       }
       function downloadTextReport() {
-        // Your existing text download code - just move it here
+        if (!analysisResults) return;
+
+        // Build duplicate details from the summary data we have
+        let duplicateDetails = "";
+        if (
+          analysisResults.duplicates &&
+          analysisResults.duplicates.length > 0
+        ) {
+          duplicateDetails = analysisResults.duplicates
+            .map(
+              (dup, i) => `
+Duplicate #${i + 1}
+Confidence: ${Math.round(dup.confidence_score)}%
+Amount: $${dup.potential_savings.toFixed(2)}
+Reasons: ${dup.match_reasons ? dup.match_reasons.join(", ") : "N/A"}
+`
+            )
+            .join("\n");
+        } else {
+          duplicateDetails =
+            "No duplicate details available in summary view. Download full report for details.";
+        }
+
         const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
@@ -3138,16 +3284,7 @@ Potential Savings: $${analysisResults.potential_savings.toFixed(2)}
 
 DUPLICATE DETAILS
 =================
-${analysisResults.duplicates
-  .map(
-    (dup, i) => `
-Duplicate #${i + 1}
-Confidence: ${Math.round(dup.confidence_score)}%
-Amount: $${dup.potential_savings.toFixed(2)}
-Reasons: ${dup.match_reasons.join(", ")}
-`
-  )
-  .join("\n")}
+${duplicateDetails}
 
 ---
 Analyzed by DupeCheck
@@ -3160,17 +3297,7 @@ Visit dupecheck.forgeapis.com for more
         a.href = url;
         a.download = `dupecheck-report-${Date.now()}.txt`;
         a.click();
-      }
-
-      function downloadTextReport() {
-        // Move your existing text download code here
-        const report = `DupeCheck Analysis Report...`; // Your existing code
-        const blob = new Blob([report], { type: "text/plain" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `dupecheck-report-${Date.now()}.txt`;
-        a.click();
+        window.URL.revokeObjectURL(url);
       }
 
       function viewHistory() {
@@ -3333,13 +3460,6 @@ Visit dupecheck.forgeapis.com for more
       }
 
       // Close dropdown when clicking outside
-      document.addEventListener("click", (e) => {
-        const userMenu = document.getElementById("userMenu");
-        if (userMenu && !userMenu.contains(e.target)) {
-          document.getElementById("userDropdown").classList.remove("active");
-        }
-      });
-
       async function testCreditPurchase() {
         if (!authToken) {
           customAlert("Please login first", "warning");
@@ -3374,66 +3494,66 @@ Visit dupecheck.forgeapis.com for more
         }
       }
 
-   // UPDATE YOUR fetchCreditBalance FUNCTION to show credits instead of tiers:
+      // UPDATE YOUR fetchCreditBalance FUNCTION to show credits instead of tiers:
 
-async function fetchCreditBalance() {
-    if (!authToken) return;
+      async function fetchCreditBalance() {
+        if (!authToken) return;
 
-    try {
-        const response = await fetch(`${API_URL}/api/credits/balance`, {
+        try {
+          const response = await fetch(`${API_URL}/api/credits/balance`, {
             headers: {
-                Authorization: `Bearer ${authToken}`,
+              Authorization: `Bearer ${authToken}`,
             },
-        });
+          });
 
-        if (response.ok) {
+          if (response.ok) {
             const data = await response.json();
             const counterElement = document.getElementById("usageCounter");
             const creditsElement = document.getElementById("userCredits");
 
             if (data.balance > 0) {
-                // User has PAID credits
-                counterElement.innerHTML = `
+              // User has PAID credits
+              counterElement.innerHTML = `
                     <span class="count" style="color: var(--secondary);">${data.balance}</span>
                     <span>credits • <strong>2,500 invoices/file</strong></span>
                 `;
-                
-                creditsElement.textContent = `${data.balance} credits remaining`;
-                creditsElement.className = "user-credits has-credits";
+
+              creditsElement.textContent = `${data.balance} credits remaining`;
+              creditsElement.className = "user-credits has-credits";
             } else {
-                // No credits - check free tier usage
-                const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`,
-                    },
-                });
+              // No credits - check free tier usage
+              const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                },
+              });
 
-                if (usageResponse.ok) {
-                    const usageData = await usageResponse.json();
-                    const remaining = usageData.checks_remaining || 0;
+              if (usageResponse.ok) {
+                const usageData = await usageResponse.json();
+                const remaining = usageData.checks_remaining || 0;
 
-                    counterElement.innerHTML = `
+                counterElement.innerHTML = `
                         <span class="count">${remaining}</span>
                         <span>free today • <strong style="color: var(--warning);">100 invoices max</strong></span>
                     `;
-                    
-                    if (remaining > 0) {
-                        creditsElement.textContent = `${remaining} free checks today`;
-                        creditsElement.className = "user-credits";
-                    } else {
-                        creditsElement.textContent = "No checks remaining";
-                        creditsElement.className = "user-credits";
-                    }
-                }
-            }
-        }
-    } catch (error) {
-        console.error("Failed to fetch credit balance:", error);
-        document.getElementById("userCredits").textContent = "Free tier";
-    }
-}
 
-// Also update the CSS for the new badge styles:
+                if (remaining > 0) {
+                  creditsElement.textContent = `${remaining} free checks today`;
+                  creditsElement.className = "user-credits";
+                } else {
+                  creditsElement.textContent = "No checks remaining";
+                  creditsElement.className = "user-credits";
+                }
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Failed to fetch credit balance:", error);
+          document.getElementById("userCredits").textContent = "Free tier";
+        }
+      }
+
+      // Also update the CSS for the new badge styles:
 
       function showAllDuplicates() {
         if (!analysisResults || !analysisResults.duplicates) return;
@@ -3583,12 +3703,11 @@ async function fetchCreditBalance() {
           });
       }
 
-
       // Add this new function
-function showPasswordResetModal(token) {
-    const modal = document.createElement("div");
-    modal.className = "modal active";
-    modal.innerHTML = `
+      function showPasswordResetModal(token) {
+        const modal = document.createElement("div");
+        modal.className = "modal active";
+        modal.innerHTML = `
         <div class="modal-content">
             <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
             <h2 style="color: var(--primary); margin-bottom: 1rem;">Reset Your Password</h2>
@@ -3614,152 +3733,162 @@ function showPasswordResetModal(token) {
             <div class="alert alert-success" id="resetSuccess"></div>
         </div>
     `;
-    document.body.appendChild(modal);
-    
-    // Focus on first input
-    setTimeout(() => {
-        document.getElementById("newPassword").focus();
-    }, 100);
-}
+        document.body.appendChild(modal);
+
+        // Focus on first input
+        setTimeout(() => {
+          document.getElementById("newPassword").focus();
+        }, 100);
+      }
 
       function scrollToUpload() {
-  const uploadCard = document.querySelector('.upload-card');
-  if (uploadCard) {
-    const navHeight = document.querySelector('nav').offsetHeight;
-    const targetPosition = uploadCard.offsetTop - navHeight - 20;
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-}
+        const uploadCard = document.querySelector(".upload-card");
+        if (uploadCard) {
+          const navHeight = document.querySelector("nav").offsetHeight;
+          const targetPosition = uploadCard.offsetTop - navHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
 
-    async function handlePasswordReset(event, token) {
-    event.preventDefault();
-    
-    const newPassword = document.getElementById("newPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const errorDiv = document.getElementById("resetError");
-    const successDiv = document.getElementById("resetSuccess");
-    
-    // Clear previous messages
-    errorDiv.classList.remove("active");
-    successDiv.classList.remove("active");
-    
-    if (newPassword !== confirmPassword) {
-        errorDiv.textContent = "Passwords don't match. Please try again.";
-        errorDiv.classList.add("active");
-        return;
-    }
-    
-    if (newPassword.length < 6) {
-        errorDiv.textContent = "Password must be at least 6 characters long.";
-        errorDiv.classList.add("active");
-        return;
-    }
-    
-    // Show loading state
-    const submitButton = event.target.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    submitButton.textContent = "Resetting...";
-    submitButton.disabled = true;
-    
-    try {
-        const response = await fetch(`${API_URL}/api/auth/reset-password`, {
+      async function handlePasswordReset(event, token) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const errorDiv = document.getElementById("resetError");
+        const successDiv = document.getElementById("resetSuccess");
+
+        // Clear previous messages
+        errorDiv.classList.remove("active");
+        successDiv.classList.remove("active");
+
+        if (newPassword !== confirmPassword) {
+          errorDiv.textContent = "Passwords don't match. Please try again.";
+          errorDiv.classList.add("active");
+          return;
+        }
+
+        if (newPassword.length < 6) {
+          errorDiv.textContent = "Password must be at least 6 characters long.";
+          errorDiv.classList.add("active");
+          return;
+        }
+
+        // Show loading state
+        const submitButton = event.target.querySelector(
+          'button[type="submit"]'
+        );
+        const originalText = submitButton.textContent;
+        submitButton.textContent = "Resetting...";
+        submitButton.disabled = true;
+
+        try {
+          const response = await fetch(`${API_URL}/api/auth/reset-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                token: token,
-                password: newPassword,
+              token: token,
+              password: newPassword,
             }),
-        });
-        
-        if (!response.ok) {
+          });
+
+          if (!response.ok) {
             const error = await response.json();
             throw new Error(error.detail || "Reset failed");
-        }
-        
-        // Success
-        successDiv.textContent = "Password reset successfully! Redirecting to login...";
-        successDiv.classList.add("active");
-        
-        // Close modal and show login after delay
-        setTimeout(() => {
+          }
+
+          // Success
+          successDiv.textContent =
+            "Password reset successfully! Redirecting to login...";
+          successDiv.classList.add("active");
+
+          // Close modal and show login after delay
+          setTimeout(() => {
             document.querySelector(".modal.active").remove();
             showAuthModal("login");
-            
+
             // Show success message in login modal
             setTimeout(() => {
-                const authSuccess = document.getElementById("authSuccess");
-                authSuccess.textContent = "Password reset successful! You can now login with your new password.";
-                authSuccess.classList.add("active");
+              const authSuccess = document.getElementById("authSuccess");
+              authSuccess.textContent =
+                "Password reset successful! You can now login with your new password.";
+              authSuccess.classList.add("active");
             }, 100);
-        }, 2000);
-        
-    } catch (error) {
-        errorDiv.textContent = error.message;
-        errorDiv.classList.add("active");
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }
-}
-function showForgotPassword(event) {
-    if (event && event.preventDefault) {
-        event.preventDefault();
-    }
-    
-    closeAuthModal();
-    
-    // Create a nice modal for email input
-    showModal({
-        type: "info",
-        title: "Reset Password",
-        message: "Enter your email address and we'll send you a password reset link.",
-        showCancel: true,
-        okText: "Send Reset Link",
-        onOk: async () => {
+          }, 2000);
+        } catch (error) {
+          errorDiv.textContent = error.message;
+          errorDiv.classList.add("active");
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        }
+      }
+      function showForgotPassword(event) {
+        if (event && event.preventDefault) {
+          event.preventDefault();
+        }
+
+        closeAuthModal();
+
+        // Create a nice modal for email input
+        showModal({
+          type: "info",
+          title: "Reset Password",
+          message:
+            "Enter your email address and we'll send you a password reset link.",
+          showCancel: true,
+          okText: "Send Reset Link",
+          onOk: async () => {
             const email = prompt("Enter your email address:");
             if (!email) return;
-            
+
             // Show loading
             showModal({
-                type: "info",
-                title: "Sending...",
-                message: "Sending password reset email..."
+              type: "info",
+              title: "Sending...",
+              message: "Sending password reset email...",
             });
-            
+
             try {
-                const response = await fetch(`${API_URL}/api/auth/forgot-password`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email }),
-                });
-                
-                if (!response.ok) {
-                    throw new Error("Request failed");
+              const response = await fetch(
+                `${API_URL}/api/auth/forgot-password`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email }),
                 }
-                
-                closeModal();
-                setTimeout(() => {
-                    showModal({
-                        type: "success",
-                        title: "Check Your Email",
-                        message: "If an account exists with that email, we've sent a password reset link. Please check your inbox and spam folder.",
-                    });
-                }, 100);
+              );
+
+              if (!response.ok) {
+                throw new Error("Request failed");
+              }
+
+              closeModal();
+              setTimeout(() => {
+                showModal({
+                  type: "success",
+                  title: "Check Your Email",
+                  message:
+                    "If an account exists with that email, we've sent a password reset link. Please check your inbox and spam folder.",
+                });
+              }, 100);
             } catch (error) {
-                closeModal();
-                setTimeout(() => {
-                    showModal({
-                        type: "error",
-                        title: "Error",
-                        message: "Failed to send reset email. Please try again later.",
-                    });
-                }, 100);
+              closeModal();
+              setTimeout(() => {
+                showModal({
+                  type: "error",
+                  title: "Error",
+                  message:
+                    "Failed to send reset email. Please try again later.",
+                });
+              }, 100);
             }
-        }
-    });
-}
+          },
+        });
+      }
     </script>
   </body>
 </html>
