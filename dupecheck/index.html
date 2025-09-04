@@ -3201,34 +3201,25 @@ document.addEventListener("click", (e) => {
           fetchCreditBalance();
         }
       }
-      async function downloadReport(format = "pdf") {
-        if (!analysisResults) return;
+    async function downloadReport(format = "pdf") {
+    if (!analysisResults) return;
 
-        if (format === "text") {
-          downloadTextReport();
-        } else if (format === "pdf" || format === "excel") {
-          try {
-            const endpoint =
-              format === "pdf"
-                ? "/api/analyze/download-pdf"
-                : "/api/analyze/download-excel";
-
+    // Use the new endpoint for Excel and PDF
+    if (format === "excel" || format === "pdf") {
+        try {
             const headers = {};
             if (authToken) {
-              headers["Authorization"] = `Bearer ${authToken}`;
+                headers["Authorization"] = `Bearer ${authToken}`;
             }
 
-            const response = await fetch(`${API_URL}${endpoint}`, {
-              method: "POST",
-              headers: {
-                ...headers,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(analysisResults),
+            // Use the new endpoint that gets full data
+            const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=${format}`, {
+                method: "POST",
+                headers: headers
             });
 
             if (!response.ok) {
-              throw new Error(`Failed to generate ${format.toUpperCase()}`);
+                throw new Error(`Failed to generate ${format.toUpperCase()}`);
             }
 
             const blob = await response.blob();
@@ -3239,16 +3230,15 @@ document.addEventListener("click", (e) => {
             a.download = `dupecheck-report-${Date.now()}.${extension}`;
             a.click();
             window.URL.revokeObjectURL(url);
-          } catch (error) {
+        } catch (error) {
             console.error(`${format.toUpperCase()} generation error:`, error);
-            customAlert(
-              `${format.toUpperCase()} generation failed, downloading text report instead`,
-              "warning"
-            );
-            downloadTextReport();
-          }
+            customAlert(`Failed to generate ${format.toUpperCase()}`, "error");
         }
-      }
+    } else if (format === "text") {
+        downloadTextReport();
+    }
+}
+
       function downloadTextReport() {
         if (!analysisResults) return;
 
