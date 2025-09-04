@@ -3201,69 +3201,94 @@ document.addEventListener("click", (e) => {
           fetchCreditBalance();
         }
       }
-    async function downloadReport(format = "pdf") {
+   async function downloadReport(format = "pdf") {
     if (!analysisResults) return;
 
-    // Use the new endpoint for Excel and PDF
-    if (format === "excel" || format === "pdf") {
+    // For ALL formats, use the prepare-download endpoint to get full data
+    try {
+        const headers = {};
+        if (authToken) {
+            headers["Authorization"] = `Bearer ${authToken}`;
+        }
+
+        const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=${format}`, {
+            method: "POST",
+            headers: headers
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to generate ${format.toUpperCase()}`);
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        
+        // Set appropriate extension
+        let extension;
+        if (format === "pdf") extension = "pdf";
+        else if (format === "excel") extension = "xlsx";
+        else if (format === "text") extension = "txt";
+        
+        a.download = `dupecheck-report-${Date.now()}.${extension}`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error(`${format.toUpperCase()} generation error:`, error);
+        customAlert(`Failed to generate ${format.toUpperCase()}`, "error");
+    }
+}
+
+   async function downloadTextReport() {
+    if (!analysisResults) return;
+
+    // For logged-in users or if we have an analysis_id, fetch full data
+    if (analysisResults.analysis_id) {
         try {
             const headers = {};
             if (authToken) {
                 headers["Authorization"] = `Bearer ${authToken}`;
             }
 
-            // Use the new endpoint that gets full data
-            const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=${format}`, {
+            // Fetch full report data from backend
+            const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=text`, {
                 method: "POST",
                 headers: headers
             });
 
             if (!response.ok) {
-                throw new Error(`Failed to generate ${format.toUpperCase()}`);
+                throw new Error("Failed to fetch full report");
             }
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            const extension = format === "pdf" ? "pdf" : "xlsx";
-            a.download = `dupecheck-report-${Date.now()}.${extension}`;
+            a.download = `dupecheck-report-${Date.now()}.txt`;
             a.click();
             window.URL.revokeObjectURL(url);
+            return;
         } catch (error) {
-            console.error(`${format.toUpperCase()} generation error:`, error);
-            customAlert(`Failed to generate ${format.toUpperCase()}`, "error");
+            console.error("Failed to get full text report, falling back to summary");
         }
-    } else if (format === "text") {
-        downloadTextReport();
     }
-}
 
-      function downloadTextReport() {
-        if (!analysisResults) return;
-
-        // Build duplicate details from the summary data we have
-        let duplicateDetails = "";
-        if (
-          analysisResults.duplicates &&
-          analysisResults.duplicates.length > 0
-        ) {
-          duplicateDetails = analysisResults.duplicates
-            .map(
-              (dup, i) => `
+    // Fallback: Build report from available data
+    let duplicateDetails = "";
+    if (analysisResults.duplicates && analysisResults.duplicates.length > 0) {
+        duplicateDetails = analysisResults.duplicates
+            .map((dup, i) => `
 Duplicate #${i + 1}
 Confidence: ${Math.round(dup.confidence_score)}%
 Amount: $${dup.potential_savings.toFixed(2)}
 Reasons: ${dup.match_reasons ? dup.match_reasons.join(", ") : "N/A"}
-`
-            )
-            .join("\n");
-        } else {
-          duplicateDetails =
-            "No duplicate details available in summary view. Download full report for details.";
-        }
+`).join("\n");
+    } else {
+        duplicateDetails = "No duplicate details available in summary view.";
+    }
 
-        const report = `DupeCheck Analysis Report
+    const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
 SUMMARY
@@ -3276,19 +3301,21 @@ DUPLICATE DETAILS
 =================
 ${duplicateDetails}
 
+Note: This report shows summary data only. Download Excel or PDF for full details.
+
 ---
 Analyzed by DupeCheck
 Visit dupecheck.forgeapis.com for more
 `;
 
-        const blob = new Blob([report], { type: "text/plain" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `dupecheck-report-${Date.now()}.txt`;
-        a.click();
-        window.URL.revokeObjectURL(url);
-      }
+    const blob = new Blob([report], { type: "text/plain" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `dupecheck-report-${Date.now()}.txt`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
 
       function viewHistory() {
         showModal({
