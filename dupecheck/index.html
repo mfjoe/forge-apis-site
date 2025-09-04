@@ -3327,103 +3327,93 @@ Visit dupecheck.forgeapis.com for more
         toggleUserDropdown();
       }
 
-      async function upgrade(plan) {
-        if (!authToken) {
-          showModal({
+    async function upgrade(plan) {
+    if (!authToken) {
+        showModal({
             type: "warning",
             title: "Login Required",
             message: "Please create an account or login to purchase credits",
             okText: "Login",
             onOk: () => showAuthModal("login"),
-          });
-          return;
-        }
+        });
+        return;
+    }
 
-        // Map plan names to package names for the API
-        const packageMap = {
-          starter: "starter",
-          professional: "professional",
-          business: "business",
-        };
+    // Map plan names to package names for the API
+    const packageMap = {
+        starter: "starter",
+        professional: "professional",
+        business: "business",
+    };
 
-        const packageName = packageMap[plan];
+    const packageName = packageMap[plan];
+    
+    // Debug logging
+    console.log("Plan requested:", plan);
+    console.log("Package name being sent:", packageName);
 
-        if (plan === "business") {
-          // Business plan needs subscription setup (not implemented yet)
-          showModal({
+    if (plan === "business") {
+        showModal({
             type: "info",
             title: "Business Plan",
-            message:
-              "The Business subscription plan is coming soon. For now, try our credit packages!",
-          });
-          return;
-        }
-
-        // Show loading
-        showModal({
-          type: "info",
-          title: "Redirecting to checkout...",
-          message: "Please wait while we prepare your secure checkout session",
+            message: "The Business subscription plan is coming soon. For now, try our credit packages!",
         });
+        return;
+    }
 
-        try {
-          const response = await fetch(`${API_URL}/api/credits/checkout`, {
+    // Show loading
+    showModal({
+        type: "info",
+        title: "Redirecting to checkout...",
+        message: "Please wait while we prepare your secure checkout session",
+    });
+
+    try {
+        const requestBody = { package: packageName };
+        console.log("Request body:", JSON.stringify(requestBody));
+        console.log("Auth token exists:", !!authToken);
+
+        const response = await fetch(`${API_URL}/api/credits/checkout`, {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "application/json",
+                Authorization: `Bearer ${authToken}`,
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ package: packageName }),
-          });
-
-          if (!response.ok) {
-            const error = await response.json();
-            throw new Error(
-              error.detail || "Failed to create checkout session"
-            );
-          }
-
-          const data = await response.json();
-
-          // Redirect to Stripe Checkout
-          window.location.href = data.checkout_url;
-        } catch (error) {
-          closeModal();
-          setTimeout(() => {
-            showModal({
-              type: "error",
-              title: "Checkout Error",
-              message:
-                error.message || "Failed to start checkout. Please try again.",
-            });
-          }, 100);
-        }
-      }
-
-      // Add smooth scrolling for anchor links
-      // Add smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const href = this.getAttribute("href");
-
-          // Skip if href is just "#" or empty
-          if (!href || href === "#") {
-            e.preventDefault();
-            return;
-          }
-
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const navHeight = document.querySelector("nav").offsetHeight;
-            const targetPosition = target.offsetTop - navHeight - 20;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-          }
+            body: JSON.stringify(requestBody),
         });
-      });
+
+        console.log("Response status:", response.status);
+        
+        const responseText = await response.text();
+        console.log("Raw response:", responseText);
+        
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error("Failed to parse response as JSON:", e);
+            throw new Error("Invalid response from server");
+        }
+
+        if (!response.ok) {
+            console.error("Error response:", data);
+            throw new Error(data.detail || "Failed to create checkout session");
+        }
+
+        // Redirect to Stripe Checkout
+        window.location.href = data.checkout_url;
+    } catch (error) {
+        console.error("Full error:", error);
+        closeModal();
+        setTimeout(() => {
+            showModal({
+                type: "error",
+                title: "Checkout Error",
+                message: error.message || "Failed to start checkout. Please try again.",
+            });
+        }, 100);
+    }
+}
 
       async function updateUserDropdown() {
         const dropdown = document.getElementById("userDropdown");
