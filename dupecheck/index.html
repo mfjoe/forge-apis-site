@@ -2462,11 +2462,17 @@
           cancelBtn.style.display = "none";
         }
 
-        okBtn.textContent = options.okText || "OK";
-        okBtn.onclick = () => {
-          closeModal();
-          if (options.onOk) options.onOk();
-        };
+        // Handle OK button visibility
+        if (options.hideOkButton) {
+          okBtn.style.display = "none";
+        } else {
+          okBtn.style.display = "block";
+          okBtn.textContent = options.okText || "OK";
+          okBtn.onclick = () => {
+            closeModal();
+            if (options.onOk) options.onOk();
+          };
+        }
 
         // Show modal
         modal.classList.add("active");
@@ -2895,20 +2901,20 @@
         }
       }
 
-document.addEventListener("click", (e) => {
-    const userMenu = document.getElementById("userMenu");
-    if (userMenu && !userMenu.contains(e.target)) {
-        const userDropdown = document.getElementById("userDropdown");
-        if (userDropdown) {
+      document.addEventListener("click", (e) => {
+        const userMenu = document.getElementById("userMenu");
+        if (userMenu && !userMenu.contains(e.target)) {
+          const userDropdown = document.getElementById("userDropdown");
+          if (userDropdown) {
             userDropdown.classList.remove("active");
-        }
-        const userButton = document.getElementById("userButton");
-        if (userButton) {
+          }
+          const userButton = document.getElementById("userButton");
+          if (userButton) {
             userButton.classList.remove("active");
             userButton.setAttribute("aria-expanded", "false");
+          }
         }
-    }
-});
+      });
 
       function updateUI() {
         const authButtons = document.getElementById("authButtons");
@@ -3201,64 +3207,70 @@ document.addEventListener("click", (e) => {
           fetchCreditBalance();
         }
       }
-   async function downloadReport(format = "pdf") {
-    if (!analysisResults) return;
+      async function downloadReport(format = "pdf") {
+        if (!analysisResults) return;
 
-    // For ALL formats, use the prepare-download endpoint to get full data
-    try {
-        const headers = {};
-        if (authToken) {
-            headers["Authorization"] = `Bearer ${authToken}`;
-        }
-
-        const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=${format}`, {
-            method: "POST",
-            headers: headers
-        });
-
-        if (!response.ok) {
-            throw new Error(`Failed to generate ${format.toUpperCase()}`);
-        }
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        
-        // Set appropriate extension
-        let extension;
-        if (format === "pdf") extension = "pdf";
-        else if (format === "excel") extension = "xlsx";
-        else if (format === "text") extension = "txt";
-        
-        a.download = `dupecheck-report-${Date.now()}.${extension}`;
-        a.click();
-        window.URL.revokeObjectURL(url);
-    } catch (error) {
-        console.error(`${format.toUpperCase()} generation error:`, error);
-        customAlert(`Failed to generate ${format.toUpperCase()}`, "error");
-    }
-}
-
-   async function downloadTextReport() {
-    if (!analysisResults) return;
-
-    // For logged-in users or if we have an analysis_id, fetch full data
-    if (analysisResults.analysis_id) {
+        // For ALL formats, use the prepare-download endpoint to get full data
         try {
+          const headers = {};
+          if (authToken) {
+            headers["Authorization"] = `Bearer ${authToken}`;
+          }
+
+          const response = await fetch(
+            `${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=${format}`,
+            {
+              method: "POST",
+              headers: headers,
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error(`Failed to generate ${format.toUpperCase()}`);
+          }
+
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+
+          // Set appropriate extension
+          let extension;
+          if (format === "pdf") extension = "pdf";
+          else if (format === "excel") extension = "xlsx";
+          else if (format === "text") extension = "txt";
+
+          a.download = `dupecheck-report-${Date.now()}.${extension}`;
+          a.click();
+          window.URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error(`${format.toUpperCase()} generation error:`, error);
+          customAlert(`Failed to generate ${format.toUpperCase()}`, "error");
+        }
+      }
+
+      async function downloadTextReport() {
+        if (!analysisResults) return;
+
+        // For logged-in users or if we have an analysis_id, fetch full data
+        if (analysisResults.analysis_id) {
+          try {
             const headers = {};
             if (authToken) {
-                headers["Authorization"] = `Bearer ${authToken}`;
+              headers["Authorization"] = `Bearer ${authToken}`;
             }
 
             // Fetch full report data from backend
-            const response = await fetch(`${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=text`, {
+            const response = await fetch(
+              `${API_URL}/api/analyze/prepare-download?analysis_id=${analysisResults.analysis_id}&format=text`,
+              {
                 method: "POST",
-                headers: headers
-            });
+                headers: headers,
+              }
+            );
 
             if (!response.ok) {
-                throw new Error("Failed to fetch full report");
+              throw new Error("Failed to fetch full report");
             }
 
             const blob = await response.blob();
@@ -3269,26 +3281,34 @@ document.addEventListener("click", (e) => {
             a.click();
             window.URL.revokeObjectURL(url);
             return;
-        } catch (error) {
-            console.error("Failed to get full text report, falling back to summary");
+          } catch (error) {
+            console.error(
+              "Failed to get full text report, falling back to summary"
+            );
+          }
         }
-    }
 
-    // Fallback: Build report from available data
-    let duplicateDetails = "";
-    if (analysisResults.duplicates && analysisResults.duplicates.length > 0) {
-        duplicateDetails = analysisResults.duplicates
-            .map((dup, i) => `
+        // Fallback: Build report from available data
+        let duplicateDetails = "";
+        if (
+          analysisResults.duplicates &&
+          analysisResults.duplicates.length > 0
+        ) {
+          duplicateDetails = analysisResults.duplicates
+            .map(
+              (dup, i) => `
 Duplicate #${i + 1}
 Confidence: ${Math.round(dup.confidence_score)}%
 Amount: $${dup.potential_savings.toFixed(2)}
 Reasons: ${dup.match_reasons ? dup.match_reasons.join(", ") : "N/A"}
-`).join("\n");
-    } else {
-        duplicateDetails = "No duplicate details available in summary view.";
-    }
+`
+            )
+            .join("\n");
+        } else {
+          duplicateDetails = "No duplicate details available in summary view.";
+        }
 
-    const report = `DupeCheck Analysis Report
+        const report = `DupeCheck Analysis Report
 Generated: ${new Date().toLocaleString()}
 
 SUMMARY
@@ -3308,14 +3328,14 @@ Analyzed by DupeCheck
 Visit dupecheck.forgeapis.com for more
 `;
 
-    const blob = new Blob([report], { type: "text/plain" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dupecheck-report-${Date.now()}.txt`;
-    a.click();
-    window.URL.revokeObjectURL(url);
-}
+        const blob = new Blob([report], { type: "text/plain" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `dupecheck-report-${Date.now()}.txt`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }
 
       function viewHistory() {
         showModal({
@@ -3327,93 +3347,96 @@ Visit dupecheck.forgeapis.com for more
         toggleUserDropdown();
       }
 
-    async function upgrade(plan) {
-    if (!authToken) {
-        showModal({
+      async function upgrade(plan) {
+        if (!authToken) {
+          showModal({
             type: "warning",
             title: "Login Required",
             message: "Please create an account or login to purchase credits",
             okText: "Login",
             onOk: () => showAuthModal("login"),
-        });
-        return;
-    }
+          });
+          return;
+        }
 
-    // Map plan names to package names for the API
-    const packageMap = {
-        starter: "starter",
-        professional: "professional",
-        business: "business",
-    };
+        // Map plan names to package names for the API
+        const packageMap = {
+          starter: "starter",
+          professional: "professional",
+          business: "business",
+        };
 
-    const packageName = packageMap[plan];
-    
-    // Debug logging
-    console.log("Plan requested:", plan);
-    console.log("Package name being sent:", packageName);
+        const packageName = packageMap[plan];
 
-    if (plan === "business") {
-        showModal({
+        // Debug logging
+        console.log("Plan requested:", plan);
+        console.log("Package name being sent:", packageName);
+
+        if (plan === "business") {
+          showModal({
             type: "info",
             title: "Business Plan",
-            message: "The Business subscription plan is coming soon. For now, try our credit packages!",
+            message:
+              "The Business subscription plan is coming soon. For now, try our credit packages!",
+          });
+          return;
+        }
+
+        // Show loading
+        showModal({
+          type: "info",
+          title: "Redirecting to checkout...",
+          message: "Please wait while we prepare your secure checkout session",
+          hideOkButton: true,
         });
-        return;
-    }
 
-    // Show loading
-    showModal({
-        type: "info",
-        title: "Redirecting to checkout...",
-        message: "Please wait while we prepare your secure checkout session",
-    });
+        try {
+          const requestBody = { package: packageName };
+          console.log("Request body:", JSON.stringify(requestBody));
+          console.log("Auth token exists:", !!authToken);
 
-    try {
-        const requestBody = { package: packageName };
-        console.log("Request body:", JSON.stringify(requestBody));
-        console.log("Auth token exists:", !!authToken);
-
-        const response = await fetch(`${API_URL}/api/credits/checkout`, {
+          const response = await fetch(`${API_URL}/api/credits/checkout`, {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${authToken}`,
-                "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(requestBody),
-        });
+          });
 
-        console.log("Response status:", response.status);
-        
-        const responseText = await response.text();
-        console.log("Raw response:", responseText);
-        
-        let data;
-        try {
+          console.log("Response status:", response.status);
+
+          const responseText = await response.text();
+          console.log("Raw response:", responseText);
+
+          let data;
+          try {
             data = JSON.parse(responseText);
-        } catch (e) {
+          } catch (e) {
             console.error("Failed to parse response as JSON:", e);
             throw new Error("Invalid response from server");
-        }
+          }
 
-        if (!response.ok) {
+          if (!response.ok) {
             console.error("Error response:", data);
             throw new Error(data.detail || "Failed to create checkout session");
-        }
+          }
 
-        // Redirect to Stripe Checkout
-        window.location.href = data.checkout_url;
-    } catch (error) {
-        console.error("Full error:", error);
-        closeModal();
-        setTimeout(() => {
+          // Redirect to Stripe Checkout
+          window.location.href = data.checkout_url;
+        } catch (error) {
+          console.error("Full error:", error);
+          closeModal();
+          setTimeout(() => {
             showModal({
-                type: "error",
-                title: "Checkout Error",
-                message: error.message || "Failed to start checkout. Please try again.",
+              type: "error",
+              title: "Checkout Error",
+              message:
+                error.message || "Failed to start checkout. Please try again.",
             });
-        }, 100);
-    }
-}
+          }, 100);
+        }
+      }
 
       async function updateUserDropdown() {
         const dropdown = document.getElementById("userDropdown");
