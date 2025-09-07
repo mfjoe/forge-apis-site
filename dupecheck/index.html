@@ -3422,8 +3422,11 @@ Visit dupecheck.forgeapis.com for more
             throw new Error(data.detail || "Failed to create checkout session");
           }
 
-          // Redirect to Stripe Checkout
-          window.location.href = data.checkout_url;
+        // Close the loading modal before redirecting
+        closeModal();
+        
+        // Redirect to Stripe Checkout
+        window.location.href = data.checkout_url;
         } catch (error) {
           console.error("Full error:", error);
           closeModal();
