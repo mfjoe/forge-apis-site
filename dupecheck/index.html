@@ -2789,6 +2789,13 @@
           `;
         }
 
+        // Clear the limit warning in the file upload area
+        const limitWarning = document.getElementById("limitWarning");
+        if (limitWarning) {
+          limitWarning.classList.remove("active");
+          limitWarning.innerHTML = "";
+        }
+
         // Clear any custom modal warnings
         const modal = document.getElementById("customModal");
         if (modal && modal.style.display !== "none") {
@@ -3338,6 +3345,9 @@
             <span>loading...</span>
           `;
           usageCounter.style.display = "flex";
+
+          // Clear any existing warnings since user is logged in
+          clearWarningMessages();
 
           // Fetch and display credit balance
           fetchCreditBalance();
