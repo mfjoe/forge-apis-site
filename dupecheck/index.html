@@ -2797,6 +2797,13 @@
         const paymentStatus = urlParams.get("payment");
         const sessionId = urlParams.get("session_id");
         const resetToken = urlParams.get("reset");
+        const verifyToken = urlParams.get("verify");
+
+        // Handle email verification FIRST (before any other URL param handling)
+        if (verifyToken) {
+          await handleEmailVerification(verifyToken);
+          return; // Exit early after verification
+        }
 
         // Handle payment status FIRST (before any other URL param handling)
         if (paymentStatus === "success") {
@@ -3097,31 +3104,109 @@
             throw new Error(data.detail || "Authentication failed");
           }
 
-          // Store token
-          authToken = data.access_token; // ADD THIS LINE
+          if (authMode === "login") {
+            // Login flow - store token and log in
+            authToken = data.access_token;
+            localStorage.setItem("dupecheck_token", authToken);
+            localStorage.setItem("dupecheck_email", email);
+
+            // Update user info
+            currentUser = {
+              email: email,
+              subscription_tier: data.subscription_tier,
+              checks_remaining: data.checks_remaining,
+            };
+
+            successDiv.textContent = "Login successful!";
+            successDiv.classList.add("active");
+
+            setTimeout(() => {
+              closeAuthModal();
+              updateUI();
+            }, 1500);
+          } else {
+            // Signup flow - show verification message
+            successDiv.innerHTML = `
+              <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #57f287; margin-bottom: 15px;">✅ Account Created Successfully!</h3>
+                <p style="margin-bottom: 15px;">Please check your email and click the verification link to activate your account.</p>
+                <p style="font-size: 14px; color: #666;">You'll be automatically logged in once you verify your email.</p>
+              </div>
+            `;
+            successDiv.classList.add("active");
+
+            // Clear the form
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            // Close modal after 3 seconds
+            setTimeout(() => {
+              closeAuthModal();
+            }, 3000);
+          }
+        } catch (error) {
+          errorDiv.textContent = error.message;
+          errorDiv.classList.add("active");
+        }
+      }
+
+      // Email verification handling
+      async function handleEmailVerification(token) {
+        try {
+          const response = await fetch(`${API_URL}/api/auth/verify-email`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.detail || "Verification failed");
+          }
+
+          // Store token and log in
+          authToken = data.access_token;
           localStorage.setItem("dupecheck_token", authToken);
-          localStorage.setItem("dupecheck_email", email);
+          localStorage.setItem(
+            "dupecheck_email",
+            data.email || "user@example.com"
+          );
 
           // Update user info
           currentUser = {
-            email: email,
+            email: data.email || "user@example.com",
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
           };
 
-          successDiv.textContent =
-            authMode === "login"
-              ? "Login successful!"
-              : "Account created successfully!";
-          successDiv.classList.add("active");
+          // Show success message
+          customAlert(
+            "Email verified successfully! You are now logged in.",
+            "success"
+          );
 
-          setTimeout(() => {
-            closeAuthModal();
-            updateUI();
-          }, 1500);
+          // Update UI
+          updateUI();
+
+          // Remove verification token from URL
+          const url = new URL(window.location);
+          url.searchParams.delete("verify");
+          window.history.replaceState({}, document.title, url.pathname);
         } catch (error) {
-          errorDiv.textContent = error.message;
-          errorDiv.classList.add("active");
+          customAlert(`Verification failed: ${error.message}`, "error");
+        }
+      }
+
+      // Check for verification token in URL on page load
+      function checkForVerificationToken() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const verifyToken = urlParams.get("verify");
+
+        if (verifyToken) {
+          handleEmailVerification(verifyToken);
         }
       }
 
