@@ -3304,6 +3304,10 @@
           document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
 
+          // Show loading state for user credits in dropdown
+          document.getElementById("userCredits").textContent = "loading...";
+          document.getElementById("userCredits").style.opacity = "0.6";
+
           // Show loading state instead of default text
           usageCounter.innerHTML = `
             <span class="count" style="opacity: 0.6;">...</span>
@@ -3927,6 +3931,7 @@ Visit dupecheck.forgeapis.com for more
 
               creditsElement.textContent = `${data.balance} credits remaining`;
               creditsElement.className = "user-credits has-credits";
+              creditsElement.style.opacity = "1";
             } else {
               // No credits - check free tier usage
               const usageResponse = await fetch(`${API_URL}/api/user/usage`, {
@@ -3951,6 +3956,7 @@ Visit dupecheck.forgeapis.com for more
                   creditsElement.textContent = "No checks remaining";
                   creditsElement.className = "user-credits";
                 }
+                creditsElement.style.opacity = "1";
               }
             }
 
@@ -3959,7 +3965,9 @@ Visit dupecheck.forgeapis.com for more
           }
         } catch (error) {
           console.error("Failed to fetch credit balance:", error);
-          document.getElementById("userCredits").textContent = "Free tier";
+          const creditsElement = document.getElementById("userCredits");
+          creditsElement.textContent = "Free tier";
+          creditsElement.style.opacity = "1";
           // Show usage counter even on error to avoid blank space
           document.getElementById("usageCounter").style.display = "flex";
         }
