@@ -3304,6 +3304,13 @@
           document.getElementById("userEmail").textContent =
             email.length > 20 ? email.substring(0, 20) + "..." : email;
 
+          // Show loading state instead of default text
+          usageCounter.innerHTML = `
+            <span class="count" style="opacity: 0.6;">...</span>
+            <span>loading...</span>
+          `;
+          usageCounter.style.display = "flex";
+
           // Fetch and display credit balance
           fetchCreditBalance();
         } else {
@@ -3946,10 +3953,15 @@ Visit dupecheck.forgeapis.com for more
                 }
               }
             }
+
+            // Show the usage counter now that we have real data
+            counterElement.style.display = "flex";
           }
         } catch (error) {
           console.error("Failed to fetch credit balance:", error);
           document.getElementById("userCredits").textContent = "Free tier";
+          // Show usage counter even on error to avoid blank space
+          document.getElementById("usageCounter").style.display = "flex";
         }
       }
 
