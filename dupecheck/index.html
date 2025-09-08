@@ -2061,6 +2061,107 @@
             </div>
           </div>
         </div>
+        
+        <!-- Report Preview Section -->
+        <div style="margin-top: 3rem; text-align: center;">
+          <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">See What You Get</h3>
+          <div style="
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          ">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+              <div style="
+                background: var(--primary);
+                color: white;
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 12px;
+                font-weight: bold;
+              ">🔍</div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-primary);">DupeCheck Analysis Report</h4>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Generated: Dec 15, 2024 at 2:30 PM</p>
+              </div>
+            </div>
+            
+            <div style="
+              background: var(--success-bg);
+              border: 1px solid var(--success-border);
+              border-radius: 8px;
+              padding: 1rem;
+              margin-bottom: 1rem;
+            ">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                <div>
+                  <div style="font-size: 1.5rem; font-weight: bold; color: var(--text-primary);">127</div>
+                  <div style="font-size: 0.8rem; color: var(--text-secondary);">Total Invoices</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.5rem; font-weight: bold; color: var(--error);">3</div>
+                  <div style="font-size: 0.8rem; color: var(--text-secondary);">Duplicates Found</div>
+                </div>
+                <div>
+                  <div style="font-size: 1.5rem; font-weight: bold; color: var(--success);">$2,450</div>
+                  <div style="font-size: 0.8rem; color: var(--text-secondary);">Potential Savings</div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <h5 style="margin: 0 0 0.5rem 0; color: var(--text-primary);">Duplicate Details:</h5>
+              <div style="
+                background: var(--bg-secondary);
+                border-radius: 6px;
+                padding: 0.75rem;
+                font-size: 0.85rem;
+              ">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-primary);">Set #1 - 95% confidence</span>
+                  <span style="color: var(--success); font-weight: bold;">$1,200</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                  • Exact amount match ($1,200.00) • Vendor match (98% similar) • Identical invoice number
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-primary);">Set #2 - 87% confidence</span>
+                  <span style="color: var(--success); font-weight: bold;">$850</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                  • Amount within 5% ($850.00 vs $845.00) • Vendor partially matches (75% similar)
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: var(--text-primary);">Set #3 - 72% confidence</span>
+                  <span style="color: var(--success); font-weight: bold;">$400</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.8rem;">
+                  • Amount within 5% ($400.00 vs $395.00) • Invoice numbers very similar
+                </div>
+              </div>
+            </div>
+            
+            <div style="
+              background: var(--primary-bg);
+              border-radius: 6px;
+              padding: 0.75rem;
+              text-align: center;
+              font-size: 0.85rem;
+              color: var(--primary);
+              font-weight: 500;
+            ">
+              💡 You could save $2,450 by addressing these duplicates
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Upload Card -->
@@ -3422,11 +3523,11 @@ Visit dupecheck.forgeapis.com for more
             throw new Error(data.detail || "Failed to create checkout session");
           }
 
-        // Close the loading modal before redirecting
-        closeModal();
-        
-        // Redirect to Stripe Checkout
-        window.location.href = data.checkout_url;
+          // Close the loading modal before redirecting
+          closeModal();
+
+          // Redirect to Stripe Checkout
+          window.location.href = data.checkout_url;
         } catch (error) {
           console.error("Full error:", error);
           closeModal();
