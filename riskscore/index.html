@@ -315,7 +315,8 @@ nav {
     overflow-x: hidden;
     word-wrap: break-word;
     white-space: pre-wrap;
-    padding-right: 10px;  /* ADD - space for scrollbar */
+    padding: 0;  /* Remove all padding */
+    margin: 0;   /* Remove all margin */
 }
 
 .code-content div {
@@ -391,6 +392,11 @@ nav {
 .code-panel > div:first-child {
     margin-top: 0 !important;
     padding-top: 0 !important;
+}
+
+.code-panel div {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
         @keyframes fadeIn {
