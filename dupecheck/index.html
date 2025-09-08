@@ -2778,6 +2778,24 @@
         });
       }
 
+      function clearWarningMessages() {
+        // Clear any existing warning messages in the usage counter
+        const usageCounter = document.getElementById("usageCounter");
+        if (usageCounter) {
+          // Reset to normal state without warning text
+          usageCounter.innerHTML = `
+            <span class="count" id="checksRemaining">...</span>
+            <span>loading...</span>
+          `;
+        }
+
+        // Clear any custom modal warnings
+        const modal = document.getElementById("customModal");
+        if (modal && modal.style.display !== "none") {
+          closeModal();
+        }
+      }
+
       // State management
       let currentUser = null;
       let authToken = localStorage.getItem("dupecheck_token");
@@ -3117,6 +3135,9 @@
               checks_remaining: data.checks_remaining,
             };
 
+            // Clear any existing warning messages
+            clearWarningMessages();
+
             successDiv.textContent = "Login successful!";
             successDiv.classList.add("active");
 
@@ -3181,6 +3202,9 @@
             subscription_tier: data.subscription_tier,
             checks_remaining: data.checks_remaining,
           };
+
+          // Clear any existing warning messages
+          clearWarningMessages();
 
           // Show success message
           customAlert(
