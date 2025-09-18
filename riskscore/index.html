@@ -158,6 +158,76 @@ nav {
         .nav-links a:hover {
             color: var(--primary);
         }
+
+        /* Tools Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown-btn:hover {
+            color: var(--primary);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-section {
+            padding: 8px 0;
+        }
+
+        .dropdown-section h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 8px 0;
+            padding: 0 16px;
+        }
+
+        .dropdown-section a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown-section a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
         
         .btn {
             display: inline-block;
@@ -1544,6 +1614,21 @@ nav {
             <a href="#demo">Demo</a>
             <a href="#pricing">Pricing</a>
             <a href="https://web-production-2c40.up.railway.app/docs">Docs</a>
+            <!-- Tools Dropdown -->
+            <div class="dropdown" id="toolsDropdown">
+                <button class="dropdown-btn" id="toolsDropdownBtn">Tools <span style="font-size: 12px;">▼</span></button>
+                <div class="dropdown-content">
+                    <div class="dropdown-section">
+                        <h4>Premium Tools</h4>
+                        <a href="/riskscore">🛡️ RiskScore API</a>
+                        <a href="/dupecheck">🔍 DupeCheck</a>
+                    </div>
+                    <div class="dropdown-section">
+                        <h4>Free Tools</h4>
+                        <a href="/gst-calculator">🧮 GST Calculator</a>
+                    </div>
+                </div>
+            </div>
             <a href="https://web-production-2c40.up.railway.app/dashboard" class="btn btn-primary">Dashboard</a>
         </div>
     </div>
@@ -2176,6 +2261,26 @@ document.addEventListener('click', function(event) {
     if (!menu.contains(event.target) && !toggle.contains(event.target)) {
         menu.classList.remove('active');
         toggle.classList.remove('active');
+    }
+});
+
+// Tools dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('toolsDropdown');
+    const dropdownBtn = document.getElementById('toolsDropdownBtn');
+    
+    if (dropdown && dropdownBtn) {
+        dropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
     }
 });
 </script>

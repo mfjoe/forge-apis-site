@@ -138,6 +138,76 @@
         color: var(--primary);
       }
 
+      /* Tools Dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background: none;
+        border: none;
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .dropdown-btn:hover {
+        color: var(--primary);
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 200px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 8px 0;
+        margin-top: 8px;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-section {
+        padding: 8px 0;
+      }
+
+      .dropdown-section h4 {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 8px 0;
+        padding: 0 16px;
+      }
+
+      .dropdown-section a {
+        display: block;
+        padding: 8px 16px;
+        color: var(--dark);
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .dropdown-section a:hover {
+        background-color: var(--light-gray);
+        color: var(--primary);
+      }
+
       /* ENHANCED Hero Section */
       .hero {
         padding: 120px 0 80px;
@@ -254,6 +324,13 @@
         margin-right: auto;
         line-height: 1.6;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
       }
 
       /* Floating shapes */
@@ -531,6 +608,74 @@
         border: 2px solid var(--light-gray);
       }
 
+      /* Free Tools Section */
+      .free-tools {
+        background: white;
+        padding: 80px 0;
+      }
+
+      .free-tag {
+        background: rgba(16, 185, 129, 0.1) !important;
+        color: var(--success) !important;
+      }
+
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .tool-card {
+        background: #f8f9fa;
+        padding: 32px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s;
+        position: relative;
+        border: 2px solid transparent;
+      }
+
+      .tool-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--success);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .tool-card.coming-soon {
+        opacity: 0.7;
+      }
+
+      .free-badge {
+        display: inline-block;
+        background: var(--success);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+      }
+
+      .tool-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .tool-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--dark);
+      }
+
+      .tool-card p {
+        color: var(--gray);
+        margin-bottom: 24px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
       /* Features Section */
       .features {
         padding: 100px 0;
@@ -651,6 +796,15 @@
           font-size: 12px;
           padding: 6px 16px;
           max-width: 95%;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-buttons .btn {
+          width: 200px;
         }
 
         .products-grid {
@@ -824,7 +978,25 @@
           </svg>
         </a>
         <div class="nav-links">
-          <a href="#products">Products</a>
+          <a href="#products">Premium APIs</a>
+          <a href="#tools">Free Tools</a>
+          <!-- Tools Dropdown -->
+          <div class="dropdown" id="toolsDropdown">
+            <button class="dropdown-btn" id="toolsDropdownBtn">
+              Tools <span style="font-size: 12px">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Premium Tools</h4>
+                <a href="/riskscore">🛡️ RiskScore API</a>
+                <a href="/dupecheck">🔍 DupeCheck</a>
+              </div>
+              <div class="dropdown-section">
+                <h4>Free Tools</h4>
+                <a href="/gst-calculator">🧮 GST Calculator</a>
+              </div>
+            </div>
+          </div>
           <a href="mailto:hello@forgeapis.com">Contact</a>
         </div>
       </div>
@@ -843,16 +1015,21 @@
 
         <h1>Ship Faster with Production-Ready APIs</h1>
         <p>Developer tools that actually work. No complexity, just results.</p>
+
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">Explore Premium APIs</a>
+          <a href="#tools" class="btn btn-primary">Try Free Tools</a>
+        </div>
       </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Premium APIs Section -->
     <section id="products" class="products">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">OUR PRODUCTS</span>
-          <h2>APIs That Solve Real Problems</h2>
-          <p>Start with our free tier. Scale as you grow.</p>
+          <span class="section-tag">PREMIUM APIS</span>
+          <h2>Production-Ready APIs for Scale</h2>
+          <p>Enterprise-grade APIs with SLAs, support, and documentation.</p>
         </div>
 
         <div class="products-grid">
@@ -979,6 +1156,38 @@
             <a href="mailto:hello@forgeapis.com" class="btn btn-secondary"
               >Contact Us</a
             >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Free Tools Section -->
+    <section id="tools" class="free-tools">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag free-tag">FREE TOOLS</span>
+          <h2>Instant Tools, No Signup Required</h2>
+          <p>100% free online tools to solve everyday problems.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <span class="free-badge">100% FREE</span>
+            <div class="tool-icon">🧮</div>
+            <h3>GST Calculator</h3>
+            <p>Calculate Indian GST, CGST, SGST instantly with all rates.</p>
+            <a href="/gst-calculator" class="btn btn-secondary"
+              >Use Free Tool →</a
+            >
+          </div>
+
+          <!-- Add placeholder cards for upcoming tools -->
+          <div class="tool-card coming-soon">
+            <span class="free-badge">COMING SOON</span>
+            <div class="tool-icon">💰</div>
+            <h3>EMI Calculator</h3>
+            <p>Calculate loan EMIs with interest breakdowns.</p>
+            <a href="#" class="btn btn-disabled">Coming Soon</a>
           </div>
         </div>
       </div>
@@ -1316,5 +1525,26 @@
       </div>
     </div>
     <script src="cookie-consent-secure.js" defer></script>
+    <script>
+      // Tools dropdown functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdown = document.getElementById("toolsDropdown");
+        const dropdownBtn = document.getElementById("toolsDropdownBtn");
+
+        if (dropdown && dropdownBtn) {
+          dropdownBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            dropdown.classList.toggle("active");
+          });
+
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function (e) {
+            if (!dropdown.contains(e.target)) {
+              dropdown.classList.remove("active");
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
