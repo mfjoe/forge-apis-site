@@ -607,9 +607,10 @@
 
       /* Mobile Layout - Single Screen, No Scroll */
       @media (max-width: 768px) {
+        /* Tighter body spacing */
         body {
-          padding-top: 120px; /* Space for nav (60px) + top ad (60px) */
-          padding-bottom: 60px; /* Space for bottom ad */
+          padding-top: 50px; /* Just nav height */
+          padding-bottom: 60px; /* Space for sticky bottom ad */
           padding-left: 10px;
           padding-right: 10px;
           min-height: 100vh;
@@ -617,10 +618,10 @@
           overflow-y: auto; /* Allow vertical scrolling */
         }
 
-        /* Mobile navbar */
+        /* Compact nav */
         nav {
-          padding: 0.75rem 0; /* More padding for touch targets */
-          height: 60px; /* Fixed height */
+          padding: 0.25rem 0;
+          height: 50px;
         }
 
         nav .container {
@@ -633,39 +634,22 @@
           object-fit: contain;
         }
 
-        /* Mobile header with ad */
+        /* MOBILE AD POSITIONING */
+        
+        /* Remove top sticky ad - wastes space */
         .mobile-ad-top {
-          position: fixed;
-          top: 60px; /* Below nav */
-          left: 0;
-          right: 0;
-          z-index: 998; /* Below nav */
-          background: white;
-          padding: 5px 0;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          height: 60px; /* Fixed height */
+          display: none !important;
         }
 
-        /* Mobile calculator card */
+        /* Tighter calculator spacing */
         .calculator-card {
           padding: 15px;
-          border-radius: 8px;
-          margin: 10px auto;
-          width: calc(100% - 20px);
-          max-width: 100%;
-          box-sizing: border-box;
-          background: white;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          /* Remove the height: calc() that was breaking it */
+          margin-top: 10px; /* Small gap from top */
         }
 
         h1 {
-          font-size: 1rem;
-          margin: 0 0 5px 0;
-          text-align: center;
-          padding: 5px 0;
-          color: var(--dark);
-          font-weight: 700;
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
         }
 
         .subtitle {
@@ -815,9 +799,7 @@
           height: 1.5px;
         }
 
-
-
-        /* Mobile bottom ad - sticky */
+        /* Sticky bottom ad - your main mobile moneymaker */
         .mobile-ad-bottom {
           position: fixed;
           bottom: 0;
@@ -827,18 +809,38 @@
           background: white;
           padding: 5px 0;
           box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-          height: 60px; /* Fixed height */
+        }
+        
+        .ad-anchor-320x50 {
+          max-width: 320px;
+          height: 50px;
+          margin: 0 auto;
         }
 
-        /* Add wrapper padding to account for fixed elements */
+        /* Remove extra wrapper padding */
         .calculator-wrapper {
-          padding-top: 120px; /* Nav + top ad */
-          padding-bottom: 60px; /* Bottom ad */
+          padding-top: 0;
+          padding-bottom: 0;
         }
 
-        /* Remove all mobile ads inside calculator */
+        /* In-content ads - these stay in normal flow */
         .ad-container.mobile-only {
-          display: none !important;
+          display: block !important;
+          margin: 15px auto;
+          padding: 10px;
+        }
+        
+        /* Specific mobile ad sizes */
+        .ad-mobile-banner {
+          max-width: 320px;
+          height: 50px;
+          margin: 15px auto;
+        }
+        
+        .ad-mobile-rectangle {
+          max-width: 300px;
+          height: 250px;
+          margin: 20px auto;
         }
       }
 
