@@ -807,8 +807,8 @@
           right: 0;
           z-index: 998; /* Below nav but above content */
           background: white;
-          padding: 5px 0;
-          box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+          padding: 5px;
+          box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.08);
           height: 60px; /* Fixed height to prevent layout shifts */
         }
 
@@ -1139,10 +1139,6 @@
             </button>
           </div>
 
-          <!-- Mobile Banner Ad -->
-          <div class="ad-container mobile-only ad-mobile-banner">
-            <div class="ad-placeholder">Mobile Banner 320x50</div>
-          </div>
 
           <!-- Amount Input -->
           <div class="input-group">
@@ -1202,11 +1198,11 @@
           <!-- 
             AdSense Unit Type: Display Ad
             Size: 320x50 (Mobile Banner)
-            Placement: After GST Rate Selection
+            Placement: After Transaction Type Selector
             Create as: Responsive with 320x50 fixed size for mobile
           -->
           <div class="ad-container mobile-only ad-mobile-banner">
-            <div class="ad-placeholder">Banner 320x50</div>
+            <div class="ad-placeholder">320x50 Banner - Mid-Content - Medium CPM</div>
           </div>
 
           <!-- Results -->
@@ -1254,7 +1250,7 @@
             Create as: Responsive with 300x250 fixed size for mobile
           -->
           <div class="ad-container mobile-only ad-mobile-rectangle">
-            <div class="ad-placeholder">Rectangle 300x250</div>
+            <div class="ad-placeholder">300x250 Rectangle - Post-Results - High CPM</div>
           </div>
         </div>
 
@@ -1290,25 +1286,31 @@
     <div class="mobile-ad-bottom mobile-only">
       <div class="ad-container ad-anchor-320x50">
         <!-- Sticky Bottom Ad -->
-        <div class="ad-placeholder">Sticky Bottom 320x50</div>
+        <div class="ad-placeholder">320x50 Banner - Sticky Bottom - High CPM</div>
       </div>
     </div>
 
     <!-- Temporary Test Button (Development Only) -->
-    <button id="testAdsBtn" onclick="testMobileAds()" style="
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-size: 12px;
-      cursor: pointer;
-      display: none; /* Hidden by default */
-    ">Test Ads</button>
+    <button
+      id="testAdsBtn"
+      onclick="testMobileAds()"
+      style="
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        display: none; /* Hidden by default */
+      "
+    >
+      Test Ads
+    </button>
 
     <script>
       // Calculator logic
@@ -1491,14 +1493,14 @@
       // Mobile Ad Testing Function
       function testMobileAds() {
         console.log("🔍 Testing Mobile Ad Layout...");
-        
+
         // Show test button if not already visible
-        const testBtn = document.getElementById('testAdsBtn');
-        testBtn.style.display = 'block';
-        
+        const testBtn = document.getElementById("testAdsBtn");
+        testBtn.style.display = "block";
+
         // Add test mode CSS
-        const testStyle = document.createElement('style');
-        testStyle.id = 'testModeStyle';
+        const testStyle = document.createElement("style");
+        testStyle.id = "testModeStyle";
         testStyle.textContent = `
           .ad-container.mobile-only {
             border: 3px solid #ff6b6b !important;
@@ -1514,71 +1516,98 @@
           }
         `;
         document.head.appendChild(testStyle);
-        
+
         // Count visible ad containers
-        const mobileAdContainers = document.querySelectorAll('.ad-container.mobile-only');
-        const stickyBottomAd = document.querySelector('.mobile-ad-bottom');
-        
-        console.log(`📊 Ad Container Count: ${mobileAdContainers.length} mobile ads`);
-        console.log(`📊 Sticky Bottom Ad: ${stickyBottomAd ? 'Present' : 'Missing'}`);
-        
+        const mobileAdContainers = document.querySelectorAll(
+          ".ad-container.mobile-only"
+        );
+        const stickyBottomAd = document.querySelector(".mobile-ad-bottom");
+
+        console.log(
+          `📊 Ad Container Count: ${mobileAdContainers.length} mobile ads`
+        );
+        console.log(
+          `📊 Sticky Bottom Ad: ${stickyBottomAd ? "Present" : "Missing"}`
+        );
+
         // Check if sticky bottom ad overlaps inputs
         const inputs = document.querySelectorAll('input[type="number"]');
-        const buttons = document.querySelectorAll('.mode-btn, .rate-btn, .type-btn');
-        const stickyBottom = document.querySelector('.mobile-ad-bottom');
-        
+        const buttons = document.querySelectorAll(
+          ".mode-btn, .rate-btn, .type-btn"
+        );
+        const stickyBottom = document.querySelector(".mobile-ad-bottom");
+
         if (stickyBottom) {
           const stickyRect = stickyBottom.getBoundingClientRect();
           let overlapCount = 0;
-          
+
           [...inputs, ...buttons].forEach((element, index) => {
             const elementRect = element.getBoundingClientRect();
-            const isOverlapping = !(elementRect.bottom <= stickyRect.top || elementRect.top >= stickyRect.bottom);
-            
+            const isOverlapping = !(
+              elementRect.bottom <= stickyRect.top ||
+              elementRect.top >= stickyRect.bottom
+            );
+
             if (isOverlapping) {
               overlapCount++;
-              console.warn(`⚠️ Overlap detected with ${element.tagName} #${index}`);
+              console.warn(
+                `⚠️ Overlap detected with ${element.tagName} #${index}`
+              );
             }
           });
-          
-          console.log(`✅ Input/Button Overlap Check: ${overlapCount} overlaps found`);
+
+          console.log(
+            `✅ Input/Button Overlap Check: ${overlapCount} overlaps found`
+          );
         }
-        
+
         // Check if ads push content off-screen
-        const calculatorCard = document.querySelector('.calculator-card');
+        const calculatorCard = document.querySelector(".calculator-card");
         const viewportHeight = window.innerHeight;
-        
+
         if (calculatorCard) {
           const cardRect = calculatorCard.getBoundingClientRect();
           const isOffScreen = cardRect.bottom > viewportHeight;
-          
+
           console.log(`📱 Viewport Height: ${viewportHeight}px`);
           console.log(`📱 Calculator Bottom: ${cardRect.bottom}px`);
-          console.log(`✅ Content Off-Screen Check: ${isOffScreen ? 'WARNING - Content pushed off screen' : 'OK - All content visible'}`);
+          console.log(
+            `✅ Content Off-Screen Check: ${
+              isOffScreen
+                ? "WARNING - Content pushed off screen"
+                : "OK - All content visible"
+            }`
+          );
         }
-        
+
         // Check ad dimensions
         mobileAdContainers.forEach((ad, index) => {
           const rect = ad.getBoundingClientRect();
           console.log(`📏 Ad #${index + 1}: ${rect.width}x${rect.height}px`);
         });
-        
+
         if (stickyBottom) {
           const stickyRect = stickyBottom.getBoundingClientRect();
-          console.log(`📏 Sticky Bottom: ${stickyRect.width}x${stickyRect.height}px`);
+          console.log(
+            `📏 Sticky Bottom: ${stickyRect.width}x${stickyRect.height}px`
+          );
         }
-        
+
         // Check mobile breakpoint
         const isMobile = window.innerWidth <= 768;
-        console.log(`📱 Mobile Breakpoint: ${isMobile ? 'Active' : 'Inactive'} (${window.innerWidth}px)`);
-        
+        console.log(
+          `📱 Mobile Breakpoint: ${isMobile ? "Active" : "Inactive"} (${
+            window.innerWidth
+          }px)`
+        );
+
         console.log("✅ Mobile Ad Test Complete!");
         console.log("💡 Remove test button and styles before going live");
       }
-      
+
       // Show test button on mobile for development
       if (window.innerWidth <= 768) {
-        document.getElementById('testAdsBtn').style.display = 'block';
+        document.getElementById("testAdsBtn").style.display = "block";
       }
     </script>
   </body>
