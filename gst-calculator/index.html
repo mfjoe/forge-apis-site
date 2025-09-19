@@ -175,6 +175,7 @@
         max-width: 1400px;
         width: 100%;
         margin: 0 auto;
+        padding: 0 10px;
       }
 
       /* Desktop Side Ads */
@@ -579,11 +580,11 @@
           grid-template-columns: 300px 1fr 300px;
           gap: 30px;
         }
-        
+
         .ad-column {
           display: block;
         }
-        
+
         .calculator-main {
           max-width: 600px;
           margin: 0 auto;
@@ -593,128 +594,123 @@
       /* Mobile Layout - Extreme Compression */
       @media (max-width: 768px) {
         body {
-          padding-top: 110px; /* Nav + top ad */
-          padding-bottom: 60px; /* Bottom ad space */
-          padding-left: 10px;
-          padding-right: 10px;
+          padding-top: 80px; /* Nav only */
+          padding-bottom: 20px;
+          padding-left: 5px;
+          padding-right: 5px;
         }
-        
-        /* Sticky top ad */
+
+        /* Mobile ads - less intrusive */
         .mobile-ad-top {
-          position: fixed;
-          top: 60px; /* Below nav */
-          left: 0;
-          right: 0;
-          z-index: 999;
-          background: white;
-          padding: 5px 0;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* Sticky bottom ad */
-        .mobile-ad-bottom {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 999;
-          background: white;
-          padding: 5px 0;
-          box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* Ultra-compact calculator */
-        .calculator-card {
-          padding: 15px 10px;
-          border-radius: 8px;
+          position: relative;
           margin-bottom: 10px;
         }
-        
+
+        .mobile-ad-bottom {
+          position: relative;
+          margin-top: 10px;
+        }
+
+        /* Ultra-compact calculator */
+        .calculator-card {
+          padding: 20px 15px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
         h1 {
           font-size: 1.25rem;
           margin-bottom: 10px;
           text-align: center;
         }
-        
-        /* Smaller input */
+
+        /* Mobile input */
         input[type="number"] {
-          padding: 10px;
+          padding: 12px;
           font-size: 16px; /* Prevents zoom on iOS */
-          margin-bottom: 10px;
+          margin-bottom: 15px;
+          min-height: 44px;
+          border-radius: 8px;
         }
-        
+
         label {
           font-size: 0.8rem;
           margin-bottom: 5px;
         }
-        
+
         /* Compact mode buttons */
         .mode-selector {
           grid-template-columns: 1fr 1fr;
-          gap: 8px;
-          margin-bottom: 12px;
+          gap: 10px;
+          margin-bottom: 15px;
         }
-        
+
         .mode-btn {
-          padding: 8px 5px;
-          font-size: 0.75rem;
+          padding: 12px 8px;
+          font-size: 0.8rem;
+          min-height: 44px;
         }
-        
+
         .mode-btn small {
           display: none; /* Hide descriptions */
         }
-        
+
         /* GST rate buttons - 2 rows of 4 */
         .gst-rates {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 5px;
-          margin-bottom: 12px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+          margin-bottom: 15px;
         }
-        
+
         .rate-btn {
-          padding: 10px 2px;
-          font-size: 0.7rem;
+          padding: 12px 8px;
+          font-size: 0.8rem;
           border-radius: 6px;
+          min-height: 44px;
         }
-        
+
         /* Transaction type - side by side */
         .transaction-type {
-          gap: 8px;
-          margin-bottom: 12px;
+          gap: 10px;
+          margin-bottom: 15px;
         }
-        
+
         .type-btn {
-          padding: 8px;
-          font-size: 0.75rem;
+          padding: 12px 8px;
+          font-size: 0.8rem;
+          min-height: 44px;
         }
-        
+
         .type-btn small {
           display: none;
         }
-        
-        /* Ultra-compact results */
+
+        /* Mobile results */
         .results {
           background: #f0f0f0;
-          padding: 10px;
-          border-radius: 6px;
-          margin-top: 12px;
+          padding: 15px;
+          border-radius: 8px;
+          margin-top: 15px;
         }
-        
+
         .result-row {
-          padding: 4px 0;
-          font-size: 0.85rem;
-        }
-        
-        .result-value {
+          padding: 8px 0;
           font-size: 0.9rem;
         }
-        
+
+        .result-value {
+          font-size: 1rem;
+        }
+
         /* Hide CGST/SGST by default, show only total */
-        #cgstRow, #sgstRow {
+        #cgstRow,
+        #sgstRow {
           display: none;
         }
-        
+
         /* Add expand button for details */
         .expand-details {
           text-align: center;
@@ -723,7 +719,7 @@
           padding: 5px;
           cursor: pointer;
         }
-        
+
         /* Hide footer on mobile */
         .footer-text {
           display: none;
@@ -751,12 +747,12 @@
       /* Very small phones */
       @media (max-width: 375px) {
         .gst-rates {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
-        
+
         .rate-btn {
-          font-size: 0.65rem;
-          padding: 8px 1px;
+          font-size: 0.75rem;
+          padding: 10px 6px;
         }
       }
     </style>
@@ -996,7 +992,9 @@
           <div class="calculator-header-compact">
             <h1>GST Calculator</h1>
             <!-- Remove subtitle on mobile to save space -->
-            <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
+            <p class="subtitle desktop-only">
+              Calculate GST, CGST, SGST & IGST Instantly
+            </p>
           </div>
 
           <!-- Calculation Mode -->
@@ -1064,7 +1062,10 @@
                   >CGST + SGST</small
                 >
               </button>
-              <button class="type-btn" onclick="setTransactionType('interstate')">
+              <button
+                class="type-btn"
+                onclick="setTransactionType('interstate')"
+              >
                 Interstate<br />
                 <small
                   style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
