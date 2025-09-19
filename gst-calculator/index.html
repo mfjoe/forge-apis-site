@@ -789,7 +789,8 @@
         }
 
         /* Don't hide CGST/SGST by default - show everything */
-        #cgstRow, #sgstRow {
+        #cgstRow,
+        #sgstRow {
           display: flex !important;
         }
 
@@ -814,15 +815,7 @@
           height: 1.5px;
         }
 
-        /* Show mobile-only elements */
-        .mobile-only {
-          display: block !important;
-        }
 
-        /* Hide desktop-only elements */
-        .desktop-only {
-          display: none !important;
-        }
 
         /* Mobile bottom ad - sticky */
         .mobile-ad-bottom {
@@ -882,6 +875,20 @@
         input[type="number"] {
           height: 28px;
           padding: 6px;
+        }
+      }
+
+      /* Desktop only - hide on mobile */
+      @media (max-width: 1199px) {
+        .desktop-only {
+          display: none !important;
+        }
+      }
+
+      /* Mobile only - hide on desktop */
+      @media (min-width: 1200px) {
+        .mobile-only {
+          display: none !important;
         }
       }
     </style>
