@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator - Test Suite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0066ff;
+            padding-bottom: 5px;
+        }
+        .test-case {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #0066ff;
+        }
+        .test-input {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .test-button {
+            background: #0066ff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0052cc;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .test-pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .test-fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .calculator-frame {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 GST Calculator - Comprehensive Test Suite</h1>
+    
+    <div class="test-container">
+        <h2>Test Overview</h2>
+        <p>This test suite validates all calculator functionality including:</p>
+        <ul>
+            <li>✅ Basic GST calculations (Exclusive/Inclusive modes)</li>
+            <li>✅ All GST rates (0%, 0.25%, 3%, 5%, 12%, 18%, 28%)</li>
+            <li>✅ Transaction types (Intrastate CGST+SGST, Interstate IGST)</li>
+            <li>✅ Calculate Again button functionality</li>
+            <li>✅ History feature (localStorage)</li>
+            <li>✅ Mobile responsiveness</li>
+            <li>✅ Ad placement and visibility</li>
+        </ul>
+    </div>
+
+    <div class="test-grid">
+        <div class="test-section">
+            <div class="test-title">🔢 Basic Calculation Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 1: Exclusive Mode - 18% Intrastate</h4>
+                <p><strong>Input:</strong> ₹1000, 18% rate, Intrastate</p>
+                <p><strong>Expected:</strong> Original: ₹1000, GST: ₹180, Total: ₹1180</p>
+                <p><strong>Expected CGST:</strong> ₹90, SGST: ₹90</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test 2: Inclusive Mode - 18% Intrastate</h4>
+                <p><strong>Input:</strong> ₹1180, 18% rate, Intrastate (Inclusive)</p>
+                <p><strong>Expected:</strong> Original: ₹1000, GST: ₹180, Total: ₹1180</p>
+                <p><strong>Expected CGST:</strong> ₹90, SGST: ₹90</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test 3: Interstate IGST</h4>
+                <p><strong>Input:</strong> ₹1000, 18% rate, Interstate</p>
+                <p><strong>Expected:</strong> Original: ₹1000, GST: ₹180, Total: ₹1180</p>
+                <p><strong>Expected IGST:</strong> ₹180</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test 4: Edge Cases</h4>
+                <p><strong>Zero Amount:</strong> ₹0 should show ₹0 for all values</p>
+                <p><strong>Large Amount:</strong> ₹999999 should calculate correctly</p>
+                <p><strong>Decimal Amount:</strong> ₹1234.56 should handle decimals</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📊 GST Rate Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 5: All GST Rates</h4>
+                <p><strong>0% Rate:</strong> ₹1000 → GST: ₹0, Total: ₹1000</p>
+                <p><strong>0.25% Rate:</strong> ₹1000 → GST: ₹2.50, Total: ₹1002.50</p>
+                <p><strong>3% Rate:</strong> ₹1000 → GST: ₹30, Total: ₹1030</p>
+                <p><strong>5% Rate:</strong> ₹1000 → GST: ₹50, Total: ₹1050</p>
+                <p><strong>12% Rate:</strong> ₹1000 → GST: ₹120, Total: ₹1120</p>
+                <p><strong>18% Rate:</strong> ₹1000 → GST: ₹180, Total: ₹1180</p>
+                <p><strong>28% Rate:</strong> ₹1000 → GST: ₹280, Total: ₹1280</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔄 Calculate Again Button Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 6: Calculate Again Functionality</h4>
+                <p><strong>Step 1:</strong> Enter amount and calculate</p>
+                <p><strong>Step 2:</strong> Verify "Calculate Again" button appears</p>
+                <p><strong>Step 3:</strong> Click "Calculate Again" button</p>
+                <p><strong>Expected:</strong> Input cleared, defaults restored, scroll to top, focus on input</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📚 History Feature Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 7: History Storage</h4>
+                <p><strong>Step 1:</strong> Perform 3-4 different calculations</p>
+                <p><strong>Step 2:</strong> Check mobile history section (collapsible)</p>
+                <p><strong>Step 3:</strong> Check desktop history widget (right sidebar)</p>
+                <p><strong>Expected:</strong> All calculations saved, clickable to reload</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test 8: History Management</h4>
+                <p><strong>Max 5 Items:</strong> Only last 5 calculations stored</p>
+                <p><strong>Click to Reload:</strong> Clicking history item loads values</p>
+                <p><strong>Clear History:</strong> Clear button removes all history</p>
+                <p><strong>localStorage:</strong> History persists across page reloads</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📱 Mobile Responsiveness Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 9: Mobile Layout</h4>
+                <p><strong>Viewport:</strong> Test on mobile device or browser dev tools</p>
+                <p><strong>Navbar:</strong> Compact navbar (50px height)</p>
+                <p><strong>Calculator:</strong> Full width, proper spacing</p>
+                <p><strong>Buttons:</strong> Touch-friendly sizes (40px+ height)</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test 10: Mobile Ads</h4>
+                <p><strong>Top Ad:</strong> Should be hidden (removed for space)</p>
+                <p><strong>Mid-Content Ad:</strong> 320x50 banner after transaction type</p>
+                <p><strong>Post-Results Ad:</strong> 300x250 rectangle after results</p>
+                <p><strong>Sticky Bottom:</strong> 320x50 banner at bottom</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🖥️ Desktop Layout Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 11: Desktop Layout</h4>
+                <p><strong>3-Column Grid:</strong> Left ads, calculator, right ads</p>
+                <p><strong>Side Ads:</strong> 300x600 skyscraper ads visible</p>
+                <p><strong>History Widget:</strong> In right sidebar below ads</p>
+                <p><strong>Responsive:</strong> Layout adapts to screen size</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🎯 Ad Placement Tests</div>
+            
+            <div class="test-case">
+                <h4>Test 12: Ad Visibility</h4>
+                <p><strong>Desktop:</strong> Side ads visible on screens > 1200px</p>
+                <p><strong>Mobile:</strong> In-content ads visible on screens < 1200px</p>
+                <p><strong>Placeholders:</strong> All ads show correct dimensions and CPM tiers</p>
+                <p><strong>No Overlap:</strong> Ads don't cover calculator content</p>
+                <div class="test-result test-info">Manual test required in calculator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🚀 Live Calculator Testing</h2>
+        <p>Use the calculator below to perform manual tests:</p>
+        <iframe src="index.html" class="calculator-frame"></iframe>
+    </div>
+
+    <div class="test-container">
+        <h2>📋 Test Checklist</h2>
+        <div class="test-case">
+            <h4>✅ Pre-Test Setup</h4>
+            <ul>
+                <li>Clear browser localStorage</li>
+                <li>Test on both desktop and mobile viewports</li>
+                <li>Open browser developer tools for console errors</li>
+            </ul>
+        </div>
+
+        <div class="test-case">
+            <h4>✅ Basic Functionality</h4>
+            <ul>
+                <li>Calculator loads without errors</li>
+                <li>All buttons are clickable and responsive</li>
+                <li>Input field accepts numbers and decimals</li>
+                <li>Results update in real-time</li>
+            </ul>
+        </div>
+
+        <div class="test-case">
+            <h4>✅ Calculation Accuracy</h4>
+            <ul>
+                <li>Exclusive mode calculations are correct</li>
+                <li>Inclusive mode calculations are correct</li>
+                <li>All GST rates work properly</li>
+                <li>CGST/SGST split correctly for intrastate</li>
+                <li>IGST calculation correct for interstate</li>
+            </ul>
+        </div>
+
+        <div class="test-case">
+            <h4>✅ UI/UX Features</h4>
+            <ul>
+                <li>Calculate Again button appears after calculation</li>
+                <li>Calculate Again button resets everything properly</li>
+                <li>History section shows previous calculations</li>
+                <li>History items are clickable and reload values</li>
+                <li>Clear History button works with confirmation</li>
+            </ul>
+        </div>
+
+        <div class="test-case">
+            <h4>✅ Responsive Design</h4>
+            <ul>
+                <li>Mobile layout works on small screens</li>
+                <li>Desktop layout works on large screens</li>
+                <li>Ads are positioned correctly on both layouts</li>
+                <li>Touch targets are appropriate size on mobile</li>
+            </ul>
+        </div>
+
+        <div class="test-case">
+            <h4>✅ Performance & Storage</h4>
+            <ul>
+                <li>No JavaScript errors in console</li>
+                <li>localStorage saves and loads history correctly</li>
+                <li>Page loads quickly</li>
+                <li>Smooth animations and transitions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🐛 Known Issues to Check</h2>
+        <div class="test-case">
+            <h4>⚠️ Potential Issues</h4>
+            <ul>
+                <li>History might not update immediately after calculation</li>
+                <li>Mobile ads might overlap content on very small screens</li>
+                <li>Calculate Again button might not hide properly after reset</li>
+                <li>localStorage might not work in private browsing mode</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Auto-run basic tests
+        console.log('🧪 GST Calculator Test Suite Loaded');
+        console.log('📱 Testing on viewport:', window.innerWidth + 'x' + window.innerHeight);
+        
+        // Check if calculator iframe loads
+        const iframe = document.querySelector('.calculator-frame');
+        iframe.onload = function() {
+            console.log('✅ Calculator iframe loaded successfully');
+        };
+        
+        iframe.onerror = function() {
+            console.error('❌ Calculator iframe failed to load');
+        };
+        
+        // Test localStorage availability
+        try {
+            localStorage.setItem('test', 'value');
+            localStorage.removeItem('test');
+            console.log('✅ localStorage is available');
+        } catch(e) {
+            console.error('❌ localStorage not available:', e);
+        }
+        
+        // Test responsive breakpoints
+        function checkResponsive() {
+            const width = window.innerWidth;
+            if (width >= 1200) {
+                console.log('🖥️ Desktop layout active (>= 1200px)');
+            } else if (width <= 768) {
+                console.log('📱 Mobile layout active (<= 768px)');
+            } else {
+                console.log('📱 Tablet layout active (769px - 1199px)');
+            }
+        }
+        
+        checkResponsive();
+        window.addEventListener('resize', checkResponsive);
+    </script>
+</body>
+</html>
