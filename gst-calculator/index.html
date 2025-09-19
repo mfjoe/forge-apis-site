@@ -167,129 +167,46 @@
         color: var(--primary);
       }
 
-      /* Desktop Layout */
-      .desktop-layout {
-        display: none;
+      /* Single Responsive Calculator Wrapper */
+      .calculator-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
         max-width: 1400px;
         width: 100%;
         margin: 0 auto;
-        gap: 20px;
-        align-items: flex-start;
       }
 
+      /* Desktop Side Ads */
       .ad-column {
+        display: none;
         width: 300px;
-        flex-shrink: 0;
-      }
-
-      .ad-left {
-        order: 1;
-      }
-
-      .calculator-column {
-        flex: 1;
-        order: 2;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .ad-right {
-        order: 3;
+        position: relative;
       }
 
       .ad-sticky {
         position: sticky;
         top: 120px;
+        height: fit-content;
       }
 
-      .ad-container.ad-skyscraper {
+      .ad-skyscraper {
         width: 300px;
         height: 600px;
         background: #f5f5f5;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-      }
-
-      .ad-container.ad-skyscraper .ad-placeholder {
-        width: 100%;
-        height: 100%;
-        min-height: 600px;
-        border: 2px dashed #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
-        font-size: 12px;
-      }
-
-      /* Mobile Ad Styles */
-      .ad-mobile-banner {
-        margin: 20px auto;
-        max-width: 320px;
-        height: 50px;
-      }
-
-      .ad-mobile-rectangle {
-        margin: 20px auto;
-        max-width: 300px;
-        height: 250px;
-      }
-
-      /* Mobile Sticky Ads */
-      .mobile-ad-top {
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        background: white;
-        border-bottom: 1px solid #e2e8f0;
-        padding: 10px 0;
-      }
-
-      .mobile-ad-bottom {
-        position: sticky;
-        bottom: 0;
-        z-index: 999;
-        background: white;
-        border-top: 1px solid #e2e8f0;
-        padding: 10px 0;
-      }
-
-      .ad-banner-320x50,
-      .ad-anchor-320x50 {
-        max-width: 320px;
-        height: 50px;
-        margin: 0 auto;
-        background: #f5f5f5;
         border: 2px dashed #ddd;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 14px;
         color: #999;
       }
 
-      /* Calculator Header Compact */
-      .calculator-header-compact {
-        text-align: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .calculator-header-compact h1 {
-        margin-bottom: 0.25rem;
-      }
-
-      /* Desktop-only elements */
-      .desktop-only {
-        display: block;
-      }
-
-      /* Main Content */
-      .main-content {
+      /* Main Calculator */
+      .calculator-main {
         max-width: 600px;
+        margin: 0 auto;
         width: 100%;
       }
 
@@ -510,10 +427,71 @@
         min-height: 90px;
       }
 
-      @media (max-width: 768px) {
-        .ad-container {
-          margin: 1.5rem auto;
-        }
+      /* Mobile Ad Styles */
+      .ad-mobile-banner {
+        margin: 20px auto;
+        max-width: 320px;
+        height: 50px;
+      }
+
+      .ad-mobile-rectangle {
+        margin: 20px auto;
+        max-width: 300px;
+        height: 250px;
+      }
+
+      /* Mobile Sticky Ads */
+      .mobile-ad-top {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: white;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 10px 0;
+      }
+
+      .mobile-ad-bottom {
+        position: sticky;
+        bottom: 0;
+        z-index: 999;
+        background: white;
+        border-top: 1px solid #e2e8f0;
+        padding: 10px 0;
+      }
+
+      .ad-banner-320x50,
+      .ad-anchor-320x50 {
+        max-width: 320px;
+        height: 50px;
+        margin: 0 auto;
+        background: #f5f5f5;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #999;
+      }
+
+      /* Calculator Header Compact */
+      .calculator-header-compact {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .calculator-header-compact h1 {
+        margin-bottom: 0.25rem;
+      }
+
+      /* Desktop-only elements */
+      .desktop-only {
+        display: block;
+      }
+
+      /* Mobile-only elements */
+      .mobile-only {
+        display: none;
       }
 
       /* Mobile Menu Toggle */
@@ -595,80 +573,20 @@
         font-size: 0.875rem;
       }
 
-      /* Desktop 3-column layout */
+      /* Desktop Layout - Show side ads on larger screens */
       @media (min-width: 1200px) {
-        body {
-          padding-top: 100px;
-          padding-bottom: 20px;
-        }
-
-        .desktop-layout {
-          display: grid;
+        .calculator-wrapper {
           grid-template-columns: 300px 1fr 300px;
           gap: 30px;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 0 20px;
         }
-
-        .calculator-column {
-          max-width: 600px;
-          margin: 0 auto;
-          width: 100%;
-        }
-
+        
         .ad-column {
-          position: relative;
-        }
-
-        .ad-sticky {
-          position: sticky;
-          top: 100px;
-          height: fit-content;
-        }
-
-        .ad-skyscraper {
-          width: 300px;
-          height: 600px;
-          background: #f5f5f5;
-          border: 2px dashed #ddd;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 14px;
-          color: #999;
-        }
-
-        /* Hide mobile ads on desktop */
-        .mobile-only {
-          display: none !important;
-        }
-      }
-
-      /* Tablet/Mobile Layout */
-      @media (max-width: 1199px) {
-        .desktop-layout {
           display: block;
         }
-
-        .ad-column {
-          display: none;
-        }
-
-        .calculator-column {
+        
+        .calculator-main {
           max-width: 600px;
           margin: 0 auto;
-        }
-
-        /* Show mobile ads */
-        .mobile-only {
-          display: block !important;
-        }
-
-        /* Hide desktop-only elements on mobile */
-        .desktop-only {
-          display: none !important;
         }
       }
 
@@ -680,7 +598,7 @@
           padding-left: 10px;
           padding-right: 10px;
         }
-
+        
         /* Sticky top ad */
         .mobile-ad-top {
           position: fixed;
@@ -690,9 +608,9 @@
           z-index: 999;
           background: white;
           padding: 5px 0;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
+        
         /* Sticky bottom ad */
         .mobile-ad-bottom {
           position: fixed;
@@ -702,50 +620,50 @@
           z-index: 999;
           background: white;
           padding: 5px 0;
-          box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
-
+        
         /* Ultra-compact calculator */
         .calculator-card {
           padding: 15px 10px;
           border-radius: 8px;
           margin-bottom: 10px;
         }
-
+        
         h1 {
           font-size: 1.25rem;
           margin-bottom: 10px;
           text-align: center;
         }
-
+        
         /* Smaller input */
         input[type="number"] {
           padding: 10px;
           font-size: 16px; /* Prevents zoom on iOS */
           margin-bottom: 10px;
         }
-
+        
         label {
           font-size: 0.8rem;
           margin-bottom: 5px;
         }
-
+        
         /* Compact mode buttons */
         .mode-selector {
           grid-template-columns: 1fr 1fr;
           gap: 8px;
           margin-bottom: 12px;
         }
-
+        
         .mode-btn {
           padding: 8px 5px;
           font-size: 0.75rem;
         }
-
+        
         .mode-btn small {
           display: none; /* Hide descriptions */
         }
-
+        
         /* GST rate buttons - 2 rows of 4 */
         .gst-rates {
           display: grid;
@@ -753,28 +671,28 @@
           gap: 5px;
           margin-bottom: 12px;
         }
-
+        
         .rate-btn {
           padding: 10px 2px;
           font-size: 0.7rem;
           border-radius: 6px;
         }
-
+        
         /* Transaction type - side by side */
         .transaction-type {
           gap: 8px;
           margin-bottom: 12px;
         }
-
+        
         .type-btn {
           padding: 8px;
           font-size: 0.75rem;
         }
-
+        
         .type-btn small {
           display: none;
         }
-
+        
         /* Ultra-compact results */
         .results {
           background: #f0f0f0;
@@ -782,22 +700,21 @@
           border-radius: 6px;
           margin-top: 12px;
         }
-
+        
         .result-row {
           padding: 4px 0;
           font-size: 0.85rem;
         }
-
+        
         .result-value {
           font-size: 0.9rem;
         }
-
+        
         /* Hide CGST/SGST by default, show only total */
-        #cgstRow,
-        #sgstRow {
+        #cgstRow, #sgstRow {
           display: none;
         }
-
+        
         /* Add expand button for details */
         .expand-details {
           text-align: center;
@@ -806,7 +723,7 @@
           padding: 5px;
           cursor: pointer;
         }
-
+        
         /* Hide footer on mobile */
         .footer-text {
           display: none;
@@ -820,9 +737,14 @@
           display: flex;
         }
 
-        /* Hide desktop layout on mobile */
-        .desktop-layout {
-          display: none;
+        /* Show mobile-only elements */
+        .mobile-only {
+          display: block !important;
+        }
+
+        /* Hide desktop-only elements */
+        .desktop-only {
+          display: none !important;
         }
       }
 
@@ -831,7 +753,7 @@
         .gst-rates {
           grid-template-columns: repeat(3, 1fr);
         }
-
+        
         .rate-btn {
           font-size: 0.65rem;
           padding: 8px 1px;
@@ -1056,10 +978,10 @@
       </div>
     </div>
 
-    <!-- Desktop Layout -->
-    <div class="desktop-layout">
-      <!-- Left Ad Column -->
-      <aside class="ad-column ad-left">
+    <!-- Single Responsive Calculator -->
+    <div class="calculator-wrapper">
+      <!-- Desktop Side Ads -->
+      <aside class="ad-column ad-left desktop-only">
         <div class="ad-sticky">
           <div class="ad-skyscraper">
             <!-- AdSense 300x600 -->
@@ -1068,15 +990,13 @@
         </div>
       </aside>
 
-      <!-- Center Calculator Column -->
-      <main class="calculator-column">
+      <!-- Main Calculator -->
+      <main class="calculator-main">
         <div class="calculator-card">
           <div class="calculator-header-compact">
             <h1>GST Calculator</h1>
             <!-- Remove subtitle on mobile to save space -->
-            <p class="subtitle desktop-only">
-              Calculate GST, CGST, SGST & IGST Instantly
-            </p>
+            <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
           </div>
 
           <!-- Calculation Mode -->
@@ -1144,10 +1064,7 @@
                   >CGST + SGST</small
                 >
               </button>
-              <button
-                class="type-btn"
-                onclick="setTransactionType('interstate')"
-              >
+              <button class="type-btn" onclick="setTransactionType('interstate')">
                 Interstate<br />
                 <small
                   style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
@@ -1158,7 +1075,7 @@
           </div>
 
           <!-- Middle Ad Container -->
-          <div class="ad-container">
+          <div class="ad-container mobile-only">
             <div class="ad-placeholder">
               <!-- AdSense code will go here -->
               Ad Space
@@ -1194,10 +1111,13 @@
               <span class="result-value" id="totalAmount">₹0</span>
             </div>
 
-          <!-- Mobile expand details button -->
-          <div class="expand-details mobile-only" onclick="toggleResultDetails()">
-            + Show Details
-          </div>
+            <!-- Mobile expand details button -->
+            <div
+              class="expand-details mobile-only"
+              onclick="toggleResultDetails()"
+            >
+              + Show Details
+            </div>
           </div>
 
           <!-- Mobile Rectangle Ad -->
@@ -1205,104 +1125,8 @@
             <div class="ad-placeholder">Mobile Rectangle 300x250</div>
           </div>
         </div>
-      </main>
 
-      <!-- Right Ad Column -->
-      <aside class="ad-column ad-right">
-        <div class="ad-sticky">
-          <div class="ad-skyscraper">
-            <!-- AdSense 300x600 -->
-            Ad 300x600
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <!-- Main Content (Mobile) -->
-    <div class="main-content">
-      <div class="calculator-card">
-        <div class="calculator-header-compact">
-          <h1>GST Calculator</h1>
-          <!-- Remove subtitle on mobile to save space -->
-          <p class="subtitle desktop-only">
-            Calculate GST, CGST, SGST & IGST Instantly
-          </p>
-        </div>
-
-        <!-- Calculation Mode -->
-        <div class="mode-selector">
-          <button class="mode-btn active" onclick="setMode('exclusive')">
-            GST Exclusive<br />
-            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-              >Add GST to Amount</small
-            >
-          </button>
-          <button class="mode-btn" onclick="setMode('inclusive')">
-            GST Inclusive<br />
-            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-              >Extract GST from Total</small
-            >
-          </button>
-        </div>
-
-        <!-- Mobile Banner Ad -->
-        <div class="ad-container mobile-only ad-mobile-banner">
-          <div class="ad-placeholder">Mobile Banner 320x50</div>
-        </div>
-
-        <!-- Amount Input -->
-        <div class="input-group">
-          <label for="amount" id="amountLabel"
-            >Enter Amount (Excluding GST)</label
-          >
-          <input
-            type="number"
-            id="amount"
-            placeholder="₹0"
-            step="0.01"
-            oninput="calculate()"
-          />
-        </div>
-
-        <!-- GST Rate Selection -->
-        <div class="input-group">
-          <label>Select GST Rate</label>
-          <div class="gst-rates">
-            <button class="rate-btn" onclick="setRate(0)">0%</button>
-            <button class="rate-btn" onclick="setRate(0.25)">0.25%</button>
-            <button class="rate-btn" onclick="setRate(3)">3%</button>
-            <button class="rate-btn" onclick="setRate(5)">5%</button>
-            <button class="rate-btn" onclick="setRate(12)">12%</button>
-            <button class="rate-btn active" onclick="setRate(18)">18%</button>
-            <button class="rate-btn" onclick="setRate(28)">28%</button>
-          </div>
-        </div>
-
-        <!-- Transaction Type -->
-        <div class="input-group">
-          <label>Transaction Type</label>
-          <div class="transaction-type">
-            <button
-              class="type-btn active"
-              onclick="setTransactionType('intrastate')"
-            >
-              Intrastate<br />
-              <small
-                style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-                >CGST + SGST</small
-              >
-            </button>
-            <button class="type-btn" onclick="setTransactionType('interstate')">
-              Interstate<br />
-              <small
-                style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-                >IGST Only</small
-              >
-            </button>
-          </div>
-        </div>
-
-        <!-- Middle Ad Container -->
+        <!-- Bottom Ad Container -->
         <div class="ad-container mobile-only">
           <div class="ad-placeholder">
             <!-- AdSense code will go here -->
@@ -1310,59 +1134,21 @@
           </div>
         </div>
 
-        <!-- Results -->
-        <div class="results">
-          <div class="result-row">
-            <span class="result-label">Original Amount</span>
-            <span class="result-value" id="originalAmount">₹0</span>
-          </div>
-          <div class="result-row" id="cgstRow">
-            <span class="result-label">CGST (9%)</span>
-            <span class="result-value" id="cgstAmount">₹0</span>
-          </div>
-          <div class="result-row" id="sgstRow">
-            <span class="result-label">SGST (9%)</span>
-            <span class="result-value" id="sgstAmount">₹0</span>
-          </div>
-          <div class="result-row" id="igstRow" style="display: none">
-            <span class="result-label">IGST (18%)</span>
-            <span class="result-value" id="igstAmount">₹0</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Total GST</span>
-            <span class="result-value" id="totalGst">₹0</span>
-          </div>
-          <div class="result-row total">
-            <span class="result-label" style="font-weight: 600"
-              >Total Amount</span
-            >
-            <span class="result-value" id="totalAmount">₹0</span>
-          </div>
+        <div class="footer-text">
+          Powered by <a href="https://forgeapis.com">Forge APIs</a> • Free Tools
+          for Everyone
+        </div>
+      </main>
 
-          <!-- Mobile expand details button -->
-          <div class="expand-details mobile-only" onclick="toggleResultDetails()">
-            + Show Details
+      <!-- Desktop Side Ads -->
+      <aside class="ad-column ad-right desktop-only">
+        <div class="ad-sticky">
+          <div class="ad-skyscraper">
+            <!-- AdSense 300x600 -->
+            Ad 300x600
           </div>
         </div>
-
-        <!-- Mobile Rectangle Ad -->
-        <div class="ad-container mobile-only ad-mobile-rectangle">
-          <div class="ad-placeholder">Mobile Rectangle 300x250</div>
-        </div>
-      </div>
-
-      <!-- Bottom Ad Container -->
-      <div class="ad-container mobile-only">
-        <div class="ad-placeholder">
-          <!-- AdSense code will go here -->
-          Ad Space
-        </div>
-      </div>
-
-      <div class="footer-text">
-        Powered by <a href="https://forgeapis.com">Forge APIs</a> • Free Tools
-        for Everyone
-      </div>
+      </aside>
     </div>
 
     <!-- Mobile Sticky Bottom Ad -->
@@ -1500,51 +1286,25 @@
       // Initialize
       calculate();
 
-      // Add expand button to results on mobile
-      if (window.innerWidth <= 768) {
-        const resultsDiv = document.querySelector('.results');
-        if (resultsDiv && !document.querySelector('.expand-details')) {
-          const expandBtn = document.createElement('div');
-          expandBtn.className = 'expand-details';
-          expandBtn.textContent = '+ Show Details';
-          expandBtn.onclick = toggleResultDetails;
-          resultsDiv.insertBefore(expandBtn, document.getElementById('cgstRow'));
-        }
-      }
-
-      // Mobile details toggle
-      function toggleDetails() {
-        const cgstRow = document.getElementById("cgstRow");
-        const sgstRow = document.getElementById("sgstRow");
-        const expandBtn = document.querySelector(".expand-details");
-        
-        if (cgstRow.style.display === "none" || cgstRow.style.display === "") {
-          cgstRow.style.display = "flex";
-          sgstRow.style.display = "flex";
-          expandBtn.textContent = "Hide Details";
-        } else {
-          cgstRow.style.display = "none";
-          sgstRow.style.display = "none";
-          expandBtn.textContent = "Show Details";
-        }
-      }
-
       // Enhanced mobile details toggle with better UX
       function toggleResultDetails() {
         const isMobile = window.innerWidth <= 768;
         if (isMobile) {
-          const cgstRow = document.getElementById('cgstRow');
-          const sgstRow = document.getElementById('sgstRow');
-          const expandBtn = document.querySelector('.expand-details');
-          
-          if (cgstRow.style.display === 'none' || cgstRow.style.display === '') {
-            cgstRow.style.display = 'flex';
-            sgstRow.style.display = 'flex';
-            if (expandBtn) expandBtn.textContent = '− Show Less';
+          const cgstRow = document.getElementById("cgstRow");
+          const sgstRow = document.getElementById("sgstRow");
+          const expandBtn = document.querySelector(".expand-details");
+
+          if (
+            cgstRow.style.display === "none" ||
+            cgstRow.style.display === ""
+          ) {
+            cgstRow.style.display = "flex";
+            sgstRow.style.display = "flex";
+            if (expandBtn) expandBtn.textContent = "− Show Less";
           } else {
-            cgstRow.style.display = 'none';
-            sgstRow.style.display = 'none';
-            if (expandBtn) expandBtn.textContent = '+ Show Details';
+            cgstRow.style.display = "none";
+            sgstRow.style.display = "none";
+            if (expandBtn) expandBtn.textContent = "+ Show Details";
           }
         }
       }
