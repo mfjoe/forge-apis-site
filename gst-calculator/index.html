@@ -608,7 +608,7 @@
       /* Mobile Layout - Single Screen, No Scroll */
       @media (max-width: 768px) {
         body {
-          padding-top: 100px; /* Space for nav + top ad */
+          padding-top: 120px; /* Space for nav (60px) + top ad (60px) */
           padding-bottom: 60px; /* Space for bottom ad */
           padding-left: 10px;
           padding-right: 10px;
@@ -617,9 +617,10 @@
           overflow-y: auto; /* Allow vertical scrolling */
         }
 
-        /* Ultra-compact mobile navbar */
+        /* Mobile navbar */
         nav {
-          padding: 0.1rem 0;
+          padding: 0.75rem 0; /* More padding for touch targets */
+          height: 60px; /* Fixed height */
         }
 
         nav .container {
@@ -627,14 +628,15 @@
         }
 
         .logo svg {
-          width: 150px;
-          height: 40px;
+          width: 180px; /* Slightly bigger for readability */
+          height: 50px;
+          object-fit: contain;
         }
 
         /* Mobile header with ad */
         .mobile-ad-top {
           position: fixed;
-          top: 35px;
+          top: 60px;
           left: 0;
           right: 0;
           z-index: 999;
