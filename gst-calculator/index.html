@@ -768,46 +768,34 @@
         /* Mobile results */
         .results {
           background: #f8f9fa;
-          padding: 8px;
-          border-radius: 6px;
-          margin-top: 8px;
-          border: 1px solid #e9ecef;
+          padding: 12px;
+          border-radius: 8px;
+          margin-top: 15px;
         }
 
         .result-row {
-          padding: 4px 0;
-          font-size: 0.75rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+          padding: 8px 0;
+          font-size: 0.9rem; /* Bigger text */
         }
 
         .result-value {
-          font-size: 0.8rem;
+          font-size: 1rem;
           font-weight: 600;
         }
 
         .result-row.total .result-value {
+          font-size: 1.125rem;
           color: var(--primary);
-          font-size: 0.9rem;
         }
 
-        /* Hide CGST/SGST by default */
-        #cgstRow,
-        #sgstRow {
-          display: none;
+        /* Don't hide CGST/SGST by default - show everything */
+        #cgstRow, #sgstRow {
+          display: flex !important;
         }
 
-        /* Expand button */
+        /* Remove expand button since we show everything */
         .expand-details {
-          text-align: center;
-          color: var(--primary);
-          font-size: 0.7rem;
-          padding: 4px;
-          cursor: pointer;
-          margin-top: 4px;
-          border-top: 1px solid #dee2e6;
-          padding-top: 6px;
+          display: none;
         }
 
         /* Hide footer and nav elements */
