@@ -238,6 +238,55 @@
         height: 250px;
       }
 
+      /* Mobile Sticky Ads */
+      .mobile-ad-top {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: white;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 10px 0;
+      }
+
+      .mobile-ad-bottom {
+        position: sticky;
+        bottom: 0;
+        z-index: 999;
+        background: white;
+        border-top: 1px solid #e2e8f0;
+        padding: 10px 0;
+      }
+
+      .ad-banner-320x50,
+      .ad-anchor-320x50 {
+        max-width: 320px;
+        height: 50px;
+        margin: 0 auto;
+        background: #f5f5f5;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #999;
+      }
+
+      /* Calculator Header Compact */
+      .calculator-header-compact {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .calculator-header-compact h1 {
+        margin-bottom: 0.25rem;
+      }
+
+      /* Desktop-only elements */
+      .desktop-only {
+        display: block;
+      }
+
       /* Main Content */
       .main-content {
         max-width: 600px;
@@ -616,6 +665,11 @@
         .mobile-only {
           display: block !important;
         }
+
+        /* Hide desktop-only elements on mobile */
+        .desktop-only {
+          display: none !important;
+        }
       }
 
       @media (max-width: 768px) {
@@ -847,6 +901,14 @@
       </div>
     </nav>
 
+    <!-- Mobile Sticky Header Ad -->
+    <div class="mobile-ad-top mobile-only">
+      <div class="ad-container ad-banner-320x50">
+        <!-- AdSense Mobile Banner -->
+        <div class="ad-placeholder">Ad 320x50</div>
+      </div>
+    </div>
+
     <!-- Top Ad Container -->
     <div class="ad-container mobile-only">
       <div class="ad-placeholder">
@@ -870,8 +932,11 @@
       <!-- Center Calculator Column -->
       <main class="calculator-column">
         <div class="calculator-card">
-          <h1>🧮 Free GST Calculator India</h1>
-          <p class="subtitle">Calculate GST, CGST, SGST & IGST Instantly</p>
+          <div class="calculator-header-compact">
+            <h1>GST Calculator</h1>
+            <!-- Remove subtitle on mobile to save space -->
+            <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
+          </div>
 
           <!-- Calculation Mode -->
           <div class="mode-selector">
@@ -1010,8 +1075,11 @@
     <!-- Main Content (Mobile) -->
     <div class="main-content">
       <div class="calculator-card">
-        <h1>🧮 Free GST Calculator India</h1>
-        <p class="subtitle">Calculate GST, CGST, SGST & IGST Instantly</p>
+        <div class="calculator-header-compact">
+          <h1>GST Calculator</h1>
+          <!-- Remove subtitle on mobile to save space -->
+          <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
+        </div>
 
         <!-- Calculation Mode -->
         <div class="mode-selector">
@@ -1141,6 +1209,14 @@
       <div class="footer-text">
         Powered by <a href="https://forgeapis.com">Forge APIs</a> • Free Tools
         for Everyone
+      </div>
+    </div>
+
+    <!-- Mobile Sticky Bottom Ad -->
+    <div class="mobile-ad-bottom mobile-only">
+      <div class="ad-container ad-anchor-320x50">
+        <!-- AdSense Anchor Ad -->
+        <div class="ad-placeholder">Ad 320x50</div>
       </div>
     </div>
 
