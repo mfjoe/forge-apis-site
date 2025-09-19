@@ -225,6 +225,19 @@
         font-size: 12px;
       }
 
+      /* Mobile Ad Styles */
+      .ad-mobile-banner {
+        margin: 20px auto;
+        max-width: 320px;
+        height: 50px;
+      }
+
+      .ad-mobile-rectangle {
+        margin: 20px auto;
+        max-width: 300px;
+        height: 250px;
+      }
+
       /* Main Content */
       .main-content {
         max-width: 600px;
@@ -539,7 +552,7 @@
           padding-top: 100px;
           padding-bottom: 20px;
         }
-        
+
         .desktop-layout {
           display: grid;
           grid-template-columns: 300px 1fr 300px;
@@ -548,23 +561,23 @@
           margin: 0 auto;
           padding: 0 20px;
         }
-        
+
         .calculator-column {
           max-width: 600px;
           margin: 0 auto;
           width: 100%;
         }
-        
+
         .ad-column {
           position: relative;
         }
-        
+
         .ad-sticky {
           position: sticky;
           top: 100px;
           height: fit-content;
         }
-        
+
         .ad-skyscraper {
           width: 300px;
           height: 600px;
@@ -577,7 +590,7 @@
           font-size: 14px;
           color: #999;
         }
-        
+
         /* Hide mobile ads on desktop */
         .mobile-only {
           display: none !important;
@@ -589,16 +602,16 @@
         .desktop-layout {
           display: block;
         }
-        
+
         .ad-column {
           display: none;
         }
-        
+
         .calculator-column {
           max-width: 600px;
           margin: 0 auto;
         }
-        
+
         /* Show mobile ads */
         .mobile-only {
           display: block !important;
@@ -878,6 +891,11 @@
             </button>
           </div>
 
+          <!-- Mobile Banner Ad -->
+          <div class="ad-container mobile-only ad-mobile-banner">
+            <div class="ad-placeholder">Mobile Banner 320x50</div>
+          </div>
+
           <!-- Amount Input -->
           <div class="input-group">
             <label for="amount" id="amountLabel"
@@ -970,6 +988,11 @@
               <span class="result-value" id="totalAmount">₹0</span>
             </div>
           </div>
+
+          <!-- Mobile Rectangle Ad -->
+          <div class="ad-container mobile-only ad-mobile-rectangle">
+            <div class="ad-placeholder">Mobile Rectangle 300x250</div>
+          </div>
         </div>
       </main>
 
@@ -1004,6 +1027,11 @@
               >Extract GST from Total</small
             >
           </button>
+        </div>
+
+        <!-- Mobile Banner Ad -->
+        <div class="ad-container mobile-only ad-mobile-banner">
+          <div class="ad-placeholder">Mobile Banner 320x50</div>
         </div>
 
         <!-- Amount Input -->
@@ -1094,6 +1122,11 @@
             >
             <span class="result-value" id="totalAmount">₹0</span>
           </div>
+        </div>
+
+        <!-- Mobile Rectangle Ad -->
+        <div class="ad-container mobile-only ad-mobile-rectangle">
+          <div class="ad-placeholder">Mobile Rectangle 300x250</div>
         </div>
       </div>
 
