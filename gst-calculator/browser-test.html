@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator - Browser Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test-container { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .test-result { padding: 10px; margin: 5px 0; border-radius: 4px; font-weight: bold; }
+        .pass { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { background: #0066ff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0052cc; }
+        .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .test-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <h1>🧪 GST Calculator - Complete Browser Test</h1>
+    
+    <div class="test-container">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <div class="test-result info">Running comprehensive tests...</div>
+        </div>
+        <button onclick="runAllTests()">Run Tests Again</button>
+    </div>
+    
+    <div class="test-container">
+        <h2>Live Calculator</h2>
+        <iframe src="index.html" width="100%" height="600" style="border: 1px solid #ccc; border-radius: 8px;" id="calculatorFrame"></iframe>
+    </div>
+    
+    <script src="validate-calculator.js"></script>
+    <script>
+        function runAllTests() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Running comprehensive tests...</div>';
+            
+            let testsPassed = 0;
+            let totalTests = 0;
+            
+            function addTestResult(name, passed, details = '') {
+                totalTests++;
+                if (passed) testsPassed++;
+                const resultClass = passed ? 'pass' : 'fail';
+                const icon = passed ? '✅' : '❌';
+                resultsDiv.innerHTML += `<div class="test-result ${resultClass}">${icon} ${name}${details ? ': ' + details : ''}</div>`;
+            }
+            
+            // Test 1: Calculation Logic (from validate-calculator.js)
+            try {
+                const calculationLogicPassed = window.gstCalculatorValidation.validateCalculationLogic();
+                addTestResult('Calculation Logic', calculationLogicPassed, 'Mathematical accuracy');
+            } catch (error) {
+                addTestResult('Calculation Logic', false, `Error: ${error.message}`);
+            }
+            
+            // Test 2: Currency Formatting
+            try {
+                const currencyFormattingPassed = window.gstCalculatorValidation.validateCurrencyFormatting();
+                addTestResult('Currency Formatting', currencyFormattingPassed, 'Indian number format');
+            } catch (error) {
+                addTestResult('Currency Formatting', false, `Error: ${error.message}`);
+            }
+            
+            // Test 3: localStorage (Browser-specific)
+            try {
+                const localStoragePassed = window.gstCalculatorValidation.validateLocalStorage();
+                addTestResult('localStorage', localStoragePassed, 'Browser storage API');
+            } catch (error) {
+                addTestResult('localStorage', false, `Error: ${error.message}`);
+            }
+            
+            // Test 4: Responsive Design (Browser-specific)
+            try {
+                const responsiveDesignPassed = window.gstCalculatorValidation.validateResponsiveDesign();
+                addTestResult('Responsive Design', responsiveDesignPassed, 'Viewport and CSS media queries');
+            } catch (error) {
+                addTestResult('Responsive Design', false, `Error: ${error.message}`);
+            }
+            
+            // Test 5: Calculator Integration
+            setTimeout(() => {
+                try {
+                    const iframe = document.getElementById('calculatorFrame');
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    
+                    // Check if calculator elements exist
+                    const amountInput = iframeDoc.getElementById('amount');
+                    const calculateBtn = iframeDoc.querySelector('[onclick*="calculate"]');
+                    const resultsDiv = iframeDoc.querySelector('.results');
+                    
+                    if (amountInput && calculateBtn && resultsDiv) {
+                        addTestResult('Calculator Integration', true, 'All elements present');
+                        
+                        // Test actual calculation
+                        try {
+                            amountInput.value = '1000';
+                            amountInput.dispatchEvent(new Event('input', { bubbles: true }));
+                            
+                            if (iframe.contentWindow.calculate) {
+                                iframe.contentWindow.calculate();
+                                
+                                setTimeout(() => {
+                                    const originalAmount = iframeDoc.getElementById('originalAmount');
+                                    const totalGst = iframeDoc.getElementById('totalGst');
+                                    const totalAmount = iframeDoc.getElementById('totalAmount');
+                                    
+                                    if (originalAmount && totalGst && totalAmount) {
+                                        const original = originalAmount.textContent;
+                                        const gst = totalGst.textContent;
+                                        const total = totalAmount.textContent;
+                                        
+                                        if (original.includes('1,000') && gst.includes('180') && total.includes('1,180')) {
+                                            addTestResult('Live Calculation', true, '₹1000 → ₹180 GST → ₹1180 total');
+                                        } else {
+                                            addTestResult('Live Calculation', false, `Got: ${original}, ${gst}, ${total}`);
+                                        }
+                                    } else {
+                                        addTestResult('Live Calculation', false, 'Result elements not found');
+                                    }
+                                    
+                                    // Test Calculate Again button
+                                    const calculateAgainBtn = iframeDoc.getElementById('calculateAgainBtn');
+                                    if (calculateAgainBtn && calculateAgainBtn.classList.contains('show')) {
+                                        addTestResult('Calculate Again Button', true, 'Button appears after calculation');
+                                    } else {
+                                        addTestResult('Calculate Again Button', false, 'Button not visible');
+                                    }
+                                    
+                                    // Test History feature
+                                    const historyList = iframeDoc.getElementById('historyList');
+                                    const desktopHistoryList = iframeDoc.getElementById('desktopHistoryList');
+                                    
+                                    if (historyList && desktopHistoryList) {
+                                        addTestResult('History Feature', true, 'History elements present');
+                                    } else {
+                                        addTestResult('History Feature', false, 'History elements missing');
+                                    }
+                                    
+                                    // Test Ad Placement
+                                    const mobileAds = iframeDoc.querySelectorAll('.ad-container.mobile-only');
+                                    const desktopAds = iframeDoc.querySelectorAll('.ad-skyscraper');
+                                    
+                                    if (mobileAds.length > 0 || desktopAds.length > 0) {
+                                        addTestResult('Ad Placement', true, `${mobileAds.length} mobile ads, ${desktopAds.length} desktop ads`);
+                                    } else {
+                                        addTestResult('Ad Placement', false, 'No ads found');
+                                    }
+                                    
+                                    // Final summary
+                                    setTimeout(() => {
+                                        const summaryClass = testsPassed === totalTests ? 'pass' : 'fail';
+                                        const summaryIcon = testsPassed === totalTests ? '🎉' : '⚠️';
+                                        resultsDiv.innerHTML += `<div class="test-result ${summaryClass}">${summaryIcon} <strong>Final Result: ${testsPassed}/${totalTests} tests passed</strong></div>`;
+                                        
+                                        if (testsPassed === totalTests) {
+                                            resultsDiv.innerHTML += '<div class="test-result pass">🎉 ALL TESTS PASSED! Calculator is fully functional.</div>';
+                                        } else {
+                                            resultsDiv.innerHTML += '<div class="test-result fail">⚠️ Some tests failed. Check details above.</div>';
+                                        }
+                                    }, 500);
+                                    
+                                }, 100);
+                            } else {
+                                addTestResult('Live Calculation', false, 'Calculate function not found');
+                            }
+                        } catch (error) {
+                            addTestResult('Live Calculation', false, `Error: ${error.message}`);
+                        }
+                    } else {
+                        addTestResult('Calculator Integration', false, 'Required elements missing');
+                    }
+                } catch (error) {
+                    addTestResult('Calculator Integration', false, `Error: ${error.message}`);
+                }
+            }, 1000);
+        }
+        
+        // Run tests on page load
+        window.addEventListener('load', function() {
+            setTimeout(runAllTests, 2000);
+        });
+        
+        console.log('🧪 GST Calculator Browser Test loaded');
+        console.log('📱 Viewport:', window.innerWidth + 'x' + window.innerHeight);
+        console.log('🌐 Browser:', navigator.userAgent);
+    </script>
+</body>
+</html>

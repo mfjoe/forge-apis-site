@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick GST Calculator Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .test-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      .test-result {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .pass {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .fail {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+      button {
+        background: #0066ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background: #0052cc;
+      }
+      .calculator-frame {
+        width: 100%;
+        height: 600px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧪 Quick GST Calculator Test</h1>
+
+    <div class="test-container">
+      <h2>Automated Test Results</h2>
+      <div id="testResults">
+        <div class="test-result info">Running tests...</div>
+      </div>
+      <button onclick="runQuickTests()">Run Tests Again</button>
+    </div>
+
+    <div class="test-container">
+      <h2>Live Calculator</h2>
+      <iframe
+        src="index.html"
+        class="calculator-frame"
+        id="calculatorFrame"
+      ></iframe>
+    </div>
+
+    <script>
+      function runQuickTests() {
+        const resultsDiv = document.getElementById("testResults");
+        resultsDiv.innerHTML =
+          '<div class="test-result info">Running tests...</div>';
+
+        // Test 1: Check if calculator loads
+        const iframe = document.getElementById("calculatorFrame");
+        let testsPassed = 0;
+        let totalTests = 0;
+
+        function addTestResult(name, passed, details = "") {
+          totalTests++;
+          if (passed) testsPassed++;
+          const resultClass = passed ? "pass" : "fail";
+          const icon = passed ? "✅" : "❌";
+          resultsDiv.innerHTML += `<div class="test-result ${resultClass}">${icon} ${name}${
+            details ? ": " + details : ""
+          }</div>`;
+        }
+
+        // Test iframe loading
+        iframe.onload = function () {
+          addTestResult("Calculator loads", true, "iframe loaded successfully");
+
+          // Test 2: Check for JavaScript errors
+          try {
+            // Try to access calculator functions
+            const iframeDoc =
+              iframe.contentDocument || iframe.contentWindow.document;
+            const amountInput = iframeDoc.getElementById("amount");
+            const calculateBtn = iframeDoc.querySelector(
+              '[onclick*="calculate"]'
+            );
+
+            if (amountInput && calculateBtn) {
+              addTestResult(
+                "Calculator elements found",
+                true,
+                "Input field and calculate button present"
+              );
+
+              // Test 3: Test calculation functionality
+              try {
+                // Set test values
+                amountInput.value = "1000";
+                amountInput.dispatchEvent(
+                  new Event("input", { bubbles: true })
+                );
+
+                // Trigger calculation
+                if (iframe.contentWindow.calculate) {
+                  iframe.contentWindow.calculate();
+
+                  setTimeout(() => {
+                    const originalAmount =
+                      iframeDoc.getElementById("originalAmount");
+                    const totalGst = iframeDoc.getElementById("totalGst");
+                    const totalAmount = iframeDoc.getElementById("totalAmount");
+
+                    if (originalAmount && totalGst && totalAmount) {
+                      const original = originalAmount.textContent;
+                      const gst = totalGst.textContent;
+                      const total = totalAmount.textContent;
+
+                      // Check if results are displayed
+                      if (
+                        original.includes("1,000") &&
+                        gst.includes("180") &&
+                        total.includes("1,180")
+                      ) {
+                        addTestResult(
+                          "Calculation works",
+                          true,
+                          "₹1000 → ₹180 GST → ₹1180 total"
+                        );
+                      } else {
+                        addTestResult(
+                          "Calculation works",
+                          false,
+                          `Got: ${original}, ${gst}, ${total}`
+                        );
+                      }
+                    } else {
+                      addTestResult(
+                        "Calculation works",
+                        false,
+                        "Result elements not found"
+                      );
+                    }
+
+                    // Test 4: Check Calculate Again button
+                    const calculateAgainBtn =
+                      iframeDoc.getElementById("calculateAgainBtn");
+                    if (
+                      calculateAgainBtn &&
+                      calculateAgainBtn.classList.contains("show")
+                    ) {
+                      addTestResult(
+                        "Calculate Again button",
+                        true,
+                        "Button appears after calculation"
+                      );
+                    } else {
+                      addTestResult(
+                        "Calculate Again button",
+                        false,
+                        "Button not visible"
+                      );
+                    }
+
+                    // Test 5: Check History feature
+                    const historyList = iframeDoc.getElementById("historyList");
+                    const desktopHistoryList =
+                      iframeDoc.getElementById("desktopHistoryList");
+
+                    if (historyList && desktopHistoryList) {
+                      addTestResult(
+                        "History feature",
+                        true,
+                        "History elements present"
+                      );
+                    } else {
+                      addTestResult(
+                        "History feature",
+                        false,
+                        "History elements missing"
+                      );
+                    }
+
+                    // Test 6: Check responsive design
+                    const mobileOnly =
+                      iframeDoc.querySelectorAll(".mobile-only");
+                    const desktopOnly =
+                      iframeDoc.querySelectorAll(".desktop-only");
+
+                    if (mobileOnly.length > 0 && desktopOnly.length > 0) {
+                      addTestResult(
+                        "Responsive design",
+                        true,
+                        `${mobileOnly.length} mobile, ${desktopOnly.length} desktop elements`
+                      );
+                    } else {
+                      addTestResult(
+                        "Responsive design",
+                        false,
+                        "Responsive elements missing"
+                      );
+                    }
+
+                    // Test 7: Check ad placement
+                    const mobileAds = iframeDoc.querySelectorAll(
+                      ".ad-container.mobile-only"
+                    );
+                    const desktopAds =
+                      iframeDoc.querySelectorAll(".ad-skyscraper");
+
+                    if (mobileAds.length > 0 || desktopAds.length > 0) {
+                      addTestResult(
+                        "Ad placement",
+                        true,
+                        `${mobileAds.length} mobile ads, ${desktopAds.length} desktop ads`
+                      );
+                    } else {
+                      addTestResult("Ad placement", false, "No ads found");
+                    }
+
+                    // Final summary
+                    setTimeout(() => {
+                      const summaryClass =
+                        testsPassed === totalTests ? "pass" : "fail";
+                      const summaryIcon =
+                        testsPassed === totalTests ? "🎉" : "⚠️";
+                      resultsDiv.innerHTML += `<div class="test-result ${summaryClass}">${summaryIcon} <strong>Test Summary: ${testsPassed}/${totalTests} tests passed</strong></div>`;
+
+                      if (testsPassed === totalTests) {
+                        resultsDiv.innerHTML +=
+                          '<div class="test-result pass">🎉 All tests passed! Calculator is working correctly.</div>';
+                      } else {
+                        resultsDiv.innerHTML +=
+                          '<div class="test-result fail">⚠️ Some tests failed. Check the details above.</div>';
+                      }
+                    }, 500);
+                  }, 100);
+                } else {
+                  addTestResult(
+                    "Calculation works",
+                    false,
+                    "Calculate function not found"
+                  );
+                }
+              } catch (error) {
+                addTestResult(
+                  "Calculation works",
+                  false,
+                  `Error: ${error.message}`
+                );
+              }
+            } else {
+              addTestResult(
+                "Calculator elements found",
+                false,
+                "Required elements missing"
+              );
+            }
+          } catch (error) {
+            addTestResult(
+              "Calculator elements found",
+              false,
+              `Error: ${error.message}`
+            );
+          }
+        };
+
+        iframe.onerror = function () {
+          addTestResult("Calculator loads", false, "iframe failed to load");
+        };
+
+        // If iframe is already loaded
+        if (iframe.contentDocument) {
+          iframe.onload();
+        }
+      }
+
+      // Run tests on page load
+      window.addEventListener("load", function () {
+        setTimeout(runQuickTests, 1000);
+      });
+
+      console.log("🧪 Quick GST Calculator Test loaded");
+      console.log("📱 Viewport:", window.innerWidth + "x" + window.innerHeight);
+    </script>
+  </body>
+</html>
