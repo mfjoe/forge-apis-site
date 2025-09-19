@@ -391,6 +391,41 @@
         font-weight: 600;
       }
 
+      /* Calculate Again Button */
+      .calculate-again-container {
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .calculate-again-btn {
+        background: #00d4aa;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        width: 120px;
+        height: 40px;
+      }
+
+      .calculate-again-btn:hover {
+        background: #00b894;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+      }
+
+      .calculate-again-btn.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
       /* Footer */
       .footer-text {
         text-align: center;
@@ -772,6 +807,19 @@
           color: var(--primary);
         }
 
+        /* Mobile Calculate Again Button */
+        .calculate-again-container {
+          margin-top: 15px;
+          padding: 0 10px;
+        }
+
+        .calculate-again-btn {
+          width: 100%;
+          height: 40px;
+          font-size: 0.85rem;
+          padding: 0;
+        }
+
         /* Don't hide CGST/SGST by default - show everything */
         #cgstRow,
         #sgstRow {
@@ -1133,7 +1181,6 @@
             </button>
           </div>
 
-
           <!-- Amount Input -->
           <div class="input-group">
             <label for="amount" id="amountLabel"
@@ -1191,7 +1238,9 @@
 
           <!-- Mobile Banner Ad - After Transaction Type Selector -->
           <div class="ad-container mobile-only ad-mobile-banner">
-            <div class="ad-placeholder">320x50 Banner - Mid-Content - Medium CPM</div>
+            <div class="ad-placeholder">
+              320x50 Banner - Mid-Content - Medium CPM
+            </div>
           </div>
 
           <!-- Results -->
@@ -1222,6 +1271,13 @@
               >
               <span class="result-value" id="totalAmount">₹0</span>
             </div>
+            
+            <!-- Calculate Again Button -->
+            <div class="calculate-again-container">
+              <button id="calculateAgainBtn" class="calculate-again-btn" onclick="calculateAgain()">
+                Calculate Again
+              </button>
+            </div>
 
             <!-- Mobile expand details button -->
             <div
@@ -1234,7 +1290,9 @@
 
           <!-- Mobile Rectangle Ad - After Results Section -->
           <div class="ad-container mobile-only ad-mobile-rectangle">
-            <div class="ad-placeholder">300x250 Rectangle - Post-Results - High CPM</div>
+            <div class="ad-placeholder">
+              300x250 Rectangle - Post-Results - High CPM
+            </div>
           </div>
         </div>
 
@@ -1259,7 +1317,9 @@
     <div class="mobile-ad-bottom mobile-only">
       <div class="ad-container ad-anchor-320x50">
         <!-- AdSense Anchor Ad -->
-        <div class="ad-placeholder">320x50 Banner - Sticky Bottom - High CPM</div>
+        <div class="ad-placeholder">
+          320x50 Banner - Sticky Bottom - High CPM
+        </div>
       </div>
     </div>
 
@@ -1385,6 +1445,12 @@
           document.getElementById("igstAmount").textContent =
             formatIndianCurrency(gstAmount);
         }
+
+        // Show Calculate Again button when results are displayed
+        if (inputAmount > 0) {
+          const calculateAgainBtn = document.getElementById("calculateAgainBtn");
+          calculateAgainBtn.classList.add("show");
+        }
       }
 
       // Initialize
@@ -1411,6 +1477,50 @@
             if (expandBtn) expandBtn.textContent = "+ Show Details";
           }
         }
+      }
+
+      // Calculate Again function
+      function calculateAgain() {
+        // Clear input
+        document.getElementById("amount").value = "";
+        
+        // Reset to defaults
+        currentMode = "exclusive";
+        currentRate = 18;
+        currentTransactionType = "intrastate";
+        
+        // Update UI to reflect defaults
+        document.querySelectorAll(".mode-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector('[onclick="setMode(\'exclusive\')"]').classList.add("active");
+        
+        document.querySelectorAll(".rate-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector('[onclick="setRate(18)"]').classList.add("active");
+        
+        document.querySelectorAll(".type-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector('[onclick="setTransactionType(\'intrastate\')"]').classList.add("active");
+        
+        // Reset results
+        document.getElementById("originalAmount").textContent = "₹0";
+        document.getElementById("totalGst").textContent = "₹0";
+        document.getElementById("totalAmount").textContent = "₹0";
+        document.getElementById("cgst").textContent = "₹0";
+        document.getElementById("sgst").textContent = "₹0";
+        document.getElementById("igst").textContent = "₹0";
+        
+        // Hide Calculate Again button
+        const calculateAgainBtn = document.getElementById("calculateAgainBtn");
+        calculateAgainBtn.classList.remove("show");
+        
+        // Smooth scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+        
+        // Focus on amount field after scroll
+        setTimeout(() => {
+          document.getElementById("amount").focus();
+        }, 500);
       }
 
       // Mobile menu toggle
