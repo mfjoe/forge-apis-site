@@ -1294,6 +1294,22 @@
       </div>
     </div>
 
+    <!-- Temporary Test Button (Development Only) -->
+    <button id="testAdsBtn" onclick="testMobileAds()" style="
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      display: none; /* Hidden by default */
+    ">Test Ads</button>
+
     <script>
       // Calculator logic
       let currentMode = "exclusive";
@@ -1471,6 +1487,99 @@
           });
         }
       });
+
+      // Mobile Ad Testing Function
+      function testMobileAds() {
+        console.log("🔍 Testing Mobile Ad Layout...");
+        
+        // Show test button if not already visible
+        const testBtn = document.getElementById('testAdsBtn');
+        testBtn.style.display = 'block';
+        
+        // Add test mode CSS
+        const testStyle = document.createElement('style');
+        testStyle.id = 'testModeStyle';
+        testStyle.textContent = `
+          .ad-container.mobile-only {
+            border: 3px solid #ff6b6b !important;
+            background: rgba(255, 107, 107, 0.1) !important;
+          }
+          .mobile-ad-bottom {
+            border: 3px solid #4ecdc4 !important;
+            background: rgba(78, 205, 196, 0.1) !important;
+          }
+          .ad-placeholder {
+            border: 2px dashed #ff6b6b !important;
+            background: rgba(255, 107, 107, 0.05) !important;
+          }
+        `;
+        document.head.appendChild(testStyle);
+        
+        // Count visible ad containers
+        const mobileAdContainers = document.querySelectorAll('.ad-container.mobile-only');
+        const stickyBottomAd = document.querySelector('.mobile-ad-bottom');
+        
+        console.log(`📊 Ad Container Count: ${mobileAdContainers.length} mobile ads`);
+        console.log(`📊 Sticky Bottom Ad: ${stickyBottomAd ? 'Present' : 'Missing'}`);
+        
+        // Check if sticky bottom ad overlaps inputs
+        const inputs = document.querySelectorAll('input[type="number"]');
+        const buttons = document.querySelectorAll('.mode-btn, .rate-btn, .type-btn');
+        const stickyBottom = document.querySelector('.mobile-ad-bottom');
+        
+        if (stickyBottom) {
+          const stickyRect = stickyBottom.getBoundingClientRect();
+          let overlapCount = 0;
+          
+          [...inputs, ...buttons].forEach((element, index) => {
+            const elementRect = element.getBoundingClientRect();
+            const isOverlapping = !(elementRect.bottom <= stickyRect.top || elementRect.top >= stickyRect.bottom);
+            
+            if (isOverlapping) {
+              overlapCount++;
+              console.warn(`⚠️ Overlap detected with ${element.tagName} #${index}`);
+            }
+          });
+          
+          console.log(`✅ Input/Button Overlap Check: ${overlapCount} overlaps found`);
+        }
+        
+        // Check if ads push content off-screen
+        const calculatorCard = document.querySelector('.calculator-card');
+        const viewportHeight = window.innerHeight;
+        
+        if (calculatorCard) {
+          const cardRect = calculatorCard.getBoundingClientRect();
+          const isOffScreen = cardRect.bottom > viewportHeight;
+          
+          console.log(`📱 Viewport Height: ${viewportHeight}px`);
+          console.log(`📱 Calculator Bottom: ${cardRect.bottom}px`);
+          console.log(`✅ Content Off-Screen Check: ${isOffScreen ? 'WARNING - Content pushed off screen' : 'OK - All content visible'}`);
+        }
+        
+        // Check ad dimensions
+        mobileAdContainers.forEach((ad, index) => {
+          const rect = ad.getBoundingClientRect();
+          console.log(`📏 Ad #${index + 1}: ${rect.width}x${rect.height}px`);
+        });
+        
+        if (stickyBottom) {
+          const stickyRect = stickyBottom.getBoundingClientRect();
+          console.log(`📏 Sticky Bottom: ${stickyRect.width}x${stickyRect.height}px`);
+        }
+        
+        // Check mobile breakpoint
+        const isMobile = window.innerWidth <= 768;
+        console.log(`📱 Mobile Breakpoint: ${isMobile ? 'Active' : 'Inactive'} (${window.innerWidth}px)`);
+        
+        console.log("✅ Mobile Ad Test Complete!");
+        console.log("💡 Remove test button and styles before going live");
+      }
+      
+      // Show test button on mobile for development
+      if (window.innerWidth <= 768) {
+        document.getElementById('testAdsBtn').style.display = 'block';
+      }
     </script>
   </body>
 </html>
