@@ -811,7 +811,7 @@
           box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
           height: 60px; /* Fixed height to prevent layout shifts */
         }
-        
+
         .ad-anchor-320x50 {
           max-width: 320px;
           height: 50px;
@@ -830,14 +830,14 @@
           margin: 15px auto;
           padding: 10px;
         }
-        
+
         /* Specific mobile ad sizes with proper spacing */
         .ad-mobile-banner {
           max-width: 320px;
           height: 50px;
           margin: 15px auto;
         }
-        
+
         .ad-mobile-rectangle {
           max-width: 300px;
           height: 250px;
@@ -1092,12 +1092,17 @@
       </div>
     </nav>
 
-
     <!-- Single Responsive Calculator -->
     <div class="calculator-wrapper">
       <!-- Desktop Side Ads -->
       <aside class="ad-column ad-left desktop-only">
         <div class="ad-sticky">
+          <!-- 
+            AdSense Unit Type: Display Ad
+            Size: 300x600 (Skyscraper)
+            Placement: Left Sidebar (Desktop Only)
+            Create as: Responsive with 300x600 fixed size for desktop
+          -->
           <div class="ad-skyscraper">
             <!-- AdSense 300x600 -->
             Ad 300x600
@@ -1194,7 +1199,12 @@
             </div>
           </div>
 
-          <!-- Banner Ad After GST Rates -->
+          <!-- 
+            AdSense Unit Type: Display Ad
+            Size: 320x50 (Mobile Banner)
+            Placement: After GST Rate Selection
+            Create as: Responsive with 320x50 fixed size for mobile
+          -->
           <div class="ad-container mobile-only ad-mobile-banner">
             <div class="ad-placeholder">Banner 320x50</div>
           </div>
@@ -1237,7 +1247,12 @@
             </div>
           </div>
 
-          <!-- Rectangle Ad After Results -->
+          <!-- 
+            AdSense Unit Type: Display Ad
+            Size: 300x250 (Medium Rectangle)
+            Placement: After Results Section
+            Create as: Responsive with 300x250 fixed size for mobile
+          -->
           <div class="ad-container mobile-only ad-mobile-rectangle">
             <div class="ad-placeholder">Rectangle 300x250</div>
           </div>
@@ -1252,6 +1267,12 @@
       <!-- Desktop Side Ads -->
       <aside class="ad-column ad-right desktop-only">
         <div class="ad-sticky">
+          <!-- 
+            AdSense Unit Type: Display Ad
+            Size: 300x600 (Skyscraper)
+            Placement: Right Sidebar (Desktop Only)
+            Create as: Responsive with 300x600 fixed size for desktop
+          -->
           <div class="ad-skyscraper">
             <!-- AdSense 300x600 -->
             Ad 300x600
@@ -1260,7 +1281,12 @@
       </aside>
     </div>
 
-    <!-- Mobile Sticky Bottom Ad -->
+    <!-- 
+      AdSense Unit Type: Anchor Ad
+      Size: 320x50 (Mobile Banner)
+      Placement: Sticky Bottom (Always Visible)
+      Create as: Anchor ad with 320x50 size for mobile
+    -->
     <div class="mobile-ad-bottom mobile-only">
       <div class="ad-container ad-anchor-320x50">
         <!-- Sticky Bottom Ad -->
