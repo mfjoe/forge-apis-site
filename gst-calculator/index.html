@@ -591,140 +591,146 @@
         }
       }
 
-      /* Mobile Layout - Extreme Compression */
+      /* Mobile Layout - Single Screen, No Scroll */
       @media (max-width: 768px) {
         body {
-          padding-top: 80px; /* Nav only */
-          padding-bottom: 20px;
-          padding-left: 5px;
-          padding-right: 5px;
+          padding: 0;
+          margin: 0;
+          height: 100vh;
+          overflow: hidden;
         }
 
-        /* Mobile ads - less intrusive */
+        /* Mobile header with ad */
         .mobile-ad-top {
-          position: relative;
-          margin-bottom: 10px;
+          position: fixed;
+          top: 60px;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          background: white;
+          padding: 3px 0;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .mobile-ad-bottom {
-          position: relative;
-          margin-top: 10px;
-        }
-
-        /* Ultra-compact calculator */
+        /* Ultra-compact calculator - fills remaining space */
         .calculator-card {
-          padding: 20px 15px;
-          border-radius: 8px;
-          margin-bottom: 15px;
+          padding: 5px;
+          border-radius: 0;
+          margin: 0;
           width: 100%;
+          height: calc(100vh - 120px); /* Full height minus nav + top ad */
           box-sizing: border-box;
+          overflow-y: auto;
+          background: white;
         }
 
         h1 {
-          font-size: 1.25rem;
-          margin-bottom: 10px;
+          font-size: 0.9rem;
+          margin: 0 0 3px 0;
           text-align: center;
+          padding: 3px 0;
         }
 
-        /* Mobile input */
+        .subtitle {
+          display: none; /* Hide completely on mobile */
+        }
+
+        /* Micro input */
         input[type="number"] {
-          padding: 12px;
-          font-size: 16px; /* Prevents zoom on iOS */
-          margin-bottom: 15px;
-          min-height: 44px;
-          border-radius: 8px;
+          padding: 6px;
+          font-size: 16px;
+          margin-bottom: 5px;
+          height: 28px;
+          border-radius: 4px;
         }
 
         label {
-          font-size: 0.8rem;
+          font-size: 0.6rem;
+          margin-bottom: 2px;
+        }
+
+        /* Ultra-compact mode buttons */
+        .mode-selector {
+          grid-template-columns: 1fr 1fr;
+          gap: 4px;
           margin-bottom: 5px;
         }
 
-        /* Compact mode buttons */
-        .mode-selector {
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin-bottom: 15px;
-        }
-
         .mode-btn {
-          padding: 12px 8px;
-          font-size: 0.8rem;
-          min-height: 44px;
+          padding: 4px 2px;
+          font-size: 0.6rem;
+          height: 24px;
         }
 
         .mode-btn small {
-          display: none; /* Hide descriptions */
+          display: none;
         }
 
-        /* GST rate buttons - 2 rows of 4 */
+        /* GST rate buttons - 4x2 grid */
         .gst-rates {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 8px;
-          margin-bottom: 15px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 3px;
+          margin-bottom: 5px;
         }
 
         .rate-btn {
-          padding: 12px 8px;
-          font-size: 0.8rem;
-          border-radius: 6px;
-          min-height: 44px;
+          padding: 4px 1px;
+          font-size: 0.55rem;
+          height: 20px;
+          border-radius: 3px;
         }
 
-        /* Transaction type - side by side */
+        /* Transaction type - compact */
         .transaction-type {
-          gap: 10px;
-          margin-bottom: 15px;
+          gap: 4px;
+          margin-bottom: 5px;
         }
 
         .type-btn {
-          padding: 12px 8px;
-          font-size: 0.8rem;
-          min-height: 44px;
+          padding: 4px 2px;
+          font-size: 0.6rem;
+          height: 24px;
         }
 
         .type-btn small {
           display: none;
         }
 
-        /* Mobile results */
+        /* Micro results */
         .results {
-          background: #f0f0f0;
-          padding: 15px;
-          border-radius: 8px;
-          margin-top: 15px;
+          background: #f8f9fa;
+          padding: 5px;
+          border-radius: 4px;
+          margin-top: 5px;
         }
 
         .result-row {
-          padding: 8px 0;
-          font-size: 0.9rem;
+          padding: 2px 0;
+          font-size: 0.65rem;
         }
 
         .result-value {
-          font-size: 1rem;
+          font-size: 0.7rem;
         }
 
-        /* Hide CGST/SGST by default, show only total */
+        /* Hide CGST/SGST by default */
         #cgstRow,
         #sgstRow {
           display: none;
         }
 
-        /* Add expand button for details */
+        /* Expand button */
         .expand-details {
           text-align: center;
           color: var(--primary);
-          font-size: 0.75rem;
-          padding: 5px;
+          font-size: 0.55rem;
+          padding: 2px;
           cursor: pointer;
         }
 
-        /* Hide footer on mobile */
-        .footer-text {
-          display: none;
-        }
-
+        /* Hide footer and nav elements */
+        .footer-text,
         .nav-links {
           display: none;
         }
@@ -742,17 +748,52 @@
         .desktop-only {
           display: none !important;
         }
+
+        /* Mobile bottom ad - sticky */
+        .mobile-ad-bottom {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          background: white;
+          padding: 3px 0;
+          box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Remove all mobile ads inside calculator */
+        .ad-container.mobile-only {
+          display: none !important;
+        }
       }
 
       /* Very small phones */
       @media (max-width: 375px) {
         .gst-rates {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
 
         .rate-btn {
-          font-size: 0.75rem;
-          padding: 10px 6px;
+          font-size: 0.5rem;
+          padding: 3px 1px;
+          height: 18px;
+        }
+
+        .mode-btn, .type-btn {
+          font-size: 0.55rem;
+          height: 22px;
+        }
+
+        h1 {
+          font-size: 0.8rem;
+        }
+
+        .result-row {
+          font-size: 0.6rem;
+        }
+
+        .result-value {
+          font-size: 0.65rem;
         }
       }
     </style>
