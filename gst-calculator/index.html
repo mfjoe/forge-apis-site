@@ -533,14 +533,75 @@
         font-size: 0.875rem;
       }
 
-      /* Desktop Layout - Show on larger screens */
+      /* Desktop 3-column layout */
       @media (min-width: 1200px) {
-        .desktop-layout {
-          display: flex;
+        body {
+          padding-top: 100px;
+          padding-bottom: 20px;
         }
         
-        .main-content {
+        .desktop-layout {
+          display: grid;
+          grid-template-columns: 300px 1fr 300px;
+          gap: 30px;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+        
+        .calculator-column {
+          max-width: 600px;
+          margin: 0 auto;
+          width: 100%;
+        }
+        
+        .ad-column {
+          position: relative;
+        }
+        
+        .ad-sticky {
+          position: sticky;
+          top: 100px;
+          height: fit-content;
+        }
+        
+        .ad-skyscraper {
+          width: 300px;
+          height: 600px;
+          background: #f5f5f5;
+          border: 2px dashed #ddd;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          color: #999;
+        }
+        
+        /* Hide mobile ads on desktop */
+        .mobile-only {
+          display: none !important;
+        }
+      }
+
+      /* Tablet/Mobile Layout */
+      @media (max-width: 1199px) {
+        .desktop-layout {
+          display: block;
+        }
+        
+        .ad-column {
           display: none;
+        }
+        
+        .calculator-column {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+        
+        /* Show mobile ads */
+        .mobile-only {
+          display: block !important;
         }
       }
 
@@ -774,7 +835,7 @@
     </nav>
 
     <!-- Top Ad Container -->
-    <div class="ad-container">
+    <div class="ad-container mobile-only">
       <div class="ad-placeholder">
         <!-- AdSense code will go here -->
         Ad Space
@@ -786,133 +847,138 @@
       <!-- Left Ad Column -->
       <aside class="ad-column ad-left">
         <div class="ad-sticky">
-          <div class="ad-container ad-skyscraper">
+          <div class="ad-skyscraper">
             <!-- AdSense 300x600 -->
-            <div class="ad-placeholder">Ad 300x600</div>
+            Ad 300x600
           </div>
         </div>
       </aside>
-      
+
       <!-- Center Calculator Column -->
       <main class="calculator-column">
         <div class="calculator-card">
-        <h1>🧮 Free GST Calculator India</h1>
-        <p class="subtitle">Calculate GST, CGST, SGST & IGST Instantly</p>
+          <h1>🧮 Free GST Calculator India</h1>
+          <p class="subtitle">Calculate GST, CGST, SGST & IGST Instantly</p>
 
-        <!-- Calculation Mode -->
-        <div class="mode-selector">
-          <button class="mode-btn active" onclick="setMode('exclusive')">
-            GST Exclusive<br />
-            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-              >Add GST to Amount</small
-            >
-          </button>
-          <button class="mode-btn" onclick="setMode('inclusive')">
-            GST Inclusive<br />
-            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-              >Extract GST from Total</small
-            >
-          </button>
-        </div>
-
-        <!-- Amount Input -->
-        <div class="input-group">
-          <label for="amount" id="amountLabel"
-            >Enter Amount (Excluding GST)</label
-          >
-          <input
-            type="number"
-            id="amount"
-            placeholder="₹0"
-            step="0.01"
-            oninput="calculate()"
-          />
-        </div>
-
-        <!-- GST Rate Selection -->
-        <div class="input-group">
-          <label>Select GST Rate</label>
-          <div class="gst-rates">
-            <button class="rate-btn" onclick="setRate(0)">0%</button>
-            <button class="rate-btn" onclick="setRate(0.25)">0.25%</button>
-            <button class="rate-btn" onclick="setRate(3)">3%</button>
-            <button class="rate-btn" onclick="setRate(5)">5%</button>
-            <button class="rate-btn" onclick="setRate(12)">12%</button>
-            <button class="rate-btn active" onclick="setRate(18)">18%</button>
-            <button class="rate-btn" onclick="setRate(28)">28%</button>
-          </div>
-        </div>
-
-        <!-- Transaction Type -->
-        <div class="input-group">
-          <label>Transaction Type</label>
-          <div class="transaction-type">
-            <button
-              class="type-btn active"
-              onclick="setTransactionType('intrastate')"
-            >
-              Intrastate<br />
+          <!-- Calculation Mode -->
+          <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('exclusive')">
+              GST Exclusive<br />
               <small
                 style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-                >CGST + SGST</small
+                >Add GST to Amount</small
               >
             </button>
-            <button class="type-btn" onclick="setTransactionType('interstate')">
-              Interstate<br />
+            <button class="mode-btn" onclick="setMode('inclusive')">
+              GST Inclusive<br />
               <small
                 style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
-                >IGST Only</small
+                >Extract GST from Total</small
               >
             </button>
           </div>
-        </div>
 
-        <!-- Middle Ad Container -->
-        <div class="ad-container">
-          <div class="ad-placeholder">
-            <!-- AdSense code will go here -->
-            Ad Space
-          </div>
-        </div>
-
-        <!-- Results -->
-        <div class="results">
-          <div class="result-row">
-            <span class="result-label">Original Amount</span>
-            <span class="result-value" id="originalAmount">₹0</span>
-          </div>
-          <div class="result-row" id="cgstRow">
-            <span class="result-label">CGST (9%)</span>
-            <span class="result-value" id="cgstAmount">₹0</span>
-          </div>
-          <div class="result-row" id="sgstRow">
-            <span class="result-label">SGST (9%)</span>
-            <span class="result-value" id="sgstAmount">₹0</span>
-          </div>
-          <div class="result-row" id="igstRow" style="display: none">
-            <span class="result-label">IGST (18%)</span>
-            <span class="result-value" id="igstAmount">₹0</span>
-          </div>
-          <div class="result-row">
-            <span class="result-label">Total GST</span>
-            <span class="result-value" id="totalGst">₹0</span>
-          </div>
-          <div class="result-row total">
-            <span class="result-label" style="font-weight: 600"
-              >Total Amount</span
+          <!-- Amount Input -->
+          <div class="input-group">
+            <label for="amount" id="amountLabel"
+              >Enter Amount (Excluding GST)</label
             >
-            <span class="result-value" id="totalAmount">₹0</span>
+            <input
+              type="number"
+              id="amount"
+              placeholder="₹0"
+              step="0.01"
+              oninput="calculate()"
+            />
+          </div>
+
+          <!-- GST Rate Selection -->
+          <div class="input-group">
+            <label>Select GST Rate</label>
+            <div class="gst-rates">
+              <button class="rate-btn" onclick="setRate(0)">0%</button>
+              <button class="rate-btn" onclick="setRate(0.25)">0.25%</button>
+              <button class="rate-btn" onclick="setRate(3)">3%</button>
+              <button class="rate-btn" onclick="setRate(5)">5%</button>
+              <button class="rate-btn" onclick="setRate(12)">12%</button>
+              <button class="rate-btn active" onclick="setRate(18)">18%</button>
+              <button class="rate-btn" onclick="setRate(28)">28%</button>
+            </div>
+          </div>
+
+          <!-- Transaction Type -->
+          <div class="input-group">
+            <label>Transaction Type</label>
+            <div class="transaction-type">
+              <button
+                class="type-btn active"
+                onclick="setTransactionType('intrastate')"
+              >
+                Intrastate<br />
+                <small
+                  style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+                  >CGST + SGST</small
+                >
+              </button>
+              <button
+                class="type-btn"
+                onclick="setTransactionType('interstate')"
+              >
+                Interstate<br />
+                <small
+                  style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+                  >IGST Only</small
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- Middle Ad Container -->
+          <div class="ad-container">
+            <div class="ad-placeholder">
+              <!-- AdSense code will go here -->
+              Ad Space
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div class="results">
+            <div class="result-row">
+              <span class="result-label">Original Amount</span>
+              <span class="result-value" id="originalAmount">₹0</span>
+            </div>
+            <div class="result-row" id="cgstRow">
+              <span class="result-label">CGST (9%)</span>
+              <span class="result-value" id="cgstAmount">₹0</span>
+            </div>
+            <div class="result-row" id="sgstRow">
+              <span class="result-label">SGST (9%)</span>
+              <span class="result-value" id="sgstAmount">₹0</span>
+            </div>
+            <div class="result-row" id="igstRow" style="display: none">
+              <span class="result-label">IGST (18%)</span>
+              <span class="result-value" id="igstAmount">₹0</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total GST</span>
+              <span class="result-value" id="totalGst">₹0</span>
+            </div>
+            <div class="result-row total">
+              <span class="result-label" style="font-weight: 600"
+                >Total Amount</span
+              >
+              <span class="result-value" id="totalAmount">₹0</span>
+            </div>
           </div>
         </div>
-      </div>
       </main>
-      
+
       <!-- Right Ad Column -->
       <aside class="ad-column ad-right">
         <div class="ad-sticky">
-          <div class="ad-container ad-skyscraper">
+          <div class="ad-skyscraper">
             <!-- AdSense 300x600 -->
-            <div class="ad-placeholder">Ad 300x600</div>
+            Ad 300x600
           </div>
         </div>
       </aside>
@@ -993,7 +1059,7 @@
         </div>
 
         <!-- Middle Ad Container -->
-        <div class="ad-container">
+        <div class="ad-container mobile-only">
           <div class="ad-placeholder">
             <!-- AdSense code will go here -->
             Ad Space
@@ -1032,7 +1098,7 @@
       </div>
 
       <!-- Bottom Ad Container -->
-      <div class="ad-container">
+      <div class="ad-container mobile-only">
         <div class="ad-placeholder">
           <!-- AdSense code will go here -->
           Ad Space
