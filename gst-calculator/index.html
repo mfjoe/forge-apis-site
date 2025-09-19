@@ -655,93 +655,136 @@
         }
 
         h1 {
-          font-size: 0.9rem;
-          margin: 0 0 3px 0;
+          font-size: 1rem;
+          margin: 0 0 5px 0;
           text-align: center;
-          padding: 3px 0;
+          padding: 5px 0;
+          color: var(--dark);
+          font-weight: 700;
         }
 
         .subtitle {
           display: none; /* Hide completely on mobile */
         }
 
-        /* Micro input */
+        /* Mobile input */
         input[type="number"] {
-          padding: 6px;
+          padding: 8px;
           font-size: 16px;
-          margin-bottom: 5px;
-          height: 28px;
-          border-radius: 4px;
+          margin-bottom: 8px;
+          height: 32px;
+          border-radius: 6px;
+          border: 1px solid #ddd;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         label {
-          font-size: 0.6rem;
-          margin-bottom: 2px;
+          font-size: 0.7rem;
+          margin-bottom: 3px;
+          font-weight: 600;
+          color: var(--dark);
         }
 
-        /* Ultra-compact mode buttons */
+        /* Mobile mode buttons */
         .mode-selector {
           grid-template-columns: 1fr 1fr;
-          gap: 4px;
-          margin-bottom: 5px;
+          gap: 6px;
+          margin-bottom: 8px;
         }
 
         .mode-btn {
-          padding: 4px 2px;
-          font-size: 0.6rem;
-          height: 24px;
+          padding: 6px 4px;
+          font-size: 0.7rem;
+          height: 28px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background: #f8f9fa;
+        }
+
+        .mode-btn.active {
+          background: var(--primary);
+          color: white;
+          border-color: var(--primary);
         }
 
         .mode-btn small {
           display: none;
         }
 
-        /* GST rate buttons - 4x2 grid */
+        /* Mobile GST rate buttons */
         .gst-rates {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 3px;
-          margin-bottom: 5px;
+          gap: 4px;
+          margin-bottom: 8px;
         }
 
         .rate-btn {
-          padding: 4px 1px;
-          font-size: 0.55rem;
-          height: 20px;
-          border-radius: 3px;
+          padding: 6px 2px;
+          font-size: 0.65rem;
+          height: 24px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          background: #f8f9fa;
         }
 
-        /* Transaction type - compact */
+        .rate-btn.active {
+          background: var(--primary);
+          color: white;
+          border-color: var(--primary);
+        }
+
+        /* Mobile transaction type */
         .transaction-type {
-          gap: 4px;
-          margin-bottom: 5px;
+          gap: 6px;
+          margin-bottom: 8px;
         }
 
         .type-btn {
-          padding: 4px 2px;
-          font-size: 0.6rem;
-          height: 24px;
+          padding: 6px 4px;
+          font-size: 0.7rem;
+          height: 28px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background: #f8f9fa;
+        }
+
+        .type-btn.active {
+          background: var(--primary);
+          color: white;
+          border-color: var(--primary);
         }
 
         .type-btn small {
           display: none;
         }
 
-        /* Micro results */
+        /* Mobile results */
         .results {
           background: #f8f9fa;
-          padding: 5px;
-          border-radius: 4px;
-          margin-top: 5px;
+          padding: 8px;
+          border-radius: 6px;
+          margin-top: 8px;
+          border: 1px solid #e9ecef;
         }
 
         .result-row {
-          padding: 2px 0;
-          font-size: 0.65rem;
+          padding: 4px 0;
+          font-size: 0.75rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
         .result-value {
-          font-size: 0.7rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        .result-row.total .result-value {
+          color: var(--primary);
+          font-size: 0.9rem;
         }
 
         /* Hide CGST/SGST by default */
@@ -754,9 +797,12 @@
         .expand-details {
           text-align: center;
           color: var(--primary);
-          font-size: 0.55rem;
-          padding: 2px;
+          font-size: 0.7rem;
+          padding: 4px;
           cursor: pointer;
+          margin-top: 4px;
+          border-top: 1px solid #dee2e6;
+          padding-top: 6px;
         }
 
         /* Hide footer and nav elements */
@@ -810,27 +856,32 @@
         }
 
         .rate-btn {
-          font-size: 0.5rem;
-          padding: 3px 1px;
-          height: 18px;
+          font-size: 0.6rem;
+          padding: 4px 1px;
+          height: 20px;
         }
 
         .mode-btn,
         .type-btn {
-          font-size: 0.55rem;
-          height: 22px;
+          font-size: 0.65rem;
+          height: 24px;
         }
 
         h1 {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
         }
 
         .result-row {
-          font-size: 0.6rem;
+          font-size: 0.7rem;
         }
 
         .result-value {
-          font-size: 0.65rem;
+          font-size: 0.75rem;
+        }
+
+        input[type="number"] {
+          height: 28px;
+          padding: 6px;
         }
       }
     </style>
