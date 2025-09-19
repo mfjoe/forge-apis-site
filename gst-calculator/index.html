@@ -610,7 +610,7 @@
         /* Tighter body spacing */
         body {
           padding-top: 50px; /* Just nav height */
-          padding-bottom: 60px; /* Space for sticky bottom ad */
+          padding-bottom: 70px; /* Space for sticky bottom ad + buffer */
           padding-left: 10px;
           padding-right: 10px;
           min-height: 100vh;
@@ -805,12 +805,13 @@
           bottom: 0;
           left: 0;
           right: 0;
-          z-index: 998;
+          z-index: 998; /* Below nav but above content */
           background: white;
           padding: 5px 0;
           box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+          height: 60px; /* Fixed height to prevent layout shifts */
         }
-
+        
         .ad-anchor-320x50 {
           max-width: 320px;
           height: 50px;
@@ -829,18 +830,18 @@
           margin: 15px auto;
           padding: 10px;
         }
-
-        /* Specific mobile ad sizes */
+        
+        /* Specific mobile ad sizes with proper spacing */
         .ad-mobile-banner {
           max-width: 320px;
           height: 50px;
           margin: 15px auto;
         }
-
+        
         .ad-mobile-rectangle {
           max-width: 300px;
           height: 250px;
-          margin: 20px auto;
+          margin: 15px auto;
         }
       }
 
@@ -1091,18 +1092,6 @@
       </div>
     </nav>
 
-    <!-- Mobile Sticky Header Ad -->
-    <div class="mobile-ad-top mobile-only">
-      <div class="ad-container ad-banner-320x50">
-        <!-- AdSense Mobile Banner -->
-        <div class="ad-placeholder">Banner 320x50</div>
-      </div>
-    </div>
-
-    <!-- Top Banner Ad -->
-    <div class="ad-container mobile-only ad-mobile-banner">
-      <div class="ad-placeholder">Banner 320x50</div>
-    </div>
 
     <!-- Single Responsive Calculator -->
     <div class="calculator-wrapper">
@@ -1205,7 +1194,7 @@
             </div>
           </div>
 
-          <!-- Middle Banner Ad -->
+          <!-- Banner Ad After GST Rates -->
           <div class="ad-container mobile-only ad-mobile-banner">
             <div class="ad-placeholder">Banner 320x50</div>
           </div>
@@ -1248,7 +1237,7 @@
             </div>
           </div>
 
-          <!-- Mobile Rectangle Ad -->
+          <!-- Rectangle Ad After Results -->
           <div class="ad-container mobile-only ad-mobile-rectangle">
             <div class="ad-placeholder">Rectangle 300x250</div>
           </div>
@@ -1274,8 +1263,8 @@
     <!-- Mobile Sticky Bottom Ad -->
     <div class="mobile-ad-bottom mobile-only">
       <div class="ad-container ad-anchor-320x50">
-        <!-- AdSense Anchor Ad -->
-        <div class="ad-placeholder">Anchor 320x50</div>
+        <!-- Sticky Bottom Ad -->
+        <div class="ad-placeholder">Sticky Bottom 320x50</div>
       </div>
     </div>
 
