@@ -672,7 +672,145 @@
         }
       }
 
+      /* Mobile Layout - Extreme Compression */
       @media (max-width: 768px) {
+        body {
+          padding-top: 110px; /* Nav + top ad */
+          padding-bottom: 60px; /* Bottom ad space */
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        
+        /* Sticky top ad */
+        .mobile-ad-top {
+          position: fixed;
+          top: 60px; /* Below nav */
+          left: 0;
+          right: 0;
+          z-index: 999;
+          background: white;
+          padding: 5px 0;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Sticky bottom ad */
+        .mobile-ad-bottom {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          background: white;
+          padding: 5px 0;
+          box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Ultra-compact calculator */
+        .calculator-card {
+          padding: 15px 10px;
+          border-radius: 8px;
+          margin-bottom: 10px;
+        }
+        
+        h1 {
+          font-size: 1.25rem;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+        
+        /* Smaller input */
+        input[type="number"] {
+          padding: 10px;
+          font-size: 16px; /* Prevents zoom on iOS */
+          margin-bottom: 10px;
+        }
+        
+        label {
+          font-size: 0.8rem;
+          margin-bottom: 5px;
+        }
+        
+        /* Compact mode buttons */
+        .mode-selector {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+        
+        .mode-btn {
+          padding: 8px 5px;
+          font-size: 0.75rem;
+        }
+        
+        .mode-btn small {
+          display: none; /* Hide descriptions */
+        }
+        
+        /* GST rate buttons - 2 rows of 4 */
+        .gst-rates {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 5px;
+          margin-bottom: 12px;
+        }
+        
+        .rate-btn {
+          padding: 10px 2px;
+          font-size: 0.7rem;
+          border-radius: 6px;
+        }
+        
+        /* Transaction type - side by side */
+        .transaction-type {
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+        
+        .type-btn {
+          padding: 8px;
+          font-size: 0.75rem;
+        }
+        
+        .type-btn small {
+          display: none;
+        }
+        
+        /* Ultra-compact results */
+        .results {
+          background: #f0f0f0;
+          padding: 10px;
+          border-radius: 6px;
+          margin-top: 12px;
+        }
+        
+        .result-row {
+          padding: 4px 0;
+          font-size: 0.85rem;
+        }
+        
+        .result-value {
+          font-size: 0.9rem;
+        }
+        
+        /* Hide CGST/SGST by default, show only total */
+        #cgstRow, #sgstRow {
+          display: none;
+        }
+        
+        /* Add expand button for details */
+        .expand-details {
+          text-align: center;
+          color: var(--primary);
+          font-size: 0.75rem;
+          padding: 5px;
+          cursor: pointer;
+        }
+        
+        /* Hide footer on mobile */
+        .footer-text {
+          display: none;
+        }
+
         .nav-links {
           display: none;
         }
@@ -681,21 +819,21 @@
           display: flex;
         }
 
-        .gst-rates {
-          grid-template-columns: repeat(3, 1fr);
-        }
-
-        h1 {
-          font-size: 1.5rem;
-        }
-
-        .calculator-card {
-          padding: 1.5rem;
-        }
-
         /* Hide desktop layout on mobile */
         .desktop-layout {
           display: none;
+        }
+      }
+
+      /* Very small phones */
+      @media (max-width: 375px) {
+        .gst-rates {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .rate-btn {
+          font-size: 0.65rem;
+          padding: 8px 1px;
         }
       }
     </style>
@@ -935,7 +1073,9 @@
           <div class="calculator-header-compact">
             <h1>GST Calculator</h1>
             <!-- Remove subtitle on mobile to save space -->
-            <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
+            <p class="subtitle desktop-only">
+              Calculate GST, CGST, SGST & IGST Instantly
+            </p>
           </div>
 
           <!-- Calculation Mode -->
@@ -1046,19 +1186,24 @@
               <span class="result-label">Total GST</span>
               <span class="result-value" id="totalGst">₹0</span>
             </div>
-            <div class="result-row total">
-              <span class="result-label" style="font-weight: 600"
-                >Total Amount</span
-              >
-              <span class="result-value" id="totalAmount">₹0</span>
-            </div>
+          <div class="result-row total">
+            <span class="result-label" style="font-weight: 600"
+              >Total Amount</span
+            >
+            <span class="result-value" id="totalAmount">₹0</span>
           </div>
-
-          <!-- Mobile Rectangle Ad -->
-          <div class="ad-container mobile-only ad-mobile-rectangle">
-            <div class="ad-placeholder">Mobile Rectangle 300x250</div>
+          
+          <!-- Mobile expand details button -->
+          <div class="expand-details mobile-only" onclick="toggleDetails()">
+            Show Details
           </div>
         </div>
+
+        <!-- Mobile Rectangle Ad -->
+        <div class="ad-container mobile-only ad-mobile-rectangle">
+          <div class="ad-placeholder">Mobile Rectangle 300x250</div>
+        </div>
+      </div>
       </main>
 
       <!-- Right Ad Column -->
@@ -1078,7 +1223,9 @@
         <div class="calculator-header-compact">
           <h1>GST Calculator</h1>
           <!-- Remove subtitle on mobile to save space -->
-          <p class="subtitle desktop-only">Calculate GST, CGST, SGST & IGST Instantly</p>
+          <p class="subtitle desktop-only">
+            Calculate GST, CGST, SGST & IGST Instantly
+          </p>
         </div>
 
         <!-- Calculation Mode -->
@@ -1189,6 +1336,11 @@
               >Total Amount</span
             >
             <span class="result-value" id="totalAmount">₹0</span>
+          </div>
+          
+          <!-- Mobile expand details button -->
+          <div class="expand-details mobile-only" onclick="toggleDetails()">
+            Show Details
           </div>
         </div>
 
@@ -1346,6 +1498,23 @@
 
       // Initialize
       calculate();
+
+      // Mobile details toggle
+      function toggleDetails() {
+        const cgstRow = document.getElementById("cgstRow");
+        const sgstRow = document.getElementById("sgstRow");
+        const expandBtn = document.querySelector(".expand-details");
+        
+        if (cgstRow.style.display === "none" || cgstRow.style.display === "") {
+          cgstRow.style.display = "flex";
+          sgstRow.style.display = "flex";
+          expandBtn.textContent = "Hide Details";
+        } else {
+          cgstRow.style.display = "none";
+          sgstRow.style.display = "none";
+          expandBtn.textContent = "Show Details";
+        }
+      }
 
       // Mobile menu toggle
       document
