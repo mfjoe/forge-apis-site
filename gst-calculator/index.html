@@ -167,6 +167,64 @@
         color: var(--primary);
       }
 
+      /* Desktop Layout */
+      .desktop-layout {
+        display: none;
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .ad-column {
+        width: 300px;
+        flex-shrink: 0;
+      }
+
+      .ad-left {
+        order: 1;
+      }
+
+      .calculator-column {
+        flex: 1;
+        order: 2;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .ad-right {
+        order: 3;
+      }
+
+      .ad-sticky {
+        position: sticky;
+        top: 120px;
+      }
+
+      .ad-container.ad-skyscraper {
+        width: 300px;
+        height: 600px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .ad-container.ad-skyscraper .ad-placeholder {
+        width: 100%;
+        height: 100%;
+        min-height: 600px;
+        border: 2px dashed #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 12px;
+      }
+
       /* Main Content */
       .main-content {
         max-width: 600px;
@@ -475,6 +533,17 @@
         font-size: 0.875rem;
       }
 
+      /* Desktop Layout - Show on larger screens */
+      @media (min-width: 1200px) {
+        .desktop-layout {
+          display: flex;
+        }
+        
+        .main-content {
+          display: none;
+        }
+      }
+
       @media (max-width: 768px) {
         .nav-links {
           display: none;
@@ -494,6 +563,11 @@
 
         .calculator-card {
           padding: 1.5rem;
+        }
+
+        /* Hide desktop layout on mobile */
+        .desktop-layout {
+          display: none;
         }
       }
     </style>
@@ -707,7 +781,144 @@
       </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Desktop Layout -->
+    <div class="desktop-layout">
+      <!-- Left Ad Column -->
+      <aside class="ad-column ad-left">
+        <div class="ad-sticky">
+          <div class="ad-container ad-skyscraper">
+            <!-- AdSense 300x600 -->
+            <div class="ad-placeholder">Ad 300x600</div>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Center Calculator Column -->
+      <main class="calculator-column">
+        <div class="calculator-card">
+        <h1>🧮 Free GST Calculator India</h1>
+        <p class="subtitle">Calculate GST, CGST, SGST & IGST Instantly</p>
+
+        <!-- Calculation Mode -->
+        <div class="mode-selector">
+          <button class="mode-btn active" onclick="setMode('exclusive')">
+            GST Exclusive<br />
+            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+              >Add GST to Amount</small
+            >
+          </button>
+          <button class="mode-btn" onclick="setMode('inclusive')">
+            GST Inclusive<br />
+            <small style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+              >Extract GST from Total</small
+            >
+          </button>
+        </div>
+
+        <!-- Amount Input -->
+        <div class="input-group">
+          <label for="amount" id="amountLabel"
+            >Enter Amount (Excluding GST)</label
+          >
+          <input
+            type="number"
+            id="amount"
+            placeholder="₹0"
+            step="0.01"
+            oninput="calculate()"
+          />
+        </div>
+
+        <!-- GST Rate Selection -->
+        <div class="input-group">
+          <label>Select GST Rate</label>
+          <div class="gst-rates">
+            <button class="rate-btn" onclick="setRate(0)">0%</button>
+            <button class="rate-btn" onclick="setRate(0.25)">0.25%</button>
+            <button class="rate-btn" onclick="setRate(3)">3%</button>
+            <button class="rate-btn" onclick="setRate(5)">5%</button>
+            <button class="rate-btn" onclick="setRate(12)">12%</button>
+            <button class="rate-btn active" onclick="setRate(18)">18%</button>
+            <button class="rate-btn" onclick="setRate(28)">28%</button>
+          </div>
+        </div>
+
+        <!-- Transaction Type -->
+        <div class="input-group">
+          <label>Transaction Type</label>
+          <div class="transaction-type">
+            <button
+              class="type-btn active"
+              onclick="setTransactionType('intrastate')"
+            >
+              Intrastate<br />
+              <small
+                style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+                >CGST + SGST</small
+              >
+            </button>
+            <button class="type-btn" onclick="setTransactionType('interstate')">
+              Interstate<br />
+              <small
+                style="font-weight: normal; font-size: 0.7rem; opacity: 0.8"
+                >IGST Only</small
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- Middle Ad Container -->
+        <div class="ad-container">
+          <div class="ad-placeholder">
+            <!-- AdSense code will go here -->
+            Ad Space
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results">
+          <div class="result-row">
+            <span class="result-label">Original Amount</span>
+            <span class="result-value" id="originalAmount">₹0</span>
+          </div>
+          <div class="result-row" id="cgstRow">
+            <span class="result-label">CGST (9%)</span>
+            <span class="result-value" id="cgstAmount">₹0</span>
+          </div>
+          <div class="result-row" id="sgstRow">
+            <span class="result-label">SGST (9%)</span>
+            <span class="result-value" id="sgstAmount">₹0</span>
+          </div>
+          <div class="result-row" id="igstRow" style="display: none">
+            <span class="result-label">IGST (18%)</span>
+            <span class="result-value" id="igstAmount">₹0</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Total GST</span>
+            <span class="result-value" id="totalGst">₹0</span>
+          </div>
+          <div class="result-row total">
+            <span class="result-label" style="font-weight: 600"
+              >Total Amount</span
+            >
+            <span class="result-value" id="totalAmount">₹0</span>
+          </div>
+        </div>
+      </div>
+      </main>
+      
+      <!-- Right Ad Column -->
+      <aside class="ad-column ad-right">
+        <div class="ad-sticky">
+          <div class="ad-container ad-skyscraper">
+            <!-- AdSense 300x600 -->
+            <div class="ad-placeholder">Ad 300x600</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Main Content (Mobile) -->
     <div class="main-content">
       <div class="calculator-card">
         <h1>🧮 Free GST Calculator India</h1>
