@@ -46,6 +46,60 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
 <style>
+        /* Beta Banner */
+        .beta-banner {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .beta-banner .beta-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .beta-banner .beta-icon {
+            font-size: 16px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-3px); }
+            60% { transform: translateY(-2px); }
+        }
+        
+        /* Adjust body padding for banner */
+        body {
+            padding-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .beta-banner {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            body {
+                padding-top: 36px;
+            }
+        }
+</style>
         * {
             margin: 0;
             padding: 0;
@@ -1545,8 +1599,14 @@ nav {
     <script src="riskscore-security.js" defer></script>
 </head>
 <body id="top">
-</head>
-<body id="top">
+    <!-- Beta Banner -->
+    <div class="beta-banner">
+        <div class="beta-text">
+            <span class="beta-icon">🚀</span>
+            Currently in beta - Full launch coming soon
+        </div>
+    </div>
+    
     <!-- Navigation -->
 <!-- Navigation -->
 <!-- Navigation -->

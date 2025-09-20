@@ -38,6 +38,56 @@
         color: var(--text-primary);
         min-height: 100vh;
         line-height: 1.6;
+        padding-top: 40px;
+      }
+
+      /* Beta Banner */
+      .beta-banner {
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        color: white;
+        text-align: center;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        animation: pulse 2s infinite;
+      }
+      
+      .beta-banner .beta-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .beta-banner .beta-icon {
+        font-size: 16px;
+        animation: bounce 1s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.9; }
+      }
+      
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-3px); }
+        60% { transform: translateY(-2px); }
+      }
+      
+      @media (max-width: 768px) {
+        .beta-banner {
+          font-size: 12px;
+          padding: 6px 12px;
+        }
+        body {
+          padding-top: 36px;
+        }
       }
 
       /* Navigation */
@@ -1974,6 +2024,14 @@
     </style>
   </head>
   <body>
+    <!-- Beta Banner -->
+    <div class="beta-banner">
+      <div class="beta-text">
+        <span class="beta-icon">🚀</span>
+        Currently in beta - Full launch coming soon
+      </div>
+    </div>
+    
     <!-- Navigation -->
     <nav>
       <div class="nav-container">
