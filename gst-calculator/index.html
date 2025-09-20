@@ -1850,25 +1850,28 @@
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById("mobileMenuToggle");
         const mobileMenu = document.getElementById("mobileMenu");
-        
+
         if (mobileMenuToggle && mobileMenu) {
           mobileMenuToggle.addEventListener("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Mobile menu toggle clicked');
+            console.log("Mobile menu toggle clicked");
             this.classList.toggle("active");
             mobileMenu.classList.toggle("active");
           });
-          
+
           // Close mobile menu when clicking outside
           document.addEventListener("click", function (e) {
-            if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (
+              !mobileMenuToggle.contains(e.target) &&
+              !mobileMenu.contains(e.target)
+            ) {
               mobileMenuToggle.classList.remove("active");
               mobileMenu.classList.remove("active");
             }
           });
         } else {
-          console.error('Mobile menu elements not found');
+          console.error("Mobile menu elements not found");
         }
         const dropdown = document.getElementById("toolsDropdown");
         const dropdownBtn = document.getElementById("toolsDropdownBtn");
