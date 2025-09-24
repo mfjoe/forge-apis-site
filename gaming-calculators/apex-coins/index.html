@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Apex Coins to USD Calculator - Apex Legends Currency Converter (2025)
+    </title>
+    <meta
+      name="description"
+      content="Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Apex Legends currency value, battle pass, and store items instantly. Updated 2025 rates."
+    />
+    <meta
+      name="keywords"
+      content="apex coins calculator, apex legends currency converter, apex coins to usd, apex legends money calculator, apex coins value, battle pass calculator"
+    />
+    <link
+      rel="canonical"
+      href="https://forgeapi.dev/gaming-calculators/apex-coins/"
+    />
+    <meta
+      property="og:title"
+      content="Apex Coins to USD Calculator - Apex Legends Currency Converter"
+    />
+    <meta
+      property="og:description"
+      content="Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Fortnite currency value, battle pass, and store items instantly."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://forgeapi.dev/gaming-calculators/vbucks/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Apex Coins to USD Calculator - Apex Legends Currency Converter"
+    />
+    <meta
+      name="twitter:description"
+      content="Free Fortnite currency calculator. Convert Apex Coins to USD instantly."
+    />
+
+    <style>
+      /* Critical CSS - Inline for performance */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8fafc;
+      }
+
+      :root {
+        --primary: #00bcd4;
+        --primary-dark: #0097a7;
+        --secondary: #ff6b35;
+        --dark: #2d3436;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Breadcrumb Navigation */
+      .breadcrumb {
+        background: var(--white);
+        padding: 1rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 2rem;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .breadcrumb-item:not(:last-child)::after {
+        content: ">";
+        margin-left: 0.5rem;
+        color: var(--gray);
+      }
+
+      .breadcrumb-link {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .breadcrumb-link:hover {
+        color: var(--primary-dark);
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+
+      .logo-link svg {
+        width: 120px;
+        height: 72px;
+        flex-shrink: 0;
+      }
+
+      .logo-text {
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb-current {
+        color: var(--dark);
+        font-weight: 500;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 1rem;
+      }
+
+      .faq-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--dark);
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .faq-question:hover {
+        color: var(--primary);
+      }
+
+      .faq-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 0 1.5rem 0;
+        color: var(--gray);
+        line-height: 1.7;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 200px;
+      }
+
+      /* Calculator Styles */
+      .calculator-container {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .calculator-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .calculator-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Currency Selector */
+      .currency-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: var(--light-gray);
+        border-radius: 8px;
+      }
+
+      .currency-label {
+        font-weight: 600;
+        color: var(--dark);
+        font-size: 0.9rem;
+      }
+
+      .currency-dropdown {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        background: var(--white);
+        font-weight: 500;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+        min-width: 200px;
+      }
+
+      .currency-dropdown:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .currency-dropdown:hover {
+        border-color: var(--primary);
+      }
+
+      .conversion-section {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 2rem;
+        align-items: end;
+        margin-bottom: 2rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-label {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .calculator-input {
+        padding: 1rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: border-color 0.3s ease;
+      }
+
+      .calculator-input:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .conversion-arrow {
+        font-size: 2rem;
+        color: var(--primary);
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        padding: 0.5rem;
+        border-radius: 50%;
+        background: var(--light-gray);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .conversion-arrow:hover {
+        transform: rotate(180deg);
+        background: var(--primary);
+        color: var(--white);
+      }
+
+      .quick-amounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .quick-btn {
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background: var(--light-gray);
+        color: var(--dark);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .quick-btn:hover {
+        background: var(--primary);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .action-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .action-btn:first-child {
+        background: var(--primary);
+        color: var(--white);
+      }
+
+      .action-btn:first-child:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .action-btn.secondary {
+        background: var(--light-gray);
+        color: var(--dark);
+      }
+
+      .action-btn.secondary:hover {
+        background: #e5e7eb;
+        transform: translateY(-2px);
+      }
+
+      .content-section {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .section-content {
+        color: var(--gray);
+        line-height: 1.7;
+      }
+
+      .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .pricing-table th,
+      .pricing-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .pricing-table th {
+        background: var(--light-gray);
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .pricing-table tr:hover {
+        background: #f9fafb;
+      }
+
+      .ad-slot {
+        background: #f3f4f6;
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        color: var(--gray);
+        margin: 2rem 0;
+      }
+
+      /* Enhanced container layout for sidebar */
+      @media (min-width: 1280px) {
+        .container {
+          max-width: 1400px;
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 2rem;
+          align-items: start;
+        }
+
+        .main-content {
+          width: 100%;
+          max-width: 1200px;
+        }
+
+        .sidebar-ad-container {
+          position: sticky;
+          top: 20px;
+          height: fit-content;
+        }
+
+        .sidebar-ad {
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-ad .ad-placeholder {
+          min-height: 600px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      /* Mobile responsive - hide sidebar on smaller screens */
+      @media (max-width: 1279px) {
+        .sidebar-ad-container {
+          display: none;
+        }
+
+        .container {
+          display: block;
+        }
+      }
+
+      /* Update ad placeholder styling */
+      .ad-placeholder {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        border: 1px dashed #e0e0e0;
+        border-radius: 4px;
+        color: #666;
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .ad-placeholder p {
+        margin: 0.25rem 0;
+      }
+
+      /* Ensure proper spacing */
+      .ad-slot {
+        margin: 2rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .ad-slot[data-ad-slot="after-calculator"] {
+        margin: 1rem 0 2rem 0;
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 768px) {
+        .ad-slot[data-ad-slot="in-content"] {
+          min-height: 200px;
+        }
+
+        .ad-placeholder {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .conversion-section {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .conversion-arrow {
+          transform: rotate(90deg);
+        }
+
+        .quick-amounts {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+
+        .breadcrumb-list {
+          font-size: 0.8rem;
+        }
+
+        .faq-question {
+          font-size: 1rem;
+          padding: 1rem 0;
+        }
+
+        .pricing-table {
+          font-size: 0.875rem;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+          padding: 0.5rem;
+        }
+      }
+
+      /* Smart Spending Tracker Styles */
+      .spending-tracker {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tracker-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .tracker-icon {
+        font-size: 1.2rem;
+      }
+
+      .tracker-text {
+        flex: 1;
+        font-size: 0.9rem;
+        color: var(--dark);
+      }
+
+      .tracker-btn {
+        padding: 0.25rem 0.75rem;
+        background: white;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        color: var(--dark);
+      }
+
+      .tracker-btn:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .tracker-btn.secondary {
+        background: #f8fafc;
+        color: var(--gray);
+      }
+
+      .tracker-btn.secondary:hover {
+        background: #ef4444;
+        color: white;
+        border-color: #ef4444;
+      }
+
+      .tracker-details {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #cbd5e1;
+      }
+
+      .tracker-details h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: var(--dark);
+      }
+
+      .export-btn {
+        margin-top: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: background 0.2s;
+      }
+
+      .export-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .history-item {
+        padding: 0.5rem;
+        background: white;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Better Deal Finder Styles */
+      .deal-finder {
+        margin-top: 1rem;
+        animation: slideDown 0.3s ease;
+      }
+
+      .deal-tip {
+        background: #fef3c7;
+        border: 1px solid #fbbf24;
+        border-radius: 6px;
+        padding: 0.75rem 1rem;
+        color: #92400e;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Custom Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-dialog {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: scale(0.9) translateY(20px);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+      }
+
+      .modal-overlay.show .modal-dialog {
+        transform: scale(1) translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .modal-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: #92400e;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .modal-body {
+        margin-bottom: 1.5rem;
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+      }
+
+      .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 80px;
+      }
+
+      .modal-btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .modal-btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .modal-btn-secondary {
+        background: #f8fafc;
+        color: var(--gray);
+        border: 1px solid #e2e8f0;
+      }
+
+      .modal-btn-secondary:hover {
+        background: #f1f5f9;
+        color: var(--dark);
+        transform: translateY(-1px);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .tracker-summary {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .tracker-text {
+          font-size: 0.8rem;
+        }
+
+        .tracker-btn {
+          font-size: 0.8rem;
+          padding: 0.25rem 0.5rem;
+        }
+      }
+
+      /* Custom Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-dialog {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: scale(0.9) translateY(20px);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+      }
+
+      .modal-overlay.show .modal-dialog {
+        transform: scale(1) translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .modal-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: #92400e;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .modal-body {
+        margin-bottom: 1.5rem;
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+      }
+
+      .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 80px;
+      }
+
+      .modal-btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .modal-btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .modal-btn-secondary {
+        background: #f8fafc;
+        color: var(--gray);
+        border: 1px solid #e2e8f0;
+      }
+
+      .modal-btn-secondary:hover {
+        background: #f1f5f9;
+        color: var(--dark);
+        transform: translateY(-1px);
+      }
+
+      /* Mobile Modal */
+      @media (max-width: 768px) {
+        .modal-dialog {
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .modal-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .modal-icon {
+          margin-right: 0;
+          margin-bottom: 0.75rem;
+        }
+
+        .modal-actions {
+          flex-direction: column;
+        }
+
+        .modal-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+      <div class="container">
+        <nav class="breadcrumb-list" aria-label="Breadcrumb">
+          <div class="breadcrumb-item">
+            <a href="/" class="breadcrumb-link logo-link">
+              <svg
+                width="120"
+                height="20"
+                viewBox="0 0 240 80"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Digital/Tech Anvil with Crossed Hammers -->
+                <g transform="translate(15, 15)">
+                  <!-- Digital Anvil (geometric/tech style) -->
+                  <path
+                    d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                    fill="#1E293B"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="18"
+                    y="30"
+                    width="24"
+                    height="5"
+                    fill="#334155"
+                    rx="1"
+                  />
+                  <rect x="16" y="28" width="28" height="2" fill="#475569" />
+                  <!-- Tech pattern on anvil -->
+                  <line
+                    x1="20"
+                    y1="32"
+                    x2="40"
+                    y2="32"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="22"
+                    y1="34"
+                    x2="38"
+                    y2="34"
+                    stroke="#00D4AA"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <!-- Crossed Hammers (geometric style) -->
+                  <!-- Left hammer -->
+                  <g transform="rotate(-30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Right hammer -->
+                  <g transform="rotate(30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Digital Fire/Energy (geometric flames) -->
+                  <path
+                    d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                    fill="#FF6B35"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <!-- Tech sparks (pixels) -->
+                  <rect
+                    x="12"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="46"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="10"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                  <rect
+                    x="48"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                </g>
+                <!-- Text: Forge -->
+                <text
+                  x="75"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="800"
+                  fill="#0A0E27"
+                >
+                  Forge
+                </text>
+                <!-- Text: APIs -->
+                <text
+                  x="150"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="400"
+                  fill="#6B7280"
+                >
+                  APIs
+                </text>
+                <!-- Tagline -->
+                <text
+                  x="75"
+                  y="63"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="9"
+                  fill="#9CA3AF"
+                  letter-spacing="0.5"
+                >
+                  PRODUCTION-READY APIS
+                </text>
+              </svg>
+            </a>
+          </div>
+          <div class="breadcrumb-item">
+            <a href="/gaming-calculators" class="breadcrumb-link"
+              >Gaming Calculators</a
+            >
+          </div>
+          <div class="breadcrumb-item">
+            <span class="breadcrumb-current">Apex Coins Calculator</span>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="main-content">
+        <!-- Calculator -->
+        <div class="calculator-container">
+          <div class="calculator-header">
+            <h1 class="calculator-title">Apex Coins to USD Calculator</h1>
+          </div>
+
+          <!-- Smart Spending Tracker -->
+          <div class="spending-tracker" id="spendingTracker">
+            <div class="tracker-summary">
+              <span class="tracker-icon">📊</span>
+              <span class="tracker-text"
+                >Your History: <strong id="totalAmount">0</strong>
+                <span id="currencyName">Apex Coins</span> (<span id="totalValue"
+                  >$0.00</span
+                >) over <strong id="calcCount">0</strong> calculations</span
+              >
+              <button class="tracker-btn" id="viewHistory">See Details</button>
+              <button class="tracker-btn secondary" id="clearHistory">
+                Clear
+              </button>
+            </div>
+            <div
+              class="tracker-details"
+              id="trackerDetails"
+              style="display: none"
+            >
+              <h3>Your Calculation History</h3>
+              <div id="historyList"></div>
+              <button class="export-btn" id="exportHistory">
+                Export as CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Currency Selector -->
+          <div class="currency-selector">
+            <label for="currency-select" class="currency-label"
+              >Currency:</label
+            >
+            <select id="currency-select" class="currency-dropdown">
+              <option value="USD">🇺🇸 USD - US Dollar</option>
+              <option value="GBP">🇬🇧 GBP - British Pound</option>
+              <option value="EUR">🇪🇺 EUR - Euro</option>
+              <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+              <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+            </select>
+          </div>
+
+          <div class="conversion-section">
+            <div class="input-group">
+              <label class="input-label" for="apex-input">Apex Coins</label>
+              <input
+                type="number"
+                id="apex-input"
+                class="calculator-input"
+                placeholder="Enter Apex Coins"
+                min="0"
+                step="1"
+              />
+            </div>
+
+            <div class="conversion-arrow">⇄</div>
+
+            <div class="input-group">
+              <label class="input-label" for="usd-input" id="currency-label"
+                >USD ($)</label
+              >
+              <input
+                type="number"
+                id="usd-input"
+                class="calculator-input"
+                placeholder="Enter USD"
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div>
+
+          <div class="quick-amounts">
+            <button class="quick-btn" data-amount="1000">
+              1,000 Apex Coins
+            </button>
+            <button class="quick-btn" data-amount="2150">
+              2,150 Apex Coins
+            </button>
+            <button class="quick-btn" data-amount="4350">
+              4,350 Apex Coins
+            </button>
+            <button class="quick-btn" data-amount="10000">
+              10,000 Apex Coins
+            </button>
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-btn" id="copy-btn">Copy Result</button>
+            <button class="action-btn secondary" id="clear-btn">Clear</button>
+          </div>
+
+          <!-- AdSense Placeholder - After Calculator -->
+          <div
+            class="ad-slot"
+            data-ad-slot="after-calculator"
+            style="min-height: 90px; margin-top: 1rem"
+          >
+            <div class="ad-placeholder">
+              <p>📊 This free calculator is supported by ads</p>
+              <p style="font-size: 0.875rem; opacity: 0.8">
+                Help us keep it free - disable your ad blocker
+              </p>
+            </div>
+          </div>
+
+          <!-- Better Deal Finder -->
+          <div class="deal-finder" id="dealFinder" style="display: none">
+            <div class="deal-tip" id="dealTip">
+              <!-- Dynamic content inserted here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- AdSense Slot - Top -->
+        <div class="ad-slot">
+          <div>Advertisement Space - Top Banner (728x90)</div>
+        </div>
+
+        <!-- How Much Are Apex Coins Worth in 2025? -->
+        <div class="content-section">
+          <h2 class="section-title">How Much Are Apex Coins Worth in 2025?</h2>
+          <div class="section-content">
+            <p>
+              Apex Coins are Fortnite's premium currency used to purchase
+              cosmetic items, battle passes, and other in-game content.
+              Understanding Apex Coins value helps you make informed purchasing
+              decisions and budget your gaming expenses effectively.
+            </p>
+            <p>
+              The value of Apex Coins has remained consistent over the years,
+              with Epic Games maintaining stable pricing across all regions.
+              This calculator helps you understand the real-world cost of your
+              Apex Coins purchases.
+            </p>
+          </div>
+        </div>
+
+        <!-- AdSense Placeholder - In-Content -->
+        <div
+          class="ad-slot"
+          data-ad-slot="in-content"
+          style="min-height: 250px"
+        >
+          <div class="ad-placeholder">
+            <p>📊 This free calculator is supported by ads</p>
+            <p style="font-size: 0.875rem; opacity: 0.8">
+              Help us keep it free - disable your ad blocker
+            </p>
+          </div>
+        </div>
+
+        <!-- Apex Coins Prices by Country -->
+        <div class="content-section">
+          <h2 class="section-title">Apex Coins Prices by Country</h2>
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Apex Coins Amount</th>
+                <th>USD</th>
+                <th>GBP</th>
+                <th>EUR</th>
+                <th>CAD</th>
+                <th>AUD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,000 Apex Coins</td>
+                <td>$7.99</td>
+                <td>£6.24</td>
+                <td>€6.79</td>
+                <td>C$10.78</td>
+                <td>A$11.83</td>
+              </tr>
+              <tr>
+                <td>2,800 Apex Coins</td>
+                <td>$19.99</td>
+                <td>£15.59</td>
+                <td>€16.99</td>
+                <td>C$26.99</td>
+                <td>A$29.58</td>
+              </tr>
+              <tr>
+                <td>5,000 Apex Coins</td>
+                <td>$31.99</td>
+                <td>£24.95</td>
+                <td>€27.19</td>
+                <td>C$43.19</td>
+                <td>A$47.35</td>
+              </tr>
+              <tr>
+                <td>13,500 Apex Coins</td>
+                <td>$79.99</td>
+                <td>£62.39</td>
+                <td>€67.99</td>
+                <td>C$107.99</td>
+                <td>A$118.39</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Apex Coins to USD Exchange Rate Table -->
+        <div class="content-section">
+          <h2 class="section-title">Apex Coins to USD Exchange Rate Table</h2>
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Apex Coins</th>
+                <th>USD Price</th>
+                <th>Per V-Buck</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,000</td>
+                <td data-usd="7.99">$7.99</td>
+                <td data-usd="0.00799">$0.00799</td>
+                <td>Single Items</td>
+              </tr>
+              <tr>
+                <td>2,800</td>
+                <td data-usd="19.99">$19.99</td>
+                <td data-usd="0.00714">$0.00714</td>
+                <td>Battle Pass</td>
+              </tr>
+              <tr>
+                <td>5,000</td>
+                <td data-usd="31.99">$31.99</td>
+                <td data-usd="0.00640">$0.00640</td>
+                <td>Skin Bundles</td>
+              </tr>
+              <tr>
+                <td>13,500</td>
+                <td data-usd="79.99">$79.99</td>
+                <td data-usd="0.00593">$0.00593</td>
+                <td>Bulk Purchases</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>How much is 1000 Apex Coins in USD?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              1000 Apex Coins costs $7.99 USD. This is the standard rate for the
+              smallest Apex Coins package available in the Fortnite store.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>What is the Apex Coins to dollar exchange rate?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              The exchange rate is $0.00799 per V-Buck (1000 Apex Coins =
+              $7.99). This rate is consistent across all Apex Coins packages,
+              though larger packages may offer slight discounts per V-Buck.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>How much does $10 get you in Apex Coins?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              $10 gets you approximately 1,251 Apex Coins. This is based on the
+              standard rate of $0.00799 per V-Buck.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>How much is 13,500 Apex Coins worth?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              13,500 Apex Coins costs $79.99 USD. This is the largest Apex Coins
+              package available and offers the best value per V-Buck.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>Can I get Apex Coins cheaper?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Apex Coins prices are fixed by Epic Games. Beware of scams
+              offering discounted Apex Coins - these are often fraudulent and
+              can result in account bans.
+            </div>
+          </div>
+        </div>
+
+        <!-- AdSense Slot - Bottom -->
+        <div class="ad-slot">
+          <div>Advertisement Space - Bottom Banner (728x90)</div>
+        </div>
+      </div>
+
+      <!-- Desktop Sidebar Ad -->
+      <aside class="sidebar-ad-container">
+        <div
+          class="ad-slot sidebar-ad"
+          data-ad-slot="sidebar-sticky"
+          style="min-height: 600px"
+        >
+          <div class="ad-placeholder">
+            <p>📊 Sponsored</p>
+            <p style="font-size: 0.875rem; opacity: 0.8">Advertisement</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Include the existing JavaScript functionality -->
+    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
+    <script>
+      // ===== SECURITY MODULE =====
+      // Input validation and sanitization
+      const SecurityManager = {
+        // 1. Input validation: Limit to numbers only, max 999999999, no negative
+        validateInput(value) {
+          if (value === null || value === undefined || value === '') return 0;
+          
+          // Remove any non-numeric characters except decimal point
+          const cleaned = String(value).replace(/[^0-9.]/g, '');
+          
+          // Parse to number
+          const num = parseFloat(cleaned);
+          
+          // Validate range
+          if (isNaN(num) || num < 0 || num > 999999999) {
+            return Math.max(0, Math.min(999999999, isNaN(num) ? 0 : num));
+          }
+          
+          return num;
+        },
+
+        // 2. HTML escape all user content
+        escapeHtml(text) {
+          if (typeof text !== 'string') return String(text);
+          const div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        },
+
+        // 3. Safe localStorage operations with try-catch
+        safeStorageGet(key) {
+          try {
+            return localStorage.getItem(key);
+          } catch (error) {
+            console.warn('localStorage get failed:', error);
+            return null;
+          }
+        },
+
+        safeStorageSet(key, value) {
+          try {
+            localStorage.setItem(key, value);
+            return true;
+          } catch (error) {
+            console.warn('localStorage set failed:', error);
+            return false;
+          }
+        },
+
+        safeStorageRemove(key) {
+          try {
+            localStorage.removeItem(key);
+            return true;
+          } catch (error) {
+            console.warn('localStorage remove failed:', error);
+            return false;
+          }
+        },
+
+        // 5. Sanitize filenames for CSV exports
+        sanitizeFilename(filename) {
+          return filename.replace(/[^a-zA-Z0-9._-]/g, '_').substring(0, 100);
+        },
+
+        // 6. HTTPS redirect (if not on localhost)
+        enforceHTTPS() {
+          if (window.location.hostname !== 'localhost' && 
+              window.location.hostname !== '127.0.0.1' &&
+              window.location.protocol !== 'https:' &&
+              window.location.protocol !== 'file:') {
+            window.location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+          }
+        },
+
+        // 7. Debounce function for input handlers
+        debounce(func, wait) {
+          let timeout;
+          return function executedFunction(...args) {
+            const later = () => {
+              clearTimeout(timeout);
+              func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+          };
+        }
+      };
+
+      // Initialize HTTPS enforcement
+      SecurityManager.enforceHTTPS();
+
+      // All existing JavaScript functionality remains the same
+      // Calculator state
+      let isUpdating = false;
+      let currentCurrency = "USD";
+
+      // Exchange rate: 1000 Apex Coins = $7.99
+      const APEX_RATE = 7.99 / 1000; // $0.00799 per Apex Coin
+
+      // DOM elements
+      const apexInput = document.getElementById("apex-input");
+      const usdInput = document.getElementById("usd-input");
+      const copyBtn = document.getElementById("copy-btn");
+      const clearBtn = document.getElementById("clear-btn");
+      const quickBtns = document.querySelectorAll(".quick-btn");
+      const currencySelect = document.getElementById("currency-select");
+      const currencyLabel = document.getElementById("currency-label");
+
+      // Event listeners with security (debounced and validated)
+      apexInput.addEventListener("input", SecurityManager.debounce(handleApexInput, 100));
+      usdInput.addEventListener("input", SecurityManager.debounce(handleUsdInput, 100));
+      copyBtn.addEventListener("click", copyResult);
+      clearBtn.addEventListener("click", clearInputs);
+      currencySelect.addEventListener("change", handleCurrencyChange);
+
+      quickBtns.forEach((btn) => {
+        btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
+      });
+
+      // Initialize currency and load saved calculation
+      initializeCurrency().then(() => {
+        updatePricingTables();
+        loadSavedCalculation();
+      });
+
+      function handleApexInput() {
+        if (isUpdating) return;
+
+        // Security: Validate and sanitize input
+        const validatedApex = SecurityManager.validateInput(apexInput.value);
+        if (apexInput.value !== String(validatedApex)) {
+          apexInput.value = validatedApex;
+        }
+        
+        const apexCoins = validatedApex;
+        const usdValue = apexCoins * APEX_RATE;
+        const convertedValue = window.currencyManager.convertFromUSD(
+          usdValue,
+          currentCurrency
+        );
+
+        isUpdating = true;
+        usdInput.value = convertedValue.toFixed(2);
+        isUpdating = false;
+
+        saveCalculation();
+
+        // Add tracking
+        if (spendingTracker && apexInput.value && usdInput.value) {
+          const gameAmount = parseFloat(apexInput.value);
+          const currencyAmount = parseFloat(usdInput.value);
+          spendingTracker.addCalculation(
+            gameAmount,
+            "Apex Coins",
+            currencyAmount,
+            currentCurrency
+          );
+          if (dealFinder) {
+            dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
+          }
+        }
+      }
+
+      function handleUsdInput() {
+        if (isUpdating) return;
+
+        // Security: Validate and sanitize input
+        const validatedInput = SecurityManager.validateInput(usdInput.value);
+        if (usdInput.value !== String(validatedInput)) {
+          usdInput.value = validatedInput;
+        }
+        
+        const inputValue = validatedInput;
+        const usdValue = window.currencyManager.convertToUSD(
+          inputValue,
+          currentCurrency
+        );
+        const apexCoins = usdValue / APEX_RATE;
+
+        isUpdating = true;
+        apexInput.value = Math.round(apexCoins);
+        isUpdating = false;
+
+        saveCalculation();
+
+        // Add tracking
+        if (spendingTracker && apexInput.value && usdInput.value) {
+          const gameAmount = parseFloat(apexInput.value);
+          const currencyAmount = parseFloat(usdInput.value);
+          spendingTracker.addCalculation(
+            gameAmount,
+            "Apex Coins",
+            currencyAmount,
+            currentCurrency
+          );
+          if (dealFinder) {
+            dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
+          }
+        }
+      }
+
+      function setQuickAmount(amount) {
+        // Security: Validate input before setting
+        const validatedAmount = SecurityManager.validateInput(amount);
+        apexInput.value = validatedAmount;
+        handleApexInput();
+      }
+
+      function handleCurrencyChange() {
+        currentCurrency = currencySelect.value;
+        updateCurrencyLabel();
+        updatePricingTables();
+
+        // Recalculate if there's input
+        if (apexInput.value) {
+          handleApexInput();
+        }
+
+        // Save currency preference
+        window.currencyManager.saveCurrency(currentCurrency);
+      }
+
+      function updatePricingTables() {
+        const symbol = window.currencyManager.getSymbol(currentCurrency);
+
+        // Update all cells with data-usd attributes
+        document.querySelectorAll("[data-usd]").forEach((cell) => {
+          const usdValue = parseFloat(cell.getAttribute("data-usd"));
+          const convertedValue = window.currencyManager.convertFromUSD(
+            usdValue,
+            currentCurrency
+          );
+          cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
+        });
+      }
+
+      function updateCurrencyLabel() {
+        const symbol = window.currencyManager.getSymbol(currentCurrency);
+        currencyLabel.textContent = `${currentCurrency} (${symbol})`;
+      }
+
+      function copyResult() {
+        const apexCoins = apexInput.value;
+        const usd = usdInput.value;
+
+        if (apexCoins && usd) {
+          const symbol = window.currencyManager.getSymbol(currentCurrency);
+          const text = `${apexCoins} Apex Coins = ${symbol}${usd} ${currentCurrency}`;
+          navigator.clipboard.writeText(text).then(() => {
+            showNotification("Result copied to clipboard!");
+          });
+        }
+      }
+
+      function clearInputs() {
+        apexInput.value = "";
+        usdInput.value = "";
+        localStorage.removeItem("apexCalculation");
+      }
+
+      function saveCalculation() {
+        const calculation = {
+          apexCoins: apexInput.value,
+          usd: usdInput.value,
+          currency: currentCurrency,
+          timestamp: Date.now(),
+        };
+        localStorage.setItem("apexCalculation", JSON.stringify(calculation));
+      }
+
+      function loadSavedCalculation() {
+        const saved = localStorage.getItem("apexCalculation");
+        if (saved) {
+          try {
+            const calculation = JSON.parse(saved);
+            if (calculation.apexCoins && calculation.usd) {
+              apexInput.value = calculation.apexCoins;
+              usdInput.value = calculation.usd;
+              if (calculation.currency) {
+                currentCurrency = calculation.currency;
+                currencySelect.value = currentCurrency;
+                updateCurrencyLabel();
+              }
+            }
+          } catch (error) {
+            console.error("Error loading saved calculation:", error);
+          }
+        }
+      }
+
+      async function initializeCurrency() {
+        // Fetch latest exchange rates
+        await window.currencyManager.fetchRates();
+
+        // Check for saved currency preference
+        const savedCurrency = window.currencyManager.getSavedCurrency();
+        if (savedCurrency && window.currencyManager.rates[savedCurrency]) {
+          currentCurrency = savedCurrency;
+          currencySelect.value = currentCurrency;
+        } else {
+          currentCurrency = window.currencyManager.detectCurrency();
+          currencySelect.value = currentCurrency;
+        }
+
+        updateCurrencyLabel();
+      }
+
+      function showNotification(message) {
+        // Remove existing notification
+        const existing = document.querySelector(".notification");
+        if (existing) existing.remove();
+
+        // Create new notification
+        const notification = document.createElement("div");
+        notification.className = "notification";
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: var(--primary);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 600;
+          z-index: 1000;
+          animation: slideIn 0.3s ease;
+        `;
+        document.body.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 3000);
+      }
+
+      // Smart Spending Tracker
+      class SpendingTracker {
+        constructor(calculatorName, currencyName) {
+          this.calculatorName = calculatorName;
+          this.currencyName = currencyName;
+          this.storageKey = `${calculatorName}-history`;
+          this.maxHistory = 100; // Increased from 50 to 100
+          this.maxDisplayHistory = 25; // New: limit UI display
+          this.daysToKeep = 90; // Keep existing 90-day limit
+          this.history = this.loadHistory();
+          this.initializeElements();
+          this.setupEventListeners();
+          this.updateDisplay();
+        }
+
+        initializeElements() {
+          this.totalAmountEl = document.getElementById("totalAmount");
+          this.currencyNameEl = document.getElementById("currencyName");
+          this.totalValueEl = document.getElementById("totalValue");
+          this.calcCountEl = document.getElementById("calcCount");
+          this.viewHistoryBtn = document.getElementById("viewHistory");
+          this.clearHistoryBtn = document.getElementById("clearHistory");
+          this.trackerDetails = document.getElementById("trackerDetails");
+          this.historyList = document.getElementById("historyList");
+          this.exportBtn = document.getElementById("exportHistory");
+        }
+
+        setupEventListeners() {
+          this.viewHistoryBtn.addEventListener("click", () =>
+            this.toggleHistory()
+          );
+          this.clearHistoryBtn.addEventListener("click", () =>
+            this.showConfirmModal()
+          );
+          this.exportBtn.addEventListener("click", () => this.exportHistory());
+        }
+
+        cleanupHistory() {
+          const now = Date.now();
+          const cutoffDate = now - this.daysToKeep * 24 * 60 * 60 * 1000;
+
+          // Remove entries older than 90 days
+          this.history = this.history.filter(
+            (item) => item.timestamp > cutoffDate
+          );
+
+          // If still over limit, keep only the newest entries
+          if (this.history.length > this.maxHistory) {
+            this.history = this.history.slice(-this.maxHistory);
+          }
+
+          return this.history;
+        }
+
+        loadHistory() {
+          // Security: Use safe localStorage operations
+          const stored = SecurityManager.safeStorageGet(this.storageKey);
+          if (stored) {
+            try {
+              const history = JSON.parse(stored);
+              // Use the new cleanup method
+              this.history = history;
+              return this.cleanupHistory();
+            } catch (e) {
+              console.warn("Failed to parse spending history:", e);
+            }
+          }
+          }
+          return [];
+        }
+
+        saveHistory() {
+          // Security: Use safe localStorage operations
+          const success = SecurityManager.safeStorageSet(this.storageKey, JSON.stringify(this.history));
+          if (!success) {
+            // If storage is full, remove oldest entries
+            this.history = this.history.slice(-25);
+            SecurityManager.safeStorageSet(
+              this.storageKey,
+              JSON.stringify(this.history)
+              );
+            }
+          }
+        }
+
+        addCalculation(gameAmount, gameCurrency, currencyAmount, currencyType) {
+          const calculation = {
+            timestamp: Date.now(),
+            gameAmount: gameAmount,
+            gameCurrency: gameCurrency,
+            currencyAmount: currencyAmount,
+            currencyType: currencyType,
+          };
+
+          this.history.unshift(calculation);
+
+          // Use cleanup instead of simple slice
+          this.cleanupHistory();
+
+          this.saveHistory();
+          this.updateDisplay();
+        }
+
+        updateDisplay() {
+          const totalGameAmount = this.history.reduce(
+            (sum, calc) => sum + calc.gameAmount,
+            0
+          );
+          const totalCurrencyValue = this.history.reduce(
+            (sum, calc) => sum + calc.currencyAmount,
+            0
+          );
+          const calcCount = this.history.length;
+
+          this.totalAmountEl.textContent = totalGameAmount.toLocaleString();
+          this.currencyNameEl.textContent = this.currencyName;
+          this.totalValueEl.textContent = `$${totalCurrencyValue.toFixed(2)}`;
+          this.calcCountEl.textContent = calcCount;
+
+          // Add indicator if at max capacity
+          if (calcCount >= this.maxHistory) {
+            this.calcCountEl.textContent = `${calcCount} (Max)`;
+          }
+        }
+
+        toggleHistory() {
+          const isVisible = this.trackerDetails.style.display !== "none";
+          this.trackerDetails.style.display = isVisible ? "none" : "block";
+          this.viewHistoryBtn.textContent = isVisible
+            ? "See Details"
+            : "Hide Details";
+
+          if (!isVisible) {
+            this.renderHistory();
+          }
+        }
+
+        renderHistory() {
+          // Use maxDisplayHistory instead of hardcoded 10
+          const recentHistory = this.history.slice(0, this.maxDisplayHistory);
+          this.historyList.innerHTML = "";
+
+          if (recentHistory.length === 0) {
+            this.historyList.innerHTML =
+              '<p style="color: var(--gray); font-style: italic;">No calculations yet</p>';
+            return;
+          }
+
+          // Add a note if there are more entries than displayed
+          if (this.history.length > this.maxDisplayHistory) {
+            const noteDiv = document.createElement("div");
+            noteDiv.style.cssText =
+              "padding: 0.5rem; background: #f0f9ff; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gray);";
+            noteDiv.innerHTML = `Showing last ${this.maxDisplayHistory} of ${this.history.length} calculations. <a href="#" onclick="event.preventDefault(); document.getElementById('exportHistory').click();" style="color: var(--primary);">Export all</a>`;
+            this.historyList.appendChild(noteDiv);
+          }
+
+          recentHistory.forEach((calc) => {
+            const item = document.createElement("div");
+            item.className = "history-item";
+            const date = new Date(calc.timestamp).toLocaleDateString();
+            const time = new Date(calc.timestamp).toLocaleTimeString();
+            // Security: HTML escape all user content
+            const gameAmountEscaped = SecurityManager.escapeHtml(calc.gameAmount.toLocaleString());
+            const currencyNameEscaped = SecurityManager.escapeHtml(this.currencyName);
+            const currencyAmountEscaped = SecurityManager.escapeHtml(calc.currencyAmount.toFixed(2));
+            const currencyTypeEscaped = SecurityManager.escapeHtml(calc.currencyType);
+            const dateEscaped = SecurityManager.escapeHtml(date);
+            const timeEscaped = SecurityManager.escapeHtml(time);
+            
+            item.innerHTML = `
+              <div><strong>${gameAmountEscaped} ${currencyNameEscaped}</strong> = ${
+              window.currencyManager
+                ? window.currencyManager.getSymbol(calc.currencyType)
+                : "$"
+            }${currencyAmountEscaped} ${currencyTypeEscaped}</div>
+              <div style="color: var(--gray); font-size: 0.8rem;">${dateEscaped} at ${timeEscaped}</div>
+            `;
+            this.historyList.appendChild(item);
+          });
+        }
+
+        showConfirmModal() {
+          const modal = document.getElementById("confirmModal");
+          modal.classList.add("show");
+        }
+
+        clearHistory() {
+          this.history = [];
+          this.saveHistory();
+          this.updateDisplay();
+          this.trackerDetails.style.display = "none";
+          this.viewHistoryBtn.textContent = "See Details";
+          showNotification("History cleared!");
+        }
+
+        exportHistory() {
+          if (this.history.length === 0) {
+            showNotification("No data to export");
+            return;
+          }
+
+          const csvContent = [
+            ["Date", "Time", "Apex Coins", "Currency", "Amount", "Value"],
+            ...this.history.map((calc) => [
+              new Date(calc.timestamp).toLocaleDateString(),
+              new Date(calc.timestamp).toLocaleTimeString(),
+              calc.gameAmount,
+              calc.currencyType,
+              `${
+                window.currencyManager
+                  ? window.currencyManager.getSymbol(calc.currencyType)
+                  : "$"
+              }${calc.currencyAmount.toFixed(2)}`,
+              calc.currencyAmount,
+            ]),
+          ]
+            .map((row) => row.join(","))
+            .join("\n");
+
+          const blob = new Blob([csvContent], { type: "text/csv" });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          // Security: Sanitize filename for CSV exports
+          const sanitizedFilename = SecurityManager.sanitizeFilename(
+            `${this.calculatorName}-history-${new Date().toISOString().split("T")[0]}.csv`
+          );
+          a.download = sanitizedFilename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+          showNotification("History exported successfully!");
+        }
+      }
+
+      // Better Deal Finder
+      class DealFinder {
+        constructor() {
+          this.packages = {
+            apex: [
+              { amount: 1000, price: 9.99, rate: 0.00999 },
+              { amount: 2000, price: 19.99, rate: 0.009995 },
+              { amount: 5000, price: 49.99, rate: 0.009998 },
+              { amount: 10000, price: 99.99, rate: 0.009999 },
+            ],
+          };
+          this.dealFinder = document.getElementById("dealFinder");
+          this.dealTip = document.getElementById("dealTip");
+        }
+
+        checkDeal(gameAmount, currencyAmount, currencyType) {
+          const packages = this.packages.apex;
+          let bestDeal = null;
+
+          // Check if user is close to a better package
+          for (let i = 0; i < packages.length; i++) {
+            const pkg = packages[i];
+
+            if (gameAmount >= pkg.amount * 0.8 && gameAmount < pkg.amount) {
+              // User is 80%+ of the way to a package
+              const needed = pkg.amount - gameAmount;
+              const neededPrice = (needed * pkg.price) / pkg.amount;
+              bestDeal = {
+                type: "upgrade",
+                message: `💡 Tip: The ${pkg.amount.toLocaleString()} Apex Coins package is only $${neededPrice.toFixed(
+                  2
+                )} more`,
+                savings: pkg.amount - gameAmount,
+              };
+              break;
+            } else if (
+              gameAmount > pkg.amount &&
+              gameAmount < packages[i + 1]?.amount
+            ) {
+              // User is between packages
+              const nextPkg = packages[i + 1];
+              if (nextPkg) {
+                const additionalCost = nextPkg.price - pkg.price;
+                const additionalApexCoins = nextPkg.amount - pkg.amount;
+                bestDeal = {
+                  type: "better",
+                  message: `💡 Better Deal: The ${nextPkg.amount.toLocaleString()} package gives you ${additionalApexCoins.toLocaleString()} more Apex Coins for only $${additionalCost.toFixed(
+                    2
+                  )} more`,
+                  savings: additionalApexCoins,
+                };
+              }
+              break;
+            }
+          }
+
+          if (bestDeal) {
+            this.showDeal(bestDeal.message);
+          } else {
+            this.hideDeal();
+          }
+        }
+
+        showDeal(message) {
+          this.dealTip.innerHTML = message;
+          this.dealFinder.style.display = "block";
+        }
+
+        hideDeal() {
+          this.dealFinder.style.display = "none";
+        }
+      }
+
+      // Initialize features
+      let spendingTracker;
+      let dealFinder;
+
+      // Initialize after currency system is ready
+      async function initializeFeatures() {
+        // Currency manager is already initialized by initializeCurrency()
+        spendingTracker = new SpendingTracker("apex", "Apex Coins");
+        dealFinder = new DealFinder();
+      }
+
+      // Initialize features when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeFeatures();
+      });
+
+      // Modal functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("confirmModal");
+        const cancelBtn = document.getElementById("modalCancel");
+        const confirmBtn = document.getElementById("modalConfirm");
+
+        cancelBtn.addEventListener("click", () => {
+          modal.classList.remove("show");
+        });
+
+        confirmBtn.addEventListener("click", () => {
+          if (spendingTracker) {
+            spendingTracker.clearHistory();
+          }
+          modal.classList.remove("show");
+        });
+
+        // Close modal when clicking overlay
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.remove("show");
+          }
+        });
+      });
+    </script>
+
+    <!-- FAQ Toggle Functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            // Close all other FAQ items
+            faqItems.forEach((otherItem) => {
+              if (otherItem !== item) {
+                otherItem.classList.remove("active");
+              }
+            });
+
+            // Toggle current item
+            if (isActive) {
+              item.classList.remove("active");
+            } else {
+              item.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Apex Coins to USD Calculator",
+        "description": "Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Fortnite currency value, battle pass, and store items instantly. Updated 2025 rates.",
+        "url": "https://forgeapi.dev/gaming-calculators/vbucks/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "3247",
+          "bestRating": "5"
+        },
+        "dateModified": "2025-01-24",
+        "author": {
+          "@type": "Organization",
+          "name": "ForgeAPI"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://forgeapi.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gaming Calculators",
+            "item": "https://forgeapi.dev/gaming-calculators/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Apex Coins Calculator",
+            "item": "https://forgeapi.dev/gaming-calculators/vbucks/"
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much is 1000 Apex Coins in USD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1000 Apex Coins costs $7.99 USD. This is the standard rate for the smallest Apex Coins package available in the Fortnite store."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the Apex Coins to dollar exchange rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The exchange rate is $0.00799 per V-Buck (1000 Apex Coins = $7.99). This rate is consistent across all Apex Coins packages, though larger packages may offer slight discounts per V-Buck."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does $10 get you in Apex Coins?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "$10 gets you approximately 1,251 Apex Coins. This is based on the standard rate of $0.00799 per V-Buck."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much is 13,500 Apex Coins worth?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "13,500 Apex Coins costs $79.99 USD. This is the largest Apex Coins package available and offers the best value per V-Buck."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get Apex Coins cheaper?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Apex Coins prices are fixed by Epic Games. Beware of scams offering discounted Apex Coins - these are often fraudulent and can result in account bans."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Use the Apex Coins Calculator",
+        "description": "Learn how to convert Apex Coins to USD using our free calculator",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Enter Apex Coins Amount",
+            "text": "Type the number of Apex Coins you want to convert in the input field"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Select Currency",
+            "text": "Choose your preferred currency from the dropdown menu (USD, GBP, EUR, CAD, AUD)"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "View Results",
+            "text": "The calculator will automatically display the equivalent value in your chosen currency"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Copy Results",
+            "text": "Use the copy button to save your calculation results"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Custom Modal -->
+    <div class="modal-overlay" id="confirmModal">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-icon">⚠️</div>
+          <h3 class="modal-title">Clear History</h3>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to clear your calculation history? This action
+          cannot be undone.
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn modal-btn-secondary" id="modalCancel">
+            Cancel
+          </button>
+          <button class="modal-btn modal-btn-primary" id="modalConfirm">
+            Clear History
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

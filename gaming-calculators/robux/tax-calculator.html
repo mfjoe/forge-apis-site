@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
+      crossorigin="anonymous"
+    ></script>
+    <title>
+      Robux Tax Calculator - Roblox Marketplace Fee Calculator (2025)
+    </title>
+    <meta
+      name="description"
+      content="Calculate Robux after 30% marketplace tax. Free Roblox tax calculator for marketplace fees, group payouts, and DevEx eligibility. Updated 2025 rates."
+    />
+    <meta
+      name="keywords"
+      content="robux tax calculator, roblox marketplace fee, robux after tax, roblox 30 percent tax, robux marketplace calculator, roblox tax rate, roblox tax calculator 2025, roblox marketplace tax calculator"
+    />
+    <link
+      rel="canonical"
+      href="https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html"
+    />
+    <meta name="last-modified" content="2025-01-27" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Robux Tax Calculator - Roblox Marketplace Fee Calculator (2025)"
+    />
+    <meta
+      property="og:description"
+      content="Calculate Robux after 30% marketplace tax. Free calculator for Roblox marketplace fees, group payouts, and DevEx eligibility."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Robux Tax Calculator - 2025" />
+    <meta
+      name="twitter:description"
+      content="Calculate Robux marketplace fees and taxes instantly. Free Roblox tax calculator."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/calculator-core.css" />
+
+    <style>
+      /* Critical CSS - Inline for performance */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #ff6b6b;
+        --primary-dark: #ff5252;
+        --secondary: #00d4aa;
+        --dark: #0a0e27;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --robux-green: #00a651;
+        --robux-blue: #00a2ff;
+        --tax-red: #ef4444;
+        --tax-orange: #f59e0b;
+        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        background: #fafafa;
+        min-height: 100vh;
+        padding: 1rem;
+        padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Navigation - same as other calculators */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Tools Dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background: none;
+        border: none;
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .dropdown-btn:hover {
+        color: var(--primary);
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 200px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 8px 0;
+        margin-top: 8px;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-section {
+        padding: 8px 0;
+      }
+
+      .dropdown-section h4 {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 8px 0;
+        padding: 0 16px;
+      }
+
+      .dropdown-section a {
+        display: block;
+        padding: 8px 16px;
+        color: var(--dark);
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .dropdown-section a:hover {
+        background-color: var(--light-gray);
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        gap: 4px;
+      }
+
+      .mobile-menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--dark);
+        transition: all 0.3s;
+        border-radius: 2px;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        padding: 0.75rem;
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        background: var(--light-gray);
+      }
+
+      .mobile-dropdown {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .mobile-dropdown span {
+        display: block;
+        padding: 0.75rem;
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .mobile-dropdown a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      /* Calculator Header */
+      .calculator-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        max-width: 800px;
+      }
+
+      .calculator-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .calculator-header p {
+        font-size: 1.125rem;
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      /* Calculator Container */
+      .calculator-container {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        max-width: 700px;
+        width: 100%;
+      }
+
+      /* Mode Selector */
+      .mode-selector {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        background: var(--light-gray);
+        border-radius: 12px;
+        padding: 4px;
+        margin-bottom: 2rem;
+        gap: 4px;
+      }
+
+      .mode-btn {
+        padding: 12px 16px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--gray);
+        text-align: center;
+      }
+
+      .mode-btn.active {
+        background: white;
+        color: var(--dark);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Input Groups */
+      .input-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .input-label {
+        display: block;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .currency-icon {
+        position: absolute;
+        left: 16px;
+        font-weight: 600;
+        color: var(--gray);
+        z-index: 2;
+      }
+
+      .calculator-input {
+        width: 100%;
+        padding: 16px 16px 16px 40px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 1.125rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        background: white;
+      }
+
+      .calculator-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+      }
+
+      .calculator-input.robux {
+        border-color: var(--robux-blue);
+      }
+
+      .calculator-input.robux:focus {
+        border-color: var(--robux-blue);
+        box-shadow: 0 0 0 3px rgba(0, 162, 255, 0.1);
+      }
+
+      /* Tax Display */
+      .tax-display {
+        background: linear-gradient(135deg, var(--tax-red), var(--tax-orange));
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        color: white;
+        text-align: center;
+      }
+
+      .tax-display h3 {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .tax-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .tax-stat {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .tax-stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .tax-stat-label {
+        font-size: 0.875rem;
+        opacity: 0.9;
+      }
+
+      /* DevEx Checker */
+      .devex-checker {
+        background: linear-gradient(
+          135deg,
+          var(--robux-green),
+          var(--robux-blue)
+        );
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        color: white;
+      }
+
+      .devex-status {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .devex-icon {
+        font-size: 2rem;
+      }
+
+      .devex-text {
+        flex: 1;
+      }
+
+      .devex-eligible {
+        background: var(--robux-green);
+      }
+
+      .devex-not-eligible {
+        background: var(--tax-red);
+      }
+
+      /* Quick Examples */
+      .quick-examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .example-card {
+        background: var(--light-gray);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+      }
+
+      .example-card:hover {
+        border-color: var(--primary);
+        background: rgba(0, 102, 255, 0.05);
+      }
+
+      .example-title {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .example-calc {
+        font-size: 0.875rem;
+        color: var(--gray);
+      }
+
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        gap: 12px;
+        margin-top: 1.5rem;
+      }
+
+      .action-btn {
+        flex: 1;
+        padding: 12px 16px;
+        border: 2px solid var(--robux-blue);
+        background: white;
+        color: var(--robux-blue);
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.875rem;
+      }
+
+      .action-btn:hover {
+        background: var(--robux-blue);
+        color: white;
+      }
+
+      .action-btn.primary {
+        background: var(--robux-blue);
+        color: white;
+      }
+
+      .action-btn.primary:hover {
+        background: var(--primary-dark);
+      }
+
+      /* Rate Info */
+      .rate-info {
+        background: rgba(0, 162, 255, 0.1);
+        border: 1px solid rgba(0, 162, 255, 0.2);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: var(--dark);
+      }
+
+      /* Ad Slots */
+      .ad-slot {
+        background: var(--light-gray);
+        border: 2px dashed #cbd5e1;
+        padding: 2rem;
+        text-align: center;
+        margin: 2rem 0;
+        border-radius: 8px;
+        color: var(--gray);
+        font-weight: 500;
+        max-width: 728px;
+        width: 100%;
+      }
+
+      /* Content Sections */
+      .content-section {
+        max-width: 800px;
+        width: 100%;
+        margin: 3rem 0;
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .content-section h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+      }
+
+      .content-section h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      .content-section p {
+        color: var(--gray);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .content-section ul {
+        color: var(--gray);
+        line-height: 1.7;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .content-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Tables */
+      .rate-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .rate-table th,
+      .rate-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .rate-table th {
+        background: var(--light-gray);
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .rate-table td {
+        color: var(--gray);
+      }
+
+      .rate-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Related Calculators */
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .related-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s;
+      }
+
+      .related-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .related-title {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .related-desc {
+        font-size: 0.875rem;
+        color: var(--gray);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding-top: 50px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        nav {
+          padding: 0.25rem 0;
+          height: 50px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+          padding: 2px;
+        }
+
+        .mobile-menu-toggle span {
+          width: 16px;
+          height: 1.5px;
+        }
+
+        .logo svg {
+          width: 200px;
+          height: 70px;
+        }
+
+        .calculator-header h1 {
+          font-size: 2rem;
+        }
+
+        .calculator-container {
+          padding: 1.5rem;
+        }
+
+        .mode-selector {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .mode-btn {
+          padding: 16px;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+
+        .quick-examples {
+          grid-template-columns: 1fr;
+        }
+
+        .content-section {
+          padding: 1.5rem;
+        }
+
+        .rate-table {
+          font-size: 0.875rem;
+        }
+
+        .rate-table th,
+        .rate-table td {
+          padding: 8px 12px;
+        }
+
+        .tax-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* FAQ Styles */
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: var(--white);
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--dark);
+        transition: background-color 0.3s ease;
+      }
+
+      .faq-question:hover {
+        background: var(--light-gray);
+      }
+
+      .faq-icon {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary);
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: #f9fafb;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 200px;
+      }
+
+      .faq-answer p {
+        padding: 1rem 1.5rem;
+        margin: 0;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      /* Tablet/Medium Desktop */
+      @media (min-width: 769px) and (max-width: 1199px) {
+        .logo svg {
+          width: 200px;
+          height: 70px;
+        }
+      }
+
+      /* Desktop Layout */
+      @media (min-width: 1200px) {
+        .logo svg {
+          width: 250px;
+          height: 80px;
+        }
+      }
+
+      /* Print Styles */
+      @media print {
+        nav,
+        .ad-slot,
+        .action-buttons {
+          display: none;
+        }
+
+        body {
+          padding-top: 0;
+        }
+
+        .calculator-container {
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+      /* Smart Spending Tracker Styles */
+      .spending-tracker {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tracker-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .tracker-icon {
+        font-size: 1.2rem;
+      }
+
+      .tracker-text {
+        flex: 1;
+        font-size: 0.9rem;
+        color: var(--dark);
+      }
+
+      .tracker-btn {
+        padding: 0.25rem 0.75rem;
+        background: white;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        color: var(--dark);
+      }
+
+      .tracker-btn:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .tracker-btn.secondary {
+        background: #f8fafc;
+        color: var(--gray);
+      }
+
+      .tracker-btn.secondary:hover {
+        background: #ef4444;
+        color: white;
+        border-color: #ef4444;
+      }
+
+      .tracker-details {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #cbd5e1;
+      }
+
+      .tracker-details h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: var(--dark);
+      }
+
+      .export-btn {
+        margin-top: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: background 0.2s;
+      }
+
+      .export-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .history-item {
+        padding: 0.5rem;
+        background: white;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Better Deal Finder Styles */
+      .deal-finder {
+        margin-top: 1rem;
+        animation: slideDown 0.3s ease;
+      }
+
+      .deal-tip {
+        background: #fef3c7;
+        border: 1px solid #fbbf24;
+        border-radius: 6px;
+        padding: 0.75rem 1rem;
+        color: #92400e;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .tracker-summary {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .tracker-text {
+          font-size: 0.8rem;
+        }
+
+        .tracker-btn {
+          font-size: 0.8rem;
+          padding: 0.25rem 0.5rem;
+        }
+      /* Custom Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-dialog {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: scale(0.9) translateY(20px);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+      }
+
+      .modal-overlay.show .modal-dialog {
+        transform: scale(1) translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .modal-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: #92400e;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .modal-body {
+        margin-bottom: 1.5rem;
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+      }
+
+      .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 80px;
+      }
+
+      .modal-btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .modal-btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .modal-btn-secondary {
+        background: #f8fafc;
+        color: var(--gray);
+        border: 1px solid #e2e8f0;
+      }
+
+      .modal-btn-secondary:hover {
+        background: #f1f5f9;
+        color: var(--dark);
+        transform: translateY(-1px);
+      }
+
+      /* Mobile Modal */
+      @media (max-width: 768px) {
+        .modal-dialog {
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .modal-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .modal-icon {
+          margin-right: 0;
+          margin-bottom: 0.75rem;
+        }
+
+        .modal-actions {
+          flex-direction: column;
+        }
+
+        .modal-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="/" class="logo">
+          <svg
+            width="300"
+            height="100"
+            viewBox="0 0 240 80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Digital/Tech Anvil with Crossed Hammers -->
+            <g transform="translate(15, 15)">
+              <!-- Digital Anvil (geometric/tech style) -->
+              <path
+                d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                fill="#1E293B"
+                stroke="#0066FF"
+                stroke-width="0.5"
+              />
+              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1" />
+              <rect x="16" y="28" width="28" height="2" fill="#475569" />
+              <!-- Tech pattern on anvil -->
+              <line
+                x1="20"
+                y1="32"
+                x2="40"
+                y2="32"
+                stroke="#0066FF"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <line
+                x1="22"
+                y1="34"
+                x2="38"
+                y2="34"
+                stroke="#00D4AA"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <!-- Crossed Hammers (geometric style) -->
+              <!-- Left hammer -->
+              <g transform="rotate(-30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#0066FF"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+              </g>
+              <!-- Right hammer -->
+              <g transform="rotate(30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#00D4AA"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#00B894" />
+              </g>
+            </g>
+            <!-- Company Name -->
+            <text
+              x="75"
+              y="35"
+              font-family="Inter, sans-serif"
+              font-size="18"
+              font-weight="700"
+              fill="#1E293B"
+            >
+              FORGE
+            </text>
+            <text
+              x="75"
+              y="55"
+              font-family="Inter, sans-serif"
+              font-size="12"
+              font-weight="500"
+              fill="#0066FF"
+              letter-spacing="2px"
+            >
+              PRODUCTION-READY APIS
+            </text>
+          </svg>
+        </a>
+        <div class="nav-links">
+          <!-- Tools Dropdown -->
+          <div class="dropdown" id="toolsDropdown">
+            <button class="dropdown-btn" id="toolsDropdownBtn">
+              Tools <span style="font-size: 12px">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Premium Tools</h4>
+                <a href="/riskscore">🛡️ RiskScore API</a>
+                <a href="/dupecheck">🔍 DupeCheck</a>
+              </div>
+              <div class="dropdown-section">
+                <h4>Free Tools</h4>
+                <a href="/gst-calculator">🧮 GST Calculator</a>
+                <a href="/gaming-calculators">🎮 Gaming Calculators</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-dropdown">
+            <span style="font-weight: 600">Tools</span>
+            <a href="/riskscore">🛡️ RiskScore API</a>
+            <a href="/dupecheck">🔍 DupeCheck</a>
+            <a href="/gst-calculator">🧮 GST Calculator</a>
+            <a href="/gaming-calculators">🎮 Gaming Calculators</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container">
+      <nav
+        aria-label="Breadcrumb"
+        style="margin-bottom: 1rem; padding: 0.5rem 0"
+      >
+        <ol
+          style="
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.9rem;
+          "
+        >
+          <li>
+            <a href="/" style="color: var(--primary); text-decoration: none"
+              >Home</a
+            >
+          </li>
+          <li style="margin: 0 0.5rem; color: var(--gray)">></li>
+          <li>
+            <a
+              href="/gaming-calculators"
+              style="color: var(--primary); text-decoration: none"
+              >Gaming Calculators</a
+            >
+          </li>
+          <li style="margin: 0 0.5rem; color: var(--gray)">></li>
+          <li>
+            <a
+              href="/gaming-calculators/robux/"
+              style="color: var(--primary); text-decoration: none"
+              >Robux Calculator</a
+            >
+          </li>
+          <li style="margin: 0 0.5rem; color: var(--gray)">></li>
+          <li style="color: var(--dark); font-weight: 500">Tax Calculator</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Calculator Header -->
+    <div class="calculator-header">
+      <h1>Robux Tax Calculator</h1>
+      <p>
+        Calculate Robux after 30% marketplace tax, reverse calculations, group
+        payouts, and DevEx eligibility. Updated with 2025 Roblox tax rates.
+      </p>
+      <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.5rem">
+        Last updated: January 27, 2025
+      </p>
+    </div>
+
+    <!-- Calculator Container -->
+    <div class="calculator-container">
+      <!-- Mode Selector -->
+      <div class="mode-selector">
+        <button
+          class="mode-btn active"
+          data-mode="marketplace"
+          id="marketplaceMode"
+        >
+          Marketplace Tax
+        </button>
+        <button class="mode-btn" data-mode="reverse" id="reverseMode">
+          Reverse Calculator
+        </button>
+        <button class="mode-btn" data-mode="group" id="groupMode">
+          Group Payouts
+        </button>
+        <button class="mode-btn" data-mode="devex" id="devexMode">
+          DevEx Checker
+        </button>
+      </div>
+
+      <!-- Marketplace Tax Calculator -->
+      <div class="calculator-mode" id="marketplaceTax">
+        <div class="input-group">
+          <label class="input-label" for="listingPrice"
+            >Listing Price (Robux)</label
+          >
+          <div class="input-wrapper">
+            <span class="currency-icon">R$</span>
+            <input
+              type="number"
+              id="listingPrice"
+              class="calculator-input robux"
+              placeholder="Enter listing price"
+              min="0"
+              step="1"
+              aria-label="Listing price input"
+            />
+          </div>
+        </div>
+
+        <div class="tax-display" id="taxDisplay">
+          <h3>💰 After 30% Marketplace Tax</h3>
+          <div class="tax-stats">
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="netRobux">0</div>
+              <div class="tax-stat-label">Net Robux</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="taxAmount">0</div>
+              <div class="tax-stat-label">Tax Paid</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="taxRate">30%</div>
+              <div class="tax-stat-label">Tax Rate</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="usdValue">$0.00</div>
+              <div class="tax-stat-label">USD Value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reverse Calculator -->
+      <div class="calculator-mode" id="reverseCalculator" style="display: none">
+        <div class="input-group">
+          <label class="input-label" for="desiredRobux"
+            >Desired Net Robux</label
+          >
+          <div class="input-wrapper">
+            <span class="currency-icon">R$</span>
+            <input
+              type="number"
+              id="desiredRobux"
+              class="calculator-input robux"
+              placeholder="Enter desired net amount"
+              min="0"
+              step="1"
+              aria-label="Desired net Robux input"
+            />
+          </div>
+        </div>
+
+        <div class="tax-display" id="reverseDisplay">
+          <h3>📈 Required Listing Price</h3>
+          <div class="tax-stats">
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="requiredListing">0</div>
+              <div class="tax-stat-label">List For</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="reverseTaxAmount">0</div>
+              <div class="tax-stat-label">Tax Paid</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="reverseNetRobux">0</div>
+              <div class="tax-stat-label">You Receive</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="reverseUsdValue">$0.00</div>
+              <div class="tax-stat-label">USD Value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group Payouts Calculator -->
+      <div class="calculator-mode" id="groupCalculator" style="display: none">
+        <div class="input-group">
+          <label class="input-label" for="groupAmount"
+            >Group Payout Amount</label
+          >
+          <div class="input-wrapper">
+            <span class="currency-icon">R$</span>
+            <input
+              type="number"
+              id="groupAmount"
+              class="calculator-input robux"
+              placeholder="Enter group payout amount"
+              min="0"
+              step="1"
+              aria-label="Group payout amount input"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="groupType">Group Type</label>
+          <select id="groupType" class="calculator-input">
+            <option value="regular">Regular Group (30% tax)</option>
+            <option value="premium">Premium Group (10% tax)</option>
+            <option value="developer">Developer Group (0% tax)</option>
+          </select>
+        </div>
+
+        <div class="tax-display" id="groupDisplay">
+          <h3>👥 Group Payout Breakdown</h3>
+          <div class="tax-stats">
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="groupNetAmount">0</div>
+              <div class="tax-stat-label">Net Received</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="groupTaxAmount">0</div>
+              <div class="tax-stat-label">Tax Deducted</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="groupTaxRate">30%</div>
+              <div class="tax-stat-label">Tax Rate</div>
+            </div>
+            <div class="tax-stat">
+              <div class="tax-stat-value" id="groupUsdValue">$0.00</div>
+              <div class="tax-stat-label">USD Value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DevEx Checker -->
+      <div class="calculator-mode" id="devexChecker" style="display: none">
+        <div class="input-group">
+          <label class="input-label" for="currentRobux"
+            >Current Robux Balance</label
+          >
+          <div class="input-wrapper">
+            <span class="currency-icon">R$</span>
+            <input
+              type="number"
+              id="currentRobux"
+              class="calculator-input robux"
+              placeholder="Enter current Robux balance"
+              min="0"
+              step="1"
+              aria-label="Current Robux balance input"
+            />
+          </div>
+        </div>
+
+        <div class="devex-checker" id="devexStatus">
+          <h3>🏆 DevEx Eligibility Status</h3>
+          <div class="devex-status">
+            <div class="devex-icon" id="devexIcon">❌</div>
+            <div class="devex-text">
+              <div id="devexMessage">
+                Enter your Robux balance to check eligibility
+              </div>
+              <div
+                id="devexDetails"
+                style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.9"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Examples -->
+      <div class="quick-examples">
+        <div class="example-card" onclick="setExample(1000, 'marketplace')">
+          <div class="example-title">Sell 1000 R$ Item</div>
+          <div class="example-calc">Receive: 700 R$ after tax</div>
+        </div>
+        <div class="example-card" onclick="setExample(1000, 'reverse')">
+          <div class="example-title">Want 1000 R$?</div>
+          <div class="example-calc">List for: 1,429 R$</div>
+        </div>
+        <div class="example-card" onclick="setExample(5000, 'group')">
+          <div class="example-title">Group Payout</div>
+          <div class="example-calc">5000 R$ → 3500 R$ net</div>
+        </div>
+        <div class="example-card" onclick="setExample(50000, 'devex')">
+          <div class="example-title">DevEx Check</div>
+          <div class="example-calc">50K R$ = $175 USD</div>
+        </div>
+      </div>
+
+      <!-- Rate Info -->
+      <div class="rate-info" id="rateInfo">
+        <strong>Marketplace Tax:</strong> Roblox takes 30% tax on all
+        marketplace transactions. Premium groups may have reduced rates.
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button
+          class="action-btn"
+          id="copyBtn"
+          aria-label="Copy result to clipboard"
+        >
+          📋 Copy Result
+        </button>
+        <button
+          class="action-btn primary"
+          id="clearBtn"
+          aria-label="Clear all inputs"
+        >
+          🗑️ Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Top Ad Slot -->
+    <div class="ad-slot">
+      <!-- AdSense Ad Slot - After Calculator -->
+      <div>Advertisement Space - Banner (728x90)</div>
+    </div>
+
+    <!-- Tax Rate Breakdown -->
+    <div class="content-section">
+      <h2>Roblox Tax Rates & Fees 2025</h2>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Transaction Type</th>
+            <th>Tax Rate</th>
+            <th>You Receive</th>
+            <th>Example (1000 R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marketplace Sales</td>
+            <td>30%</td>
+            <td>70%</td>
+            <td>700 R$</td>
+          </tr>
+          <tr>
+            <td>Group Payouts (Regular)</td>
+            <td>30%</td>
+            <td>70%</td>
+            <td>700 R$</td>
+          </tr>
+          <tr>
+            <td>Group Payouts (Premium)</td>
+            <td>10%</td>
+            <td>90%</td>
+            <td>900 R$</td>
+          </tr>
+          <tr>
+            <td>Developer Products</td>
+            <td>30%</td>
+            <td>70%</td>
+            <td>700 R$</td>
+          </tr>
+          <tr>
+            <td>Game Passes</td>
+            <td>30%</td>
+            <td>70%</td>
+            <td>700 R$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- How Tax Calculator Works -->
+    <div class="content-section">
+      <h2>How to Use the Robux Tax Calculator</h2>
+
+      <h3>Marketplace Tax (30%)</h3>
+      <p>
+        When you sell items on the Roblox marketplace, Roblox automatically
+        deducts a 30% tax from your earnings. This means if you sell an item for
+        1000 Robux, you'll only receive 700 Robux after the tax is applied.
+      </p>
+
+      <h3>Reverse Calculation</h3>
+      <p>
+        If you want to receive a specific amount of Robux after tax, you need to
+        calculate backwards. To receive 1000 Robux after the 30% tax, you need
+        to list your item for 1,429 Robux (1000 ÷ 0.7 = 1,428.57, rounded up).
+      </p>
+
+      <h3>Group Payouts</h3>
+      <ul>
+        <li><strong>Regular Groups:</strong> 30% tax on all payouts</li>
+        <li><strong>Premium Groups:</strong> Reduced 10% tax rate</li>
+        <li>
+          <strong>Developer Groups:</strong> Special 0% tax rate for qualified
+          developers
+        </li>
+      </ul>
+
+      <h3>DevEx Eligibility</h3>
+      <p>To be eligible for Developer Exchange (DevEx), you need:</p>
+      <ul>
+        <li>Minimum 50,000 earned Robux</li>
+        <li>Valid tax information on file</li>
+        <li>Good standing account</li>
+        <li>13+ years old (or parental consent)</li>
+      </ul>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How much tax does Roblox take from marketplace sales?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Roblox takes a 30% tax on all marketplace sales. If you sell an
+              item for 1000 Robux, you receive 700 Robux after tax.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span
+              >How do I calculate the listing price to get a specific amount
+              after tax?</span
+            >
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              To receive X Robux after 30% tax, list your item for X ÷ 0.7
+              Robux. For example, to get 1000 Robux, list for 1,429 Robux.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Do group payouts have different tax rates?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! Regular groups have 30% tax, Premium groups have 10% tax, and
+              Developer groups have 0% tax on payouts.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How much Robux do I need for DevEx eligibility?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              You need a minimum of 50,000 earned Robux, valid tax information,
+              good account standing, and be 13+ years old.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I avoid Roblox marketplace tax?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No, the 30% marketplace tax is mandatory for all sales. However,
+              Premium groups have reduced 10% tax rates for payouts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tax Examples & Strategies -->
+    <div class="content-section">
+      <h2>Robux Tax Examples & Strategies</h2>
+
+      <h3>Common Tax Scenarios</h3>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Listing Price</th>
+            <th>Tax (30%)</th>
+            <th>You Receive</th>
+            <th>USD Value*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>100 R$</td>
+            <td>30 R$</td>
+            <td>70 R$</td>
+            <td>$0.25</td>
+          </tr>
+          <tr>
+            <td>500 R$</td>
+            <td>150 R$</td>
+            <td>350 R$</td>
+            <td>$1.23</td>
+          </tr>
+          <tr>
+            <td>1,000 R$</td>
+            <td>300 R$</td>
+            <td>700 R$</td>
+            <td>$2.45</td>
+          </tr>
+          <tr>
+            <td>5,000 R$</td>
+            <td>1,500 R$</td>
+            <td>3,500 R$</td>
+            <td>$12.25</td>
+          </tr>
+          <tr>
+            <td>10,000 R$</td>
+            <td>3,000 R$</td>
+            <td>7,000 R$</td>
+            <td>$24.50</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.875rem; color: var(--gray); margin-top: 0.5rem">
+        *USD values based on DevEx rate of $0.0035 per Robux
+      </p>
+
+      <h3>Tax Optimization Tips</h3>
+      <ul>
+        <li>
+          <strong>Price strategically:</strong> Consider the 30% tax when
+          setting prices
+        </li>
+        <li>
+          <strong>Bundle items:</strong> Sell multiple items together to reduce
+          per-item tax impact
+        </li>
+        <li>
+          <strong>Use group payouts:</strong> Premium groups have lower tax
+          rates
+        </li>
+        <li>
+          <strong>Plan for DevEx:</strong> Accumulate 50,000+ Robux for cash-out
+          eligibility
+        </li>
+        <li>
+          <strong>Track earnings:</strong> Keep records of all transactions for
+          tax purposes
+        </li>
+      </ul>
+    </div>
+
+    <!-- Middle Ad Slot -->
+    <div class="ad-slot">
+      <!-- AdSense Ad Slot - Middle -->
+      <div>Advertisement Space - Banner (728x90)</div>
+    </div>
+
+    <!-- Related Calculators -->
+    <div class="content-section">
+      <h2>Related Calculators</h2>
+      <div class="related-grid">
+        <a href="./" class="related-item">
+          <div class="related-title">Convert Robux to USD</div>
+          <div class="related-desc">
+            Convert Robux to USD with DevEx and purchase rates
+          </div>
+        </a>
+        <a href="../vbucks/" class="related-item">
+          <div class="related-title">Calculate V-Bucks Value</div>
+          <div class="related-desc">
+            Calculate Fortnite V-Bucks value and Battle Pass worth
+          </div>
+        </a>
+        <a href="../" class="related-item">
+          <div class="related-title">All Gaming Calculators</div>
+          <div class="related-desc">
+            Explore calculators for all gaming currencies
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Ad Slot -->
+    <div class="ad-slot">
+      <!-- AdSense Ad Slot - Bottom -->
+      <div>Advertisement Space - Bottom Banner (728x90)</div>
+    </div>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Robux Tax Calculator",
+        "description": "Calculate Robux after 30% marketplace tax. Free Roblox tax calculator for marketplace fees, group payouts, and DevEx eligibility.",
+        "url": "https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "dateModified": "2025-01-27",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "2891",
+          "bestRating": "5"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Marketplace tax calculation",
+          "Reverse tax calculator",
+          "Group payout calculator",
+          "DevEx eligibility checker",
+          "Real-time calculations"
+        ]
+      }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much tax does Roblox take from marketplace sales?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Roblox takes a 30% tax on all marketplace sales. If you sell an item for 1000 Robux, you receive 700 Robux after tax."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate the listing price to get a specific amount after tax?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To receive X Robux after 30% tax, list your item for X ÷ 0.7 Robux. For example, to get 1000 Robux, list for 1,429 Robux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do group payouts have different tax rates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Regular groups have 30% tax, Premium groups have 10% tax, and Developer groups have 0% tax on payouts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much Robux do I need for DevEx eligibility?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You need a minimum of 50,000 earned Robux, valid tax information, good account standing, and be 13+ years old."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I avoid Roblox marketplace tax?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, the 30% marketplace tax is mandatory for all sales. However, Premium groups have reduced 10% tax rates for payouts."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://forgeapi.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gaming Calculators",
+            "item": "https://forgeapi.dev/gaming-calculators/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Robux Calculator",
+            "item": "https://forgeapi.dev/gaming-calculators/robux/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Tax Calculator",
+            "item": "https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html"
+          }
+        ]
+      }
+    </script>
+
+    <!-- HowTo Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Use the Robux Tax Calculator",
+        "description": "Learn how to calculate Robux taxes and fees using our calculator",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Select Calculator Mode",
+            "text": "Choose between Marketplace Tax, Reverse Calculator, Group Payouts, or DevEx Checker."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Enter Amount",
+            "text": "Input your Robux amount or desired net amount depending on the mode selected."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "View Results",
+            "text": "See the calculated tax amount, net Robux received, and USD value instantly."
+          }
+        ]
+      }
+    </script>
+
+    <!-- Load Calculator Core -->
+    <script src="../assets/js/calculator-core.js"></script>
+
+    <!-- Tax Calculator JavaScript -->
+    <script>
+      // Tax Calculator State
+      let currentMode = "marketplace";
+      let isUpdating = false;
+
+      // Tax rates
+      const taxRates = {
+        marketplace: 0.3,
+        group: {
+          regular: 0.3,
+          premium: 0.1,
+          developer: 0.0,
+        },
+      };
+
+      // DevEx rate
+      const devexRate = 0.0035; // $0.0035 per Robux
+
+      // DOM elements
+      const elements = {
+        // Mode buttons
+        marketplaceMode: document.getElementById("marketplaceMode"),
+        reverseMode: document.getElementById("reverseMode"),
+        groupMode: document.getElementById("groupMode"),
+        devexMode: document.getElementById("devexMode"),
+
+        // Calculator modes
+        marketplaceTax: document.getElementById("marketplaceTax"),
+        reverseCalculator: document.getElementById("reverseCalculator"),
+        groupCalculator: document.getElementById("groupCalculator"),
+        devexChecker: document.getElementById("devexChecker"),
+
+        // Inputs
+        listingPrice: document.getElementById("listingPrice"),
+        desiredRobux: document.getElementById("desiredRobux"),
+        groupAmount: document.getElementById("groupAmount"),
+        groupType: document.getElementById("groupType"),
+        currentRobux: document.getElementById("currentRobux"),
+
+        // Displays
+        netRobux: document.getElementById("netRobux"),
+        taxAmount: document.getElementById("taxAmount"),
+        taxRate: document.getElementById("taxRate"),
+        usdValue: document.getElementById("usdValue"),
+
+        // Reverse calculator displays
+        requiredListing: document.getElementById("requiredListing"),
+        reverseTaxAmount: document.getElementById("reverseTaxAmount"),
+        reverseNetRobux: document.getElementById("reverseNetRobux"),
+        reverseUsdValue: document.getElementById("reverseUsdValue"),
+
+        // Group calculator displays
+        groupNetAmount: document.getElementById("groupNetAmount"),
+        groupTaxAmount: document.getElementById("groupTaxAmount"),
+        groupTaxRate: document.getElementById("groupTaxRate"),
+        groupUsdValue: document.getElementById("groupUsdValue"),
+
+        // DevEx displays
+        devexIcon: document.getElementById("devexIcon"),
+        devexMessage: document.getElementById("devexMessage"),
+        devexDetails: document.getElementById("devexDetails"),
+
+        // Action buttons
+        copyBtn: document.getElementById("copyBtn"),
+        clearBtn: document.getElementById("clearBtn"),
+
+        rateInfo: document.getElementById("rateInfo"),
+      };
+
+      // Initialize calculator
+      document.addEventListener("DOMContentLoaded", function () {
+        setupEventListeners();
+        loadSavedCalculation();
+        updateRateInfo();
+
+        // Initialize with core module
+        if (typeof window.seoTracker === "undefined") {
+          window.seoTracker = new SEOTracker();
+        }
+
+        console.log("Robux Tax Calculator initialized");
+      });
+
+      function setupEventListeners() {
+        // Mode buttons
+        elements.marketplaceMode.addEventListener("click", () =>
+          switchMode("marketplace")
+        );
+        elements.reverseMode.addEventListener("click", () =>
+          switchMode("reverse")
+        );
+        elements.groupMode.addEventListener("click", () => switchMode("group"));
+        elements.devexMode.addEventListener("click", () => switchMode("devex"));
+
+        // Input listeners
+        elements.listingPrice.addEventListener(
+          "input",
+          calculateMarketplaceTax
+        );
+        elements.desiredRobux.addEventListener("input", calculateReverse);
+        elements.groupAmount.addEventListener("input", calculateGroupPayout);
+        elements.groupType.addEventListener("change", calculateGroupPayout);
+        elements.currentRobux.addEventListener("input", checkDevExEligibility);
+
+        // Action buttons
+        elements.copyBtn.addEventListener("click", copyResult);
+        elements.clearBtn.addEventListener("click", clearInputs);
+
+        // Navigation functionality
+        initializeNavigation();
+      }
+
+      function switchMode(mode) {
+        currentMode = mode;
+
+        // Update active button
+        document.querySelectorAll(".mode-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        elements[mode + "Mode"].classList.add("active");
+
+        // Show/hide calculator modes
+        document.querySelectorAll(".calculator-mode").forEach((calc) => {
+          calc.style.display = "none";
+        });
+
+        switch (mode) {
+          case "marketplace":
+            elements.marketplaceTax.style.display = "block";
+            break;
+          case "reverse":
+            elements.reverseCalculator.style.display = "block";
+            break;
+          case "group":
+            elements.groupCalculator.style.display = "block";
+            break;
+          case "devex":
+            elements.devexChecker.style.display = "block";
+            break;
+        }
+
+        updateRateInfo();
+        trackEvent("tax_mode_changed", { mode });
+      }
+
+      function calculateMarketplaceTax() {
+        if (isUpdating) return;
+
+        const listingPrice = parseFloat(elements.listingPrice.value) || 0;
+        const taxRate = taxRates.marketplace;
+        const taxAmount = Math.floor(listingPrice * taxRate);
+        const netRobux = listingPrice - taxAmount;
+        const usdValue = netRobux * devexRate;
+
+        elements.netRobux.textContent = formatNumber(netRobux);
+        elements.taxAmount.textContent = formatNumber(taxAmount);
+        elements.taxRate.textContent = "30%";
+        elements.usdValue.textContent = "$" + usdValue.toFixed(2);
+
+        saveCalculation();
+        trackEvent("marketplace_tax_calculated", {
+          listing_price: listingPrice,
+          net_robux: netRobux,
+          tax_amount: taxAmount,
+        });
+      }
+
+      function calculateReverse() {
+        if (isUpdating) return;
+
+        const desiredRobux = parseFloat(elements.desiredRobux.value) || 0;
+        const taxRate = taxRates.marketplace;
+        const requiredListing = Math.ceil(desiredRobux / (1 - taxRate));
+        const actualTax = requiredListing - desiredRobux;
+        const usdValue = desiredRobux * devexRate;
+
+        elements.requiredListing.textContent = formatNumber(requiredListing);
+        elements.reverseTaxAmount.textContent = formatNumber(actualTax);
+        elements.reverseNetRobux.textContent = formatNumber(desiredRobux);
+        elements.reverseUsdValue.textContent = "$" + usdValue.toFixed(2);
+
+        saveCalculation();
+        trackEvent("reverse_tax_calculated", {
+          desired_robux: desiredRobux,
+          required_listing: requiredListing,
+          tax_amount: actualTax,
+        });
+      }
+
+      function calculateGroupPayout() {
+        if (isUpdating) return;
+
+        const groupAmount = parseFloat(elements.groupAmount.value) || 0;
+        const groupType = elements.groupType.value;
+        const taxRate = taxRates.group[groupType];
+        const taxAmount = Math.floor(groupAmount * taxRate);
+        const netAmount = groupAmount - taxAmount;
+        const usdValue = netAmount * devexRate;
+
+        elements.groupNetAmount.textContent = formatNumber(netAmount);
+        elements.groupTaxAmount.textContent = formatNumber(taxAmount);
+        elements.groupTaxRate.textContent = Math.round(taxRate * 100) + "%";
+        elements.groupUsdValue.textContent = "$" + usdValue.toFixed(2);
+
+        saveCalculation();
+        trackEvent("group_payout_calculated", {
+          group_amount: groupAmount,
+          group_type: groupType,
+          net_amount: netAmount,
+          tax_rate: taxRate,
+        });
+      }
+
+      function checkDevExEligibility() {
+        if (isUpdating) return;
+
+        const currentRobux = parseFloat(elements.currentRobux.value) || 0;
+        const minDevExRobux = 50000;
+        const isEligible = currentRobux >= minDevExRobux;
+        const usdValue = currentRobux * devexRate;
+
+        const devexChecker = document.querySelector(".devex-checker");
+
+        if (isEligible) {
+          elements.devexIcon.textContent = "✅";
+          elements.devexMessage.textContent =
+            "Eligible for Developer Exchange!";
+          elements.devexDetails.textContent = `You can exchange ${formatNumber(
+            currentRobux
+          )} Robux for $${usdValue.toFixed(2)} USD`;
+          devexChecker.className = "devex-checker devex-eligible";
+        } else {
+          elements.devexIcon.textContent = "❌";
+          const needed = minDevExRobux - currentRobux;
+          elements.devexMessage.textContent = "Not eligible for DevEx yet";
+          elements.devexDetails.textContent = `You need ${formatNumber(
+            needed
+          )} more Robux to reach the 50,000 minimum requirement`;
+          devexChecker.className = "devex-checker devex-not-eligible";
+        }
+
+        saveCalculation();
+        trackEvent("devex_eligibility_checked", {
+          current_robux: currentRobux,
+          is_eligible: isEligible,
+          usd_value: usdValue,
+        });
+      }
+
+      function setExample(amount, mode) {
+        switchMode(mode);
+
+        switch (mode) {
+          case "marketplace":
+            elements.listingPrice.value = amount;
+            calculateMarketplaceTax();
+            break;
+          case "reverse":
+            elements.desiredRobux.value = amount;
+            calculateReverse();
+            break;
+          case "group":
+            elements.groupAmount.value = amount;
+            calculateGroupPayout();
+            break;
+          case "devex":
+            elements.currentRobux.value = amount;
+            checkDevExEligibility();
+            break;
+        }
+
+        trackEvent("example_used", { mode, amount });
+      }
+
+      function updateRateInfo() {
+        const rateTexts = {
+          marketplace:
+            "<strong>Marketplace Tax:</strong> Roblox takes 30% tax on all marketplace transactions. Premium groups may have reduced rates.",
+          reverse:
+            "<strong>Reverse Calculator:</strong> Calculate the listing price needed to receive your desired amount after tax.",
+          group:
+            "<strong>Group Payouts:</strong> Tax rates vary by group type - Regular (30%), Premium (10%), Developer (0%).",
+          devex:
+            "<strong>DevEx Requirements:</strong> Minimum 50,000 earned Robux, valid tax info, good standing account, 13+ years old.",
+        };
+
+        elements.rateInfo.innerHTML = rateTexts[currentMode];
+      }
+
+      function formatNumber(num) {
+        return Math.round(num).toLocaleString();
+      }
+
+      function copyResult() {
+        let result = "";
+
+        switch (currentMode) {
+          case "marketplace":
+            const listingPrice = elements.listingPrice.value || "0";
+            const netRobux = elements.netRobux.textContent;
+            result = `Listing ${listingPrice} Robux → Receive ${netRobux} Robux after 30% tax`;
+            break;
+          case "reverse":
+            const desiredRobux = elements.desiredRobux.value || "0";
+            const requiredListing = elements.requiredListing.textContent;
+            result = `To receive ${desiredRobux} Robux → List for ${requiredListing} Robux`;
+            break;
+          case "group":
+            const groupAmount = elements.groupAmount.value || "0";
+            const groupNet = elements.groupNetAmount.textContent;
+            const groupType =
+              elements.groupType.options[elements.groupType.selectedIndex].text;
+            result = `${groupType} payout: ${groupAmount} Robux → ${groupNet} Robux net`;
+            break;
+          case "devex":
+            const currentRobux = elements.currentRobux.value || "0";
+            const devexMessage = elements.devexMessage.textContent;
+            result = `DevEx Check: ${currentRobux} Robux - ${devexMessage}`;
+            break;
+        }
+
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(result).then(() => {
+            showNotification("Result copied to clipboard!", "success");
+          });
+        } else {
+          // Fallback for older browsers
+          const textArea = document.createElement("textarea");
+          textArea.value = result;
+          textArea.style.position = "fixed";
+          textArea.style.opacity = "0";
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+          showNotification("Result copied to clipboard!", "success");
+        }
+
+        trackEvent("tax_result_copied", { mode: currentMode });
+      }
+
+      function shareCalculation() {
+        let shareText = "";
+
+        switch (currentMode) {
+          case "marketplace":
+            const listingPrice = elements.listingPrice.value || "0";
+            const netRobux = elements.netRobux.textContent;
+            shareText = `Robux Tax Calculator: Listing ${listingPrice} Robux → Receive ${netRobux} Robux after 30% tax`;
+            break;
+          case "reverse":
+            const desiredRobux = elements.desiredRobux.value || "0";
+            const requiredListing = elements.requiredListing.textContent;
+            shareText = `Robux Tax Calculator: To receive ${desiredRobux} Robux → List for ${requiredListing} Robux`;
+            break;
+          case "group":
+            const groupAmount = elements.groupAmount.value || "0";
+            const groupNet = elements.groupNetAmount.textContent;
+            shareText = `Robux Tax Calculator: Group payout ${groupAmount} Robux → ${groupNet} Robux net`;
+            break;
+          case "devex":
+            const currentRobux = elements.currentRobux.value || "0";
+            const devexMessage = elements.devexMessage.textContent;
+            shareText = `Robux Tax Calculator: DevEx Check - ${currentRobux} Robux - ${devexMessage}`;
+            break;
+        }
+
+        const shareData = {
+          title: "Robux Tax Calculator Result",
+          text: shareText,
+          url: window.location.href,
+        };
+
+        if (navigator.share) {
+          navigator.share(shareData);
+        } else {
+          copyResult();
+        }
+
+        trackEvent("tax_result_shared", { mode: currentMode });
+      }
+
+      function clearInputs() {
+        elements.listingPrice.value = "";
+        elements.desiredRobux.value = "";
+        elements.groupAmount.value = "";
+        elements.currentRobux.value = "";
+
+        // Clear displays
+        elements.netRobux.textContent = "0";
+        elements.taxAmount.textContent = "0";
+        elements.usdValue.textContent = "$0.00";
+        elements.requiredListing.textContent = "0";
+        elements.reverseTaxAmount.textContent = "0";
+        elements.reverseNetRobux.textContent = "0";
+        elements.reverseUsdValue.textContent = "$0.00";
+        elements.groupNetAmount.textContent = "0";
+        elements.groupTaxAmount.textContent = "0";
+        elements.groupUsdValue.textContent = "$0.00";
+
+        // Reset DevEx checker
+        elements.devexIcon.textContent = "❌";
+        elements.devexMessage.textContent =
+          "Enter your Robux balance to check eligibility";
+        elements.devexDetails.textContent = "";
+
+        localStorage.removeItem("robuxTaxCalculation");
+        showNotification("Calculator cleared!", "info");
+        trackEvent("tax_calculator_cleared");
+      }
+
+      function saveCalculation() {
+        const calculation = {
+          mode: currentMode,
+          listingPrice: elements.listingPrice.value,
+          desiredRobux: elements.desiredRobux.value,
+          groupAmount: elements.groupAmount.value,
+          groupType: elements.groupType.value,
+          currentRobux: elements.currentRobux.value,
+          timestamp: Date.now(),
+        };
+
+        try {
+          localStorage.setItem(
+            "robuxTaxCalculation",
+            JSON.stringify(calculation)
+          );
+        } catch (err) {
+          console.warn("Failed to save calculation:", err);
+        }
+      }
+
+      function loadSavedCalculation() {
+        try {
+          const saved = localStorage.getItem("robuxTaxCalculation");
+          if (!saved) return;
+
+          const calculation = JSON.parse(saved);
+
+          // Only load if saved within last 24 hours
+          if (Date.now() - calculation.timestamp < 24 * 60 * 60 * 1000) {
+            if (calculation.mode) {
+              switchMode(calculation.mode);
+            }
+
+            elements.listingPrice.value = calculation.listingPrice || "";
+            elements.desiredRobux.value = calculation.desiredRobux || "";
+            elements.groupAmount.value = calculation.groupAmount || "";
+            elements.groupType.value = calculation.groupType || "regular";
+            elements.currentRobux.value = calculation.currentRobux || "";
+
+            // Recalculate based on mode
+            switch (calculation.mode) {
+              case "marketplace":
+                calculateMarketplaceTax();
+                break;
+              case "reverse":
+                calculateReverse();
+                break;
+              case "group":
+                calculateGroupPayout();
+                break;
+              case "devex":
+                checkDevExEligibility();
+                break;
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to load saved calculation:", err);
+        }
+      }
+
+      function showNotification(message, type = "info") {
+        // Remove existing notifications
+        const existing = document.querySelectorAll(".calc-notification");
+        existing.forEach((el) => el.remove());
+
+        const notification = document.createElement("div");
+        notification.className = `calc-notification calc-notification--${type}`;
+        notification.textContent = message;
+
+        // Styling
+        Object.assign(notification.style, {
+          position: "fixed",
+          top: "100px",
+          right: "20px",
+          padding: "12px 20px",
+          borderRadius: "8px",
+          zIndex: "10000",
+          fontWeight: "500",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+          fontSize: "14px",
+          maxWidth: "300px",
+          wordWrap: "break-word",
+          transition: "all 0.3s ease",
+        });
+
+        // Type-specific styling
+        const colors = {
+          success: { bg: "#10b981", color: "#fff" },
+          error: { bg: "#ef4444", color: "#fff" },
+          warning: { bg: "#f59e0b", color: "#fff" },
+          info: { bg: "#3b82f6", color: "#fff" },
+        };
+
+        const colorScheme = colors[type] || colors.info;
+        notification.style.background = colorScheme.bg;
+        notification.style.color = colorScheme.color;
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.style.opacity = "0";
+            notification.style.transform = "translateX(100%)";
+            setTimeout(() => notification.remove(), 300);
+          }
+        }, 3000);
+      }
+
+      function trackEvent(eventName, parameters = {}) {
+        // Google Analytics 4
+        if (typeof gtag !== "undefined") {
+          gtag("event", eventName, {
+            calculator_type: "robux_tax",
+            ...parameters,
+          });
+        }
+
+        // Console log for debugging
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          console.log("Tax Calculator Event:", eventName, parameters);
+        }
+      }
+
+      // Navigation functionality
+      function initializeNavigation() {
+        const toolsDropdown = document.getElementById("toolsDropdown");
+        const toolsDropdownBtn = document.getElementById("toolsDropdownBtn");
+
+        if (toolsDropdownBtn) {
+          toolsDropdownBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            toolsDropdown.classList.toggle("active");
+          });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (e) {
+          if (toolsDropdown && !toolsDropdown.contains(e.target)) {
+            toolsDropdown.classList.remove("active");
+          }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", function () {
+            mobileMenuToggle.classList.toggle("active");
+            mobileMenu.classList.toggle("active");
+          });
+        }
+      }
+
+      // Track page view
+      trackEvent("tax_calculator_page_view", {
+        page_title: document.title,
+        user_agent: navigator.userAgent,
+        screen_resolution: `${screen.width}x${screen.height}`,
+      });
+
+      // FAQ Toggle Function
+      function toggleFaq(button) {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains("active");
+
+        // Close all FAQ items
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>

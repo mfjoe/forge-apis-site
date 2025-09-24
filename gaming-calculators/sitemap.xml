@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Gaming Calculators Hub Page -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Main Gaming Currency Calculators (Priority 1.0) -->
+  
+  <!-- Robux Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/robux/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- V-Bucks Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/vbucks/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Minecoins Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/minecoins/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- FIFA Points Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/fifa-points/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- COD Points Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/cod-points/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Apex Coins Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/apex-coins/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sub-Calculators and Specialized Tools (Priority 0.8) -->
+  
+  <!-- Robux Tax Calculator -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- V-Bucks Battle Pass Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/vbucks/battle-pass-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Robux DevEx Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/robux/devex-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Robux Group Payout Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/robux/group-payout-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Minecoins Realms Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/minecoins/realms-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- FIFA Ultimate Team Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/fifa-points/ultimate-team-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- COD Battle Pass Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/cod-points/battle-pass-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Apex Legends Season Pass Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/apex-coins/season-pass-calculator.html</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Gaming Currency Comparison Tools (Priority 0.7) -->
+  
+  <!-- Currency Comparison Calculator (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/compare/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Gaming Currency News & Updates (Priority 0.6) -->
+  
+  <!-- Rate Updates Page (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/rate-updates/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Gaming Currency Guide (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/guide/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- API Documentation (Priority 0.5) -->
+  
+  <!-- Gaming Calculator API (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/api/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Widget Embed Code (Planned) -->
+  <url>
+    <loc>https://forgeapi.dev/gaming-calculators/embed/</loc>
+    <lastmod>2025-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

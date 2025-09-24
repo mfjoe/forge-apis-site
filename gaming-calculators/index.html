@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gaming Currency Calculators - Convert Robux, V-Bucks, Minecoins & More
+    </title>
+    <meta
+      name="description"
+      content="Free gaming currency calculators for Robux, V-Bucks, Minecoins, FIFA Points, COD Points, and Apex Coins. Convert gaming currencies to USD instantly with accurate exchange rates."
+    />
+    <meta
+      name="keywords"
+      content="gaming calculators, robux calculator, vbucks calculator, minecoins calculator, fifa points calculator, cod points calculator, apex coins calculator, gaming currency converter"
+    />
+    <link rel="canonical" href="https://forgeapi.dev/gaming-calculators/" />
+    <meta
+      property="og:title"
+      content="Gaming Currency Calculators - Convert Robux, V-Bucks & More"
+    />
+    <meta
+      property="og:description"
+      content="Free gaming currency calculators for Robux, V-Bucks, Minecoins, FIFA Points, COD Points, and Apex Coins. Convert gaming currencies to USD instantly."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://forgeapi.dev/gaming-calculators/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Gaming Currency Calculators - Convert Robux, V-Bucks & More"
+    />
+    <meta
+      name="twitter:description"
+      content="Free gaming currency calculators for all major gaming currencies. Convert to USD instantly."
+    />
+
+    <style>
+      /* Critical CSS - Inline for performance */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8fafc;
+        padding-top: 80px;
+      }
+
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --secondary: #f59e0b;
+        --dark: #1e293b;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Navigation - same as other calculators */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Tools Dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background: none;
+        border: none;
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .dropdown-btn:hover {
+        color: var(--primary);
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 200px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 8px 0;
+        margin-top: 8px;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-section {
+        padding: 8px 0;
+      }
+
+      .dropdown-section h4 {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 8px 0;
+        padding: 0 16px;
+      }
+
+      .dropdown-section a {
+        display: block;
+        padding: 8px 16px;
+        color: var(--dark);
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .dropdown-section a:hover {
+        background-color: var(--light-gray);
+        color: var(--primary);
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        gap: 4px;
+      }
+
+      .mobile-menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--dark);
+        transition: all 0.3s;
+        border-radius: 2px;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        padding: 0.75rem;
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        background: var(--light-gray);
+      }
+
+      .mobile-dropdown {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .mobile-dropdown span {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .mobile-dropdown a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        background: var(--gradient);
+        color: var(--white);
+        padding: 4rem 0;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Calculator Grid */
+      .calculators-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .calculator-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .calculator-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary);
+        transition: all 0.3s ease;
+      }
+
+      .calculator-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary);
+      }
+
+      .calculator-card:hover::before {
+        height: 6px;
+      }
+
+      /* Robux Theme */
+      .calculator-card[href*="robux"] {
+        --primary: #ff6b6b;
+        --primary-dark: #ff5252;
+      }
+
+      /* V-Bucks Theme */
+      .calculator-card[href*="vbucks"] {
+        --primary: #9c27b0;
+        --primary-dark: #7b1fa2;
+      }
+
+      /* Minecoins Theme */
+      .calculator-card[href*="minecoins"] {
+        --primary: #4caf50;
+        --primary-dark: #388e3c;
+      }
+
+      /* FIFA Points Theme */
+      .calculator-card[href*="fifa-points"] {
+        --primary: #2196f3;
+        --primary-dark: #1976d2;
+      }
+
+      /* COD Points Theme */
+      .calculator-card[href*="cod-points"] {
+        --primary: #ff9800;
+        --primary-dark: #f57c00;
+      }
+
+      /* Apex Coins Theme */
+      .calculator-card[href*="apex-coins"] {
+        --primary: #00bcd4;
+        --primary-dark: #0097a7;
+      }
+
+      .calculator-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+        font-weight: 800;
+        color: var(--primary);
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem auto;
+      }
+
+      .calculator-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .calculator-desc {
+        color: var(--gray);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .calculator-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .calculator-features li {
+        padding: 0.25rem 0;
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .calculator-features li:before {
+        content: "✓ ";
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      /* Content Sections */
+      .section {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .ad-slot {
+        background: #f3f4f6;
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        color: var(--gray);
+        margin: 2rem 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .calculators-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .calculator-card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="/" class="logo">
+          <svg
+            width="300"
+            height="100"
+            viewBox="0 0 240 80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Digital/Tech Anvil with Crossed Hammers -->
+            <g transform="translate(15, 15)">
+              <!-- Digital Anvil (geometric/tech style) -->
+              <path
+                d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                fill="#1E293B"
+                stroke="#0066FF"
+                stroke-width="0.5"
+              />
+              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1" />
+              <rect x="16" y="28" width="28" height="2" fill="#475569" />
+              <!-- Tech pattern on anvil -->
+              <line
+                x1="20"
+                y1="32"
+                x2="40"
+                y2="32"
+                stroke="#0066FF"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <line
+                x1="22"
+                y1="34"
+                x2="38"
+                y2="34"
+                stroke="#00D4AA"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <!-- Crossed Hammers (geometric style) -->
+              <!-- Left hammer -->
+              <g transform="rotate(-30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#0066FF"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+              </g>
+              <!-- Right hammer -->
+              <g transform="rotate(30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#0066FF"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+              </g>
+              <!-- Digital Fire/Energy (geometric flames) -->
+              <path
+                d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                fill="#FF6B35"
+                opacity="0.9"
+              />
+              <path
+                d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                fill="#FFA500"
+                opacity="0.8"
+              />
+              <path
+                d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                fill="#FFA500"
+                opacity="0.8"
+              />
+              <!-- Tech sparks (pixels) -->
+              <rect
+                x="12"
+                y="20"
+                width="2"
+                height="2"
+                fill="#00D4AA"
+                opacity="0.8"
+              />
+              <rect
+                x="46"
+                y="20"
+                width="2"
+                height="2"
+                fill="#00D4AA"
+                opacity="0.8"
+              />
+              <rect
+                x="10"
+                y="25"
+                width="1.5"
+                height="1.5"
+                fill="#FFD700"
+                opacity="0.7"
+              />
+              <rect
+                x="48"
+                y="25"
+                width="1.5"
+                height="1.5"
+                fill="#FFD700"
+                opacity="0.7"
+              />
+            </g>
+            <!-- Text: Forge -->
+            <text
+              x="75"
+              y="45"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="28"
+              font-weight="800"
+              fill="#0A0E27"
+            >
+              Forge
+            </text>
+            <!-- Text: APIs -->
+            <text
+              x="150"
+              y="45"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="28"
+              font-weight="400"
+              fill="#6B7280"
+            >
+              APIs
+            </text>
+            <!-- Tagline -->
+            <text
+              x="75"
+              y="63"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="9"
+              fill="#9CA3AF"
+              letter-spacing="0.5"
+            >
+              PRODUCTION-READY APIS
+            </text>
+          </svg>
+        </a>
+        <div class="nav-links">
+          <!-- Tools Dropdown -->
+          <div class="dropdown" id="toolsDropdown">
+            <button class="dropdown-btn" id="toolsDropdownBtn">
+              Tools <span style="font-size: 12px">▼</span>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Premium Tools</h4>
+                <a href="/riskscore">🛡️ RiskScore API</a>
+                <a href="/dupecheck">🔍 DupeCheck</a>
+              </div>
+              <div class="dropdown-section">
+                <h4>Free Tools</h4>
+                <a href="/gst-calculator">🧮 GST Calculator</a>
+                <a href="/gaming-calculators">🎮 Gaming Calculators</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-dropdown">
+            <span style="font-weight: 600">Tools</span>
+            <a href="/riskscore" style="padding-left: 20px">🛡️ RiskScore API</a>
+            <a href="/dupecheck" style="padding-left: 20px">🔍 DupeCheck</a>
+            <a href="/gst-calculator" style="padding-left: 20px"
+              >🧮 GST Calculator</a
+            >
+            <a href="/gaming-calculators" style="padding-left: 20px"
+              >🎮 Gaming Calculators</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <h1>Gaming Currency Calculators</h1>
+          <p>
+            Convert between gaming currencies and USD instantly. Get accurate
+            exchange rates for Robux, V-Bucks, Minecoins, FIFA Points, COD
+            Points, and Apex Coins.
+          </p>
+        </div>
+      </section>
+
+      <div class="container">
+        <!-- Calculator Grid -->
+        <div class="calculators-grid">
+          <a href="/gaming-calculators/robux/" class="calculator-card">
+            <span class="calculator-icon">R</span>
+            <h3 class="calculator-title">Robux Calculator</h3>
+            <p class="calculator-desc">
+              Convert Robux to USD with accurate Roblox exchange rates. Perfect
+              for budgeting your Roblox purchases.
+            </p>
+            <ul class="calculator-features">
+              <li>Two-way conversion (Robux ↔ USD)</li>
+              <li>Real-time calculation</li>
+              <li>Quick amount buttons</li>
+              <li>Copy & share results</li>
+            </ul>
+          </a>
+
+          <a href="/gaming-calculators/vbucks/" class="calculator-card">
+            <span class="calculator-icon">V</span>
+            <h3 class="calculator-title">V-Bucks Calculator</h3>
+            <p class="calculator-desc">
+              Convert Fortnite V-Bucks to USD instantly. Calculate battle pass
+              value and store purchases.
+            </p>
+            <ul class="calculator-features">
+              <li>V-Bucks to USD conversion</li>
+              <li>Battle pass calculator</li>
+              <li>Bulk conversion options</li>
+              <li>Mobile optimized</li>
+            </ul>
+          </a>
+
+          <a href="/gaming-calculators/minecoins/" class="calculator-card">
+            <span class="calculator-icon">M</span>
+            <h3 class="calculator-title">Minecoins Calculator</h3>
+            <p class="calculator-desc">
+              Convert Minecraft Minecoins to USD. Perfect for marketplace
+              purchases and skin packs.
+            </p>
+            <ul class="calculator-features">
+              <li>Minecoins to USD conversion</li>
+              <li>Marketplace pricing</li>
+              <li>Quick amount presets</li>
+              <li>Instant calculations</li>
+            </ul>
+          </a>
+
+          <a href="/gaming-calculators/fifa-points/" class="calculator-card">
+            <span class="calculator-icon">F</span>
+            <h3 class="calculator-title">FIFA Points Calculator</h3>
+            <p class="calculator-desc">
+              Convert EA FC FIFA Points to USD. Calculate Ultimate Team pack
+              values and purchases.
+            </p>
+            <ul class="calculator-features">
+              <li>FIFA Points to USD conversion</li>
+              <li>Ultimate Team calculator</li>
+              <li>Pack value analysis</li>
+              <li>Real-time rates</li>
+            </ul>
+          </a>
+
+          <a href="/gaming-calculators/cod-points/" class="calculator-card">
+            <span class="calculator-icon">C</span>
+            <h3 class="calculator-title">COD Points Calculator</h3>
+            <p class="calculator-desc">
+              Convert Call of Duty COD Points to USD. Calculate battle pass and
+              store bundle values.
+            </p>
+            <ul class="calculator-features">
+              <li>COD Points to USD conversion</li>
+              <li>Battle pass calculator</li>
+              <li>Bundle value analysis</li>
+              <li>Mobile friendly</li>
+            </ul>
+          </a>
+
+          <a href="/gaming-calculators/apex-coins/" class="calculator-card">
+            <span class="calculator-icon">A</span>
+            <h3 class="calculator-title">Apex Coins Calculator</h3>
+            <p class="calculator-desc">
+              Convert Apex Legends Apex Coins to USD. Calculate skin and battle
+              pass purchases.
+            </p>
+            <ul class="calculator-features">
+              <li>Apex Coins to USD conversion</li>
+              <li>Skin value calculator</li>
+              <li>Battle pass analysis</li>
+              <li>Bulk conversion</li>
+            </ul>
+          </a>
+        </div>
+
+        <!-- AdSense Slot - Top -->
+        <div class="ad-slot">
+          <!-- AdSense Ad Slot - Top -->
+          <div>Advertisement Space - Top Banner (728x90)</div>
+        </div>
+
+        <!-- About Section -->
+        <section class="section">
+          <h2 class="section-title">Why Use Our Gaming Calculators?</h2>
+          <p>
+            Our gaming currency calculators provide accurate, up-to-date
+            exchange rates for all major gaming currencies. Whether you're
+            planning your next Roblox purchase, calculating Fortnite V-Bucks
+            value, or budgeting for FIFA Ultimate Team packs, our tools help you
+            make informed decisions.
+          </p>
+          <p>
+            All calculators feature real-time conversion, mobile optimization,
+            and the ability to copy and share results. We update our exchange
+            rates regularly to ensure accuracy across all gaming platforms.
+          </p>
+        </section>
+
+        <!-- AdSense Slot - Middle -->
+        <div class="ad-slot">
+          <!-- AdSense Ad Slot - Middle -->
+          <div>Advertisement Space - Middle Banner (728x90)</div>
+        </div>
+
+        <!-- Bottom Ad Slot -->
+        <div class="ad-slot">
+          <!-- AdSense Ad Slot - Bottom -->
+          <div>Advertisement Space - Bottom Banner (728x90)</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- AdSense Script -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Gaming Currency Calculators",
+        "description": "Free gaming currency calculators for Robux, V-Bucks, Minecoins, FIFA Points, COD Points, and Apex Coins",
+        "url": "https://forgeapi.dev/gaming-calculators/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://forgeapi.dev/gaming-calculators/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <script>
+      // Dropdown functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const toolsDropdown = document.getElementById("toolsDropdown");
+        const toolsDropdownBtn = document.getElementById("toolsDropdownBtn");
+
+        if (toolsDropdownBtn) {
+          toolsDropdownBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            toolsDropdown.classList.toggle("active");
+          });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (e) {
+          if (!toolsDropdown.contains(e.target)) {
+            toolsDropdown.classList.remove("active");
+          }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenuToggle && mobileMenu) {
+          mobileMenuToggle.addEventListener("click", function () {
+            mobileMenu.classList.toggle("active");
+            mobileMenuToggle.classList.toggle("active");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

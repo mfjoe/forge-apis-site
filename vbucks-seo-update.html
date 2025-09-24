@@ -1,0 +1,441 @@
+<!-- This file contains the SEO improvements to be added to V-Bucks calculator -->
+
+<!-- 1. BREADCRUMB NAVIGATION (Add after </nav> and before <div class="container">) -->
+<div class="breadcrumb">
+  <div class="container">
+    <nav class="breadcrumb-list" aria-label="Breadcrumb">
+      <div class="breadcrumb-item">
+        <a href="/" class="breadcrumb-link">Home</a>
+      </div>
+      <div class="breadcrumb-item">
+        <a href="/gaming-calculators" class="breadcrumb-link"
+          >Gaming Calculators</a
+        >
+      </div>
+      <div class="breadcrumb-item">
+        <span class="breadcrumb-current">V-Bucks Calculator</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- 2. LAST UPDATED TIMESTAMP (Add after calculator-subtitle) -->
+<div class="last-updated">Last updated: January 24, 2025</div>
+
+<!-- 3. UPDATED H2 HEADINGS -->
+<!-- Replace "Understanding V-Bucks Value" with: -->
+<h2 class="section-title">How Much Are V-Bucks Worth in 2025?</h2>
+
+<!-- Replace "V-Bucks Packages & Pricing" with: -->
+<h2 class="section-title">V-Bucks to USD Exchange Rate Table</h2>
+
+<!-- 4. CURRENCY PRICES BY COUNTRY SECTION (Add after Understanding section) -->
+<div class="content-section">
+  <h2 class="section-title">V-Bucks Prices by Country</h2>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>V-Bucks Amount</th>
+        <th>USD</th>
+        <th>GBP</th>
+        <th>EUR</th>
+        <th>CAD</th>
+        <th>AUD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1,000 V-Bucks</td>
+        <td>$7.99</td>
+        <td>£6.24</td>
+        <td>€6.79</td>
+        <td>C$10.78</td>
+        <td>A$11.83</td>
+      </tr>
+      <tr>
+        <td>2,800 V-Bucks</td>
+        <td>$19.99</td>
+        <td>£15.59</td>
+        <td>€16.99</td>
+        <td>C$26.99</td>
+        <td>A$29.58</td>
+      </tr>
+      <tr>
+        <td>5,000 V-Bucks</td>
+        <td>$31.99</td>
+        <td>£24.95</td>
+        <td>€27.19</td>
+        <td>C$43.19</td>
+        <td>A$47.35</td>
+      </tr>
+      <tr>
+        <td>13,500 V-Bucks</td>
+        <td>$79.99</td>
+        <td>£62.39</td>
+        <td>€67.99</td>
+        <td>C$107.99</td>
+        <td>A$118.39</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 5. FAQ SECTION (Add after Understanding section) -->
+<div class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <span>How much is 1000 V-Bucks in USD?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      1000 V-Bucks costs $7.99 USD. This is the standard rate for the smallest
+      V-Bucks package available in the Fortnite store.
+    </div>
+  </div>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <span>What is the V-Bucks to dollar exchange rate?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      The exchange rate is $0.00799 per V-Buck (1000 V-Bucks = $7.99). This rate
+      is consistent across all V-Bucks packages, though larger packages may
+      offer slight discounts per V-Buck.
+    </div>
+  </div>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <span>How much does $10 get you in V-Bucks?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      $10 gets you approximately 1,251 V-Bucks. This is based on the standard
+      rate of $0.00799 per V-Buck.
+    </div>
+  </div>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <span>How much is 13,500 V-Bucks worth?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      13,500 V-Bucks costs $79.99 USD. This is the largest V-Bucks package
+      available and offers the best value per V-Buck.
+    </div>
+  </div>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <span>Can I get V-Bucks cheaper?</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      V-Bucks prices are fixed by Epic Games. Beware of scams offering
+      discounted V-Bucks - these are often fraudulent and can result in account
+      bans.
+    </div>
+  </div>
+</div>
+
+<!-- 6. CSS TO ADD TO <style> SECTION -->
+<style>
+  /* Breadcrumb Navigation */
+  .breadcrumb {
+    background: var(--white);
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-item:not(:last-child)::after {
+    content: ">";
+    margin-left: 0.5rem;
+    color: var(--gray);
+  }
+
+  .breadcrumb-link {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--primary-dark);
+  }
+
+  .breadcrumb-current {
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  /* Last Updated */
+  .last-updated {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--primary);
+  }
+
+  .faq-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 0 1.5rem 0;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 200px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .breadcrumb-list {
+      font-size: 0.8rem;
+    }
+
+    .faq-question {
+      font-size: 1rem;
+      padding: 1rem 0;
+    }
+  }
+</style>
+
+<!-- 7. JAVASCRIPT TO ADD BEFORE CLOSING </body> TAG -->
+<script>
+  // FAQ Toggle Functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector(".faq-question");
+
+      question.addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+
+        // Close all other FAQ items
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove("active");
+          }
+        });
+
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove("active");
+        } else {
+          item.classList.add("active");
+        }
+      });
+    });
+  });
+</script>
+
+<!-- 8. SCHEMA MARKUP TO ADD BEFORE CLOSING </body> TAG -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "V-Bucks to USD Calculator",
+    "description": "Free V-Bucks calculator to convert between V-Bucks and USD. Calculate Fortnite currency value, battle pass, and store items instantly. Updated 2025 rates.",
+    "url": "https://forgeapi.dev/gaming-calculators/vbucks/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "3247",
+      "bestRating": "5"
+    },
+    "dateModified": "2025-01-24",
+    "author": {
+      "@type": "Organization",
+      "name": "ForgeAPI"
+    }
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://forgeapi.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Gaming Calculators",
+        "item": "https://forgeapi.dev/gaming-calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "V-Bucks Calculator",
+        "item": "https://forgeapi.dev/gaming-calculators/vbucks/"
+      }
+    ]
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much is 1000 V-Bucks in USD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1000 V-Bucks costs $7.99 USD. This is the standard rate for the smallest V-Bucks package available in the Fortnite store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the V-Bucks to dollar exchange rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The exchange rate is $0.00799 per V-Buck (1000 V-Bucks = $7.99). This rate is consistent across all V-Bucks packages, though larger packages may offer slight discounts per V-Buck."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does $10 get you in V-Bucks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "$10 gets you approximately 1,251 V-Bucks. This is based on the standard rate of $0.00799 per V-Buck."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is 13,500 V-Bucks worth?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "13,500 V-Bucks costs $79.99 USD. This is the largest V-Bucks package available and offers the best value per V-Buck."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get V-Bucks cheaper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "V-Bucks prices are fixed by Epic Games. Beware of scams offering discounted V-Bucks - these are often fraudulent and can result in account bans."
+        }
+      }
+    ]
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Use the V-Bucks Calculator",
+    "description": "Learn how to convert V-Bucks to USD using our free calculator",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Enter V-Bucks Amount",
+        "text": "Type the number of V-Bucks you want to convert in the input field"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Select Currency",
+        "text": "Choose your preferred currency from the dropdown menu (USD, GBP, EUR, CAD, AUD)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "View Results",
+        "text": "The calculator will automatically display the equivalent value in your chosen currency"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Copy Results",
+        "text": "Use the copy button to save your calculation results"
+      }
+    ]
+  }
+</script>

@@ -1,0 +1,251 @@
+/**
+ * Gaming Calculator Core Styles
+ * Shared CSS for all gaming currency calculators
+ * Optimized for performance and accessibility
+ */
+
+/* Notification Styles */
+.calc-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 10000;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  max-width: 300px;
+  word-wrap: break-word;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.calc-notification--success {
+  background: #10b981;
+  color: #fff;
+}
+
+.calc-notification--error {
+  background: #ef4444;
+  color: #fff;
+}
+
+.calc-notification--warning {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.calc-notification--info {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Loading States */
+.calculator-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.calculator-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: calc-spin 1s linear infinite;
+}
+
+@keyframes calc-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Input Validation States */
+.calculator-input.invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.calculator-input.valid {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Enhanced Quick Buttons */
+.quick-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.quick-btn:hover::before {
+  left: 100%;
+}
+
+/* Ad Slot Enhancements */
+.ad-slot {
+  position: relative;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-slot[data-loaded="false"] {
+  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: ad-loading 2s linear infinite;
+}
+
+@keyframes ad-loading {
+  0% {
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  100% {
+    background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px;
+  }
+}
+
+/* Performance Optimizations */
+.calculator-container {
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.calculator-input {
+  will-change: border-color, box-shadow;
+}
+
+/* Accessibility Enhancements */
+.calculator-input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.quick-btn:focus,
+.action-btn:focus {
+  outline: 2px solid #0066ff;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .calc-notification {
+    border: 2px solid currentColor;
+  }
+
+  .calculator-input {
+    border-width: 2px;
+  }
+
+  .quick-btn,
+  .action-btn {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .calc-notification,
+  .quick-btn::before,
+  .calculator-loading::after {
+    animation: none;
+    transition: none;
+  }
+
+  .ad-slot[data-loaded="false"] {
+    animation: none;
+    background: #f0f0f0;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .calc-notification,
+  .ad-slot {
+    display: none !important;
+  }
+
+  .calculator-container {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .calculator-input {
+    border: 1px solid #000;
+    background: white;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .ad-slot[data-loaded="false"] {
+    background: linear-gradient(45deg, #333 25%, transparent 25%),
+      linear-gradient(-45deg, #333 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #333 75%),
+      linear-gradient(-45deg, transparent 75%, #333 75%);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .calc-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    text-align: center;
+  }
+
+  .calculator-loading::after {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .calc-notification {
+    right: 15px;
+    max-width: 280px;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1200px) {
+  .calc-notification {
+    right: 30px;
+    max-width: 350px;
+  }
+}
