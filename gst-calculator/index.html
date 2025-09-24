@@ -16,6 +16,21 @@
       content="Free GST Calculator for India. Calculate CGST, SGST, IGST instantly. Support for all GST rates: 0%, 3%, 5%, 12%, 18%, 28%. Powered by Forge APIs."
     />
 
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="GST Calculator India - Free Online GST Calculator"
+    />
+    <meta
+      property="og:description"
+      content="Calculate GST, CGST, SGST instantly. All rates: 0%, 5%, 12%, 18%, 28%."
+    />
+    <meta
+      property="og:image"
+      content="https://forgeapis.com/gst-calculator-preview.png"
+    />
+    <meta property="og:url" content="https://forgeapis.com/gst-calculator" />
+
     <!-- Schema Markup for SEO -->
     <script type="application/ld+json">
       {
@@ -491,94 +506,90 @@
         font-weight: 600;
       }
 
-      /* Calculate Again Button */
-      .calculate-again-container {
-        margin-top: 1rem;
-        text-align: center;
+      /* Recent Calculations */
+      .recent-calculations-container {
+        margin-top: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8f9fa;
+        overflow: hidden;
       }
 
-      .calculate-again-btn {
+      .recent-calculations-btn {
+        width: 100%;
+        padding: 12px 16px;
         background: linear-gradient(
           135deg,
           var(--secondary) 0%,
           var(--secondary-dark) 100%
         );
-        color: white;
         border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 12px;
-        font-size: 0.9rem;
-        font-weight: 600;
+        border-bottom: 1px solid #e2e8f0;
         cursor: pointer;
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: white;
         transition: all 0.3s ease;
-        opacity: 0;
-        transform: translateY(10px);
-        pointer-events: none;
-        box-shadow: 0 4px 16px rgba(0, 212, 170, 0.3);
-        width: 120px;
-        height: 40px;
+        box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
       }
 
-      .calculate-again-btn:hover {
+      .recent-calculations-btn:hover {
         background: linear-gradient(
           135deg,
           var(--secondary-dark) 0%,
           #008f6b 100%
         );
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(0, 212, 170, 0.4);
       }
 
-      .calculate-again-btn.show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      /* Calculation History Styles */
-      .history-section {
-        margin-top: 2rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        background: #f8f9fa;
-        overflow: hidden;
-      }
-
-      .history-toggle {
-        width: 100%;
-        padding: 12px 16px;
-        background: #f1f3f4;
-        border: none;
-        border-bottom: 1px solid #e2e8f0;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        color: var(--dark);
-        transition: background-color 0.2s;
-      }
-
-      .history-toggle:hover {
-        background: #e8eaed;
-      }
-
-      .history-toggle-icon {
+      .recent-calculations-icon {
         transition: transform 0.3s ease;
       }
 
-      .history-toggle.expanded .history-toggle-icon {
+      .recent-calculations-btn.expanded .recent-calculations-icon {
         transform: rotate(180deg);
       }
 
-      .history-content {
+      .recent-calculations-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
       }
 
-      .history-content.expanded {
+      .recent-calculations-content.expanded {
         max-height: 400px;
+      }
+
+      .recent-calculations-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        background: #f1f3f4;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .recent-calculations-header h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .recent-calculations-list {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 8px;
+      }
+
+      .recent-calculations-empty {
+        text-align: center;
+        color: var(--gray);
+        font-style: italic;
+        padding: 20px;
       }
 
       .history-widget {
@@ -1051,17 +1062,20 @@
           color: var(--primary);
         }
 
-        /* Mobile Calculate Again Button */
-        .calculate-again-container {
+        /* Mobile Recent Calculations */
+        .recent-calculations-container {
           margin-top: 15px;
-          padding: 0 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         }
 
-        .calculate-again-btn {
-          width: 100%;
-          height: 40px;
-          font-size: 0.85rem;
-          padding: 0;
+        .recent-calculations-btn {
+          font-size: 0.9rem;
+          padding: 10px 14px;
+        }
+
+        .recent-calculations-content.expanded {
+          max-height: 350px;
         }
 
         /* Don't hide CGST/SGST by default - show everything */
@@ -1278,6 +1292,165 @@
           var(--accent) 0%,
           var(--warning) 100%
         );
+      }
+
+      /* Table Styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      table th {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      table td {
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.9rem;
+        color: var(--dark);
+      }
+
+      table tr:nth-child(even) {
+        background: #f8fafc;
+      }
+
+      table tr:hover {
+        background: #f0f8ff;
+      }
+
+      table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Custom Modal Styling */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        background: var(--card-gradient);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(6, 102, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .modal-overlay.show .modal {
+        transform: scale(1);
+      }
+
+      .modal::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary) 0%,
+          var(--secondary) 50%,
+          var(--accent) 100%
+        );
+      }
+
+      .modal h3 {
+        color: var(--dark);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .modal p {
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 100px;
+      }
+
+      .modal-btn-cancel {
+        background: #f1f3f4;
+        color: var(--gray);
+        border: 1px solid #e2e8f0;
+      }
+
+      .modal-btn-cancel:hover {
+        background: #e8eaed;
+      }
+
+      .modal-btn-confirm {
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-light) 100%
+        );
+        color: white;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+
+      .modal-btn-confirm:hover {
+        background: linear-gradient(
+          135deg,
+          var(--accent-light) 0%,
+          #ff5722 100%
+        );
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
       }
 
       .faq-item {
@@ -1562,10 +1735,13 @@
       <main class="calculator-main">
         <div class="calculator-card">
           <div class="calculator-header-compact">
-            <h1>GST Calculator India - Free Online GST Calculator</h1>
+            <h1>
+              Goods and Services Tax Calculator India - Free Online GST
+              Calculator
+            </h1>
             <!-- Remove subtitle on mobile to save space -->
             <p class="subtitle desktop-only">
-              Calculate GST, CGST, SGST & IGST Instantly
+              Calculate GST - Central, State, and Interstate Taxes Instantly
             </p>
           </div>
 
@@ -1694,15 +1870,37 @@
               <span class="result-value" id="totalAmount">₹0</span>
             </div>
 
-            <!-- Calculate Again Button -->
-            <div class="calculate-again-container">
+            <!-- Recent Calculations -->
+            <div class="recent-calculations-container">
               <button
-                id="calculateAgainBtn"
-                class="calculate-again-btn"
-                onclick="calculateAgain()"
+                id="recentCalculationsBtn"
+                class="recent-calculations-btn"
+                onclick="toggleRecentCalculations()"
               >
-                Calculate Again
+                <span class="recent-calculations-text"
+                  >Recent Calculations</span
+                >
+                <span class="recent-calculations-icon">▼</span>
               </button>
+              <div
+                class="recent-calculations-content"
+                id="recentCalculationsContent"
+              >
+                <div class="recent-calculations-header">
+                  <h3>Recent Calculations</h3>
+                  <button class="clear-history-btn" onclick="showClearModal()">
+                    Clear
+                  </button>
+                </div>
+                <div
+                  class="recent-calculations-list"
+                  id="recentCalculationsList"
+                >
+                  <div class="recent-calculations-empty">
+                    No calculations yet
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Mobile expand details button -->
@@ -1766,49 +1964,45 @@
           for Everyone
         </div>
 
-        <!-- Calculation History -->
-        <div class="history-section mobile-only">
-          <button class="history-toggle" onclick="toggleHistory()">
-            <span class="history-toggle-text">Show History</span>
-            <span class="history-toggle-icon">▼</span>
-          </button>
-          <div class="history-content" id="historyContent">
-            <div class="history-header">
-              <h3>Recent Calculations</h3>
-              <button class="clear-history-btn" onclick="clearHistory()">
-                Clear
-              </button>
-            </div>
-            <div class="history-list" id="historyList">
-              <div class="history-empty">No calculations yet</div>
-            </div>
-          </div>
-        </div>
-
         <!-- SEO Content Sections -->
         <div class="content-section">
           <h2>Understanding GST in India</h2>
           <p>
-            Goods and Services Tax (GST) is an indirect tax levied in India on
-            the supply of goods and services. GST is a comprehensive,
-            multi-stage, destination-based tax that replaced many indirect taxes
-            in India.
+            Goods and Services Tax (GST) is a comprehensive indirect tax
+            implemented in India on July 1, 2017. It replaced multiple cascading
+            taxes with a single, destination-based tax on the supply of goods
+            and services.
           </p>
 
           <h3>How to Calculate GST</h3>
           <p>
-            GST calculation is straightforward using our free calculator. Simply
-            enter your amount, select the appropriate GST rate, and choose
-            between intrastate (CGST + SGST) or interstate (IGST) transactions.
+            To calculate GST: multiply the base amount by the GST rate
+            percentage. For example, on ₹1,000 at 18% GST rate, the tax is ₹180,
+            making the total ₹1,180.
           </p>
 
-          <h3>Current GST Rate Slabs</h3>
+          <h3>Current GST Rate Structure</h3>
           <ul>
-            <li>0% - Essential items like milk, fruits, vegetables</li>
-            <li>5% - Common use items like sugar, tea, coffee</li>
-            <li>12% - Computers, processed foods</li>
-            <li>18% - Most products and services</li>
-            <li>28% - Luxury items and sin goods</li>
+            <li>
+              0% - Essential items: fresh fruits, vegetables, milk, bread, salt,
+              jaggery
+            </li>
+            <li>
+              5% - Basic necessities: packaged foods, tea, coffee, edible oils,
+              coal
+            </li>
+            <li>
+              12% - Standard items: mobile phones, processed foods, ayurvedic
+              medicines
+            </li>
+            <li>
+              18% - Most services and goods: restaurants, IT services, telecom,
+              financial services
+            </li>
+            <li>
+              28% - Luxury items: automobiles, tobacco products, aerated drinks,
+              high-end electronics
+            </li>
           </ul>
         </div>
 
@@ -1816,26 +2010,26 @@
         <div class="faq-section">
           <h2>Frequently Asked Questions</h2>
           <div class="faq-item">
-            <h3>What is the difference between CGST and SGST?</h3>
+            <h3>What is the difference between CGST, SGST, and IGST?</h3>
             <p>
-              CGST (Central GST) goes to the central government while SGST
-              (State GST) goes to state government. Both are charged at half the
-              total GST rate.
+              For intrastate sales (within same state), GST is split equally
+              between CGST (Central GST) and SGST (State GST). For interstate
+              sales, only IGST (Integrated GST) applies at the full rate.
             </p>
           </div>
           <div class="faq-item">
-            <h3>When is IGST applicable?</h3>
+            <h3>How is GST calculated on discounted products?</h3>
             <p>
-              IGST (Integrated GST) is applicable for interstate transactions,
-              where goods or services are supplied from one state to another.
+              GST applies to the actual transaction value (after discount), not
+              the MRP, unless the discount is given as post-supply incentive.
             </p>
           </div>
           <div class="faq-item">
-            <h3>How to calculate GST on a product?</h3>
+            <h3>What is Input Tax Credit (ITC)?</h3>
             <p>
-              To calculate GST, multiply the base price by the GST rate. For
-              example, if a product costs ₹100 and GST is 18%, the GST amount is
-              ₹18, making the total ₹118.
+              ITC allows businesses to claim credit for GST paid on purchases,
+              reducing their overall tax liability. This eliminates tax
+              cascading.
             </p>
           </div>
 
@@ -1863,19 +2057,20 @@
           </div>
 
           <div class="faq-item">
-            <h3>What is GST exclusive and inclusive pricing?</h3>
+            <h3>Is reverse charge applicable on all services?</h3>
             <p>
-              GST exclusive means the price shown does not include GST, and it
-              will be added separately. GST inclusive means the GST is already
-              included in the displayed price.
+              No, reverse charge applies only to specific notified services and
+              goods, where the recipient pays GST instead of the supplier.
             </p>
           </div>
           <div class="faq-item">
-            <h3>Is GST calculator accurate for business use?</h3>
+            <h3>
+              What's the difference between composition scheme and regular
+              scheme?
+            </h3>
             <p>
-              Yes, our GST calculator uses official GST rates and formulas.
-              However, for complex business scenarios, consult a tax
-              professional.
+              Composition scheme offers lower tax rates (1-6%) but no ITC
+              claims, while regular scheme has standard rates with ITC benefits.
             </p>
           </div>
           <div class="faq-item">
@@ -1886,6 +2081,45 @@
               qualified CA.
             </p>
           </div>
+        </div>
+
+        <!-- GST Calculator for Different Industries -->
+        <div class="content-section">
+          <h2>GST for Different Sectors</h2>
+
+          <h3>Services</h3>
+          <p>Professional services, consultancy - 18%</p>
+
+          <h3>Real Estate</h3>
+          <p>Under-construction properties - 5% (affordable) / 12% (others)</p>
+
+          <h3>Textiles</h3>
+          <p>₹1000+ garments - 12%, below ₹1000 - 5%</p>
+
+          <h3>Restaurants</h3>
+          <p>5% (non-AC), 18% (AC/licensed)</p>
+        </div>
+
+        <!-- GST vs Previous Tax System -->
+        <div class="content-section">
+          <h2>GST vs Previous Tax System</h2>
+          <table>
+            <tr>
+              <th>Aspect</th>
+              <th>GST</th>
+              <th>Previous System</th>
+            </tr>
+            <tr>
+              <td>Number of Taxes</td>
+              <td>One unified tax</td>
+              <td>17+ different taxes</td>
+            </tr>
+            <tr>
+              <td>Tax Cascading</td>
+              <td>Eliminated</td>
+              <td>Present</td>
+            </tr>
+          </table>
         </div>
       </main>
 
@@ -1918,19 +2152,33 @@
           </div>
 
           <!-- Desktop History Widget -->
-          <div class="history-widget desktop-only">
-            <div class="history-header">
-              <h3>Recent Calculations</h3>
-              <button class="clear-history-btn" onclick="clearHistory()">
-                Clear
-              </button>
-            </div>
-            <div class="history-list" id="desktopHistoryList">
-              <div class="history-empty">No calculations yet</div>
-            </div>
-          </div>
         </div>
       </aside>
+    </div>
+
+    <!-- Custom Modal for Clear Confirmation -->
+    <div id="clearModal" class="modal-overlay">
+      <div class="modal">
+        <h3>Clear History</h3>
+        <p>
+          Are you sure you want to clear all calculation history? This action
+          cannot be undone.
+        </p>
+        <div class="modal-buttons">
+          <button
+            class="modal-btn modal-btn-cancel"
+            onclick="closeClearModal()"
+          >
+            Cancel
+          </button>
+          <button
+            class="modal-btn modal-btn-confirm"
+            onclick="confirmClearHistory()"
+          >
+            Clear All
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile Sticky Bottom Ad -->
@@ -2085,11 +2333,12 @@
             formatIndianCurrency(gstAmount);
         }
 
-        // Show Calculate Again button when results are displayed
+        // Show Recent Calculations button when results are displayed
         if (inputAmount > 0) {
-          const calculateAgainBtn =
-            document.getElementById("calculateAgainBtn");
-          calculateAgainBtn.classList.add("show");
+          const recentCalculationsBtn = document.getElementById(
+            "recentCalculationsBtn"
+          );
+          recentCalculationsBtn.style.display = "flex";
 
           // Save to history
           saveToHistory(
@@ -2133,60 +2382,56 @@
         }
       }
 
-      // Calculate Again function
-      function calculateAgain() {
-        // Clear input
-        document.getElementById("amount").value = "";
+      // Toggle Recent Calculations function
+      function toggleRecentCalculations() {
+        const toggle = document.getElementById("recentCalculationsBtn");
+        const content = document.getElementById("recentCalculationsContent");
+        const icon = document.querySelector(".recent-calculations-icon");
+        const text = document.querySelector(".recent-calculations-text");
 
-        // Reset to defaults
-        currentMode = "exclusive";
-        currentRate = 18;
-        currentTransactionType = "intrastate";
+        if (content.classList.contains("expanded")) {
+          content.classList.remove("expanded");
+          toggle.classList.remove("expanded");
+          text.textContent = "Recent Calculations";
+        } else {
+          content.classList.add("expanded");
+          toggle.classList.add("expanded");
+          text.textContent = "Hide Calculations";
+          updateRecentCalculationsDisplay();
+        }
+      }
 
-        // Update UI to reflect defaults
-        document
-          .querySelectorAll(".mode-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelector("[onclick=\"setMode('exclusive')\"]")
-          .classList.add("active");
+      // Update Recent Calculations Display
+      function updateRecentCalculationsDisplay() {
+        const recentList = document.getElementById("recentCalculationsList");
 
-        document
-          .querySelectorAll(".rate-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelector('[onclick="setRate(18)"]')
-          .classList.add("active");
+        if (calculationHistory.length === 0) {
+          recentList.innerHTML =
+            '<div class="recent-calculations-empty">No calculations yet</div>';
+          return;
+        }
 
-        document
-          .querySelectorAll(".type-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelector("[onclick=\"setTransactionType('intrastate')\"]")
-          .classList.add("active");
-
-        // Reset results
-        document.getElementById("originalAmount").textContent = "₹0";
-        document.getElementById("totalGst").textContent = "₹0";
-        document.getElementById("totalAmount").textContent = "₹0";
-        document.getElementById("cgst").textContent = "₹0";
-        document.getElementById("sgst").textContent = "₹0";
-        document.getElementById("igst").textContent = "₹0";
-
-        // Hide Calculate Again button
-        const calculateAgainBtn = document.getElementById("calculateAgainBtn");
-        calculateAgainBtn.classList.remove("show");
-
-        // Smooth scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-
-        // Focus on amount field after scroll
-        setTimeout(() => {
-          document.getElementById("amount").focus();
-        }, 500);
+        recentList.innerHTML = calculationHistory
+          .slice(0, 5) // Show only last 5 calculations
+          .map(
+            (calc, index) => `
+            <div class="history-item" onclick="loadCalculation(${index})">
+              <div class="history-item-title">${formatIndianCurrency(
+                calc.amount
+              )} @ ${calc.rate}%</div>
+              <div class="history-item-details">
+                <span>Total: ${formatIndianCurrency(
+                  calc.results.totalAmount
+                )}</span>
+                <span>•</span>
+                <span>${calc.mode}</span>
+                <span>•</span>
+                <span>${calc.type}</span>
+              </div>
+            </div>
+          `
+          )
+          .join("");
       }
 
       // History Management functions
@@ -2216,12 +2461,9 @@
       }
 
       function updateHistoryDisplay() {
-        const mobileList = document.getElementById("historyList");
         const desktopList = document.getElementById("desktopHistoryList");
 
         if (calculationHistory.length === 0) {
-          mobileList.innerHTML =
-            '<div class="history-empty">No calculations yet</div>';
           desktopList.innerHTML =
             '<div class="history-empty">No calculations yet</div>';
           return;
@@ -2231,7 +2473,7 @@
           .map(
             (item) => `
           <div class="history-item" onclick="loadFromHistory(${item.id})">
-            <div class="history-item-amount">₹${formatIndianCurrency(
+            <div class="history-item-amount">${formatIndianCurrency(
               item.amount
             )}</div>
             <div class="history-item-details">
@@ -2245,7 +2487,6 @@
           )
           .join("");
 
-        mobileList.innerHTML = historyHTML;
         desktopList.innerHTML = historyHTML;
       }
 
@@ -2285,29 +2526,24 @@
         calculate();
       }
 
-      function clearHistory() {
-        if (confirm("Clear all calculation history?")) {
-          calculationHistory = [];
-          localStorage.removeItem("gstHistory");
-          updateHistoryDisplay();
-        }
+      function showClearModal() {
+        document.getElementById("clearModal").classList.add("show");
       }
 
-      function toggleHistory() {
-        const toggle = document.querySelector(".history-toggle");
-        const content = document.getElementById("historyContent");
-        const icon = document.querySelector(".history-toggle-icon");
-        const text = document.querySelector(".history-toggle-text");
+      function closeClearModal() {
+        document.getElementById("clearModal").classList.remove("show");
+      }
 
-        if (content.classList.contains("expanded")) {
-          content.classList.remove("expanded");
-          toggle.classList.remove("expanded");
-          text.textContent = "Show History";
-        } else {
-          content.classList.add("expanded");
-          toggle.classList.add("expanded");
-          text.textContent = "Hide History";
-        }
+      function confirmClearHistory() {
+        calculationHistory = [];
+        localStorage.removeItem("gstHistory");
+        updateHistoryDisplay();
+        updateRecentCalculationsDisplay();
+        closeClearModal();
+      }
+
+      function clearHistory() {
+        showClearModal();
       }
 
       // Tools dropdown functionality
