@@ -426,14 +426,15 @@
         font-size: 14px;
         line-height: 1.3; /* CHANGED from 1.6 to 1.3 */
         letter-spacing: -0.5px;
-        height: 280px; /* CHANGED - fixed height instead of min/max */
+        height: 400px; /* Increased height to show more content */
         position: relative;
         overflow-y: auto; /* Keep the scrollbar */
         overflow-x: hidden;
         word-wrap: break-word;
         white-space: pre-wrap;
-        padding: 0 !important; /* Remove all padding */
-        margin: 0 !important; /* Remove all margin */
+        background: #1a1a1a;
+        border-radius: 8px;
+        padding: 20px;
       }
 
       .code-content > div:first-child {
@@ -518,7 +519,7 @@
 
       .code-panel div {
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 4px 0 !important;
       }
 
       @keyframes fadeIn {
@@ -1430,7 +1431,7 @@
 
         .code-content {
           font-size: 12px;
-          height: 220px; /* Fixed smaller height for mobile */
+          height: 300px; /* Increased height for mobile */
           width: 100%;
           max-width: 100%;
         }
