@@ -2461,33 +2461,8 @@
       }
 
       function updateHistoryDisplay() {
-        const desktopList = document.getElementById("desktopHistoryList");
-
-        if (calculationHistory.length === 0) {
-          desktopList.innerHTML =
-            '<div class="history-empty">No calculations yet</div>';
-          return;
-        }
-
-        const historyHTML = calculationHistory
-          .map(
-            (item) => `
-          <div class="history-item" onclick="loadFromHistory(${item.id})">
-            <div class="history-item-amount">${formatIndianCurrency(
-              item.amount
-            )}</div>
-            <div class="history-item-details">
-              <span>${item.rate}% ${
-              item.type === "intrastate" ? "CGST+SGST" : "IGST"
-            }</span>
-              <span>${item.mode === "exclusive" ? "Excl" : "Incl"}</span>
-            </div>
-          </div>
-        `
-          )
-          .join("");
-
-        desktopList.innerHTML = historyHTML;
+        // Update the recent calculations display in the results section
+        updateRecentCalculationsDisplay();
       }
 
       function loadFromHistory(id) {
@@ -2537,7 +2512,6 @@
       function confirmClearHistory() {
         calculationHistory = [];
         localStorage.removeItem("gstHistory");
-        updateHistoryDisplay();
         updateRecentCalculationsDisplay();
         closeClearModal();
       }
