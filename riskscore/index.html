@@ -209,45 +209,62 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background: white;
-        min-width: 200px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        background: #1f2937;
+        color: white;
+        width: 224px;
         border-radius: 8px;
-        z-index: 1000;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -2px rgba(0, 0, 0, 0.2);
         padding: 8px 0;
-        margin-top: 8px;
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
       }
 
       .dropdown.active .dropdown-content {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .dropdown-section {
-        padding: 8px 0;
+        margin-bottom: 8px;
       }
 
-      .dropdown-section h4 {
+      .dropdown-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .dropdown-section-title {
+        padding: 4px 12px;
         font-size: 12px;
-        font-weight: 600;
-        color: var(--gray);
+        color: #9ca3af;
         text-transform: uppercase;
+        font-weight: 500;
         letter-spacing: 0.5px;
-        margin: 0 0 8px 0;
-        padding: 0 16px;
       }
 
       .dropdown-section a {
-        display: block;
-        padding: 8px 16px;
-        color: var(--dark);
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        color: white;
         text-decoration: none;
         font-size: 14px;
-        transition: background-color 0.2s;
+        transition: background-color 0.2s ease;
+        border-radius: 6px;
+        margin: 2px 8px;
       }
 
       .dropdown-section a:hover {
-        background-color: var(--light-gray);
-        color: var(--primary);
+        background-color: #374151;
+        transition: background-color 0.2s ease;
+      }
+
+      .dropdown-divider {
+        border-top: 1px solid #374151;
+        margin: 8px 0;
       }
 
       .btn {
@@ -1828,13 +1845,17 @@
             </button>
             <div class="dropdown-content">
               <div class="dropdown-section">
-                <h4>Premium Tools</h4>
-                <a href="/riskscore">🛡️ RiskScore API</a>
-                <a href="/dupecheck">🔍 DupeCheck</a>
+                <div class="dropdown-section-title">Premium Tools</div>
+                <a href="/riskscore"> RiskScore API </a>
+                <a href="/dupecheck"> DupeCheck </a>
               </div>
+
+              <div class="dropdown-divider"></div>
+
               <div class="dropdown-section">
-                <h4>Free Tools</h4>
-                <a href="/gst-calculator">🧮 GST Calculator</a>
+                <div class="dropdown-section-title">Free Tools</div>
+                <a href="/gst-calculator"> GST Calculator </a>
+                <a href="/gaming-calculators"> Gaming Calculators </a>
               </div>
             </div>
           </div>

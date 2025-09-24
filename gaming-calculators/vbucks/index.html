@@ -1107,10 +1107,27 @@
             style="min-height: 90px; margin-top: 1rem"
           >
             <div class="ad-placeholder">
-              <p>📊 This free calculator is supported by ads</p>
-              <p style="font-size: 0.875rem; opacity: 0.8">
-                Help us keep it free - disable your ad blocker
-              </p>
+              <div
+                style="
+                  text-align: center;
+                  padding: 40px 20px;
+                  background: #f8f9fa;
+                  border: 2px dashed #dee2e6;
+                  border-radius: 8px;
+                  color: #6c757d;
+                  height: 520px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <div
+                  style="font-size: 16px; font-weight: 500; margin-bottom: 12px"
+                >
+                  Advertisement Space
+                </div>
+                <div style="font-size: 14px">Ad loading...</div>
+              </div>
             </div>
           </div>
 
@@ -1153,10 +1170,23 @@
           style="min-height: 250px"
         >
           <div class="ad-placeholder">
-            <p>📊 This free calculator is supported by ads</p>
-            <p style="font-size: 0.875rem; opacity: 0.8">
-              Help us keep it free - disable your ad blocker
-            </p>
+            <div
+              style="
+                text-align: center;
+                padding: 20px;
+                background: #f8f9fa;
+                border: 2px dashed #dee2e6;
+                border-radius: 8px;
+                color: #6c757d;
+              "
+            >
+              <div
+                style="font-size: 14px; font-weight: 500; margin-bottom: 8px"
+              >
+                Advertisement Space
+              </div>
+              <div style="font-size: 12px">Ad loading...</div>
+            </div>
           </div>
         </div>
 
@@ -1328,8 +1358,27 @@
           style="min-height: 600px"
         >
           <div class="ad-placeholder">
-            <p>📊 Sponsored</p>
-            <p style="font-size: 0.875rem; opacity: 0.8">Advertisement</p>
+            <div
+              style="
+                text-align: center;
+                padding: 40px 20px;
+                background: #f8f9fa;
+                border: 2px dashed #dee2e6;
+                border-radius: 8px;
+                color: #6c757d;
+                height: 520px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                style="font-size: 16px; font-weight: 500; margin-bottom: 12px"
+              >
+                Advertisement Space
+              </div>
+              <div style="font-size: 14px">Ad loading...</div>
+            </div>
           </div>
         </div>
       </aside>
@@ -1343,26 +1392,26 @@
       const SecurityManager = {
         // 1. Input validation: Limit to numbers only, max 999999999, no negative
         validateInput(value) {
-          if (value === null || value === undefined || value === '') return 0;
-          
+          if (value === null || value === undefined || value === "") return 0;
+
           // Remove any non-numeric characters except decimal point
-          const cleaned = String(value).replace(/[^0-9.]/g, '');
-          
+          const cleaned = String(value).replace(/[^0-9.]/g, "");
+
           // Parse to number
           const num = parseFloat(cleaned);
-          
+
           // Validate range
           if (isNaN(num) || num < 0 || num > 999999999) {
             return Math.max(0, Math.min(999999999, isNaN(num) ? 0 : num));
           }
-          
+
           return num;
         },
 
         // 2. HTML escape all user content
         escapeHtml(text) {
-          if (typeof text !== 'string') return String(text);
-          const div = document.createElement('div');
+          if (typeof text !== "string") return String(text);
+          const div = document.createElement("div");
           div.textContent = text;
           return div.innerHTML;
         },
@@ -1372,7 +1421,7 @@
           try {
             return localStorage.getItem(key);
           } catch (error) {
-            console.warn('localStorage get failed:', error);
+            console.warn("localStorage get failed:", error);
             return null;
           }
         },
@@ -1382,7 +1431,7 @@
             localStorage.setItem(key, value);
             return true;
           } catch (error) {
-            console.warn('localStorage set failed:', error);
+            console.warn("localStorage set failed:", error);
             return false;
           }
         },
@@ -1392,23 +1441,28 @@
             localStorage.removeItem(key);
             return true;
           } catch (error) {
-            console.warn('localStorage remove failed:', error);
+            console.warn("localStorage remove failed:", error);
             return false;
           }
         },
 
         // 5. Sanitize filenames for CSV exports
         sanitizeFilename(filename) {
-          return filename.replace(/[^a-zA-Z0-9._-]/g, '_').substring(0, 100);
+          return filename.replace(/[^a-zA-Z0-9._-]/g, "_").substring(0, 100);
         },
 
         // 6. HTTPS redirect (if not on localhost)
         enforceHTTPS() {
-          if (window.location.hostname !== 'localhost' && 
-              window.location.hostname !== '127.0.0.1' &&
-              window.location.protocol !== 'https:' &&
-              window.location.protocol !== 'file:') {
-            window.location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+          if (
+            window.location.hostname !== "localhost" &&
+            window.location.hostname !== "127.0.0.1" &&
+            window.location.protocol !== "https:" &&
+            window.location.protocol !== "file:"
+          ) {
+            window.location.replace(
+              "https:" +
+                window.location.href.substring(window.location.protocol.length)
+            );
           }
         },
 
@@ -1423,7 +1477,7 @@
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
           };
-        }
+        },
       };
 
       // Initialize HTTPS enforcement
@@ -1447,8 +1501,14 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
-      vbucksInput.addEventListener("input", SecurityManager.debounce(handleVbucksInput, 100));
-      usdInput.addEventListener("input", SecurityManager.debounce(handleUsdInput, 100));
+      vbucksInput.addEventListener(
+        "input",
+        SecurityManager.debounce(handleVbucksInput, 100)
+      );
+      usdInput.addEventListener(
+        "input",
+        SecurityManager.debounce(handleUsdInput, 100)
+      );
       copyBtn.addEventListener("click", copyResult);
       clearBtn.addEventListener("click", clearInputs);
       currencySelect.addEventListener("change", handleCurrencyChange);
@@ -1467,11 +1527,13 @@
         if (isUpdating) return;
 
         // Security: Validate and sanitize input
-        const validatedVbucks = SecurityManager.validateInput(vbucksInput.value);
+        const validatedVbucks = SecurityManager.validateInput(
+          vbucksInput.value
+        );
         if (vbucksInput.value !== String(validatedVbucks)) {
           vbucksInput.value = validatedVbucks;
         }
-        
+
         const vbucks = validatedVbucks;
         const usdValue = vbucks * VBUCKS_RATE;
         const convertedValue = window.currencyManager.convertFromUSD(
@@ -1494,7 +1556,7 @@
         if (usdInput.value !== String(validatedInput)) {
           usdInput.value = validatedInput;
         }
-        
+
         const inputValue = validatedInput;
         const usdValue = window.currencyManager.convertToUSD(
           inputValue,
@@ -1718,7 +1780,10 @@
 
         saveHistory() {
           // Security: Use safe localStorage operations
-          const success = SecurityManager.safeStorageSet(this.storageKey, JSON.stringify(this.history));
+          const success = SecurityManager.safeStorageSet(
+            this.storageKey,
+            JSON.stringify(this.history)
+          );
           if (!success) {
             // If storage is full, remove oldest entries
             this.history = this.history.slice(-25);
@@ -1807,13 +1872,21 @@
             const date = new Date(calc.timestamp).toLocaleDateString();
             const time = new Date(calc.timestamp).toLocaleTimeString();
             // Security: HTML escape all user content
-            const gameAmountEscaped = SecurityManager.escapeHtml(calc.gameAmount.toLocaleString());
-            const currencyNameEscaped = SecurityManager.escapeHtml(this.currencyName);
-            const currencyAmountEscaped = SecurityManager.escapeHtml(calc.currencyAmount.toFixed(2));
-            const currencyTypeEscaped = SecurityManager.escapeHtml(calc.currencyType);
+            const gameAmountEscaped = SecurityManager.escapeHtml(
+              calc.gameAmount.toLocaleString()
+            );
+            const currencyNameEscaped = SecurityManager.escapeHtml(
+              this.currencyName
+            );
+            const currencyAmountEscaped = SecurityManager.escapeHtml(
+              calc.currencyAmount.toFixed(2)
+            );
+            const currencyTypeEscaped = SecurityManager.escapeHtml(
+              calc.currencyType
+            );
             const dateEscaped = SecurityManager.escapeHtml(date);
             const timeEscaped = SecurityManager.escapeHtml(time);
-            
+
             item.innerHTML = `
               <div><strong>${gameAmountEscaped} ${currencyNameEscaped}</strong> = ${
               window.currencyManager
@@ -1870,7 +1943,9 @@
           a.href = url;
           // Security: Sanitize filename for CSV exports
           const sanitizedFilename = SecurityManager.sanitizeFilename(
-            `${this.calculatorName}-history-${new Date().toISOString().split("T")[0]}.csv`
+            `${this.calculatorName}-history-${
+              new Date().toISOString().split("T")[0]
+            }.csv`
           );
           a.download = sanitizedFilename;
           document.body.appendChild(a);
