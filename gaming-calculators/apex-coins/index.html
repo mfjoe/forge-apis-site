@@ -52,7 +52,30 @@
           Roboto, sans-serif;
         line-height: 1.6;
         color: #333;
-        background-color: #f8fafc;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(102, 126, 234, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(118, 75, 162, 0.1) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 8s ease infinite;
+        z-index: -1;
       }
 
       :root {
@@ -64,6 +87,51 @@
         --light-gray: #f3f4f6;
         --white: #ffffff;
         --gradient: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Keyframe Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       .container {
@@ -78,6 +146,8 @@
         padding: 1rem 0;
         border-bottom: 1px solid #e5e7eb;
         margin-bottom: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
       }
 
       .breadcrumb-list {
@@ -102,11 +172,15 @@
       .breadcrumb-link {
         color: var(--primary);
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.25rem 0.5rem;
       }
 
       .breadcrumb-link:hover {
         color: var(--primary-dark);
+        background: rgba(0, 188, 212, 0.1);
+        transform: translateY(-1px);
       }
 
       .logo-link {
@@ -133,24 +207,52 @@
 
       /* FAQ Section */
       .faq-section {
-        background: var(--white);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 16px;
         padding: 2rem;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
+        animation: fadeInUp 0.6s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .faq-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
       }
 
       .faq-title {
         font-size: 2rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--dark);
         margin-bottom: 1.5rem;
         text-align: center;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .faq-item {
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
         margin-bottom: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+      }
+
+      .faq-item:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .faq-item:last-child {
@@ -162,12 +264,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 0;
+        padding: 1.5rem;
         cursor: pointer;
         font-weight: 600;
         color: var(--dark);
         font-size: 1.1rem;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+
+      .faq-question:hover {
+        background: rgba(0, 188, 212, 0.1);
+        transform: translateX(4px);
+        color: var(--primary);
       }
 
       .faq-question:hover {
@@ -187,23 +296,43 @@
       .faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
-        padding: 0 0 1.5rem 0;
+        transition: all 0.4s ease;
+        padding: 0 1.5rem 1.5rem 1.5rem;
         color: var(--gray);
         line-height: 1.7;
+        transform: translateY(-10px);
+        opacity: 0;
       }
 
       .faq-item.active .faq-answer {
         max-height: 200px;
+        transform: translateY(0);
+        opacity: 1;
       }
 
       /* Calculator Styles */
       .calculator-container {
-        background: var(--white);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 16px;
         padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
         margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .calculator-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
       }
 
       .calculator-header {
@@ -213,9 +342,11 @@
 
       .calculator-title {
         font-size: 2.5rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--dark);
         margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .calculator-subtitle {
@@ -238,6 +369,14 @@
         border: 1px solid #00bcd4;
         border-radius: 12px;
         padding: 1rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 188, 212, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .currency-selector:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 188, 212, 0.3);
       }
 
       .currency-helper-text {
@@ -302,37 +441,45 @@
       .calculator-input {
         padding: 1rem;
         border: 2px solid #e5e7eb;
-        border-radius: 8px;
+        border-radius: 12px;
         font-size: 1.1rem;
         font-weight: 500;
-        transition: border-color 0.3s ease;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
       }
 
       .calculator-input:focus {
         outline: none;
-        border-color: var(--primary);
+        border-color: transparent;
+        box-shadow: 0 0 0 2px var(--gradient),
+          inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.95);
+        transform: translateY(-1px);
       }
 
       .conversion-arrow {
         font-size: 2rem;
-        color: var(--primary);
+        color: var(--white);
         text-align: center;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
         padding: 0.5rem;
         border-radius: 50%;
-        background: var(--light-gray);
+        background: var(--gradient);
         width: 60px;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
       }
 
       .conversion-arrow:hover {
-        transform: rotate(180deg);
-        background: var(--primary);
-        color: var(--white);
+        transform: scale(1.1) rotate(180deg);
+        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
       }
 
       .quick-amounts {
@@ -345,18 +492,21 @@
       .quick-btn {
         padding: 1rem;
         border: none;
-        border-radius: 8px;
-        background: var(--light-gray);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.8);
         color: var(--dark);
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .quick-btn:hover {
-        background: var(--primary);
+        background: var(--gradient);
         color: var(--white);
-        transform: translateY(-2px);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
       }
 
       .action-buttons {
@@ -369,45 +519,68 @@
       .action-btn {
         padding: 1rem 2rem;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .action-btn:first-child {
-        background: var(--primary);
+        background: var(--gradient);
         color: var(--white);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
       }
 
       .action-btn:first-child:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
       }
 
       .action-btn.secondary {
-        background: var(--light-gray);
+        background: rgba(255, 255, 255, 0.8);
         color: var(--dark);
+        backdrop-filter: blur(5px);
       }
 
       .action-btn.secondary:hover {
-        background: #e5e7eb;
-        transform: translateY(-2px);
+        background: rgba(229, 231, 235, 0.9);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       }
 
       .content-section {
-        background: var(--white);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 16px;
         padding: 2rem;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
+        animation: fadeInUp 0.6s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
       }
 
       .section-title {
         font-size: 1.8rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--dark);
         margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .section-subtitle {
@@ -427,23 +600,37 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
       }
 
       .pricing-table th,
       .pricing-table td {
         padding: 1rem;
         text-align: left;
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        transition: all 0.3s ease;
       }
 
       .pricing-table th {
-        background: var(--light-gray);
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
         font-weight: 600;
-        color: var(--dark);
+        color: var(--white);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       }
 
       .pricing-table tr:hover {
-        background: #f9fafb;
+        background: rgba(0, 188, 212, 0.1);
+        transform: scale(1.01);
+      }
+
+      .pricing-table tr:hover td {
+        color: var(--primary);
       }
 
       .ad-slot {
