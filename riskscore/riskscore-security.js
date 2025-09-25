@@ -80,10 +80,6 @@
   };
 
   function switchTab(language) {
-    console.log("switchTab called with language:", JSON.stringify(language));
-    console.log("language length:", language.length);
-    console.log("language trimmed:", JSON.stringify(language.trim()));
-
     // Remove active class from all tabs and panels
     document.querySelectorAll(".tab-button").forEach((btn) => {
       btn.classList.remove("active");
@@ -94,62 +90,40 @@
 
     // Add active class to clicked tab
     const trimmedLanguage = language.trim();
-    console.log(
-      "Looking for selector:",
-      `[data-language="${trimmedLanguage}"]`
-    );
     const activeButton = document.querySelector(
       `[data-language="${trimmedLanguage}"]`
     );
     if (activeButton) {
-      console.log("Found active button");
       activeButton.classList.add("active");
-    } else {
-      console.log("Active button not found");
     }
 
     // Show corresponding panel
     const panelId = codePanels[trimmedLanguage];
-    console.log("Panel ID:", panelId);
     if (panelId) {
       const panel = document.getElementById(panelId);
       if (panel) {
-        console.log("Found panel, adding active class");
         panel.classList.add("active");
-      } else {
-        console.log("Panel not found");
       }
     }
   }
 
   function initTabSwitcher() {
-    console.log("initTabSwitcher called");
-    // Convert onclick to event listeners
-    document.querySelectorAll(".tab-button").forEach((button, index) => {
-      console.log(
-        `Button ${index} textContent:`,
-        JSON.stringify(button.textContent)
-      );
-      const language = button.textContent
-        .trim()
-        .toLowerCase()
-        .replace(".js", "js");
-      console.log(
-        `Button ${index} processed language:`,
-        JSON.stringify(language)
-      );
-      button.setAttribute("data-language", language);
-      console.log(
-        `Button ${index} data-language set to:`,
-        button.getAttribute("data-language")
-      );
-
+    // Language tab switching
+    document.querySelectorAll(".tab-button").forEach((button) => {
       button.addEventListener("click", function () {
-        console.log(
-          "Button clicked, calling switchTab with:",
-          JSON.stringify(language)
-        );
-        switchTab(language);
+        const language = this.getAttribute("data-language");
+
+        // Update active tab
+        document
+          .querySelectorAll(".tab-button")
+          .forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        // Update active panel
+        document
+          .querySelectorAll(".code-panel")
+          .forEach((panel) => panel.classList.remove("active"));
+        document.getElementById(language + "-panel").classList.add("active");
       });
     });
   }
@@ -392,10 +366,8 @@ ${signals}
   // ============================================
 
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded - initializing");
     initSmoothScrolling();
     initTabSwitcher();
     initDemoButtons();
-    console.log("Initialization complete");
   });
 })();
