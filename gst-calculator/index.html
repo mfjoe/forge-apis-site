@@ -95,12 +95,18 @@
           #f0fdfa 100%
         );
         min-height: 100vh;
-        padding: 1rem;
+        padding: 1rem 1rem 0 1rem;
         padding-top: 120px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        margin: 0;
+      }
+
+      html {
+        margin: 0;
+        padding: 0;
       }
 
       /* Navigation - same as your site */
@@ -680,16 +686,119 @@
       }
 
       /* Footer */
-      .footer-text {
-        text-align: center;
-        color: #999;
-        margin-top: 2rem;
-        font-size: 0.8rem;
+      /* Footer */
+      .footer {
+        background: #0f172a;
+        color: white;
+        padding: 80px 0 40px;
+        margin-top: 60px;
+        width: 100%; /* Ensure full width */
       }
 
-      .footer-text a {
-        color: var(--secondary);
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 60px;
+        margin-bottom: 40px;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+        justify-items: start;
+      }
+
+      .footer-brand .logo {
+        margin-bottom: 12px;
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin: 12px 0;
+      }
+
+      .footer-powered {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        color: white;
+      }
+
+      .footer-column a {
+        display: block;
+        color: #9ca3af;
         text-decoration: none;
+        margin-bottom: 12px;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-subsection {
+        margin-bottom: 20px;
+      }
+
+      .footer-subsection h5 {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        color: #d1d5db;
+      }
+
+      .footer-bottom {
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .footer-bottom-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-contact-link {
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-contact-link:hover {
+        color: white;
+      }
+
+      .footer-bottom-left p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .footer-note {
+        margin-top: 8px !important;
+        font-style: italic;
       }
 
       /* Ad Container Styles */
@@ -900,7 +1009,7 @@
         /* Tighter body spacing */
         body {
           padding-top: 50px; /* Just nav height */
-          padding-bottom: 70px; /* Space for sticky bottom ad + buffer */
+          padding-bottom: 0; /* Remove bottom padding for footer */
           padding-left: 10px;
           padding-right: 10px;
           min-height: 100vh;
@@ -1490,6 +1599,31 @@
         .faq-item h3 {
           font-size: 1.1rem;
         }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-links {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+
+        .footer-bottom-right {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 968px) {
+        .footer-links {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
       }
     </style>
   </head>
@@ -1959,11 +2093,6 @@
           </div>
         </div>
 
-        <div class="footer-text">
-          Powered by <a href="https://forgeapis.com">Forge APIs</a> • Free Tools
-          for Everyone
-        </div>
-
         <!-- SEO Content Sections -->
         <div class="content-section">
           <h2>Understanding GST in India</h2>
@@ -2155,6 +2284,66 @@
         </div>
       </aside>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">GST Calculator</div>
+            <p>Free GST calculator for accurate tax calculations</p>
+            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
+          </div>
+
+          <div class="footer-links">
+            <!-- Column 1 - Products -->
+            <div class="footer-column">
+              <h4>Products</h4>
+              <div class="footer-subsection">
+                <h5>Premium APIs</h5>
+                <a href="/riskscore">RiskScore API</a>
+                <a href="/dupecheck">DupeCheck</a>
+                <a href="#">Coming Soon</a>
+              </div>
+              <div class="footer-subsection">
+                <h5>Free Tools</h5>
+                <a href="/gst-calculator">GST Calculator</a>
+                <a href="/gaming-calculators">Gaming Calculators</a>
+              </div>
+            </div>
+
+            <!-- Column 2 - Company -->
+            <div class="footer-column">
+              <h4>Company</h4>
+              <a href="https://forgeapis.com">Forge APIs</a>
+              <a href="mailto:hello@forgeapis.com">Contact Us</a>
+            </div>
+
+            <!-- Column 3 - Legal -->
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="/privacy.html">Privacy Policy</a>
+              <a href="/cookies.html">Cookie Policy</a>
+              <a href="/terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-left">
+            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
+            <p class="footer-note">
+              Free tools for everyone. Accurate calculations, always.
+            </p>
+          </div>
+          <div class="footer-bottom-right">
+            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
+              📧 Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Custom Modal for Clear Confirmation -->
     <div id="clearModal" class="modal-overlay">

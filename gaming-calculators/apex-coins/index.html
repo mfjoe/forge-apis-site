@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Apex Coins to USD Calculator - Apex Legends Currency Converter (2025)
-    </title>
+    <title>Apex Coins Converter - Convert to USD, EUR, GBP & More (2025)</title>
     <meta
       name="description"
-      content="Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Apex Legends currency value, battle pass, and store items instantly. Updated 2025 rates."
+      content="Free Apex Coins converter to convert between Apex Coins and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly for Apex Legends."
     />
     <meta
       name="keywords"
@@ -20,25 +18,25 @@
     />
     <meta
       property="og:title"
-      content="Apex Coins to USD Calculator - Apex Legends Currency Converter"
+      content="Apex Coins Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       property="og:description"
-      content="Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Fortnite currency value, battle pass, and store items instantly."
+      content="Free Apex Coins converter to convert between Apex Coins and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly for Apex Legends."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://forgeapi.dev/gaming-calculators/vbucks/"
+      content="https://forgeapi.dev/gaming-calculators/apex-coins/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Apex Coins to USD Calculator - Apex Legends Currency Converter"
+      content="Apex Coins Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       name="twitter:description"
-      content="Free Fortnite currency calculator. Convert Apex Coins to USD instantly."
+      content="Free Apex Legends currency converter. Convert Apex Coins to USD, EUR, GBP, CAD, AUD instantly."
     />
 
     <style>
@@ -220,16 +218,39 @@
         margin-bottom: 0.5rem;
       }
 
+      .calculator-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
       /* Currency Selector */
       .currency-selector {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
         margin-bottom: 2rem;
+        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        border: 1px solid #00bcd4;
+        border-radius: 12px;
         padding: 1rem;
-        background: var(--light-gray);
-        border-radius: 8px;
+      }
+
+      .currency-helper-text {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .currency-selector-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
       }
 
       .currency-label {
@@ -387,6 +408,14 @@
         font-weight: 700;
         color: var(--dark);
         margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
       }
 
       .section-content {
@@ -553,97 +582,6 @@
         }
       }
 
-      /* Smart Spending Tracker Styles */
-      .spending-tracker {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tracker-summary {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-      }
-
-      .tracker-icon {
-        font-size: 1.2rem;
-      }
-
-      .tracker-text {
-        flex: 1;
-        font-size: 0.9rem;
-        color: var(--dark);
-      }
-
-      .tracker-btn {
-        padding: 0.25rem 0.75rem;
-        background: white;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s;
-        color: var(--dark);
-      }
-
-      .tracker-btn:hover {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-      }
-
-      .tracker-btn.secondary {
-        background: #f8fafc;
-        color: var(--gray);
-      }
-
-      .tracker-btn.secondary:hover {
-        background: #ef4444;
-        color: white;
-        border-color: #ef4444;
-      }
-
-      .tracker-details {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid #cbd5e1;
-      }
-
-      .tracker-details h3 {
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
-        color: var(--dark);
-      }
-
-      .export-btn {
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: background 0.2s;
-      }
-
-      .export-btn:hover {
-        background: var(--primary-dark);
-      }
-
-      .history-item {
-        padding: 0.5rem;
-        background: white;
-        border-radius: 4px;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-        border: 1px solid #e2e8f0;
-      }
-
       /* Better Deal Finder Styles */
       .deal-finder {
         margin-top: 1rem;
@@ -783,20 +721,6 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        .tracker-summary {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
-        .tracker-text {
-          font-size: 0.8rem;
-        }
-
-        .tracker-btn {
-          font-size: 0.8rem;
-          padding: 0.25rem 0.5rem;
-        }
       }
 
       /* Custom Modal Styles */
@@ -932,6 +856,73 @@
 
         .modal-btn {
           width: 100%;
+        }
+      }
+
+      /* Footer Styles */
+      #footer-container {
+        margin-top: 4rem;
+        background: #1a1f2e;
+        color: #9ca3af;
+        padding: 2rem 0;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-column h4 {
+        color: #e5e7eb;
+        font-size: 16px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-column a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-column a:hover {
+        color: #60a5fa;
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding: 1rem;
+        border-top: 1px solid #374151;
+        text-align: center;
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        #footer-container {
+          margin-top: 2rem;
         }
       }
     </style>
@@ -1124,49 +1115,27 @@
         <!-- Calculator -->
         <div class="calculator-container">
           <div class="calculator-header">
-            <h1 class="calculator-title">Apex Coins to USD Calculator</h1>
-          </div>
-
-          <!-- Smart Spending Tracker -->
-          <div class="spending-tracker" id="spendingTracker">
-            <div class="tracker-summary">
-              <span class="tracker-icon">📊</span>
-              <span class="tracker-text"
-                >Your History: <strong id="totalAmount">0</strong>
-                <span id="currencyName">Apex Coins</span> (<span id="totalValue"
-                  >$0.00</span
-                >) over <strong id="calcCount">0</strong> calculations</span
-              >
-              <button class="tracker-btn" id="viewHistory">See Details</button>
-              <button class="tracker-btn secondary" id="clearHistory">
-                Clear
-              </button>
-            </div>
-            <div
-              class="tracker-details"
-              id="trackerDetails"
-              style="display: none"
-            >
-              <h3>Your Calculation History</h3>
-              <div id="historyList"></div>
-              <button class="export-btn" id="exportHistory">
-                Export as CSV
-              </button>
-            </div>
+            <h1 class="calculator-title">Apex Coins Converter</h1>
+            <p class="calculator-subtitle">
+              Convert Apex Coins to USD, EUR, GBP, CAD, AUD & more currencies
+            </p>
           </div>
 
           <!-- Currency Selector -->
           <div class="currency-selector">
-            <label for="currency-select" class="currency-label"
-              >Currency:</label
-            >
-            <select id="currency-select" class="currency-dropdown">
-              <option value="USD">🇺🇸 USD - US Dollar</option>
-              <option value="GBP">🇬🇧 GBP - British Pound</option>
-              <option value="EUR">🇪🇺 EUR - Euro</option>
-              <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
-              <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
-            </select>
+            <div class="currency-helper-text">Select your currency:</div>
+            <div class="currency-selector-wrapper">
+              <label for="currency-select" class="currency-label"
+                >Currency:</label
+              >
+              <select id="currency-select" class="currency-dropdown">
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+              </select>
+            </div>
           </div>
 
           <div class="conversion-section">
@@ -1263,21 +1232,29 @@
           <div>Advertisement Space - Top Banner (728x90)</div>
         </div>
 
-        <!-- How Much Are Apex Coins Worth in 2025? -->
+        <!-- How Much Are Apex Coins Worth Worldwide? -->
         <div class="content-section">
-          <h2 class="section-title">How Much Are Apex Coins Worth in 2025?</h2>
+          <h2 class="section-title">
+            How Much Are Apex Coins Worth Worldwide?
+          </h2>
           <div class="section-content">
             <p>
-              Apex Coins are Fortnite's premium currency used to purchase
+              Apex Coins are Apex Legends' premium currency used to purchase
               cosmetic items, battle passes, and other in-game content.
               Understanding Apex Coins value helps you make informed purchasing
               decisions and budget your gaming expenses effectively.
             </p>
             <p>
+              Our converter supports multiple currencies including USD, EUR,
+              GBP, CAD, and AUD. The calculator automatically converts using
+              current exchange rates, making it easy for players worldwide to
+              understand Apex Coins values in their local currency.
+            </p>
+            <p>
               The value of Apex Coins has remained consistent over the years,
-              with Epic Games maintaining stable pricing across all regions.
-              This calculator helps you understand the real-world cost of your
-              Apex Coins purchases.
+              with EA/Respawn Entertainment maintaining stable pricing across
+              all regions. This calculator helps you understand the real-world
+              cost of your Apex Coins purchases.
             </p>
           </div>
         </div>
@@ -1326,14 +1303,14 @@
             <tbody>
               <tr>
                 <td>1,000 Apex Coins</td>
-                <td>$7.99</td>
-                <td>£6.24</td>
-                <td>€6.79</td>
-                <td>C$10.78</td>
-                <td>A$11.83</td>
+                <td>$9.99</td>
+                <td>£7.79</td>
+                <td>€8.49</td>
+                <td>C$13.49</td>
+                <td>A$14.79</td>
               </tr>
               <tr>
-                <td>2,800 Apex Coins</td>
+                <td>2,150 Apex Coins (includes bonus)</td>
                 <td>$19.99</td>
                 <td>£15.59</td>
                 <td>€16.99</td>
@@ -1341,20 +1318,28 @@
                 <td>A$29.58</td>
               </tr>
               <tr>
-                <td>5,000 Apex Coins</td>
-                <td>$31.99</td>
-                <td>£24.95</td>
-                <td>€27.19</td>
-                <td>C$43.19</td>
-                <td>A$47.35</td>
+                <td>4,350 Apex Coins (includes bonus)</td>
+                <td>$39.99</td>
+                <td>£31.19</td>
+                <td>€33.99</td>
+                <td>C$53.99</td>
+                <td>A$59.18</td>
               </tr>
               <tr>
-                <td>13,500 Apex Coins</td>
-                <td>$79.99</td>
-                <td>£62.39</td>
-                <td>€67.99</td>
-                <td>C$107.99</td>
-                <td>A$118.39</td>
+                <td>6,700 Apex Coins (includes bonus)</td>
+                <td>$59.99</td>
+                <td>£46.79</td>
+                <td>€50.99</td>
+                <td>C$80.99</td>
+                <td>A$88.77</td>
+              </tr>
+              <tr>
+                <td>11,500 Apex Coins (includes bonus)</td>
+                <td>$99.99</td>
+                <td>£77.99</td>
+                <td>€84.99</td>
+                <td>C$134.99</td>
+                <td>A$147.96</td>
               </tr>
             </tbody>
           </table>
@@ -1368,33 +1353,39 @@
               <tr>
                 <th>Apex Coins</th>
                 <th>USD Price</th>
-                <th>Per V-Buck</th>
+                <th>Per Apex Coin</th>
                 <th>Best For</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1,000</td>
-                <td data-usd="7.99">$7.99</td>
-                <td data-usd="0.00799">$0.00799</td>
+                <td data-usd="9.99">$9.99</td>
+                <td data-usd="0.00999">$0.00999</td>
                 <td>Single Items</td>
               </tr>
               <tr>
-                <td>2,800</td>
+                <td>2,150</td>
                 <td data-usd="19.99">$19.99</td>
-                <td data-usd="0.00714">$0.00714</td>
+                <td data-usd="0.00930">$0.00930</td>
                 <td>Battle Pass</td>
               </tr>
               <tr>
-                <td>5,000</td>
-                <td data-usd="31.99">$31.99</td>
-                <td data-usd="0.00640">$0.00640</td>
+                <td>4,350</td>
+                <td data-usd="39.99">$39.99</td>
+                <td data-usd="0.00919">$0.00919</td>
                 <td>Skin Bundles</td>
               </tr>
               <tr>
-                <td>13,500</td>
-                <td data-usd="79.99">$79.99</td>
-                <td data-usd="0.00593">$0.00593</td>
+                <td>6,700</td>
+                <td data-usd="59.99">$59.99</td>
+                <td data-usd="0.00895">$0.00895</td>
+                <td>Multiple Items</td>
+              </tr>
+              <tr>
+                <td>11,500</td>
+                <td data-usd="99.99">$99.99</td>
+                <td data-usd="0.00869">$0.00869</td>
                 <td>Bulk Purchases</td>
               </tr>
             </tbody>
@@ -1411,8 +1402,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              1000 Apex Coins costs $7.99 USD. This is the standard rate for the
-              smallest Apex Coins package available in the Fortnite store.
+              1000 Apex Coins costs $9.99 USD. This is the standard rate for the
+              smallest Apex Coins package available in the Apex Legends store.
             </div>
           </div>
 
@@ -1422,9 +1413,9 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              The exchange rate is $0.00799 per V-Buck (1000 Apex Coins =
-              $7.99). This rate is consistent across all Apex Coins packages,
-              though larger packages may offer slight discounts per V-Buck.
+              The exchange rate is $0.00999 per Apex Coin (1000 Apex Coins =
+              $9.99). This rate is consistent across all Apex Coins packages,
+              though larger packages may offer slight discounts per Apex Coin.
             </div>
           </div>
 
@@ -1434,8 +1425,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              $10 gets you approximately 1,251 Apex Coins. This is based on the
-              standard rate of $0.00799 per V-Buck.
+              $10 gets you approximately 1,000 Apex Coins. This is based on the
+              standard rate of $0.00999 per Apex Coin.
             </div>
           </div>
 
@@ -1445,8 +1436,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              13,500 Apex Coins costs $79.99 USD. This is the largest Apex Coins
-              package available and offers the best value per V-Buck.
+              11,500 Apex Coins costs $99.99 USD. This is the largest Apex Coins
+              package available and offers the best value per Apex Coin.
             </div>
           </div>
 
@@ -1456,9 +1447,20 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              Apex Coins prices are fixed by Epic Games. Beware of scams
-              offering discounted Apex Coins - these are often fraudulent and
-              can result in account bans.
+              Apex Coins prices are fixed by EA/Respawn Entertainment. Beware of
+              scams offering discounted Apex Coins - these are often fraudulent
+              and can result in account bans.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>Which currencies does this converter support?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Our Apex Coins converter supports USD, EUR, GBP, CAD, and AUD with
+              real-time exchange rates.
             </div>
           </div>
         </div>
@@ -1505,6 +1507,7 @@
 
     <!-- Include the existing JavaScript functionality -->
     <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
+    <script src="/gaming-calculators/assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -1602,8 +1605,8 @@
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 1000 Apex Coins = $7.99
-      const APEX_RATE = 7.99 / 1000; // $0.00799 per Apex Coin
+      // Exchange rate: 1000 Apex Coins = $9.99
+      const APEX_RATE = 9.99 / 1000; // $0.00999 per Apex Coin
 
       // DOM elements
       const apexInput = document.getElementById("apex-input");
@@ -1624,6 +1627,67 @@
       quickBtns.forEach((btn) => {
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
       });
+
+      // Conversion arrow functionality - swap between Apex Coins and USD inputs
+      const conversionArrow = document.querySelector(".conversion-arrow");
+
+      console.log("Conversion arrow element:", conversionArrow);
+
+      if (conversionArrow) {
+        console.log("Adding click event listener to conversion arrow");
+
+        conversionArrow.addEventListener("click", (e) => {
+          console.log("Conversion arrow clicked!");
+          e.preventDefault();
+
+          // Get the input groups using more reliable selectors
+          const allInputGroups = document.querySelectorAll(".input-group");
+
+          console.log("Found input groups:", allInputGroups.length);
+
+          if (allInputGroups.length >= 2) {
+            console.log("Swapping input field positions");
+
+            // Get the parent container
+            const conversionSection = document.querySelector(
+              ".conversion-section"
+            );
+
+            if (conversionSection) {
+              // Always swap the first two input groups (regardless of their current order)
+              const firstGroup = allInputGroups[0];
+              const secondGroup = allInputGroups[1];
+
+              console.log("First group:", firstGroup);
+              console.log("Second group:", secondGroup);
+
+              // Get the arrow element to preserve its position
+              const arrowElement = document.querySelector(".conversion-arrow");
+
+              // Remove both groups from their current positions
+              firstGroup.remove();
+              secondGroup.remove();
+
+              // Insert them back in swapped order, ensuring arrow stays in the middle
+              // Insert second group first (before arrow)
+              conversionSection.insertBefore(secondGroup, arrowElement);
+              // Insert first group last (after arrow)
+              conversionSection.insertBefore(
+                firstGroup,
+                arrowElement.nextSibling
+              );
+
+              console.log("Fields swapped successfully");
+            }
+          } else {
+            console.error("Could not find enough input groups to swap");
+          }
+
+          console.log("Swap completed");
+        });
+      } else {
+        console.error("Conversion arrow element not found!");
+      }
 
       // Initialize currency and load saved calculation
       initializeCurrency().then(() => {
@@ -1654,15 +1718,9 @@
         saveCalculation();
 
         // Add tracking
-        if (spendingTracker && apexInput.value && usdInput.value) {
+        if (apexInput.value && usdInput.value) {
           const gameAmount = parseFloat(apexInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "Apex Coins",
-            currencyAmount,
-            currentCurrency
-          );
           if (dealFinder) {
             dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
           }
@@ -1692,15 +1750,9 @@
         saveCalculation();
 
         // Add tracking
-        if (spendingTracker && apexInput.value && usdInput.value) {
+        if (apexInput.value && usdInput.value) {
           const gameAmount = parseFloat(apexInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "Apex Coins",
-            currencyAmount,
-            currentCurrency
-          );
           if (dealFinder) {
             dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
           }
@@ -2155,13 +2207,11 @@
       }
 
       // Initialize features
-      let spendingTracker;
       let dealFinder;
 
       // Initialize after currency system is ready
       async function initializeFeatures() {
         // Currency manager is already initialized by initializeCurrency()
-        spendingTracker = new SpendingTracker("apex", "Apex Coins");
         dealFinder = new DealFinder();
       }
 
@@ -2171,29 +2221,6 @@
       });
 
       // Modal functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("confirmModal");
-        const cancelBtn = document.getElementById("modalCancel");
-        const confirmBtn = document.getElementById("modalConfirm");
-
-        cancelBtn.addEventListener("click", () => {
-          modal.classList.remove("show");
-        });
-
-        confirmBtn.addEventListener("click", () => {
-          if (spendingTracker) {
-            spendingTracker.clearHistory();
-          }
-          modal.classList.remove("show");
-        });
-
-        // Close modal when clicking overlay
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            modal.classList.remove("show");
-          }
-        });
-      });
     </script>
 
     <!-- FAQ Toggle Functionality -->
@@ -2230,9 +2257,9 @@
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Apex Coins to USD Calculator",
-        "description": "Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Fortnite currency value, battle pass, and store items instantly. Updated 2025 rates.",
-        "url": "https://forgeapi.dev/gaming-calculators/vbucks/",
+        "name": "Apex Coins Currency Converter",
+        "description": "Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Apex Legends currency value, battle pass, and store items instantly. Updated 2025 rates.",
+        "url": "https://forgeapi.dev/gaming-calculators/apex-coins/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -2275,7 +2302,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "Apex Coins Calculator",
-            "item": "https://forgeapi.dev/gaming-calculators/vbucks/"
+            "item": "https://forgeapi.dev/gaming-calculators/apex-coins/"
           }
         ]
       }
@@ -2291,7 +2318,7 @@
             "name": "How much is 1000 Apex Coins in USD?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "1000 Apex Coins costs $7.99 USD. This is the standard rate for the smallest Apex Coins package available in the Fortnite store."
+              "text": "1000 Apex Coins costs $9.99 USD. This is the standard rate for the smallest Apex Coins package available in the Apex Legends store."
             }
           },
           {
@@ -2323,7 +2350,7 @@
             "name": "Can I get Apex Coins cheaper?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Apex Coins prices are fixed by Epic Games. Beware of scams offering discounted Apex Coins - these are often fraudulent and can result in account bans."
+              "text": "Apex Coins prices are fixed by EA/Respawn Entertainment. Beware of scams offering discounted Apex Coins - these are often fraudulent and can result in account bans."
             }
           }
         ]
@@ -2362,26 +2389,6 @@
     </script>
 
     <!-- Custom Modal -->
-    <div class="modal-overlay" id="confirmModal">
-      <div class="modal-dialog">
-        <div class="modal-header">
-          <div class="modal-icon">⚠️</div>
-          <h3 class="modal-title">Clear History</h3>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to clear your calculation history? This action
-          cannot be undone.
-        </div>
-        <div class="modal-actions">
-          <button class="modal-btn modal-btn-secondary" id="modalCancel">
-            Cancel
-          </button>
-          <button class="modal-btn modal-btn-primary" id="modalConfirm">
-            Clear History
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Google AdSense -->
     <script
@@ -2389,5 +2396,14 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
+      }
+    </script>
   </body>
 </html>

@@ -3,42 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      COD Points to USD Calculator - EA FC Currency Converter (2025)
-    </title>
+    <title>COD Points Converter - Convert to USD, EUR, GBP & More (2025)</title>
     <meta
       name="description"
-      content="Free COD Points calculator to convert between COD Points and USD. Calculate EA FC currency value, Ultimate Team packs, and store items instantly. Updated 2025 rates."
+      content="Free COD Points converter for Call of Duty. Convert to USD, EUR, GBP, CAD, AUD instantly. Calculate Warzone and Modern Warfare currency values."
     />
     <meta
       name="keywords"
-      content="fifa points calculator, ea fc currency converter, fifa points to usd, fifa money calculator, fifa points value, ultimate team calculator"
+      content="cod points calculator, call of duty currency converter, cod points to usd, cod money calculator, cod points value, warzone calculator"
     />
     <link
       rel="canonical"
-      href="https://forgeapi.dev/gaming-calculators/fifa-points/"
+      href="https://forgeapi.dev/gaming-calculators/cod-points/"
     />
     <meta
       property="og:title"
-      content="COD Points to USD Calculator - EA FC Currency Converter"
+      content="COD Points Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       property="og:description"
-      content="Free COD Points calculator to convert between COD Points and USD. Calculate EA FC currency value, Ultimate Team packs, and store items instantly."
+      content="Free COD Points converter for Call of Duty. Convert to USD, EUR, GBP, CAD, AUD instantly. Calculate Warzone and Modern Warfare currency values."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://forgeapi.dev/gaming-calculators/fifa-points/"
+      content="https://forgeapi.dev/gaming-calculators/cod-points/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="COD Points to USD Calculator - EA FC Currency Converter"
+      content="COD Points Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       name="twitter:description"
-      content="Free EA FC currency calculator. Convert COD Points to USD instantly."
+      content="Free Call of Duty currency converter. Convert COD Points to USD, EUR, GBP, CAD, AUD instantly."
     />
 
     <style>
@@ -218,6 +216,14 @@
         font-weight: 700;
         color: var(--dark);
         margin-bottom: 0.5rem;
+      }
+
+      .calculator-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
       }
 
       /* Currency Selector */
@@ -553,97 +559,6 @@
         }
       }
 
-      /* Smart Spending Tracker Styles */
-      .spending-tracker {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tracker-summary {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-      }
-
-      .tracker-icon {
-        font-size: 1.2rem;
-      }
-
-      .tracker-text {
-        flex: 1;
-        font-size: 0.9rem;
-        color: var(--dark);
-      }
-
-      .tracker-btn {
-        padding: 0.25rem 0.75rem;
-        background: white;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s;
-        color: var(--dark);
-      }
-
-      .tracker-btn:hover {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-      }
-
-      .tracker-btn.secondary {
-        background: #f8fafc;
-        color: var(--gray);
-      }
-
-      .tracker-btn.secondary:hover {
-        background: #ef4444;
-        color: white;
-        border-color: #ef4444;
-      }
-
-      .tracker-details {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid #cbd5e1;
-      }
-
-      .tracker-details h3 {
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
-        color: var(--dark);
-      }
-
-      .export-btn {
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: background 0.2s;
-      }
-
-      .export-btn:hover {
-        background: var(--primary-dark);
-      }
-
-      .history-item {
-        padding: 0.5rem;
-        background: white;
-        border-radius: 4px;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-        border: 1px solid #e2e8f0;
-      }
-
       /* Better Deal Finder Styles */
       .deal-finder {
         margin-top: 1rem;
@@ -673,20 +588,6 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        .tracker-summary {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
-        .tracker-text {
-          font-size: 0.8rem;
-        }
-
-        .tracker-btn {
-          font-size: 0.8rem;
-          padding: 0.25rem 0.5rem;
-        }
       }
       /* Custom Modal Styles */
       .modal-overlay {
@@ -821,6 +722,73 @@
 
         .modal-btn {
           width: 100%;
+        }
+      }
+
+      /* Footer Styles */
+      #footer-container {
+        margin-top: 4rem;
+        background: #1a1f2e;
+        color: #9ca3af;
+        padding: 2rem 0;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-column h4 {
+        color: #e5e7eb;
+        font-size: 16px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-column a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-column a:hover {
+        color: #60a5fa;
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding: 1rem;
+        border-top: 1px solid #374151;
+        text-align: center;
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        #footer-container {
+          margin-top: 2rem;
         }
       }
     </style>
@@ -1013,35 +981,10 @@
         <!-- Calculator -->
         <div class="calculator-container">
           <div class="calculator-header">
-            <h1 class="calculator-title">COD Points to USD Calculator</h1>
-          </div>
-
-          <!-- Smart Spending Tracker -->
-          <div class="spending-tracker" id="spendingTracker">
-            <div class="tracker-summary">
-              <span class="tracker-icon">📊</span>
-              <span class="tracker-text"
-                >Your History: <strong id="totalAmount">0</strong>
-                <span id="currencyName">COD Points</span> (<span id="totalValue"
-                  >$0.00</span
-                >) over <strong id="calcCount">0</strong> calculations</span
-              >
-              <button class="tracker-btn" id="viewHistory">See Details</button>
-              <button class="tracker-btn secondary" id="clearHistory">
-                Clear
-              </button>
-            </div>
-            <div
-              class="tracker-details"
-              id="trackerDetails"
-              style="display: none"
-            >
-              <h3>Your Calculation History</h3>
-              <div id="historyList"></div>
-              <button class="export-btn" id="exportHistory">
-                Export as CSV
-              </button>
-            </div>
+            <h1 class="calculator-title">COD Points Converter</h1>
+            <p class="calculator-subtitle">
+              Convert Call of Duty Points to USD, EUR, GBP, CAD, AUD & more
+            </p>
           </div>
 
           <!-- Currency Selector -->
@@ -1089,17 +1032,15 @@
           </div>
 
           <div class="quick-amounts">
-            <button class="quick-btn" data-amount="1000">
-              1,000 COD Points
+            <button class="quick-btn" data-amount="500">500 COD Points</button>
+            <button class="quick-btn" data-amount="1100">
+              1,100 COD Points
             </button>
-            <button class="quick-btn" data-amount="2500">
-              2,500 COD Points
+            <button class="quick-btn" data-amount="2400">
+              2,400 COD Points
             </button>
             <button class="quick-btn" data-amount="5000">
               5,000 COD Points
-            </button>
-            <button class="quick-btn" data-amount="12000">
-              12,000 COD Points
             </button>
           </div>
 
@@ -1157,16 +1098,21 @@
           <h2 class="section-title">COD Points Price Guide 2025</h2>
           <div class="section-content">
             <p>
-              COD Points are EA FC's premium currency used to purchase Ultimate
-              Team packs, player items, and other in-game content. Understanding
-              COD Points value helps you make informed purchasing decisions and
-              budget your gaming expenses effectively.
+              COD Points are Call of Duty's premium currency used to purchase
+              operator skins, weapon blueprints, battle passes, and bundles in
+              Warzone, Modern Warfare, and other COD titles.
             </p>
             <p>
-              The value of COD Points has remained consistent across EA FC
-              versions, with EA maintaining stable pricing across all regions.
-              This calculator helps you understand the real-world cost of your
-              COD Points purchases.
+              Our converter supports multiple currencies including USD, EUR,
+              GBP, CAD, and AUD. The calculator automatically converts using
+              current exchange rates, making it easy for players worldwide to
+              understand COD Points values in their local currency.
+            </p>
+            <p>
+              The value of COD Points has remained consistent across Call of
+              Duty versions, with Activision maintaining stable pricing across
+              all regions. This calculator helps you understand the real-world
+              cost of your COD Points purchases.
             </p>
           </div>
         </div>
@@ -1214,7 +1160,23 @@
             </thead>
             <tbody>
               <tr>
-                <td>1,000 COD Points</td>
+                <td>200 COD Points</td>
+                <td>$1.99</td>
+                <td>£1.55</td>
+                <td>€1.69</td>
+                <td>C$2.69</td>
+                <td>A$2.95</td>
+              </tr>
+              <tr>
+                <td>500 COD Points</td>
+                <td>$4.99</td>
+                <td>£3.89</td>
+                <td>€4.24</td>
+                <td>C$6.74</td>
+                <td>A$7.39</td>
+              </tr>
+              <tr>
+                <td>1,100 COD Points (+10% bonus)</td>
                 <td>$9.99</td>
                 <td>£7.79</td>
                 <td>€8.49</td>
@@ -1222,28 +1184,28 @@
                 <td>A$14.79</td>
               </tr>
               <tr>
-                <td>2,500 COD Points</td>
-                <td>$24.99</td>
-                <td>£19.49</td>
-                <td>€21.24</td>
-                <td>C$33.74</td>
-                <td>A$36.99</td>
+                <td>2,400 COD Points (+20% bonus)</td>
+                <td>$19.99</td>
+                <td>£15.59</td>
+                <td>€16.99</td>
+                <td>C$26.99</td>
+                <td>A$29.58</td>
               </tr>
               <tr>
-                <td>5,000 COD Points</td>
-                <td>$49.99</td>
-                <td>£38.99</td>
-                <td>€42.49</td>
-                <td>C$67.49</td>
-                <td>A$73.99</td>
+                <td>5,000 COD Points (+25% bonus)</td>
+                <td>$39.99</td>
+                <td>£31.19</td>
+                <td>€33.99</td>
+                <td>C$53.99</td>
+                <td>A$59.18</td>
               </tr>
               <tr>
-                <td>12,000 COD Points</td>
+                <td>13,000 COD Points (+30% bonus)</td>
                 <td>$99.99</td>
                 <td>£77.99</td>
                 <td>€84.99</td>
                 <td>C$134.99</td>
-                <td>A$147.99</td>
+                <td>A$147.96</td>
               </tr>
             </tbody>
           </table>
@@ -1257,33 +1219,45 @@
               <tr>
                 <th>COD Points</th>
                 <th>USD Price</th>
-                <th>Per FIFA Point</th>
+                <th>Per COD Point</th>
                 <th>Best For</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1,000</td>
-                <td data-usd="9.99">$9.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Single Packs</td>
+                <td>200</td>
+                <td data-usd="1.99">$1.99</td>
+                <td data-usd="0.00995">$0.00995</td>
+                <td>Single Items</td>
               </tr>
               <tr>
-                <td>2,500</td>
-                <td data-usd="24.99">$24.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Multiple Packs</td>
+                <td>500</td>
+                <td data-usd="4.99">$4.99</td>
+                <td data-usd="0.00998">$0.00998</td>
+                <td>Small Bundles</td>
+              </tr>
+              <tr>
+                <td>1,100</td>
+                <td data-usd="9.99">$9.99</td>
+                <td data-usd="0.00908">$0.00908</td>
+                <td>Battle Pass</td>
+              </tr>
+              <tr>
+                <td>2,400</td>
+                <td data-usd="19.99">$19.99</td>
+                <td data-usd="0.00833">$0.00833</td>
+                <td>Multiple Bundles</td>
               </tr>
               <tr>
                 <td>5,000</td>
-                <td data-usd="49.99">$49.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Popular Choice</td>
+                <td data-usd="39.99">$39.99</td>
+                <td data-usd="0.00800">$0.00800</td>
+                <td>Large Bundles</td>
               </tr>
               <tr>
-                <td>12,000</td>
+                <td>13,000</td>
                 <td data-usd="99.99">$99.99</td>
-                <td data-usd="0.00833">$0.00833</td>
+                <td data-usd="0.00769">$0.00769</td>
                 <td>Bulk Purchases</td>
               </tr>
             </tbody>
@@ -1300,8 +1274,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              1000 COD Points costs $9.99 USD. This is the standard rate for
-              FIFA Points packages in EA FC.
+              1100 COD Points costs $9.99 USD. This is the standard rate for COD
+              Points packages in Call of Duty.
             </div>
           </div>
 
@@ -1311,7 +1285,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              The 5000 COD Points package offers the best value at $49.99.
+              The 13000 COD Points package offers the best value at $99.99.
               Larger packages typically provide better value per point.
             </div>
           </div>
@@ -1322,8 +1296,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              $20 gets you approximately 2000 COD Points. This is based on the
-              standard rate of $0.00999 per FIFA Point.
+              $20 gets you approximately 2400 COD Points. This is based on the
+              standard rate of $0.00833 per COD Point.
             </div>
           </div>
 
@@ -1333,9 +1307,9 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              COD Points provide access to Ultimate Team packs but value depends
-              on your play style. Consider your budget and gaming goals before
-              purchasing.
+              COD Points provide access to bundles and battle passes but value
+              depends on your play style. Consider your budget and gaming goals
+              before purchasing.
             </div>
           </div>
 
@@ -1345,8 +1319,20 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              No, COD Points do not transfer between different FIFA/EA FC
-              versions. Points are tied to the specific game version.
+              No, COD Points do not transfer between different Call of Duty
+              versions. COD Points work across Modern Warfare, Warzone, and
+              Black Ops.
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>Which currencies does this converter support?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Our COD Points converter supports USD, EUR, GBP, CAD, and AUD with
+              real-time exchange rates.
             </div>
           </div>
         </div>
@@ -1393,16 +1379,17 @@
 
     <!-- Include the existing JavaScript functionality -->
     <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
+    <script src="/gaming-calculators/assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
       const SecurityManager = {
         // 1. Input validation: Limit to numbers only, max 999999999, no negative
         validateInput(value) {
-          if (value === null || value === undefined || value === '') return 0;
+          if (value === null || value === undefined || value === "") return 0;
 
           // Remove any non-numeric characters except decimal point
-          const cleaned = String(value).replace(/[^0-9.]/g, '');
+          const cleaned = String(value).replace(/[^0-9.]/g, "");
 
           // Parse to number
           const num = parseFloat(cleaned);
@@ -1417,8 +1404,8 @@
 
         // 2. HTML escape all user content
         escapeHtml(text) {
-          if (typeof text !== 'string') return String(text);
-          const div = document.createElement('div');
+          if (typeof text !== "string") return String(text);
+          const div = document.createElement("div");
           div.textContent = text;
           return div.innerHTML;
         },
@@ -1428,7 +1415,7 @@
           try {
             return localStorage.getItem(key);
           } catch (error) {
-            console.warn('localStorage get failed:', error);
+            console.warn("localStorage get failed:", error);
             return null;
           }
         },
@@ -1438,7 +1425,7 @@
             localStorage.setItem(key, value);
             return true;
           } catch (error) {
-            console.warn('localStorage set failed:', error);
+            console.warn("localStorage set failed:", error);
             return false;
           }
         },
@@ -1448,23 +1435,28 @@
             localStorage.removeItem(key);
             return true;
           } catch (error) {
-            console.warn('localStorage remove failed:', error);
+            console.warn("localStorage remove failed:", error);
             return false;
           }
         },
 
         // 5. Sanitize filenames for CSV exports
         sanitizeFilename(filename) {
-          return filename.replace(/[^a-zA-Z0-9._-]/g, '_').substring(0, 100);
+          return filename.replace(/[^a-zA-Z0-9._-]/g, "_").substring(0, 100);
         },
 
         // 6. HTTPS redirect (if not on localhost)
         enforceHTTPS() {
-          if (window.location.hostname !== 'localhost' &&
-              window.location.hostname !== '127.0.0.1' &&
-              window.location.protocol !== 'https:' &&
-              window.location.protocol !== 'file:') {
-            window.location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+          if (
+            window.location.hostname !== "localhost" &&
+            window.location.hostname !== "127.0.0.1" &&
+            window.location.protocol !== "https:" &&
+            window.location.protocol !== "file:"
+          ) {
+            window.location.replace(
+              "https:" +
+                window.location.href.substring(window.location.protocol.length)
+            );
           }
         },
 
@@ -1479,7 +1471,7 @@
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
           };
-        }
+        },
       };
 
       // Initialize HTTPS enforcement
@@ -1490,11 +1482,11 @@
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 100 COD Points = $0.99
-      const FIFA_RATE = 0.99 / 100; // $0.0099 per FIFA Point
+      // Exchange rate: 1100 COD Points = $9.99
+      const COD_RATE = 9.99 / 1100; // $0.00908 per COD Point (using 1100 point package as base)
 
       // DOM elements
-      const codInput = document.getElementById("fifa-input");
+      const codInput = document.getElementById("cod-input");
       const usdInput = document.getElementById("usd-input");
       const copyBtn = document.getElementById("copy-btn");
       const clearBtn = document.getElementById("clear-btn");
@@ -1503,8 +1495,14 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
-      codInput.addEventListener("input", SecurityManager.debounce(handleCodInput, 100));
-      usdInput.addEventListener("input", SecurityManager.debounce(handleUsdInput, 100));
+      codInput.addEventListener(
+        "input",
+        SecurityManager.debounce(handleCodInput, 100)
+      );
+      usdInput.addEventListener(
+        "input",
+        SecurityManager.debounce(handleUsdInput, 100)
+      );
       copyBtn.addEventListener("click", copyResult);
       clearBtn.addEventListener("click", clearInputs);
       currencySelect.addEventListener("change", handleCurrencyChange);
@@ -1512,6 +1510,67 @@
       quickBtns.forEach((btn) => {
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
       });
+
+      // Conversion arrow functionality - swap between COD Points and USD inputs
+      const conversionArrow = document.querySelector(".conversion-arrow");
+
+      console.log("Conversion arrow element:", conversionArrow);
+
+      if (conversionArrow) {
+        console.log("Adding click event listener to conversion arrow");
+
+        conversionArrow.addEventListener("click", (e) => {
+          console.log("Conversion arrow clicked!");
+          e.preventDefault();
+
+          // Get the input groups using more reliable selectors
+          const allInputGroups = document.querySelectorAll(".input-group");
+
+          console.log("Found input groups:", allInputGroups.length);
+
+          if (allInputGroups.length >= 2) {
+            console.log("Swapping input field positions");
+
+            // Get the parent container
+            const conversionSection = document.querySelector(
+              ".conversion-section"
+            );
+
+            if (conversionSection) {
+              // Always swap the first two input groups (regardless of their current order)
+              const firstGroup = allInputGroups[0];
+              const secondGroup = allInputGroups[1];
+
+              console.log("First group:", firstGroup);
+              console.log("Second group:", secondGroup);
+
+              // Get the arrow element to preserve its position
+              const arrowElement = document.querySelector(".conversion-arrow");
+
+              // Remove both groups from their current positions
+              firstGroup.remove();
+              secondGroup.remove();
+
+              // Insert them back in swapped order, ensuring arrow stays in the middle
+              // Insert second group first (before arrow)
+              conversionSection.insertBefore(secondGroup, arrowElement);
+              // Insert first group last (after arrow)
+              conversionSection.insertBefore(
+                firstGroup,
+                arrowElement.nextSibling
+              );
+
+              console.log("Fields swapped successfully");
+            }
+          } else {
+            console.error("Could not find enough input groups to swap");
+          }
+
+          console.log("Swap completed");
+        });
+      } else {
+        console.error("Conversion arrow element not found!");
+      }
 
       // Initialize currency and load saved calculation
       initializeCurrency().then(() => {
@@ -1529,7 +1588,7 @@
         }
 
         const fifaPoints = validatedCod;
-        const usdValue = fifaPoints * FIFA_RATE;
+        const usdValue = codPoints * COD_RATE;
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -1556,7 +1615,7 @@
           inputValue,
           currentCurrency
         );
-        const fifaPoints = usdValue / FIFA_RATE;
+        const codPoints = usdValue / COD_RATE;
 
         isUpdating = true;
         codInput.value = Math.round(fifaPoints);
@@ -1702,253 +1761,17 @@
         }, 3000);
       }
 
-      // Smart Spending Tracker
-      class SpendingTracker {
-        constructor(calculatorName, currencyName) {
-          this.calculatorName = calculatorName;
-          this.currencyName = currencyName;
-          this.storageKey = `${calculatorName}-history`;
-          this.maxHistory = 100; // Increased from 50 to 100
-          this.maxDisplayHistory = 25; // New: limit UI display
-          this.daysToKeep = 90; // Keep existing 90-day limit
-          this.history = this.loadHistory();
-          this.initializeElements();
-          this.setupEventListeners();
-          this.updateDisplay();
-        }
-
-        initializeElements() {
-          this.totalAmountEl = document.getElementById("totalAmount");
-          this.currencyNameEl = document.getElementById("currencyName");
-          this.totalValueEl = document.getElementById("totalValue");
-          this.calcCountEl = document.getElementById("calcCount");
-          this.viewHistoryBtn = document.getElementById("viewHistory");
-          this.clearHistoryBtn = document.getElementById("clearHistory");
-          this.trackerDetails = document.getElementById("trackerDetails");
-          this.historyList = document.getElementById("historyList");
-          this.exportBtn = document.getElementById("exportHistory");
-        }
-
-        setupEventListeners() {
-          this.viewHistoryBtn.addEventListener("click", () =>
-            this.toggleHistory()
-          );
-          this.clearHistoryBtn.addEventListener("click", () =>
-            this.showConfirmModal()
-          );
-          this.exportBtn.addEventListener("click", () => this.exportHistory());
-        }
-
-        cleanupHistory() {
-          const now = Date.now();
-          const cutoffDate = now - this.daysToKeep * 24 * 60 * 60 * 1000;
-
-          // Remove entries older than 90 days
-          this.history = this.history.filter(
-            (item) => item.timestamp > cutoffDate
-          );
-
-          // If still over limit, keep only the newest entries
-          if (this.history.length > this.maxHistory) {
-            this.history = this.history.slice(-this.maxHistory);
-          }
-
-          return this.history;
-        }
-
-        loadHistory() {
-          // Security: Use safe localStorage operations
-          const stored = SecurityManager.safeStorageGet(this.storageKey);
-          if (stored) {
-            try {
-              const history = JSON.parse(stored);
-              // Use the new cleanup method
-              this.history = history;
-              return this.cleanupHistory();
-            } catch (e) {
-              console.warn("Failed to parse spending history:", e);
-            }
-          }
-          }
-          return [];
-        }
-
-        saveHistory() {
-          // Security: Use safe localStorage operations
-          const success = SecurityManager.safeStorageSet(this.storageKey, JSON.stringify(this.history));
-          if (!success) {
-            // If storage is full, remove oldest entries
-            this.history = this.history.slice(-25);
-            SecurityManager.safeStorageSet(
-              this.storageKey,
-              JSON.stringify(this.history)
-              );
-            }
-          }
-        }
-
-        addCalculation(gameAmount, gameCurrency, currencyAmount, currencyType) {
-          const calculation = {
-            timestamp: Date.now(),
-            gameAmount: gameAmount,
-            gameCurrency: gameCurrency,
-            currencyAmount: currencyAmount,
-            currencyType: currencyType,
-          };
-
-          this.history.unshift(calculation);
-
-          // Use cleanup instead of simple slice
-          this.cleanupHistory();
-
-          this.saveHistory();
-          this.updateDisplay();
-        }
-
-        updateDisplay() {
-          const totalGameAmount = this.history.reduce(
-            (sum, calc) => sum + calc.gameAmount,
-            0
-          );
-          const totalCurrencyValue = this.history.reduce(
-            (sum, calc) => sum + calc.currencyAmount,
-            0
-          );
-          const calcCount = this.history.length;
-
-          this.totalAmountEl.textContent = totalGameAmount.toLocaleString();
-          this.currencyNameEl.textContent = this.currencyName;
-          this.totalValueEl.textContent = `$${totalCurrencyValue.toFixed(2)}`;
-          this.calcCountEl.textContent = calcCount;
-
-          // Add indicator if at max capacity
-          if (calcCount >= this.maxHistory) {
-            this.calcCountEl.textContent = `${calcCount} (Max)`;
-          }
-        }
-
-        toggleHistory() {
-          const isVisible = this.trackerDetails.style.display !== "none";
-          this.trackerDetails.style.display = isVisible ? "none" : "block";
-          this.viewHistoryBtn.textContent = isVisible
-            ? "See Details"
-            : "Hide Details";
-
-          if (!isVisible) {
-            this.renderHistory();
-          }
-        }
-
-        renderHistory() {
-          // Use maxDisplayHistory instead of hardcoded 10
-          const recentHistory = this.history.slice(0, this.maxDisplayHistory);
-          this.historyList.innerHTML = "";
-
-          if (recentHistory.length === 0) {
-            this.historyList.innerHTML =
-              '<p style="color: var(--gray); font-style: italic;">No calculations yet</p>';
-            return;
-          }
-
-          // Add a note if there are more entries than displayed
-          if (this.history.length > this.maxDisplayHistory) {
-            const noteDiv = document.createElement("div");
-            noteDiv.style.cssText =
-              "padding: 0.5rem; background: #f0f9ff; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gray);";
-            noteDiv.innerHTML = `Showing last ${this.maxDisplayHistory} of ${this.history.length} calculations. <a href="#" onclick="event.preventDefault(); document.getElementById('exportHistory').click();" style="color: var(--primary);">Export all</a>`;
-            this.historyList.appendChild(noteDiv);
-          }
-
-          recentHistory.forEach((calc) => {
-            const item = document.createElement("div");
-            item.className = "history-item";
-            const date = new Date(calc.timestamp).toLocaleDateString();
-            const time = new Date(calc.timestamp).toLocaleTimeString();
-            // Security: HTML escape all user content
-            const gameAmountEscaped = SecurityManager.escapeHtml(calc.gameAmount.toLocaleString());
-            const currencyNameEscaped = SecurityManager.escapeHtml(this.currencyName);
-            const currencyAmountEscaped = SecurityManager.escapeHtml(calc.currencyAmount.toFixed(2));
-            const currencyTypeEscaped = SecurityManager.escapeHtml(calc.currencyType);
-            const dateEscaped = SecurityManager.escapeHtml(date);
-            const timeEscaped = SecurityManager.escapeHtml(time);
-
-            item.innerHTML = `
-              <div><strong>${gameAmountEscaped} ${currencyNameEscaped}</strong> = ${
-              window.currencyManager
-                ? window.currencyManager.getSymbol(calc.currencyType)
-                : "$"
-            }${currencyAmountEscaped} ${currencyTypeEscaped}</div>
-              <div style="color: var(--gray); font-size: 0.8rem;">${dateEscaped} at ${timeEscaped}</div>
-            `;
-            this.historyList.appendChild(item);
-          });
-        }
-
-        showConfirmModal() {
-          const modal = document.getElementById("confirmModal");
-          modal.classList.add("show");
-        }
-
-        clearHistory() {
-          this.history = [];
-          this.saveHistory();
-          this.updateDisplay();
-          this.trackerDetails.style.display = "none";
-          this.viewHistoryBtn.textContent = "See Details";
-          showNotification("History cleared!");
-        }
-
-        exportHistory() {
-          if (this.history.length === 0) {
-            showNotification("No data to export");
-            return;
-          }
-
-          const csvContent = [
-            ["Date", "Time", "COD Points", "Currency", "Amount", "Value"],
-            ...this.history.map((calc) => [
-              new Date(calc.timestamp).toLocaleDateString(),
-              new Date(calc.timestamp).toLocaleTimeString(),
-              calc.gameAmount,
-              calc.currencyType,
-              `${
-                window.currencyManager
-                  ? window.currencyManager.getSymbol(calc.currencyType)
-                  : "$"
-              }${calc.currencyAmount.toFixed(2)}`,
-              calc.currencyAmount,
-            ]),
-          ]
-            .map((row) => row.join(","))
-            .join("\n");
-
-          const blob = new Blob([csvContent], { type: "text/csv" });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          // Security: Sanitize filename for CSV exports
-          const sanitizedFilename = SecurityManager.sanitizeFilename(
-            `${this.calculatorName}-history-${new Date().toISOString().split("T")[0]}.csv`
-          );
-          a.download = sanitizedFilename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-          showNotification("History exported successfully!");
-        }
-      }
-
       // Better Deal Finder
       class DealFinder {
         constructor() {
           this.packages = {
             cod: [
+              { amount: 200, price: 1.99, rate: 0.00995 },
               { amount: 500, price: 4.99, rate: 0.00998 },
               { amount: 1100, price: 9.99, rate: 0.00908 },
               { amount: 2400, price: 19.99, rate: 0.00833 },
-              { amount: 5000, price: 39.99, rate: 0.007998 },
-              { amount: 11000, price: 79.99, rate: 0.00727 },
+              { amount: 5000, price: 39.99, rate: 0.008 },
+              { amount: 13000, price: 99.99, rate: 0.00769 },
             ],
           };
           this.dealFinder = document.getElementById("dealFinder");
@@ -2014,13 +1837,11 @@
       }
 
       // Initialize features
-      let spendingTracker;
       let dealFinder;
 
       // Initialize after currency system is ready
       async function initializeFeatures() {
         // Currency manager is already initialized by initializeCurrency()
-        spendingTracker = new SpendingTracker("cod", "COD Points");
         dealFinder = new DealFinder();
       }
 
@@ -2030,30 +1851,18 @@
 
       function handleCodInput() {
         originalHandleFifaInput();
-        if (spendingTracker && codInput.value && usdInput.value) {
+        if (codInput.value && usdInput.value) {
           const gameAmount = parseFloat(codInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "COD Points",
-            currencyAmount,
-            currentCurrency
-          );
           dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
         }
       }
 
       function handleUsdInput() {
         originalHandleUsdInput();
-        if (spendingTracker && codInput.value && usdInput.value) {
+        if (codInput.value && usdInput.value) {
           const gameAmount = parseFloat(codInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "COD Points",
-            currencyAmount,
-            currentCurrency
-          );
           dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
         }
       }
@@ -2061,31 +1870,6 @@
       // Initialize features when page loads
       document.addEventListener("DOMContentLoaded", function () {
         initializeFeatures();
-      });
-
-      // Modal functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("confirmModal");
-        const cancelBtn = document.getElementById("modalCancel");
-        const confirmBtn = document.getElementById("modalConfirm");
-
-        cancelBtn.addEventListener("click", () => {
-          modal.classList.remove("show");
-        });
-
-        confirmBtn.addEventListener("click", () => {
-          if (spendingTracker) {
-            spendingTracker.clearHistory();
-          }
-          modal.classList.remove("show");
-        });
-
-        // Close modal when clicking overlay
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            modal.classList.remove("show");
-          }
-        });
       });
     </script>
 
@@ -2123,9 +1907,9 @@
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "COD Points to USD Calculator",
-        "description": "Free COD Points calculator to convert between COD Points and USD. Calculate EA FC currency value, Ultimate Team packs, and store items instantly. Updated 2025 rates.",
-        "url": "https://forgeapi.dev/gaming-calculators/fifa-points/",
+        "name": "COD Points Currency Converter",
+        "description": "Free COD Points calculator to convert between COD Points and USD. Calculate Call of Duty currency value, bundles and battle passes, and store items instantly. Updated 2025 rates.",
+        "url": "https://forgeapi.dev/gaming-calculators/cod-points/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -2168,7 +1952,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "COD Points Calculator",
-            "item": "https://forgeapi.dev/gaming-calculators/fifa-points/"
+            "item": "https://forgeapi.dev/gaming-calculators/cod-points/"
           }
         ]
       }
@@ -2184,7 +1968,7 @@
             "name": "How much is 1000 COD Points in USD?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "1000 COD Points costs $9.99 USD. This is the standard rate for COD Points packages in EA FC."
+              "text": "1100 COD Points costs $9.99 USD. This is the standard rate for COD Points packages in Call of Duty."
             }
           },
           {
@@ -2200,7 +1984,7 @@
             "name": "How many COD Points can I get for $20?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "$20 gets you approximately 2000 COD Points. This is based on the standard rate of $0.00999 per FIFA Point."
+              "text": "$20 gets you approximately 2400 COD Points. This is based on the standard rate of $0.00833 per COD Point."
             }
           },
           {
@@ -2208,7 +1992,7 @@
             "name": "Are COD Points worth it?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "COD Points provide access to Ultimate Team packs but value depends on your play style. Consider your budget and gaming goals before purchasing."
+              "text": "COD Points provide access to bundles and battle passes but value depends on your play style. Consider your budget and gaming goals before purchasing."
             }
           },
           {
@@ -2216,7 +2000,7 @@
             "name": "Do COD Points transfer between games?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, COD Points do not transfer between different FIFA/EA FC versions. Points are tied to the specific game version."
+              "text": "No, COD Points do not transfer between different Call of Duty versions. COD Points work across Modern Warfare, Warzone, and Black Ops."
             }
           }
         ]
@@ -2253,27 +2037,6 @@
         ]
       }
     </script>
-    <!-- Custom Modal -->
-    <div class="modal-overlay" id="confirmModal">
-      <div class="modal-dialog">
-        <div class="modal-header">
-          <div class="modal-icon">⚠️</div>
-          <h3 class="modal-title">Clear History</h3>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to clear your calculation history? This action
-          cannot be undone.
-        </div>
-        <div class="modal-actions">
-          <button class="modal-btn modal-btn-secondary" id="modalCancel">
-            Cancel
-          </button>
-          <button class="modal-btn modal-btn-primary" id="modalConfirm">
-            Clear History
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Google AdSense -->
     <script
@@ -2281,5 +2044,14 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
+      }
+    </script>
   </body>
 </html>

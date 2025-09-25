@@ -1200,7 +1200,8 @@
       .footer-links {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        gap: 60px;
+        justify-items: start;
       }
 
       .footer-column h4 {
@@ -1224,12 +1225,45 @@
         color: white;
       }
 
+      .footer-subsection {
+        margin-bottom: 20px;
+      }
+
+      .footer-subsection h5 {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        color: #d1d5db;
+      }
+
       .footer-bottom {
         padding-top: 32px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         justify-content: space-between;
         align-items: center;
+      }
+
+      .footer-bottom-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-contact-link {
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-contact-link:hover {
+        color: white;
       }
 
       .footer-bottom p {
@@ -1284,13 +1318,24 @@
         }
 
         .footer-links {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
 
         .footer-bottom {
           flex-direction: column;
-          gap: 12px;
+          gap: 16px;
           text-align: center;
+        }
+
+        .footer-bottom-right {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 968px) {
+        .footer-links {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
         }
       }
 
@@ -2683,30 +2728,30 @@
           </div>
 
           <div class="footer-links">
+            <!-- Column 1 - Products -->
             <div class="footer-column">
-              <h4>Resources</h4>
-              <a
-                href="https://web-production-2c40.up.railway.app/dashboard"
-                target="_blank"
-                >Dashboard</a
-              >
-              <a
-                href="https://web-production-2c40.up.railway.app/docs"
-                target="_blank"
-                >API Reference</a
-              >
-              <a href="https://web-production-2c40.up.railway.app/signup"
-                >Get Started</a
-              >
+              <h4>Products</h4>
+              <div class="footer-subsection">
+                <h5>Premium APIs</h5>
+                <a href="/riskscore">RiskScore API</a>
+                <a href="/dupecheck">DupeCheck</a>
+                <a href="#">Coming Soon</a>
+              </div>
+              <div class="footer-subsection">
+                <h5>Free Tools</h5>
+                <a href="/gst-calculator">GST Calculator</a>
+                <a href="/gaming-calculators">Gaming Calculators</a>
+              </div>
             </div>
 
+            <!-- Column 2 - Company -->
             <div class="footer-column">
               <h4>Company</h4>
               <a href="https://forgeapis.com">Forge APIs</a>
-              <a href="mailto:hello@forgeapis.com">Support</a>
+              <a href="mailto:hello@forgeapis.com">Contact Us</a>
             </div>
 
-            <!-- NEW: Legal column -->
+            <!-- Column 3 - Legal -->
             <div class="footer-column">
               <h4>Legal</h4>
               <a href="/privacy.html">Privacy Policy</a>
@@ -2723,7 +2768,11 @@
               Risk intelligence only. Not for legal compliance verification.
             </p>
           </div>
-          <!-- NEW: Legal links in footer bottom -->
+          <div class="footer-bottom-right">
+            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
+              📧 Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </footer>

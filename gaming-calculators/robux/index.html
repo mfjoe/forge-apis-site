@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Robux to USD Calculator - Roblox Currency Converter (2025)</title>
+    <title>Robux Converter - Convert to USD, EUR, GBP & More (2025)</title>
     <meta
       name="description"
-      content="Free Robux calculator to convert between Robux and USD. Calculate Roblox currency value, DevEx rates, and marketplace fees instantly. Updated 2025 rates."
+      content="Free Robux converter to convert between Robux and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly. DevEx rates and marketplace fees included."
     />
     <meta
       name="keywords"
@@ -18,11 +18,11 @@
     />
     <meta
       property="og:title"
-      content="Robux to USD Calculator - Roblox Currency Converter"
+      content="Robux Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       property="og:description"
-      content="Free Robux calculator to convert between Robux and USD. Calculate Roblox currency value, DevEx rates, and marketplace fees instantly."
+      content="Free Robux converter to convert between Robux and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly. DevEx rates and marketplace fees included."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -32,11 +32,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Robux to USD Calculator - Roblox Currency Converter"
+      content="Robux Converter - Convert to USD, EUR, GBP & More"
     />
     <meta
       name="twitter:description"
-      content="Free Roblox currency calculator. Convert Robux to USD instantly."
+      content="Free Roblox currency converter. Convert Robux to USD, EUR, GBP, CAD, AUD instantly."
     />
 
     <style>
@@ -218,8 +218,16 @@
         margin-bottom: 0.5rem;
       }
 
+      .calculator-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
       /* Mode Selection */
-      .mode-selection {
+      .converter-modes {
         display: flex;
         justify-content: center;
         gap: 0.75rem;
@@ -228,15 +236,37 @@
       }
 
       .mode-btn {
-        padding: 0.6rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+        padding: 8px 16px;
+        gap: 2px;
         border: 1px solid #e5e7eb;
         border-radius: 8px;
         background: var(--white);
         color: var(--gray);
-        font-size: 0.9rem;
+        font-size: 14px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
+      }
+
+      .mode-title {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .mode-subtitle {
+        font-size: 11px;
+        opacity: 0.7;
+        line-height: 1.2;
+      }
+
+      .mode-btn.active .mode-subtitle {
+        opacity: 0.9;
       }
 
       .mode-btn:hover {
@@ -254,13 +284,28 @@
       /* Currency Selector */
       .currency-selector {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
         margin-bottom: 2rem;
+        background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+        border: 1px solid #60a5fa;
+        border-radius: 12px;
         padding: 1rem;
-        background: var(--light-gray);
-        border-radius: 8px;
+      }
+
+      .currency-helper-text {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .currency-selector-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
       }
 
       .currency-label {
@@ -420,6 +465,14 @@
         margin-bottom: 1rem;
       }
 
+      .section-subtitle {
+        font-size: 1rem;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
       .section-content {
         color: var(--gray);
         line-height: 1.7;
@@ -565,6 +618,25 @@
           flex-direction: column;
         }
 
+        .converter-modes {
+          gap: 0.5rem;
+        }
+
+        .mode-btn {
+          min-height: 50px;
+          padding: 6px 12px;
+        }
+
+        .mode-title {
+          font-size: 13px;
+        }
+
+        .mode-subtitle {
+          font-size: 10px;
+          text-align: center;
+          word-wrap: break-word;
+        }
+
         .breadcrumb-list {
           font-size: 0.8rem;
         }
@@ -582,97 +654,6 @@
         .pricing-table td {
           padding: 0.5rem;
         }
-      }
-
-      /* Smart Spending Tracker Styles */
-      .spending-tracker {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tracker-summary {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-      }
-
-      .tracker-icon {
-        font-size: 1.2rem;
-      }
-
-      .tracker-text {
-        flex: 1;
-        font-size: 0.9rem;
-        color: var(--dark);
-      }
-
-      .tracker-btn {
-        padding: 0.25rem 0.75rem;
-        background: white;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s;
-        color: var(--dark);
-      }
-
-      .tracker-btn:hover {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-      }
-
-      .tracker-btn.secondary {
-        background: #f8fafc;
-        color: var(--gray);
-      }
-
-      .tracker-btn.secondary:hover {
-        background: #ef4444;
-        color: white;
-        border-color: #ef4444;
-      }
-
-      .tracker-details {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid #cbd5e1;
-      }
-
-      .tracker-details h3 {
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
-        color: var(--dark);
-      }
-
-      .export-btn {
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: background 0.2s;
-      }
-
-      .export-btn:hover {
-        background: var(--primary-dark);
-      }
-
-      .history-item {
-        padding: 0.5rem;
-        background: white;
-        border-radius: 4px;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-        border: 1px solid #e2e8f0;
       }
 
       /* Better Deal Finder Styles */
@@ -704,20 +685,6 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        .tracker-summary {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
-        .tracker-text {
-          font-size: 0.8rem;
-        }
-
-        .tracker-btn {
-          font-size: 0.8rem;
-          padding: 0.25rem 0.5rem;
-        }
       }
       /* Custom Modal Styles */
       .modal-overlay {
@@ -852,6 +819,73 @@
 
         .modal-btn {
           width: 100%;
+        }
+      }
+
+      /* Footer Styles */
+      #footer-container {
+        margin-top: 4rem;
+        background: #1a1f2e;
+        color: #9ca3af;
+        padding: 2rem 0;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-column h4 {
+        color: #e5e7eb;
+        font-size: 16px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-column a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-column a:hover {
+        color: #60a5fa;
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding: 1rem;
+        border-top: 1px solid #374151;
+        text-align: center;
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        #footer-container {
+          margin-top: 2rem;
         }
       }
     </style>
@@ -1044,60 +1078,45 @@
         <!-- Calculator -->
         <div class="calculator-container">
           <div class="calculator-header">
-            <h1 class="calculator-title">Robux to USD Calculator</h1>
-          </div>
-
-          <!-- Smart Spending Tracker -->
-          <div class="spending-tracker" id="spendingTracker">
-            <div class="tracker-summary">
-              <span class="tracker-icon">📊</span>
-              <span class="tracker-text"
-                >Your History: <strong id="totalAmount">0</strong>
-                <span id="currencyName">Robux</span> (<span id="totalValue"
-                  >$0.00</span
-                >) over <strong id="calcCount">0</strong> calculations</span
-              >
-              <button class="tracker-btn" id="viewHistory">See Details</button>
-              <button class="tracker-btn secondary" id="clearHistory">
-                Clear
-              </button>
-            </div>
-            <div
-              class="tracker-details"
-              id="trackerDetails"
-              style="display: none"
-            >
-              <h3>Your Calculation History</h3>
-              <div id="historyList"></div>
-              <button class="export-btn" id="exportHistory">
-                Export as CSV
-              </button>
-            </div>
-          </div>
-
-          <!-- Mode Selection -->
-          <div class="mode-selection">
-            <button class="mode-btn active" data-mode="player">
-              Player Purchase Rate
-            </button>
-            <button class="mode-btn" data-mode="devex">DevEx Rate</button>
-            <button class="mode-btn" data-mode="marketplace">
-              Marketplace Tax Calculator
-            </button>
+            <h1 class="calculator-title">Robux Converter</h1>
+            <p class="calculator-subtitle">
+              Convert Robux to USD, EUR, GBP, CAD, AUD & more currencies
+            </p>
           </div>
 
           <!-- Currency Selector -->
           <div class="currency-selector">
-            <label for="currency-select" class="currency-label"
-              >Currency:</label
-            >
-            <select id="currency-select" class="currency-dropdown">
-              <option value="USD">🇺🇸 USD - US Dollar</option>
-              <option value="GBP">🇬🇧 GBP - British Pound</option>
-              <option value="EUR">🇪🇺 EUR - Euro</option>
-              <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
-              <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
-            </select>
+            <div class="currency-helper-text">Select your currency:</div>
+            <div class="currency-selector-wrapper">
+              <label for="currency-select" class="currency-label"
+                >Currency:</label
+              >
+              <select id="currency-select" class="currency-dropdown">
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Mode Selection -->
+          <div class="converter-modes">
+            <button class="mode-btn active" onclick="setMode('purchase')">
+              <span class="mode-title">Buy Robux</span>
+              <span class="mode-subtitle">Convert USD to Robux</span>
+            </button>
+
+            <button class="mode-btn" onclick="setMode('devex')">
+              <span class="mode-title">Cash Out</span>
+              <span class="mode-subtitle">Robux to USD (DevEx)</span>
+            </button>
+
+            <button class="mode-btn" onclick="setMode('marketplace')">
+              <span class="mode-title">Marketplace</span>
+              <span class="mode-subtitle">After 30% tax</span>
+            </button>
           </div>
 
           <div class="conversion-section">
@@ -1117,7 +1136,8 @@
 
             <div class="input-group">
               <label class="input-label" for="usd-input" id="currency-label"
-                >USD ($)</label
+                ><span id="active-currency-flag">🇺🇸</span>
+                <span id="active-currency-name">USD ($)</span></label
               >
               <input
                 type="number"
@@ -1187,15 +1207,21 @@
           <div>Advertisement Space - Top Banner (728x90)</div>
         </div>
 
-        <!-- How Much Are Robux Worth in 2025? -->
+        <!-- How Much Are Robux Worth Worldwide? -->
         <div class="content-section">
-          <h2 class="section-title">How Much Are Robux Worth in 2025?</h2>
+          <h2 class="section-title">How Much Are Robux Worth Worldwide?</h2>
           <div class="section-content">
             <p>
               Robux are Roblox's premium currency used to purchase cosmetic
               items, game passes, and other in-game content. Understanding Robux
               value helps you make informed purchasing decisions and budget your
               gaming expenses effectively.
+            </p>
+            <p>
+              Our converter supports multiple currencies including USD, EUR,
+              GBP, CAD, and AUD. The calculator automatically converts using
+              current exchange rates, making it easy for players worldwide to
+              understand Robux values in their local currency.
             </p>
             <p>
               The value of Robux varies depending on how you're using them.
@@ -1233,9 +1259,12 @@
           </div>
         </div>
 
-        <!-- Robux Prices by Country -->
+        <!-- Robux Prices Worldwide -->
         <div class="content-section">
-          <h2 class="section-title">Robux Prices by Country</h2>
+          <h2 class="section-title">Robux Prices Worldwide</h2>
+          <p class="section-subtitle">
+            Current prices in USD, GBP, EUR, CAD, and AUD
+          </p>
           <table class="pricing-table">
             <thead>
               <tr>
@@ -1401,6 +1430,18 @@
               skill investment.
             </div>
           </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>Which currencies does this converter support?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Our Robux converter supports USD (US Dollar), EUR (Euro), GBP
+              (British Pound), CAD (Canadian Dollar), and AUD (Australian
+              Dollar). We use current exchange rates for accurate conversions.
+            </div>
+          </div>
         </div>
 
         <!-- AdSense Slot - Bottom -->
@@ -1445,6 +1486,7 @@
 
     <!-- Include the existing JavaScript functionality -->
     <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
+    <script src="/gaming-calculators/assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -1561,7 +1603,6 @@
       const copyBtn = document.getElementById("copy-btn");
       const clearBtn = document.getElementById("clear-btn");
       const quickBtns = document.querySelectorAll(".quick-btn");
-      const modeBtns = document.querySelectorAll(".mode-btn");
       const currencySelect = document.getElementById("currency-select");
       const currencyLabel = document.getElementById("currency-label");
 
@@ -1582,9 +1623,66 @@
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
       });
 
-      modeBtns.forEach((btn) => {
-        btn.addEventListener("click", () => setMode(btn.dataset.mode));
-      });
+      // Conversion arrow functionality - swap between Robux and USD inputs
+      const conversionArrow = document.querySelector(".conversion-arrow");
+
+      console.log("Conversion arrow element:", conversionArrow);
+
+      if (conversionArrow) {
+        console.log("Adding click event listener to conversion arrow");
+
+        conversionArrow.addEventListener("click", (e) => {
+          console.log("Conversion arrow clicked!");
+          e.preventDefault();
+
+          // Get the input groups using more reliable selectors
+          const allInputGroups = document.querySelectorAll(".input-group");
+
+          console.log("Found input groups:", allInputGroups.length);
+
+          if (allInputGroups.length >= 2) {
+            console.log("Swapping input field positions");
+
+            // Get the parent container
+            const conversionSection = document.querySelector(
+              ".conversion-section"
+            );
+
+            if (conversionSection) {
+              // Always swap the first two input groups (regardless of their current order)
+              const firstGroup = allInputGroups[0];
+              const secondGroup = allInputGroups[1];
+
+              console.log("First group:", firstGroup);
+              console.log("Second group:", secondGroup);
+
+              // Get the arrow element to preserve its position
+              const arrowElement = document.querySelector(".conversion-arrow");
+
+              // Remove both groups from their current positions
+              firstGroup.remove();
+              secondGroup.remove();
+
+              // Insert them back in swapped order, ensuring arrow stays in the middle
+              // Insert second group first (before arrow)
+              conversionSection.insertBefore(secondGroup, arrowElement);
+              // Insert first group last (after arrow)
+              conversionSection.insertBefore(
+                firstGroup,
+                arrowElement.nextSibling
+              );
+
+              console.log("Fields swapped successfully");
+            }
+          } else {
+            console.error("Could not find enough input groups to swap");
+          }
+
+          console.log("Swap completed");
+        });
+      } else {
+        console.error("Conversion arrow element not found!");
+      }
 
       // Initialize currency and rate display
       initializeCurrency().then(() => {
@@ -1646,15 +1744,45 @@
       }
 
       function setMode(mode) {
-        currentMode = mode;
+        // Map new mode names to existing mode values
+        const modeMapping = {
+          purchase: "player",
+          devex: "devex",
+          marketplace: "marketplace",
+        };
+
+        currentMode = modeMapping[mode] || mode;
 
         // Update active button
+        const modeBtns = document.querySelectorAll(".mode-btn");
         modeBtns.forEach((btn) => {
           btn.classList.remove("active");
-          if (btn.dataset.mode === mode) {
-            btn.classList.add("active");
-          }
         });
+
+        // Find and activate the correct button
+        let targetBtn = null;
+
+        // If called from an event (user click), use the clicked button
+        if (event && event.target) {
+          targetBtn = event.target.closest(".mode-btn");
+        }
+
+        // If no event or button not found, find by mode
+        if (!targetBtn) {
+          const modeToButtonMapping = {
+            purchase: "purchase",
+            devex: "devex",
+            marketplace: "marketplace",
+          };
+          const targetMode = modeToButtonMapping[mode] || mode;
+          targetBtn = document.querySelector(
+            `[onclick="setMode('${targetMode}')"]`
+          );
+        }
+
+        if (targetBtn) {
+          targetBtn.classList.add("active");
+        }
 
         updateRateDisplay();
 
@@ -1695,7 +1823,22 @@
 
       function updateCurrencyLabel() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
-        currencyLabel.textContent = `${currentCurrency} (${symbol})`;
+        const flagElement = document.getElementById("active-currency-flag");
+        const nameElement = document.getElementById("active-currency-name");
+
+        // Update flag and currency name based on current currency
+        const currencyData = {
+          USD: { flag: "🇺🇸", name: "USD ($)" },
+          GBP: { flag: "🇬🇧", name: "GBP (£)" },
+          EUR: { flag: "🇪🇺", name: "EUR (€)" },
+          CAD: { flag: "🇨🇦", name: "CAD ($)" },
+          AUD: { flag: "🇦🇺", name: "AUD ($)" },
+        };
+
+        const data = currencyData[currentCurrency] || currencyData["USD"];
+
+        if (flagElement) flagElement.textContent = data.flag;
+        if (nameElement) nameElement.textContent = data.name;
       }
 
       function updateRateDisplay() {
@@ -1813,254 +1956,6 @@
         }, 3000);
       }
 
-      // Smart Spending Tracker
-      class SpendingTracker {
-        constructor(calculatorName, currencyName) {
-          this.calculatorName = calculatorName;
-          this.currencyName = currencyName;
-          this.storageKey = `${calculatorName}-history`;
-          this.maxHistory = 100; // Increased from 50 to 100
-          this.maxDisplayHistory = 25; // New: limit UI display
-          this.daysToKeep = 90; // Keep existing 90-day limit
-          this.history = this.loadHistory();
-          this.initializeElements();
-          this.setupEventListeners();
-          this.updateDisplay();
-        }
-
-        initializeElements() {
-          this.totalAmountEl = document.getElementById("totalAmount");
-          this.currencyNameEl = document.getElementById("currencyName");
-          this.totalValueEl = document.getElementById("totalValue");
-          this.calcCountEl = document.getElementById("calcCount");
-          this.viewHistoryBtn = document.getElementById("viewHistory");
-          this.clearHistoryBtn = document.getElementById("clearHistory");
-          this.trackerDetails = document.getElementById("trackerDetails");
-          this.historyList = document.getElementById("historyList");
-          this.exportBtn = document.getElementById("exportHistory");
-        }
-
-        setupEventListeners() {
-          this.viewHistoryBtn.addEventListener("click", () =>
-            this.toggleHistory()
-          );
-          this.clearHistoryBtn.addEventListener("click", () =>
-            this.showConfirmModal()
-          );
-          this.exportBtn.addEventListener("click", () => this.exportHistory());
-        }
-
-        cleanupHistory() {
-          const now = Date.now();
-          const cutoffDate = now - this.daysToKeep * 24 * 60 * 60 * 1000;
-
-          // Remove entries older than 90 days
-          this.history = this.history.filter(
-            (item) => item.timestamp > cutoffDate
-          );
-
-          // If still over limit, keep only the newest entries
-          if (this.history.length > this.maxHistory) {
-            this.history = this.history.slice(-this.maxHistory);
-          }
-
-          return this.history;
-        }
-
-        loadHistory() {
-          // Security: Use safe localStorage operations
-          const stored = SecurityManager.safeStorageGet(this.storageKey);
-          if (stored) {
-            try {
-              const history = JSON.parse(stored);
-              // Use the new cleanup method
-              this.history = history;
-              return this.cleanupHistory();
-            } catch (e) {
-              console.warn("Failed to parse spending history:", e);
-            }
-          }
-          return [];
-        }
-
-        saveHistory() {
-          // Security: Use safe localStorage operations
-          const success = SecurityManager.safeStorageSet(
-            this.storageKey,
-            JSON.stringify(this.history)
-          );
-          if (!success) {
-            // If storage is full, remove oldest entries
-            this.history = this.history.slice(-25);
-            SecurityManager.safeStorageSet(
-              this.storageKey,
-              JSON.stringify(this.history)
-            );
-          }
-        }
-
-        addCalculation(gameAmount, gameCurrency, currencyAmount, currencyType) {
-          const calculation = {
-            timestamp: Date.now(),
-            gameAmount: gameAmount,
-            gameCurrency: gameCurrency,
-            currencyAmount: currencyAmount,
-            currencyType: currencyType,
-          };
-
-          this.history.unshift(calculation);
-
-          // Use cleanup instead of simple slice
-          this.cleanupHistory();
-
-          this.saveHistory();
-          this.updateDisplay();
-        }
-
-        updateDisplay() {
-          const totalGameAmount = this.history.reduce(
-            (sum, calc) => sum + calc.gameAmount,
-            0
-          );
-          const totalCurrencyValue = this.history.reduce(
-            (sum, calc) => sum + calc.currencyAmount,
-            0
-          );
-          const calcCount = this.history.length;
-
-          this.totalAmountEl.textContent = totalGameAmount.toLocaleString();
-          this.currencyNameEl.textContent = this.currencyName;
-          this.totalValueEl.textContent = `$${totalCurrencyValue.toFixed(2)}`;
-          this.calcCountEl.textContent = calcCount;
-
-          // Add indicator if at max capacity
-          if (calcCount >= this.maxHistory) {
-            this.calcCountEl.textContent = `${calcCount} (Max)`;
-          }
-        }
-
-        toggleHistory() {
-          const isVisible = this.trackerDetails.style.display !== "none";
-          this.trackerDetails.style.display = isVisible ? "none" : "block";
-          this.viewHistoryBtn.textContent = isVisible
-            ? "See Details"
-            : "Hide Details";
-
-          if (!isVisible) {
-            this.renderHistory();
-          }
-        }
-
-        renderHistory() {
-          // Use maxDisplayHistory instead of hardcoded 10
-          const recentHistory = this.history.slice(0, this.maxDisplayHistory);
-          this.historyList.innerHTML = "";
-
-          if (recentHistory.length === 0) {
-            this.historyList.innerHTML =
-              '<p style="color: var(--gray); font-style: italic;">No calculations yet</p>';
-            return;
-          }
-
-          // Add a note if there are more entries than displayed
-          if (this.history.length > this.maxDisplayHistory) {
-            const noteDiv = document.createElement("div");
-            noteDiv.style.cssText =
-              "padding: 0.5rem; background: #f0f9ff; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gray);";
-            noteDiv.innerHTML = `Showing last ${this.maxDisplayHistory} of ${this.history.length} calculations. <a href="#" onclick="event.preventDefault(); document.getElementById('exportHistory').click();" style="color: var(--primary);">Export all</a>`;
-            this.historyList.appendChild(noteDiv);
-          }
-
-          recentHistory.forEach((calc) => {
-            const item = document.createElement("div");
-            item.className = "history-item";
-            const date = new Date(calc.timestamp).toLocaleDateString();
-            const time = new Date(calc.timestamp).toLocaleTimeString();
-            // Security: HTML escape all user content
-            const gameAmountEscaped = SecurityManager.escapeHtml(
-              calc.gameAmount.toLocaleString()
-            );
-            const currencyNameEscaped = SecurityManager.escapeHtml(
-              this.currencyName
-            );
-            const currencyAmountEscaped = SecurityManager.escapeHtml(
-              calc.currencyAmount.toFixed(2)
-            );
-            const currencyTypeEscaped = SecurityManager.escapeHtml(
-              calc.currencyType
-            );
-            const dateEscaped = SecurityManager.escapeHtml(date);
-            const timeEscaped = SecurityManager.escapeHtml(time);
-
-            item.innerHTML = `
-              <div><strong>${gameAmountEscaped} ${currencyNameEscaped}</strong> = ${
-              window.currencyManager
-                ? window.currencyManager.getSymbol(calc.currencyType)
-                : "$"
-            }${currencyAmountEscaped} ${currencyTypeEscaped}</div>
-              <div style="color: var(--gray); font-size: 0.8rem;">${dateEscaped} at ${timeEscaped}</div>
-            `;
-            this.historyList.appendChild(item);
-          });
-        }
-
-        showConfirmModal() {
-          const modal = document.getElementById("confirmModal");
-          modal.classList.add("show");
-        }
-
-        clearHistory() {
-          this.history = [];
-          this.saveHistory();
-          this.updateDisplay();
-          this.trackerDetails.style.display = "none";
-          this.viewHistoryBtn.textContent = "See Details";
-          showNotification("History cleared!");
-        }
-
-        exportHistory() {
-          if (this.history.length === 0) {
-            showNotification("No data to export");
-            return;
-          }
-
-          const csvContent = [
-            ["Date", "Time", "Robux", "Currency", "Amount", "Value"],
-            ...this.history.map((calc) => [
-              new Date(calc.timestamp).toLocaleDateString(),
-              new Date(calc.timestamp).toLocaleTimeString(),
-              calc.gameAmount,
-              calc.currencyType,
-              `${
-                window.currencyManager
-                  ? window.currencyManager.getSymbol(calc.currencyType)
-                  : "$"
-              }${calc.currencyAmount.toFixed(2)}`,
-              calc.currencyAmount,
-            ]),
-          ]
-            .map((row) => row.join(","))
-            .join("\n");
-
-          const blob = new Blob([csvContent], { type: "text/csv" });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          // Security: Sanitize filename for CSV exports
-          const sanitizedFilename = SecurityManager.sanitizeFilename(
-            `${this.calculatorName}-history-${
-              new Date().toISOString().split("T")[0]
-            }.csv`
-          );
-          a.download = sanitizedFilename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-          showNotification("History exported successfully!");
-        }
-      }
-
       // Better Deal Finder
       class DealFinder {
         constructor() {
@@ -2136,13 +2031,11 @@
       }
 
       // Initialize features
-      let spendingTracker;
       let dealFinder;
 
       // Initialize after currency system is ready
       async function initializeFeatures() {
         // Currency manager is already initialized by initializeCurrency()
-        spendingTracker = new SpendingTracker("robux", "Robux");
         dealFinder = new DealFinder();
       }
 
@@ -2154,15 +2047,9 @@
         if (originalHandleRobuxInput) {
           originalHandleRobuxInput();
         }
-        if (spendingTracker && robuxInput.value && usdInput.value) {
+        if (robuxInput.value && usdInput.value) {
           const gameAmount = parseFloat(robuxInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "Robux",
-            currencyAmount,
-            currentCurrency
-          );
           dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
         }
       };
@@ -2171,15 +2058,9 @@
         if (originalHandleUsdInput) {
           originalHandleUsdInput();
         }
-        if (spendingTracker && robuxInput.value && usdInput.value) {
+        if (robuxInput.value && usdInput.value) {
           const gameAmount = parseFloat(robuxInput.value);
           const currencyAmount = parseFloat(usdInput.value);
-          spendingTracker.addCalculation(
-            gameAmount,
-            "Robux",
-            currencyAmount,
-            currentCurrency
-          );
           dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
         }
       };
@@ -2197,33 +2078,16 @@
         }
       });
 
-      // Modal functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("confirmModal");
-        const cancelBtn = document.getElementById("modalCancel");
-        const confirmBtn = document.getElementById("modalConfirm");
-
-        cancelBtn.addEventListener("click", () => {
-          modal.classList.remove("show");
-        });
-
-        confirmBtn.addEventListener("click", () => {
-          if (spendingTracker) {
-            spendingTracker.clearHistory();
-          }
-          modal.classList.remove("show");
-        });
-
-        // Close modal when clicking overlay
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            modal.classList.remove("show");
-          }
-        });
-      });
-
       // Load saved calculation
       loadSavedCalculation();
+
+      // Ensure default mode is set (Buy Robux)
+      document.addEventListener("DOMContentLoaded", function () {
+        // Small delay to ensure DOM is fully ready
+        setTimeout(() => {
+          setMode("purchase");
+        }, 50);
+      });
     </script>
 
     <!-- FAQ Toggle Functionality -->
@@ -2260,8 +2124,8 @@
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Robux to USD Calculator",
-        "description": "Free Robux calculator to convert between Robux and USD. Calculate Roblox currency value, DevEx rates, and marketplace fees instantly. Updated 2025 rates.",
+        "name": "Robux Currency Converter",
+        "description": "Free Robux converter to convert between Robux and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly. DevEx rates and marketplace fees included.",
         "url": "https://forgeapi.dev/gaming-calculators/robux/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
@@ -2375,7 +2239,7 @@
           {
             "@type": "HowToStep",
             "name": "Select Mode",
-            "text": "Choose between Player Purchase Rate, DevEx Rate, or Marketplace Tax Calculator"
+            "text": "Choose between Buy Robux (USD to Robux), Cash Out (Robux to USD), or Marketplace (after 30% tax)"
           },
           {
             "@type": "HowToStep",
@@ -2395,27 +2259,6 @@
         ]
       }
     </script>
-    <!-- Custom Modal -->
-    <div class="modal-overlay" id="confirmModal">
-      <div class="modal-dialog">
-        <div class="modal-header">
-          <div class="modal-icon">⚠️</div>
-          <h3 class="modal-title">Clear History</h3>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to clear your calculation history? This action
-          cannot be undone.
-        </div>
-        <div class="modal-actions">
-          <button class="modal-btn modal-btn-secondary" id="modalCancel">
-            Cancel
-          </button>
-          <button class="modal-btn modal-btn-primary" id="modalConfirm">
-            Clear History
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Google AdSense -->
     <script
@@ -2423,5 +2266,14 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
+      }
+    </script>
   </body>
 </html>

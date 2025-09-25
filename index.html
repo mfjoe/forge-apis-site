@@ -143,93 +143,6 @@
         color: var(--primary);
       }
 
-      /* Tools Dropdown */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-btn {
-        background: none;
-        border: none;
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
-        cursor: pointer;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .dropdown-btn:hover {
-        color: var(--primary);
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #1f2937;
-        color: white;
-        width: 224px;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-          0 4px 6px -2px rgba(0, 0, 0, 0.2);
-        padding: 8px 0;
-        z-index: 1000;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .dropdown.active .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .dropdown-section {
-        margin-bottom: 8px;
-      }
-
-      .dropdown-section:last-child {
-        margin-bottom: 0;
-      }
-
-      .dropdown-section-title {
-        padding: 4px 12px;
-        font-size: 12px;
-        color: #9ca3af;
-        text-transform: uppercase;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-      }
-
-      .dropdown-section a {
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        transition: background-color 0.2s ease;
-        border-radius: 6px;
-        margin: 2px 8px;
-      }
-
-      .dropdown-section a:hover {
-        background-color: #374151;
-        transition: background-color 0.2s ease;
-      }
-
-      .dropdown-divider {
-        border-top: 1px solid #374151;
-        margin: 8px 0;
-      }
-
       /* ENHANCED Hero Section */
       .hero {
         padding: 100px 0 60px;
@@ -756,14 +669,66 @@
       .footer {
         background: var(--dark);
         color: white;
-        padding: 60px 0 20px;
+        padding: 80px 0 40px;
       }
 
       .footer-content {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 60px;
+        grid-template-columns: 1fr 2fr;
+        gap: 80px;
         margin-bottom: 40px;
+        align-items: start;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 100px;
+        justify-items: start;
+      }
+
+      .footer-subsection {
+        margin-bottom: 20px;
+      }
+
+      .footer-subsection h5 {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        color: #d1d5db;
+      }
+
+      .footer-bottom-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-contact-link {
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-contact-link:hover {
+        color: white;
+      }
+
+      .footer-bottom-left p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .footer-note {
+        margin-top: 8px !important;
+        font-style: italic;
       }
 
       .footer-brand .logo {
@@ -798,9 +763,113 @@
       .footer-bottom {
         padding-top: 32px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         color: #6b7280;
         font-size: 14px;
+      }
+
+      /* Mobile Menu Styles */
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+      }
+
+      .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: var(--dark);
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        display: block;
+        opacity: 1;
+      }
+
+      .mobile-menu-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100%;
+        background: white;
+        padding: 70px 0 40px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu.active .mobile-menu-content {
+        transform: translateX(0);
+      }
+
+      .mobile-menu-link {
+        display: block;
+        padding: 16px 32px;
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .mobile-menu-link:hover {
+        background: var(--light-gray);
+        border-left-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .mobile-menu-section-title {
+        padding: 8px 32px;
+        font-size: 12px;
+        color: var(--gray);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-top: 16px;
+      }
+
+      .mobile-menu-divider {
+        height: 1px;
+        background: var(--light-gray);
+        margin: 16px 32px;
       }
 
       /* Responsive */
@@ -820,18 +889,26 @@
       }
 
       @media (max-width: 768px) {
+        nav {
+          padding: 12px 0;
+        }
+
         .nav-links {
           display: none;
         }
 
+        .mobile-menu-btn {
+          display: flex;
+        }
+
         .logo svg {
-          width: 250px;
-          height: 83px;
+          width: 200px;
+          height: 67px;
         }
 
         .hero {
           min-height: 70vh;
-          padding: 60px 0 40px;
+          padding: 50px 0 40px;
         }
 
         .hero h1 {
@@ -877,6 +954,33 @@
         .footer-content {
           grid-template-columns: 1fr;
         }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+
+        .footer-bottom-right {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 968px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+
+        .footer-links {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 60px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -885,7 +989,7 @@
         }
 
         .hero {
-          padding: 50px 0 30px;
+          padding: 40px 0 30px;
           min-height: 60vh;
         }
 
@@ -926,7 +1030,7 @@
 
       @media (max-width: 360px) {
         .hero {
-          padding: 40px 0 25px;
+          padding: 35px 0 25px;
           min-height: 60vh;
         }
 
@@ -1114,28 +1218,38 @@
         <div class="nav-links">
           <a href="#products">Premium APIs</a>
           <a href="#tools">Free Tools</a>
-          <!-- Tools Dropdown -->
-          <div class="dropdown" id="toolsDropdown">
-            <button class="dropdown-btn" id="toolsDropdownBtn">
-              Tools <span style="font-size: 12px">▼</span>
-            </button>
-            <div class="dropdown-content">
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Premium Tools</div>
-                <a href="/riskscore"> RiskScore API </a>
-                <a href="/dupecheck"> DupeCheck </a>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Free Tools</div>
-                <a href="/gst-calculator"> GST Calculator </a>
-                <a href="/gaming-calculators"> Gaming Calculators </a>
-              </div>
-            </div>
-          </div>
           <a href="mailto:hello@forgeapis.com">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-menu-content">
+            <a href="#products" class="mobile-menu-link">Premium APIs</a>
+            <a href="#tools" class="mobile-menu-link">Free Tools</a>
+            <div class="mobile-menu-divider"></div>
+            <div class="mobile-menu-section-title">Premium Tools</div>
+            <a href="/riskscore" class="mobile-menu-link">RiskScore API</a>
+            <a href="/dupecheck" class="mobile-menu-link">DupeCheck</a>
+            <div class="mobile-menu-divider"></div>
+            <div class="mobile-menu-section-title">Free Tools</div>
+            <a href="/gst-calculator" class="mobile-menu-link"
+              >GST Calculator</a
+            >
+            <a href="/gaming-calculators" class="mobile-menu-link"
+              >Gaming Calculators</a
+            >
+            <div class="mobile-menu-divider"></div>
+            <a href="mailto:hello@forgeapis.com" class="mobile-menu-link"
+              >Contact</a
+            >
+          </div>
         </div>
       </div>
     </nav>
@@ -1582,30 +1696,52 @@
             </p>
           </div>
 
-          <div class="footer-column">
-            <h4>Products</h4>
-            <a href="/riskscore">RiskScore API</a>
-            <a href="#">EmailVerify (Coming Soon)</a>
-            <a href="#">DataEnrich (Coming Soon)</a>
-            <a href="#">View Roadmap</a>
-          </div>
+          <div class="footer-links">
+            <!-- Column 1 - Products -->
+            <div class="footer-column">
+              <h4>Products</h4>
+              <div class="footer-subsection">
+                <h5>Premium APIs</h5>
+                <a href="/riskscore">RiskScore API</a>
+                <a href="/dupecheck">DupeCheck</a>
+                <a href="#">Coming Soon</a>
+              </div>
+              <div class="footer-subsection">
+                <h5>Free Tools</h5>
+                <a href="/gst-calculator">GST Calculator</a>
+                <a href="/gaming-calculators">Gaming Calculators</a>
+              </div>
+            </div>
 
-          <div class="footer-column">
-            <h4>Legal</h4>
-            <a href="/privacy" onclick="showLegalPage('privacy'); return false;"
-              >Privacy Policy</a
-            >
-            <a href="/cookies" onclick="showLegalPage('cookies'); return false;"
-              >Cookie Policy</a
-            >
-            <a href="/terms" onclick="showLegalPage('terms'); return false;"
-              >Terms of Service</a
-            >
+            <!-- Column 2 - Company -->
+            <div class="footer-column">
+              <h4>Company</h4>
+              <a href="https://forgeapis.com">Forge APIs</a>
+              <a href="mailto:hello@forgeapis.com">Contact Us</a>
+            </div>
+
+            <!-- Column 3 - Legal -->
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="/privacy.html">Privacy Policy</a>
+              <a href="/cookies.html">Cookie Policy</a>
+              <a href="/terms.html">Terms of Service</a>
+            </div>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>Building the future of APIs, one endpoint at a time.</p>
+          <div class="footer-bottom-left">
+            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
+            <p class="footer-note">
+              Building the future of APIs, one endpoint at a time.
+            </p>
+          </div>
+          <div class="footer-bottom-right">
+            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
+              📧 Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -1677,21 +1813,48 @@
     </div>
     <script src="cookie-consent-secure.js" defer></script>
     <script>
-      // Tools dropdown functionality
+      // Mobile menu functionality
       document.addEventListener("DOMContentLoaded", function () {
-        const dropdown = document.getElementById("toolsDropdown");
-        const dropdownBtn = document.getElementById("toolsDropdownBtn");
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        if (dropdown && dropdownBtn) {
-          dropdownBtn.addEventListener("click", function (e) {
-            e.stopPropagation();
-            dropdown.classList.toggle("active");
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", function () {
+            mobileMenuBtn.classList.toggle("active");
+            mobileMenu.classList.toggle("active");
+            document.body.style.overflow = mobileMenu.classList.contains(
+              "active"
+            )
+              ? "hidden"
+              : "";
           });
 
-          // Close dropdown when clicking outside
-          document.addEventListener("click", function (e) {
-            if (!dropdown.contains(e.target)) {
-              dropdown.classList.remove("active");
+          // Close menu when clicking outside
+          mobileMenu.addEventListener("click", function (e) {
+            if (e.target === mobileMenu) {
+              mobileMenuBtn.classList.remove("active");
+              mobileMenu.classList.remove("active");
+              document.body.style.overflow = "";
+            }
+          });
+
+          // Close menu when clicking on a link
+          const mobileMenuLinks =
+            document.querySelectorAll(".mobile-menu-link");
+          mobileMenuLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenuBtn.classList.remove("active");
+              mobileMenu.classList.remove("active");
+              document.body.style.overflow = "";
+            });
+          });
+
+          // Close menu on escape key
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+              mobileMenuBtn.classList.remove("active");
+              mobileMenu.classList.remove("active");
+              document.body.style.overflow = "";
             }
           });
         }
