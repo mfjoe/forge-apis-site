@@ -934,9 +934,11 @@
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         padding: 1rem;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0;
         z-index: 1000;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-height: 70vh;
+        overflow-y: auto;
       }
 
       .mobile-menu.active {
@@ -949,6 +951,7 @@
         text-decoration: none;
         border-radius: 6px;
         transition: background 0.3s;
+        font-size: 0.95rem;
       }
 
       .mobile-menu a:hover {
@@ -1617,12 +1620,44 @@
         .footer-bottom-right {
           justify-content: center;
         }
+
+        /* Mobile Ad Size Classes */
+        .ad-mobile-large-rectangle {
+          max-width: 336px;
+          min-height: 280px;
+        }
+
+        .ad-mobile-half-page {
+          max-width: 300px;
+          min-height: 600px;
+          margin-bottom: 30px;
+        }
+
+        /* Ensure proper spacing for mobile ads */
+        .mobile-only.ad-container {
+          display: block !important;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 15px 10px;
+        }
+
+        /* Prevent layout shift */
+        .ad-placeholder {
+          min-height: inherit;
+        }
       }
 
       @media (max-width: 968px) {
         .footer-links {
           grid-template-columns: repeat(2, 1fr);
           gap: 40px;
+        }
+      }
+
+      /* Desktop Protection - Hide Mobile Ads */
+      @media (min-width: 1200px) {
+        .mobile-only {
+          display: none !important;
         }
       }
     </style>
@@ -1808,6 +1843,7 @@
                 <a href="/gst-calculator"> GST Calculator </a>
                 <a href="/gaming-calculators"> Gaming Calculators </a>
                 <a href="/va-calculator"> VA Disability Calculator </a>
+                <a href="/tip-calculator"> Tip Calculator </a>
               </div>
             </div>
           </div>
@@ -1822,14 +1858,61 @@
 
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-dropdown">
-            <span style="font-weight: 600">Tools</span>
-            <a href="/riskscore" style="padding-left: 20px">🛡️ RiskScore API</a>
-            <a href="/dupecheck" style="padding-left: 20px">🔍 DupeCheck</a>
-            <a href="/gst-calculator" style="padding-left: 20px"
-              >🧮 GST Calculator</a
+          <a href="/">Home</a>
+
+          <div
+            style="
+              border-top: 1px solid #e2e8f0;
+              margin: 0.75rem 0;
+              padding-top: 0.5rem;
+            "
+          >
+            <span
+              style="
+                padding: 0.5rem 0.75rem;
+                display: block;
+                color: var(--gray);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              >Free Calculators</span
             >
           </div>
+
+          <a href="/gst-calculator">GST Calculator</a>
+          <a href="/va-calculator">VA Disability Calculator</a>
+          <a href="/tip-calculator">Tip Calculator</a>
+          <a href="/gaming-calculators">Gaming Calculators</a>
+
+          <div
+            style="
+              border-top: 1px solid #e2e8f0;
+              margin: 0.75rem 0;
+              padding-top: 0.5rem;
+            "
+          >
+            <span
+              style="
+                padding: 0.5rem 0.75rem;
+                display: block;
+                color: var(--gray);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              >Premium APIs</span
+            >
+          </div>
+
+          <a href="/riskscore">RiskScore API</a>
+          <a href="/dupecheck">DupeCheck</a>
+
+          <div style="border-top: 1px solid #e2e8f0; margin: 0.75rem 0"></div>
+
+          <a href="mailto:hello@forgeapis.com">Contact</a>
         </div>
       </div>
     </nav>
@@ -2136,6 +2219,39 @@
           </ul>
         </div>
 
+        <!-- Mobile High-Value Ad - After GST Understanding Section -->
+        <div
+          class="ad-container mobile-only ad-mobile-large-rectangle"
+          style="margin: 30px auto"
+        >
+          <div class="ad-placeholder">
+            <div
+              style="
+                text-align: center;
+                padding: 20px;
+                background: #f8f9fa;
+                border: 2px dashed #dee2e6;
+                border-radius: 8px;
+                color: #6c757d;
+                width: 336px;
+                height: 280px;
+                max-width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                style="font-size: 14px; font-weight: 500; margin-bottom: 8px"
+              >
+                Advertisement Space
+              </div>
+              <div style="font-size: 12px">336x280 Large Rectangle</div>
+            </div>
+          </div>
+        </div>
+
         <!-- FAQ Section -->
         <div class="faq-section">
           <h2>Frequently Asked Questions</h2>
@@ -2161,6 +2277,39 @@
               reducing their overall tax liability. This eliminates tax
               cascading.
             </p>
+          </div>
+
+          <!-- Mobile Mid-Content Ad - Between FAQs -->
+          <div
+            class="ad-container mobile-only ad-mobile-rectangle"
+            style="margin: 25px auto"
+          >
+            <div class="ad-placeholder">
+              <div
+                style="
+                  text-align: center;
+                  padding: 20px;
+                  background: #f8f9fa;
+                  border: 2px dashed #dee2e6;
+                  border-radius: 8px;
+                  color: #6c757d;
+                  width: 300px;
+                  height: 250px;
+                  max-width: 100%;
+                  margin: 0 auto;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <div
+                  style="font-size: 14px; font-weight: 500; margin-bottom: 8px"
+                >
+                  Advertisement Space
+                </div>
+                <div style="font-size: 12px">300x250 Medium Rectangle</div>
+              </div>
+            </div>
           </div>
 
           <!-- Ad between 3rd and 4th FAQ items -->
@@ -2230,6 +2379,39 @@
           <p>5% (non-AC), 18% (AC/licensed)</p>
         </div>
 
+        <!-- Mobile Post-Industry Section Ad -->
+        <div
+          class="ad-container mobile-only ad-mobile-rectangle"
+          style="margin: 30px auto"
+        >
+          <div class="ad-placeholder">
+            <div
+              style="
+                text-align: center;
+                padding: 20px;
+                background: #f8f9fa;
+                border: 2px dashed #dee2e6;
+                border-radius: 8px;
+                color: #6c757d;
+                width: 300px;
+                height: 250px;
+                max-width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                style="font-size: 14px; font-weight: 500; margin-bottom: 8px"
+              >
+                Advertisement Space
+              </div>
+              <div style="font-size: 12px">300x250 Medium Rectangle</div>
+            </div>
+          </div>
+        </div>
+
         <!-- GST vs Previous Tax System -->
         <div class="content-section">
           <h2>GST vs Previous Tax System</h2>
@@ -2284,6 +2466,40 @@
           <!-- Desktop History Widget -->
         </div>
       </aside>
+    </div>
+
+    <!-- Mobile Premium Pre-Footer Ad - Highest CPM -->
+    <div
+      class="ad-container mobile-only ad-mobile-half-page"
+      style="margin: 40px auto 30px"
+    >
+      <div class="ad-placeholder">
+        <div
+          style="
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            color: #6c757d;
+            width: 300px;
+            height: 600px;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <div style="font-size: 16px; font-weight: 600; margin-bottom: 12px">
+            Premium Ad Space
+          </div>
+          <div style="font-size: 13px; margin-bottom: 8px">
+            300x600 Half-Page
+          </div>
+          <div style="font-size: 11px; opacity: 0.7">Highest Mobile CPM</div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -2720,18 +2936,11 @@
           mobileMenuToggle.addEventListener("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log("Mobile menu toggle clicked");
             this.classList.toggle("active");
             mobileMenu.classList.toggle("active");
-
-            // Close dropdown when mobile menu opens
-            const dropdown = document.getElementById("toolsDropdown");
-            if (dropdown) {
-              dropdown.classList.remove("active");
-            }
           });
 
-          // Close mobile menu when clicking outside
+          // Close when clicking outside
           document.addEventListener("click", function (e) {
             if (
               !mobileMenuToggle.contains(e.target) &&

@@ -162,20 +162,21 @@
       /* Tools Dropdown */
       .dropdown {
         position: relative;
+        display: inline-block;
       }
 
       .dropdown-btn {
         background: none;
         border: none;
         color: var(--dark);
+        text-decoration: none;
         font-weight: 500;
+        font-size: 16px;
         cursor: pointer;
+        transition: color 0.3s;
         display: flex;
         align-items: center;
-        gap: 8px;
-        transition: color 0.3s;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: inherit;
+        gap: 4px;
       }
 
       .dropdown-btn:hover {
@@ -183,37 +184,66 @@
       }
 
       .dropdown-content {
+        display: none;
         position: absolute;
         top: 100%;
-        right: 0;
-        background: white;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        left: 0;
+        background: #1f2937;
+        color: white;
+        width: 224px;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        min-width: 200px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -2px rgba(0, 0, 0, 0.2);
         z-index: 1001;
+        padding: 8px 0;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
       }
 
-      .dropdown-content.show {
+      .dropdown.active .dropdown-content {
+        display: block;
         opacity: 1;
-        visibility: visible;
         transform: translateY(0);
       }
 
-      .dropdown-content a {
-        display: block;
-        padding: 12px 16px;
-        color: var(--dark);
-        text-decoration: none;
-        transition: background-color 0.3s;
+      .dropdown-section {
+        margin-bottom: 8px;
       }
 
-      .dropdown-content a:hover {
-        background: var(--light-gray);
+      .dropdown-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .dropdown-section-title {
+        padding: 4px 12px;
+        font-size: 12px;
+        color: #9ca3af;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .dropdown-section a {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease;
+        border-radius: 6px;
+        margin: 2px 8px;
+      }
+
+      .dropdown-section a:hover {
+        background-color: #374151;
+        transition: background-color 0.2s ease;
+      }
+
+      .dropdown-divider {
+        border-top: 1px solid #374151;
+        margin: 8px 0;
       }
 
       .mobile-menu-toggle {
@@ -227,10 +257,58 @@
       }
 
       .mobile-menu-toggle span {
-        width: 20px;
-        height: 2px;
+        width: 25px;
+        height: 3px;
         background: var(--dark);
         transition: all 0.3s;
+        border-radius: 2px;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        padding: 0.75rem;
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+        font-size: 0.95rem;
+      }
+
+      .mobile-menu a:hover {
+        background: var(--light-gray);
       }
 
       /* Calculator Layout */
@@ -1334,14 +1412,24 @@
         <div class="nav-links">
           <div class="dropdown" id="toolsDropdown">
             <button class="dropdown-btn" id="toolsDropdownBtn">
-              Tools <span>▼</span>
+              Tools <span style="font-size: 12px">▼</span>
             </button>
-            <div class="dropdown-content" id="toolsDropdownContent">
-              <a href="/riskscore">RiskScore API</a>
-              <a href="/dupecheck">DupeCheck</a>
-              <a href="/gst-calculator">GST Calculator</a>
-              <a href="/gaming-calculators">Gaming Calculators</a>
-              <a href="/va-calculator">VA Disability Calculator</a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <div class="dropdown-section-title">Premium Tools</div>
+                <a href="/riskscore"> RiskScore API </a>
+                <a href="/dupecheck"> DupeCheck </a>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="dropdown-section">
+                <div class="dropdown-section-title">Free Tools</div>
+                <a href="/gst-calculator"> GST Calculator </a>
+                <a href="/gaming-calculators"> Gaming Calculators </a>
+                <a href="/va-calculator"> VA Disability Calculator </a>
+                <a href="/tip-calculator"> Tip Calculator </a>
+              </div>
             </div>
           </div>
           <a href="#understanding-va-math">About</a>
@@ -1351,6 +1439,65 @@
           <span></span>
           <span></span>
         </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="/">Home</a>
+
+          <div
+            style="
+              border-top: 1px solid #e2e8f0;
+              margin: 0.75rem 0;
+              padding-top: 0.5rem;
+            "
+          >
+            <span
+              style="
+                padding: 0.5rem 0.75rem;
+                display: block;
+                color: var(--gray);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              >Free Calculators</span
+            >
+          </div>
+
+          <a href="/gst-calculator">GST Calculator</a>
+          <a href="/va-calculator">VA Disability Calculator</a>
+          <a href="/tip-calculator">Tip Calculator</a>
+          <a href="/gaming-calculators">Gaming Calculators</a>
+
+          <div
+            style="
+              border-top: 1px solid #e2e8f0;
+              margin: 0.75rem 0;
+              padding-top: 0.5rem;
+            "
+          >
+            <span
+              style="
+                padding: 0.5rem 0.75rem;
+                display: block;
+                color: var(--gray);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              >Premium APIs</span
+            >
+          </div>
+
+          <a href="/riskscore">RiskScore API</a>
+          <a href="/dupecheck">DupeCheck</a>
+
+          <div style="border-top: 1px solid #e2e8f0; margin: 0.75rem 0"></div>
+
+          <a href="mailto:hello@forgeapis.com">Contact</a>
+        </div>
       </div>
     </nav>
 
@@ -1375,29 +1522,6 @@
                 <strong>How to use:</strong> Enter your disability ratings in
                 the first tab, then add any dependents in the second tab. Your
                 monthly compensation will update automatically.
-              </p>
-            </div>
-            <div
-              style="
-                background: #f0fdf4;
-                border: 1px solid #86efac;
-                border-radius: 8px;
-                padding: 1rem;
-                margin-top: 1rem;
-                border-left: 4px solid var(--success);
-              "
-            >
-              <p
-                style="
-                  margin: 0;
-                  color: var(--dark);
-                  font-size: 0.9rem;
-                  line-height: 1.5;
-                "
-              >
-                <strong>✓ Accurate Calculations:</strong> This calculator uses
-                official 2025 VA compensation rates including tiered dependent
-                rates that vary by rating percentage and number of dependents.
               </p>
             </div>
           </div>
@@ -1574,6 +1698,36 @@
 
     <!-- Content Sections -->
     <div class="content-sections">
+      <!-- Accurate Calculations -->
+      <div class="content-section">
+        <div
+          style="
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--success);
+            text-align: center;
+          "
+        >
+          <h2 style="margin: 0 0 1rem 0; color: var(--dark); font-size: 1.5rem">
+            ✓ Accurate Calculations
+          </h2>
+          <p
+            style="
+              margin: 0;
+              color: var(--dark);
+              font-size: 1rem;
+              line-height: 1.6;
+            "
+          >
+            This calculator uses official 2025 VA compensation rates including
+            tiered dependent rates that vary by rating percentage and number of
+            dependents.
+          </p>
+        </div>
+      </div>
+
       <!-- Understanding VA Math -->
       <div class="content-section" id="understanding-va-math">
         <h2>Understanding Veterans Affairs Disability Math</h2>
@@ -1916,23 +2070,46 @@
         loadSavedCalculation();
         setupEventListeners();
         generatePayChart();
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenuToggle && mobileMenu) {
+          mobileMenuToggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.classList.toggle("active");
+            mobileMenu.classList.toggle("active");
+          });
+
+          // Close when clicking outside
+          document.addEventListener("click", function (e) {
+            if (
+              !mobileMenuToggle.contains(e.target) &&
+              !mobileMenu.contains(e.target)
+            ) {
+              mobileMenuToggle.classList.remove("active");
+              mobileMenu.classList.remove("active");
+            }
+          });
+        }
       });
 
       function setupEventListeners() {
         // Tools dropdown
         const toolsDropdownBtn = document.getElementById("toolsDropdownBtn");
-        const toolsDropdownContent = document.getElementById(
-          "toolsDropdownContent"
-        );
+        const toolsDropdown = document.getElementById("toolsDropdown");
 
-        toolsDropdownBtn.addEventListener("click", function () {
-          toolsDropdownContent.classList.toggle("show");
+        toolsDropdownBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          toolsDropdown.classList.toggle("active");
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".dropdown")) {
-            toolsDropdownContent.classList.remove("show");
+        document.addEventListener("click", function (e) {
+          if (!toolsDropdown.contains(e.target)) {
+            toolsDropdown.classList.remove("active");
           }
         });
 
