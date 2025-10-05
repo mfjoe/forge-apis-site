@@ -1,656 +1,843 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy - Forge APIs</title>
-    <meta name="description" content="Forge APIs privacy policy. Learn how we collect, use, and protect your data across all our products including DupeCheck and RiskScore API.">
-    
+    <meta
+      name="description"
+      content="Forge APIs privacy policy. Learn how we collect, use, and protect your data across all our products including DupeCheck and RiskScore API."
+    />
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #0066FF;
-            --primary-dark: #0052CC;
-            --secondary: #00D4AA;
-            --dark: #0A0E27;
-            --gray: #6B7280;
-            --light-gray: #F3F4F6;
-            --white: #FFFFFF;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: white;
-        }
-        
-        /* Navigation */
-        nav {
-            background: white;
-            padding: 20px 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo::before {
-            content: "🔨";
-            font-size: 28px;
-        }
-        
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #0066ff;
+        --primary-dark: #0052cc;
+        --secondary: #00d4aa;
+        --dark: #0a0e27;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: white;
+      }
+
+      /* Navigation */
+      nav {
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo::before {
+        content: "🔨";
+        font-size: 28px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Legal Content */
+      .legal-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 80px 0 60px;
+        color: white;
+      }
+
+      .legal-header h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .legal-header .last-updated {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      .legal-content {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+
+      .legal-content h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 40px 0 20px;
+        color: var(--dark);
+      }
+
+      .legal-content h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 30px 0 15px;
+        color: var(--dark);
+      }
+
+      .legal-content h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 25px 0 12px;
+        color: var(--dark);
+      }
+
+      .legal-content p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: #374151;
+      }
+
+      .legal-content ul {
+        margin: 20px 0;
+        padding-left: 30px;
+      }
+
+      .legal-content li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+        color: #374151;
+      }
+
+      .legal-content a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .legal-content a:hover {
+        text-decoration: underline;
+      }
+
+      .legal-content strong {
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      /* Important Box */
+      .important-box {
+        background: #fef3c7;
+        border-left: 4px solid var(--warning);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 8px;
+      }
+
+      .important-box p {
+        margin: 0 0 10px 0;
+        color: #92400e;
+        font-weight: 500;
+      }
+
+      .important-box p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Critical Notice Box */
+      .critical-notice {
+        background: #fee2e2;
+        border: 2px solid var(--danger);
+        padding: 24px;
+        margin: 30px 0;
+        border-radius: 12px;
+      }
+
+      .critical-notice h4 {
+        color: var(--danger);
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .critical-notice h4::before {
+        content: "⚠️";
+        font-size: 24px;
+      }
+
+      .critical-notice p,
+      .critical-notice li {
+        color: #991b1b;
+        font-weight: 500;
+      }
+
+      .critical-notice ul {
+        margin: 12px 0;
+      }
+
+      /* Info Box */
+      .info-box {
+        background: #eff6ff;
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 8px;
+      }
+
+      .info-box h4 {
+        color: var(--primary);
+        margin-top: 0;
+      }
+
+      /* Product-specific box */
+      .product-box {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .product-box h4 {
+        color: #166534;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+
+      /* Table of Contents */
+      .toc {
+        background: var(--light-gray);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+
+      .toc h3 {
+        font-size: 18px;
+        margin-bottom: 16px;
+        color: var(--dark);
+      }
+
+      .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .toc li {
+        margin-bottom: 8px;
+      }
+
+      .toc a {
+        color: var(--gray);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .toc a:hover {
+        color: var(--primary);
+      }
+
+      .toc a::before {
+        content: "→";
+        margin-right: 8px;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark);
+        color: white;
+        padding: 60px 0 20px;
+        margin-top: 100px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin: 12px 0;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .footer-column a {
+        display: block;
+        color: #9ca3af;
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
         .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+          display: none;
         }
-        
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* Legal Content */
-        .legal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 80px 0 60px;
-            color: white;
-        }
-        
+
         .legal-header h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 16px;
+          font-size: 36px;
         }
-        
-        .legal-header .last-updated {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .legal-content {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        
-        .legal-content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 40px 0 20px;
-            color: var(--dark);
-        }
-        
-        .legal-content h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 30px 0 15px;
-            color: var(--dark);
-        }
-        
-        .legal-content h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 25px 0 12px;
-            color: var(--dark);
-        }
-        
-        .legal-content p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            color: #374151;
-        }
-        
-        .legal-content ul {
-            margin: 20px 0;
-            padding-left: 30px;
-        }
-        
-        .legal-content li {
-            margin-bottom: 12px;
-            line-height: 1.8;
-            color: #374151;
-        }
-        
-        .legal-content a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .legal-content a:hover {
-            text-decoration: underline;
-        }
-        
-        .legal-content strong {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        /* Important Box */
-        .important-box {
-            background: #FEF3C7;
-            border-left: 4px solid var(--warning);
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-        
-        .important-box p {
-            margin: 0 0 10px 0;
-            color: #92400E;
-            font-weight: 500;
-        }
-        
-        .important-box p:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Critical Notice Box */
-        .critical-notice {
-            background: #FEE2E2;
-            border: 2px solid var(--danger);
-            padding: 24px;
-            margin: 30px 0;
-            border-radius: 12px;
-        }
-        
-        .critical-notice h4 {
-            color: var(--danger);
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .critical-notice h4::before {
-            content: "⚠️";
-            font-size: 24px;
-        }
-        
-        .critical-notice p,
-        .critical-notice li {
-            color: #991B1B;
-            font-weight: 500;
-        }
-        
-        .critical-notice ul {
-            margin: 12px 0;
-        }
-        
-        /* Info Box */
-        .info-box {
-            background: #EFF6FF;
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-        
-        .info-box h4 {
-            color: var(--primary);
-            margin-top: 0;
-        }
-        
-        /* Product-specific box */
-        .product-box {
-            background: #F0FDF4;
-            border: 1px solid #86EFAC;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .product-box h4 {
-            color: #166534;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-        
-        /* Table of Contents */
-        .toc {
-            background: var(--light-gray);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 40px;
-        }
-        
-        .toc h3 {
-            font-size: 18px;
-            margin-bottom: 16px;
-            color: var(--dark);
-        }
-        
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .toc li {
-            margin-bottom: 8px;
-        }
-        
-        .toc a {
-            color: var(--gray);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .toc a:hover {
-            color: var(--primary);
-        }
-        
-        .toc a::before {
-            content: "→";
-            margin-right: 8px;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-            margin-top: 100px;
-        }
-        
+
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
+          grid-template-columns: 1fr;
         }
-        
-        .footer-brand p {
-            color: #9CA3AF;
-            margin: 12px 0;
-        }
-        
-        .footer-column h4 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-        
-        .footer-column a {
-            display: block;
-            color: #9CA3AF;
-            text-decoration: none;
-            margin-bottom: 12px;
-            transition: color 0.3s;
-        }
-        
-        .footer-column a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: #6B7280;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .legal-header h1 {
-                font-size: 36px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5YPCMTRSNN");
+    </script>
+    <!-- End Google Analytics -->
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <a href="/" class="logo">Forge APIs</a>
-            <div class="nav-links">
-                <a href="/#products">Products</a>
-                <a href="mailto:hello@forgeapis.com">Contact</a>
-            </div>
+      <div class="container">
+        <a href="/" class="logo">Forge APIs</a>
+        <div class="nav-links">
+          <a href="/#products">Products</a>
+          <a href="mailto:hello@forgeapis.com">Contact</a>
         </div>
+      </div>
     </nav>
 
     <!-- Header -->
     <div class="legal-header">
-        <div class="container">
-            <h1>Privacy Policy</h1>
-            <p class="last-updated">Version 1.2 - Last updated: January 2025</p>
-        </div>
+      <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Version 1.2 - Last updated: January 2025</p>
+      </div>
     </div>
 
     <!-- Content -->
     <div class="legal-content">
-        
-        <div class="important-box">
-            <p><strong>Overview:</strong> At Forge APIs ("we", "our", or "us"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our products including DupeCheck, RiskScore API, and other services.</p>
-            <p>By using our services, you agree to the collection and use of information in accordance with this policy.</p>
-        </div>
+      <div class="important-box">
+        <p>
+          <strong>Overview:</strong> At Forge APIs ("we", "our", or "us"), we
+          take your privacy seriously. This Privacy Policy explains how we
+          collect, use, disclose, and safeguard your information when you use
+          our products including DupeCheck, RiskScore API, and other services.
+        </p>
+        <p>
+          By using our services, you agree to the collection and use of
+          information in accordance with this policy.
+        </p>
+      </div>
 
-        <div class="toc">
-            <h3>Table of Contents</h3>
-            <ul>
-                <li><a href="#information-collect">Information We Collect</a></li>
-                <li><a href="#product-specific">Product-Specific Data Handling</a></li>
-                <li><a href="#legal-basis">Legal Basis for Processing</a></li>
-                <li><a href="#how-we-use">How We Use Your Information</a></li>
-                <li><a href="#sharing">Information Sharing</a></li>
-                <li><a href="#security">Data Security</a></li>
-                <li><a href="#retention">Data Retention</a></li>
-                <li><a href="#your-rights">Your Rights</a></li>
-                <li><a href="#gdpr">GDPR Compliance</a></li>
-                <li><a href="#ccpa">California Privacy Rights</a></li>
-                <li><a href="#cookies">Cookies & Local Storage</a></li>
-                <li><a href="#age">Age Restrictions</a></li>
-                <li><a href="#breach">Data Breach Notification</a></li>
-                <li><a href="#changes">Changes to This Policy</a></li>
-                <li><a href="#contact">Contact Information</a></li>
-            </ul>
-        </div>
-
-        <h2 id="information-collect">Information We Collect</h2>
-        
-        <h3>Information You Provide</h3>
+      <div class="toc">
+        <h3>Table of Contents</h3>
         <ul>
-            <li><strong>Account Information:</strong> Email address, name, and company name when you sign up</li>
-            <li><strong>Payment Information:</strong> Processed securely through Stripe (we don't store card details)</li>
-            <li><strong>API Usage Data:</strong> API keys, request logs, and usage metrics (API products only)</li>
-            <li><strong>Uploaded Files:</strong> Temporarily processed files for analysis (DupeCheck)</li>
-            <li><strong>Support Communications:</strong> Information you provide when contacting support</li>
+          <li><a href="#information-collect">Information We Collect</a></li>
+          <li>
+            <a href="#product-specific">Product-Specific Data Handling</a>
+          </li>
+          <li><a href="#legal-basis">Legal Basis for Processing</a></li>
+          <li><a href="#how-we-use">How We Use Your Information</a></li>
+          <li><a href="#sharing">Information Sharing</a></li>
+          <li><a href="#security">Data Security</a></li>
+          <li><a href="#retention">Data Retention</a></li>
+          <li><a href="#your-rights">Your Rights</a></li>
+          <li><a href="#gdpr">GDPR Compliance</a></li>
+          <li><a href="#ccpa">California Privacy Rights</a></li>
+          <li><a href="#cookies">Cookies & Local Storage</a></li>
+          <li><a href="#age">Age Restrictions</a></li>
+          <li><a href="#breach">Data Breach Notification</a></li>
+          <li><a href="#changes">Changes to This Policy</a></li>
+          <li><a href="#contact">Contact Information</a></li>
         </ul>
+      </div>
 
-        <h3>Information Collected Automatically</h3>
+      <h2 id="information-collect">Information We Collect</h2>
+
+      <h3>Information You Provide</h3>
+      <ul>
+        <li>
+          <strong>Account Information:</strong> Email address, name, and company
+          name when you sign up
+        </li>
+        <li>
+          <strong>Payment Information:</strong> Processed securely through
+          Stripe (we don't store card details)
+        </li>
+        <li>
+          <strong>API Usage Data:</strong> API keys, request logs, and usage
+          metrics (API products only)
+        </li>
+        <li>
+          <strong>Uploaded Files:</strong> Temporarily processed files for
+          analysis (DupeCheck)
+        </li>
+        <li>
+          <strong>Support Communications:</strong> Information you provide when
+          contacting support
+        </li>
+      </ul>
+
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li>
+          <strong>Log Data:</strong> IP addresses, browser type, operating
+          system, and request timestamps
+        </li>
+        <li>
+          <strong>Usage Analytics:</strong> Feature usage, response times, and
+          error rates
+        </li>
+        <li>
+          <strong>Device Information:</strong> Anonymous device identifiers for
+          usage tracking
+        </li>
+        <li>
+          <strong>Local Storage:</strong> Authentication tokens and user
+          preferences
+        </li>
+      </ul>
+
+      <h2 id="product-specific">Product-Specific Data Handling</h2>
+
+      <div class="product-box">
+        <h4>🔍 DupeCheck - Duplicate Invoice Detector</h4>
+        <p><strong>What we process:</strong></p>
         <ul>
-            <li><strong>Log Data:</strong> IP addresses, browser type, operating system, and request timestamps</li>
-            <li><strong>Usage Analytics:</strong> Feature usage, response times, and error rates</li>
-            <li><strong>Device Information:</strong> Anonymous device identifiers for usage tracking</li>
-            <li><strong>Local Storage:</strong> Authentication tokens and user preferences</li>
+          <li>Invoice files (CSV/Excel) are processed in server memory only</li>
+          <li>
+            Files are analyzed for duplicate patterns and immediately discarded
+          </li>
+          <li>
+            We NEVER store your actual invoice data, vendor information, or
+            amounts
+          </li>
         </ul>
-
-        <h2 id="product-specific">Product-Specific Data Handling</h2>
-        
-        <div class="product-box">
-            <h4>🔍 DupeCheck - Duplicate Invoice Detector</h4>
-            <p><strong>What we process:</strong></p>
-            <ul>
-                <li>Invoice files (CSV/Excel) are processed in server memory only</li>
-                <li>Files are analyzed for duplicate patterns and immediately discarded</li>
-                <li>We NEVER store your actual invoice data, vendor information, or amounts</li>
-            </ul>
-            <p><strong>What we store:</strong></p>
-            <ul>
-                <li><strong>Registered Users:</strong> Analysis summaries (filename, counts, date) for 90 days</li>
-                <li><strong>Paid Users Only:</strong> Top 20 duplicate summaries (no sensitive data) for 90 days</li>
-                <li><strong>Anonymous Users:</strong> Device token for 7 days (usage tracking only)</li>
-                <li><strong>All Users:</strong> No raw invoice data is ever stored</li>
-            </ul>
-        </div>
-
-        <div class="product-box">
-            <h4>📊 RiskScore API</h4>
-            <p><strong>What we process:</strong></p>
-            <ul>
-                <li>API request data for risk scoring algorithms</li>
-                <li>Pattern analysis without creating persistent profiles</li>
-                <li>No automated decision-making about individuals</li>
-            </ul>
-            <p><strong>What we store:</strong></p>
-            <ul>
-                <li>API request logs for 30 days (debugging and security)</li>
-                <li>Aggregated usage metrics (non-identifiable)</li>
-                <li>No personal profiles or individual tracking</li>
-            </ul>
-        </div>
-
-        <h2 id="legal-basis">Legal Basis for Processing (GDPR)</h2>
-        <p>We process personal data based on the following legal grounds:</p>
+        <p><strong>What we store:</strong></p>
         <ul>
-            <li><strong>Contract Performance:</strong> To provide the services you've subscribed to</li>
-            <li><strong>Legitimate Interests:</strong> For fraud prevention, security, and service improvement</li>
-            <li><strong>Legal Obligation:</strong> To comply with applicable laws and regulations</li>
-            <li><strong>Consent:</strong> For marketing communications (where applicable)</li>
+          <li>
+            <strong>Registered Users:</strong> Analysis summaries (filename,
+            counts, date) for 90 days
+          </li>
+          <li>
+            <strong>Paid Users Only:</strong> Top 20 duplicate summaries (no
+            sensitive data) for 90 days
+          </li>
+          <li>
+            <strong>Anonymous Users:</strong> Device token for 7 days (usage
+            tracking only)
+          </li>
+          <li>
+            <strong>All Users:</strong> No raw invoice data is ever stored
+          </li>
         </ul>
+      </div>
 
-        <h2 id="how-we-use">How We Use Your Information</h2>
-        <p>We use the collected information for:</p>
+      <div class="product-box">
+        <h4>📊 RiskScore API</h4>
+        <p><strong>What we process:</strong></p>
         <ul>
-            <li>Providing and maintaining our services</li>
-            <li>Processing payments and managing subscriptions</li>
-            <li>Sending service updates and technical notices</li>
-            <li>Responding to support requests</li>
-            <li>Monitoring and analyzing usage patterns to improve our services</li>
-            <li>Detecting and preventing fraud or abuse</li>
-            <li>Complying with legal obligations</li>
+          <li>API request data for risk scoring algorithms</li>
+          <li>Pattern analysis without creating persistent profiles</li>
+          <li>No automated decision-making about individuals</li>
         </ul>
-
-        <h2 id="sharing">Information Sharing</h2>
-        <p>We do not sell, trade, or rent your personal information. We may share information with:</p>
+        <p><strong>What we store:</strong></p>
         <ul>
-            <li><strong>Service Providers:</strong> 
-                <ul>
-                    <li>Stripe - Payment processing</li>
-                    <li>Railway - Application and database hosting</li>
-                    <li>Cloudflare - CDN and security</li>
-                </ul>
-            </li>
-            <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
-            <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-            <li><strong>Your Consent:</strong> When you explicitly agree to sharing</li>
-            <li><strong>Aggregated Data:</strong> We may share anonymized, aggregated data that cannot identify you</li>
+          <li>API request logs for 30 days (debugging and security)</li>
+          <li>Aggregated usage metrics (non-identifiable)</li>
+          <li>No personal profiles or individual tracking</li>
         </ul>
+      </div>
 
-        <h2 id="security">Data Security</h2>
-        <p>We implement appropriate technical and organizational measures to protect your data:</p>
+      <h2 id="legal-basis">Legal Basis for Processing (GDPR)</h2>
+      <p>We process personal data based on the following legal grounds:</p>
+      <ul>
+        <li>
+          <strong>Contract Performance:</strong> To provide the services you've
+          subscribed to
+        </li>
+        <li>
+          <strong>Legitimate Interests:</strong> For fraud prevention, security,
+          and service improvement
+        </li>
+        <li>
+          <strong>Legal Obligation:</strong> To comply with applicable laws and
+          regulations
+        </li>
+        <li>
+          <strong>Consent:</strong> For marketing communications (where
+          applicable)
+        </li>
+      </ul>
+
+      <h2 id="how-we-use">How We Use Your Information</h2>
+      <p>We use the collected information for:</p>
+      <ul>
+        <li>Providing and maintaining our services</li>
+        <li>Processing payments and managing subscriptions</li>
+        <li>Sending service updates and technical notices</li>
+        <li>Responding to support requests</li>
+        <li>Monitoring and analyzing usage patterns to improve our services</li>
+        <li>Detecting and preventing fraud or abuse</li>
+        <li>Complying with legal obligations</li>
+      </ul>
+
+      <h2 id="sharing">Information Sharing</h2>
+      <p>
+        We do not sell, trade, or rent your personal information. We may share
+        information with:
+      </p>
+      <ul>
+        <li>
+          <strong>Service Providers:</strong>
+          <ul>
+            <li>Stripe - Payment processing</li>
+            <li>Railway - Application and database hosting</li>
+            <li>Cloudflare - CDN and security</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Legal Requirements:</strong> When required by law, court
+          order, or government request
+        </li>
+        <li>
+          <strong>Business Transfers:</strong> In connection with a merger,
+          acquisition, or sale of assets
+        </li>
+        <li>
+          <strong>Your Consent:</strong> When you explicitly agree to sharing
+        </li>
+        <li>
+          <strong>Aggregated Data:</strong> We may share anonymized, aggregated
+          data that cannot identify you
+        </li>
+      </ul>
+
+      <h2 id="security">Data Security</h2>
+      <p>
+        We implement appropriate technical and organizational measures to
+        protect your data:
+      </p>
+      <ul>
+        <li>All data transmission is encrypted using HTTPS/TLS</li>
+        <li>Passwords are hashed using bcrypt (never stored in plain text)</li>
+        <li>API keys are encrypted and securely stored</li>
+        <li>Regular security audits and vulnerability assessments</li>
+        <li>Limited access to personal data on a need-to-know basis</li>
+        <li>Secure data centers with physical security controls</li>
+        <li>Rate limiting to prevent abuse</li>
+      </ul>
+      <p>
+        However, no method of transmission over the internet is 100% secure, and
+        we cannot guarantee absolute security.
+      </p>
+
+      <h2 id="retention">Data Retention</h2>
+      <p>
+        We retain your information for as long as necessary to provide our
+        services and comply with legal obligations:
+      </p>
+
+      <h3>DupeCheck Specific:</h3>
+      <ul>
+        <li>
+          <strong>Analysis Summaries:</strong> 90 days (automatically deleted)
+        </li>
+        <li>
+          <strong>Anonymous Usage:</strong> 7 days (automatically deleted)
+        </li>
+        <li>
+          <strong>Uploaded Files:</strong> Immediately deleted after processing
+        </li>
+      </ul>
+
+      <h3>General:</h3>
+      <ul>
+        <li>
+          <strong>Account Data:</strong> Active account + 90 days after closure
+        </li>
+        <li><strong>API Request Logs:</strong> 30 days</li>
+        <li><strong>Payment Records:</strong> 7 years (legal requirement)</li>
+        <li>
+          <strong>Support Communications:</strong> 2 years after resolution
+        </li>
+        <li><strong>Password Reset Tokens:</strong> 1 hour</li>
+      </ul>
+
+      <h2 id="your-rights">Your Rights</h2>
+      <p>
+        Depending on your location, you may have certain rights regarding your
+        personal data:
+      </p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of your personal data</li>
+        <li>
+          <strong>Correction:</strong> Request correction of inaccurate data
+        </li>
+        <li>
+          <strong>Deletion:</strong> Request deletion of your data (subject to
+          legal requirements)
+        </li>
+        <li>
+          <strong>Portability:</strong> Request your data in a portable format
+        </li>
+        <li>
+          <strong>Objection:</strong> Object to certain processing of your data
+        </li>
+        <li><strong>Restriction:</strong> Request restriction of processing</li>
+        <li>
+          <strong>Withdraw Consent:</strong> Where processing is based on
+          consent
+        </li>
+      </ul>
+      <p>
+        To exercise these rights, please contact us at privacy@forgeapis.com.
+      </p>
+
+      <h2 id="gdpr">GDPR Compliance</h2>
+      <p>For users in the European Economic Area (EEA) and United Kingdom:</p>
+      <ul>
+        <li>
+          We process data based on legitimate interests, contract fulfillment,
+          or consent
+        </li>
+        <li>
+          You have additional rights under GDPR including data portability and
+          erasure
+        </li>
+        <li>We respond to all valid requests within 30 days</li>
+        <li>
+          You have the right to lodge a complaint with your supervisory
+          authority
+        </li>
+        <li>We maintain records of processing activities as required</li>
+        <li>Data transfers outside the EEA use Standard Contractual Clauses</li>
+      </ul>
+
+      <h2 id="ccpa">California Privacy Rights (CCPA)</h2>
+      <p>
+        California residents have additional rights under the California
+        Consumer Privacy Act:
+      </p>
+      <ul>
+        <li>
+          <strong>Right to Know:</strong> What personal information we collect,
+          use, and share
+        </li>
+        <li>
+          <strong>Right to Delete:</strong> Request deletion of your personal
+          information
+        </li>
+        <li>
+          <strong>Right to Opt-Out:</strong> We do NOT sell personal information
+        </li>
+        <li>
+          <strong>Right to Non-Discrimination:</strong> Equal service regardless
+          of privacy choices
+        </li>
+      </ul>
+      <p>
+        To exercise these rights, California residents can contact
+        privacy@forgeapis.com.
+      </p>
+
+      <h2 id="cookies">Cookies & Local Storage</h2>
+      <p>We use minimal browser storage for functionality:</p>
+
+      <h3>DupeCheck:</h3>
+      <ul>
+        <li><strong>Authentication:</strong> JWT tokens in localStorage</li>
+        <li>
+          <strong>Device Tracking:</strong> Anonymous identifier for free usage
+          limits
+        </li>
+        <li><strong>User Preferences:</strong> Email for display purposes</li>
+        <li>
+          <strong>No tracking cookies:</strong> We don't use analytics or
+          advertising cookies
+        </li>
+      </ul>
+
+      <h3>API Products:</h3>
+      <ul>
+        <li>APIs don't use cookies - authentication via headers</li>
+        <li>Dashboard may use session cookies for login</li>
+      </ul>
+
+      <h2 id="age">Age Restrictions</h2>
+      <div class="important-box">
+        <p>
+          <strong
+            >Our services are strictly for users 18 years and older.</strong
+          >
+        </p>
+        <p>
+          We do not knowingly collect personal information from individuals
+          under 18. If you believe we have inadvertently collected information
+          from a minor, please contact us immediately at privacy@forgeapis.com
+          for deletion.
+        </p>
+      </div>
+
+      <h2 id="breach">Data Breach Notification</h2>
+      <p>
+        In the event of a data breach that poses risk to your rights and
+        freedoms:
+      </p>
+      <ul>
+        <li>We will notify affected users within 72 hours of discovery</li>
+        <li>
+          We will notify relevant supervisory authorities as required by law
+        </li>
+        <li>We will document all breaches and measures taken</li>
+        <li>
+          We will provide information about the nature and impact of the breach
+        </li>
+        <li>We will advise on steps you can take to protect yourself</li>
+      </ul>
+
+      <h2 id="changes">Changes to This Policy</h2>
+      <ul>
+        <li><strong>Current Version:</strong> 1.2</li>
+        <li><strong>Effective Date:</strong> January 2025</li>
+        <li>Material changes will be notified via email to registered users</li>
+        <li>Continued use after changes constitutes acceptance</li>
+        <li>Previous versions available upon request</li>
+      </ul>
+
+      <h2 id="contact">Contact Information</h2>
+      <p>For questions about this Privacy Policy or our data practices:</p>
+      <ul>
+        <li><strong>Email:</strong> privacy@forgeapis.com</li>
+        <li><strong>General Inquiries:</strong> hello@forgeapis.com</li>
+        <li><strong>Website:</strong> forgeapis.com</li>
+        <li><strong>Response Time:</strong> Within 48 hours</li>
+      </ul>
+
+      <div class="critical-notice" style="margin-top: 40px">
+        <h4>Final Important Notice</h4>
+        <p>By using Forge APIs services, you acknowledge that:</p>
         <ul>
-            <li>All data transmission is encrypted using HTTPS/TLS</li>
-            <li>Passwords are hashed using bcrypt (never stored in plain text)</li>
-            <li>API keys are encrypted and securely stored</li>
-            <li>Regular security audits and vulnerability assessments</li>
-            <li>Limited access to personal data on a need-to-know basis</li>
-            <li>Secure data centers with physical security controls</li>
-            <li>Rate limiting to prevent abuse</li>
+          <li>You have read and understood this Privacy Policy</li>
+          <li>You agree to our data processing practices</li>
+          <li>You are responsible for any data you submit to our services</li>
+          <li>
+            You will comply with applicable privacy laws for your own users
+          </li>
         </ul>
-        <p>However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
-
-        <h2 id="retention">Data Retention</h2>
-        <p>We retain your information for as long as necessary to provide our services and comply with legal obligations:</p>
-        
-        <h3>DupeCheck Specific:</h3>
-        <ul>
-            <li><strong>Analysis Summaries:</strong> 90 days (automatically deleted)</li>
-            <li><strong>Anonymous Usage:</strong> 7 days (automatically deleted)</li>
-            <li><strong>Uploaded Files:</strong> Immediately deleted after processing</li>
-        </ul>
-        
-        <h3>General:</h3>
-        <ul>
-            <li><strong>Account Data:</strong> Active account + 90 days after closure</li>
-            <li><strong>API Request Logs:</strong> 30 days</li>
-            <li><strong>Payment Records:</strong> 7 years (legal requirement)</li>
-            <li><strong>Support Communications:</strong> 2 years after resolution</li>
-            <li><strong>Password Reset Tokens:</strong> 1 hour</li>
-        </ul>
-
-        <h2 id="your-rights">Your Rights</h2>
-        <p>Depending on your location, you may have certain rights regarding your personal data:</p>
-        <ul>
-            <li><strong>Access:</strong> Request a copy of your personal data</li>
-            <li><strong>Correction:</strong> Request correction of inaccurate data</li>
-            <li><strong>Deletion:</strong> Request deletion of your data (subject to legal requirements)</li>
-            <li><strong>Portability:</strong> Request your data in a portable format</li>
-            <li><strong>Objection:</strong> Object to certain processing of your data</li>
-            <li><strong>Restriction:</strong> Request restriction of processing</li>
-            <li><strong>Withdraw Consent:</strong> Where processing is based on consent</li>
-        </ul>
-        <p>To exercise these rights, please contact us at privacy@forgeapis.com.</p>
-
-        <h2 id="gdpr">GDPR Compliance</h2>
-        <p>For users in the European Economic Area (EEA) and United Kingdom:</p>
-        <ul>
-            <li>We process data based on legitimate interests, contract fulfillment, or consent</li>
-            <li>You have additional rights under GDPR including data portability and erasure</li>
-            <li>We respond to all valid requests within 30 days</li>
-            <li>You have the right to lodge a complaint with your supervisory authority</li>
-            <li>We maintain records of processing activities as required</li>
-            <li>Data transfers outside the EEA use Standard Contractual Clauses</li>
-        </ul>
-
-        <h2 id="ccpa">California Privacy Rights (CCPA)</h2>
-        <p>California residents have additional rights under the California Consumer Privacy Act:</p>
-        <ul>
-            <li><strong>Right to Know:</strong> What personal information we collect, use, and share</li>
-            <li><strong>Right to Delete:</strong> Request deletion of your personal information</li>
-            <li><strong>Right to Opt-Out:</strong> We do NOT sell personal information</li>
-            <li><strong>Right to Non-Discrimination:</strong> Equal service regardless of privacy choices</li>
-        </ul>
-        <p>To exercise these rights, California residents can contact privacy@forgeapis.com.</p>
-
-        <h2 id="cookies">Cookies & Local Storage</h2>
-        <p>We use minimal browser storage for functionality:</p>
-        
-        <h3>DupeCheck:</h3>
-        <ul>
-            <li><strong>Authentication:</strong> JWT tokens in localStorage</li>
-            <li><strong>Device Tracking:</strong> Anonymous identifier for free usage limits</li>
-            <li><strong>User Preferences:</strong> Email for display purposes</li>
-            <li><strong>No tracking cookies:</strong> We don't use analytics or advertising cookies</li>
-        </ul>
-        
-        <h3>API Products:</h3>
-        <ul>
-            <li>APIs don't use cookies - authentication via headers</li>
-            <li>Dashboard may use session cookies for login</li>
-        </ul>
-
-        <h2 id="age">Age Restrictions</h2>
-        <div class="important-box">
-            <p><strong>Our services are strictly for users 18 years and older.</strong></p>
-            <p>We do not knowingly collect personal information from individuals under 18. If you believe we have inadvertently collected information from a minor, please contact us immediately at privacy@forgeapis.com for deletion.</p>
-        </div>
-
-        <h2 id="breach">Data Breach Notification</h2>
-        <p>In the event of a data breach that poses risk to your rights and freedoms:</p>
-        <ul>
-            <li>We will notify affected users within 72 hours of discovery</li>
-            <li>We will notify relevant supervisory authorities as required by law</li>
-            <li>We will document all breaches and measures taken</li>
-            <li>We will provide information about the nature and impact of the breach</li>
-            <li>We will advise on steps you can take to protect yourself</li>
-        </ul>
-
-        <h2 id="changes">Changes to This Policy</h2>
-        <ul>
-            <li><strong>Current Version:</strong> 1.2</li>
-            <li><strong>Effective Date:</strong> January 2025</li>
-            <li>Material changes will be notified via email to registered users</li>
-            <li>Continued use after changes constitutes acceptance</li>
-            <li>Previous versions available upon request</li>
-        </ul>
-
-        <h2 id="contact">Contact Information</h2>
-        <p>For questions about this Privacy Policy or our data practices:</p>
-        <ul>
-            <li><strong>Email:</strong> privacy@forgeapis.com</li>
-            <li><strong>General Inquiries:</strong> hello@forgeapis.com</li>
-            <li><strong>Website:</strong> forgeapis.com</li>
-            <li><strong>Response Time:</strong> Within 48 hours</li>
-        </ul>
-
-        <div class="critical-notice" style="margin-top: 40px;">
-            <h4>Final Important Notice</h4>
-            <p>By using Forge APIs services, you acknowledge that:</p>
-            <ul>
-                <li>You have read and understood this Privacy Policy</li>
-                <li>You agree to our data processing practices</li>
-                <li>You are responsible for any data you submit to our services</li>
-                <li>You will comply with applicable privacy laws for your own users</li>
-            </ul>
-        </div>
-
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">🔨 Forge APIs</div>
-                    <p>Production-ready APIs and tools for modern applications.</p>
-                    <p style="margin-top: 20px;">© 2025 Forge APIs. All rights reserved.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Products</h4>
-                    <a href="/dupecheck">DupeCheck</a>
-                    <a href="/riskscore">RiskScore API</a>
-                    <a href="/#pricing">Pricing</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
-                    <a href="/cookies">Cookie Policy</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>Building the future of APIs, one endpoint at a time.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">🔨 Forge APIs</div>
+            <p>Production-ready APIs and tools for modern applications.</p>
+            <p style="margin-top: 20px">
+              © 2025 Forge APIs. All rights reserved.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Products</h4>
+            <a href="/dupecheck">DupeCheck</a>
+            <a href="/riskscore">RiskScore API</a>
+            <a href="/#pricing">Pricing</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/cookies">Cookie Policy</a>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>Building the future of APIs, one endpoint at a time.</p>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

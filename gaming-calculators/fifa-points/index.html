@@ -990,6 +990,21 @@
         }
       }
     </style>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5YPCMTRSNN");
+    </script>
+    <!-- End Google Analytics -->
   </head>
   <body>
     <!-- Breadcrumb Navigation -->
@@ -1180,6 +1195,16 @@
         <div class="calculator-container">
           <div class="calculator-header">
             <h1 class="calculator-title">FIFA Points Converter</h1>
+            <p
+              style="
+                text-align: center;
+                color: #6b7280;
+                font-size: 0.9rem;
+                margin: -10px 0 20px 0;
+              "
+            >
+              Last updated: January 2025 | Exchange rates verified monthly
+            </p>
             <p class="calculator-subtitle">
               Convert FIFA Points to USD, EUR, GBP, CAD, AUD & more currencies
             </p>
@@ -1272,36 +1297,6 @@
             Converting to: <strong id="current-currency-display">USD</strong>
           </p>
 
-          <div
-            class="ad-slot"
-            data-ad-slot="after-calculator"
-            style="min-height: 90px; margin-top: 1rem"
-          >
-            <div class="ad-placeholder">
-              <div
-                style="
-                  text-align: center;
-                  padding: 40px 20px;
-                  background: #f8f9fa;
-                  border: 2px dashed #dee2e6;
-                  border-radius: 8px;
-                  color: #6c757d;
-                  height: 520px;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                "
-              >
-                <div
-                  style="font-size: 16px; font-weight: 500; margin-bottom: 12px"
-                >
-                  Advertisement Space
-                </div>
-                <div style="font-size: 14px">Ad loading...</div>
-              </div>
-            </div>
-          </div>
-
           <!-- Better Deal Finder -->
           <div class="deal-finder" id="dealFinder" style="display: none">
             <div class="deal-tip" id="dealTip">
@@ -1384,10 +1379,6 @@
           </div>
         </div>
 
-        <div class="ad-slot">
-          <div>Advertisement Space - Top Banner (728x90)</div>
-        </div>
-
         <!-- How Much Are FIFA Points Worth Worldwide? -->
         <div class="content-section">
           <h2 class="section-title">
@@ -1465,36 +1456,12 @@
               as the player base migrates to the new game. This annual reset
               means FIFA Points purchases have a maximum 12-month lifespan,
               often less as the game becomes obsolete by June when major leagues
-              end. Unlike other games where purchases retain value, FIFA Points
+              end. Unlike
+              <a href="/gaming-calculators/cod-points/">COD Points</a> which
+              refresh seasonally but maintain some continuity, FIFA Points
               represent a depreciating asset with guaranteed zero terminal
               value.
             </p>
-          </div>
-        </div>
-
-        <div
-          class="ad-slot"
-          data-ad-slot="in-content"
-          style="min-height: 250px"
-        >
-          <div class="ad-placeholder">
-            <div
-              style="
-                text-align: center;
-                padding: 20px;
-                background: #f8f9fa;
-                border: 2px dashed #dee2e6;
-                border-radius: 8px;
-                color: #6c757d;
-              "
-            >
-              <div
-                style="font-size: 14px; font-weight: 500; margin-bottom: 8px"
-              >
-                Advertisement Space
-              </div>
-              <div style="font-size: 12px">Ad loading...</div>
-            </div>
           </div>
         </div>
 
@@ -1649,14 +1616,17 @@
             <h3>The Conversation About Digital Gambling</h3>
             <p>
               Many countries now classify FIFA packs as gambling, with Belgium
-              and Netherlands banning them entirely. Discuss with young players
-              how pack mechanics mirror gambling - uncertain outcomes, the house
-              always wins long-term, and chasing losses. Explain that
-              professional players and YouTubers are often sponsored or given
-              free points, creating unrealistic expectations. Show them the
-              actual probabilities (available in-game) and calculate together
-              how much money achieving their "dream team" would statistically
-              cost.
+              and Netherlands banning them entirely, similar to how
+              <a href="/gaming-calculators/robux/"
+                >Roblox's gambling mechanics</a
+              >
+              have faced scrutiny. Discuss with young players how pack mechanics
+              mirror gambling - uncertain outcomes, the house always wins
+              long-term, and chasing losses. Explain that professional players
+              and YouTubers are often sponsored or given free points, creating
+              unrealistic expectations. Show them the actual probabilities
+              (available in-game) and calculate together how much money
+              achieving their "dream team" would statistically cost.
             </p>
 
             <h3>Healthy Alternatives to Pack Purchases</h3>
@@ -1821,8 +1791,8 @@
               players have even lower odds than their rating suggests.
               Professional traders recommend never buying packs with FIFA Points
               for value - only for entertainment.
+            </div>
           </div>
-        </div>
 
           <div class="faq-item">
             <div class="faq-question">
@@ -1880,43 +1850,7 @@
             </div>
           </div>
         </div>
-
-        <div class="ad-slot">
-          <div>Advertisement Space - Bottom Banner (728x90)</div>
-        </div>
       </div>
-
-      <aside class="sidebar-ad-container">
-        <div
-          class="ad-slot sidebar-ad"
-          data-ad-slot="sidebar-sticky"
-          style="min-height: 600px"
-        >
-          <div class="ad-placeholder">
-            <div
-              style="
-                text-align: center;
-                padding: 40px 20px;
-                background: #f8f9fa;
-                border: 2px dashed #dee2e6;
-                border-radius: 8px;
-                color: #6c757d;
-                height: 520px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-              "
-            >
-              <div
-                style="font-size: 16px; font-weight: 500; margin-bottom: 12px"
-              >
-                Advertisement Space
-              </div>
-              <div style="font-size: 14px">Ad loading...</div>
-            </div>
-          </div>
-        </div>
-      </aside>
     </div>
 
     <!-- Include the existing JavaScript functionality -->
