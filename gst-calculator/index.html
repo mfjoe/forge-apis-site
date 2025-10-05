@@ -289,7 +289,7 @@
 
       /* Main Calculator */
       .calculator-main {
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
         width: 100%;
       }
@@ -984,19 +984,20 @@
         }
       }
 
-      /* Desktop Layout - Show side ads on larger screens */
+      /* Desktop Layout - Centered single column */
       @media (min-width: 1200px) {
         .calculator-wrapper {
-          grid-template-columns: 300px 1fr 300px;
-          gap: 30px;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          max-width: 1200px;
         }
 
         .ad-column {
-          display: block;
+          display: none;
         }
 
         .calculator-main {
-          max-width: 600px;
+          max-width: 800px;
           margin: 0 auto;
         }
 
