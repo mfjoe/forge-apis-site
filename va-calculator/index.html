@@ -373,6 +373,77 @@
         font-size: 1.1rem;
       }
 
+      .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: #374151;
+        font-weight: 500;
+      }
+
+      .trust-badge .checkmark {
+        color: #16a34a;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .trust-badge .separator {
+        color: #9ca3af;
+        margin: 0 0.25rem;
+      }
+
+      /* Floating Guide Button - Mobile Only */
+      .floating-guide-btn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .floating-guide-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        background: var(--primary-dark, #0ea5e9);
+      }
+
+      .floating-guide-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .floating-guide-btn .guide-emoji {
+        font-size: 1rem;
+      }
+
+      .introduction-box {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-left: 4px solid #0ea5e9;
+      }
+
       .instructions {
         background: #f8fafc;
         border: 1px solid #e2e8f0;
@@ -380,6 +451,23 @@
         padding: 1rem;
         margin-top: 1rem;
         border-left: 4px solid var(--primary);
+      }
+
+      .introduction-box p {
+        margin: 0;
+        color: var(--dark);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .introduction-box a {
+        color: #0ea5e9;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .introduction-box a:hover {
+        text-decoration: underline;
       }
 
       .instructions p {
@@ -817,6 +905,17 @@
           font-size: 1.8rem;
         }
 
+        .trust-badge {
+          font-size: 0.8rem;
+          padding: 0.4rem 0.8rem;
+          gap: 0.4rem;
+        }
+
+        /* Show floating guide button on mobile */
+        .floating-guide-btn {
+          display: flex !important;
+        }
+
         .calculator-card {
           padding: 1rem;
           margin-bottom: 2rem; /* Increased spacing between sections */
@@ -904,6 +1003,295 @@
 
       .hidden {
         display: none;
+      }
+
+      /* Comprehensive Guide Sections */
+      .comprehensive-guide {
+        max-width: 1200px;
+        width: 100%;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .comprehensive-guide h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--dark);
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid var(--primary);
+        padding-bottom: 1rem;
+      }
+
+      .guide-section {
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .guide-section summary {
+        cursor: pointer;
+        padding: 1.5rem;
+        background: #f8fafc;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--dark);
+        border: none;
+        outline: none;
+        position: relative;
+        transition: background-color 0.2s ease;
+      }
+
+      .guide-section summary:hover {
+        background: #f1f5f9;
+      }
+
+      .guide-section summary::marker {
+        display: none;
+      }
+
+      .guide-section summary::before {
+        content: "▶";
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.2s ease;
+        color: var(--primary);
+        font-size: 0.8rem;
+      }
+
+      .guide-section[open] summary::before {
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      .guide-section[open] summary {
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .guide-content {
+        padding: 1.5rem;
+        color: var(--dark);
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      .guide-content h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .guide-content h3:first-child {
+        margin-top: 0;
+      }
+
+      .guide-content ul,
+      .guide-content ol {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .guide-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .example-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .example-box strong {
+        color: var(--primary);
+      }
+
+      /* Quick Stats Section */
+      .quick-stats {
+        max-width: 1200px;
+        width: 100%;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .stat-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      /* VA Disability Resources Section */
+      .va-resources {
+        max-width: 1200px;
+        width: 100%;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .resources-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--dark);
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid var(--primary);
+        padding-bottom: 1rem;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .resource-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .resource-card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .resource-card h3 .card-icon {
+        font-size: 1.5rem;
+      }
+
+      .resource-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .resource-list li {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .resource-list li:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .resource-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .resource-link:hover {
+        text-decoration: underline;
+      }
+
+      .resource-description {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .condition-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .condition-name {
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .condition-rating {
+        font-size: 0.85rem;
+        color: var(--primary);
+        background: #f0f9ff;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .calculator-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary);
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        margin-top: 0.5rem;
+      }
+
+      .calculator-link:hover {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
       }
 
       /* Content Sections */
@@ -1206,6 +1594,66 @@
 
       /* Mobile Responsive for Content */
       @media (max-width: 768px) {
+        .quick-stats {
+          padding: 0 0.5rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 0.75rem;
+        }
+
+        .stat-card {
+          padding: 1rem 0.75rem;
+        }
+
+        .stat-value {
+          font-size: 1.1rem;
+        }
+
+        .stat-label {
+          font-size: 0.8rem;
+        }
+
+        .comprehensive-guide {
+          padding: 0 0.5rem;
+        }
+
+        .comprehensive-guide h2 {
+          font-size: 1.5rem;
+        }
+
+        .guide-section summary {
+          padding: 1rem;
+          font-size: 1rem;
+        }
+
+        .guide-section summary::before {
+          right: 1rem;
+        }
+
+        .guide-content {
+          padding: 1rem;
+          font-size: 0.95rem;
+        }
+
+        .va-resources {
+          padding: 0 0.5rem;
+        }
+
+        .resources-title {
+          font-size: 1.5rem;
+        }
+
+        .resources-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .resource-card {
+          padding: 1rem;
+        }
+
         .content-sections {
           padding: 0 0.5rem;
         }
@@ -1253,6 +1701,64 @@
         }
       }
     </style>
+
+    <!-- FAQPage Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does VA math work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "VA math, officially called \"combined ratings,\" uses the \"whole person\" concept that recognizes you can't be more than 100% disabled. Instead of simply adding percentages together, the VA calculates each additional disability as a percentage of your remaining ability to function. This system ensures fair compensation while preventing ratings from exceeding 100%.\n\nHere's how it works step-by-step: First, the VA takes your highest-rated disability. Then, for each additional disability, they calculate what percentage of your remaining ability it affects. The formula is: remaining ability = 100% - current combined rating. Each new disability is then calculated as a percentage of this remaining ability.\n\nConcrete Example: Let's say you have three disabilities: 40% PTSD, 30% back injury, and 20% knee injury. Start with 40% PTSD (highest rating). Remaining ability: 100% - 40% = 60%. The 30% back injury affects 30% of your remaining 60% ability = 18%. New total: 40% + 18% = 58%. Remaining ability: 100% - 58% = 42%. The 20% knee injury affects 20% of your remaining 42% ability = 8.4%. Final combined rating: 58% + 8.4% = 66.4%, which rounds to 70% for payment purposes.\n\nThis system recognizes that disabilities don't simply add together but interact in complex ways. A veteran with multiple conditions often experiences compounded effects that traditional addition wouldn't capture. The VA rounds final ratings to the nearest 10%, which can sometimes work in your favor (66.4% becomes 70%) or against you (74.4% becomes 70%)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why doesn't 50% + 50% = 100%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This is one of the most confusing aspects of VA disability compensation, but it makes sense once you understand the \"whole person\" concept. The VA doesn't view disabilities as simply additive because that would imply you could be more than 100% disabled, which is impossible. Instead, they consider how much functional ability you have left after each disability.\n\nHere's the detailed breakdown: If you have a 50% disability, the VA considers you 50% able to function normally. When you add a second 50% disability, it doesn't affect your original 50% loss - it affects your remaining 50% ability. So the second disability is calculated as 50% of your remaining 50% ability, which equals 25% additional disability. Your combined rating becomes 50% + 25% = 75%, which rounds to 80%.\n\nWhy This System Exists: The VA's approach recognizes that disabilities interact with each other in complex ways. A veteran with two 50% disabilities doesn't experience twice the impact of one 50% disability - the effects compound and overlap. This system also prevents veterans from receiving compensation that exceeds what's possible (you can't be more than 100% disabled).\n\nReal-World Impact: This means that as you add more disabilities, each additional one has a smaller impact on your overall rating. This can be frustrating for veterans who feel their multiple conditions should add up to 100%, but it's designed to be fair and mathematically consistent. Understanding this system helps veterans set realistic expectations about their potential combined ratings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the bilateral factor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The bilateral factor is a special calculation that recognizes that disabilities affecting both sides of paired body parts are more disabling than the sum of their individual ratings. This applies to paired extremities (both arms, both legs, both feet, both hands) and paired skeletal muscles. The VA adds 10% of the combined value of bilateral disabilities before applying them to your overall rating calculation.\n\nThe Bilateral Factor Formula: First, combine your bilateral disabilities using regular VA math. Then, add 10% of that combined value. The formula is: Bilateral Factor = (Combined Bilateral Rating) + (Combined Bilateral Rating × 0.10). This additional percentage recognizes the compounded functional impact of bilateral conditions.\n\nReal Scenario Example: Let's say you have 40% for your left knee and 30% for your right knee. First, combine them using VA math: Start with 40% left knee. Remaining ability: 100% - 40% = 60%. Right knee (30%) affects 30% of remaining 60% = 18%. Combined bilateral rating: 40% + 18% = 58%. Now apply the bilateral factor: 58% + (58% × 0.10) = 58% + 5.8% = 63.8%. This bilateral factor (63.8%) is then used in your overall rating calculation with other disabilities.\n\nWhy It Exists: Bilateral disabilities create unique challenges that single-sided disabilities don't. Losing function in both knees, for example, affects your entire mobility system, balance, and ability to perform daily activities in ways that two separate knee injuries wouldn't. The bilateral factor compensates for this compounded functional loss and recognizes the increased difficulty in adapting to bilateral impairments.\n\nImportant Note: The bilateral factor only applies to disabilities affecting paired body parts. If you have a 40% back injury and a 30% knee injury (unilateral), the bilateral factor doesn't apply because these aren't paired conditions. The factor specifically recognizes the unique challenges of bilateral impairments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I receive more than 100% disability?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, the maximum combined disability rating is 100% - you cannot receive more than 100% for your disability rating itself. However, this doesn't mean your total monthly compensation is capped at the 100% rate. The VA provides several ways to increase your monthly payment beyond the base 100% compensation through additional benefits and special circumstances.\n\nSpecial Monthly Compensation (SMC): This is the most significant way to receive additional compensation. SMC is paid for specific severe disabilities or combinations of disabilities that result in unusual circumstances. There are multiple SMC levels (SMC-K through SMC-S), each providing different amounts of additional compensation.\n\nSMC-K: Awarded for specific conditions like loss of use of a hand, foot, or reproductive organ, or for severe conditions like erectile dysfunction due to service-connected medication. Pays approximately $128 per month in 2025.\n\nSMC-L through SMC-N: Awarded for loss of use of paired extremities or combinations of severe disabilities. For example, SMC-L is for loss of use of both feet, both hands, or one hand and one foot. SMC-M is for loss of use of both legs at or above the knee. These levels provide significantly higher compensation than the base 100% rate.\n\nSMC-R: Awarded when you need regular aid and attendance for daily activities, or are permanently housebound due to service-connected disabilities. This can provide substantial additional compensation.\n\nOther Additional Compensation: Dependents (spouse, children, parents) can add hundreds of dollars to your monthly payment. Veterans with 100% ratings and a spouse and two children can receive over $4,000 monthly in 2025. You may also qualify for additional compensation for specific conditions like bilateral blindness or deafness.\n\nHow to Apply: SMC is typically awarded automatically when the VA recognizes qualifying conditions, but you can also file for it specifically if you believe you qualify. The key is ensuring all your disabilities are properly documented and rated."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often do VA disability rates increase?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "VA disability compensation rates increase annually based on the Cost of Living Adjustment (COLA), which is determined by the Social Security Administration using the Consumer Price Index for Urban Wage Earners and Clerical Workers (CPI-W). This ensures that veterans' benefits maintain their purchasing power as the cost of living rises.\n\nTimeline and Process: The COLA calculation is based on the average CPI-W for the third quarter (July, August, September) of the current year compared to the same period from the previous year. The Social Security Administration typically announces the COLA percentage in October, and the VA adopts this same percentage for disability compensation.\n\n2025 COLA Increase: For 2025, veterans received a 3.2% increase in their disability compensation, reflecting the rising cost of living. This means a veteran with a 100% disability rating saw their monthly compensation increase from approximately $3,737 to $3,857. Even veterans with lower ratings received proportional increases.\n\nWhen Changes Take Effect: The new rates typically take effect on December 1st of each year, with the first increased payment arriving in January. Veterans don't need to apply for these increases - they're automatically applied to all eligible compensation payments. The VA usually publishes the new rate tables in October, giving veterans advance notice of their increased benefits.\n\nHistorical Context: COLA increases have varied significantly over the years, from 0% during periods of low inflation to over 14% during high inflation periods like the 1980s. The 3.2% increase for 2025 represents a moderate adjustment that helps veterans keep pace with rising costs while maintaining the program's fiscal sustainability.\n\nAutomatic Application: Unlike many other benefits, veterans don't need to take any action to receive COLA increases. The VA automatically applies the new rates to all active disability compensation payments, ensuring that all eligible veterans receive the adjustment without delay."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I file for VA disability?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Filing for VA disability benefits can seem overwhelming, but the process has been streamlined in recent years to make it more accessible. You have three main options for filing: online through VA.gov (the fastest and most efficient method), by mail using VA Form 21-526EZ, or in person at a VA regional office. Each method has its advantages, but online filing is generally recommended for faster processing.\n\nRequired Documentation: You'll need several key documents to support your claim. Most importantly, you need medical evidence that connects your current condition to your military service. This includes current medical records showing your diagnosis and treatment, military service records documenting any injuries or illnesses during service, and your DD-214 (Certificate of Release or Discharge from Active Duty). You should also gather any private medical records, statements from family members or fellow service members, and documentation of any incidents that caused your condition.\n\nThe Filing Process: Start by completing VA Form 21-526EZ (Application for Disability Compensation and Related Compensation Benefits). This form asks for detailed information about your military service, current disabilities, and medical treatment. You'll need to provide specific dates, locations, and circumstances related to your conditions. Be as detailed as possible - vague or incomplete information can delay your claim or result in denial.\n\nWhat Happens Next: After filing, the VA will review your application and may request additional information or schedule you for a Compensation and Pension (C&P) examination. This exam is conducted by a VA-contracted doctor who will evaluate your conditions and provide an opinion on whether they're connected to your military service. The entire process typically takes 3-6 months for initial claims, though this can vary based on complexity and VA workload.\n\nTips for Success: Consider working with a Veterans Service Organization (VSO) like the American Legion, VFW, or DAV, which provide free assistance with claims. These organizations have accredited representatives who understand the VA system and can help ensure your claim is properly prepared. Keep copies of everything you submit, and respond promptly to any VA requests for additional information.\n\nGetting Help: Don't navigate this process alone. The VA has Veterans Service Representatives who can help, and many communities have VSOs that provide free assistance. You can also consult with accredited attorneys or claims agents, though these services typically require a fee. The key is to be thorough, accurate, and persistent throughout the process."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -1501,6 +2007,32 @@
       </div>
     </nav>
 
+    <!-- Quick Stats Section -->
+    <div class="quick-stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">💰</span>
+          <div class="stat-value">$3,737.85</div>
+          <div class="stat-label">2025 Max Monthly</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">💑</span>
+          <div class="stat-value">+$208.41</div>
+          <div class="stat-label">With Spouse</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">👶</span>
+          <div class="stat-value">+$31-$137</div>
+          <div class="stat-label">Per Child</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🎖️</span>
+          <div class="stat-value">5.2M+</div>
+          <div class="stat-label">Veterans Served</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Calculator Layout -->
     <div class="calculator-wrapper">
       <!-- Desktop Side Ads -->
@@ -1517,6 +2049,22 @@
           <div class="calculator-header-compact">
             <h1>Veterans Affairs (VA) Disability Calculator 2025</h1>
             <p>Calculate Your Monthly Veterans Affairs Compensation</p>
+            <div class="trust-badge">
+              <span class="checkmark">✓</span>
+              <span>Updated for 2025</span>
+              <span class="separator">•</span>
+              <span>Official VA Rates</span>
+              <span class="separator">•</span>
+              <span>Last verified: January 2025</span>
+            </div>
+            <div class="introduction-box">
+              <p>
+                Calculate your monthly VA disability compensation using the
+                latest 2025 rates. Enter your disability ratings and dependent
+                information to get an accurate estimate.
+                <a href="#complete-guide">Learn more about VA disability ↓</a>
+              </p>
+            </div>
             <div class="instructions">
               <p>
                 <strong>How to use:</strong> Enter your disability ratings in
@@ -1696,6 +2244,492 @@
       </div>
     </div>
 
+    <!-- Comprehensive Guide Section -->
+    <div id="complete-guide" class="comprehensive-guide">
+      <h2>Complete VA Disability Guide</h2>
+
+      <details class="guide-section">
+        <summary>How VA Disability Compensation Works</summary>
+        <div class="guide-content">
+          <p>
+            VA disability compensation is a monthly tax-free benefit paid to
+            veterans who are disabled due to injury or disease incurred or
+            aggravated during active military service. This program recognizes
+            the sacrifices made by service members and provides financial
+            support to help maintain quality of life after service.
+          </p>
+
+          <h3>Who Qualifies for VA Disability?</h3>
+          <p>
+            To be eligible for VA disability compensation, you must meet three
+            basic requirements:
+          </p>
+          <ul>
+            <li>
+              <strong>Military Service:</strong> You must have served on active
+              duty, active duty for training, or inactive duty for training
+            </li>
+            <li>
+              <strong>Disability Rating:</strong> You must have a current
+              disability rated at least 10% disabling
+            </li>
+            <li>
+              <strong>Service Connection:</strong> The disability must be
+              connected to your military service (service-connected)
+            </li>
+          </ul>
+
+          <h3>Understanding Disability Ratings</h3>
+          <p>
+            The VA rates disabilities on a scale from 0% to 100% in increments
+            of 10%. These ratings reflect the severity of your disability and
+            its impact on your ability to work and perform daily activities. A
+            0% rating means you have a service-connected disability but it
+            doesn't significantly impair your ability to work, while a 100%
+            rating indicates total disability.
+          </p>
+
+          <p>
+            Your disability rating determines your monthly compensation amount.
+            Veterans with multiple disabilities receive a combined rating that
+            may be different from simply adding percentages together due to VA's
+            unique calculation method. The higher your combined rating, the more
+            compensation you receive each month.
+          </p>
+
+          <h3>Types of Service Connection</h3>
+          <p>
+            VA recognizes several ways a disability can be connected to military
+            service:
+          </p>
+          <ul>
+            <li>
+              <strong>Direct Service Connection:</strong> Disability caused by
+              an event or injury during service
+            </li>
+            <li>
+              <strong>Aggravated Service Connection:</strong> Pre-existing
+              condition made worse by military service
+            </li>
+            <li>
+              <strong>Presumptive Service Connection:</strong> Certain
+              conditions presumed to be service-connected based on exposure or
+              service location
+            </li>
+            <li>
+              <strong>Secondary Service Connection:</strong> Disability caused
+              or aggravated by an already service-connected condition
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="guide-section">
+        <summary>Understanding VA Math (Combined Ratings)</summary>
+        <div class="guide-content">
+          <p>
+            VA disability math, officially called "combined ratings," uses a
+            specific formula that doesn't simply add percentages together.
+            Instead, the VA calculates combined ratings by considering how much
+            "ability" remains after each disability. This system ensures fair
+            compensation while preventing ratings from exceeding 100%.
+          </p>
+
+          <h3>How VA Math Works</h3>
+          <p>
+            The VA uses a bilateral factor calculation that works as follows:
+          </p>
+          <ol>
+            <li>Start with your highest-rated disability</li>
+            <li>
+              Calculate the remaining "whole person" percentage (100% -
+              disability %)
+            </li>
+            <li>
+              Apply the next disability as a percentage of the remaining ability
+            </li>
+            <li>Continue this process for each additional disability</li>
+            <li>Round the final result to the nearest 10%</li>
+          </ol>
+
+          <div class="example-box">
+            <h3>Example 1: Two Disabilities</h3>
+            <p><strong>Scenario:</strong> 30% back injury + 20% knee injury</p>
+            <p><strong>Calculation:</strong></p>
+            <ul>
+              <li>Start with 30% back injury</li>
+              <li>Remaining ability: 100% - 30% = 70%</li>
+              <li>20% knee injury of remaining 70% = 14%</li>
+              <li>Combined rating: 30% + 14% = 44%</li>
+              <li><strong>Final rating: 40% (rounded down)</strong></li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h3>Example 2: Three Disabilities</h3>
+            <p>
+              <strong>Scenario:</strong> 50% PTSD + 30% back injury + 10%
+              tinnitus
+            </p>
+            <p><strong>Calculation:</strong></p>
+            <ul>
+              <li>Start with 50% PTSD</li>
+              <li>Remaining ability: 100% - 50% = 50%</li>
+              <li>30% back injury of remaining 50% = 15%</li>
+              <li>New total: 50% + 15% = 65%</li>
+              <li>Remaining ability: 100% - 65% = 35%</li>
+              <li>10% tinnitus of remaining 35% = 3.5%</li>
+              <li>Combined rating: 65% + 3.5% = 68.5%</li>
+              <li><strong>Final rating: 70% (rounded up)</strong></li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h3>Example 3: Multiple Ratings Reaching 100%</h3>
+            <p>
+              <strong>Scenario:</strong> 60% PTSD + 40% back injury + 30% knee
+              injury
+            </p>
+            <p><strong>Calculation:</strong></p>
+            <ul>
+              <li>Start with 60% PTSD</li>
+              <li>Remaining ability: 100% - 60% = 40%</li>
+              <li>40% back injury of remaining 40% = 16%</li>
+              <li>New total: 60% + 16% = 76%</li>
+              <li>Remaining ability: 100% - 76% = 24%</li>
+              <li>30% knee injury of remaining 24% = 7.2%</li>
+              <li>Combined rating: 76% + 7.2% = 83.2%</li>
+              <li><strong>Final rating: 80% (rounded down)</strong></li>
+            </ul>
+          </div>
+
+          <h3>Why VA Math Exists</h3>
+          <p>
+            This calculation method prevents veterans from receiving more than
+            100% disability compensation while ensuring that multiple
+            disabilities are properly compensated. It recognizes that
+            disabilities don't simply add together but interact in complex ways
+            that affect overall functioning.
+          </p>
+        </div>
+      </details>
+
+      <details class="guide-section">
+        <summary>2025 VA Rates and COLA Adjustments</summary>
+        <div class="guide-content">
+          <p>
+            VA disability compensation rates are adjusted annually based on the
+            Cost of Living Adjustment (COLA) determined by the Social Security
+            Administration. For 2025, veterans received a 3.2% increase in their
+            monthly disability compensation, reflecting the rising cost of
+            living and ensuring benefits maintain their purchasing power.
+          </p>
+
+          <h3>What is COLA?</h3>
+          <p>
+            The Cost of Living Adjustment is calculated using the Consumer Price
+            Index for Urban Wage Earners and Clerical Workers (CPI-W). This
+            index measures changes in the prices of goods and services that
+            urban wage earners typically purchase. When inflation occurs, COLA
+            increases help veterans maintain their standard of living.
+          </p>
+
+          <h3>2025 Rate Increases</h3>
+          <p>
+            The 3.2% increase for 2025 means that veterans at all disability
+            rating levels received higher monthly payments. For example, a
+            veteran with a 100% disability rating saw their monthly compensation
+            increase from approximately $3,737 to $3,857. Even smaller ratings
+            received proportional increases, ensuring all disabled veterans
+            benefit from the adjustment.
+          </p>
+
+          <h3>Factors Affecting Your Rates</h3>
+          <p>
+            Several factors determine your exact monthly compensation amount:
+          </p>
+          <ul>
+            <li>
+              <strong>Disability Rating:</strong> Your combined disability
+              percentage (10% to 100%)
+            </li>
+            <li>
+              <strong>Dependent Status:</strong> Spouse, children, and dependent
+              parents increase compensation
+            </li>
+            <li>
+              <strong>Special Circumstances:</strong> Aid and attendance
+              benefits for severely disabled veterans
+            </li>
+            <li>
+              <strong>Bilateral Factors:</strong> Additional compensation for
+              disabilities affecting both arms or legs
+            </li>
+          </ul>
+
+          <h3>When Rates Take Effect</h3>
+          <p>
+            COLA adjustments typically take effect on December 1st of each year,
+            with the first increased payment arriving in January. Veterans don't
+            need to apply for these increases - they're automatically applied to
+            all eligible compensation payments. The VA typically announces the
+            new rates in October, giving veterans advance notice of their
+            increased benefits.
+          </p>
+        </div>
+      </details>
+
+      <details class="guide-section">
+        <summary>Dependent Benefits Explained</summary>
+        <div class="guide-content">
+          <p>
+            VA disability compensation increases when you have dependents,
+            recognizing that disabled veterans often have additional financial
+            responsibilities. The VA defines dependents as spouses, children,
+            and dependent parents who rely on the veteran for financial support.
+            Understanding these benefits helps ensure you receive the maximum
+            compensation you're entitled to.
+          </p>
+
+          <h3>Spouse Benefits</h3>
+          <p>
+            If you're married, you automatically receive additional compensation
+            for your spouse. The amount varies based on your disability rating
+            and whether your spouse qualifies for additional benefits. For
+            veterans with 30% or higher ratings, spouse compensation ranges from
+            approximately $54 per month (30% rating) to $195 per month (100%
+            rating) in 2025.
+          </p>
+
+          <h3>Children Benefits</h3>
+          <p>
+            Children under age 18, or under 23 if attending school, qualify as
+            dependents. The VA also recognizes children over 18 who became
+            permanently incapable of self-support before age 18 due to a
+            disability. Compensation for children varies by:
+          </p>
+          <ul>
+            <li>
+              <strong>Number of Children:</strong> First child, second child,
+              and additional children each have different rates
+            </li>
+            <li>
+              <strong>Child's Age:</strong> School-age children (18-23) receive
+              slightly higher benefits
+            </li>
+            <li>
+              <strong>Special Circumstances:</strong> Disabled adult children
+              may qualify for additional benefits
+            </li>
+          </ul>
+
+          <h3>Dependent Parent Benefits</h3>
+          <p>
+            Parents who depend on the veteran for financial support may also
+            qualify for additional compensation. To qualify, parents must have
+            limited income and resources, typically less than $13,000 annually.
+            The veteran must be providing at least half of the parent's
+            financial support. Benefits for dependent parents range from
+            approximately $65 to $169 per month depending on the veteran's
+            disability rating.
+          </p>
+
+          <h3>Combined Family Benefits</h3>
+          <p>
+            When you have multiple dependents, the benefits stack together. For
+            example, a veteran with a 100% disability rating, a spouse, and two
+            children under 18 could receive over $4,000 per month in 2025. The
+            exact amount depends on the specific combination of dependents and
+            their qualifying circumstances.
+          </p>
+
+          <h3>How to Add Dependents</h3>
+          <p>
+            To receive dependent benefits, you must add your dependents to your
+            VA claim. This can be done when initially filing for disability or
+            by submitting a separate form (VA Form 21-686c) to add dependents
+            later. You'll need to provide documentation such as marriage
+            certificates, birth certificates, and proof of dependency for
+            parents.
+          </p>
+
+          <p>
+            It's important to keep your dependent information current. Notify
+            the VA immediately of changes such as marriage, divorce, birth of
+            children, or changes in dependent status. Failure to report changes
+            can result in overpayment that must be repaid.
+          </p>
+        </div>
+      </details>
+
+      <details class="guide-section">
+        <summary>Filing and Appealing Your VA Claim</summary>
+        <div class="guide-content">
+          <p>
+            Navigating the VA claims process can seem overwhelming, but
+            understanding the steps and requirements makes it much more
+            manageable. The VA has streamlined the process in recent years,
+            offering multiple ways to file claims and providing better support
+            for veterans throughout the process. With proper preparation and
+            understanding of the system, you can successfully obtain the
+            benefits you deserve.
+          </p>
+
+          <h3>Initial Claim Process</h3>
+          <p>
+            Filing your initial VA disability claim involves several key steps:
+          </p>
+          <ol>
+            <li>
+              <strong>Gather Evidence:</strong> Collect all relevant medical
+              records, military service records, and supporting documentation
+            </li>
+            <li>
+              <strong>Complete VA Form 21-526EZ:</strong> The Application for
+              Disability Compensation and Related Compensation Benefits
+            </li>
+            <li>
+              <strong>Submit Supporting Documents:</strong> Include medical
+              evidence, service records, and any private medical records
+            </li>
+            <li>
+              <strong>Schedule C&P Exam:</strong> Attend Compensation and
+              Pension examination if requested
+            </li>
+            <li>
+              <strong>Wait for Decision:</strong> VA typically takes 3-6 months
+              to process initial claims
+            </li>
+          </ol>
+
+          <h3>Types of Claims</h3>
+          <p>
+            The VA recognizes several types of claims, each with specific
+            requirements:
+          </p>
+          <ul>
+            <li>
+              <strong>Original Claims:</strong> First-time applications for
+              disability benefits
+            </li>
+            <li>
+              <strong>Increased Rating Claims:</strong> Requests for higher
+              disability ratings due to worsening conditions
+            </li>
+            <li>
+              <strong>New Claims:</strong> Applications for additional
+              disabilities not previously claimed
+            </li>
+            <li>
+              <strong>Secondary Claims:</strong> Conditions caused or aggravated
+              by already service-connected disabilities
+            </li>
+            <li>
+              <strong>Presumptive Claims:</strong> Conditions presumed to be
+              service-connected based on exposure or service location
+            </li>
+          </ul>
+
+          <h3>Evidence Requirements</h3>
+          <p>
+            Strong evidence is crucial for successful claims. The VA looks for
+            three types of evidence:
+          </p>
+          <ul>
+            <li>
+              <strong>Medical Evidence:</strong> Current diagnosis, treatment
+              records, and medical opinions connecting the condition to service
+            </li>
+            <li>
+              <strong>Service Records:</strong> Military medical records,
+              incident reports, and documentation of in-service events
+            </li>
+            <li>
+              <strong>Lay Evidence:</strong> Personal statements from the
+              veteran, family members, and fellow service members
+            </li>
+          </ul>
+
+          <h3>Understanding VA Decisions</h3>
+          <p>
+            When the VA makes a decision on your claim, you'll receive a
+            detailed letter explaining their findings. The decision letter will
+            include:
+          </p>
+          <ul>
+            <li>
+              <strong>Granted Conditions:</strong> Disabilities approved for
+              service connection and their ratings
+            </li>
+            <li>
+              <strong>Denied Conditions:</strong> Disabilities not approved and
+              reasons for denial
+            </li>
+            <li><strong>Effective Dates:</strong> When your benefits begin</li>
+            <li>
+              <strong>Appeal Rights:</strong> Information about how to challenge
+              unfavorable decisions
+            </li>
+          </ul>
+
+          <h3>Appeals Process</h3>
+          <p>
+            If you disagree with the VA's decision, you have several appeal
+            options:
+          </p>
+          <ul>
+            <li>
+              <strong>Higher-Level Review:</strong> Request review by a senior
+              VA adjudicator within one year
+            </li>
+            <li>
+              <strong>Supplemental Claim:</strong> Submit new evidence to
+              support your claim
+            </li>
+            <li>
+              <strong>Board of Veterans' Appeals:</strong> Appeal to the Board
+              for a formal hearing
+            </li>
+          </ul>
+
+          <p>
+            Each appeal option has specific requirements and timelines. You
+            typically have one year from the date of the VA's decision to file
+            an appeal. Consider consulting with a Veterans Service Organization
+            (VSO) or accredited representative to help navigate the appeals
+            process.
+          </p>
+
+          <h3>Tips for Success</h3>
+          <p>
+            Several strategies can improve your chances of a successful claim:
+          </p>
+          <ul>
+            <li>
+              <strong>Be Thorough:</strong> Include all relevant medical
+              evidence and don't assume the VA has access to your records
+            </li>
+            <li>
+              <strong>Get Help:</strong> Work with a VSO, attorney, or claims
+              agent familiar with VA processes
+            </li>
+            <li>
+              <strong>Stay Organized:</strong> Keep copies of all documents and
+              correspondence
+            </li>
+            <li>
+              <strong>Be Patient:</strong> The process takes time, but
+              persistence often pays off
+            </li>
+            <li>
+              <strong>Follow Up:</strong> Check your claim status regularly and
+              respond promptly to VA requests
+            </li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
     <!-- Content Sections -->
     <div class="content-sections">
       <!-- Accurate Calculations -->
@@ -1795,12 +2829,38 @@
           </div>
           <div class="faq-answer">
             <p>
-              VA math uses the "whole person" concept. Each disability is
-              calculated as a percentage of your remaining ability. For example,
-              if you have a 50% disability, you're 50% able. A second 30%
-              disability is calculated as 30% of the remaining 50%, which equals
-              15%. Your combined rating would be 50% + 15% = 65%, which rounds
-              to 70% for payment purposes.
+              VA math, officially called "combined ratings," uses the "whole
+              person" concept that recognizes you can't be more than 100%
+              disabled. Instead of simply adding percentages together, the VA
+              calculates each additional disability as a percentage of your
+              remaining ability to function. This system ensures fair
+              compensation while preventing ratings from exceeding 100%.
+            </p>
+            <p>
+              Here's how it works step-by-step: First, the VA takes your
+              highest-rated disability. Then, for each additional disability,
+              they calculate what percentage of your remaining ability it
+              affects. The formula is: remaining ability = 100% - current
+              combined rating. Each new disability is then calculated as a
+              percentage of this remaining ability.
+            </p>
+            <p>
+              <strong>Concrete Example:</strong> Let's say you have three
+              disabilities: 40% PTSD, 30% back injury, and 20% knee injury.
+              Start with 40% PTSD (highest rating). Remaining ability: 100% -
+              40% = 60%. The 30% back injury affects 30% of your remaining 60%
+              ability = 18%. New total: 40% + 18% = 58%. Remaining ability: 100%
+              - 58% = 42%. The 20% knee injury affects 20% of your remaining 42%
+              ability = 8.4%. Final combined rating: 58% + 8.4% = 66.4%, which
+              rounds to 70% for payment purposes.
+            </p>
+            <p>
+              This system recognizes that disabilities don't simply add together
+              but interact in complex ways. A veteran with multiple conditions
+              often experiences compounded effects that traditional addition
+              wouldn't capture. The VA rounds final ratings to the nearest 10%,
+              which can sometimes work in your favor (66.4% becomes 70%) or
+              against you (74.4% becomes 70%).
             </p>
           </div>
         </div>
@@ -1812,11 +2872,39 @@
           </div>
           <div class="faq-answer">
             <p>
-              Because VA math considers your remaining ability. If you have a
-              50% disability, you're 50% able. A second 50% disability is
-              calculated as 50% of the remaining 50%, which equals 25%. Your
-              combined rating would be 50% + 25% = 75%, which rounds to 80% for
-              payment purposes.
+              This is one of the most confusing aspects of VA disability
+              compensation, but it makes sense once you understand the "whole
+              person" concept. The VA doesn't view disabilities as simply
+              additive because that would imply you could be more than 100%
+              disabled, which is impossible. Instead, they consider how much
+              functional ability you have left after each disability.
+            </p>
+            <p>
+              Here's the detailed breakdown: If you have a 50% disability, the
+              VA considers you 50% able to function normally. When you add a
+              second 50% disability, it doesn't affect your original 50% loss -
+              it affects your remaining 50% ability. So the second disability is
+              calculated as 50% of your remaining 50% ability, which equals 25%
+              additional disability. Your combined rating becomes 50% + 25% =
+              75%, which rounds to 80%.
+            </p>
+            <p>
+              <strong>Why This System Exists:</strong> The VA's approach
+              recognizes that disabilities interact with each other in complex
+              ways. A veteran with two 50% disabilities doesn't experience twice
+              the impact of one 50% disability - the effects compound and
+              overlap. This system also prevents veterans from receiving
+              compensation that exceeds what's possible (you can't be more than
+              100% disabled).
+            </p>
+            <p>
+              <strong>Real-World Impact:</strong> This means that as you add
+              more disabilities, each additional one has a smaller impact on
+              your overall rating. This can be frustrating for veterans who feel
+              their multiple conditions should add up to 100%, but it's designed
+              to be fair and mathematically consistent. Understanding this
+              system helps veterans set realistic expectations about their
+              potential combined ratings.
             </p>
           </div>
         </div>
@@ -1828,15 +2916,48 @@
           </div>
           <div class="faq-answer">
             <p>
-              The bilateral factor applies when you have disabilities affecting
-              both sides of paired body parts (both arms, both legs, or paired
-              skeletal muscles). The VA adds 10% of the combined value of these
-              bilateral disabilities before combining with other disabilities.
-              For example, if you have 30% for your left knee and 20% for your
-              right knee, the bilateral factor would add 10% of their combined
-              value (which is 44%), giving you an additional 4.4% before
-              rounding. This recognizes that bilateral disabilities are more
-              disabling than the sum of individual ratings.
+              The bilateral factor is a special calculation that recognizes that
+              disabilities affecting both sides of paired body parts are more
+              disabling than the sum of their individual ratings. This applies
+              to paired extremities (both arms, both legs, both feet, both
+              hands) and paired skeletal muscles. The VA adds 10% of the
+              combined value of bilateral disabilities before applying them to
+              your overall rating calculation.
+            </p>
+            <p>
+              <strong>The Bilateral Factor Formula:</strong> First, combine your
+              bilateral disabilities using regular VA math. Then, add 10% of
+              that combined value. The formula is: Bilateral Factor = (Combined
+              Bilateral Rating) + (Combined Bilateral Rating × 0.10). This
+              additional percentage recognizes the compounded functional impact
+              of bilateral conditions.
+            </p>
+            <p>
+              <strong>Real Scenario Example:</strong> Let's say you have 40% for
+              your left knee and 30% for your right knee. First, combine them
+              using VA math: Start with 40% left knee. Remaining ability: 100% -
+              40% = 60%. Right knee (30%) affects 30% of remaining 60% = 18%.
+              Combined bilateral rating: 40% + 18% = 58%. Now apply the
+              bilateral factor: 58% + (58% × 0.10) = 58% + 5.8% = 63.8%. This
+              bilateral factor (63.8%) is then used in your overall rating
+              calculation with other disabilities.
+            </p>
+            <p>
+              <strong>Why It Exists:</strong> Bilateral disabilities create
+              unique challenges that single-sided disabilities don't. Losing
+              function in both knees, for example, affects your entire mobility
+              system, balance, and ability to perform daily activities in ways
+              that two separate knee injuries wouldn't. The bilateral factor
+              compensates for this compounded functional loss and recognizes the
+              increased difficulty in adapting to bilateral impairments.
+            </p>
+            <p>
+              <strong>Important Note:</strong> The bilateral factor only applies
+              to disabilities affecting paired body parts. If you have a 40%
+              back injury and a 30% knee injury (unilateral), the bilateral
+              factor doesn't apply because these aren't paired conditions. The
+              factor specifically recognizes the unique challenges of bilateral
+              impairments.
             </p>
           </div>
         </div>
@@ -1848,10 +2969,55 @@
           </div>
           <div class="faq-answer">
             <p>
-              No, the maximum combined rating is 100%. However, you can receive
-              additional compensation for dependents, Special Monthly
-              Compensation (SMC), and other benefits that can increase your
-              total monthly payment beyond the base 100% rate.
+              No, the maximum combined disability rating is 100% - you cannot
+              receive more than 100% for your disability rating itself. However,
+              this doesn't mean your total monthly compensation is capped at the
+              100% rate. The VA provides several ways to increase your monthly
+              payment beyond the base 100% compensation through additional
+              benefits and special circumstances.
+            </p>
+            <p>
+              <strong>Special Monthly Compensation (SMC):</strong> This is the
+              most significant way to receive additional compensation. SMC is
+              paid for specific severe disabilities or combinations of
+              disabilities that result in unusual circumstances. There are
+              multiple SMC levels (SMC-K through SMC-S), each providing
+              different amounts of additional compensation.
+            </p>
+            <p>
+              <strong>SMC-K:</strong> Awarded for specific conditions like loss
+              of use of a hand, foot, or reproductive organ, or for severe
+              conditions like erectile dysfunction due to service-connected
+              medication. Pays approximately $128 per month in 2025.
+            </p>
+            <p>
+              <strong>SMC-L through SMC-N:</strong> Awarded for loss of use of
+              paired extremities or combinations of severe disabilities. For
+              example, SMC-L is for loss of use of both feet, both hands, or one
+              hand and one foot. SMC-M is for loss of use of both legs at or
+              above the knee. These levels provide significantly higher
+              compensation than the base 100% rate.
+            </p>
+            <p>
+              <strong>SMC-R:</strong> Awarded when you need regular aid and
+              attendance for daily activities, or are permanently housebound due
+              to service-connected disabilities. This can provide substantial
+              additional compensation.
+            </p>
+            <p>
+              <strong>Other Additional Compensation:</strong> Dependents
+              (spouse, children, parents) can add hundreds of dollars to your
+              monthly payment. Veterans with 100% ratings and a spouse and two
+              children can receive over $4,000 monthly in 2025. You may also
+              qualify for additional compensation for specific conditions like
+              bilateral blindness or deafness.
+            </p>
+            <p>
+              <strong>How to Apply:</strong> SMC is typically awarded
+              automatically when the VA recognizes qualifying conditions, but
+              you can also file for it specifically if you believe you qualify.
+              The key is ensuring all your disabilities are properly documented
+              and rated.
             </p>
           </div>
         </div>
@@ -1863,9 +3029,52 @@
           </div>
           <div class="faq-answer">
             <p>
-              VA disability rates typically increase annually based on the
-              cost-of-living adjustment (COLA). The rates are usually announced
-              in December and take effect on January 1st of the following year.
+              VA disability compensation rates increase annually based on the
+              Cost of Living Adjustment (COLA), which is determined by the
+              Social Security Administration using the Consumer Price Index for
+              Urban Wage Earners and Clerical Workers (CPI-W). This ensures that
+              veterans' benefits maintain their purchasing power as the cost of
+              living rises.
+            </p>
+            <p>
+              <strong>Timeline and Process:</strong> The COLA calculation is
+              based on the average CPI-W for the third quarter (July, August,
+              September) of the current year compared to the same period from
+              the previous year. The Social Security Administration typically
+              announces the COLA percentage in October, and the VA adopts this
+              same percentage for disability compensation.
+            </p>
+            <p>
+              <strong>2025 COLA Increase:</strong> For 2025, veterans received a
+              3.2% increase in their disability compensation, reflecting the
+              rising cost of living. This means a veteran with a 100% disability
+              rating saw their monthly compensation increase from approximately
+              $3,737 to $3,857. Even veterans with lower ratings received
+              proportional increases.
+            </p>
+            <p>
+              <strong>When Changes Take Effect:</strong> The new rates typically
+              take effect on December 1st of each year, with the first increased
+              payment arriving in January. Veterans don't need to apply for
+              these increases - they're automatically applied to all eligible
+              compensation payments. The VA usually publishes the new rate
+              tables in October, giving veterans advance notice of their
+              increased benefits.
+            </p>
+            <p>
+              <strong>Historical Context:</strong> COLA increases have varied
+              significantly over the years, from 0% during periods of low
+              inflation to over 14% during high inflation periods like the
+              1980s. The 3.2% increase for 2025 represents a moderate adjustment
+              that helps veterans keep pace with rising costs while maintaining
+              the program's fiscal sustainability.
+            </p>
+            <p>
+              <strong>Automatic Application:</strong> Unlike many other
+              benefits, veterans don't need to take any action to receive COLA
+              increases. The VA automatically applies the new rates to all
+              active disability compensation payments, ensuring that all
+              eligible veterans receive the adjustment without delay.
             </p>
           </div>
         </div>
@@ -1877,10 +3086,62 @@
           </div>
           <div class="faq-answer">
             <p>
-              You can file for VA disability benefits online at VA.gov, by mail,
-              or in person at a VA regional office. You'll need medical evidence
-              connecting your condition to your military service, along with
-              your DD-214 and other supporting documents.
+              Filing for VA disability benefits can seem overwhelming, but the
+              process has been streamlined in recent years to make it more
+              accessible. You have three main options for filing: online through
+              VA.gov (the fastest and most efficient method), by mail using VA
+              Form 21-526EZ, or in person at a VA regional office. Each method
+              has its advantages, but online filing is generally recommended for
+              faster processing.
+            </p>
+            <p>
+              <strong>Required Documentation:</strong> You'll need several key
+              documents to support your claim. Most importantly, you need
+              medical evidence that connects your current condition to your
+              military service. This includes current medical records showing
+              your diagnosis and treatment, military service records documenting
+              any injuries or illnesses during service, and your DD-214
+              (Certificate of Release or Discharge from Active Duty). You should
+              also gather any private medical records, statements from family
+              members or fellow service members, and documentation of any
+              incidents that caused your condition.
+            </p>
+            <p>
+              <strong>The Filing Process:</strong> Start by completing VA Form
+              21-526EZ (Application for Disability Compensation and Related
+              Compensation Benefits). This form asks for detailed information
+              about your military service, current disabilities, and medical
+              treatment. You'll need to provide specific dates, locations, and
+              circumstances related to your conditions. Be as detailed as
+              possible - vague or incomplete information can delay your claim or
+              result in denial.
+            </p>
+            <p>
+              <strong>What Happens Next:</strong> After filing, the VA will
+              review your application and may request additional information or
+              schedule you for a Compensation and Pension (C&P) examination.
+              This exam is conducted by a VA-contracted doctor who will evaluate
+              your conditions and provide an opinion on whether they're
+              connected to your military service. The entire process typically
+              takes 3-6 months for initial claims, though this can vary based on
+              complexity and VA workload.
+            </p>
+            <p>
+              <strong>Tips for Success:</strong> Consider working with a
+              Veterans Service Organization (VSO) like the American Legion, VFW,
+              or DAV, which provide free assistance with claims. These
+              organizations have accredited representatives who understand the
+              VA system and can help ensure your claim is properly prepared.
+              Keep copies of everything you submit, and respond promptly to any
+              VA requests for additional information.
+            </p>
+            <p>
+              <strong>Getting Help:</strong> Don't navigate this process alone.
+              The VA has Veterans Service Representatives who can help, and many
+              communities have VSOs that provide free assistance. You can also
+              consult with accredited attorneys or claims agents, though these
+              services typically require a fee. The key is to be thorough,
+              accurate, and persistent throughout the process.
             </p>
           </div>
         </div>
@@ -1963,6 +3224,133 @@
               Monthly benefits for surviving spouses and dependent children of
               veterans who died from service-connected conditions.
             </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VA Disability Resources -->
+      <div class="va-resources">
+        <h2 class="resources-title">VA Disability Resources</h2>
+
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3>
+              <span class="card-icon">🏛️</span>
+              Official VA Resources
+            </h3>
+            <ul class="resource-list">
+              <li>
+                <a
+                  href="https://www.va.gov"
+                  class="resource-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >VA.gov</a
+                >
+                <div class="resource-description">
+                  Official VA website for disability benefits, claims, and
+                  services
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://www.ebenefits.va.gov"
+                  class="resource-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >eBenefits</a
+                >
+                <div class="resource-description">
+                  Access your disability compensation, view claim status, and
+                  manage benefits
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/contact-us"
+                  class="resource-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >MyVA411</a
+                >
+                <div class="resource-description">
+                  VA's comprehensive contact and support system for veterans
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <h3>
+              <span class="card-icon">🏥</span>
+              Common VA Disabilities
+            </h3>
+            <div class="resource-list">
+              <div class="condition-item">
+                <span class="condition-name">Tinnitus</span>
+                <span class="condition-rating">10%</span>
+              </div>
+              <div class="condition-item">
+                <span class="condition-name">PTSD</span>
+                <span class="condition-rating">10-100%</span>
+              </div>
+              <div class="condition-item">
+                <span class="condition-name">Back Conditions</span>
+                <span class="condition-rating">10-60%</span>
+              </div>
+              <div class="condition-item">
+                <span class="condition-name">Knee Injuries</span>
+                <span class="condition-rating">10-50%</span>
+              </div>
+              <div class="condition-item">
+                <span class="condition-name">Depression/Anxiety</span>
+                <span class="condition-rating">10-100%</span>
+              </div>
+            </div>
+            <div
+              class="resource-description"
+              style="margin-top: 1rem; font-style: italic"
+            >
+              Ratings vary based on severity and impact on daily life. These are
+              typical ranges.
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>
+              <span class="card-icon">🧮</span>
+              More Free Calculators
+            </h3>
+            <ul class="resource-list">
+              <li>
+                <a href="/gaming-calculators" class="resource-link"
+                  >Gaming Currency Calculators</a
+                >
+                <div class="resource-description">
+                  Calculate costs for Apex Coins, V-Bucks, Robux, and more
+                </div>
+              </li>
+              <li>
+                <a href="/tip-calculator" class="resource-link"
+                  >Tip Calculator</a
+                >
+                <div class="resource-description">
+                  Quick and easy tip calculations for restaurants and services
+                </div>
+              </li>
+              <li>
+                <a href="/gst-calculator" class="resource-link"
+                  >GST Calculator</a
+                >
+                <div class="resource-description">
+                  Calculate Goods and Services Tax for various transactions
+                </div>
+              </li>
+            </ul>
+            <a href="/" class="calculator-link">
+              <span>🔗</span>
+              View All Tools
+            </a>
           </div>
         </div>
       </div>
@@ -2552,6 +3940,23 @@
         event.target.classList.add("active");
         document.getElementById(tabName + "-tab").classList.add("active");
       }
+
+      // Smooth scroll to guide section
+      function scrollToGuide() {
+        const guideSection = document.getElementById("complete-guide");
+        if (guideSection) {
+          guideSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
     </script>
+
+    <!-- Floating Guide Button - Mobile Only -->
+    <button class="floating-guide-btn" onclick="scrollToGuide()">
+      <span class="guide-emoji">📚</span>
+      <span>VA Guide</span>
+    </button>
   </body>
 </html>

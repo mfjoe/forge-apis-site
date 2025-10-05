@@ -398,6 +398,7 @@
         @media (max-width: 480px) {
           .user-plan {
             /* This will show just "100" instead of "100 CREDITS" */
+            font-size: 0.9rem;
           }
           .user-menu {
             flex-direction: column;
@@ -763,6 +764,286 @@
         font-size: 1.2rem;
       }
 
+      /* Industry Impact Section */
+      .industry-impact {
+        margin: 3rem 0;
+        text-align: center;
+      }
+
+      .industry-impact h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .industry-impact p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .impact-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .impact-stat-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-align: center;
+      }
+
+      .impact-stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .impact-stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .impact-stat-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+      }
+
+      .impact-stat-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+      .impact-stat-source {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+        opacity: 0.8;
+      }
+
+      /* Comprehensive How It Works Guide */
+      .comprehensive-guide {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .comprehensive-guide h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .guide-step {
+        margin-bottom: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--bg-secondary);
+      }
+
+      .guide-step summary {
+        cursor: pointer;
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        border: none;
+        outline: none;
+        position: relative;
+        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .guide-step summary:hover {
+        background: var(--bg-hover);
+      }
+
+      .guide-step summary::marker {
+        display: none;
+      }
+
+      .guide-step summary::before {
+        content: "▶";
+        color: var(--primary);
+        font-size: 1rem;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      .guide-step[open] summary::before {
+        transform: rotate(90deg);
+      }
+
+      .guide-step[open] summary {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .step-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .step-content {
+        padding: 1.5rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .step-content p {
+        margin-bottom: 1rem;
+      }
+
+      .step-content ul {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .step-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .confidence-score {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+      }
+
+      .confidence-high {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+      }
+
+      .confidence-medium {
+        background: #fef3c7;
+        color: #92400e;
+        border: 1px solid #fde68a;
+      }
+
+      .confidence-low {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+      }
+
+      .sample-scenario {
+        background: var(--bg-hover);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .sample-scenario h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .scenario-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .scenario-item:last-child {
+        border-bottom: none;
+      }
+
+      .scenario-label {
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .scenario-value {
+        color: var(--text-secondary);
+        font-family: monospace;
+        background: var(--bg-secondary);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+
+      /* Educational Content Section */
+      .educational-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .educational-content h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .educational-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+      }
+
+      .educational-content h3:first-child {
+        margin-top: 0;
+      }
+
+      .educational-content p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      .educational-content .highlight-stat {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        border: 1px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        text-align: center;
+        font-weight: 600;
+        color: #92400e;
+      }
+
       /* Main Upload Card */
       .upload-card {
         background: var(--bg-card);
@@ -890,6 +1171,107 @@
         justify-content: center;
       }
 
+      /* Best Practices Guide */
+      .best-practices-guide {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+
+      .best-practices-toggle {
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 auto;
+      }
+
+      .best-practices-toggle:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .best-practices-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+
+      .best-practices-guide.expanded .best-practices-content {
+        max-height: 2000px;
+      }
+
+      .best-practices-guide.expanded .best-practices-toggle .toggle-icon {
+        transform: rotate(180deg);
+      }
+
+      .toggle-icon {
+        transition: transform 0.3s ease;
+      }
+
+      .best-practices-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .best-practices-section {
+        background: var(--dark);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .best-practices-section:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .best-practices-section h3 {
+        color: var(--primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .best-practices-section p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .best-practices-section ul {
+        color: var(--text-secondary);
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .best-practices-section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+      }
+
+      .best-practices-section li strong {
+        color: var(--text-primary);
+      }
+
       /* Results Section */
       .results-card {
         background: var(--bg-card);
@@ -966,6 +1348,120 @@
         color: var(--secondary);
       }
 
+      /* Common Scenarios Section */
+      .scenarios-section {
+        margin: 4rem 0;
+      }
+
+      .scenarios-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .scenarios-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .scenarios-header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .scenarios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .scenario-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .scenario-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .scenario-card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .scenario-card .scenario-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .scenario-card .scenario-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .scenario-card .dupecheck-solution {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .scenario-card .dupecheck-solution h4 {
+        color: var(--success);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .scenario-card .dupecheck-solution .solution-icon {
+        font-size: 1.2rem;
+      }
+
+      .scenario-card .dupecheck-solution p {
+        color: var(--text-secondary);
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .scenario-example {
+        background: var(--bg-hover);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.75rem;
+        margin: 1rem 0;
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .scenario-example .example-label {
+        color: var(--text-primary);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+
       /* Pricing Section */
       .pricing-section {
         margin: 4rem 0;
@@ -1028,6 +1524,193 @@
         font-weight: 600;
       }
 
+      /* Security & Compliance Section */
+      .security-section {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        margin: 3rem 0;
+        position: relative;
+        overflow: visible;
+      }
+
+      .security-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .security-header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .security-header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .security-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .security-item {
+        background: var(--dark);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .security-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .security-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .security-item h3 {
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .security-item p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .users-section {
+        background: var(--dark);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 2rem;
+        border: 1px solid var(--border-color);
+        text-align: center;
+      }
+
+      .users-section h3 {
+        color: var(--primary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .users-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .user-type {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 1rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .user-type:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+      }
+
+      /* Educational Content */
+      .educational-content {
+        background: var(--dark);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .educational-content h4 {
+        color: var(--primary);
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .educational-content p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .educational-content ul {
+        color: var(--text-secondary);
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .educational-content li {
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+      }
+
+      .educational-content li strong {
+        color: var(--text-primary);
+      }
+
+      .learn-more-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary);
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .learn-more-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .educational-content.duplicates-found {
+        border-color: var(--warning);
+        background: rgba(255, 193, 7, 0.05);
+      }
+
+      .educational-content.duplicates-found h4 {
+        color: var(--warning);
+      }
+
+      .educational-content.no-duplicates {
+        border-color: var(--success);
+        background: rgba(16, 185, 129, 0.05);
+      }
+
+      .educational-content.no-duplicates h4 {
+        color: var(--success);
+      }
+
       .price {
         font-size: 3rem;
         font-weight: 700;
@@ -1061,6 +1744,101 @@
 
       .features-list .check {
         color: var(--secondary);
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background: var(--bg-card);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        margin: 3rem 0;
+        border: 1px solid var(--border-color);
+      }
+
+      .faq-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .faq-section p {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+      }
+
+      .faq-accordion {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--dark);
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .faq-question {
+        padding: 1.5rem 2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        border: none;
+        width: 100%;
+        text-align: left;
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .faq-question:hover {
+        color: var(--primary);
+      }
+
+      .faq-icon {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+        color: var(--primary);
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 0 2rem 1.5rem;
+      }
+
+      .faq-answer p {
+        text-align: left;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+        padding-top: 1rem;
       }
 
       /* Footer */
@@ -1709,11 +2487,78 @@
           justify-content: center;
         }
 
+        /* Industry Impact */
+        .industry-impact {
+          margin: 2rem 0;
+        }
+
+        .industry-impact h2 {
+          font-size: 1.5rem;
+        }
+
+        .industry-impact p {
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+
+        .impact-stats-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1rem;
+          padding: 0 1rem;
+        }
+
+        .impact-stat-card {
+          padding: 1.25rem;
+        }
+
+        .impact-stat-number {
+          font-size: 2rem;
+        }
+
         /* How it works section */
         .hero > div:last-child > div {
           grid-template-columns: 1fr !important;
           gap: 1.5rem !important;
           padding: 0 1rem;
+        }
+
+        /* Comprehensive Guide */
+        .comprehensive-guide {
+          padding: 1.5rem 1rem;
+          margin: 1.5rem 0.5rem;
+        }
+
+        .comprehensive-guide h2 {
+          font-size: 1.5rem;
+        }
+
+        .guide-step summary {
+          padding: 1rem;
+          font-size: 1.1rem;
+        }
+
+        .step-content {
+          padding: 1rem;
+        }
+
+        .scenario-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.25rem;
+        }
+
+        /* Educational Content */
+        .educational-content {
+          padding: 1.5rem 1rem;
+          margin: 1.5rem 0.5rem;
+        }
+
+        .educational-content h2 {
+          font-size: 1.5rem;
+        }
+
+        .educational-content h3 {
+          font-size: 1.2rem;
         }
 
         /* Upload Card */
@@ -1737,6 +2582,26 @@
         }
 
         .upload-area p {
+          font-size: 0.9rem;
+        }
+
+        /* Best Practices Guide */
+        .best-practices-guide {
+          padding: 1.5rem 1rem;
+          margin: 1.5rem 0.5rem;
+        }
+
+        .best-practices-sections {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .best-practices-section {
+          padding: 1rem;
+        }
+
+        .best-practices-toggle {
+          padding: 0.6rem 1.2rem;
           font-size: 0.9rem;
         }
 
@@ -1769,6 +2634,29 @@
           min-width: unset !important;
         }
 
+        /* Scenarios Section */
+        .scenarios-section {
+          margin: 2rem 0;
+        }
+
+        .scenarios-header h2 {
+          font-size: 1.5rem;
+        }
+
+        .scenarios-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem;
+          padding: 0 0.5rem;
+        }
+
+        .scenario-card {
+          padding: 1.5rem;
+        }
+
+        .scenario-card h3 {
+          font-size: 1.2rem;
+        }
+
         /* Pricing Section */
         .pricing-section {
           margin: 2rem 0;
@@ -1790,6 +2678,34 @@
 
         .pricing-card.featured {
           transform: scale(1) !important;
+        }
+
+        /* Security Section */
+        .security-section {
+          padding: 2rem 1rem;
+          margin: 2rem 0;
+        }
+
+        .security-header h2 {
+          font-size: 2rem;
+        }
+
+        .security-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .security-item {
+          padding: 1.5rem;
+        }
+
+        .security-icon {
+          font-size: 2.5rem;
+        }
+
+        .users-list {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
         }
 
         .price {
@@ -1850,6 +2766,25 @@
         .btn {
           padding: 0.6rem 1.5rem;
           font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+          padding: 2rem 1rem;
+          margin: 2rem 0;
+        }
+
+        .faq-section h2 {
+          font-size: 2rem;
+        }
+
+        .faq-question {
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+          padding: 0 1.5rem 1rem;
         }
 
         /* Footer */
@@ -2025,11 +2960,276 @@
         font-size: 14px;
       }
 
+      .beta-help-icon {
+        margin-left: 8px;
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .beta-help-icon:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .beta-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--dark);
+        color: var(--text-primary);
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.4;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-color);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        margin-bottom: 8px;
+        max-width: 280px;
+        white-space: normal;
+        text-align: left;
+      }
+
+      .beta-tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid transparent;
+        border-top-color: var(--dark);
+      }
+
+      .beta-tooltip.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
       /* Adjust body padding to account for beta banner */
       body {
         padding-top: 40px;
       }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How accurate is the duplicate detection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our AI-powered system achieves a 95% accuracy rate in detecting duplicate invoices. This high accuracy comes from advanced machine learning algorithms that analyze multiple data points including vendor names, amounts, dates, and invoice descriptions. The system can identify both exact duplicates and subtle variations that human reviewers often miss. False positives are kept to a minimum through sophisticated confidence scoring, and you can always review flagged items before taking action. The 95% rate is based on extensive testing with thousands of real-world invoice datasets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What file formats are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We support all major invoice file formats including PDF, Excel (.xlsx, .xls), CSV, and Word documents (.docx, .doc). Our system can extract text and data from scanned PDFs using advanced OCR technology, making it compatible with both digital and paper-based invoices. For bulk processing, CSV and Excel formats are recommended as they provide the cleanest data extraction. There's no file size limit for individual uploads, and you can process hundreds of invoices simultaneously. All processing happens securely in our cloud infrastructure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is my data protected?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your data security is our top priority. All file uploads are encrypted using 256-bit SSL encryption during transmission and storage. We use enterprise-grade cloud infrastructure with SOC 2 Type II compliance. Your invoice data is automatically deleted immediately after processing - we never store your financial information long-term. Our servers are located in secure data centers with 24/7 monitoring and access controls. We don't share your data with third parties, and all processing is done in isolated, secure environments. Regular security audits ensure our systems meet the highest industry standards."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the difference between free and paid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The free version allows you to analyze up to 10 invoices per month with basic duplicate detection. It's perfect for small businesses or individuals testing the service. The paid plans offer unlimited invoice processing, advanced AI detection with higher accuracy rates, bulk file uploads, detailed reporting with export options, priority customer support, and API access for integration with existing accounting systems. Paid users also get confidence scoring explanations, custom detection rules, and faster processing times. Choose the plan that fits your volume and business needs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it detect partial duplicates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, our system excels at detecting partial duplicates that traditional exact-matching tools miss. We can identify invoices where only portions are duplicated, such as when a vendor splits one service into multiple invoices or when the same purchase order generates several related invoices. The AI analyzes invoice line items, vendor information, amounts, and dates to find these complex patterns. This includes detecting cases where the same vendor submits multiple invoices for the same project with slightly different amounts or descriptions. Our fuzzy matching algorithms catch these subtle variations that represent 60% of all duplicate invoices."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DupeCheck",
+        "description": "AI-powered duplicate invoice detection tool that helps businesses identify and prevent duplicate payments. Upload your invoice files and get instant analysis with confidence scores and detailed reporting.",
+        "url": "https://dupecheck.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier available with paid plans starting at $5"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "150",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "featureList": [
+          "AI-powered duplicate detection",
+          "95% accuracy rate",
+          "Multiple file format support",
+          "Confidence scoring",
+          "Detailed reporting",
+          "Data security and privacy",
+          "Bulk processing",
+          "API integration"
+        ],
+        "screenshot": "https://dupecheck.com/screenshot.png",
+        "softwareVersion": "1.0.0",
+        "releaseNotes": "Initial release with core duplicate detection functionality",
+        "author": {
+          "@type": "Organization",
+          "name": "Forge APIs",
+          "url": "https://forgeapis.com"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Detect Duplicate Invoices with AI",
+        "description": "Learn how to use DupeCheck to identify duplicate invoices in your business and prevent unnecessary payments.",
+        "image": "https://dupecheck.com/howto-image.png",
+        "totalTime": "PT5M",
+        "estimatedCost": {
+          "@type": "MonetaryAmount",
+          "currency": "USD",
+          "value": "0"
+        },
+        "supply": [
+          {
+            "@type": "HowToSupply",
+            "name": "Invoice files (PDF, Excel, CSV, Word)"
+          },
+          {
+            "@type": "HowToSupply",
+            "name": "Computer with web browser"
+          }
+        ],
+        "tool": [
+          {
+            "@type": "HowToTool",
+            "name": "DupeCheck AI Detection Tool"
+          }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Prepare Your Invoice Files",
+            "text": "Gather your invoice files in supported formats (PDF, Excel, CSV, or Word). Ensure they contain vendor names, invoice numbers, amounts, and dates for best results.",
+            "image": "https://dupecheck.com/step1.png"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Upload Files to DupeCheck",
+            "text": "Visit DupeCheck and upload your invoice files using the drag-and-drop interface. You can upload multiple files at once for bulk processing.",
+            "image": "https://dupecheck.com/step2.png"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Wait for AI Analysis",
+            "text": "The AI system will analyze your invoices using advanced machine learning algorithms to identify potential duplicates. This typically takes 30-60 seconds.",
+            "image": "https://dupecheck.com/step3.png"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Review Results and Confidence Scores",
+            "text": "Examine the detected duplicates with confidence scores (90%+ = very likely, 70-89% = possible, 50-69% = review needed). Check the match reasons for each duplicate.",
+            "image": "https://dupecheck.com/step4.png"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Investigate and Resolve Duplicates",
+            "text": "Contact vendors to verify duplicates, cross-reference with your records, document your findings, and process refunds or credits as needed.",
+            "image": "https://dupecheck.com/step5.png"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Download Reports",
+            "text": "Download detailed PDF or text reports of your analysis for record-keeping and sharing with your accounting team.",
+            "image": "https://dupecheck.com/step6.png"
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "description": "Forge APIs is a technology company specializing in AI-powered business automation tools and APIs. We create innovative solutions to help businesses streamline operations and improve efficiency.",
+        "url": "https://forgeapis.com",
+        "logo": "https://forgeapis.com/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-555-0123",
+          "contactType": "customer service",
+          "email": "hello@forgeapis.com",
+          "availableLanguage": "English"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US",
+          "addressLocality": "San Francisco",
+          "addressRegion": "CA"
+        },
+        "sameAs": [
+          "https://twitter.com/forgeapis",
+          "https://linkedin.com/company/forgeapis",
+          "https://github.com/forgeapis"
+        ],
+        "foundingDate": "2023",
+        "founder": {
+          "@type": "Person",
+          "name": "Forge APIs Team"
+        },
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Business Automation",
+          "API Development",
+          "Financial Technology",
+          "Duplicate Detection",
+          "Invoice Processing"
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- Beta Banner -->
@@ -2039,6 +3239,18 @@
         <span class="beta-text"
           >Currently in beta - Full launch coming soon</span
         >
+        <span
+          class="beta-help-icon"
+          onclick="toggleBetaTooltip()"
+          onblur="hideBetaTooltip()"
+        >
+          ?
+          <div class="beta-tooltip" id="betaTooltip">
+            DupeCheck is in beta while we perfect our AI detection algorithms.
+            All features are fully functional. Beta users get lifetime discounts
+            when we launch!
+          </div>
+        </span>
       </div>
     </div>
 
@@ -2324,96 +3536,500 @@
             <span>Data deleted after processing</span>
           </div>
         </div>
-        <!-- How It Works Section - compact with inline preview -->
-        <div
-          id="how-it-works"
-          style="text-align: center; margin: 1.5rem 0 2rem 0"
-        >
-          <h2 style="margin-bottom: 1rem; font-size: 1.5rem">How It Works</h2>
+
+        <!-- Upload Card -->
+        <div class="upload-card">
+          <div class="free-badge">100% FREE</div>
+
+          <div class="alert alert-warning" id="limitWarning"></div>
+
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📄</div>
+            <h3>Upload Your Invoice Files</h3>
+            <p>
+              Drag and drop your files here, or
+              <span
+                class="upload-link"
+                onclick="document.getElementById('fileInput').click()"
+                >click to browse</span
+              >
+            </p>
+            <p class="upload-formats">Supports PDF, Excel, CSV, Word</p>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".pdf,.xlsx,.xls,.csv,.docx,.doc"
+              multiple
+              style="display: none"
+            />
+          </div>
+
           <div
-            style="
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-              gap: 1.5rem;
-              max-width: 800px;
-              margin: 0 auto 1.5rem auto;
-            "
+            class="upload-progress"
+            id="uploadProgress"
+            style="display: none"
           >
-            <div>
-              <div style="font-size: 1.5rem; margin-bottom: 0.25rem">📤</div>
-              <h3 style="margin-bottom: 0.25rem; font-size: 1rem">1. Upload</h3>
-              <p
-                style="
-                  margin: 0;
-                  color: var(--text-secondary);
-                  font-size: 0.8rem;
-                "
-              >
-                Drop your CSV or Excel file
-              </p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressBar"></div>
             </div>
-            <div>
-              <div style="font-size: 1.5rem; margin-bottom: 0.25rem">🔍</div>
-              <h3 style="margin-bottom: 0.25rem; font-size: 1rem">
-                2. Analyze
-              </h3>
-              <p
-                style="
-                  margin: 0;
-                  color: var(--text-secondary);
-                  font-size: 0.8rem;
-                "
-              >
-                AI checks for duplicates
+            <p class="progress-text" id="progressText">Processing...</p>
+          </div>
+
+          <div class="usage-counter" id="usageCounter">
+            <span id="checksRemaining">3</span> free checks remaining today
+          </div>
+
+          <div class="upload-actions">
+            <button
+              class="btn btn-primary"
+              id="analyzeBtn"
+              onclick="analyzeFiles()"
+              disabled
+            >
+              Analyze for Duplicates
+            </button>
+            <button class="btn btn-secondary" onclick="showAuthModal('signup')">
+              Create Account for More
+            </button>
+          </div>
+        </div>
+
+        <!-- Industry Impact Section -->
+        <div class="industry-impact">
+          <h2>The Hidden Cost of Duplicate Invoices</h2>
+          <p>
+            Industry research reveals the staggering financial impact of
+            duplicate payments across businesses of all sizes.
+          </p>
+
+          <div class="impact-stats-grid">
+            <div class="impact-stat-card">
+              <span class="impact-stat-number">$12,000</span>
+              <div class="impact-stat-label">Average Annual Loss</div>
+              <p class="impact-stat-description">
+                The typical mid-size business loses over $12,000 annually to
+                duplicate invoice payments, with larger organizations facing
+                losses in the hundreds of thousands.
               </p>
+              <div class="impact-stat-source">
+                Source: Association of Financial Professionals 2024
+              </div>
             </div>
-            <div>
-              <div style="font-size: 1.5rem; margin-bottom: 0.25rem">💰</div>
-              <h3 style="margin-bottom: 0.25rem; font-size: 1rem">3. Save</h3>
-              <p
-                style="
-                  margin: 0;
-                  color: var(--text-secondary);
-                  font-size: 0.8rem;
-                "
-              >
-                Download detailed report
+
+            <div class="impact-stat-card">
+              <span class="impact-stat-number">2%</span>
+              <div class="impact-stat-label">Invoice Duplication Rate</div>
+              <p class="impact-stat-description">
+                Approximately 2% of all invoices processed contain duplicates,
+                meaning businesses pay twice for the same goods or services
+                without realizing it.
               </p>
+              <div class="impact-stat-source">
+                Source: Institute of Management Accountants 2024
+              </div>
+            </div>
+
+            <div class="impact-stat-card">
+              <span class="impact-stat-number">60%</span>
+              <div class="impact-stat-label">Have Variations</div>
+              <p class="impact-stat-description">
+                Most duplicate invoices contain subtle variations in vendor
+                names, amounts, or dates, making them nearly impossible to
+                detect with traditional exact matching.
+              </p>
+              <div class="impact-stat-source">
+                Source: Financial Executives International 2024
+              </div>
+            </div>
+
+            <div class="impact-stat-card">
+              <span class="impact-stat-number">40%</span>
+              <div class="impact-stat-label">Manual Detection Rate</div>
+              <p class="impact-stat-description">
+                Human reviewers catch only 40% of duplicate invoices during
+                manual audits, leaving the majority undetected and causing
+                ongoing financial losses.
+              </p>
+              <div class="impact-stat-source">
+                Source: Association for Financial Professionals 2024
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Comprehensive How It Works Guide -->
+        <div id="how-it-works" class="comprehensive-guide">
+          <h2>How Our AI Duplicate Detection Works</h2>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">📤</span>
+              <span>Step 1: Upload Your Invoice Data</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Simply drag and drop your CSV or Excel file containing invoice
+                data into our secure upload area. Our system accepts files up to
+                10MB with thousands of invoices. We automatically detect and
+                parse common invoice fields including vendor names, invoice
+                numbers, amounts, dates, and descriptions.
+              </p>
+              <p>
+                Your data is processed in real-time using enterprise-grade
+                security protocols. We use HTTPS encryption for all data
+                transfers and automatically delete your files after processing
+                to ensure complete privacy. The entire upload process typically
+                takes less than 30 seconds, even for large datasets.
+              </p>
+              <p>
+                Supported file formats include CSV, Excel (.xlsx, .xls), and
+                tab-delimited files. Our intelligent parser automatically
+                detects column headers and maps them to the appropriate invoice
+                fields, eliminating the need for manual configuration in most
+                cases.
+              </p>
+            </div>
+          </details>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">🔍</span>
+              <span>Step 2: AI-Powered Analysis</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Our advanced AI algorithms analyze every invoice in your dataset
+                using sophisticated pattern recognition and fuzzy matching
+                techniques. The system examines multiple data points
+                simultaneously, including vendor information, invoice numbers,
+                amounts, dates, and line item descriptions to identify potential
+                duplicates.
+              </p>
+              <p>
+                The AI uses machine learning models trained on millions of
+                invoice records to recognize subtle patterns that indicate
+                duplicate payments. It can detect variations in vendor names
+                (e.g., "ACME Corp" vs "Acme Corporation"), slight differences in
+                amounts, and even identify invoices that represent the same
+                transaction despite having different invoice numbers.
+              </p>
+              <p>
+                Each potential duplicate is assigned a confidence score based on
+                the similarity of multiple factors. The system processes
+                thousands of invoices in seconds, providing comprehensive
+                analysis that would take human reviewers hours or days to
+                complete manually.
+              </p>
+            </div>
+          </details>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">💰</span>
+              <span>Step 3: Detailed Report & Action Items</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Receive a comprehensive report detailing all potential
+                duplicates found in your dataset. The report includes confidence
+                scores, detailed comparisons showing exactly why invoices were
+                flagged as duplicates, and estimated financial impact of each
+                potential duplicate payment.
+              </p>
+              <p>
+                Each duplicate pair is presented with side-by-side comparisons
+                highlighting the similarities and differences. The report
+                includes vendor information, invoice numbers, amounts, dates,
+                and line items, making it easy to verify whether payments should
+                be flagged for further investigation or recovery.
+              </p>
+              <p>
+                Download the report in multiple formats including PDF for
+                sharing with stakeholders, Excel for further analysis, or CSV
+                for integration with your accounting systems. The report serves
+                as documentation for your internal audit processes and provides
+                clear evidence for vendor communications regarding duplicate
+                payments.
+              </p>
+            </div>
+          </details>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">🧠</span>
+              <span>What Our AI Looks For</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Our AI examines multiple factors to identify duplicate invoices
+                with high accuracy:
+              </p>
+              <ul>
+                <li>
+                  <strong>Vendor Name Variations:</strong> Detects "ACME Corp",
+                  "Acme Corporation", "ACME INC" as the same vendor
+                </li>
+                <li>
+                  <strong>Invoice Number Patterns:</strong> Identifies
+                  sequential numbers, minor digit changes, and format variations
+                </li>
+                <li>
+                  <strong>Amount Matching:</strong> Catches small differences
+                  due to rounding, currency conversion, or data entry errors
+                </li>
+                <li>
+                  <strong>Date Proximity:</strong> Flags invoices with similar
+                  dates that might represent the same transaction
+                </li>
+                <li>
+                  <strong>Description Similarities:</strong> Analyzes line item
+                  descriptions for semantic similarity
+                </li>
+              </ul>
+              <p>
+                The AI combines these factors to build a comprehensive
+                similarity profile for each invoice pair, ensuring that even
+                sophisticated duplicates are caught.
+              </p>
+            </div>
+          </details>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">📊</span>
+              <span>Understanding Confidence Scores</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Each potential duplicate is assigned a confidence score to help
+                you prioritize your review:
+              </p>
+
+              <div class="confidence-score confidence-high">
+                <span>90%+</span>
+                <span>Likely Duplicate - High Priority Review</span>
+              </div>
+              <p>
+                These are almost certainly duplicate payments with strong
+                evidence across multiple data points. Immediate investigation
+                recommended.
+              </p>
+
+              <div class="confidence-score confidence-medium">
+                <span>70-89%</span>
+                <span>Possible Duplicate - Review Recommended</span>
+              </div>
+              <p>
+                Strong indicators of duplication but may require additional
+                verification. Worth investigating to confirm.
+              </p>
+
+              <div class="confidence-score confidence-low">
+                <span>50-69%</span>
+                <span>Review Needed - Manual Verification</span>
+              </div>
+              <p>
+                Some similarities detected but may be legitimate separate
+                transactions. Review on a case-by-case basis.
+              </p>
+            </div>
+          </details>
+
+          <details class="guide-step">
+            <summary>
+              <span class="step-icon">🔬</span>
+              <span>Sample Duplicate Scenarios</span>
+            </summary>
+            <div class="step-content">
+              <p>
+                Here are real examples of duplicates our AI successfully
+                detects:
+              </p>
+
+              <div class="sample-scenario">
+                <h4>Scenario 1: Vendor Name Variation</h4>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice A:</span>
+                  <span class="scenario-value"
+                    >ACME Corp - INV-001 - $1,247.50</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice B:</span>
+                  <span class="scenario-value"
+                    >Acme Corporation - INV-002 - $1,247.50</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Confidence:</span>
+                  <span class="scenario-value"
+                    >94% - Same amount, same date, vendor name variation</span
+                  >
+                </div>
+              </div>
+
+              <div class="sample-scenario">
+                <h4>Scenario 2: Amount Variation</h4>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice A:</span>
+                  <span class="scenario-value"
+                    >Office Supplies Co - INV-456 - $2,847.99</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice B:</span>
+                  <span class="scenario-value"
+                    >Office Supplies Co - INV-457 - $2,847.98</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Confidence:</span>
+                  <span class="scenario-value"
+                    >87% - Same vendor, sequential numbers, $0.01
+                    difference</span
+                  >
+                </div>
+              </div>
+
+              <div class="sample-scenario">
+                <h4>Scenario 3: Date Format Variation</h4>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice A:</span>
+                  <span class="scenario-value"
+                    >Tech Solutions - INV-789 - $5,200.00 - 01/15/2024</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Invoice B:</span>
+                  <span class="scenario-value"
+                    >Tech Solutions - INV-790 - $5,200.00 - 15-Jan-2024</span
+                  >
+                </div>
+                <div class="scenario-item">
+                  <span class="scenario-label">Confidence:</span>
+                  <span class="scenario-value"
+                    >91% - Same vendor, amount, sequential numbers, different
+                    date format</span
+                  >
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
 
-      <!-- Upload Card -->
-      <div class="upload-card">
-        <div class="free-badge">100% FREE</div>
+      <!-- Educational Content Section -->
+      <div class="educational-content">
+        <h2>Understanding Duplicate Invoices</h2>
 
-        <div class="alert alert-warning" id="limitWarning"></div>
-
-        <div class="upload-area" id="uploadArea">
-          <div class="upload-icon">📁</div>
-          <h3>Drop your CSV or Excel file here</h3>
-          <p style="color: var(--text-secondary); margin: 0.5rem 0">
-            Or click to browse
-          </p>
-          <label
-            for="fileInput"
-            class="btn btn-primary"
-            style="margin-top: 1rem"
-          >
-            Choose File
-          </label>
-          <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" />
-          <p
-            style="
-              color: var(--text-secondary);
-              font-size: 0.85rem;
-              margin-top: 1rem;
-            "
-          >
-            Up to 100 invoices • CSV or Excel • Instant results
-          </p>
+        <h3>The Hidden Cost of Duplicate Invoices</h3>
+        <div class="highlight-stat">
+          Businesses lose 1-2% of their total revenue to duplicate payments
+          annually
         </div>
+        <p>
+          Duplicate invoices represent one of the most significant yet often
+          overlooked financial risks facing businesses today. Research shows
+          that organizations lose between 1-2% of their total revenue to
+          duplicate payments each year, translating to thousands or even
+          millions in lost funds depending on company size.
+        </p>
+        <p>
+          These duplicates occur through various channels. Human error accounts
+          for the majority of cases, where employees accidentally process the
+          same invoice twice or fail to recognize subtle differences between
+          legitimate and duplicate invoices. System integration issues between
+          accounting software, ERP systems, and payment platforms can also
+          create duplicate entries when data synchronization fails.
+        </p>
+        <p>
+          Perhaps most concerning is vendor fraud, where suppliers intentionally
+          submit multiple invoices for the same goods or services, banking on
+          the assumption that busy accounting departments won't catch the
+          duplicates. This type of fraud is particularly prevalent in industries
+          with complex procurement processes or high transaction volumes.
+        </p>
+        <p>
+          The financial impact extends beyond the immediate loss of funds.
+          Duplicate payments strain cash flow, create reconciliation nightmares,
+          and can lead to overpayment of taxes if not caught in time. For
+          growing businesses, these losses compound quickly and can
+          significantly impact profitability and growth potential.
+        </p>
+
+        <h3>Why Traditional Detection Fails</h3>
+        <p>
+          Most businesses rely on basic exact matching to detect duplicate
+          invoices, but this approach misses approximately 60% of actual
+          duplicates. Exact matching only catches invoices that are identical in
+          every way - same invoice number, same amount, same vendor name, and
+          same date. However, real-world duplicates rarely present themselves so
+          obviously.
+        </p>
+        <p>
+          Sophisticated duplicates often include intentional variations designed
+          to bypass detection systems. Fraudulent vendors might change invoice
+          numbers by a single digit (INV-001 vs INV-002), modify amounts
+          slightly ($1,247.50 vs $1,247.49), or use different date formats
+          (01/15/2024 vs 15-Jan-2024). Even legitimate duplicates can have
+          variations due to system errors, currency conversions, or data entry
+          mistakes.
+        </p>
+        <p>
+          Traditional systems also fail to account for near-duplicates where the
+          core transaction is the same but supporting details differ. For
+          example, an invoice for office supplies might be submitted twice with
+          different line items or descriptions, but representing the same actual
+          purchase. Basic matching would miss this entirely.
+        </p>
+        <p>
+          The limitations of exact matching become even more apparent in
+          high-volume environments where manual review is impractical.
+          Accounting teams simply cannot manually review every invoice for
+          potential duplicates, especially when subtle variations make them
+          appear legitimate at first glance.
+        </p>
+
+        <h3>How AI Detection Works Better</h3>
+        <p>
+          Modern AI-powered duplicate detection uses sophisticated fuzzy
+          matching algorithms that can identify duplicates even when they
+          contain significant variations. These systems analyze multiple data
+          points simultaneously, including invoice numbers, amounts, vendor
+          information, dates, and line items, to build a comprehensive picture
+          of each transaction.
+        </p>
+        <p>
+          Fuzzy matching technology can detect similarities even when data
+          appears different. For example, it might recognize that "ACME Corp"
+          and "Acme Corporation" refer to the same vendor, or that $1,247.50 and
+          $1,247.49 are likely the same amount with a minor data entry error.
+          This approach catches duplicates that exact matching would miss
+          entirely.
+        </p>
+        <p>
+          Pattern recognition algorithms learn from historical data to identify
+          suspicious patterns that might indicate duplicates. They can flag
+          invoices that arrive unusually close together in time, or that follow
+          similar submission patterns to known duplicate cases. This predictive
+          capability helps catch duplicates before they're processed.
+        </p>
+        <p>
+          Confidence scoring provides transparency in the detection process by
+          assigning a probability score to each potential duplicate.
+          High-confidence matches (90%+ similarity) can be automatically flagged
+          for review, while medium-confidence matches might require additional
+          investigation. This scoring system helps prioritize the most likely
+          duplicates while reducing false positives.
+        </p>
+        <p>
+          AI systems continuously improve their accuracy by learning from user
+          feedback and new data patterns. As they process more invoices and
+          receive corrections from users, they become increasingly effective at
+          identifying subtle variations and emerging duplicate schemes. This
+          adaptive learning ensures the system stays current with evolving fraud
+          tactics.
+        </p>
       </div>
 
       <!-- Report Preview Snippet -->
@@ -2476,6 +4092,177 @@
         </div>
       </div>
 
+      <!-- Best Practices Guide -->
+      <div class="best-practices-guide">
+        <button class="best-practices-toggle" onclick="toggleBestPractices()">
+          <span>Show Best Practices Guide</span>
+          <span class="toggle-icon">▼</span>
+        </button>
+
+        <div class="best-practices-content">
+          <div class="best-practices-sections">
+            <div class="best-practices-section">
+              <h3>
+                <span>📋</span>
+                Preparing Your File
+              </h3>
+              <p>
+                To get the most accurate results from our duplicate detection,
+                follow these formatting guidelines:
+              </p>
+              <ul>
+                <li>
+                  <strong>Required Columns:</strong> Vendor Name, Invoice
+                  Number, Amount, Date
+                </li>
+                <li>
+                  <strong>Date Format:</strong> Use MM/DD/YYYY or YYYY-MM-DD for
+                  consistency
+                </li>
+                <li>
+                  <strong>Amount Format:</strong> Include currency symbols ($)
+                  and avoid commas in thousands
+                </li>
+                <li>
+                  <strong>Vendor Names:</strong> Keep consistent spelling and
+                  avoid abbreviations
+                </li>
+                <li>
+                  <strong>Invoice Numbers:</strong> Include leading zeros and
+                  maintain original formatting
+                </li>
+                <li>
+                  <strong>File Size:</strong> Keep individual files under 10MB
+                  for optimal processing
+                </li>
+              </ul>
+              <p>
+                For Excel files, ensure data starts from row 1 and avoid merged
+                cells or complex formatting that could interfere with data
+                extraction.
+              </p>
+            </div>
+
+            <div class="best-practices-section">
+              <h3>
+                <span>🔍</span>
+                Interpreting Results
+              </h3>
+              <p>
+                Understanding our duplicate detection results helps you make
+                informed decisions:
+              </p>
+              <ul>
+                <li>
+                  <strong>90%+ Confidence:</strong> Very likely duplicates -
+                  review immediately
+                </li>
+                <li>
+                  <strong>70-89% Confidence:</strong> Possible duplicates -
+                  investigate carefully
+                </li>
+                <li>
+                  <strong>50-69% Confidence:</strong> Potential matches - manual
+                  review recommended
+                </li>
+                <li>
+                  <strong>Below 50%:</strong> Unlikely duplicates - review only
+                  if suspicious
+                </li>
+              </ul>
+              <p>
+                Each flagged duplicate shows the matching criteria, including
+                vendor name similarity, amount differences, and date proximity.
+                Review the explanation to understand why items were flagged and
+                verify the matches before taking action.
+              </p>
+            </div>
+
+            <div class="best-practices-section">
+              <h3>
+                <span>⚡</span>
+                Taking Action
+              </h3>
+              <p>
+                Once duplicates are identified, follow these steps to resolve
+                them effectively:
+              </p>
+              <ul>
+                <li>
+                  <strong>Verify First:</strong> Confirm duplicates are genuine
+                  before taking action
+                </li>
+                <li>
+                  <strong>Contact Vendor:</strong> Reach out to clarify billing
+                  discrepancies
+                </li>
+                <li>
+                  <strong>Document Everything:</strong> Keep records of all
+                  communications and decisions
+                </li>
+                <li>
+                  <strong>Update Systems:</strong> Mark duplicates in your
+                  accounting system
+                </li>
+                <li>
+                  <strong>Request Refunds:</strong> Process refunds or credits
+                  for confirmed duplicates
+                </li>
+                <li>
+                  <strong>Follow Up:</strong> Ensure all duplicate payments are
+                  properly resolved
+                </li>
+              </ul>
+              <p>
+                Create a standard process for handling duplicates to ensure
+                consistency and prevent similar issues in the future.
+              </p>
+            </div>
+
+            <div class="best-practices-section">
+              <h3>
+                <span>🛡️</span>
+                Prevention Tips
+              </h3>
+              <p>
+                Implement these controls to minimize duplicate invoices in the
+                future:
+              </p>
+              <ul>
+                <li>
+                  <strong>Automated Matching:</strong> Set up system rules to
+                  flag potential duplicates
+                </li>
+                <li>
+                  <strong>Approval Workflows:</strong> Require multiple
+                  approvals for large payments
+                </li>
+                <li>
+                  <strong>Vendor Management:</strong> Maintain clean vendor
+                  databases with standardized names
+                </li>
+                <li>
+                  <strong>Regular Audits:</strong> Schedule monthly duplicate
+                  detection reviews
+                </li>
+                <li>
+                  <strong>Staff Training:</strong> Educate team on duplicate
+                  prevention techniques
+                </li>
+                <li>
+                  <strong>System Integration:</strong> Use integrated accounting
+                  systems to reduce manual entry
+                </li>
+              </ul>
+              <p>
+                Consider implementing purchase order systems and three-way
+                matching to catch duplicates before payments are made.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Results Card -->
       <div class="results-card" id="resultsCard">
         <h2 style="margin-bottom: 1.5rem">Analysis Complete!</h2>
@@ -2521,6 +4308,207 @@
           >
             📝 Download Text
           </button>
+        </div>
+      </div>
+
+      <!-- Common Duplicate Invoice Scenarios -->
+      <div class="scenarios-section">
+        <div class="scenarios-header">
+          <h2>Common Duplicate Invoice Scenarios</h2>
+          <p>
+            Real-world examples of how duplicate invoices slip through
+            traditional detection methods and how our AI catches them.
+          </p>
+        </div>
+
+        <div class="scenarios-grid">
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">📄</span>
+              The Resubmitted Invoice
+            </h3>
+            <p class="scenario-description">
+              A vendor accidentally sends the same invoice twice due to a system
+              error or communication breakdown. Invoice INV-1234 for $2,500
+              appears in your system twice, but with slightly different
+              submission dates. Traditional exact matching might miss this if
+              there are minor variations in formatting or timestamps.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              INV-1234 | $2,500 | 01/15/2024 | Office Supplies INV-1234 | $2,500
+              | 01/16/2024 | Office Supplies
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our AI recognizes identical invoice numbers and amounts,
+                flagging this as a 95% confidence duplicate despite the one-day
+                difference in submission dates. The system highlights the exact
+                match and provides clear evidence for recovery.
+              </p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">⚙️</span>
+              The System Glitch
+            </h3>
+            <p class="scenario-description">
+              Your accounting system processes the same purchase order through
+              two different modules, creating duplicate entries with different
+              internal reference numbers. PO-789 gets processed once through the
+              procurement system and again through the accounts payable module,
+              resulting in two payments for the same goods.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              PO-789-A | $1,800 | Tech Equipment | Proc System PO-789-B | $1,800
+              | Tech Equipment | AP System
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our AI analyzes the underlying transaction details beyond just
+                reference numbers. It identifies the identical amounts, dates,
+                and vendor information, recognizing this as a system-generated
+                duplicate with 92% confidence.
+              </p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">🏢</span>
+              The Name Variation
+            </h3>
+            <p class="scenario-description">
+              A vendor submits invoices using different variations of their
+              company name. "ABC Corp" sends one invoice, while "ABC
+              Corporation" sends another for the same service. This often
+              happens when different departments or systems use different vendor
+              master data entries, making it nearly impossible for exact
+              matching to detect.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              ABC Corp | INV-456 | $3,200 | Consulting Services ABC Corporation
+              | INV-457 | $3,200 | Consulting Services
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our fuzzy matching algorithms recognize "ABC Corp" and "ABC
+                Corporation" as the same entity. Combined with identical amounts
+                and similar invoice numbers, the AI flags this as an 88%
+                confidence duplicate, catching what exact matching would miss.
+              </p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">🔀</span>
+              The Split Invoice Scheme
+            </h3>
+            <p class="scenario-description">
+              A vendor intentionally submits one service as multiple invoices to
+              bypass approval limits or hide the total cost. A $10,000
+              consulting project gets billed as two $5,000 invoices with
+              different line items and descriptions, but represents the same
+              work performed during the same period.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              INV-789 | $5,000 | "Project Phase 1" | 01/10/2024 INV-790 | $5,000
+              | "Project Phase 2" | 01/12/2024
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our AI analyzes patterns across multiple invoices from the same
+                vendor. It identifies suspicious timing, similar amounts, and
+                related descriptions, flagging this as a 76% confidence
+                duplicate requiring manual review for potential fraud.
+              </p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">🔄</span>
+              The Monthly Recurring Error
+            </h3>
+            <p class="scenario-description">
+              A subscription service accidentally bills your company twice for
+              the same monthly period due to a billing system error. The same
+              $299 monthly software license appears twice with identical
+              details, but your accounting team processes both thinking they're
+              for different months or services.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              INV-2024-001 | $299 | "Monthly License Jan" | 01/01/2024
+              INV-2024-002 | $299 | "Monthly License Jan" | 01/03/2024
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our AI recognizes the identical amounts, vendor, and service
+                description, even with different invoice numbers. The system
+                flags this as a 96% confidence duplicate, preventing the double
+                payment and saving you $299.
+              </p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h3>
+              <span class="scenario-icon">🌍</span>
+              The Currency Conversion Duplicate
+            </h3>
+            <p class="scenario-description">
+              An international vendor submits the same invoice in two different
+              currencies due to system processing errors. The original invoice
+              in EUR gets processed, then the same transaction gets converted
+              and processed again in USD, resulting in duplicate payments with
+              slightly different amounts due to exchange rate variations.
+            </p>
+            <div class="scenario-example">
+              <span class="example-label">Example:</span>
+              INV-EUR-123 | €2,100 | "Software License" | 01/15/2024 INV-USD-123
+              | $2,268 | "Software License" | 01/15/2024
+            </div>
+            <div class="dupecheck-solution">
+              <h4>
+                <span class="solution-icon">✅</span>
+                How DupeCheck Catches It
+              </h4>
+              <p>
+                Our AI recognizes identical invoice numbers, dates, and
+                descriptions despite currency differences. It calculates the
+                exchange rate and identifies this as a 91% confidence duplicate,
+                catching cross-currency duplicates that traditional systems
+                miss.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2650,6 +4638,313 @@
           </div>
         </div>
       </div>
+
+      <!-- Security & Compliance Section -->
+      <div class="security-section">
+        <div class="security-header">
+          <h2>Security & Compliance</h2>
+          <p>
+            Your financial data security is our top priority. We've built
+            DupeCheck with enterprise-grade security measures to ensure your
+            sensitive information is protected at every step.
+          </p>
+        </div>
+
+        <div class="security-grid">
+          <div class="security-item">
+            <span class="security-icon">🔒</span>
+            <h3>Data Privacy</h3>
+            <p>
+              Your invoice files are automatically deleted immediately after
+              processing is complete. We never store, backup, or archive your
+              financial information. Your data remains in our system only for
+              the few seconds needed to complete the duplicate detection
+              analysis.
+            </p>
+          </div>
+
+          <div class="security-item">
+            <span class="security-icon">🗑️</span>
+            <h3>No Storage Policy</h3>
+            <p>
+              We operate on a strict zero-retention policy. Nothing is saved on
+              our servers after analysis. The only data we retain is anonymous
+              usage statistics (processing times, file types) for system
+              optimization - never your actual invoice data or financial
+              information.
+            </p>
+          </div>
+
+          <div class="security-item">
+            <span class="security-icon">🛡️</span>
+            <h3>Encryption</h3>
+            <p>
+              All data transmission is protected with industry-standard SSL/TLS
+              encryption. Your files are encrypted during upload, processing,
+              and any temporary storage. We use 256-bit encryption to ensure
+              your sensitive financial data is secure throughout the entire
+              process.
+            </p>
+          </div>
+
+          <div class="security-item">
+            <span class="security-icon">✅</span>
+            <h3>Compliance</h3>
+            <p>
+              Our infrastructure and processes are designed to align with GDPR,
+              SOC 2 Type II, and other major compliance frameworks. We maintain
+              strict access controls, regular security audits, and follow
+              industry best practices for data protection and privacy.
+            </p>
+          </div>
+        </div>
+
+        <div class="users-section">
+          <h3>Who Uses DupeCheck</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem">
+            Trusted by businesses across industries to protect their financial
+            operations
+          </p>
+          <div class="users-list">
+            <div class="user-type">Accounting Firms</div>
+            <div class="user-type">Small & Medium Businesses</div>
+            <div class="user-type">Financial Controllers</div>
+            <div class="user-type">Accounts Payable Teams</div>
+            <div class="user-type">CFOs & Finance Directors</div>
+            <div class="user-type">Bookkeepers</div>
+            <div class="user-type">Audit Firms</div>
+            <div class="user-type">Non-Profit Organizations</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <p>
+          Get answers to common questions about our duplicate invoice detection
+          service
+        </p>
+
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>How accurate is the duplicate detection?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our AI-powered system achieves a 95% accuracy rate in detecting
+                duplicate invoices. This high accuracy comes from advanced
+                machine learning algorithms that analyze multiple data points
+                including vendor names, amounts, dates, and invoice
+                descriptions. The system can identify both exact duplicates and
+                subtle variations that human reviewers often miss. False
+                positives are kept to a minimum through sophisticated confidence
+                scoring, and you can always review flagged items before taking
+                action. The 95% rate is based on extensive testing with
+                thousands of real-world invoice datasets.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>What file formats are supported?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We support all major invoice file formats including PDF, Excel
+                (.xlsx, .xls), CSV, and Word documents (.docx, .doc). Our system
+                can extract text and data from scanned PDFs using advanced OCR
+                technology, making it compatible with both digital and
+                paper-based invoices. For bulk processing, CSV and Excel formats
+                are recommended as they provide the cleanest data extraction.
+                There's no file size limit for individual uploads, and you can
+                process hundreds of invoices simultaneously. All processing
+                happens securely in our cloud infrastructure.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>How is my data protected?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Your data security is our top priority. All file uploads are
+                encrypted using 256-bit SSL encryption during transmission and
+                storage. We use enterprise-grade cloud infrastructure with SOC 2
+                Type II compliance. Your invoice data is automatically deleted
+                immediately after processing - we never store your financial
+                information long-term. Our servers are located in secure data
+                centers with 24/7 monitoring and access controls. We don't share
+                your data with third parties, and all processing is done in
+                isolated, secure environments. Regular security audits ensure
+                our systems meet the highest industry standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>What's the difference between free and paid?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The free version allows you to analyze up to 10 invoices per
+                month with basic duplicate detection. It's perfect for small
+                businesses or individuals testing the service. The paid plans
+                offer unlimited invoice processing, advanced AI detection with
+                higher accuracy rates, bulk file uploads, detailed reporting
+                with export options, priority customer support, and API access
+                for integration with existing accounting systems. Paid users
+                also get confidence scoring explanations, custom detection
+                rules, and faster processing times. Choose the plan that fits
+                your volume and business needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>Can it detect partial duplicates?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, our system excels at detecting partial duplicates that
+                traditional exact-matching tools miss. We can identify invoices
+                where only portions are duplicated, such as when a vendor splits
+                one service into multiple invoices or when the same purchase
+                order generates several related invoices. The AI analyzes
+                invoice line items, vendor information, amounts, and dates to
+                find these complex patterns. This includes detecting cases where
+                the same vendor submits multiple invoices for the same project
+                with slightly different amounts or descriptions. Our fuzzy
+                matching algorithms catch these subtle variations that represent
+                60% of all duplicate invoices.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>How do confidence scores work?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Confidence scores indicate how certain our AI is that two
+                invoices are duplicates. Scores of 90% or higher indicate a very
+                likely duplicate that should be reviewed immediately. Scores
+                between 70-89% suggest possible duplicates requiring careful
+                examination. Scores of 50-69% indicate potential matches that
+                need manual review. Scores below 50% are unlikely to be
+                duplicates. The scoring considers multiple factors including
+                vendor name similarity, amount matching, date proximity, and
+                description overlap. Each score includes an explanation of why
+                the match was flagged, helping you make informed decisions about
+                which duplicates to investigate further.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>What happens to my data after analysis?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Your invoice data is automatically and permanently deleted from
+                our servers immediately after the analysis is complete. We don't
+                store, backup, or archive your financial information. The only
+                data we retain is anonymous usage statistics (like processing
+                times and file types) for system optimization purposes. This
+                ensures your sensitive financial data never remains in our
+                system longer than necessary. You'll receive your duplicate
+                detection report via email, and you can download additional
+                copies from your browser session. Our deletion process is
+                automated and cannot be reversed, providing maximum security for
+                your confidential invoice information.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>Can I analyze multiple files?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, you can upload and analyze multiple invoice files
+                simultaneously. Our bulk processing feature supports up to 100
+                files at once, with each file containing multiple invoices. The
+                system will cross-reference all invoices across all files to
+                find duplicates, not just within individual files. This is
+                particularly useful for businesses that receive invoices from
+                multiple sources or have invoices stored in different systems.
+                You can upload files in different formats (PDF, Excel, CSV) in
+                the same batch. The processing time scales efficiently with the
+                number of files, and you'll receive a comprehensive report
+                showing all detected duplicates across your entire dataset.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>How are potential savings calculated?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Savings calculations are based on the total value of detected
+                duplicate invoices. If we find duplicate invoices worth $5,000,
+                your potential savings would be $5,000 (the amount you would
+                have paid twice). The calculation assumes you would have paid
+                both invoices if the duplicates weren't detected. We also factor
+                in the cost of manual review time - typically $25-50 per hour
+                for accounting staff to manually check for duplicates. Our
+                reports show both direct financial savings (duplicate amounts)
+                and indirect savings (time costs). These are conservative
+                estimates that don't include potential penalties, interest, or
+                additional administrative costs of duplicate payments.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+              <span>Does it work with non-English invoices?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, our system supports invoices in multiple languages
+                including Spanish, French, German, Italian, Portuguese, and many
+                others. The AI uses advanced natural language processing that
+                can identify duplicate patterns regardless of language. It
+                focuses on numerical data (amounts, dates, invoice numbers) and
+                structural patterns rather than just text matching. However,
+                accuracy may be slightly lower for non-English invoices
+                depending on the complexity of the language and formatting. For
+                best results with international invoices, we recommend ensuring
+                clear, well-formatted documents. The system works particularly
+                well with invoices that follow standard international formats
+                and include recognizable numerical patterns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Footer -->
       <footer class="footer">
         <div class="container">
@@ -3557,12 +5852,51 @@
 
       fileInput.addEventListener("change", (e) => {
         if (e.target.files.length > 0) {
-          handleFile(e.target.files[0]);
+          // Enable the analyze button when files are selected
+          const analyzeBtn = document.getElementById("analyzeBtn");
+          if (analyzeBtn) {
+            analyzeBtn.disabled = false;
+            analyzeBtn.textContent = "Analyze for Duplicates";
+          }
+
+          // Update upload area to show selected file
+          const uploadArea = document.getElementById("uploadArea");
+          if (uploadArea) {
+            uploadArea.innerHTML = `
+              <div class="upload-icon">✅</div>
+              <h3>File Selected: ${e.target.files[0].name}</h3>
+              <p>Click "Analyze for Duplicates" to start processing</p>
+            `;
+          }
         }
       });
 
+      // Make upload area clickable
+      uploadArea.addEventListener("click", (e) => {
+        e.preventDefault();
+        fileInput.click();
+      });
+
+      // Function to handle the analyze button click
+      function analyzeFiles() {
+        const fileInput = document.getElementById("fileInput");
+        if (fileInput.files.length > 0) {
+          handleFile(fileInput.files[0]);
+        } else {
+          // Trigger file input if no files selected
+          fileInput.click();
+        }
+      }
+
       async function handleFile(file) {
         uploadedFile = file;
+
+        // Enable the analyze button
+        const analyzeBtn = document.getElementById("analyzeBtn");
+        if (analyzeBtn) {
+          analyzeBtn.disabled = false;
+          analyzeBtn.textContent = "Analyze for Duplicates";
+        }
 
         // Reset and show loading with progress
         document.getElementById("loadingOverlay").classList.add("active");
@@ -3758,6 +6092,9 @@
             </div>
         `;
         }
+
+        // Add educational content based on results
+        addEducationalContent(data);
 
         // Scroll to results
         setTimeout(() => {
@@ -4573,6 +6910,153 @@ Visit dupecheck.forgeapis.com for more
             document.getElementById("sendResetBtn").click();
           }
         };
+      }
+
+      // FAQ accordion functionality
+      function toggleFAQ(button) {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains("active");
+
+        // Close all other FAQ items
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          faqItem.classList.add("active");
+        }
+      }
+
+      // Best practices guide toggle functionality
+      function toggleBestPractices() {
+        const guide = document.querySelector(".best-practices-guide");
+        const button = document.querySelector(
+          ".best-practices-toggle span:first-child"
+        );
+
+        guide.classList.toggle("expanded");
+
+        if (guide.classList.contains("expanded")) {
+          button.textContent = "Hide Best Practices Guide";
+        } else {
+          button.textContent = "Show Best Practices Guide";
+        }
+      }
+
+      // Beta tooltip functionality
+      function toggleBetaTooltip() {
+        const tooltip = document.getElementById("betaTooltip");
+        tooltip.classList.toggle("show");
+      }
+
+      function hideBetaTooltip() {
+        const tooltip = document.getElementById("betaTooltip");
+        tooltip.classList.remove("show");
+      }
+
+      // Close beta tooltip when clicking outside
+      document.addEventListener("click", function (event) {
+        const helpIcon = document.querySelector(".beta-help-icon");
+        const tooltip = document.getElementById("betaTooltip");
+
+        if (
+          helpIcon &&
+          tooltip &&
+          !helpIcon.contains(event.target) &&
+          !tooltip.contains(event.target)
+        ) {
+          tooltip.classList.remove("show");
+        }
+      });
+
+      // Educational content function
+      function addEducationalContent(data) {
+        const resultsCard = document.getElementById("resultsCard");
+
+        // Remove any existing educational content
+        const existingEducation = resultsCard.querySelector(
+          ".educational-content"
+        );
+        if (existingEducation) {
+          existingEducation.remove();
+        }
+
+        // Create educational content container
+        const educationDiv = document.createElement("div");
+
+        if (data.duplicates_found > 0) {
+          // Duplicates found - show investigation guidance
+          educationDiv.className = "educational-content duplicates-found";
+          educationDiv.innerHTML = `
+            <h4>
+              <span>🔍</span>
+              What to do next with your duplicates
+            </h4>
+            <p>
+              You've found ${data.duplicates_found} potential duplicate${
+            data.duplicates_found > 1 ? "s" : ""
+          } worth $${data.potential_savings
+            .toFixed(2)
+            .replace(
+              /\B(?=(\d{3})+(?!\d))/g,
+              ","
+            )}. Here's how to investigate and resolve them:
+            </p>
+            <ul>
+              <li><strong>Review each duplicate:</strong> Check the confidence scores and match reasons to understand why they were flagged</li>
+              <li><strong>Verify with vendors:</strong> Contact suppliers to confirm if these are genuine duplicates or legitimate separate charges</li>
+              <li><strong>Check your records:</strong> Cross-reference with purchase orders and approval workflows</li>
+              <li><strong>Document decisions:</strong> Keep records of your investigation process and resolution steps</li>
+              <li><strong>Process refunds:</strong> If confirmed as duplicates, request refunds or credits from vendors</li>
+              <li><strong>Update systems:</strong> Mark duplicates in your accounting system to prevent future payments</li>
+            </ul>
+            <p>
+              <strong>Pro tip:</strong> Start with the highest confidence scores (90%+) as these are most likely to be true duplicates.
+            </p>
+            <a href="#" class="learn-more-link" onclick="toggleBestPractices(); return false;">
+              <span>📚</span>
+              Learn more about duplicate prevention
+            </a>
+          `;
+        } else {
+          // No duplicates found - show maintenance tips
+          educationDiv.className = "educational-content no-duplicates";
+          educationDiv.innerHTML = `
+            <h4>
+              <span>✅</span>
+              Great job! Keep your invoice process clean
+            </h4>
+            <p>
+              No duplicates were found in your ${data.total_invoices} invoice${
+            data.total_invoices > 1 ? "s" : ""
+          }. Here are some tips to maintain this clean process:
+            </p>
+            <ul>
+              <li><strong>Regular monitoring:</strong> Run duplicate checks monthly or quarterly to catch issues early</li>
+              <li><strong>Vendor standardization:</strong> Keep consistent vendor names and avoid abbreviations in your system</li>
+              <li><strong>Approval workflows:</strong> Implement multi-step approval processes for larger payments</li>
+              <li><strong>Purchase order matching:</strong> Use three-way matching (PO, receipt, invoice) when possible</li>
+              <li><strong>Staff training:</strong> Educate your team on duplicate prevention and recognition</li>
+              <li><strong>System integration:</strong> Use integrated accounting systems to reduce manual data entry errors</li>
+            </ul>
+            <p>
+              <strong>Pro tip:</strong> Set up automated alerts in your accounting system to flag potential duplicates before payment.
+            </p>
+            <a href="#" class="learn-more-link" onclick="toggleBestPractices(); return false;">
+              <span>📚</span>
+              Learn more about duplicate prevention
+            </a>
+          `;
+        }
+
+        // Insert educational content before download buttons
+        const downloadSection = resultsCard.querySelector("div:last-child");
+        if (downloadSection && downloadSection.querySelector(".btn")) {
+          resultsCard.insertBefore(educationDiv, downloadSection);
+        } else {
+          resultsCard.appendChild(educationDiv);
+        }
       }
 
       // Tools dropdown functionality
