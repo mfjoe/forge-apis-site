@@ -1777,7 +1777,7 @@
           try {
             return localStorage.getItem(key);
           } catch (error) {
-            console.warn("localStorage get failed:", error);
+            // localStorage get failed
             return null;
           }
         },
@@ -1787,7 +1787,7 @@
             localStorage.setItem(key, value);
             return true;
           } catch (error) {
-            console.warn("localStorage set failed:", error);
+            // localStorage set failed
             return false;
           }
         },
@@ -1797,7 +1797,7 @@
             localStorage.removeItem(key);
             return true;
           } catch (error) {
-            console.warn("localStorage remove failed:", error);
+            // localStorage remove failed
             return false;
           }
         },
@@ -1876,23 +1876,14 @@
       // Conversion arrow functionality - swap between Minecoins and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
 
-      console.log("Conversion arrow element:", conversionArrow);
-
       if (conversionArrow) {
-        console.log("Adding click event listener to conversion arrow");
-
         conversionArrow.addEventListener("click", (e) => {
-          console.log("Conversion arrow clicked!");
           e.preventDefault();
 
           // Get the input groups using more reliable selectors
           const allInputGroups = document.querySelectorAll(".input-group");
 
-          console.log("Found input groups:", allInputGroups.length);
-
           if (allInputGroups.length >= 2) {
-            console.log("Swapping input field positions");
-
             // Get the parent container
             const conversionSection = document.querySelector(
               ".conversion-section"
@@ -1903,8 +1894,7 @@
               const firstGroup = allInputGroups[0];
               const secondGroup = allInputGroups[1];
 
-              console.log("First group:", firstGroup);
-              console.log("Second group:", secondGroup);
+              // Swapping input groups
 
               // Get the arrow element to preserve its position
               const arrowElement = document.querySelector(".conversion-arrow");
@@ -1922,16 +1912,12 @@
                 arrowElement.nextSibling
               );
 
-              console.log("Fields swapped successfully");
+              // Fields swapped successfully
             }
           } else {
-            console.error("Could not find enough input groups to swap");
+            // Could not find enough input groups to swap
           }
-
-          console.log("Swap completed");
         });
-      } else {
-        console.error("Conversion arrow element not found!");
       }
 
       // Initialize currency and load saved calculation
@@ -1963,6 +1949,13 @@
         isUpdating = false;
 
         saveCalculation();
+
+        // Deal tracking
+        if (dealFinder && minecoinsInput.value && usdInput.value) {
+          const gameAmount = parseFloat(minecoinsInput.value);
+          const currencyAmount = parseFloat(usdInput.value);
+          dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
+        }
       }
 
       function handleUsdInput() {
@@ -1986,6 +1979,13 @@
         isUpdating = false;
 
         saveCalculation();
+
+        // Deal tracking
+        if (dealFinder && minecoinsInput.value && usdInput.value) {
+          const gameAmount = parseFloat(minecoinsInput.value);
+          const currencyAmount = parseFloat(usdInput.value);
+          dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
+        }
       }
 
       function setQuickAmount(amount) {
@@ -2075,7 +2075,7 @@
               }
             }
           } catch (error) {
-            console.error("Error loading saved calculation:", error);
+            // Error loading saved calculation
           }
         }
       }
@@ -2211,31 +2211,11 @@
             dealFinder = new DealFinder("minecoins");
           }
         } catch (error) {
-          console.error("Error initializing features:", error);
+          // Error initializing features
         }
       }
 
-      // Override existing calculation functions to include tracking
-      const originalHandleMinecoinsInput = handleMinecoinsInput;
-      const originalHandleUsdInput = handleUsdInput;
-
-      function handleMinecoinsInput() {
-        originalHandleMinecoinsInput();
-        if (minecoinsInput.value && usdInput.value) {
-          const gameAmount = parseFloat(minecoinsInput.value);
-          const currencyAmount = parseFloat(usdInput.value);
-          dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
-        }
-      }
-
-      function handleUsdInput() {
-        originalHandleUsdInput();
-        if (minecoinsInput.value && usdInput.value) {
-          const gameAmount = parseFloat(minecoinsInput.value);
-          const currencyAmount = parseFloat(usdInput.value);
-          dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
-        }
-      }
+      // Deal tracking is now integrated directly into the original functions
 
       // Initialize features when page loads
       document.addEventListener("DOMContentLoaded", function () {
@@ -2243,7 +2223,7 @@
 
         // Fallback initialization after a short delay
         setTimeout(() => {
-          console.log("Fallback initialization");
+          // Fallback initialization
           initializeFeatures();
         }, 1000);
       });

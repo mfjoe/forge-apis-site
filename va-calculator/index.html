@@ -314,34 +314,14 @@
       /* Calculator Layout */
       .calculator-wrapper {
         display: grid;
-        grid-template-columns: 300px 1fr 300px;
+        grid-template-columns: 1fr;
         gap: 2rem;
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
       }
 
-      .ad-column {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        position: sticky;
-        top: 120px;
-      }
-
-      .ad-placeholder {
-        width: 300px;
-        height: 600px;
-        background: #f5f5f5;
-        border: 2px dashed #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-size: 14px;
-        text-align: center;
-        border-radius: 8px;
-      }
+      /* Ad columns removed */
 
       .calculator-main {
         background: var(--card-gradient);
@@ -866,9 +846,7 @@
           gap: 1rem;
         }
 
-        .ad-column {
-          display: none;
-        }
+        /* Ad columns removed */
       }
 
       @media (max-width: 768px) {
@@ -986,19 +964,7 @@
           z-index: 999;
         }
 
-        .mobile-ad-placeholder {
-          width: 100%;
-          height: 50px;
-          background: #f5f5f5;
-          border: 2px dashed #ccc;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #666;
-          font-size: 12px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+        /* Mobile ad placeholders removed */
       }
 
       .hidden {
@@ -2055,6 +2021,17 @@
         <div class="calculator-card">
           <div class="calculator-header-compact">
             <h1>Veterans Affairs (VA) Disability Calculator 2025</h1>
+            <p
+              style="
+                text-align: center;
+                color: #6b7280;
+                font-size: 0.9rem;
+                margin: -10px 0 20px 0;
+              "
+            >
+              Last updated: January 2025 | Using official 2025 VA compensation
+              rates (3.2% COLA increase)
+            </p>
             <p>Calculate Your Monthly Veterans Affairs Compensation</p>
             <div class="trust-badge">
               <span class="checkmark">✓</span>
