@@ -1776,15 +1776,18 @@
         validateInput(value) {
           if (value === null || value === undefined || value === "") return 0;
 
-          // Remove any non-numeric characters except decimal point
-          const cleaned = String(value).replace(/[^0-9.]/g, "");
+          // Check for negative numbers first
+          if (String(value).includes("-")) {
+            return 0; // Return 0 for negative numbers
+          }
 
-          // Parse to number
+          // Extract numbers from string (including decimal point)
+          const cleaned = String(value).replace(/[^0-9.]/g, "");
           const num = parseFloat(cleaned);
 
           // Validate range
           if (isNaN(num) || num < 0 || num > 999999999) {
-            return Math.max(0, Math.min(999999999, isNaN(num) ? 0 : num));
+            return 0; // Return 0 for invalid input
           }
 
           return num;
@@ -1872,6 +1875,29 @@
 
       // Exchange rate: 320 Minecoins = $1.99
       const MINECOINS_RATE = 1.99 / 320; // $0.00622 per Minecoin
+
+      // Function to calculate price based on flat rate
+      function calculateMinecoinsPrice(minecoins) {
+        if (minecoins <= 0) return 0;
+        return Math.round(minecoins * MINECOINS_RATE * 100) / 100;
+      }
+
+      // Function to calculate Minecoins from USD using package pricing
+      function calculateMinecoinsFromUSD(usdAmount) {
+        if (usdAmount <= 0) return 0;
+
+        // Find the package that gives the best value for this amount
+        let bestPackage = MINECOINS_PACKAGES[0];
+        for (let i = MINECOINS_PACKAGES.length - 1; i >= 0; i--) {
+          if (usdAmount >= MINECOINS_PACKAGES[i].price) {
+            bestPackage = MINECOINS_PACKAGES[i];
+            break;
+          }
+        }
+
+        // Calculate Minecoins using the best package rate
+        return Math.round(usdAmount / bestPackage.perCoin);
+      }
 
       // DOM elements
       const minecoinsInput = document.getElementById("minecoins-input");
@@ -1964,7 +1990,7 @@
         }
 
         const minecoins = validatedMinecoins;
-        const usdValue = minecoins * MINECOINS_RATE;
+        const usdValue = calculateMinecoinsPrice(minecoins);
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -1998,7 +2024,7 @@
           inputValue,
           currentCurrency
         );
-        const minecoins = usdValue / MINECOINS_RATE;
+        const minecoins = calculateMinecoinsFromUSD(usdValue);
 
         isUpdating = true;
         minecoinsInput.value = Math.round(minecoins);
@@ -2158,13 +2184,11 @@
       class DealFinder {
         constructor() {
           this.packages = {
-            minecoins: [
-              { amount: 320, price: 1.99, rate: 0.00622 },
-              { amount: 1020, price: 5.99, rate: 0.00587 },
-              { amount: 1720, price: 9.99, rate: 0.00581 },
-              { amount: 3500, price: 19.99, rate: 0.00571 },
-              { amount: 8800, price: 49.99, rate: 0.00568 },
-            ],
+            minecoins: MINECOINS_PACKAGES.map((pkg) => ({
+              amount: pkg.minecoins,
+              price: pkg.price,
+              rate: pkg.perCoin,
+            })),
           };
           this.dealFinder = document.getElementById("dealFinder");
           this.dealTip = document.getElementById("dealTip");
@@ -2196,13 +2220,13 @@
               const nextPkg = packages[i + 1];
               if (nextPkg) {
                 const additionalCost = nextPkg.price - pkg.price;
-                const additionalVbucks = nextPkg.amount - pkg.amount;
+                const additionalMinecoins = nextPkg.amount - pkg.amount;
                 bestDeal = {
                   type: "better",
-                  message: `💡 Better Deal: The ${nextPkg.amount.toLocaleString()} package gives you ${additionalVbucks.toLocaleString()} bonus Minecoins for only $${additionalCost.toFixed(
+                  message: `💡 Better Deal: The ${nextPkg.amount.toLocaleString()} package gives you ${additionalMinecoins.toLocaleString()} bonus Minecoins for only $${additionalCost.toFixed(
                     2
                   )} more`,
-                  savings: additionalVbucks,
+                  savings: additionalMinecoins,
                 };
               }
               break;
@@ -2334,7 +2358,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "Minecoins Calculator",
-            "item": "https://forgeapi.dev/gaming-calculators/vbucks/"
+            "item": "https://forgeapi.dev/gaming-calculators/minecoins/"
           }
         ]
       }
