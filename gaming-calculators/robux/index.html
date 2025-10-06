@@ -1278,7 +1278,24 @@
         <!-- Calculator -->
         <div class="calculator-container">
           <div class="calculator-header">
-            <h1 class="calculator-title">Robux Converter</h1>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <h1 class="calculator-title" style="margin: 0">
+                Robux Converter
+              </h1>
+              <img
+                src="/gaming-calculators/assets/images/[CITYPNG.COM]HD Roblox Black Symbol Sign Icon Logo PNG - 2000x2000.png"
+                alt="Roblox Logo"
+                style="height: 6rem; width: auto; object-fit: contain"
+              />
+            </div>
             <p
               style="
                 text-align: center;
@@ -1375,8 +1392,19 @@
 
           <!-- The Roblox Economy: Understanding Robux Beyond the Numbers -->
           <div class="content-section">
-            <h2 class="section-title">
+            <h2 class="section-title" style="margin-bottom: 1rem">
               The Roblox Economy: Understanding Robux Beyond the Numbers
+              <img
+                src="/gaming-calculators/assets/images/45017c99d1ef188ab498c8c436000523.png"
+                alt="Roblox Economy"
+                style="
+                  height: 5rem;
+                  width: auto;
+                  object-fit: contain;
+                  vertical-align: middle;
+                  margin-left: 0.5rem;
+                "
+              />
             </h2>
             <div class="section-content">
               <h3>The Developer Exchange (DevEx) Reality Check</h3>
@@ -1445,6 +1473,68 @@
             <div class="deal-tip" id="dealTip">
               <!-- Dynamic content inserted here -->
             </div>
+          </div>
+        </div>
+
+        <!-- Roblox 2025: Current Trends and Popular Games -->
+        <div class="content-section">
+          <h2 class="section-title">
+            Roblox 2025: Current Trends and Popular Games
+          </h2>
+          <div class="section-content">
+            <h3>Popular Games Driving Robux Spending in 2025</h3>
+            <p>
+              January 2025 continues to see massive Robux spending driven by
+              popular games like Blade Ball and Blox Fruits. Blade Ball, a
+              fast-paced sword fighting game, has become one of the most popular
+              experiences on Roblox, with players spending thousands of Robux on
+              exclusive swords, effects, and battle passes. The game's
+              competitive nature and regular updates create constant demand for
+              premium items, making it a major driver of Robux purchases among
+              younger players.
+            </p>
+
+            <h3>Blox Fruits and the Anime Gaming Craze</h3>
+            <p>
+              Blox Fruits remains one of the top-grossing games on Roblox, with
+              its One Piece-inspired gameplay attracting millions of players.
+              The game's complex progression system and rare fruit mechanics
+              encourage significant Robux spending on game passes, private
+              servers, and cosmetic items. Players often spend $50-100+ on game
+              passes that provide advantages in the competitive fruit-hunting
+              environment.
+            </p>
+
+            <h3>Recent Roblox Controversies and Their Impact</h3>
+            <p>
+              2024 and early 2025 have seen several controversies that have
+              affected the Roblox community and spending patterns. Issues around
+              moderation, inappropriate content, and concerns about child safety
+              have led some parents to restrict Robux purchases. However, the
+              platform's continued growth and introduction of new safety
+              features have helped maintain user engagement and spending levels.
+            </p>
+
+            <h3>Updated DevEx Requirements and Creator Economy</h3>
+            <p>
+              The Developer Exchange (DevEx) program now requires a minimum of
+              100,000 Robux earned (approximately $350 at current rates) before
+              creators can cash out to real money. This represents a significant
+              barrier for smaller developers, as it requires generating over
+              $1,250 in player spending to reach the threshold. The increased
+              minimum has led to more creators focusing on long-term game
+              development rather than quick monetization strategies.
+            </p>
+
+            <h3>New Monetization Features in 2025</h3>
+            <p>
+              Roblox has introduced several new features that affect Robux
+              spending patterns, including enhanced avatar customization
+              options, improved private server functionality, and new social
+              features. These additions have created new opportunities for
+              developers to monetize their games while also increasing the
+              overall Robux economy's complexity and value.
+            </p>
           </div>
         </div>
 
@@ -1756,6 +1846,14 @@
               You can earn Robux through Roblox Developer Exchange (DevEx) by
               creating popular games, but this requires significant time and
               skill investment.
+              <strong>Important DevEx Requirements:</strong> You must earn a
+              minimum of 100,000 Robux (approximately $350) before you can cash
+              out to real money. This requires generating over $1,250 in player
+              spending. Additionally, you must be 13+ years old, have a valid
+              government ID, and meet Roblox's strict eligibility requirements.
+              Most developers never reach the minimum threshold, and even
+              successful creators often earn less than minimum wage when
+              accounting for development time.
             </div>
           </div>
 
@@ -1964,9 +2062,9 @@
 
       // Exchange rates
       const RATES = {
-        player: 0.0125, // $0.0125 per Robux (player purchase rate)
-        devex: 0.0035, // $0.0035 per Robux (DevEx rate)
-        marketplace: 0.0125, // Same as player rate for marketplace
+        player: 0.0125, // Purchase rate
+        devex: 0.0035, // DevEx cashout rate
+        marketplace: 0.00875, // After 30% tax (0.0125 * 0.7)
       };
 
       // DOM elements
@@ -2458,7 +2556,9 @@
         // Small delay to ensure DOM is fully ready
         setTimeout(() => {
           setMode("purchase");
-        }, 50);
+          // Trigger initial calculation if saved values exist
+          if (robuxInput.value) handleRobuxInput();
+        }, 100);
       });
     </script>
 
