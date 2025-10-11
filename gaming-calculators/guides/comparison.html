@@ -1,527 +1,857 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Currency Comparison 2025: V-Bucks vs Robux vs Minecoins & More</title>
-    <meta name="description" content="Complete comparison of gaming currencies in 2025. Compare V-Bucks, Robux, Minecoins, FIFA Points, COD Points costs and value. Find which offers best value for money.">
-    <link rel="canonical" href="https://forgeapi.dev/gaming-calculators/guides/comparison.html">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Site Verification -->
+    <meta
+      name="google-site-verification"
+      content="thYv9L2n1x3OAc20MYSQzfqLdZbjqRPHkPi6Um61xXk"
+    />
+
+    <!-- Additional SEO meta tags -->
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta
+      name="bingbot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <title>
+      Gaming Currency Comparison 2025: V-Bucks vs Robux vs Minecoins & More
+    </title>
+    <meta
+      name="description"
+      content="Complete comparison of gaming currencies in 2025. Compare V-Bucks, Robux, Minecoins, FIFA Points, COD Points costs and value. Find which offers best value for money."
+    />
+    <link
+      rel="canonical"
+      href="https://forgeapi.dev/gaming-calculators/guides/comparison.html"
+    />
+
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5YPCMTRSNN');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5YPCMTRSNN");
     </script>
-    
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; margin-bottom: 40px; }
-        h1 { font-size: 42px; margin-bottom: 16px; font-weight: 800; }
-        .subtitle { font-size: 20px; opacity: 0.95; }
-        .content { background: white; border-radius: 12px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h2 { color: #1a1f2e; margin: 32px 0 16px; font-size: 28px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
-        h3 { color: #2d3436; margin: 24px 0 12px; font-size: 22px; }
-        p { margin-bottom: 16px; color: #4a5568; }
-        .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; overflow-x: auto; display: block; }
-        .comparison-table th, .comparison-table td { padding: 12px; text-align: left; border: 1px solid #e5e7eb; }
-        .comparison-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; position: sticky; top: 0; }
-        .comparison-table tr:nth-child(even) { background: #f8f9fa; }
-        .comparison-table tr:hover { background: #e8f5ff; }
-        .best-value { background: #d1fae5 !important; font-weight: 600; }
-        .worst-value { background: #fee2e2 !important; }
-        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0; }
-        .calc-btn { background: #667eea; color: white; padding: 12px 16px; border-radius: 8px; text-decoration: none; text-align: center; transition: all 0.3s; font-weight: 500; }
-        .calc-btn:hover { background: #764ba2; transform: translateY(-2px); }
-        .quick-summary { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 8px; padding: 24px; margin: 24px 0; }
-        .warning-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 24px 0; border-radius: 8px; }
-        .tip-box { background: #dbeafe; border-left: 4px solid #3b82f6; padding: 20px; margin: 24px 0; border-radius: 8px; }
-        .metric-card { background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 16px 0; }
-        .metric-title { font-size: 14px; color: #6b7280; margin-bottom: 8px; }
-        .metric-value { font-size: 32px; font-weight: 800; color: #1a1f2e; }
-        .metric-subtitle { font-size: 14px; color: #6b7280; margin-top: 4px; }
-        .back-link { display: inline-block; margin: 32px 0; color: #667eea; text-decoration: none; font-weight: 500; }
-        .back-link:hover { text-decoration: underline; }
-        @media (max-width: 768px) {
-            .comparison-table { font-size: 12px; }
-            .comparison-table th, .comparison-table td { padding: 8px 6px; }
-            h1 { font-size: 32px; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", -apple-system, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8fafc;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: 42px;
+        margin-bottom: 16px;
+        font-weight: 800;
+      }
+      .subtitle {
+        font-size: 20px;
+        opacity: 0.95;
+      }
+      .content {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #1a1f2e;
+        margin: 32px 0 16px;
+        font-size: 28px;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 8px;
+      }
+      h3 {
+        color: #2d3436;
+        margin: 24px 0 12px;
+        font-size: 22px;
+      }
+      p {
+        margin-bottom: 16px;
+        color: #4a5568;
+      }
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        overflow-x: auto;
+        display: block;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #e5e7eb;
+      }
+      .comparison-table th {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+      }
+      .comparison-table tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+      .comparison-table tr:hover {
+        background: #e8f5ff;
+      }
+      .best-value {
+        background: #d1fae5 !important;
+        font-weight: 600;
+      }
+      .worst-value {
+        background: #fee2e2 !important;
+      }
+      .calculator-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin: 24px 0;
+      }
+      .calc-btn {
+        background: #667eea;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s;
+        font-weight: 500;
+      }
+      .calc-btn:hover {
+        background: #764ba2;
+        transform: translateY(-2px);
+      }
+      .quick-summary {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border-radius: 8px;
+        padding: 24px;
+        margin: 24px 0;
+      }
+      .warning-box {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+      .tip-box {
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
+        padding: 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+      .metric-card {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 16px 0;
+      }
+      .metric-title {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 8px;
+      }
+      .metric-value {
+        font-size: 32px;
+        font-weight: 800;
+        color: #1a1f2e;
+      }
+      .metric-subtitle {
+        font-size: 14px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+      .back-link {
+        display: inline-block;
+        margin: 32px 0;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        .comparison-table {
+          font-size: 12px;
         }
+        .comparison-table th,
+        .comparison-table td {
+          padding: 8px 6px;
+        }
+        h1 {
+          font-size: 32px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="container">
-            <h1>Gaming Currency Comparison 2025</h1>
-            <p class="subtitle">Which gaming currency offers the best value for your money?</p>
-        </div>
+      <div class="container">
+        <h1>Gaming Currency Comparison 2025</h1>
+        <p class="subtitle">
+          Which gaming currency offers the best value for your money?
+        </p>
+      </div>
     </div>
 
     <div class="container">
-        <div class="content">
-            <p style="text-align: center; color: #6b7280; font-size: 0.9rem; margin-bottom: 32px;">
-                Last updated: January 2025 | 12 minute read | All prices in USD
-            </p>
+      <div class="content">
+        <p
+          style="
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+          "
+        >
+          Last updated: January 2025 | 12 minute read | All prices in USD
+        </p>
 
-            <div class="quick-summary">
-                <h3 style="margin-top: 0;">⚡ Quick Answer</h3>
-                <p><strong>Best Overall Value:</strong> Minecoins (Minecraft) - $0.00625 per coin, permanent content, no FOMO tactics</p>
-                <p><strong>Best for Competitive Gaming:</strong> V-Bucks (Fortnite) - Battle Pass returns 150% value if completed</p>
-                <p><strong>Most Expensive:</strong> FIFA Points - $0.0095 per point with gambling-like pack mechanics</p>
-                <p><strong>Most Predatory:</strong> Robux (Roblox) - Targets young children, developer exploitation</p>
-            </div>
-
-            <h2>Complete Gaming Currency Comparison Table</h2>
-            
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Currency</th>
-                        <th>Cost per Unit</th>
-                        <th>$20 Gets You</th>
-                        <th>Average Skin Price</th>
-                        <th>Battle Pass</th>
-                        <th>Refund Policy</th>
-                        <th>Target Age</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>V-Bucks</strong><br><small>Fortnite</small></td>
-                        <td>$0.00799</td>
-                        <td>2,500 V-Bucks</td>
-                        <td>1,200-2,000 ($9.60-$16)</td>
-                        <td>950 ($7.58)</td>
-                        <td>3 lifetime refunds</td>
-                        <td>13-25</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Robux</strong><br><small>Roblox</small></td>
-                        <td>$0.0125</td>
-                        <td>1,600 Robux</td>
-                        <td>Varies by game</td>
-                        <td>N/A</td>
-                        <td>No refunds</td>
-                        <td>8-16</td>
-                    </tr>
-                    <tr class="best-value">
-                        <td><strong>Minecoins</strong><br><small>Minecraft</small></td>
-                        <td>$0.00625</td>
-                        <td>3,200 Minecoins</td>
-                        <td>310-990 ($1.94-$6.19)</td>
-                        <td>N/A</td>
-                        <td>Platform dependent</td>
-                        <td>7-15</td>
-                    </tr>
-                    <tr>
-                        <td><strong>COD Points</strong><br><small>Call of Duty</small></td>
-                        <td>$0.00909</td>
-                        <td>2,200 Points</td>
-                        <td>1,500-2,400 ($13.64-$21.82)</td>
-                        <td>1,100 ($10)</td>
-                        <td>No refunds</td>
-                        <td>17+</td>
-                    </tr>
-                    <tr class="worst-value">
-                        <td><strong>FIFA Points</strong><br><small>EA FC 24</small></td>
-                        <td>$0.00952</td>
-                        <td>2,100 Points</td>
-                        <td>Pack gambling</td>
-                        <td>N/A</td>
-                        <td>Very limited</td>
-                        <td>13+</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Apex Coins</strong><br><small>Apex Legends</small></td>
-                        <td>$0.01</td>
-                        <td>2,000 Coins</td>
-                        <td>1,800-2,400 ($18-$24)</td>
-                        <td>950 ($9.50)</td>
-                        <td>No refunds</td>
-                        <td>16+</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="calculator-grid">
-                <a href="/gaming-calculators/vbucks/" class="calc-btn">V-Bucks Calculator</a>
-                <a href="/gaming-calculators/robux/" class="calc-btn">Robux Calculator</a>
-                <a href="/gaming-calculators/minecoins/" class="calc-btn">Minecoins Calculator</a>
-                <a href="/gaming-calculators/cod-points/" class="calc-btn">COD Points Calculator</a>
-                <a href="/gaming-calculators/fifa-points/" class="calc-btn">FIFA Points Calculator</a>
-                <a href="/gaming-calculators/apex-coins/" class="calc-btn">Apex Coins Calculator</a>
-            </div>
-
-            <h2>Value Analysis: Cost Per Dollar Spent</h2>
-
-            <div class="metric-card">
-                <div class="metric-title">BEST VALUE</div>
-                <div class="metric-value">Minecoins</div>
-                <div class="metric-subtitle">160 Minecoins per dollar - Permanent content, no expiration</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-title">WORST VALUE</div>
-                <div class="metric-value">FIFA Points</div>
-                <div class="metric-subtitle">105 FIFA Points per dollar - Gambling mechanics, no guaranteed value</div>
-            </div>
-
-            <h2>Battle Pass Value Comparison</h2>
-
-            <p>Battle passes have become the primary monetization method for many games. Here's how they compare:</p>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Game</th>
-                        <th>Pass Cost</th>
-                        <th>Currency Earned Back</th>
-                        <th>ROI</th>
-                        <th>Time Required</th>
-                        <th>Worth It?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="best-value">
-                        <td><strong>Fortnite</strong></td>
-                        <td>950 V-Bucks ($7.58)</td>
-                        <td>1,500 V-Bucks</td>
-                        <td>158%</td>
-                        <td>75-150 hours</td>
-                        <td>✅ Best Deal</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Apex Legends</strong></td>
-                        <td>950 Coins ($9.50)</td>
-                        <td>1,300 Coins</td>
-                        <td>137%</td>
-                        <td>100+ hours</td>
-                        <td>✅ Good</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Call of Duty</strong></td>
-                        <td>1,100 Points ($10)</td>
-                        <td>1,400 Points</td>
-                        <td>127%</td>
-                        <td>80+ hours</td>
-                        <td>⚠️ Moderate</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Rocket League</strong></td>
-                        <td>1,000 Credits ($10)</td>
-                        <td>1,000 Credits</td>
-                        <td>100%</td>
-                        <td>60+ hours</td>
-                        <td>⚠️ Break Even</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Hidden Costs by Platform</h2>
-
-            <div class="warning-box">
-                <strong>Mobile Tax Alert:</strong> All currencies cost 15-30% MORE on iOS/Android due to app store fees. Always purchase on PC or console for best prices.
-            </div>
-
-            <h3>Platform Price Differences (1,000 V-Bucks Example)</h3>
-            <ul>
-                <li><strong>PC (Epic Store):</strong> $7.99 - Best price</li>
-                <li><strong>PlayStation/Xbox:</strong> $7.99 - Same as PC</li>
-                <li><strong>Nintendo Switch:</strong> $7.99 - Same as PC</li>
-                <li><strong>iOS (iPhone/iPad):</strong> $9.99 - 25% more expensive</li>
-                <li><strong>Android:</strong> $9.99 - 25% more expensive</li>
-            </ul>
-
-            <h2>Psychological Manipulation Tactics Ranked</h2>
-
-            <p>Each game uses different psychological tactics to encourage spending. Here's how aggressive each currency's tactics are:</p>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Currency</th>
-                        <th>FOMO Level</th>
-                        <th>Social Pressure</th>
-                        <th>Gambling Elements</th>
-                        <th>Child Targeting</th>
-                        <th>Overall Manipulation Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="worst-value">
-                        <td><strong>FIFA Points</strong></td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>95% - Most Predatory</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Robux</strong></td>
-                        <td>⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                        <td>80% - Very High</td>
-                    </tr>
-                    <tr>
-                        <td><strong>V-Bucks</strong></td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>⭐</td>
-                        <td>⭐⭐⭐</td>
-                        <td>65% - High</td>
-                    </tr>
-                    <tr>
-                        <td><strong>COD Points</strong></td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐</td>
-                        <td>⭐⭐</td>
-                        <td>⭐⭐</td>
-                        <td>55% - Moderate</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Apex Coins</strong></td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>⭐⭐⭐</td>
-                        <td>⭐⭐</td>
-                        <td>⭐</td>
-                        <td>50% - Moderate</td>
-                    </tr>
-                    <tr class="best-value">
-                        <td><strong>Minecoins</strong></td>
-                        <td>⭐</td>
-                        <td>⭐</td>
-                        <td>0</td>
-                        <td>⭐⭐</td>
-                        <td>20% - Least Manipulative</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Real Money Spending Comparison</h2>
-
-            <h3>What $50 Gets You in Each Game</h3>
-
-            <div class="tip-box">
-                <strong>Fortnite (6,250 V-Bucks):</strong>
-                <ul>
-                    <li>3-4 Legendary skins</li>
-                    <li>OR 6 Battle Passes (9,000 V-Bucks value if completed)</li>
-                    <li>OR 5-6 regular skins + emotes</li>
-                </ul>
-            </div>
-
-            <div class="tip-box">
-                <strong>Roblox (4,000 Robux):</strong>
-                <ul>
-                    <li>Varies wildly by game</li>
-                    <li>Could be 1 item or 100 items</li>
-                    <li>No standardized pricing</li>
-                </ul>
-            </div>
-
-            <div class="tip-box">
-                <strong>Minecraft (8,000 Minecoins):</strong>
-                <ul>
-                    <li>8-10 complete world maps</li>
-                    <li>OR 15-20 skin packs</li>
-                    <li>OR 25+ individual skins</li>
-                    <li>Content is permanent and transferable</li>
-                </ul>
-            </div>
-
-            <div class="tip-box">
-                <strong>FIFA (5,250 Points):</strong>
-                <ul>
-                    <li>35-40 Premium Gold Packs</li>
-                    <li>NO guarantee of good players</li>
-                    <li>Likely value: mostly worthless cards</li>
-                    <li>Gambling - results vary wildly</li>
-                </ul>
-            </div>
-
-            <h2>Currency Longevity & Risk Assessment</h2>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Currency</th>
-                        <th>Game Age</th>
-                        <th>Shutdown Risk</th>
-                        <th>Content Permanence</th>
-                        <th>Account Ban Impact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="best-value">
-                        <td><strong>Minecoins</strong></td>
-                        <td>13+ years</td>
-                        <td>Very Low</td>
-                        <td>Downloads work offline</td>
-                        <td>Minimal - content saved locally</td>
-                    </tr>
-                    <tr>
-                        <td><strong>V-Bucks</strong></td>
-                        <td>7+ years</td>
-                        <td>Low</td>
-                        <td>Server dependent</td>
-                        <td>Total loss</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Robux</strong></td>
-                        <td>18+ years</td>
-                        <td>Very Low</td>
-                        <td>Server dependent</td>
-                        <td>Total loss</td>
-                    </tr>
-                    <tr>
-                        <td><strong>COD Points</strong></td>
-                        <td>Annual releases</td>
-                        <td>Medium</td>
-                        <td>Limited to each game</td>
-                        <td>Total loss</td>
-                    </tr>
-                    <tr>
-                        <td><strong>FIFA Points</strong></td>
-                        <td>Annual releases</td>
-                        <td>High</td>
-                        <td>Resets yearly</td>
-                        <td>Total loss</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Apex Coins</strong></td>
-                        <td>5+ years</td>
-                        <td>Medium</td>
-                        <td>Server dependent</td>
-                        <td>Total loss</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Special Considerations by Currency</h2>
-
-            <h3>V-Bucks (Fortnite) - The FOMO Master</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> Best Battle Pass value, regular free events, no pay-to-win</li>
-                <li>❌ <strong>Cons:</strong> Extreme FOMO tactics, daily shop rotation, social pressure</li>
-                <li>💡 <strong>Smart Strategy:</strong> Only buy Battle Pass, complete it for infinite passes</li>
-            </ul>
-
-            <h3>Robux (Roblox) - The Wild West</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> Huge variety of content, supports creators, Premium subscription value</li>
-                <li>❌ <strong>Cons:</strong> Predatory toward children, inconsistent pricing, scam games</li>
-                <li>💡 <strong>Smart Strategy:</strong> Premium subscription better than direct Robux purchases</li>
-            </ul>
-
-            <h3>Minecoins (Minecraft) - The Ethical Choice</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> Best value per dollar, permanent content, no manipulation</li>
-                <li>❌ <strong>Cons:</strong> Limited to Bedrock Edition, Java Edition has free mods</li>
-                <li>💡 <strong>Smart Strategy:</strong> Wait for sales, buy creator bundles for best value</li>
-            </ul>
-
-            <h3>COD Points - The Annual Reset</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> Some transfer between games, clear pricing</li>
-                <li>❌ <strong>Cons:</strong> New game yearly, expensive bundles, mature content</li>
-                <li>💡 <strong>Smart Strategy:</strong> Only buy if you play all year</li>
-            </ul>
-
-            <h3>FIFA Points - The Gambling Trap</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> None - seriously</li>
-                <li>❌ <strong>Cons:</strong> Pure gambling, terrible odds, resets yearly, most expensive</li>
-                <li>💡 <strong>Smart Strategy:</strong> Never buy FIFA Points - grind or play different modes</li>
-            </ul>
-
-            <h3>Apex Coins - The Premium Pricing</h3>
-            <ul>
-                <li>✅ <strong>Pros:</strong> Quality cosmetics, decent Battle Pass</li>
-                <li>❌ <strong>Cons:</strong> Most expensive per unit, expensive skins ($20+)</li>
-                <li>💡 <strong>Smart Strategy:</strong> Battle Pass only, skip Collection Events</li>
-            </ul>
-
-            <h2>Money-Saving Tips Across All Currencies</h2>
-
-            <div class="tip-box">
-                <strong>Universal Strategies:</strong>
-                <ol>
-                    <li><strong>Never buy on mobile</strong> - 25% premium due to app store fees</li>
-                    <li><strong>Buy during sales</strong> - Black Friday, Christmas often have 20% bonus currency</li>
-                    <li><strong>Use discounted gift cards</strong> - Buy platform cards at 10-20% off from retailers</li>
-                    <li><strong>Complete Battle Passes</strong> - Usually return more than they cost</li>
-                    <li><strong>Set monthly limits</strong> - Use prepaid cards to enforce spending caps</li>
-                    <li><strong>Wait 24 hours</strong> - Sleep on purchases to avoid impulse buying</li>
-                    <li><strong>Track your spending</strong> - Most don't realize they spend $200+ yearly</li>
-                </ol>
-            </div>
-
-            <h2>The Verdict: Which Currency Should You Choose?</h2>
-
-            <div class="quick-summary">
-                <h3>For Parents:</h3>
-                <p><strong>Safest:</strong> Minecoins - Transparent pricing, no manipulation</p>
-                <p><strong>Avoid:</strong> FIFA Points and Robux - Gambling and child exploitation</p>
-                
-                <h3>For Casual Players:</h3>
-                <p><strong>Best:</strong> Fortnite Battle Pass only - Great value if completed</p>
-                <p><strong>Avoid:</strong> Individual skin purchases in any game</p>
-                
-                <h3>For Value Seekers:</h3>
-                <p><strong>Best:</strong> Minecoins during sales - Permanent content at low prices</p>
-                <p><strong>Avoid:</strong> Any mobile purchases - Always 25% more expensive</p>
-            </div>
-
-            <h2>Future Outlook: What's Coming in 2025</h2>
-
-            <p>The gaming currency landscape is evolving with new regulations and technologies:</p>
-            <ul>
-                <li><strong>EU Regulations:</strong> Stricter rules on loot boxes may affect FIFA Points</li>
-                <li><strong>Age Verification:</strong> UK requiring proof of age for purchases</li>
-                <li><strong>Blockchain Gaming:</strong> True ownership models challenging current systems</li>
-                <li><strong>Subscription Bundles:</strong> Xbox Game Pass including currency allowances</li>
-                <li><strong>Cross-Game Currencies:</strong> Publishers creating unified currency systems</li>
-            </ul>
-
-            <h2>Final Recommendations</h2>
-
-            <div class="warning-box">
-                <strong>Remember:</strong> All gaming currencies are designed to make you spend more than intended. They're not investments - they're entertainment expenses. Treat them like going to the movies: set a budget, enjoy responsibly, and never spend money you can't afford to lose.
-            </div>
-
-            <p>The "best" currency depends on your situation:</p>
-            <ul>
-                <li>Have kids? Stick with Minecoins</li>
-                <li>Competitive player? V-Bucks Battle Pass offers best value</li>
-                <li>Casual gamer? Avoid all currencies - play free</li>
-                <li>Content creator? Factor currencies as business expense</li>
-            </ul>
-
-            <a href="/gaming-calculators/" class="back-link">← Back to Gaming Calculators</a>
-            <a href="/gaming-calculators/guides/parents-guide.html" class="back-link" style="margin-left: 20px;">Parent's Guide →</a>
-
+        <div class="quick-summary">
+          <h3 style="margin-top: 0">⚡ Quick Answer</h3>
+          <p>
+            <strong>Best Overall Value:</strong> Minecoins (Minecraft) -
+            $0.00625 per coin, permanent content, no FOMO tactics
+          </p>
+          <p>
+            <strong>Best for Competitive Gaming:</strong> V-Bucks (Fortnite) -
+            Battle Pass returns 150% value if completed
+          </p>
+          <p>
+            <strong>Most Expensive:</strong> FIFA Points - $0.0095 per point
+            with gambling-like pack mechanics
+          </p>
+          <p>
+            <strong>Most Predatory:</strong> Robux (Roblox) - Targets young
+            children, developer exploitation
+          </p>
         </div>
+
+        <h2>Complete Gaming Currency Comparison Table</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Cost per Unit</th>
+              <th>$20 Gets You</th>
+              <th>Average Skin Price</th>
+              <th>Battle Pass</th>
+              <th>Refund Policy</th>
+              <th>Target Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>V-Bucks</strong><br /><small>Fortnite</small></td>
+              <td>$0.00799</td>
+              <td>2,500 V-Bucks</td>
+              <td>1,200-2,000 ($9.60-$16)</td>
+              <td>950 ($7.58)</td>
+              <td>3 lifetime refunds</td>
+              <td>13-25</td>
+            </tr>
+            <tr>
+              <td><strong>Robux</strong><br /><small>Roblox</small></td>
+              <td>$0.0125</td>
+              <td>1,600 Robux</td>
+              <td>Varies by game</td>
+              <td>N/A</td>
+              <td>No refunds</td>
+              <td>8-16</td>
+            </tr>
+            <tr class="best-value">
+              <td><strong>Minecoins</strong><br /><small>Minecraft</small></td>
+              <td>$0.00625</td>
+              <td>3,200 Minecoins</td>
+              <td>310-990 ($1.94-$6.19)</td>
+              <td>N/A</td>
+              <td>Platform dependent</td>
+              <td>7-15</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>COD Points</strong><br /><small>Call of Duty</small>
+              </td>
+              <td>$0.00909</td>
+              <td>2,200 Points</td>
+              <td>1,500-2,400 ($13.64-$21.82)</td>
+              <td>1,100 ($10)</td>
+              <td>No refunds</td>
+              <td>17+</td>
+            </tr>
+            <tr class="worst-value">
+              <td><strong>FIFA Points</strong><br /><small>EA FC 24</small></td>
+              <td>$0.00952</td>
+              <td>2,100 Points</td>
+              <td>Pack gambling</td>
+              <td>N/A</td>
+              <td>Very limited</td>
+              <td>13+</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Apex Coins</strong><br /><small>Apex Legends</small>
+              </td>
+              <td>$0.01</td>
+              <td>2,000 Coins</td>
+              <td>1,800-2,400 ($18-$24)</td>
+              <td>950 ($9.50)</td>
+              <td>No refunds</td>
+              <td>16+</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="calculator-grid">
+          <a href="/gaming-calculators/vbucks/" class="calc-btn"
+            >V-Bucks Calculator</a
+          >
+          <a href="/gaming-calculators/robux/" class="calc-btn"
+            >Robux Calculator</a
+          >
+          <a href="/gaming-calculators/minecoins/" class="calc-btn"
+            >Minecoins Calculator</a
+          >
+          <a href="/gaming-calculators/cod-points/" class="calc-btn"
+            >COD Points Calculator</a
+          >
+          <a href="/gaming-calculators/fifa-points/" class="calc-btn"
+            >FIFA Points Calculator</a
+          >
+          <a href="/gaming-calculators/apex-coins/" class="calc-btn"
+            >Apex Coins Calculator</a
+          >
+        </div>
+
+        <h2>Value Analysis: Cost Per Dollar Spent</h2>
+
+        <div class="metric-card">
+          <div class="metric-title">BEST VALUE</div>
+          <div class="metric-value">Minecoins</div>
+          <div class="metric-subtitle">
+            160 Minecoins per dollar - Permanent content, no expiration
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">WORST VALUE</div>
+          <div class="metric-value">FIFA Points</div>
+          <div class="metric-subtitle">
+            105 FIFA Points per dollar - Gambling mechanics, no guaranteed value
+          </div>
+        </div>
+
+        <h2>Battle Pass Value Comparison</h2>
+
+        <p>
+          Battle passes have become the primary monetization method for many
+          games. Here's how they compare:
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Pass Cost</th>
+              <th>Currency Earned Back</th>
+              <th>ROI</th>
+              <th>Time Required</th>
+              <th>Worth It?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="best-value">
+              <td><strong>Fortnite</strong></td>
+              <td>950 V-Bucks ($7.58)</td>
+              <td>1,500 V-Bucks</td>
+              <td>158%</td>
+              <td>75-150 hours</td>
+              <td>✅ Best Deal</td>
+            </tr>
+            <tr>
+              <td><strong>Apex Legends</strong></td>
+              <td>950 Coins ($9.50)</td>
+              <td>1,300 Coins</td>
+              <td>137%</td>
+              <td>100+ hours</td>
+              <td>✅ Good</td>
+            </tr>
+            <tr>
+              <td><strong>Call of Duty</strong></td>
+              <td>1,100 Points ($10)</td>
+              <td>1,400 Points</td>
+              <td>127%</td>
+              <td>80+ hours</td>
+              <td>⚠️ Moderate</td>
+            </tr>
+            <tr>
+              <td><strong>Rocket League</strong></td>
+              <td>1,000 Credits ($10)</td>
+              <td>1,000 Credits</td>
+              <td>100%</td>
+              <td>60+ hours</td>
+              <td>⚠️ Break Even</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Hidden Costs by Platform</h2>
+
+        <div class="warning-box">
+          <strong>Mobile Tax Alert:</strong> All currencies cost 15-30% MORE on
+          iOS/Android due to app store fees. Always purchase on PC or console
+          for best prices.
+        </div>
+
+        <h3>Platform Price Differences (1,000 V-Bucks Example)</h3>
+        <ul>
+          <li><strong>PC (Epic Store):</strong> $7.99 - Best price</li>
+          <li><strong>PlayStation/Xbox:</strong> $7.99 - Same as PC</li>
+          <li><strong>Nintendo Switch:</strong> $7.99 - Same as PC</li>
+          <li>
+            <strong>iOS (iPhone/iPad):</strong> $9.99 - 25% more expensive
+          </li>
+          <li><strong>Android:</strong> $9.99 - 25% more expensive</li>
+        </ul>
+
+        <h2>Psychological Manipulation Tactics Ranked</h2>
+
+        <p>
+          Each game uses different psychological tactics to encourage spending.
+          Here's how aggressive each currency's tactics are:
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>FOMO Level</th>
+              <th>Social Pressure</th>
+              <th>Gambling Elements</th>
+              <th>Child Targeting</th>
+              <th>Overall Manipulation Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="worst-value">
+              <td><strong>FIFA Points</strong></td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>95% - Most Predatory</td>
+            </tr>
+            <tr>
+              <td><strong>Robux</strong></td>
+              <td>⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>80% - Very High</td>
+            </tr>
+            <tr>
+              <td><strong>V-Bucks</strong></td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐</td>
+              <td>⭐⭐⭐</td>
+              <td>65% - High</td>
+            </tr>
+            <tr>
+              <td><strong>COD Points</strong></td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐</td>
+              <td>⭐⭐</td>
+              <td>⭐⭐</td>
+              <td>55% - Moderate</td>
+            </tr>
+            <tr>
+              <td><strong>Apex Coins</strong></td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐</td>
+              <td>⭐⭐</td>
+              <td>⭐</td>
+              <td>50% - Moderate</td>
+            </tr>
+            <tr class="best-value">
+              <td><strong>Minecoins</strong></td>
+              <td>⭐</td>
+              <td>⭐</td>
+              <td>0</td>
+              <td>⭐⭐</td>
+              <td>20% - Least Manipulative</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Real Money Spending Comparison</h2>
+
+        <h3>What $50 Gets You in Each Game</h3>
+
+        <div class="tip-box">
+          <strong>Fortnite (6,250 V-Bucks):</strong>
+          <ul>
+            <li>3-4 Legendary skins</li>
+            <li>OR 6 Battle Passes (9,000 V-Bucks value if completed)</li>
+            <li>OR 5-6 regular skins + emotes</li>
+          </ul>
+        </div>
+
+        <div class="tip-box">
+          <strong>Roblox (4,000 Robux):</strong>
+          <ul>
+            <li>Varies wildly by game</li>
+            <li>Could be 1 item or 100 items</li>
+            <li>No standardized pricing</li>
+          </ul>
+        </div>
+
+        <div class="tip-box">
+          <strong>Minecraft (8,000 Minecoins):</strong>
+          <ul>
+            <li>8-10 complete world maps</li>
+            <li>OR 15-20 skin packs</li>
+            <li>OR 25+ individual skins</li>
+            <li>Content is permanent and transferable</li>
+          </ul>
+        </div>
+
+        <div class="tip-box">
+          <strong>FIFA (5,250 Points):</strong>
+          <ul>
+            <li>35-40 Premium Gold Packs</li>
+            <li>NO guarantee of good players</li>
+            <li>Likely value: mostly worthless cards</li>
+            <li>Gambling - results vary wildly</li>
+          </ul>
+        </div>
+
+        <h2>Currency Longevity & Risk Assessment</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Game Age</th>
+              <th>Shutdown Risk</th>
+              <th>Content Permanence</th>
+              <th>Account Ban Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="best-value">
+              <td><strong>Minecoins</strong></td>
+              <td>13+ years</td>
+              <td>Very Low</td>
+              <td>Downloads work offline</td>
+              <td>Minimal - content saved locally</td>
+            </tr>
+            <tr>
+              <td><strong>V-Bucks</strong></td>
+              <td>7+ years</td>
+              <td>Low</td>
+              <td>Server dependent</td>
+              <td>Total loss</td>
+            </tr>
+            <tr>
+              <td><strong>Robux</strong></td>
+              <td>18+ years</td>
+              <td>Very Low</td>
+              <td>Server dependent</td>
+              <td>Total loss</td>
+            </tr>
+            <tr>
+              <td><strong>COD Points</strong></td>
+              <td>Annual releases</td>
+              <td>Medium</td>
+              <td>Limited to each game</td>
+              <td>Total loss</td>
+            </tr>
+            <tr>
+              <td><strong>FIFA Points</strong></td>
+              <td>Annual releases</td>
+              <td>High</td>
+              <td>Resets yearly</td>
+              <td>Total loss</td>
+            </tr>
+            <tr>
+              <td><strong>Apex Coins</strong></td>
+              <td>5+ years</td>
+              <td>Medium</td>
+              <td>Server dependent</td>
+              <td>Total loss</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Special Considerations by Currency</h2>
+
+        <h3>V-Bucks (Fortnite) - The FOMO Master</h3>
+        <ul>
+          <li>
+            ✅ <strong>Pros:</strong> Best Battle Pass value, regular free
+            events, no pay-to-win
+          </li>
+          <li>
+            ❌ <strong>Cons:</strong> Extreme FOMO tactics, daily shop rotation,
+            social pressure
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Only buy Battle Pass, complete
+            it for infinite passes
+          </li>
+        </ul>
+
+        <h3>Robux (Roblox) - The Wild West</h3>
+        <ul>
+          <li>
+            ✅ <strong>Pros:</strong> Huge variety of content, supports
+            creators, Premium subscription value
+          </li>
+          <li>
+            ❌ <strong>Cons:</strong> Predatory toward children, inconsistent
+            pricing, scam games
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Premium subscription better than
+            direct Robux purchases
+          </li>
+        </ul>
+
+        <h3>Minecoins (Minecraft) - The Ethical Choice</h3>
+        <ul>
+          <li>
+            ✅ <strong>Pros:</strong> Best value per dollar, permanent content,
+            no manipulation
+          </li>
+          <li>
+            ❌ <strong>Cons:</strong> Limited to Bedrock Edition, Java Edition
+            has free mods
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Wait for sales, buy creator
+            bundles for best value
+          </li>
+        </ul>
+
+        <h3>COD Points - The Annual Reset</h3>
+        <ul>
+          <li>
+            ✅ <strong>Pros:</strong> Some transfer between games, clear pricing
+          </li>
+          <li>
+            ❌ <strong>Cons:</strong> New game yearly, expensive bundles, mature
+            content
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Only buy if you play all year
+          </li>
+        </ul>
+
+        <h3>FIFA Points - The Gambling Trap</h3>
+        <ul>
+          <li>✅ <strong>Pros:</strong> None - seriously</li>
+          <li>
+            ❌ <strong>Cons:</strong> Pure gambling, terrible odds, resets
+            yearly, most expensive
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Never buy FIFA Points - grind or
+            play different modes
+          </li>
+        </ul>
+
+        <h3>Apex Coins - The Premium Pricing</h3>
+        <ul>
+          <li>
+            ✅ <strong>Pros:</strong> Quality cosmetics, decent Battle Pass
+          </li>
+          <li>
+            ❌ <strong>Cons:</strong> Most expensive per unit, expensive skins
+            ($20+)
+          </li>
+          <li>
+            💡 <strong>Smart Strategy:</strong> Battle Pass only, skip
+            Collection Events
+          </li>
+        </ul>
+
+        <h2>Money-Saving Tips Across All Currencies</h2>
+
+        <div class="tip-box">
+          <strong>Universal Strategies:</strong>
+          <ol>
+            <li>
+              <strong>Never buy on mobile</strong> - 25% premium due to app
+              store fees
+            </li>
+            <li>
+              <strong>Buy during sales</strong> - Black Friday, Christmas often
+              have 20% bonus currency
+            </li>
+            <li>
+              <strong>Use discounted gift cards</strong> - Buy platform cards at
+              10-20% off from retailers
+            </li>
+            <li>
+              <strong>Complete Battle Passes</strong> - Usually return more than
+              they cost
+            </li>
+            <li>
+              <strong>Set monthly limits</strong> - Use prepaid cards to enforce
+              spending caps
+            </li>
+            <li>
+              <strong>Wait 24 hours</strong> - Sleep on purchases to avoid
+              impulse buying
+            </li>
+            <li>
+              <strong>Track your spending</strong> - Most don't realize they
+              spend $200+ yearly
+            </li>
+          </ol>
+        </div>
+
+        <h2>The Verdict: Which Currency Should You Choose?</h2>
+
+        <div class="quick-summary">
+          <h3>For Parents:</h3>
+          <p>
+            <strong>Safest:</strong> Minecoins - Transparent pricing, no
+            manipulation
+          </p>
+          <p>
+            <strong>Avoid:</strong> FIFA Points and Robux - Gambling and child
+            exploitation
+          </p>
+
+          <h3>For Casual Players:</h3>
+          <p>
+            <strong>Best:</strong> Fortnite Battle Pass only - Great value if
+            completed
+          </p>
+          <p><strong>Avoid:</strong> Individual skin purchases in any game</p>
+
+          <h3>For Value Seekers:</h3>
+          <p>
+            <strong>Best:</strong> Minecoins during sales - Permanent content at
+            low prices
+          </p>
+          <p>
+            <strong>Avoid:</strong> Any mobile purchases - Always 25% more
+            expensive
+          </p>
+        </div>
+
+        <h2>Future Outlook: What's Coming in 2025</h2>
+
+        <p>
+          The gaming currency landscape is evolving with new regulations and
+          technologies:
+        </p>
+        <ul>
+          <li>
+            <strong>EU Regulations:</strong> Stricter rules on loot boxes may
+            affect FIFA Points
+          </li>
+          <li>
+            <strong>Age Verification:</strong> UK requiring proof of age for
+            purchases
+          </li>
+          <li>
+            <strong>Blockchain Gaming:</strong> True ownership models
+            challenging current systems
+          </li>
+          <li>
+            <strong>Subscription Bundles:</strong> Xbox Game Pass including
+            currency allowances
+          </li>
+          <li>
+            <strong>Cross-Game Currencies:</strong> Publishers creating unified
+            currency systems
+          </li>
+        </ul>
+
+        <h2>Final Recommendations</h2>
+
+        <div class="warning-box">
+          <strong>Remember:</strong> All gaming currencies are designed to make
+          you spend more than intended. They're not investments - they're
+          entertainment expenses. Treat them like going to the movies: set a
+          budget, enjoy responsibly, and never spend money you can't afford to
+          lose.
+        </div>
+
+        <p>The "best" currency depends on your situation:</p>
+        <ul>
+          <li>Have kids? Stick with Minecoins</li>
+          <li>Competitive player? V-Bucks Battle Pass offers best value</li>
+          <li>Casual gamer? Avoid all currencies - play free</li>
+          <li>Content creator? Factor currencies as business expense</li>
+        </ul>
+
+        <a href="/gaming-calculators/" class="back-link"
+          >← Back to Gaming Calculators</a
+        >
+        <a
+          href="/gaming-calculators/guides/parents-guide.html"
+          class="back-link"
+          style="margin-left: 20px"
+          >Parent's Guide →</a
+        >
+      </div>
     </div>
 
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Gaming Currency Comparison 2025: V-Bucks vs Robux vs Minecoins",
         "description": "Complete comparison of gaming currencies in 2025. Compare costs and value of V-Bucks, Robux, Minecoins, FIFA Points, COD Points.",
         "author": {
-            "@type": "Organization",
-            "name": "Forge APIs"
+          "@type": "Organization",
+          "name": "Forge APIs"
         },
         "datePublished": "2025-01-01",
         "dateModified": "2025-01-01"
-    }
+      }
     </script>
-</body>
+  </body>
 </html>

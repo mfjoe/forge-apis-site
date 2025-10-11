@@ -1,0 +1,15 @@
+# Robots.txt for forgeapi.dev
+User-agent: *
+Allow: /
+
+# Directories
+Allow: /gaming-calculators/
+Allow: /gst-calculator/
+Allow: /va-calculator/
+Allow: /tip-calculator/
+
+# Sitemap location
+Sitemap: https://forgeapi.dev/sitemap.xml
+
+# Crawl-delay (optional, removes if causing issues)
+Crawl-delay: 1
