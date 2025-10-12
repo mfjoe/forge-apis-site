@@ -32,7 +32,7 @@ $calculators = @{
                 "answer" = "V-Bucks prices are fixed by Epic Games. Beware of scams offering discounted V-Bucks - these are often fraudulent and can result in account bans."
             }
         )
-    },
+    }
     "fifa-points" = @{
         "name" = "FIFA Points Calculator"
         "title" = "FIFA Points to USD Calculator - EA FC Currency Converter (2025)"
@@ -63,7 +63,7 @@ $calculators = @{
                 "answer" = "No, FIFA Points do not transfer between different FIFA/EA FC versions. Points are tied to the specific game version."
             }
         )
-    },
+    }
     "robux" = @{
         "name" = "Robux Calculator"
         "title" = "Robux to USD Calculator - Roblox Currency Converter (2025)"
@@ -94,7 +94,7 @@ $calculators = @{
                 "answer" = "You can earn Robux through Roblox Developer Exchange (DevEx) by creating popular games, but this requires significant time and skill investment."
             }
         )
-    },
+    }
     "cod-points" = @{
         "name" = "COD Points Calculator"
         "title" = "COD Points to USD Calculator - Call of Duty Currency Converter (2025)"
@@ -125,7 +125,7 @@ $calculators = @{
                 "answer" = "COD Points provide access to premium content and battle passes. Value depends on your interest in cosmetic items and seasonal content."
             }
         )
-    },
+    }
     "apex-coins" = @{
         "name" = "Apex Coins Calculator"
         "title" = "Apex Coins to USD Calculator - Apex Legends Currency Converter (2025)"
@@ -156,7 +156,7 @@ $calculators = @{
                 "answer" = "The 10,000 Apex Coins package offers the best value at `$99.99. Larger packages typically provide better value per coin."
             }
         )
-    },
+    }
     "minecoins" = @{
         "name" = "Minecoins Calculator"
         "title" = "Minecoins to USD Calculator - Minecraft Currency Converter (2025)"
@@ -368,7 +368,7 @@ foreach ($calcKey in $calculators.Keys) {
             <a href="/" class="breadcrumb-link">Home</a>
           </div>
           <div class="breadcrumb-item">
-            <a href="/gaming-calculators" class="breadcrumb-link">Gaming Calculators</a>
+            <a href="/gaming-calculators/" class="breadcrumb-link">Gaming Calculators</a>
           </div>
           <div class="breadcrumb-item">
             <span class="breadcrumb-current">$($calc.name)</span>

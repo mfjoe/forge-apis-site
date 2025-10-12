@@ -21,12 +21,12 @@ function loadGamingFooter() {
       <div class="footer-column">
         <h4>More Gaming Calculators</h4>
         <ul>
-          <li><a href="/gaming-calculators/robux">Robux to USD Calculator</a></li>
-          <li><a href="/gaming-calculators/vbucks">V-Bucks to USD Calculator</a></li>
-          <li><a href="/gaming-calculators/minecoins">Minecoins to USD Calculator</a></li>
-          <li><a href="/gaming-calculators/fifa-points">FIFA Points Calculator</a></li>
-          <li><a href="/gaming-calculators/cod-points">COD Points Calculator</a></li>
-          <li><a href="/gaming-calculators/apex-coins">Apex Coins Calculator</a></li>
+          <li><a href="/gaming-calculators/robux/">Robux to USD Calculator</a></li>
+          <li><a href="/gaming-calculators/vbucks/">V-Bucks to USD Calculator</a></li>
+          <li><a href="/gaming-calculators/minecoins/">Minecoins to USD Calculator</a></li>
+          <li><a href="/gaming-calculators/fifa-points/">FIFA Points Calculator</a></li>
+          <li><a href="/gaming-calculators/cod-points/">COD Points Calculator</a></li>
+          <li><a href="/gaming-calculators/apex-coins/">Apex Coins Calculator</a></li>
         </ul>
       </div>
 
@@ -34,7 +34,7 @@ function loadGamingFooter() {
       <div class="footer-column">
         <h4>Free Tools by Forge APIs</h4>
         <ul>
-          <li><a href="/gst-calculator">GST Calculator</a></li>
+          <li><a href="/gst-calculator/">GST Calculator</a></li>
           <li><a href="/">All Tools</a></li>
         </ul>
         <p style="margin-top: 1rem; font-size: 12px; color: #6b7280;">
