@@ -66,47 +66,56 @@
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
+        font-family: "Courier New", "Minecraft", monospace, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #2d2d2d;
+        background: linear-gradient(180deg, #87ceeb 0%, #91c848 100%);
         position: relative;
         overflow-x: hidden;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
       }
 
       body::before {
         content: "";
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background: radial-gradient(
-            circle at 20% 80%,
-            rgba(102, 126, 234, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(118, 75, 162, 0.1) 0%,
-            transparent 50%
-          );
-        animation: gradientShift 8s ease infinite;
-        z-index: -1;
+        height: 100px;
+        background: repeating-linear-gradient(
+          90deg,
+          #5a7c2f 0px,
+          #5a7c2f 20px,
+          #91c848 20px,
+          #91c848 40px
+        );
+        z-index: 0;
+        opacity: 0.3;
       }
 
       :root {
-        --primary: #4caf50;
-        --primary-dark: #388e3c;
-        --secondary: #ff6b35;
-        --dark: #2d3436;
-        --gray: #6b7280;
-        --light-gray: #f3f4f6;
+        --primary: #91c848;
+        --primary-dark: #5a7c2f;
+        --secondary: #8b4513;
+        --accent: #ffd700;
+        --highlight: #76ee00;
+        --dark: #2d2d2d;
+        --gray: #696969;
+        --light-gray: #f4f4f4;
         --white: #ffffff;
-        --gradient: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
-        --glass-bg: rgba(255, 255, 255, 0.1);
-        --glass-border: rgba(255, 255, 255, 0.2);
+        --gradient: linear-gradient(180deg, #87ceeb 0%, #91c848 100%);
+        --dirt-brown: #7b5533;
+        --diamond-blue: #5cdbd5;
+        --grass-pattern: repeating-linear-gradient(
+          0deg,
+          #91c848 0px,
+          #91c848 2px,
+          #5a7c2f 2px,
+          #5a7c2f 4px
+        );
       }
 
       /* ========== MOBILE NAVIGATION ========== */
@@ -117,8 +126,9 @@
         left: 0;
         right: 0;
         height: 60px;
-        background: var(--white);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: var(--secondary);
+        border-bottom: 4px solid var(--dirt-brown);
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         align-items: center;
         justify-content: space-between;
@@ -126,8 +136,9 @@
       }
 
       .hamburger-btn {
-        background: none;
-        border: none;
+        background: var(--light-gray);
+        border: 3px solid var(--dark);
+        border-radius: 0;
         cursor: pointer;
         padding: 10px;
         display: flex;
@@ -135,12 +146,13 @@
         justify-content: center;
         min-width: 44px;
         min-height: 44px;
-        border-radius: 8px;
-        transition: background 0.3s ease;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+        transition: all 0.1s ease;
       }
 
       .hamburger-btn:hover {
-        background: rgba(76, 175, 80, 0.1);
+        background: var(--primary);
+        transform: scale(0.98);
       }
 
       .hamburger-icon {
@@ -154,10 +166,10 @@
       .hamburger-icon span {
         display: block;
         width: 100%;
-        height: 3px;
-        background: var(--primary);
-        border-radius: 2px;
-        transition: all 0.3s ease;
+        height: 4px;
+        background: var(--dark);
+        border-radius: 0;
+        transition: all 0.1s ease;
       }
 
       .mobile-logo {
@@ -165,8 +177,10 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--primary);
+        font-weight: 900;
+        color: var(--white);
+        font-family: "Courier New", monospace;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
       }
 
       .mobile-drawer {
@@ -175,8 +189,9 @@
         left: -280px;
         width: 280px;
         height: 100vh;
-        background: var(--white);
-        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+        background: var(--light-gray);
+        border-right: 4px solid var(--secondary);
+        box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
         z-index: 1001;
         transition: left 0.3s ease;
         overflow-y: auto;
@@ -209,20 +224,22 @@
         align-items: center;
         justify-content: space-between;
         padding: 20px 15px;
-        border-bottom: 1px solid #e5e7eb;
-        background: var(--gradient);
+        border-bottom: 4px solid var(--secondary);
+        background: var(--primary);
       }
 
       .drawer-title {
         color: var(--white);
         font-size: 1.1rem;
-        font-weight: 700;
+        font-weight: 900;
+        font-family: "Courier New", monospace;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
       }
 
       .close-btn {
-        background: none;
-        border: none;
-        color: var(--white);
+        background: var(--light-gray);
+        border: 3px solid var(--dark);
+        color: var(--dark);
         font-size: 28px;
         cursor: pointer;
         min-width: 44px;
@@ -230,12 +247,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 8px;
-        transition: background 0.3s ease;
+        border-radius: 0;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+        transition: all 0.1s ease;
       }
 
       .close-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: var(--primary-dark);
+        color: var(--white);
+        transform: scale(0.95);
       }
 
       .drawer-menu {
@@ -245,7 +265,7 @@
       }
 
       .drawer-menu li {
-        border-bottom: 1px solid #f3f4f6;
+        border-bottom: 2px solid var(--gray);
       }
 
       .drawer-menu a {
@@ -254,15 +274,17 @@
         padding: 18px 20px;
         color: var(--dark);
         text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
+        font-weight: 700;
+        font-family: "Courier New", monospace;
+        transition: all 0.1s ease;
         min-height: 56px;
       }
 
       .drawer-menu a:hover {
-        background: rgba(76, 175, 80, 0.1);
-        color: var(--primary);
-        padding-left: 25px;
+        background: var(--primary);
+        color: var(--white);
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        transform: scale(0.98);
       }
 
       .menu-icon {
@@ -513,15 +535,18 @@
 
       /* Calculator Styles */
       .calculator-container {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 16px;
+        background: var(--light-gray);
+        border-radius: 0;
         padding: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
-          0 2px 10px rgba(0, 0, 0, 0.06);
+        border: 4px solid var(--secondary);
+        border-top: 8px solid var(--primary-dark);
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3),
+          4px 4px 0px rgba(0, 0, 0, 0.2), 2px 2px 0px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease-out;
         position: relative;
         overflow: hidden;
+        z-index: 1;
       }
 
       .calculator-container::before {
@@ -530,24 +555,40 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
-        background: var(--gradient);
-        background-size: 200% 200%;
+        height: 8px;
+        background: var(--grass-pattern);
+        z-index: 1;
         animation: gradientShift 3s ease infinite;
       }
 
       .calculator-header {
         text-align: center;
         margin-bottom: 2rem;
+        position: relative;
+        z-index: 2;
+        padding-top: 1rem;
+      }
+
+      .calculator-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--secondary);
+        z-index: 1;
       }
 
       .calculator-title {
         font-size: 2.5rem;
-        font-weight: 800;
-        color: var(--dark);
+        font-weight: 900;
+        color: var(--primary-dark);
         margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 2px;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3),
+          2px 2px 0px rgba(0, 0, 0, 0.2);
+        font-family: "Courier New", "Minecraft", monospace;
       }
 
       .calculator-subtitle {
@@ -556,6 +597,7 @@
         text-align: center;
         margin-top: -0.5rem;
         margin-bottom: 1.5rem;
+        font-family: "Courier New", monospace;
       }
 
       /* Currency Selector */
@@ -566,18 +608,19 @@
         justify-content: center;
         gap: 0.5rem;
         margin-bottom: 2rem;
-        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-        border: 1px solid #4caf50;
-        border-radius: 12px;
+        background: var(--secondary);
+        border: 4px solid var(--dirt-brown);
+        border-radius: 0;
         padding: 1rem;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(76, 175, 80, 0.2);
-        transition: all 0.3s ease;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3),
+          2px 2px 0px rgba(0, 0, 0, 0.2);
+        transition: all 0.1s ease;
       }
 
       .currency-selector:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 40px rgba(76, 175, 80, 0.3);
+        transform: scale(0.98);
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3),
+          1px 1px 0px rgba(0, 0, 0, 0.2);
       }
 
       .currency-selector-wrapper {
@@ -587,29 +630,35 @@
       }
 
       .currency-label {
-        font-weight: 600;
-        color: var(--dark);
+        font-weight: 700;
+        color: var(--white);
         font-size: 0.9rem;
+        font-family: "Courier New", monospace;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
       }
 
       .currency-dropdown {
         padding: 0.5rem 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 6px;
+        border: 3px solid var(--dark);
+        border-radius: 0;
         background: var(--white);
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
-        transition: border-color 0.3s ease;
+        transition: all 0.1s ease;
         min-width: 200px;
+        font-family: "Courier New", monospace;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
       }
 
       .currency-dropdown:focus {
         outline: none;
         border-color: var(--primary);
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
       }
 
       .currency-dropdown:hover {
         border-color: var(--primary);
+        transform: scale(0.98);
       }
 
       .conversion-section {
@@ -626,54 +675,55 @@
       }
 
       .input-label {
-        font-weight: 600;
+        font-weight: 700;
         color: var(--dark);
         margin-bottom: 0.5rem;
         font-size: 0.9rem;
+        font-family: "Courier New", monospace;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
       }
 
       .calculator-input {
         padding: 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 12px;
+        border: 4px solid var(--gray);
+        border-radius: 0;
         font-size: 1.1rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(5px);
+        font-weight: 600;
+        transition: all 0.1s ease;
+        background: var(--white);
+        font-family: "Courier New", monospace;
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
       }
 
       .calculator-input:focus {
         outline: none;
-        border-color: transparent;
-        box-shadow: 0 0 0 2px var(--gradient),
-          inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        background: rgba(255, 255, 255, 0.95);
-        transform: translateY(-1px);
+        border-color: var(--primary);
+        border-width: 4px;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3),
+          inset 0 0 0 2px var(--highlight);
+        background: var(--white);
       }
 
       .conversion-arrow {
         font-size: 2rem;
-        color: var(--white);
+        color: var(--primary);
         text-align: center;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.1s ease;
         padding: 0.5rem;
-        border-radius: 50%;
-        background: var(--gradient);
+        border-radius: 0;
+        background: transparent;
         width: 60px;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-        background-size: 200% 200%;
-        animation: gradientShift 3s ease infinite;
+        box-shadow: none;
       }
 
       .conversion-arrow:hover {
-        transform: scale(1.1) rotate(180deg);
-        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+        transform: scale(1.1);
+        color: var(--highlight);
       }
 
       .quick-amounts {
@@ -685,22 +735,30 @@
 
       .quick-btn {
         padding: 1rem;
-        border: none;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.8);
+        border: 4px solid var(--gray);
+        border-bottom: 6px solid var(--dark);
+        border-right: 6px solid var(--dark);
+        border-radius: 0;
+        background: var(--light-gray);
         color: var(--dark);
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.1s ease;
+        font-family: "Courier New", monospace;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .quick-btn:hover {
-        background: var(--gradient);
+        background: var(--primary);
         color: var(--white);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        border-top: 6px solid var(--highlight);
+        border-left: 6px solid var(--highlight);
+        border-bottom: 4px solid var(--primary-dark);
+        border-right: 4px solid var(--primary-dark);
+        transform: scale(0.98);
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
       }
 
       .action-buttons {
@@ -712,36 +770,44 @@
 
       .action-btn {
         padding: 1rem 2rem;
-        border: none;
-        border-radius: 12px;
-        font-weight: 600;
+        border: 4px solid var(--gray);
+        border-bottom: 6px solid var(--dark);
+        border-right: 6px solid var(--dark);
+        border-radius: 0;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.1s ease;
+        font-family: "Courier New", monospace;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
       }
 
       .action-btn:first-child {
-        background: var(--gradient);
+        background: var(--primary);
         color: var(--white);
-        background-size: 200% 200%;
-        animation: gradientShift 3s ease infinite;
+        border-color: var(--primary-dark);
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
       }
 
       .action-btn:first-child:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        transform: scale(0.98);
+        background: var(--highlight);
+        border-top: 6px solid var(--highlight);
+        border-left: 6px solid var(--highlight);
+        border-bottom: 4px solid var(--primary-dark);
+        border-right: 4px solid var(--primary-dark);
       }
 
       .action-btn.secondary {
-        background: rgba(255, 255, 255, 0.8);
+        background: var(--light-gray);
         color: var(--dark);
-        backdrop-filter: blur(5px);
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
       }
 
       .action-btn.secondary:hover {
-        background: rgba(229, 231, 235, 0.9);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        background: var(--gray);
+        color: var(--white);
+        transform: scale(0.98);
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
       }
 
       .content-section {
@@ -954,8 +1020,10 @@
           margin: 0;
           padding: 12px;
           border-radius: 0;
-          background: var(--white);
-          box-shadow: none;
+          background: var(--light-gray);
+          border: 4px solid var(--secondary);
+          border-top: 8px solid var(--primary-dark);
+          box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
           min-height: calc(100vh - 60px);
           display: flex;
           flex-direction: column;
@@ -964,16 +1032,36 @@
         }
 
         .calculator-container::before {
-          display: none;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 8px;
+          background: var(--grass-pattern);
+          z-index: 1;
         }
 
         .calculator-header {
           margin-bottom: 12px;
           text-align: center;
-          background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+          background: transparent;
           padding: 12px 10px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+          padding-top: 20px;
+          border-radius: 0;
+          position: relative;
+          z-index: 2;
+        }
+
+        .calculator-header::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: var(--secondary);
+          z-index: 1;
         }
 
         .calculator-header > div {
@@ -988,10 +1076,13 @@
           margin-bottom: 0;
           line-height: 1.2;
           color: var(--primary-dark);
+          font-family: "Courier New", monospace;
+          font-weight: 900;
+          text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
         }
 
         .calculator-header img {
-          height: 2rem !important;
+          height: 3rem !important;
         }
 
         .calculator-subtitle {
@@ -999,16 +1090,18 @@
           margin-top: 4px;
           margin-bottom: 0;
           color: var(--gray);
+          font-family: "Courier New", monospace;
+          text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
         }
 
         /* Compact inline currency selector with color */
         .currency-selector {
-          background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
-          border: 1px solid #4caf50;
-          border-radius: 8px;
+          background: var(--secondary);
+          border: 3px solid var(--dirt-brown);
+          border-radius: 0;
           padding: 10px 12px;
           margin-bottom: 12px;
-          box-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -1016,8 +1109,8 @@
         }
 
         .currency-selector:hover {
-          transform: none;
-          box-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+          transform: scale(0.98);
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
         }
 
         .currency-selector p {
@@ -1033,9 +1126,11 @@
 
         .currency-label {
           font-size: 0.85rem;
-          font-weight: 600;
-          color: var(--dark);
+          font-weight: 700;
+          color: var(--white);
           white-space: nowrap;
+          font-family: "Courier New", monospace;
+          text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
         }
 
         .currency-dropdown {
@@ -1043,12 +1138,15 @@
           height: 44px;
           font-size: 16px;
           padding: 10px 32px 10px 12px;
-          border: 1px solid #e5e7eb;
-          border-radius: 6px;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%234caf50' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+          border: 3px solid var(--dark);
+          border-radius: 0;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2391C848' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
           background-repeat: no-repeat;
           background-position: right 10px center;
           background-color: white;
+          font-family: "Courier New", monospace;
+          font-weight: 600;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
           -webkit-appearance: none;
           appearance: none;
           min-width: 0;
@@ -1075,7 +1173,8 @@
           margin-bottom: 6px;
           display: block;
           color: var(--dark);
-          font-weight: 600;
+          font-weight: 700;
+          font-family: "Courier New", monospace;
         }
 
         .calculator-input {
@@ -1083,21 +1182,25 @@
           height: 50px;
           font-size: 16px;
           padding: 12px;
-          border-radius: 8px;
-          border: 2px solid #e5e7eb;
+          border-radius: 0;
+          border: 3px solid var(--gray);
           background: var(--white);
+          font-family: "Courier New", monospace;
+          font-weight: 600;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
           -webkit-appearance: none;
           appearance: none;
-          transition: border-color 0.2s ease;
+          transition: all 0.1s ease;
         }
 
         .calculator-input:focus {
           font-size: 16px;
           outline: none;
           border-color: var(--primary);
-          background: linear-gradient(135deg, #ffffff 0%, #f9fdf9 100%);
-          box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15),
-            0 2px 4px rgba(76, 175, 80, 0.1);
+          border-width: 3px;
+          background: var(--white);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3),
+            inset 0 0 0 2px var(--highlight);
         }
 
         /* Hide conversion arrow */
@@ -1117,24 +1220,32 @@
           min-height: 44px;
           font-size: 13px;
           padding: 10px 8px;
-          border-radius: 6px;
-          font-weight: 600;
+          border-radius: 0;
+          font-weight: 700;
           white-space: nowrap;
-          border: 2px solid #4caf50;
-          background: linear-gradient(135deg, #ffffff 0%, #f1f8f4 100%);
-          color: var(--primary);
-          box-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+          border: 3px solid var(--gray);
+          border-bottom: 5px solid var(--dark);
+          border-right: 5px solid var(--dark);
+          background: var(--light-gray);
+          color: var(--dark);
+          font-family: "Courier New", monospace;
+          text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
           overflow: hidden;
           text-overflow: ellipsis;
-          transition: all 0.2s ease;
+          transition: all 0.1s ease;
         }
 
         .quick-btn:active {
-          background: var(--gradient);
+          background: var(--primary);
           color: var(--white);
-          border-color: var(--primary-dark);
+          border-top: 5px solid var(--highlight);
+          border-left: 5px solid var(--highlight);
+          border-bottom: 3px solid var(--primary-dark);
+          border-right: 3px solid var(--primary-dark);
           transform: scale(0.98);
-          box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+          text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
         }
 
         /* Hide action buttons on mobile */
