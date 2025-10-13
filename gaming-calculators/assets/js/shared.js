@@ -34,7 +34,10 @@ function loadGamingFooter() {
       <div class="footer-column">
         <h4>Free Tools by Forge APIs</h4>
         <ul>
-          <li><a href="/gst-calculator/">GST Calculator</a></li>
+          <li><a href="/gst-calculator/">GST Calculator India</a></li>
+          <li><a href="/gaming-calculators/">Gaming Currency Calculators</a></li>
+          <li><a href="/va-calculator/">VA Disability Benefits Calculator</a></li>
+          <li><a href="/tip-calculator/">Restaurant Tip Calculator</a></li>
           <li><a href="/">All Tools</a></li>
         </ul>
         <p style="margin-top: 1rem; font-size: 12px; color: #6b7280;">
