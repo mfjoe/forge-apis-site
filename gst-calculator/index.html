@@ -2456,6 +2456,139 @@
           display: none !important;
         }
       }
+
+      /* Mobile Calculator - Clean & Simple */
+      .mobile-calculator {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          overflow-x: hidden;
+        }
+
+        body {
+          padding: 0 !important;
+          margin: 0 !important;
+          min-height: 100vh;
+          background: #f7f9fc;
+        }
+
+        /* Hide everything desktop */
+        nav,
+        .calculator-main,
+        .footer,
+        .learn-more-container,
+        .seo-content-wrapper,
+        .calculator-wrapper {
+          display: none !important;
+        }
+
+        /* Show mobile calculator */
+        .mobile-calculator {
+          display: block;
+          width: 100%;
+          min-height: 100vh;
+          background: #f7f9fc;
+          padding: 0;
+        }
+
+        .mobile-header {
+          background: #0066ff;
+          color: white;
+          padding: 20px;
+          text-align: center;
+        }
+
+        .mobile-header h1 {
+          font-size: 24px;
+          margin: 0;
+        }
+
+        .mobile-header p {
+          font-size: 14px;
+          margin: 5px 0 0 0;
+          opacity: 0.9;
+        }
+
+        .mobile-card {
+          background: white;
+          margin: 20px;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-input-group {
+          margin-bottom: 20px;
+        }
+
+        .mobile-input-group label {
+          display: block;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #333;
+        }
+
+        .mobile-input-group input,
+        .mobile-input-group select {
+          width: 100%;
+          height: 48px;
+          padding: 0 15px;
+          font-size: 16px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          background: white;
+        }
+
+        .mobile-calculate {
+          width: 100%;
+          height: 52px;
+          background: #0066ff;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 18px;
+          font-weight: 600;
+          margin: 20px 0;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .mobile-calculate:active {
+          background: #0052cc;
+          transform: scale(0.98);
+        }
+
+        .mobile-results {
+          background: #f7f9fc;
+          padding: 15px;
+          border-radius: 8px;
+          margin-top: 20px;
+        }
+
+        .result-line {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+          font-size: 16px;
+        }
+
+        .result-line.total {
+          border-top: 2px solid #0066ff;
+          padding-top: 15px;
+          margin-top: 10px;
+          font-weight: 600;
+          font-size: 18px;
+          color: #0066ff;
+        }
+      }
     </style>
 
     <!-- Google Analytics -->
@@ -2474,6 +2607,47 @@
     <!-- End Google Analytics -->
   </head>
   <body>
+    <div class="mobile-calculator" id="mobileCalculator">
+      <header class="mobile-header">
+        <h1>GST Calculator</h1>
+        <p>India 2025</p>
+      </header>
+
+      <div class="mobile-card">
+        <div class="mobile-input-group">
+          <label>Amount (₹)</label>
+          <input type="number" id="mobileAmount" placeholder="1000" />
+        </div>
+
+        <div class="mobile-input-group">
+          <label>GST Rate</label>
+          <select id="mobileRate">
+            <option value="5">5% - Essential</option>
+            <option value="12">12% - Standard</option>
+            <option value="18" selected>18% - Services</option>
+            <option value="28">28% - Luxury</option>
+          </select>
+        </div>
+
+        <button class="mobile-calculate">Calculate GST</button>
+
+        <div class="mobile-results">
+          <div class="result-line">
+            <span>Base Amount:</span>
+            <span id="mobileBase">₹0</span>
+          </div>
+          <div class="result-line">
+            <span>GST:</span>
+            <span id="mobileGST">₹0</span>
+          </div>
+          <div class="result-line total">
+            <span>Total:</span>
+            <span id="mobileTotal">₹0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation - Same as your site -->
     <nav>
       <div class="container">
@@ -4225,7 +4399,6 @@
       loadCalculatorModePreference();
       loadUserPreferences();
       calculate();
-      updateHistoryDisplay();
 
       // Enhanced mobile details toggle with better UX
       function toggleResultDetails() {
@@ -4445,6 +4618,43 @@
       faqSchemaScript.type = "application/ld+json";
       faqSchemaScript.textContent = JSON.stringify(faqSchema);
       document.head.appendChild(faqSchemaScript);
+
+      // Mobile Calculator
+      function initMobileCalculator() {
+        const mobileAmount = document.getElementById("mobileAmount");
+        const mobileRate = document.getElementById("mobileRate");
+        const mobileButton = document.querySelector(".mobile-calculate");
+        const mobileBase = document.getElementById("mobileBase");
+        const mobileGST = document.getElementById("mobileGST");
+        const mobileTotal = document.getElementById("mobileTotal");
+
+        if (!mobileAmount || !mobileRate || !mobileButton) {
+          console.log("Mobile calculator elements not found");
+          return;
+        }
+
+        function calculateMobile() {
+          const amount = parseFloat(mobileAmount.value) || 0;
+          const rate = parseFloat(mobileRate.value) || 18;
+
+          const gst = (amount * rate) / 100;
+          const total = amount + gst;
+
+          if (mobileBase) mobileBase.textContent = "₹" + amount.toFixed(2);
+          if (mobileGST) mobileGST.textContent = "₹" + gst.toFixed(2);
+          if (mobileTotal) mobileTotal.textContent = "₹" + total.toFixed(2);
+        }
+
+        // Add event listeners
+        mobileAmount.addEventListener("input", calculateMobile);
+        mobileRate.addEventListener("change", calculateMobile);
+        mobileButton.addEventListener("click", calculateMobile);
+
+        console.log("Mobile calculator initialized");
+      }
+
+      // Initialize mobile calculator
+      initMobileCalculator();
     </script>
   </body>
 </html>
