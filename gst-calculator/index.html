@@ -2498,16 +2498,159 @@
           padding: 0;
         }
 
+        /* Update mobile header with gradient and flag */
         .mobile-header {
-          background: #0066ff;
+          background: linear-gradient(
+            135deg,
+            #ff9933 0%,
+            #ff6b35 50%,
+            #138808 100%
+          );
           color: white;
-          padding: 20px;
+          padding: 25px 20px;
           text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Add small Indian flag above title */
+        .mobile-header::before {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 26px;
+          background: linear-gradient(
+            to bottom,
+            #ff9933 33%,
+            #ffffff 33% 66%,
+            #138808 66%
+          );
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 2px;
+        }
+
+        /* Add Ashoka Chakra circle */
+        .mobile-header::after {
+          content: "";
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 10px;
+          height: 10px;
+          border: 2px solid #000080;
+          border-radius: 50%;
+          background: transparent;
+        }
+
+        .mobile-nav-toggle {
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          z-index: 1001;
+        }
+
+        .mobile-nav-toggle span {
+          width: 22px;
+          height: 2.5px;
+          background: white;
+          transition: all 0.3s;
+          border-radius: 2px;
+        }
+
+        .mobile-nav-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .mobile-nav-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s, visibility 0.3s;
+          z-index: 999;
+        }
+
+        .mobile-nav-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .mobile-nav-menu {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100vh;
+          background: white;
+          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+          transition: left 0.3s ease;
+          z-index: 1000;
+          overflow-y: auto;
+          padding: 80px 0 20px 0;
+        }
+
+        .mobile-nav-menu.active {
+          left: 0;
+        }
+
+        .mobile-nav-menu a {
+          display: block;
+          padding: 12px 20px;
+          color: #333;
+          text-decoration: none;
+          font-size: 16px;
+          transition: background 0.2s;
+        }
+
+        .mobile-nav-menu a:hover,
+        .mobile-nav-menu a:active {
+          background: #f0f8ff;
+          color: #0066ff;
+        }
+
+        .mobile-nav-divider {
+          border-top: 1px solid #e0e0e0;
+          margin: 10px 0;
+        }
+
+        .mobile-nav-section {
+          padding: 8px 20px;
+          color: #6b7280;
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .mobile-header h1 {
-          font-size: 24px;
-          margin: 0;
+          font-size: 26px;
+          margin: 20px 0 0 0;
+          font-weight: 700;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .mobile-header p {
@@ -2516,16 +2659,51 @@
           opacity: 0.9;
         }
 
+        /* Update card with subtle gradient */
         .mobile-card {
-          background: white;
+          background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
           margin: 20px;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          padding: 25px;
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(6, 102, 255, 0.15);
+          border: 1px solid rgba(6, 102, 255, 0.1);
+          position: relative;
+        }
+
+        /* Add top accent bar like desktop */
+        .mobile-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(
+            90deg,
+            #0066ff 0%,
+            #00d4aa 50%,
+            #ff6b35 100%
+          );
+          border-radius: 16px 16px 0 0;
+        }
+
+        /* Add subtle rupee symbol watermark */
+        .mobile-card::after {
+          content: "₹";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 200px;
+          color: rgba(0, 102, 255, 0.02);
+          pointer-events: none;
+          z-index: 0;
         }
 
         .mobile-input-group {
           margin-bottom: 20px;
+          position: relative;
+          z-index: 1;
         }
 
         .mobile-input-group label {
@@ -2547,46 +2725,70 @@
           background: white;
         }
 
-        .mobile-calculate {
-          width: 100%;
-          height: 52px;
-          background: #0066ff;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 18px;
-          font-weight: 600;
-          margin: 20px 0;
-          cursor: pointer;
-          transition: background 0.2s;
+        /* Update input styling with primary color focus */
+        .mobile-input-group input:focus,
+        .mobile-input-group select:focus {
+          border-color: #0066ff;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
         }
 
-        .mobile-calculate:active {
-          background: #0052cc;
-          transform: scale(0.98);
-        }
-
+        /* Enhanced results section */
         .mobile-results {
-          background: #f7f9fc;
-          padding: 15px;
-          border-radius: 8px;
+          background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+          padding: 20px;
+          border-radius: 12px;
           margin-top: 20px;
+          border: 1px solid rgba(6, 102, 255, 0.1);
+          position: relative;
+          z-index: 1;
         }
 
         .result-line {
           display: flex;
           justify-content: space-between;
-          padding: 10px 0;
+          padding: 12px 0;
           font-size: 16px;
+          color: #374151;
         }
 
         .result-line.total {
-          border-top: 2px solid #0066ff;
+          border-top: 2px solid #10b981;
           padding-top: 15px;
-          margin-top: 10px;
-          font-weight: 600;
-          font-size: 18px;
-          color: #0066ff;
+          margin-top: 12px;
+          font-weight: 700;
+          font-size: 20px;
+          color: #10b981;
+        }
+
+        .result-line.total span:last-child {
+          text-shadow: 0 1px 2px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Quick preset buttons for mobile */
+        .mobile-quick-presets {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 20px;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-quick-presets button {
+          padding: 8px 12px;
+          border: 1px solid #e0e0e0;
+          border-radius: 20px;
+          background: white;
+          font-size: 12px;
+          white-space: nowrap;
+          color: #6b7280;
+          transition: all 0.2s;
+        }
+
+        .mobile-quick-presets button.active {
+          background: #0066ff;
+          color: white;
+          border-color: #0066ff;
         }
       }
     </style>
@@ -2609,9 +2811,34 @@
   <body>
     <div class="mobile-calculator" id="mobileCalculator">
       <header class="mobile-header">
+        <button class="mobile-nav-toggle" id="mobileNavToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <h1>GST Calculator</h1>
         <p>India 2025</p>
       </header>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+      <!-- Mobile Navigation Menu -->
+      <div class="mobile-nav-menu" id="mobileNavMenu">
+        <a href="/">Home</a>
+        <div class="mobile-nav-divider"></div>
+        <div class="mobile-nav-section">Free Calculators</div>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/va-calculator/">VA Disability Calculator</a>
+        <a href="/tip-calculator/">Tip Calculator</a>
+        <a href="/gaming-calculators/">Gaming Calculators</a>
+        <div class="mobile-nav-divider"></div>
+        <div class="mobile-nav-section">Premium APIs</div>
+        <a href="/riskscore/">RiskScore API</a>
+        <a href="/dupecheck/">DupeCheck</a>
+        <div class="mobile-nav-divider"></div>
+        <a href="mailto:hello@forgeapis.com">Contact</a>
+      </div>
 
       <div class="mobile-card">
         <div class="mobile-input-group">
@@ -2628,8 +2855,6 @@
             <option value="28">28% - Luxury</option>
           </select>
         </div>
-
-        <button class="mobile-calculate">Calculate GST</button>
 
         <div class="mobile-results">
           <div class="result-line">
@@ -4623,12 +4848,11 @@
       function initMobileCalculator() {
         const mobileAmount = document.getElementById("mobileAmount");
         const mobileRate = document.getElementById("mobileRate");
-        const mobileButton = document.querySelector(".mobile-calculate");
         const mobileBase = document.getElementById("mobileBase");
         const mobileGST = document.getElementById("mobileGST");
         const mobileTotal = document.getElementById("mobileTotal");
 
-        if (!mobileAmount || !mobileRate || !mobileButton) {
+        if (!mobileAmount || !mobileRate) {
           console.log("Mobile calculator elements not found");
           return;
         }
@@ -4645,16 +4869,70 @@
           if (mobileTotal) mobileTotal.textContent = "₹" + total.toFixed(2);
         }
 
-        // Add event listeners
+        // Add event listeners for automatic calculation
         mobileAmount.addEventListener("input", calculateMobile);
         mobileRate.addEventListener("change", calculateMobile);
-        mobileButton.addEventListener("click", calculateMobile);
 
         console.log("Mobile calculator initialized");
       }
 
       // Initialize mobile calculator
       initMobileCalculator();
+
+      // Mobile Navigation Menu
+      function initMobileNav() {
+        const mobileNavToggle = document.getElementById("mobileNavToggle");
+        const mobileNavMenu = document.getElementById("mobileNavMenu");
+        const mobileNavOverlay = document.getElementById("mobileNavOverlay");
+
+        if (!mobileNavToggle || !mobileNavMenu || !mobileNavOverlay) {
+          console.log("Mobile nav elements not found");
+          return;
+        }
+
+        function closeNav() {
+          mobileNavToggle.classList.remove("active");
+          mobileNavMenu.classList.remove("active");
+          mobileNavOverlay.classList.remove("active");
+        }
+
+        function toggleNav() {
+          mobileNavToggle.classList.toggle("active");
+          mobileNavMenu.classList.toggle("active");
+          mobileNavOverlay.classList.toggle("active");
+        }
+
+        // Toggle menu
+        mobileNavToggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleNav();
+        });
+
+        // Close when clicking overlay
+        mobileNavOverlay.addEventListener("click", closeNav);
+
+        // Close when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            !mobileNavToggle.contains(e.target) &&
+            !mobileNavMenu.contains(e.target)
+          ) {
+            closeNav();
+          }
+        });
+
+        // Close when clicking a link
+        const navLinks = mobileNavMenu.querySelectorAll("a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", closeNav);
+        });
+
+        console.log("Mobile navigation initialized");
+      }
+
+      // Initialize mobile navigation
+      initMobileNav();
     </script>
   </body>
 </html>
