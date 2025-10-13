@@ -109,6 +109,189 @@
         --glass-border: rgba(255, 255, 255, 0.2);
       }
 
+      /* ========== MOBILE NAVIGATION ========== */
+      .mobile-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: var(--white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+      }
+
+      .hamburger-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .hamburger-btn:hover {
+        background: rgba(76, 175, 80, 0.1);
+      }
+
+      .hamburger-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .hamburger-icon span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        background: var(--white);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+        z-index: 1001;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+      }
+
+      .mobile-drawer.open {
+        left: 0;
+      }
+
+      .drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .drawer-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 15px;
+        border-bottom: 1px solid #e5e7eb;
+        background: var(--gradient);
+      }
+
+      .drawer-title {
+        color: var(--white);
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 28px;
+        cursor: pointer;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .drawer-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .drawer-menu li {
+        border-bottom: 1px solid #f3f4f6;
+      }
+
+      .drawer-menu a {
+        display: flex;
+        align-items: center;
+        padding: 18px 20px;
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        min-height: 56px;
+      }
+
+      .drawer-menu a:hover {
+        background: rgba(76, 175, 80, 0.1);
+        color: var(--primary);
+        padding-left: 25px;
+      }
+
+      .menu-icon {
+        margin-right: 12px;
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+      }
+
+      /* Mobile body offset when header is fixed */
+      body.mobile-nav-active {
+        padding-top: 60px;
+      }
+
+      @media (max-width: 768px) {
+        .mobile-header {
+          display: flex;
+        }
+
+        body {
+          padding-top: 60px;
+        }
+
+        /* Hide desktop breadcrumb on mobile */
+        .breadcrumb {
+          display: none;
+        }
+      }
+
       /* Keyframe Animations */
       @keyframes fadeInUp {
         from {
@@ -732,41 +915,308 @@
         }
       }
 
-      /* Responsive Design */
+      /* ========== MOBILE RESPONSIVE DESIGN ========== */
       @media (max-width: 768px) {
-        .conversion-section {
-          grid-template-columns: 1fr;
-          gap: 1rem;
+        .container {
+          padding: 0 15px;
         }
 
+        /* Mobile Calculator Card Design */
+        .calculator-container {
+          margin: 15px 0;
+          padding: 20px 15px;
+          border-radius: 12px;
+        }
+
+        .calculator-header {
+          margin-bottom: 20px;
+        }
+
+        .calculator-title {
+          font-size: 1.75rem;
+          margin-bottom: 8px;
+        }
+
+        .calculator-subtitle {
+          font-size: 0.95rem;
+        }
+
+        /* Currency Selector - Prominent First Step */
+        .currency-selector {
+          flex-direction: column;
+          padding: 20px 15px;
+          margin-bottom: 20px;
+          gap: 12px;
+        }
+
+        .currency-selector p {
+          font-size: 1rem;
+          margin-bottom: 8px;
+        }
+
+        .currency-selector-wrapper {
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+        }
+
+        .currency-label {
+          font-size: 0.95rem;
+          text-align: left;
+          width: 100%;
+        }
+
+        .currency-dropdown {
+          width: 100%;
+          height: 56px;
+          font-size: 16px;
+          padding: 15px;
+          min-width: 100%;
+          border-radius: 8px;
+          -webkit-appearance: none;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234caf50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 15px center;
+          background-color: white;
+        }
+
+        /* Vertical Input/Output Flow */
+        .conversion-section {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-bottom: 20px;
+          background: var(--white);
+          padding: 20px 15px;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .input-group {
+          width: 100%;
+        }
+
+        .input-label {
+          font-size: 0.95rem;
+          margin-bottom: 8px;
+          display: block;
+        }
+
+        .calculator-input {
+          width: 100%;
+          height: 56px;
+          font-size: 16px;
+          padding: 15px;
+          border-radius: 8px;
+          border: 2px solid #e5e7eb;
+          -webkit-appearance: none;
+          appearance: none;
+        }
+
+        .calculator-input:focus {
+          font-size: 16px;
+          outline: none;
+        }
+
+        /* Conversion Arrow - Vertical Layout */
         .conversion-arrow {
           transform: rotate(90deg);
+          width: 48px;
+          height: 48px;
+          font-size: 1.5rem;
+          align-self: center;
+          margin: 0;
         }
 
+        /* Quick Amount Buttons - 2x2 Grid */
         .quick-amounts {
+          display: grid;
           grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+          margin-bottom: 20px;
         }
 
+        .quick-btn {
+          min-height: 56px;
+          font-size: 14px;
+          padding: 15px 10px;
+          border-radius: 8px;
+          font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        /* Large Result Display with Gradient */
+        .result-display {
+          background: var(--gradient);
+          padding: 25px 20px;
+          border-radius: 12px;
+          margin-bottom: 20px;
+          text-align: center;
+          box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .result-label {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 0.9rem;
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+
+        .result-value {
+          color: var(--white);
+          font-size: 2rem;
+          font-weight: 700;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Action Buttons */
         .action-buttons {
-          flex-direction: column;
+          flex-direction: row;
+          gap: 12px;
+          margin-bottom: 20px;
         }
 
-        .breadcrumb-list {
-          font-size: 0.8rem;
+        .action-btn {
+          flex: 1;
+          min-height: 48px;
+          font-size: 15px;
+          padding: 12px 15px;
+          border-radius: 8px;
+        }
+
+        /* Deal Finder */
+        .deal-finder {
+          margin-top: 15px;
+        }
+
+        .deal-tip {
+          font-size: 0.85rem;
+          padding: 12px 15px;
+        }
+
+        /* Content Sections - Deferred/Hidden on Mobile */
+        .content-section:first-of-type {
+          display: none;
+        }
+
+        .content-section {
+          padding: 20px 15px;
+          margin-bottom: 20px;
+        }
+
+        .section-title {
+          font-size: 1.4rem;
+          margin-bottom: 15px;
+        }
+
+        .section-content {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .section-content h3 {
+          font-size: 1.1rem;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+          padding: 20px 15px;
+          margin-bottom: 20px;
+        }
+
+        .faq-title {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
         }
 
         .faq-question {
-          font-size: 1rem;
-          padding: 1rem 0;
+          font-size: 0.95rem;
+          padding: 15px;
         }
 
+        .faq-answer {
+          font-size: 0.9rem;
+          padding: 0 15px 15px 15px;
+          line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+          max-height: 500px;
+        }
+
+        /* Pricing Tables */
         .pricing-table {
-          font-size: 0.875rem;
+          font-size: 0.8rem;
+          display: block;
+          overflow-x: auto;
         }
 
         .pricing-table th,
         .pricing-table td {
-          padding: 0.5rem;
+          padding: 10px 8px;
+          font-size: 0.8rem;
+        }
+
+        /* Breadcrumb list */
+        .breadcrumb-list {
+          font-size: 0.8rem;
+        }
+
+        /* Header Logo Adjustments */
+        .calculator-header > div {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .calculator-header img {
+          height: 2.5rem !important;
+        }
+
+        /* Accessibility - Prevent zoom on iOS */
+        select, input, textarea {
+          font-size: 16px !important;
+        }
+
+        /* Remove horizontal scroll */
+        body {
+          overflow-x: hidden;
+          max-width: 100vw;
+        }
+
+        .container {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+      }
+
+      /* Extra Small Devices (320px - 375px) */
+      @media (max-width: 375px) {
+        .calculator-title {
+          font-size: 1.5rem;
+        }
+
+        .quick-btn {
+          font-size: 13px;
+          padding: 12px 8px;
+        }
+
+        .action-btn {
+          font-size: 14px;
+        }
+
+        .result-value {
+          font-size: 1.75rem;
+        }
+
+        .currency-dropdown,
+        .calculator-input {
+          height: 52px;
+          padding: 12px;
         }
       }
 
@@ -1017,6 +1467,89 @@
     <!-- End Google Analytics -->
   </head>
   <body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <div class="mobile-logo">ForgeAPIs</div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="mobile-drawer" id="mobileDrawer" aria-label="Main navigation">
+      <div class="drawer-header">
+        <span class="drawer-title">Menu</span>
+        <button class="close-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="drawer-menu">
+        <li>
+          <a href="/">
+            <span class="menu-icon">🏠</span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/">
+            <span class="menu-icon">🎮</span>
+            <span>Gaming Calculators</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/minecoins/">
+            <span class="menu-icon">⛏️</span>
+            <span>Minecoins Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/robux/">
+            <span class="menu-icon">🎮</span>
+            <span>Robux Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/vbucks/">
+            <span class="menu-icon">🎯</span>
+            <span>V-Bucks Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/cod-points/">
+            <span class="menu-icon">🎖️</span>
+            <span>COD Points Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/apex-coins/">
+            <span class="menu-icon">🔫</span>
+            <span>Apex Coins Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gaming-calculators/fifa-points/">
+            <span class="menu-icon">⚽</span>
+            <span>FIFA Points Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gst-calculator/">
+            <span class="menu-icon">🧮</span>
+            <span>GST Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="/tip-calculator/">
+            <span class="menu-icon">💰</span>
+            <span>Tip Calculator</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
     <!-- Breadcrumb Navigation -->
     <div class="breadcrumb">
       <div class="container">
@@ -2323,6 +2856,76 @@
             }
           });
         });
+      });
+    </script>
+
+    <!-- Mobile Navigation Functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburgerBtn = document.getElementById("hamburgerBtn");
+        const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+        const drawerOverlay = document.getElementById("drawerOverlay");
+        const mobileDrawer = document.getElementById("mobileDrawer");
+
+        function openDrawer() {
+          mobileDrawer.classList.add("open");
+          drawerOverlay.classList.add("show");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDrawer() {
+          mobileDrawer.classList.remove("open");
+          drawerOverlay.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+
+        if (hamburgerBtn) {
+          hamburgerBtn.addEventListener("click", openDrawer);
+        }
+
+        if (closeDrawerBtn) {
+          closeDrawerBtn.addEventListener("click", closeDrawer);
+        }
+
+        if (drawerOverlay) {
+          drawerOverlay.addEventListener("click", closeDrawer);
+        }
+
+        // Close drawer when clicking on a link
+        const drawerLinks = document.querySelectorAll(".drawer-menu a");
+        drawerLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            setTimeout(closeDrawer, 200);
+          });
+        });
+
+        // Close drawer on ESC key
+        document.addEventListener("keydown", function(event) {
+          if (event.key === "Escape" && mobileDrawer.classList.contains("open")) {
+            closeDrawer();
+          }
+        });
+
+        // Prevent body scroll when drawer is open
+        let touchStartY = 0;
+        mobileDrawer.addEventListener("touchstart", function(e) {
+          touchStartY = e.touches[0].clientY;
+        });
+
+        mobileDrawer.addEventListener("touchmove", function(e) {
+          const touchY = e.touches[0].clientY;
+          const touchYDelta = touchY - touchStartY;
+          const isScrollingUp = touchYDelta < 0;
+          const isScrollingDown = touchYDelta > 0;
+
+          const drawer = e.currentTarget;
+          const isAtTop = drawer.scrollTop === 0;
+          const isAtBottom = drawer.scrollHeight - drawer.scrollTop === drawer.clientHeight;
+
+          if ((isAtTop && isScrollingDown) || (isAtBottom && isScrollingUp)) {
+            e.preventDefault();
+          }
+        }, { passive: false });
       });
     </script>
 
