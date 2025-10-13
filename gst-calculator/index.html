@@ -278,11 +278,6 @@
         padding: 0 10px;
       }
 
-      /* Hide mobile compact calculator on desktop/tablet */
-      .mobile-compact-calc {
-        display: none;
-      }
-
       /* Desktop Side Ads */
       .ad-column {
         display: none;
@@ -938,32 +933,29 @@
         transform: translateY(-1px);
       }
 
-      /* Mode Selector - Better spacing */
+      /* Mode Selector */
       .mode-selector {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1.5rem; /* Increase from 1rem to 1.5rem */
-        margin-bottom: 1rem; /* Reduce from 1.25rem */
+        gap: 1rem;
+        margin-bottom: 1.25rem;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
-        padding: 0.75rem; /* Add internal padding */
-        background: #f9fafb;
-        border-radius: 10px;
-        border: 1px solid #e5e7eb;
+        justify-content: center;
+        align-items: center;
       }
 
       .mode-btn {
-        padding: 0.75rem 1rem; /* Increase padding */
-        border: 1px solid #d1d5db;
-        background: #ffffff;
+        padding: 0.6rem;
+        border: none;
+        background: #f0f0f0;
         border-radius: 8px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 500;
         color: var(--gray);
         cursor: pointer;
         transition: all 0.3s;
-        min-height: 60px; /* Ensure consistent height */
       }
 
       .mode-btn:hover {
@@ -1517,163 +1509,6 @@
           overflow-x: hidden;
           overflow-y: auto; /* Allow vertical scrolling */
           line-height: 1.4; /* Tighter line height */
-        }
-
-        /* Hide original calculator on mobile, show compact version */
-        .calculator-main {
-          display: none !important;
-        }
-
-        /* Mobile Compact Calculator - Fits on one screen */
-        .mobile-compact-calc {
-          display: block;
-          background: var(--card-gradient);
-          border-radius: 12px;
-          padding: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          max-height: 250px;
-          height: auto;
-          border: 1px solid rgba(0, 102, 255, 0.1);
-        }
-
-        .calc-header-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 10px;
-        }
-
-        .calc-header-row h1 {
-          font-size: 1.1rem;
-          margin: 0;
-          font-weight: 700;
-          color: var(--dark);
-        }
-
-        .mode-icon-btn {
-          background: rgba(0, 102, 255, 0.1);
-          border: 1px solid var(--primary);
-          border-radius: 6px;
-          padding: 6px 10px;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .mode-icon-btn:active {
-          transform: scale(0.95);
-          background: var(--primary);
-        }
-
-        .amount-rate-row {
-          display: grid;
-          grid-template-columns: 1fr auto;
-          gap: 8px;
-          margin-bottom: 10px;
-        }
-
-        .compact-input {
-          padding: 8px 10px;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          font-size: 16px;
-          font-weight: 500;
-          width: 100%;
-          box-sizing: border-box;
-          max-height: 38px;
-        }
-
-        .compact-rate {
-          padding: 8px 12px;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          font-size: 16px;
-          font-weight: 600;
-          background: white;
-          cursor: pointer;
-          min-width: 70px;
-          max-height: 38px;
-        }
-
-        .instant-result {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 10px;
-          background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-          border-radius: 8px;
-          margin-bottom: 10px;
-          font-weight: 600;
-          flex-wrap: wrap;
-        }
-
-        .instant-result .base {
-          color: #374151;
-          font-size: 1rem;
-        }
-
-        .instant-result .plus,
-        .instant-result .equals {
-          color: #6b7280;
-          font-size: 0.9rem;
-        }
-
-        .instant-result .tax {
-          color: var(--primary);
-          font-size: 1rem;
-        }
-
-        .instant-result .total {
-          color: #10b981;
-          font-size: 1.1rem;
-          font-weight: 700;
-        }
-
-        .details-toggle {
-          width: 100%;
-          padding: 8px;
-          background: transparent;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          font-size: 0.85rem;
-          color: var(--primary);
-          cursor: pointer;
-          transition: all 0.2s ease;
-          font-weight: 600;
-        }
-
-        .details-toggle:active {
-          background: rgba(0, 102, 255, 0.05);
-        }
-
-        .compact-details {
-          margin-top: 10px;
-          padding: 10px;
-          background: #f9fafb;
-          border-radius: 6px;
-          font-size: 0.85rem;
-        }
-
-        .detail-row {
-          display: flex;
-          justify-content: space-between;
-          padding: 4px 0;
-          color: var(--dark);
-        }
-
-        .detail-row.mode-indicator {
-          margin-top: 6px;
-          padding-top: 6px;
-          border-top: 1px solid #e5e7eb;
-          font-size: 0.75rem;
-          color: #6b7280;
-          font-style: italic;
-          justify-content: center;
-        }
-
-        .detail-row span:last-child {
-          font-weight: 600;
         }
 
         /* Compact nav */
@@ -2900,68 +2735,6 @@
 
     <!-- Single Responsive Calculator -->
     <div class="calculator-wrapper">
-      <!-- Compact Mobile Calculator (Mobile Only) -->
-      <div class="mobile-compact-calc" id="mobileCompactCalc">
-        <div class="calc-header-row">
-          <h1>GST Calculator</h1>
-          <button
-            class="mode-icon-btn"
-            onclick="toggleMobileMode()"
-            title="Toggle Mode"
-          >
-            <span id="modeIconDisplay">⚡</span>
-          </button>
-        </div>
-
-        <div class="amount-rate-row">
-          <input
-            type="number"
-            id="compactAmount"
-            placeholder="Enter amount"
-            class="compact-input"
-            inputmode="decimal"
-            oninput="calculateCompact()"
-          />
-          <select
-            class="compact-rate"
-            id="compactRate"
-            onchange="calculateCompact()"
-          >
-            <option value="5">5%</option>
-            <option value="12">12%</option>
-            <option value="18" selected>18%</option>
-            <option value="28">28%</option>
-          </select>
-        </div>
-
-        <div class="instant-result" id="compactResult">
-          <span class="base" id="compactBase">₹0</span>
-          <span class="plus">+</span>
-          <span class="tax" id="compactTax">₹0</span>
-          <span class="equals">=</span>
-          <span class="total" id="compactTotal">₹0</span>
-        </div>
-
-        <button class="details-toggle" onclick="toggleCompactDetails()">
-          <span id="detailsToggleText">View Details</span>
-          <span id="detailsToggleIcon">▼</span>
-        </button>
-
-        <div class="compact-details" id="compactDetails" style="display: none">
-          <div class="detail-row">
-            <span>CGST (9%):</span>
-            <span id="compactCGST">₹0</span>
-          </div>
-          <div class="detail-row">
-            <span>SGST (9%):</span>
-            <span id="compactSGST">₹0</span>
-          </div>
-          <div class="detail-row mode-indicator">
-            <span id="compactModeText">Adding GST to base price</span>
-          </div>
-        </div>
-      </div>
-
       <!-- Main Calculator -->
       <main class="calculator-main" id="main-calculator">
         <div class="calculator-card">
@@ -4482,81 +4255,6 @@
         const quickSelectSection =
           document.getElementById("quickSelectSection");
         quickSelectSection.classList.remove("collapsed");
-      }
-
-      // Compact calculator functions (mobile only)
-      let compactMode = "exclusive"; // exclusive = add GST, inclusive = extract GST
-
-      function calculateCompact() {
-        const amount =
-          parseFloat(document.getElementById("compactAmount").value) || 0;
-        const rate =
-          parseFloat(document.getElementById("compactRate").value) || 18;
-
-        let baseAmount, taxAmount, totalAmount;
-
-        if (compactMode === "exclusive") {
-          // Adding GST to base price
-          baseAmount = amount;
-          taxAmount = (baseAmount * rate) / 100;
-          totalAmount = baseAmount + taxAmount;
-        } else {
-          // Extracting GST from total
-          totalAmount = amount;
-          baseAmount = (totalAmount * 100) / (100 + rate);
-          taxAmount = totalAmount - baseAmount;
-        }
-
-        // Update display
-        document.getElementById("compactBase").textContent =
-          formatIndianCurrency(baseAmount);
-        document.getElementById("compactTax").textContent =
-          formatIndianCurrency(taxAmount);
-        document.getElementById("compactTotal").textContent =
-          formatIndianCurrency(totalAmount);
-
-        // Update CGST/SGST (split equally)
-        const halfTax = taxAmount / 2;
-        document.getElementById("compactCGST").textContent =
-          formatIndianCurrency(halfTax);
-        document.getElementById("compactSGST").textContent =
-          formatIndianCurrency(halfTax);
-
-        // Update mode text
-        if (compactMode === "exclusive") {
-          document.getElementById("compactModeText").textContent =
-            "Adding GST to base price";
-        } else {
-          document.getElementById("compactModeText").textContent =
-            "Extracting GST from total";
-        }
-      }
-
-      function toggleMobileMode() {
-        compactMode = compactMode === "exclusive" ? "inclusive" : "exclusive";
-
-        // Update icon
-        const icon = document.getElementById("modeIconDisplay");
-        icon.textContent = compactMode === "exclusive" ? "⚡" : "⚙️";
-
-        // Recalculate
-        calculateCompact();
-      }
-
-      function toggleCompactDetails() {
-        const details = document.getElementById("compactDetails");
-        const toggleText = document.getElementById("detailsToggleText");
-        const toggleIcon = document.getElementById("detailsToggleIcon");
-
-        if (details.style.display === "none") {
-          details.style.display = "block";
-          toggleText.textContent = "Hide Details";
-          toggleIcon.textContent = "▲";
-        } else {
-          details.style.display = "none";
-          toggleText.textContent = "View Details";
-          toggleIcon.textContent = "▼";
-        }
       }
 
       // Toggle Recent Calculations function
