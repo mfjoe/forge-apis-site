@@ -66,11 +66,11 @@
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
+        font-family: "Rajdhani", "Orbitron", "Inter", -apple-system,
+          BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: var(--white);
+        background: var(--dark);
         position: relative;
         overflow-x: hidden;
       }
@@ -82,33 +82,75 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(
+        background-image: repeating-linear-gradient(
+            0deg,
+            rgba(0, 212, 255, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 212, 255, 0.03) 3px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(0, 212, 255, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 212, 255, 0.03) 3px
+          ),
+          radial-gradient(
             circle at 20% 80%,
-            rgba(102, 126, 234, 0.1) 0%,
+            rgba(255, 23, 68, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 20%,
-            rgba(118, 75, 162, 0.1) 0%,
+            rgba(0, 212, 255, 0.15) 0%,
             transparent 50%
           );
-        animation: gradientShift 8s ease infinite;
+        background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
+        animation: gridMove 20s linear infinite;
         z-index: -1;
+        pointer-events: none;
+      }
+
+      body::after {
+        content: "APEX";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25rem;
+        font-weight: 900;
+        color: rgba(255, 23, 68, 0.02);
+        z-index: -1;
+        pointer-events: none;
+        letter-spacing: 2rem;
       }
 
       :root {
-        --primary: #00bcd4;
-        --primary-dark: #0097a7;
-        --secondary: #ff6b35;
-        --apex-red: #d92027;
-        --apex-orange: #ff6b35;
-        --dark: #2d3436;
-        --gray: #6b7280;
-        --light-gray: #f3f4f6;
+        --primary: #ff1744;
+        --primary-dark: #cc0e35;
+        --secondary: #00d4ff;
+        --accent: #ffb800;
+        --highlight: #ff6b9d;
+        --dark: #0a0e1a;
+        --gray: #4a5568;
+        --light-gray: #1a202c;
         --white: #ffffff;
-        --gradient: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-        --glass-bg: rgba(255, 255, 255, 0.1);
-        --glass-border: rgba(255, 255, 255, 0.2);
+        --gradient: linear-gradient(
+          135deg,
+          #ff1744 0%,
+          #ff6b9d 50%,
+          #00d4ff 100%
+        );
+        --legendary: #ffb800;
+        --epic: #9c27b0;
+        --rare: #00bcd4;
+        --common: #718096;
+        --glass-bg: rgba(255, 23, 68, 0.1);
+        --glass-border: rgba(0, 212, 255, 0.3);
+        --glow-red: 0 0 20px rgba(255, 23, 68, 0.5);
+        --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5);
+        --glow-gold: 0 0 20px rgba(255, 184, 0, 0.5);
       }
 
       /* Keyframe Animations */
@@ -142,6 +184,45 @@
         }
       }
 
+      @keyframes gridMove {
+        0% {
+          background-position: 0 0, 0 0, 0% 50%, 0% 50%;
+        }
+        100% {
+          background-position: 50px 50px, 50px 50px, 100% 50%, 100% 50%;
+        }
+      }
+
+      @keyframes glitch {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+      }
+
+      @keyframes neonPulse {
+        0%,
+        100% {
+          box-shadow: var(--glow-cyan);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(0, 212, 255, 0.8),
+            0 0 60px rgba(0, 212, 255, 0.4);
+        }
+      }
+
       @keyframes gradientShift {
         0% {
           background-position: 0% 50%;
@@ -162,12 +243,13 @@
 
       /* Breadcrumb Navigation */
       .breadcrumb {
-        background: var(--white);
+        background: rgba(26, 32, 44, 0.8);
         padding: 1rem 0;
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 2px solid var(--primary);
         margin-bottom: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
-          0 2px 10px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 0 20px rgba(255, 23, 68, 0.3),
+          inset 0 0 20px rgba(0, 212, 255, 0.1);
+        backdrop-filter: blur(10px);
       }
 
       .breadcrumb-list {
@@ -186,34 +268,39 @@
       .breadcrumb-item:not(:last-child)::after {
         content: ">";
         margin-left: 0.5rem;
-        color: var(--gray);
+        color: var(--secondary);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       .breadcrumb-link {
-        color: var(--primary);
+        color: var(--secondary);
         text-decoration: none;
         transition: all 0.3s ease;
-        border-radius: 6px;
+        border-radius: 0;
         padding: 0.25rem 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
       }
 
       .breadcrumb-link:hover {
-        color: var(--primary-dark);
-        background: rgba(0, 188, 212, 0.1);
-        transform: translateY(-1px);
+        color: var(--primary);
+        background: rgba(255, 23, 68, 0.2);
+        box-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
       }
 
       .logo-link {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-weight: 600;
+        font-weight: 700;
       }
 
       .logo-link svg {
         width: 120px;
         height: 72px;
         flex-shrink: 0;
+        filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
       }
 
       .logo-text {
@@ -221,21 +308,33 @@
       }
 
       .breadcrumb-current {
-        color: var(--dark);
-        font-weight: 500;
+        color: var(--white);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
       }
 
       /* FAQ Section */
       .faq-section {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 16px;
+        background: rgba(26, 32, 44, 0.8);
+        border-radius: 0;
+        border: 2px solid var(--secondary);
         padding: 2rem;
         margin-bottom: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
-          0 2px 10px rgba(0, 0, 0, 0.06);
+        box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 212, 255, 0.1);
         animation: fadeInUp 0.6s ease-out;
         position: relative;
         overflow: hidden;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+        backdrop-filter: blur(10px);
       }
 
       .faq-section::before {
@@ -244,7 +343,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: var(--gradient);
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
@@ -252,27 +351,42 @@
 
       .faq-title {
         font-size: 2rem;
-        font-weight: 800;
-        color: var(--dark);
+        font-weight: 900;
+        color: var(--white);
         margin-bottom: 1.5rem;
         text-align: center;
-        letter-spacing: -0.02em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-shadow: 0 0 20px rgba(255, 23, 68, 0.8),
+          2px 2px 4px rgba(0, 0, 0, 0.8);
+        position: relative;
+      }
+
+      .faq-title::before {
+        content: "< ";
+        color: var(--secondary);
+      }
+
+      .faq-title::after {
+        content: " >";
+        color: var(--secondary);
       }
 
       .faq-item {
-        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         margin-bottom: 1rem;
-        border-radius: 8px;
+        border-radius: 0;
         transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(10, 14, 26, 0.6);
         backdrop-filter: blur(5px);
+        border-left: 3px solid transparent;
       }
 
       .faq-item:hover {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(26, 32, 44, 0.8);
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        border-left-color: var(--secondary);
       }
 
       .faq-item:last-child {
@@ -286,31 +400,33 @@
         align-items: center;
         padding: 1.5rem;
         cursor: pointer;
-        font-weight: 600;
-        color: var(--dark);
+        font-weight: 700;
+        color: var(--white);
         font-size: 1.1rem;
         transition: all 0.3s ease;
-        border-radius: 8px;
+        border-radius: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
 
       .faq-question:hover {
-        background: rgba(0, 188, 212, 0.1);
+        background: rgba(0, 212, 255, 0.1);
         transform: translateX(4px);
-        color: var(--primary);
-      }
-
-      .faq-question:hover {
-        color: var(--primary);
+        color: var(--secondary);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
       }
 
       .faq-icon {
         font-size: 1.5rem;
-        color: var(--primary);
+        color: var(--secondary);
         transition: transform 0.3s ease;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
       }
 
       .faq-item.active .faq-icon {
         transform: rotate(45deg);
+        color: var(--primary);
+        text-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
       }
 
       .faq-answer {
@@ -328,19 +444,29 @@
         max-height: 200px;
         transform: translateY(0);
         opacity: 1;
+        color: rgba(255, 255, 255, 0.8);
       }
 
       /* Calculator Styles */
       .calculator-container {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 16px;
+        background: rgba(26, 32, 44, 0.9);
+        border-radius: 0;
+        border: 2px solid var(--primary);
         padding: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
-          0 2px 10px rgba(0, 0, 0, 0.06);
+        box-shadow: var(--glow-red), inset 0 0 40px rgba(0, 212, 255, 0.1);
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease-out;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        backdrop-filter: blur(15px);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 30px) 0,
+          100% 30px,
+          100% 100%,
+          30px 100%,
+          0 calc(100% - 30px)
+        );
       }
 
       .calculator-container::before {
@@ -353,28 +479,95 @@
         background: var(--gradient);
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
+        z-index: 10;
+      }
+
+      .calculator-container::after {
+        content: "SYSTEM ONLINE";
+        position: absolute;
+        bottom: 1rem;
+        right: 2rem;
+        font-size: 0.7rem;
+        color: var(--secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        opacity: 0.5;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       .calculator-header {
         text-align: center;
         margin-bottom: 2rem;
+        position: relative;
+        padding: 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--light-gray) 0%,
+          rgba(26, 32, 44, 0.8) 100%
+        );
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+        box-shadow: var(--glow-red), inset 0 0 30px rgba(255, 23, 68, 0.1);
+      }
+
+      .calculator-header::before {
+        content: "< ";
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary);
+        font-size: 2rem;
+        font-weight: 900;
+      }
+
+      .calculator-header::after {
+        content: " >";
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary);
+        font-size: 2rem;
+        font-weight: 900;
       }
 
       .calculator-title {
         font-size: 2.5rem;
-        font-weight: 800;
-        color: var(--dark);
+        font-weight: 900;
+        color: var(--white);
         margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(255, 23, 68, 0.8),
+          2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 rgba(0, 212, 255, 0.5);
+        position: relative;
+        z-index: 1;
+      }
+
+      .calculator-title:hover {
+        animation: glitch 0.3s ease;
       }
 
       .calculator-subtitle {
         font-size: 1.1rem;
-        color: var(--gray);
+        color: var(--secondary);
         text-align: center;
         margin-top: -0.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       /* Currency Selector */
@@ -385,25 +578,50 @@
         justify-content: center;
         gap: 0.5rem;
         margin-bottom: 2rem;
-        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
-        border: 1px solid #00bcd4;
-        border-radius: 12px;
+        background: rgba(26, 32, 44, 0.8);
+        border: 2px solid var(--secondary);
+        border-radius: 0;
         padding: 1rem;
         backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 188, 212, 0.2);
+        box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 212, 255, 0.1);
         transition: all 0.3s ease;
+        position: relative;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 15px) 0,
+          100% 15px,
+          100% 100%,
+          15px 100%,
+          0 calc(100% - 15px)
+        );
+      }
+
+      .currency-selector::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s linear infinite;
       }
 
       .currency-selector:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 40px rgba(0, 188, 212, 0.3);
+        border-color: var(--primary);
+        box-shadow: var(--glow-red), inset 0 0 30px rgba(255, 23, 68, 0.2);
+        animation: neonPulse 2s ease infinite;
       }
 
       .currency-helper-text {
         font-size: 0.9rem;
-        color: var(--gray);
-        font-weight: 500;
+        color: var(--secondary);
+        font-weight: 600;
         margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
       }
 
       .currency-selector-wrapper {
@@ -413,29 +631,40 @@
       }
 
       .currency-label {
-        font-weight: 600;
-        color: var(--dark);
+        font-weight: 700;
+        color: var(--white);
         font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
       }
 
       .currency-dropdown {
         padding: 0.5rem 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 6px;
-        background: var(--white);
-        font-weight: 500;
+        border: 2px solid var(--secondary);
+        border-radius: 0;
+        background: var(--dark);
+        color: var(--secondary);
+        font-weight: 700;
         cursor: pointer;
-        transition: border-color 0.3s ease;
+        transition: all 0.3s ease;
         min-width: 200px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
       }
 
       .currency-dropdown:focus {
         outline: none;
         border-color: var(--primary);
+        box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 212, 255, 0.3);
       }
 
       .currency-dropdown:hover {
         border-color: var(--primary);
+        background: rgba(255, 23, 68, 0.1);
+        color: var(--white);
+        box-shadow: var(--glow-red);
       }
 
       .conversion-section {
@@ -452,30 +681,49 @@
       }
 
       .input-label {
-        font-weight: 600;
-        color: var(--dark);
+        font-weight: 700;
+        color: var(--secondary);
         margin-bottom: 0.5rem;
         font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       .calculator-input {
         padding: 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 12px;
+        border: 2px solid var(--secondary);
+        border-radius: 0;
         font-size: 1.1rem;
-        font-weight: 500;
+        font-weight: 700;
         transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(10, 14, 26, 0.8);
         backdrop-filter: blur(5px);
+        color: var(--secondary);
+        letter-spacing: 0.1em;
+        box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.2);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
+      }
+
+      .calculator-input::placeholder {
+        color: rgba(0, 212, 255, 0.5);
       }
 
       .calculator-input:focus {
         outline: none;
-        border-color: transparent;
-        box-shadow: 0 0 0 2px var(--gradient),
-          inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        background: rgba(255, 255, 255, 0.95);
-        transform: translateY(-1px);
+        border-color: var(--primary);
+        box-shadow: var(--glow-cyan), inset 0 0 30px rgba(0, 212, 255, 0.3);
+        background: rgba(10, 14, 26, 0.95);
+        color: var(--white);
+        transform: translateY(-2px);
+        animation: neonPulse 2s ease infinite;
       }
 
       .conversion-arrow {
@@ -511,22 +759,56 @@
 
       .quick-btn {
         padding: 1rem;
-        border: none;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--dark);
-        font-weight: 600;
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        background: rgba(26, 32, 44, 0.6);
+        color: var(--primary);
+        font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
         backdrop-filter: blur(5px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% 100%,
+          8px 100%,
+          0 calc(100% - 8px)
+        );
+      }
+
+      .quick-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 100%;
+        background: var(--gradient);
+        transition: width 0.3s ease;
+        z-index: -1;
       }
 
       .quick-btn:hover {
-        background: var(--gradient);
+        border-color: var(--secondary);
         color: var(--white);
         transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+        box-shadow: var(--glow-red), 0 0 30px rgba(0, 212, 255, 0.3);
+      }
+
+      .quick-btn:hover::before {
+        width: 100%;
+      }
+
+      .quick-btn:active {
+        transform: translateY(0) scale(0.98);
+        animation: glitch 0.3s ease;
       }
 
       .action-buttons {
@@ -538,48 +820,91 @@
 
       .action-btn {
         padding: 1rem 2rem;
-        border: none;
-        border-radius: 12px;
-        font-weight: 600;
+        border: 2px solid var(--primary);
+        border-radius: 0;
+        font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--glow-red);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(
+          10px 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% calc(100% - 10px),
+          calc(100% - 10px) 100%,
+          10px 100%,
+          0 calc(100% - 10px),
+          0 10px
+        );
       }
 
       .action-btn:first-child {
-        background: var(--gradient);
+        background: var(--primary);
         color: var(--white);
-        background-size: 200% 200%;
-        animation: gradientShift 3s ease infinite;
+        border-color: var(--primary);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      }
+
+      .action-btn:first-child::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient);
+        transition: left 0.3s ease;
+        z-index: -1;
       }
 
       .action-btn:first-child:hover {
         transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+        box-shadow: var(--glow-red), 0 0 40px rgba(255, 23, 68, 0.6);
+        animation: glitch 0.3s ease;
+      }
+
+      .action-btn:first-child:hover::before {
+        left: 0;
       }
 
       .action-btn.secondary {
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--dark);
+        background: rgba(26, 32, 44, 0.6);
+        color: var(--secondary);
+        border-color: var(--secondary);
         backdrop-filter: blur(5px);
+        box-shadow: var(--glow-cyan);
       }
 
       .action-btn.secondary:hover {
-        background: rgba(229, 231, 235, 0.9);
+        background: rgba(0, 212, 255, 0.2);
         transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--glow-cyan), 0 0 30px rgba(0, 212, 255, 0.5);
+        color: var(--white);
       }
 
       .content-section {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 16px;
+        background: rgba(26, 32, 44, 0.8);
+        border-radius: 0;
+        border: 2px solid var(--secondary);
         padding: 2rem;
         margin-bottom: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
-          0 2px 10px rgba(0, 0, 0, 0.06);
+        box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 212, 255, 0.1);
         animation: fadeInUp 0.6s ease-out;
         position: relative;
         overflow: hidden;
+        backdrop-filter: blur(10px);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 15px) 0,
+          100% 15px,
+          100% 100%,
+          15px 100%,
+          0 calc(100% - 15px)
+        );
       }
 
       .content-section::before {
@@ -588,7 +913,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: var(--gradient);
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
@@ -596,23 +921,28 @@
 
       .section-title {
         font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--dark);
+        font-weight: 900;
+        color: var(--white);
         margin-bottom: 1rem;
-        letter-spacing: -0.02em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px rgba(255, 23, 68, 0.8),
+          2px 2px 4px rgba(0, 0, 0, 0.8);
       }
 
       .section-subtitle {
         font-size: 1rem;
-        color: var(--gray);
+        color: var(--secondary);
         text-align: center;
         margin-bottom: 1.5rem;
-        font-weight: 400;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       .section-content {
-        color: var(--gray);
+        color: rgba(255, 255, 255, 0.8);
         line-height: 1.7;
       }
 
@@ -620,37 +950,42 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
-        border-radius: 12px;
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        background: rgba(10, 14, 26, 0.8);
         backdrop-filter: blur(5px);
+        border: 2px solid var(--secondary);
       }
 
       .pricing-table th,
       .pricing-table td {
         padding: 1rem;
         text-align: left;
-        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         transition: all 0.3s ease;
+        color: var(--white);
       }
 
       .pricing-table th {
         background: var(--gradient);
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--white);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
       }
 
       .pricing-table tr:hover {
-        background: rgba(0, 188, 212, 0.1);
+        background: rgba(0, 212, 255, 0.1);
         transform: scale(1.01);
       }
 
       .pricing-table tr:hover td {
-        color: var(--primary);
+        color: var(--secondary);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
 
       .ad-slot {
@@ -736,17 +1071,32 @@
         left: 0;
         right: 0;
         height: 60px;
-        background: var(--white);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: rgba(26, 32, 44, 0.95);
+        box-shadow: 0 0 20px rgba(255, 23, 68, 0.3),
+          inset 0 0 20px rgba(0, 212, 255, 0.1);
         z-index: 1000;
         align-items: center;
         justify-content: space-between;
         padding: 0 15px;
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid var(--primary);
+      }
+
+      .mobile-header::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 3s linear infinite;
       }
 
       .hamburger-btn {
         background: none;
-        border: none;
+        border: 2px solid var(--secondary);
         cursor: pointer;
         padding: 10px;
         display: flex;
@@ -754,12 +1104,13 @@
         justify-content: center;
         min-width: 44px;
         min-height: 44px;
-        border-radius: 8px;
-        transition: background 0.3s ease;
+        border-radius: 0;
+        transition: all 0.3s ease;
       }
 
       .hamburger-btn:hover {
-        background: rgba(0, 188, 212, 0.1);
+        background: rgba(0, 212, 255, 0.2);
+        box-shadow: var(--glow-cyan);
       }
 
       .hamburger-icon {
@@ -774,9 +1125,10 @@
         display: block;
         width: 100%;
         height: 3px;
-        background: var(--primary);
-        border-radius: 2px;
+        background: var(--secondary);
+        border-radius: 0;
         transition: all 0.3s ease;
+        box-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
       }
 
       .mobile-logo {
@@ -784,8 +1136,11 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--primary);
+        font-weight: 900;
+        color: var(--white);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
       }
 
       .mobile-drawer {
@@ -952,26 +1307,39 @@
           margin: 0;
           padding: 12px;
           border-radius: 0;
-          background: var(--white);
+          background: var(--dark);
           box-shadow: none;
           min-height: calc(100vh - 60px);
           display: flex;
           flex-direction: column;
           overflow: visible;
           padding-bottom: 30px;
+          border-top: 3px solid var(--primary);
         }
 
         .calculator-container::before {
-          display: none;
+          height: 3px;
+          background: var(--gradient);
+          background-size: 200% 200%;
+          animation: gradientShift 3s ease infinite;
         }
 
         .calculator-header {
           margin-bottom: 12px;
           text-align: center;
-          background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+          background: rgba(26, 32, 44, 0.8);
           padding: 12px 10px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0, 188, 212, 0.2);
+          border-radius: 0;
+          border: 2px solid var(--primary);
+          box-shadow: var(--glow-red);
+          clip-path: polygon(
+            0 0,
+            calc(100% - 10px) 0,
+            100% 10px,
+            100% 100%,
+            10px 100%,
+            0 calc(100% - 10px)
+          );
         }
 
         .calculator-header > div {
@@ -985,37 +1353,53 @@
           font-size: 1.3rem;
           margin-bottom: 0;
           line-height: 1.2;
-          color: var(--primary-dark);
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          text-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
         }
 
         .calculator-header img {
           height: 2rem !important;
+          filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
         }
 
         .calculator-subtitle {
           font-size: 0.8rem;
           margin-top: 4px;
           margin-bottom: 0;
-          color: var(--gray);
+          color: var(--secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
         }
 
-        /* Compact inline currency selector with cyan colors */
+        /* Compact inline currency selector with cyberpunk colors */
         .currency-selector {
-          background: linear-gradient(135deg, #e0f7fa 0%, #e8f8f9 100%);
-          border: 1px solid var(--primary);
-          border-radius: 8px;
+          background: rgba(26, 32, 44, 0.8);
+          border: 2px solid var(--secondary);
+          border-radius: 0;
           padding: 10px 12px;
           margin-bottom: 12px;
-          box-shadow: 0 2px 4px rgba(0, 188, 212, 0.1);
+          box-shadow: var(--glow-cyan);
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 10px;
+          clip-path: polygon(
+            0 0,
+            calc(100% - 8px) 0,
+            100% 8px,
+            100% 100%,
+            8px 100%,
+            0 calc(100% - 8px)
+          );
         }
 
         .currency-selector:hover {
           transform: none;
-          box-shadow: 0 2px 4px rgba(0, 188, 212, 0.1);
+          box-shadow: var(--glow-red);
+          border-color: var(--primary);
         }
 
         .currency-selector p {
@@ -1031,9 +1415,11 @@
 
         .currency-label {
           font-size: 0.85rem;
-          font-weight: 600;
-          color: var(--dark);
+          font-weight: 700;
+          color: var(--white);
           white-space: nowrap;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
 
         .currency-dropdown {
@@ -1041,15 +1427,19 @@
           height: 44px;
           font-size: 16px;
           padding: 10px 32px 10px 12px;
-          border: 1px solid #e5e7eb;
-          border-radius: 6px;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2300bcd4' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+          border: 2px solid var(--secondary);
+          border-radius: 0;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2300d4ff' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
           background-repeat: no-repeat;
           background-position: right 10px center;
-          background-color: white;
+          background-color: var(--dark);
+          color: var(--secondary);
+          font-weight: 700;
+          text-transform: uppercase;
           -webkit-appearance: none;
           appearance: none;
           min-width: 0;
+          box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
         }
 
         /* Compact vertical inputs */
@@ -1072,8 +1462,11 @@
           font-size: 0.85rem;
           margin-bottom: 6px;
           display: block;
-          color: var(--dark);
-          font-weight: 600;
+          color: var(--secondary);
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
         }
 
         .calculator-input {
@@ -1081,21 +1474,24 @@
           height: 50px;
           font-size: 16px;
           padding: 12px;
-          border-radius: 8px;
-          border: 2px solid #e5e7eb;
-          background: var(--white);
+          border-radius: 0;
+          border: 2px solid var(--secondary);
+          background: rgba(10, 14, 26, 0.8);
+          color: var(--secondary);
+          font-weight: 700;
           -webkit-appearance: none;
           appearance: none;
-          transition: border-color 0.2s ease;
+          transition: all 0.2s ease;
+          box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
         }
 
         .calculator-input:focus {
           font-size: 16px;
           outline: none;
           border-color: var(--primary);
-          background: linear-gradient(135deg, #ffffff 0%, #f9feff 100%);
-          box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.15),
-            0 2px 4px rgba(0, 188, 212, 0.1);
+          background: rgba(10, 14, 26, 0.95);
+          color: var(--white);
+          box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         /* Hide conversion arrow */
@@ -1103,7 +1499,7 @@
           display: none;
         }
 
-        /* Compact 2x2 quick buttons with cyan colors */
+        /* Compact 2x2 quick buttons with cyberpunk colors */
         .quick-amounts {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -1115,24 +1511,26 @@
           min-height: 44px;
           font-size: 13px;
           padding: 10px 8px;
-          border-radius: 6px;
-          font-weight: 600;
+          border-radius: 0;
+          font-weight: 700;
           white-space: nowrap;
           border: 2px solid var(--primary);
-          background: linear-gradient(135deg, #ffffff 0%, #f4fcfd 100%);
+          background: rgba(26, 32, 44, 0.6);
           color: var(--primary);
-          box-shadow: 0 2px 4px rgba(0, 188, 212, 0.1);
+          box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
           overflow: hidden;
           text-overflow: ellipsis;
           transition: all 0.2s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
 
         .quick-btn:active {
-          background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+          background: var(--gradient);
           color: var(--white);
-          border-color: var(--primary-dark);
+          border-color: var(--secondary);
           transform: scale(0.98);
-          box-shadow: 0 3px 6px rgba(0, 188, 212, 0.2);
+          box-shadow: var(--glow-red), 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         /* Hide action buttons on mobile */
@@ -1148,10 +1546,23 @@
         .deal-tip {
           font-size: 0.75rem;
           padding: 8px 12px;
-          border-radius: 6px;
-          background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
-          border: 1px solid #fbbf24;
-          box-shadow: 0 2px 4px rgba(251, 191, 36, 0.15);
+          border-radius: 0;
+          background: rgba(255, 184, 0, 0.2);
+          border: 2px solid var(--legendary);
+          box-shadow: var(--glow-gold), inset 0 0 15px rgba(255, 184, 0, 0.2);
+          color: var(--legendary);
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          text-shadow: 0 0 10px rgba(255, 184, 0, 0.8);
+          clip-path: polygon(
+            0 0,
+            calc(100% - 6px) 0,
+            100% 6px,
+            100% 100%,
+            6px 100%,
+            0 calc(100% - 6px)
+          );
         }
 
         /* Show mobile-only elements */
@@ -3611,14 +4022,60 @@
     <!-- Navigation to Other Calculators -->
     <div
       style="
-        background: #f8f9fa;
+        background: rgba(26, 32, 44, 0.8);
         padding: 2rem;
         margin: 3rem 0;
-        border-radius: 12px;
+        border-radius: 0;
+        border: 2px solid #00d4ff;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.5),
+          inset 0 0 20px rgba(0, 212, 255, 0.1);
+        backdrop-filter: blur(10px);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+        position: relative;
       "
     >
-      <h3 style="text-align: center; margin-bottom: 1.5rem">
-        More Gaming Calculators
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(
+            135deg,
+            #ff1744 0%,
+            #ff6b9d 50%,
+            #00d4ff 100%
+          );
+          background-size: 200% 200%;
+          animation: gradientShift 3s ease infinite;
+        "
+      ></div>
+      <h3
+        style="
+          text-align: center;
+          margin-bottom: 1.5rem;
+          color: #ffffff;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          text-shadow: 0 0 20px rgba(255, 23, 68, 0.8),
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+          position: relative;
+        "
+      >
+        <span style="color: #00d4ff">&lt; </span>More Gaming Calculators<span
+          style="color: #00d4ff"
+        >
+          &gt;</span
+        >
       </h3>
       <div
         style="
@@ -3631,73 +4088,169 @@
         <a
           href="/gaming-calculators/robux/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 14, 26, 0.8);
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ff1744;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
           "
+          onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
+          onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
           >Robux Calculator</a
         >
         <a
           href="/gaming-calculators/vbucks/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 14, 26, 0.8);
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ff1744;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
           "
+          onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
+          onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
           >V-Bucks Calculator</a
         >
         <a
           href="/gaming-calculators/minecoins/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 14, 26, 0.8);
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ff1744;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
           "
+          onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
+          onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
           >Minecoins Calculator</a
         >
         <a
           href="/gaming-calculators/cod-points/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 14, 26, 0.8);
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ff1744;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
           "
+          onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
+          onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
           >COD Points Calculator</a
         >
         <a
           href="/gaming-calculators/apex-coins/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(
+              135deg,
+              #ff1744 0%,
+              #ff6b9d 50%,
+              #00d4ff 100%
+            );
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ffb800;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 20px rgba(255, 184, 0, 0.5),
+              0 0 40px rgba(255, 23, 68, 0.3);
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
           "
           >Apex Coins Calculator</a
         >
         <a
           href="/gaming-calculators/fifa-points/"
           style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 14, 26, 0.8);
+            border-radius: 0;
             text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            color: #ffffff;
+            border: 2px solid #ff1744;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+              0 0,
+              calc(100% - 8px) 0,
+              100% 8px,
+              100% 100%,
+              8px 100%,
+              0 calc(100% - 8px)
+            );
           "
+          onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
+          onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
           >FIFA Points Calculator</a
         >
       </div>
