@@ -862,57 +862,316 @@
         }
       }
 
-      /* Responsive Design */
+      /* ========== MOBILE RESPONSIVE DESIGN - MATCH MINECOINS SINGLE SCREEN ========== */
       @media (max-width: 768px) {
-        .conversion-section {
-          grid-template-columns: 1fr;
-          gap: 1rem;
+        body {
+          overflow-x: hidden;
+          max-width: 100vw;
         }
 
-        .conversion-arrow {
-          transform: rotate(90deg);
+        .mobile-header {
+          display: flex;
+        }
+        .breadcrumb {
+          display: none;
         }
 
-        .quick-amounts {
-          grid-template-columns: repeat(2, 1fr);
+        /* Hide non-calculator sections on mobile */
+        .content-section,
+        .faq-section,
+        section {
+          display: none !important;
         }
 
-        .action-buttons {
+        #footer-container {
+          display: none;
+        }
+
+        .container {
+          padding: 0;
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+
+        /* Compact single-screen calculator */
+        .calculator-container {
+          margin: 0;
+          padding: 10px 12px;
+          border-radius: 0;
+          background: var(--light-gray);
+          border: 4px solid var(--primary);
+          border-top: 8px solid var(--primary-dark);
+          box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+          min-height: 100vh;
+          display: flex;
           flex-direction: column;
+          overflow: visible;
+          padding-bottom: 16px;
         }
 
-        .converter-modes {
-          gap: 0.5rem;
+        .calculator-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 8px;
+          background: var(--primary);
+          z-index: 1;
         }
 
-        .mode-btn {
-          min-height: 50px;
-          padding: 6px 12px;
-        }
-
-        .mode-title {
-          font-size: 13px;
-        }
-
-        .mode-subtitle {
-          font-size: 10px;
+        .calculator-header {
+          margin-bottom: 8px;
           text-align: center;
-          word-wrap: break-word;
+          background: transparent;
+          padding: 8px 8px;
+          padding-top: 14px;
+          border-radius: 0;
+          position: relative;
+          z-index: 2;
         }
 
-        .breadcrumb-list {
+        .calculator-header::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: var(--primary);
+          z-index: 1;
+        }
+
+        .calculator-header > div {
+          flex-direction: row !important;
+          gap: 8px !important;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .calculator-title {
+          font-size: 1.25rem;
+          margin-bottom: 0;
+          line-height: 1.2;
+          color: #000;
+          font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, sans-serif;
+          font-weight: 900;
+          text-shadow: none;
+        }
+
+        .calculator-header img {
+          height: 2.5rem !important;
+        }
+
+        .calculator-subtitle {
+          font-size: 0.75rem;
+          margin-top: 4px;
+          margin-bottom: 0;
+          color: var(--gray);
+          font-family: "Nunito", sans-serif;
+          text-shadow: none;
+        }
+
+        /* Currency selector inline */
+        .currency-selector {
+          background: var(--white);
+          border: 2px solid var(--primary);
+          border-radius: 0;
+          padding: 8px 10px;
+          margin-bottom: 8px;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .currency-selector p {
+          display: none;
+        }
+        .currency-helper-text {
+          display: none;
+        }
+
+        .currency-selector-wrapper {
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          width: 100%;
+        }
+
+        .currency-label {
           font-size: 0.8rem;
+          font-weight: 800;
+          color: #000;
+          white-space: nowrap;
         }
 
-        .faq-question {
-          font-size: 1rem;
-          padding: 1rem 0;
+        .currency-dropdown {
+          flex: 1;
+          height: 40px;
+          font-size: 14px;
+          padding: 8px 28px 8px 10px;
+          border: 2px solid var(--gray);
+          border-radius: 0;
+          background-color: white;
+          font-weight: 800;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+          -webkit-appearance: none;
+          appearance: none;
+          min-width: 0;
         }
 
+        /* Vertical inputs */
+        .conversion-section {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 10px;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+          border-radius: 0;
+        }
+
+        .input-group {
+          width: 100%;
+        }
+
+        .input-label {
+          font-size: 0.8rem;
+          margin-bottom: 6px;
+          display: block;
+          color: #000;
+          font-weight: 800;
+        }
+
+        .calculator-input {
+          width: 100%;
+          height: 44px;
+          font-size: 15px;
+          padding: 10px;
+          border-radius: 0;
+          border: 2px solid var(--gray);
+          background: var(--white);
+          font-weight: 800;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+          -webkit-appearance: none;
+          appearance: none;
+          transition: all 0.1s ease;
+          color: #000;
+        }
+
+        .calculator-input:focus {
+          font-size: 16px;
+          outline: none;
+          border-color: var(--primary);
+          background: var(--white);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+          transform: none;
+        }
+
+        /* Hide conversion arrow */
+        .conversion-arrow {
+          display: none;
+        }
+
+        /* 3-column compact quick buttons with centered bottom row */
+        .quick-amounts {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+
+        /* Evenly space all buttons in 3-column grid */
+        .quick-btn:nth-child(4) {
+          grid-column: 1 / 2;
+        }
+
+        .quick-btn:nth-child(5) {
+          grid-column: 2 / 3;
+        }
+
+        .quick-btn:nth-child(6) {
+          grid-column: 3 / 4;
+        }
+
+        .quick-btn {
+          min-height: 40px;
+          font-size: 12px;
+          padding: 8px 6px;
+          border-radius: 0;
+          font-weight: 900;
+          white-space: nowrap;
+          border: 2px solid var(--gray);
+          border-bottom: 3px solid var(--dark);
+          border-right: 3px solid var(--dark);
+          background: var(--white);
+          color: #000;
+          text-shadow: none;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: all 0.1s ease;
+        }
+
+        .quick-btn:active {
+          background: var(--primary);
+          color: #fff;
+          border-top: 4px solid var(--highlight);
+          border-left: 4px solid var(--highlight);
+          border-bottom: 2px solid var(--primary-dark);
+          border-right: 2px solid var(--primary-dark);
+          transform: scale(0.98);
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide action buttons on mobile */
+        .action-buttons {
+          display: none;
+        }
+
+        /* Modes row compact */
+        .converter-modes {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+          margin: 8px 0;
+        }
+        .mode-btn {
+          min-height: 40px;
+          padding: 6px 8px;
+        }
+        .mode-title {
+          font-size: 12px;
+        }
+        .mode-subtitle {
+          font-size: 9px;
+        }
+
+        /* Hide ads on mobile for single-screen fit */
+        .ad-slot,
+        .sidebar-ad-container {
+          display: none !important;
+        }
+
+        /* Mobile-only second image below quick buttons */
+        .mobile-second-image {
+          display: block !important;
+          width: 100%;
+          max-width: 120px;
+          height: auto;
+          margin: 8px auto;
+          border-radius: 6px;
+          box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tables smaller */
         .pricing-table {
           font-size: 0.875rem;
         }
-
         .pricing-table th,
         .pricing-table td {
           padding: 0.5rem;
@@ -1391,7 +1650,6 @@
 
           <!-- Currency Selector -->
           <div class="currency-selector">
-            <div class="currency-helper-text">Select your currency:</div>
             <div class="currency-selector-wrapper">
               <label for="currency-select" class="currency-label"
                 >Currency:</label
@@ -1460,8 +1718,17 @@
             <button class="quick-btn" data-amount="800">800 Robux</button>
             <button class="quick-btn" data-amount="1700">1,700 Robux</button>
             <button class="quick-btn" data-amount="4500">4,500 Robux</button>
+            <button class="quick-btn" data-amount="8000">8,000 Robux</button>
             <button class="quick-btn" data-amount="10000">10,000 Robux</button>
           </div>
+
+          <!-- Mobile-only second image -->
+          <img
+            src="/gaming-calculators/assets/images/45017c99d1ef188ab498c8c436000523.png"
+            alt="Roblox Economy"
+            class="mobile-second-image"
+            style="display: none"
+          />
 
           <div class="action-buttons">
             <button class="action-btn" id="copy-btn">Copy Result</button>
@@ -1475,6 +1742,7 @@
               <img
                 src="/gaming-calculators/assets/images/45017c99d1ef188ab498c8c436000523.png"
                 alt="Roblox Economy"
+                class="mobile-second-image"
                 style="
                   height: 7rem;
                   width: auto;
