@@ -186,21 +186,23 @@
       }
 
       :root {
-        --primary: #0066ff;
-        --primary-dark: #0052cc;
-        --secondary: #00d4aa;
-        --secondary-dark: #00a085;
-        --accent: #ff6b35;
-        --accent-light: #ff8c42;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --dark: #0a0e27;
-        --gray: #6b7280;
-        --light-gray: #f3f4f6;
-        --white: #ffffff;
-        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-        --shadow-color: rgba(6, 102, 255, 0.1);
+        /* Premium Restaurant/Hospitality Color Palette */
+        --primary: #722f37; /* deep burgundy/wine */
+        --primary-dark: #5a2329; /* darker wine */
+        --secondary: #d4af37; /* warm gold */
+        --secondary-dark: #b8941f; /* darker gold */
+        --accent: #b87333; /* copper */
+        --accent-light: #d4884a; /* lighter copper */
+        --success: #87a96b; /* sage green - good tip */
+        --warning: #e6b800; /* amber - okay tip */
+        --error: #c9302c; /* red - low tip */
+        --dark: #2b2b2b; /* charcoal */
+        --gray: #6c757d; /* neutral gray */
+        --light-gray: #f5f5f0; /* warm off-white */
+        --white: #faf6f0; /* cream */
+        --gradient: linear-gradient(135deg, #722f37 0%, #d4af37 100%);
+        --card-gradient: linear-gradient(145deg, #ffffff 0%, #faf6f0 100%);
+        --shadow-color: rgba(114, 47, 55, 0.15);
       }
 
       html {
@@ -209,12 +211,17 @@
 
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        background: linear-gradient(
-          135deg,
-          #f0f9ff 0%,
-          #e0f2fe 50%,
-          #f0fdfa 100%
-        );
+        background: var(--white); /* Warm cream background */
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(212, 175, 55, 0.03) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(114, 47, 55, 0.03) 0%,
+            transparent 50%
+          );
         min-height: 100vh;
         padding: 1rem 0rem 0 0rem;
         padding-top: 120px;
@@ -463,12 +470,12 @@
       /* Ad columns removed */
 
       .calculator-main {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: white;
+        border: 2px solid var(--secondary); /* Gold accent border */
+        border-top: 4px solid var(--secondary); /* Gold top border */
         border-radius: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
-          0 8px 24px rgba(6, 102, 255, 0.1), 0 16px 48px rgba(6, 102, 255, 0.08);
+          0 8px 24px var(--shadow-color), 0 16px 48px var(--shadow-color);
         overflow: hidden;
         position: relative;
         z-index: 1;
@@ -502,9 +509,10 @@
       .calculator-header h1 {
         font-size: 2.5rem;
         font-weight: 600;
-        color: var(--dark);
+        color: var(--primary);
         margin-bottom: 0.5rem;
         line-height: 1.2;
+        font-family: "Georgia", serif; /* Elegant serif font */
       }
 
       .calculator-header p {
@@ -521,18 +529,19 @@
         width: 100%;
         padding: 1.5rem;
         font-size: 2rem;
-        border: 2px solid transparent;
+        border: 2px solid var(--light-gray);
         border-radius: 12px;
         text-align: center;
-        background: linear-gradient(white, white) padding-box,
-          linear-gradient(135deg, #0066ff, #00d4aa) border-box;
+        background: var(--white); /* Cream background */
         transition: all 0.3s ease;
         font-weight: 600;
+        color: var(--dark);
       }
 
       .bill-input:focus {
         outline: none;
-        box-shadow: 0 0 20px rgba(6, 102, 255, 0.3);
+        border-color: var(--primary); /* Burgundy focus border */
+        box-shadow: 0 0 20px rgba(114, 47, 55, 0.2);
         transform: translateY(-2px);
       }
 
@@ -543,10 +552,11 @@
       .section-title {
         font-size: 1.5rem;
         font-weight: 600;
-        color: var(--dark);
+        color: var(--primary);
         margin-bottom: 1.5rem;
-        border-bottom: 2px solid var(--primary);
+        border-bottom: 2px solid var(--secondary);
         padding-bottom: 0.5rem;
+        font-family: "Georgia", serif; /* Elegant serif font */
       }
 
       .tip-buttons {
@@ -560,8 +570,9 @@
       .tip-btn {
         padding: 12px 24px;
         border-radius: 25px;
-        border: 2px solid #e5e7eb;
-        background: white;
+        border: 2px solid var(--light-gray);
+        background: var(--primary); /* Burgundy background */
+        color: var(--secondary); /* Gold text */
         cursor: pointer;
         transition: all 0.3s ease;
         font-weight: 600;
@@ -570,14 +581,16 @@
       }
 
       .tip-btn.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
+        background: var(--primary-dark); /* Darker burgundy when active */
+        color: var(--secondary);
+        border-color: var(--accent); /* Copper border when active */
       }
 
       .tip-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(6, 102, 255, 0.2);
+        background: var(--accent); /* Copper on hover */
+        color: white;
+        box-shadow: 0 4px 12px rgba(184, 115, 51, 0.3);
       }
 
       .tip-btn:active {
@@ -646,44 +659,61 @@
 
       /* Results Section */
       .results-section-prominent {
-        background: linear-gradient(135deg, #059669, #047857);
-        color: white;
+        background: white;
+        color: var(--dark);
         padding: 1.5rem;
-        border-radius: 16px;
+        border-radius: 8px;
         text-align: center;
         margin: 1.5rem 0;
-        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2),
-          0 8px 24px rgba(5, 150, 105, 0.15), 0 16px 48px rgba(5, 150, 105, 0.1);
+        border: 2px solid var(--secondary);
+        box-shadow: 0 4px 12px var(--shadow-color);
+        position: relative;
+        /* Receipt paper texture effect */
+        background-image: repeating-linear-gradient(
+          transparent,
+          transparent 2px,
+          rgba(114, 47, 55, 0.03) 2px,
+          rgba(114, 47, 55, 0.03) 4px
+        );
       }
 
       .results-section-prominent h2 {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1.5rem;
-        color: white;
+        color: var(--primary);
+        text-align: center;
+        font-family: "Georgia", serif; /* Elegant serif for restaurant feel */
       }
 
       .result-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
-        padding: 0.75rem 0;
+        margin-bottom: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px dotted var(--gray);
       }
 
       .result-item:last-child {
-        margin-bottom: 0;
+        border-top: 2px solid var(--secondary);
+        border-bottom: none;
+        padding-top: 1rem;
+        margin-top: 1rem;
+        font-weight: bold;
       }
 
       .results-section-prominent span:first-child {
         font-size: 1.1rem;
         font-weight: 500;
+        color: var(--dark);
       }
 
       .results-section-prominent .amount {
         font-size: 2.5rem;
         font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: var(--primary);
+        font-family: "Georgia", serif; /* Handwritten-style font for totals */
       }
 
       .results-section-prominent.calculating {
@@ -940,14 +970,14 @@
 
       @media (max-width: 768px) {
         body {
-          padding-top: 60px;
+          padding-top: 55px; /* Reduce from 60px */
           padding-left: 0.5rem;
           padding-right: 0.5rem;
-          padding-bottom: 0;
+          padding-bottom: 0.25rem; /* Minimal */
         }
 
         nav {
-          height: 60px;
+          height: 55px; /* Reduce from 60px */
           padding: 0.5rem 0;
         }
 
@@ -972,43 +1002,143 @@
           display: flex;
         }
 
+        /* ULTRA-MINIMAL HEADER */
+        .calculator-header-compact {
+          margin-bottom: 0.5rem; /* was 1rem */
+          padding: 0.5rem; /* Add compact padding */
+        }
+
+        .icon-wrapper {
+          font-size: 1.5rem; /* was 2rem */
+          margin-bottom: 0.25rem; /* was 0.5rem */
+        }
+
         .calculator-header-compact h1 {
-          font-size: 1.8rem;
+          font-size: 1.3rem; /* was 1.5rem */
+          margin-bottom: 0.15rem; /* was 0.25rem */
+          line-height: 1.1;
         }
 
+        .calculator-header-compact p {
+          font-size: 0.75rem; /* Make subtitle even smaller */
+          margin: 0;
+        }
+
+        /* Hide the "Last updated" text on mobile */
+        .calculator-header-compact p:first-of-type {
+          display: none;
+        }
+
+        /* Hide subtitle completely to save more space */
+        .calculator-header-compact p:last-of-type {
+          display: none;
+        }
+
+        /* ULTRA-COMPACT CALCULATOR CARD */
         .calculator-card {
-          padding: 1rem;
-          margin-bottom: 1rem;
+          padding: 0.5rem; /* was 0.75rem */
+          margin-bottom: 0.5rem; /* Minimal */
         }
 
-        .bill-input-section,
-        .tip-section,
-        .split-section {
-          margin-bottom: 1.5rem;
+        /* REMOVE SECTION TITLES */
+        .section-title {
+          display: none; /* Hide completely on mobile */
+        }
+
+        /* ULTRA-COMPACT BILL INPUT */
+        .bill-input-section {
+          margin-bottom: 0.5rem; /* was 1rem */
         }
 
         .bill-input {
-          font-size: 1.5rem;
-          padding: 1rem;
+          font-size: 1.3rem; /* was 1.5rem */
+          padding: 0.5rem 0.5rem 0.5rem 2.5rem; /* Tighter padding */
+          min-height: 50px; /* Ensure touch target */
+        }
+
+        /* Make $ symbol smaller */
+        .bill-input + span {
+          font-size: 1.5rem !important; /* was 2rem */
+          left: 0.75rem !important;
+        }
+
+        /* COMPACT TIP SECTION */
+        .tip-section {
+          margin-bottom: 0.5rem; /* was 1rem */
         }
 
         .tip-buttons {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.75rem;
+          display: flex; /* override grid */
+          flex-wrap: nowrap; /* don't wrap */
+          overflow-x: auto; /* allow horizontal scroll */
+          gap: 0.35rem; /* was 0.5rem */
+          padding-bottom: 0.25rem; /* Minimal scrollbar space */
+          -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
         }
 
         .tip-btn {
-          padding: 12px 20px;
-          font-size: 1rem;
+          padding: 6px 12px; /* was 8px 16px */
+          font-size: 0.85rem; /* was 0.9rem */
+          flex-shrink: 0; /* prevent shrinking */
+          min-width: 60px; /* was 70px */
+          min-height: 44px; /* Maintain touch target */
+        }
+
+        /* MINIMAL SPLIT CONTROLS */
+        .split-section {
+          margin-bottom: 0.5rem; /* was 1rem */
+        }
+
+        .split-controls {
+          gap: 0.75rem; /* Add if not present, reduce spacing */
+        }
+
+        .split-btn {
+          width: 32px; /* was 36px */
+          height: 32px; /* was 36px */
+          font-size: 1.1rem; /* was 1.25rem */
+          padding: 0; /* Minimal padding */
+        }
+
+        .split-number {
+          font-size: 1.1rem; /* was 1.25rem */
+          min-width: 40px; /* was 50px */
+        }
+
+        /* Hide the "Range: 1-20 people" text on mobile */
+        .split-section p {
+          display: none;
+        }
+
+        /* COMPACT RESULTS DISPLAY */
+        .results-section-prominent {
+          padding: 0.75rem; /* was 1rem */
+          margin: 0.5rem 0 0 0; /* was 1rem 0 0 0 */
+        }
+
+        .results-section-prominent h2 {
+          font-size: 1rem; /* was 1.2rem */
+          margin-bottom: 0.75rem; /* was 1rem */
+        }
+
+        .result-item {
+          margin-bottom: 0.5rem; /* was 0.75rem */
+          padding: 0.35rem 0; /* was 0.5rem */
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .result-item:last-child {
+          margin-bottom: 0; /* Remove margin on last item */
         }
 
         .results-section-prominent .amount {
-          font-size: 2.2rem;
+          font-size: 1.5rem; /* was 1.8rem */
         }
 
         .results-section-prominent span:first-child {
-          font-size: 1rem;
+          font-size: 0.85rem; /* was 0.9rem */
         }
 
         .mobile-ad-bottom {
@@ -1321,8 +1451,8 @@
       <main class="calculator-main">
         <div class="calculator-card">
           <div class="calculator-header">
-            <div class="icon-wrapper">💵</div>
-            <h1>Tip Calculator 2025</h1>
+            <div class="icon-wrapper">🧾</div>
+            <h1>Restaurant Tip Calculator</h1>
             <p
               style="
                 text-align: center;
@@ -1357,7 +1487,7 @@
                   left: 1rem;
                   top: 50%;
                   transform: translateY(-50%);
-                  color: var(--gray);
+                  color: var(--secondary);
                   font-size: 2rem;
                   font-weight: 600;
                 "
@@ -1396,7 +1526,7 @@
 
           <!-- Results Section -->
           <div class="results-section-prominent" id="resultsSection">
-            <h2>Results</h2>
+            <h2>Receipt</h2>
             <div class="result-item">
               <span>Tip Amount:</span>
               <span class="amount" id="tipAmount">$0.00</span>
@@ -1408,6 +1538,37 @@
             <div class="result-item">
               <span>Per Person:</span>
               <span class="amount" id="perPerson">$0.00</span>
+            </div>
+            <div
+              class="tip-rating"
+              id="tipRating"
+              style="
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px dotted var(--gray);
+              "
+            >
+              <div
+                style="
+                  font-size: 0.9rem;
+                  color: var(--gray);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Tip Quality:
+              </div>
+              <div id="starsDisplay" style="font-size: 1.2rem"></div>
+            </div>
+            <div
+              class="thank-you"
+              style="
+                margin-top: 1rem;
+                font-style: italic;
+                color: var(--primary);
+                font-size: 0.9rem;
+              "
+            >
+              Thank you for dining with us!
             </div>
           </div>
         </div>
@@ -1890,6 +2051,9 @@
         animateValue("tipAmount", tipAmount, 500);
         animateValue("totalAmount", total, 500);
         animateValue("perPerson", perPerson, 500);
+
+        // Update star rating
+        updateStarRating(tipPercent);
       }
 
       function updateResultsColor(tipPercent) {
@@ -1897,19 +2061,36 @@
           ".results-section-prominent"
         );
 
-        if (tipPercent >= 20) {
-          // Generous - Rich green
-          resultsSection.style.background =
-            "linear-gradient(135deg, #10b981, #059669)";
+        // Remove old color classes and reset to restaurant theme
+        resultsSection.style.background = "white";
+        resultsSection.style.border = "2px solid var(--secondary)";
+      }
+
+      function updateStarRating(tipPercent) {
+        const starsDisplay = document.getElementById("starsDisplay");
+        if (!starsDisplay) return;
+
+        let stars = "";
+        let rating = "";
+
+        if (tipPercent >= 25) {
+          stars = "⭐⭐⭐⭐⭐";
+          rating = "Excellent";
+        } else if (tipPercent >= 20) {
+          stars = "⭐⭐⭐⭐";
+          rating = "Very Good";
         } else if (tipPercent >= 15) {
-          // Standard - Medium green
-          resultsSection.style.background =
-            "linear-gradient(135deg, #3b82f6, #2563eb)";
+          stars = "⭐⭐⭐";
+          rating = "Good";
+        } else if (tipPercent >= 10) {
+          stars = "⭐⭐";
+          rating = "Fair";
         } else {
-          // Low - Neutral blue
-          resultsSection.style.background =
-            "linear-gradient(135deg, #6366f1, #4f46e5)";
+          stars = "⭐";
+          rating = "Poor";
         }
+
+        starsDisplay.innerHTML = `${stars} ${rating}`;
       }
 
       function animateValue(elementId, endValue, duration) {
