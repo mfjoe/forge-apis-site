@@ -1058,6 +1058,11 @@
           display: none;
         }
 
+        /* Hide calculator info box on mobile */
+        .calculator-info-box {
+          display: none;
+        }
+
         /* Show floating guide button on mobile */
         .floating-guide-btn {
           display: flex !important;
@@ -1234,6 +1239,12 @@
         }
 
         /* Mobile ad placeholders removed */
+
+        /* Mobile responsive for disability ratings two-column layout */
+        #ratings-tab > div {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+        }
       }
 
       .hidden {
@@ -2261,39 +2272,13 @@
       </div>
     </nav>
 
-    <!-- Quick Stats Section -->
-    <div class="quick-stats">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-icon">💰</span>
-          <div class="stat-value">$3,737.85</div>
-          <div class="stat-label">2025 Max Monthly</div>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">💑</span>
-          <div class="stat-value">+$208.41</div>
-          <div class="stat-label">With Spouse</div>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">👶</span>
-          <div class="stat-value">+$31-$137</div>
-          <div class="stat-label">Per Child</div>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">🎖️</span>
-          <div class="stat-value">5.2M+</div>
-          <div class="stat-label">Veterans Served</div>
-        </div>
-      </div>
-    </div>
-
     <!-- Calculator Layout -->
     <div class="calculator-wrapper">
       <!-- Main Calculator -->
       <main class="calculator-main">
         <div class="calculator-card">
           <div class="calculator-header-compact">
-            <h1>VA Disability Calculator 2025</h1>
+            <h1>Veterans Affairs Disability Calculator 2025</h1>
             <p
               style="
                 text-align: center;
@@ -2306,30 +2291,6 @@
               Last updated: January 2025 | Using official 2025 VA compensation
               rates (3.2% COLA increase)
             </p>
-            <p>Calculate Your Monthly Compensation</p>
-            <div class="trust-badge">
-              <span class="checkmark">✓</span>
-              <span>2025 Official Rates</span>
-              <span class="separator">•</span>
-              <span>Accurate VA Formula</span>
-              <span class="separator">•</span>
-              <span>Verified Monthly</span>
-            </div>
-            <div class="introduction-box">
-              <p>
-                Calculate your monthly VA disability compensation using the
-                latest 2025 rates. Enter your disability ratings and dependent
-                information to get an accurate estimate.
-                <a href="#complete-guide">Learn more about VA disability ↓</a>
-              </p>
-            </div>
-            <div class="instructions">
-              <p>
-                <strong>How to use:</strong> Enter your disability ratings in
-                the first tab, then add any dependents in the second tab. Your
-                monthly compensation will update automatically.
-              </p>
-            </div>
           </div>
 
           <!-- Tab Interface -->
@@ -2347,30 +2308,51 @@
               <!-- Disability Ratings Tab -->
               <div class="tab-panel active" id="ratings-tab">
                 <h2 class="section-title">Disability Ratings</h2>
-                <div class="disability-inputs" id="disabilityInputs">
-                  <!-- Disability inputs will be generated here -->
-                </div>
-                <button class="add-disability-btn" id="addDisabilityBtn">
-                  <span>🎖️</span>
-                  Add Disability Rating
-                </button>
 
-                <!-- Combined Rating Display - Compact -->
-                <div class="combined-rating-compact" id="combinedRatingDisplay">
-                  <div class="rating-summary">
-                    <span class="rating-label">Combined Rating:</span>
-                    <span class="rating-number" id="ratingNumber">0%</span>
+                <!-- Two-column layout for disability ratings -->
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                    align-items: start;
+                  "
+                >
+                  <!-- Left Column: Disability Inputs -->
+                  <div>
+                    <div class="disability-inputs" id="disabilityInputs">
+                      <!-- Disability inputs will be generated here -->
+                    </div>
                   </div>
-                  <div class="progress-bar">
+
+                  <!-- Right Column: Add Button and Combined Rating -->
+                  <div>
+                    <button class="add-disability-btn" id="addDisabilityBtn">
+                      <span>🎖️</span>
+                      Add Disability Rating
+                    </button>
+
+                    <!-- Combined Rating Display - Compact -->
                     <div
-                      class="progress-fill"
-                      id="progressFill"
-                      style="width: 0%"
-                    ></div>
+                      class="combined-rating-compact"
+                      id="combinedRatingDisplay"
+                    >
+                      <div class="rating-summary">
+                        <span class="rating-label">Combined Rating:</span>
+                        <span class="rating-number" id="ratingNumber">0%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill"
+                          id="progressFill"
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                      <p id="ratingExplanation">
+                        Add your disability ratings to see your combined rating
+                      </p>
+                    </div>
                   </div>
-                  <p id="ratingExplanation">
-                    Add your disability ratings to see your combined rating
-                  </p>
                 </div>
               </div>
 
@@ -2487,14 +2469,98 @@
       </main>
     </div>
 
+    <!-- Calculator Information Box -->
+    <div
+      class="calculator-info-box"
+      style="max-width: 1200px; width: 100%; margin: 2rem auto; padding: 0 1rem"
+    >
+      <div
+        style="
+          background: white;
+          padding: 2rem;
+          border-radius: 6px;
+          border: 2px solid var(--accent);
+          box-shadow: 0 4px 12px rgba(0, 40, 104, 0.1);
+        "
+      >
+        <div style="text-align: center; margin-bottom: 1.5rem">
+          <div
+            class="trust-badge"
+            style="display: inline-flex; justify-content: center; margin: 0"
+          >
+            <span class="checkmark">✓</span>
+            <span>2025 Official Rates</span>
+            <span class="separator">•</span>
+            <span>Accurate VA Formula</span>
+            <span class="separator">•</span>
+            <span>Verified Monthly</span>
+          </div>
+        </div>
+
+        <div
+          style="
+            text-align: center;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+          "
+        >
+          <p style="margin-bottom: 1rem; font-size: 16px">
+            Calculate your monthly VA disability compensation using the latest
+            2025 rates. Enter your disability ratings and dependent information
+            to get an accurate estimate.
+            <a
+              href="#complete-guide"
+              style="
+                color: var(--primary);
+                font-weight: 600;
+                text-decoration: none;
+              "
+              >Learn more about VA disability ↓</a
+            >
+          </p>
+
+          <p style="margin: 0; font-size: 15px">
+            <strong style="color: var(--dark)">How to use:</strong> Enter your
+            disability ratings in the first tab, then add any dependents in the
+            second tab. Your monthly compensation will update automatically.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats Section -->
+    <div class="quick-stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">💰</span>
+          <div class="stat-value">$3,737.85</div>
+          <div class="stat-label">2025 Max Monthly</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">💑</span>
+          <div class="stat-value">+$208.41</div>
+          <div class="stat-label">With Spouse</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">👶</span>
+          <div class="stat-value">+$31-$137</div>
+          <div class="stat-label">Per Child</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🎖️</span>
+          <div class="stat-value">5.2M+</div>
+          <div class="stat-label">Veterans Served</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile Guide Toggle Button -->
-    <button class="mobile-guide-toggle" onclick="toggleMobileGuide()">
-      📖 Show Complete VA Disability Guide
-    </button>
 
     <!-- Comprehensive Guide Section -->
     <div id="complete-guide" class="comprehensive-guide">
-      <h2>Complete VA Disability Guide</h2>
+      <h2>Complete Veterans Affairs Disability Guide</h2>
 
       <details class="guide-section">
         <summary>How VA Disability Compensation Works</summary>
