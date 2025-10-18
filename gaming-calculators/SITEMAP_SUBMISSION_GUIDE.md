@@ -2,7 +2,7 @@
 
 ## 📍 Sitemap Location
 
-- **URL**: `https://forgeapi.dev/gaming-calculators/sitemap.xml`
+- **URL**: `https://forgeapis.com/gaming-calculators/sitemap.xml`
 - **File**: `gaming-calculators/sitemap.xml`
 
 ## 🎯 Sitemap Structure
@@ -27,7 +27,7 @@
 
 1. Go to [Google Search Console](https://search.google.com/search-console/)
 2. Sign in with your Google account
-3. Select your property: `forgeapi.dev`
+3. Select your property: `forgeapis.com`
 
 ### 2. Submit the Sitemap
 

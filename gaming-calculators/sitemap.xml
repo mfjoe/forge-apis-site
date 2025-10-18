@@ -3,7 +3,7 @@
   
   <!-- Gaming Calculators Hub Page -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -13,7 +13,7 @@
   
   <!-- Robux Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/robux/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/robux/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -21,7 +21,7 @@
   
   <!-- V-Bucks Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/vbucks/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/vbucks/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -29,7 +29,7 @@
   
   <!-- Minecoins Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/minecoins/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/minecoins/</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -37,7 +37,7 @@
   
   <!-- FIFA Points Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/fifa-points/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/fifa-points/</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -45,7 +45,7 @@
   
   <!-- COD Points Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/cod-points/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/cod-points/</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -53,7 +53,7 @@
   
   <!-- Apex Coins Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/apex-coins/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/apex-coins/</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -63,7 +63,7 @@
   
   <!-- Robux Tax Calculator -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/robux/tax-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/robux/tax-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -71,7 +71,7 @@
   
   <!-- V-Bucks Battle Pass Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/vbucks/battle-pass-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/vbucks/battle-pass-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -79,7 +79,7 @@
   
   <!-- Robux DevEx Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/robux/devex-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/robux/devex-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -87,7 +87,7 @@
   
   <!-- Robux Group Payout Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/robux/group-payout-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/robux/group-payout-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -95,7 +95,7 @@
   
   <!-- Minecoins Realms Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/minecoins/realms-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/minecoins/realms-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -103,7 +103,7 @@
   
   <!-- FIFA Ultimate Team Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/fifa-points/ultimate-team-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/fifa-points/ultimate-team-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -111,7 +111,7 @@
   
   <!-- COD Battle Pass Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/cod-points/battle-pass-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/cod-points/battle-pass-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -119,7 +119,7 @@
   
   <!-- Apex Legends Season Pass Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/apex-coins/season-pass-calculator.html</loc>
+    <loc>https://forgeapis.com/gaming-calculators/apex-coins/season-pass-calculator.html</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -129,7 +129,7 @@
   
   <!-- Currency Comparison Calculator (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/compare/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/compare/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -139,7 +139,7 @@
   
   <!-- Rate Updates Page (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/rate-updates/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/rate-updates/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -147,7 +147,7 @@
   
   <!-- Gaming Currency Guide (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/guide/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/guide/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -157,7 +157,7 @@
   
   <!-- Gaming Calculator API (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/api/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/api/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -165,7 +165,7 @@
   
   <!-- Widget Embed Code (Planned) -->
   <url>
-    <loc>https://forgeapi.dev/gaming-calculators/embed/</loc>
+    <loc>https://forgeapis.com/gaming-calculators/embed/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

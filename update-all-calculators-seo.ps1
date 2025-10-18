@@ -258,19 +258,19 @@ function Generate-BreadcrumbSchema {
                 "@type" = "ListItem"
                 "position" = 1
                 "name" = "Home"
-                "item" = "https://forgeapi.dev/"
+                "item" = "https://forgeapis.com/"
             },
             @{
                 "@type" = "ListItem"
                 "position" = 2
                 "name" = "Gaming Calculators"
-                "item" = "https://forgeapi.dev/gaming-calculators/"
+                "item" = "https://forgeapis.com/gaming-calculators/"
             },
             @{
                 "@type" = "ListItem"
                 "position" = 3
                 "name" = $calculatorName
-                "item" = "https://forgeapi.dev/gaming-calculators/$($calculatorName.ToLower())/"
+                "item" = "https://forgeapis.com/gaming-calculators/$($calculatorName.ToLower())/"
             }
         )
     }
@@ -287,7 +287,7 @@ function Generate-WebAppSchema {
         "@type" = "WebApplication"
         "name" = $calculator.name
         "description" = $calculator.description
-        "url" = "https://forgeapi.dev/gaming-calculators/$($calculator.name.ToLower().Replace(' ', '-'))/"
+        "url" = "https://forgeapis.com/gaming-calculators/$($calculator.name.ToLower().Replace(' ', '-'))/"
         "applicationCategory" = "UtilityApplication"
         "operatingSystem" = "Web Browser"
         "offers" = @{
