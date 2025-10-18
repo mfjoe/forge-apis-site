@@ -79,7 +79,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="theme-color" content="#0066ff" />
+    <meta name="theme-color" content="#0891b2" />
 
     <!-- Open Graph Meta Tags -->
     <meta
@@ -186,23 +186,22 @@
       }
 
       :root {
-        /* Premium Restaurant/Hospitality Color Palette */
-        --primary: #722f37; /* deep burgundy/wine */
-        --primary-dark: #5a2329; /* darker wine */
-        --secondary: #d4af37; /* warm gold */
-        --secondary-dark: #b8941f; /* darker gold */
-        --accent: #b87333; /* copper */
-        --accent-light: #d4884a; /* lighter copper */
-        --success: #87a96b; /* sage green - good tip */
-        --warning: #e6b800; /* amber - okay tip */
-        --error: #c9302c; /* red - low tip */
-        --dark: #2b2b2b; /* charcoal */
-        --gray: #6c757d; /* neutral gray */
-        --light-gray: #f5f5f0; /* warm off-white */
-        --white: #faf6f0; /* cream */
-        --gradient: linear-gradient(135deg, #722f37 0%, #d4af37 100%);
-        --card-gradient: linear-gradient(145deg, #ffffff 0%, #faf6f0 100%);
-        --shadow-color: rgba(114, 47, 55, 0.15);
+        /* Modern Clean Theme - Balanced Minimal & Social */
+        --primary: #0891b2; /* deep teal */
+        --primary-dark: #0e7490; /* darker teal */
+        --secondary: #fb7185; /* coral/salmon pink */
+        --accent: #38bdf8; /* sky blue */
+        --success: #16a34a; /* forest green */
+        --warning: #f59e0b; /* amber */
+        --error: #ef4444; /* red */
+        --dark: #334155; /* slate */
+        --gray: #78716c; /* warm gray */
+        --light-gray: #f5f5f4; /* warm off-white */
+        --white: #fafaf9; /* soft white */
+        --gradient: linear-gradient(135deg, #0891b2 0%, #38bdf8 100%);
+        --card-gradient: linear-gradient(145deg, #ffffff 0%, #fafaf9 100%);
+        --shadow-color: rgba(0, 0, 0, 0.06);
+        --shadow-medium: rgba(0, 0, 0, 0.1);
       }
 
       html {
@@ -210,46 +209,21 @@
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--white); /* Warm cream background */
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--white);
         background-image: radial-gradient(
-            circle at 25% 25%,
-            rgba(212, 175, 55, 0.03) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 75% 75%,
-            rgba(114, 47, 55, 0.03) 0%,
-            transparent 50%
-          );
+          circle at 25% 25%,
+          rgba(8, 145, 178, 0.03) 0%,
+          transparent 50%
+        );
         min-height: 100vh;
-        padding: 1rem 0rem 0 0rem;
+        padding: 0;
         padding-top: 120px;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-            circle at 20% 50%,
-            rgba(6, 102, 255, 0.05) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 80%,
-            rgba(0, 212, 170, 0.05) 0%,
-            transparent 50%
-          );
-        pointer-events: none;
-        z-index: 0;
       }
 
       .container {
@@ -471,14 +445,23 @@
 
       .calculator-main {
         background: white;
-        border: 2px solid var(--secondary); /* Gold accent border */
-        border-top: 4px solid var(--secondary); /* Gold top border */
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
-          0 8px 24px var(--shadow-color), 0 16px 48px var(--shadow-color);
+        border: 1px solid var(--primary);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px var(--shadow-color),
+          0 4px 8px rgba(8, 145, 178, 0.04);
         overflow: hidden;
         position: relative;
         z-index: 1;
+      }
+
+      .calculator-main::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient);
       }
 
       .calculator-card {
@@ -493,31 +476,24 @@
       .icon-wrapper {
         font-size: 3rem;
         margin-bottom: 1rem;
-        animation: float 3s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+        animation: none;
+        display: none;
       }
 
       .calculator-header h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 600;
-        color: var(--primary);
+        color: var(--dark);
         margin-bottom: 0.5rem;
         line-height: 1.2;
-        font-family: "Georgia", serif; /* Elegant serif font */
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
       }
 
       .calculator-header p {
         color: var(--gray);
-        font-size: 1.1rem;
+        font-size: 1rem;
+        font-weight: 400;
       }
 
       /* Tip Calculator Specific Styles */
@@ -527,22 +503,24 @@
 
       .bill-input {
         width: 100%;
-        padding: 1.5rem;
+        padding: 1rem;
         font-size: 2rem;
-        border: 2px solid var(--light-gray);
-        border-radius: 12px;
+        border: 2px solid transparent;
+        border-radius: 8px;
         text-align: center;
-        background: var(--white); /* Cream background */
-        transition: all 0.3s ease;
-        font-weight: 600;
+        background: var(--light-gray);
+        transition: all 0.2s ease;
+        font-weight: 500;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
         color: var(--dark);
       }
 
       .bill-input:focus {
         outline: none;
-        border-color: var(--primary); /* Burgundy focus border */
-        box-shadow: 0 0 20px rgba(114, 47, 55, 0.2);
-        transform: translateY(-2px);
+        border-color: var(--primary);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+        transform: translateY(-1px);
       }
 
       .tip-section {
@@ -550,13 +528,14 @@
       }
 
       .section-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-        border-bottom: 2px solid var(--secondary);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--light-gray);
         padding-bottom: 0.5rem;
-        font-family: "Georgia", serif; /* Elegant serif font */
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
       }
 
       .tip-buttons {
@@ -568,50 +547,35 @@
       }
 
       .tip-btn {
-        padding: 12px 24px;
-        border-radius: 25px;
-        border: 2px solid var(--light-gray);
-        background: var(--primary); /* Burgundy background */
-        color: var(--secondary); /* Gold text */
+        padding: 0.875rem 1.5rem;
+        border-radius: 6px;
+        border: 1px solid var(--primary);
+        background: var(--primary);
+        color: var(--white);
         cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
+        transition: all 0.2s ease;
+        font-weight: 500;
         font-size: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
-      }
-
-      .tip-btn.active {
-        background: var(--primary-dark); /* Darker burgundy when active */
-        color: var(--secondary);
-        border-color: var(--accent); /* Copper border when active */
+        box-shadow: 0 1px 3px var(--shadow-color);
+        min-width: 70px;
+        min-height: 48px;
       }
 
       .tip-btn:hover {
-        transform: translateY(-2px);
-        background: var(--accent); /* Copper on hover */
-        color: white;
-        box-shadow: 0 4px 12px rgba(184, 115, 51, 0.3);
-      }
-
-      .tip-btn:active {
-        transform: scale(0.95);
-        transition: transform 0.1s;
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px var(--shadow-color);
       }
 
       .tip-btn.active {
-        animation: pulse 0.5s ease-out;
+        background: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--white);
+        box-shadow: 0 2px 6px rgba(251, 113, 133, 0.3);
       }
 
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
+      .tip-btn:active {
+        transform: scale(0.98);
       }
 
       .split-section {
@@ -626,35 +590,43 @@
       }
 
       .split-btn {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         background: var(--primary);
         color: white;
         font-size: 1.5rem;
+        font-weight: 500;
         border: none;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 4px rgba(6, 102, 255, 0.2),
-          0 4px 8px rgba(6, 102, 255, 0.1);
+        box-shadow: 0 2px 4px var(--shadow-color);
       }
 
       .split-btn:hover {
         background: var(--primary-dark);
-        transform: scale(1.1) rotate(5deg);
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 12px rgba(6, 102, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      .split-btn:active {
+        transform: scale(0.95);
       }
 
       .split-number {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 600;
-        color: var(--dark);
-        min-width: 60px;
+        color: var(--white);
+        min-width: 70px;
         text-align: center;
+        background: var(--secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        border: none;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        box-shadow: 0 2px 6px rgba(251, 113, 133, 0.3);
       }
 
       /* Results Section */
@@ -664,26 +636,33 @@
         padding: 1.5rem;
         border-radius: 8px;
         text-align: center;
-        margin: 1.5rem 0;
-        border: 2px solid var(--secondary);
-        box-shadow: 0 4px 12px var(--shadow-color);
+        margin: 2rem 0;
+        border: 1px solid var(--light-gray);
+        box-shadow: 0 2px 4px var(--shadow-color);
         position: relative;
-        /* Receipt paper texture effect */
-        background-image: repeating-linear-gradient(
-          transparent,
-          transparent 2px,
-          rgba(114, 47, 55, 0.03) 2px,
-          rgba(114, 47, 55, 0.03) 4px
-        );
+      }
+
+      .results-section-prominent::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gradient);
+        border-radius: 8px 0 0 8px;
       }
 
       .results-section-prominent h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 600;
-        margin-bottom: 1.5rem;
-        color: var(--primary);
+        margin-bottom: 1rem;
+        color: var(--dark);
         text-align: center;
-        font-family: "Georgia", serif; /* Elegant serif for restaurant feel */
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+        border-bottom: 2px solid var(--light-gray);
+        padding-bottom: 0.5rem;
       }
 
       .result-item {
@@ -691,47 +670,48 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 0.75rem;
-        padding: 0.5rem 0;
-        border-bottom: 1px dotted var(--gray);
+        padding: 0.875rem 1rem;
+        background: var(--light-gray);
+        border-radius: 6px;
+        border: none;
       }
 
       .result-item:last-child {
-        border-top: 2px solid var(--secondary);
-        border-bottom: none;
-        padding-top: 1rem;
+        background: var(--success);
+        border: none;
+        padding: 1.25rem 1rem;
         margin-top: 1rem;
         font-weight: bold;
+        color: var(--white);
+        box-shadow: 0 3px 8px rgba(22, 163, 74, 0.3);
       }
 
       .results-section-prominent span:first-child {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--dark);
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--gray);
+      }
+
+      .result-item:last-child span:first-child {
+        color: var(--white);
+        font-weight: 600;
       }
 
       .results-section-prominent .amount {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--primary);
-        font-family: "Georgia", serif; /* Handwritten-style font for totals */
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--dark);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      .result-item:last-child .amount {
+        color: var(--white);
+        font-size: 2rem;
+        font-weight: 700;
       }
 
       .results-section-prominent.calculating {
-        animation: shimmer 0.6s ease-out;
-      }
-
-      @keyframes shimmer {
-        0% {
-          opacity: 0.8;
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.02);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
+        animation: none;
       }
 
       /* Content Sections */
