@@ -439,6 +439,12 @@
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Desktop Sidebar - Hidden by default */
+      .desktop-sidebar {
+        display: none;
       }
 
       /* Ad columns removed */
@@ -1171,6 +1177,227 @@
           gap: 40px;
         }
       }
+
+      /* Desktop Enhancements (969px and up) */
+      @media (min-width: 969px) {
+        /* Two-column layout for desktop */
+        .calculator-wrapper {
+          grid-template-columns: 1fr 400px;
+          gap: 2rem;
+          align-items: start;
+        }
+
+        /* Show sidebar on desktop */
+        .desktop-sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          position: sticky;
+          top: 100px;
+          max-height: calc(100vh - 120px);
+          overflow-y: auto;
+        }
+
+        /* Sidebar Card Styles */
+        .sidebar-card {
+          background: white;
+          border-radius: 12px;
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px var(--shadow-color);
+          border: 1px solid rgba(8, 145, 178, 0.1);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sidebar-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px var(--shadow-medium);
+        }
+
+        .sidebar-card-title {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--dark);
+          margin-bottom: 1rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 2px solid var(--light-gray);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        /* Tip Comparison Table */
+        .comparison-table {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .comparison-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem;
+          background: var(--light-gray);
+          border-radius: 6px;
+          transition: all 0.2s ease;
+        }
+
+        .comparison-row.active {
+          background: var(--primary);
+          color: white;
+          font-weight: 600;
+          box-shadow: 0 2px 6px rgba(8, 145, 178, 0.3);
+        }
+
+        .comparison-row:not(.active):hover {
+          background: #e7e5e4;
+        }
+
+        .comparison-label {
+          font-weight: 500;
+          font-size: 0.95rem;
+        }
+
+        .comparison-row.active .comparison-label {
+          color: white;
+        }
+
+        .comparison-values {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 0.15rem;
+        }
+
+        .comparison-total {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .comparison-tip {
+          font-size: 0.8rem;
+          opacity: 0.8;
+        }
+
+        /* Bill Split Visualizer */
+        .split-visualizer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 0;
+        }
+
+        .people-icons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.75rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .person-icon {
+          font-size: 2rem;
+          animation: personPop 0.3s ease;
+          position: relative;
+        }
+
+        @keyframes personPop {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        .split-summary {
+          text-align: center;
+          padding: 1rem;
+          background: var(--light-gray);
+          border-radius: 8px;
+          width: 100%;
+        }
+
+        .split-summary-amount {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.25rem;
+        }
+
+        .split-summary-label {
+          font-size: 0.9rem;
+          color: var(--gray);
+        }
+
+        /* Quick Reference Card */
+        .reference-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .reference-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          background: var(--light-gray);
+          border-radius: 6px;
+          transition: background 0.2s ease;
+        }
+
+        .reference-item:hover {
+          background: #e7e5e4;
+        }
+
+        .ref-icon {
+          font-size: 1.5rem;
+          flex-shrink: 0;
+        }
+
+        .ref-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
+          flex: 1;
+        }
+
+        .ref-content strong {
+          color: var(--dark);
+          font-size: 0.95rem;
+        }
+
+        .ref-content span {
+          color: var(--primary);
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+
+        /* Smooth scrollbar for sidebar */
+        .desktop-sidebar::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .desktop-sidebar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .desktop-sidebar::-webkit-scrollbar-thumb {
+          background: var(--primary);
+          border-radius: 3px;
+        }
+
+        .desktop-sidebar::-webkit-scrollbar-thumb:hover {
+          background: var(--primary-dark);
+        }
+      }
     </style>
 
     <!-- Google Analytics -->
@@ -1553,6 +1780,74 @@
           </div>
         </div>
       </main>
+
+      <!-- Desktop Sidebar (hidden on mobile) -->
+      <aside class="desktop-sidebar">
+        <!-- Tip Comparison Table -->
+        <div class="sidebar-card comparison-card">
+          <h3 class="sidebar-card-title">💡 Compare Tip Amounts</h3>
+          <div class="comparison-table" id="comparisonTable">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Bill Split Visualizer -->
+        <div class="sidebar-card visualizer-card">
+          <h3 class="sidebar-card-title">👥 Bill Split</h3>
+          <div class="split-visualizer" id="splitVisualizer">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Quick Reference Card -->
+        <div class="sidebar-card reference-card">
+          <h3 class="sidebar-card-title">📋 Quick Tipping Guide</h3>
+          <div class="reference-list">
+            <div class="reference-item">
+              <span class="ref-icon">🍽️</span>
+              <div class="ref-content">
+                <strong>Restaurants</strong>
+                <span>15-20%</span>
+              </div>
+            </div>
+            <div class="reference-item">
+              <span class="ref-icon">🚗</span>
+              <div class="ref-content">
+                <strong>Delivery</strong>
+                <span>15-20%</span>
+              </div>
+            </div>
+            <div class="reference-item">
+              <span class="ref-icon">🍺</span>
+              <div class="ref-content">
+                <strong>Bartenders</strong>
+                <span>$1-2 per drink</span>
+              </div>
+            </div>
+            <div class="reference-item">
+              <span class="ref-icon">💇</span>
+              <div class="ref-content">
+                <strong>Hairdressers</strong>
+                <span>15-20%</span>
+              </div>
+            </div>
+            <div class="reference-item">
+              <span class="ref-icon">🚕</span>
+              <div class="ref-content">
+                <strong>Taxi/Rideshare</strong>
+                <span>10-15%</span>
+              </div>
+            </div>
+            <div class="reference-item">
+              <span class="ref-icon">🏨</span>
+              <div class="ref-content">
+                <strong>Hotel Staff</strong>
+                <span>$2-5 per service</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
 
     <!-- Content Sections -->
@@ -2034,6 +2329,10 @@
 
         // Update star rating
         updateStarRating(tipPercent);
+
+        // Update desktop sidebar components
+        updateComparisonTable(billAmount, people);
+        updateSplitVisualizer(people, perPerson);
       }
 
       function updateResultsColor(tipPercent) {
@@ -2163,6 +2462,62 @@
             localStorage.removeItem("tipCalculatorPrefs");
           }
         }
+      }
+
+      function updateComparisonTable(billAmount, people) {
+        const comparisonTable = document.getElementById("comparisonTable");
+        if (!comparisonTable) return;
+
+        const percentages = [10, 15, 18, 20, 25];
+        let html = "";
+
+        percentages.forEach((percent) => {
+          const tipAmount = billAmount * (percent / 100);
+          const total = billAmount + tipAmount;
+          const perPerson = total / people;
+          const isActive = percent === currentTipPercent;
+
+          html += `
+            <div class="comparison-row ${isActive ? "active" : ""}">
+              <span class="comparison-label">${percent}% Tip</span>
+              <div class="comparison-values">
+                <span class="comparison-total">${formatCurrency(
+                  perPerson
+                )}</span>
+                <span class="comparison-tip">per person</span>
+              </div>
+            </div>
+          `;
+        });
+
+        comparisonTable.innerHTML = html;
+      }
+
+      function updateSplitVisualizer(people, perPerson) {
+        const splitVisualizer = document.getElementById("splitVisualizer");
+        if (!splitVisualizer) return;
+
+        // Generate person icons
+        const icons = [];
+        const iconVariations = ["👤", "👥"];
+        for (let i = 0; i < people; i++) {
+          // Use single person icon for clarity
+          icons.push('<span class="person-icon">👤</span>');
+        }
+
+        const html = `
+          <div class="people-icons">
+            ${icons.join("")}
+          </div>
+          <div class="split-summary">
+            <div class="split-summary-amount">${formatCurrency(perPerson)}</div>
+            <div class="split-summary-label">per person${
+              people > 1 ? ` (${people} people)` : ""
+            }</div>
+          </div>
+        `;
+
+        splitVisualizer.innerHTML = html;
       }
 
       function toggleFAQ(element) {
