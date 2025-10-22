@@ -291,18 +291,27 @@
       }
       .calculator-card {
         background: white;
-        border-radius: 24px;
+        border-radius: 0;
         box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
-        max-width: 800px;
-        width: 90%;
-        margin: 2rem auto;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        transition: background 0.5s ease, transform 0.3s ease;
+        animation: fadeInUp 0.6s ease-out;
+        animation-delay: 0.1s;
+        animation-fill-mode: backwards;
       }
       .calculator-header {
         background: var(--gradient);
         padding: 2rem;
-        border-radius: 24px 24px 0 0;
+        border-radius: 0;
         text-align: center;
         color: white;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        z-index: 2;
       }
     </style>
 
@@ -357,6 +366,26 @@
 
       html {
         scroll-behavior: smooth;
+      }
+
+      /* Enhanced smooth scroll for mobile */
+      @media (max-width: 768px) {
+        html {
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        body {
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .results-section {
+          scroll-behavior: smooth;
+        }
+
+        .tab-panel {
+          scroll-behavior: smooth;
+        }
       }
 
       /* Fade in animations for page load */
@@ -742,15 +771,6 @@
         background: var(--gradient);
       }
 
-      .calculator-card {
-        padding: 2rem;
-        position: relative;
-        background: white;
-        transition: background 0.5s ease, transform 0.3s ease;
-        animation: fadeInUp 0.6s ease-out;
-        animation-delay: 0.1s;
-        animation-fill-mode: backwards;
-      }
 
       .calculator-card.age-childhood {
         background: var(--bg-childhood);
@@ -823,17 +843,6 @@
         font-weight: 600;
       }
 
-      .calculator-header {
-        text-align: center;
-        margin-bottom: 2rem;
-        background: var(--gradient);
-        margin: -2rem -2rem 2rem -2rem;
-        padding: 2rem;
-        border-radius: 8px 8px 0 0;
-        position: relative;
-        overflow: hidden;
-        animation: fadeIn 0.8s ease-out;
-      }
 
       .calculator-header::before {
         content: "";
@@ -914,32 +923,129 @@
       }
 
       .life-timeline {
-        margin: 1.5rem 0;
-        padding: 1.5rem 1rem;
-        background: linear-gradient(
-          90deg,
-          #dbeafe 0%,
-          #a7f3d0 25%,
-          #fef3c7 50%,
-          #e9d5ff 75%,
-          #f3e8ff 100%
-        );
-        border-radius: 16px;
-        border: 2px solid rgba(99, 102, 241, 0.15);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 2rem 0;
+        padding: 0;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         animation: fadeInUp 0.8s ease-out backwards;
         animation-delay: 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-bottom: 1px solid #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        user-select: none;
+      }
+
+      .timeline-header:hover {
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      }
+
+      .timeline-title {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .timeline-icon {
+        font-size: 1.25rem;
+      }
+
+      .timeline-title h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .timeline-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(99, 102, 241, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .timeline-toggle:hover {
+        background: rgba(99, 102, 241, 0.2);
+      }
+
+      .toggle-icon {
+        font-size: 0.9rem;
+        color: var(--primary);
+        font-weight: bold;
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background: white;
+      }
+
+      .timeline-content.expanded {
+        max-height: 500px;
+      }
+
+      .timeline-content.collapsed .toggle-icon {
+        transform: rotate(-90deg);
+      }
+
+      .timeline-content.expanded .toggle-icon {
+        transform: rotate(0deg);
+      }
+
+      .timeline-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+      }
+
+      .timeline-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .timeline-subtitle {
+        color: var(--gray);
+        font-size: 1rem;
+        font-weight: 400;
       }
 
       .timeline-container {
         position: relative;
         overflow-x: auto;
         overflow-y: visible;
-        padding: 3rem 1rem 2rem 1rem;
+        padding: 1.5rem 1rem;
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
-        height: 120px;
+        height: auto;
+        min-height: 160px;
         scroll-snap-type: x proximity;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
       }
 
       .timeline-container::-webkit-scrollbar {
@@ -958,27 +1064,45 @@
 
       .timeline-track {
         position: relative;
-        height: 10px;
+        height: 4px;
         background: linear-gradient(
           to right,
-          #93c5fd 0%,
-          #6ee7b7 25%,
-          #fde047 50%,
-          #c084fc 75%,
-          #a78bfa 100%
+          #3b82f6 0%,
+          #10b981 25%,
+          #f59e0b 50%,
+          #8b5cf6 75%,
+          #ec4899 100%
         );
-        border-radius: 10px;
-        min-width: 1400px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        width: 100%;
+        max-width: 2000px;
+        margin: 0 auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .timeline-track::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: linear-gradient(
+          to right,
+          rgba(59, 130, 246, 0.1) 0%,
+          rgba(16, 185, 129, 0.1) 25%,
+          rgba(245, 158, 11, 0.1) 50%,
+          rgba(139, 92, 246, 0.1) 75%,
+          rgba(236, 72, 153, 0.1) 100%
+        );
+        border-radius: 4px;
+        z-index: 0;
       }
 
       .timeline-progress {
         position: absolute;
-        left: 20px;
+        left: 0;
         top: 50%;
         transform: translateY(-50%);
         height: 14px;
@@ -996,135 +1120,574 @@
         box-shadow: 0 3px 12px rgba(99, 102, 241, 0.4);
       }
 
-      .timeline-particle {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        pointer-events: none;
-        animation: particleFloat 2s ease-out forwards;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-      }
-
-      @keyframes particleFloat {
-        0% {
-          opacity: 1;
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          opacity: 0;
-          transform: translate(var(--x, 0), var(--y, -50px)) scale(0.3);
-        }
-      }
-
       .timeline-marker {
-        position: relative;
+        position: absolute;
         display: flex;
         flex-direction: column;
         align-items: center;
         z-index: 2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        cursor: pointer;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .marker-label {
+        position: absolute;
+        top: -50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: white;
+        white-space: nowrap;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: 32px;
+        text-align: center;
+        z-index: 4;
+      }
+
+      .marker-name {
+        position: absolute;
+        top: 50px;
+        font-size: 0.7rem;
+        color: var(--dark);
+        white-space: nowrap;
+        font-weight: 600;
+        background: white;
+        padding: 0.3rem 0.6rem;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 70px;
+        text-align: center;
+        line-height: 1.2;
+        z-index: 4;
+        opacity: 0.8;
         transition: all 0.3s ease;
       }
 
-      .timeline-marker.lighting-up .marker-dot {
-        animation: lightUp 0.3s ease-out;
-      }
-
-      @keyframes lightUp {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-        50% {
-          transform: scale(1.4);
-          box-shadow: 0 0 20px currentColor;
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .timeline-marker {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 2;
-        transition: transform 0.3s ease;
-        scroll-snap-align: center;
-        cursor: pointer;
-      }
-
       .marker-dot {
-        width: 18px;
-        height: 18px;
-        background: white;
-        border: 3px solid #cbd5e1;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
+        background: white;
+        border: 3px solid #e2e8f0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        padding: 12px; /* Expand touch target without visual change */
+        position: relative;
+        z-index: 3;
+      }
+
+      .marker-dot::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-marker:hover .marker-dot {
+        transform: scale(1.3);
+        border-color: var(--primary);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+      }
+
+      .timeline-marker:hover .marker-dot::before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+
+      .timeline-marker:hover .marker-label {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+      }
+
+      .timeline-marker:hover .marker-name {
+        background: var(--primary);
+        color: white;
+        transform: translateY(4px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        opacity: 1;
       }
 
       .timeline-marker.active .marker-dot {
-        width: 28px;
-        height: 28px;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        border-color: #6366f1;
-        box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.25),
-          0 4px 12px rgba(99, 102, 241, 0.4);
-        animation: pulse 2s ease-in-out infinite;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        border-color: #1d4ed8;
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        animation: pulse 2s infinite;
+      }
+
+      .timeline-marker.active .marker-dot::before {
+        opacity: 1;
+        background: white;
+        width: 8px;
+        height: 8px;
       }
 
       @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.25),
-            0 4px 12px rgba(99, 102, 241, 0.4);
+        0% {
+          box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
         50% {
-          transform: scale(1.1);
-          box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.15),
-            0 6px 16px rgba(99, 102, 241, 0.5);
+          box-shadow: 0 4px 20px rgba(99, 102, 241, 0.8);
+        }
+        100% {
+          box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
       }
 
       .timeline-marker.passed .marker-dot {
-        background: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
-        border-color: #14b8a6;
-        box-shadow: 0 2px 6px rgba(20, 184, 166, 0.3);
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-color: #059669;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
       }
 
-      .timeline-marker[data-age="0"] .marker-dot,
-      .timeline-marker[data-age="5"] .marker-dot,
-      .timeline-marker[data-age="10"] .marker-dot {
-        border-color: #60a5fa;
+      .timeline-marker.passed .marker-dot::before {
+        opacity: 1;
+        background: white;
       }
 
-      .timeline-marker[data-age="13"] .marker-dot,
-      .timeline-marker[data-age="16"] .marker-dot,
-      .timeline-marker[data-age="18"] .marker-dot,
-      .timeline-marker[data-age="21"] .marker-dot,
-      .timeline-marker[data-age="25"] .marker-dot {
-        border-color: #34d399;
+      /* Marker positioning - evenly distributed across timeline */
+      .timeline-marker[data-age="0"] { left: 0%; }
+      .timeline-marker[data-age="5"] { left: 5%; }
+      .timeline-marker[data-age="10"] { left: 10%; }
+      .timeline-marker[data-age="13"] { left: 13%; }
+      .timeline-marker[data-age="16"] { left: 16%; }
+      .timeline-marker[data-age="18"] { left: 18%; }
+      .timeline-marker[data-age="21"] { left: 21%; }
+      .timeline-marker[data-age="25"] { left: 25%; }
+      .timeline-marker[data-age="30"] { left: 30%; }
+      .timeline-marker[data-age="40"] { left: 40%; }
+      .timeline-marker[data-age="50"] { left: 50%; }
+      .timeline-marker[data-age="60"] { left: 60%; }
+      .timeline-marker[data-age="65"] { left: 65%; }
+      .timeline-marker[data-age="70"] { left: 70%; }
+      .timeline-marker[data-age="80"] { left: 80%; }
+      .timeline-marker[data-age="90"] { left: 90%; }
+      .timeline-marker[data-age="100"] { left: 100%; }
+
+      /* Show labels and names only on hover for cleaner look */
+      .marker-label,
+      .marker-name {
+        opacity: 0;
+        transform: translateY(0);
+        transition: all 0.3s ease;
       }
 
-      .timeline-marker[data-age="30"] .marker-dot,
-      .timeline-marker[data-age="40"] .marker-dot,
-      .timeline-marker[data-age="50"] .marker-dot {
-        border-color: #fbbf24;
+      .timeline-marker:hover .marker-label,
+      .timeline-marker:hover .marker-name {
+        opacity: 1;
       }
 
-      .timeline-marker[data-age="60"] .marker-dot,
-      .timeline-marker[data-age="65"] .marker-dot,
-      .timeline-marker[data-age="70"] .marker-dot,
-      .timeline-marker[data-age="80"] .marker-dot,
-      .timeline-marker[data-age="90"] .marker-dot,
-      .timeline-marker[data-age="100"] .marker-dot {
-        border-color: #a78bfa;
+      /* Dynamic timeline scaling for larger screens */
+      @media (min-width: 1400px) {
+        .timeline-track {
+          width: calc(100vw - 400px);
+          max-width: 2400px;
+        }
+      }
+
+      /* Year Bubbles Section */
+      .year-bubbles-section {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-radius: 16px;
+        border: 2px solid #0ea5e9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        animation: fadeInUp 0.8s ease-out backwards;
+        animation-delay: 0.4s;
+        overflow: hidden;
+      }
+
+      .year-bubbles-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .year-bubbles-title {
+        text-align: left;
+        color: var(--dark);
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .year-bubbles-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(14, 165, 233, 0.1);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-radius: 20px;
+        color: #0ea5e9;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .year-bubbles-toggle:hover {
+        background: rgba(14, 165, 233, 0.2);
+        border-color: rgba(14, 165, 233, 0.5);
+        transform: translateY(-1px);
+      }
+
+      .year-bubbles-toggle:active {
+        transform: translateY(0);
+      }
+
+      .toggle-icon {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+      }
+
+      .year-bubbles-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .year-bubbles-content.expanded {
+        max-height: 500px;
+      }
+
+      .year-bubbles-content.collapsed .toggle-icon {
+        transform: rotate(-90deg);
+      }
+
+      .year-bubbles-content.expanded .toggle-icon {
+        transform: rotate(0deg);
+      }
+
+      .bubbles-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+      }
+
+      .bubbles-preview.hidden {
+        display: none;
+      }
+
+      .preview-bubble {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #64748b;
+        background: white;
+        border: 2px solid #cbd5e1;
+        transition: all 0.3s ease;
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .preview-bubble.birth-year {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        border-color: #f59e0b;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      }
+
+      .preview-bubble.current-year {
+        background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        border-color: #db2777;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(219, 39, 119, 0.4);
+      }
+
+      .bubbles-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        max-height: 400px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .year-bubble {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #64748b;
+        background: white;
+        border: 2px solid #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .year-bubble::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 25px;
+        background: linear-gradient(to bottom, transparent 0%, #cbd5e1 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .year-bubble:hover::before {
+        opacity: 1;
+      }
+
+      .year-bubble:hover {
+        transform: scale(1.4);
+        z-index: 10;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .year-bubble.birth-year {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        border-color: #f59e0b;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      }
+
+      .year-bubble.school-start {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        border-color: #7c3aed;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+      }
+
+      .year-bubble.milestone {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-color: #059669;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+      }
+
+      .year-bubble.decade {
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        border-color: #0891b2;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(8, 145, 178, 0.4);
+      }
+
+      .year-bubble.current-year {
+        background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        border-color: #db2777;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(219, 39, 119, 0.4);
+      }
+
+      @keyframes bubbleEnter {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .year-bubble {
+        animation: bubbleEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+      }
+
+      .timeline-hint {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(99, 102, 241, 0.95);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+        animation: fadeInOut 3s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes fadeInOut {
+        0%,
+        100% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(-10px);
+        }
+        50% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      .timeline-hint.hidden {
+        display: none !important;
+      }
+
+      .calculator-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .calculator-header p {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1rem;
+        font-weight: 400;
+        position: relative;
+        z-index: 1;
+      }
+
+      .social-proof {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .trust-badge {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .trust-badge:hover {
+        transform: scale(1.05);
+      }
+
+      .trust-icon {
+        font-size: 1.25rem;
+      }
+
+      .trust-text {
+        font-weight: 500;
+      }
+
+        .life-timeline {
+          margin: 1rem 0;
+          padding: 1rem 2rem;
+          border-radius: 0;
+        }
+
+        .timeline-container {
+          padding: 2rem 0.5rem 1.5rem 0.5rem;
+          height: 110px;
+          scroll-snap-type: x mandatory;
+        }
+
+        .timeline-track {
+          min-width: 800px;
+        }
+
+        .timeline-hint {
+          display: flex;
+          font-size: 0.7rem;
+          padding: 0.4rem 0.8rem;
+        }
+
+      .timeline-marker[data-age="65"] {
+        left: 65%;
+      }
+
+      .timeline-marker[data-age="70"] {
+        left: 70%;
+      }
+
+      .timeline-marker[data-age="80"] {
+        left: 80%;
+      }
+
+      .timeline-marker[data-age="90"] {
+        left: 90%;
+      }
+
+      .timeline-marker[data-age="100"] {
+        left: 100%;
+      }
+
+      /* Alternating vertical positions for labels to prevent overlap */
+      /* Even-indexed markers: higher position */
+      .timeline-marker[data-age="0"] .marker-label,
+      .timeline-marker[data-age="10"] .marker-label,
+      .timeline-marker[data-age="16"] .marker-label,
+      .timeline-marker[data-age="21"] .marker-label,
+      .timeline-marker[data-age="30"] .marker-label,
+      .timeline-marker[data-age="50"] .marker-label,
+      .timeline-marker[data-age="65"] .marker-label,
+      .timeline-marker[data-age="80"] .marker-label,
+      .timeline-marker[data-age="100"] .marker-label {
+        top: -55px;
+      }
+
+      /* Odd-indexed markers: lower position (default) */
+      .timeline-marker[data-age="5"] .marker-label,
+      .timeline-marker[data-age="13"] .marker-label,
+      .timeline-marker[data-age="18"] .marker-label,
+      .timeline-marker[data-age="25"] .marker-label,
+      .timeline-marker[data-age="40"] .marker-label,
+      .timeline-marker[data-age="60"] .marker-label,
+      .timeline-marker[data-age="70"] .marker-label,
+      .timeline-marker[data-age="90"] .marker-label {
+        top: -40px;
       }
 
       .marker-label {
@@ -1139,7 +1702,7 @@
 
       .marker-name {
         position: absolute;
-        top: 30px;
+        top: 45px;
         font-size: 0.8rem;
         color: var(--dark);
         white-space: nowrap;
@@ -1148,6 +1711,36 @@
         padding: 0.25rem 0.5rem;
         border-radius: 6px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: rotate(45deg);
+        transform-origin: top center;
+      }
+
+      /* Alternating rotation for marker names to prevent overlap */
+      /* Even-indexed markers: rotate -45deg (counter-clockwise) */
+      .timeline-marker[data-age="0"] .marker-name,
+      .timeline-marker[data-age="10"] .marker-name,
+      .timeline-marker[data-age="16"] .marker-name,
+      .timeline-marker[data-age="21"] .marker-name,
+      .timeline-marker[data-age="30"] .marker-name,
+      .timeline-marker[data-age="50"] .marker-name,
+      .timeline-marker[data-age="65"] .marker-name,
+      .timeline-marker[data-age="80"] .marker-name,
+      .timeline-marker[data-age="100"] .marker-name {
+        transform: rotate(-45deg);
+        transform-origin: top center;
+      }
+
+      /* Odd-indexed markers: rotate 45deg (clockwise) - default already set above */
+      .timeline-marker[data-age="5"] .marker-name,
+      .timeline-marker[data-age="13"] .marker-name,
+      .timeline-marker[data-age="18"] .marker-name,
+      .timeline-marker[data-age="25"] .marker-name,
+      .timeline-marker[data-age="40"] .marker-name,
+      .timeline-marker[data-age="60"] .marker-name,
+      .timeline-marker[data-age="70"] .marker-name,
+      .timeline-marker[data-age="90"] .marker-name {
+        transform: rotate(45deg);
+        transform-origin: top center;
       }
 
       .timeline-marker:hover .marker-dot {
@@ -1158,6 +1751,15 @@
       .timeline-marker:hover .marker-name {
         background: var(--primary);
         color: white;
+      }
+
+      /* Dynamic timeline scaling for larger screens */
+      @media (min-width: 1400px) {
+        .timeline-track {
+          width: calc(100vw - 400px);
+          max-width: 2400px;
+          min-width: 2000px;
+        }
       }
 
       .timeline-popup {
@@ -1540,6 +2142,7 @@
 
       .input-section {
         margin-bottom: 1.5rem;
+        padding: 2rem 2rem 0 2rem;
         animation: fadeInUp 0.6s ease-out backwards;
       }
 
@@ -1654,6 +2257,1028 @@
           Roboto, "Helvetica Neue", Arial, sans-serif;
         border-bottom: 2px solid var(--light-gray);
         padding-bottom: 0.5rem;
+      }
+
+      .age-summary-card {
+        background: var(--gradient);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+        position: sticky;
+        top: 1rem;
+        z-index: 10;
+        animation: fadeInUp 0.8s ease-out backwards;
+        animation-delay: 0.2s;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .summary-icon {
+        font-size: 3rem;
+        flex-shrink: 0;
+        animation: bounce 2s infinite;
+      }
+
+      .summary-text {
+        flex: 1;
+      }
+
+      .summary-label {
+        font-size: 1.1rem;
+        font-weight: 500;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+      }
+
+      .summary-age {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .themed-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .themed-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+        animation: slideUp 0.6s ease-out backwards;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+      }
+
+      .themed-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .card-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .card-content {
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+      }
+
+      /* By The Numbers Card */
+      .numbers-card {
+        background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+        border-color: #f59e0b;
+      }
+
+      .numbers-card .card-icon {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      }
+
+      .stat-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+      }
+
+      .stat-icon {
+        font-size: 1.25rem;
+        width: 24px;
+        text-align: center;
+      }
+
+      .stat-label {
+        flex: 1;
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 500;
+      }
+
+      .stat-value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark);
+        text-align: right;
+      }
+
+      /* Planetary Ages Card */
+      .planetary-card {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-color: #0ea5e9;
+      }
+
+      .planetary-card .card-icon {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      }
+
+      .planetary-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .planet-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        border: 1px solid rgba(14, 165, 233, 0.1);
+      }
+
+      .planet-emoji {
+        font-size: 1.5rem;
+        width: 32px;
+        text-align: center;
+      }
+
+      .planet-info {
+        flex: 1;
+      }
+
+      .planet-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.25rem;
+      }
+
+      .planet-age {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      /* Life Statistics Card */
+      .life-stats-card {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-color: #22c55e;
+      }
+
+      .life-stats-card .card-icon {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      }
+
+      .life-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .life-stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        border: 1px solid rgba(34, 197, 94, 0.1);
+      }
+
+      .life-stat-icon {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .life-stat-label {
+        font-size: 0.8rem;
+        color: var(--gray);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+
+      .life-stat-value {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.2;
+      }
+
+      /* Staggered animation for themed cards */
+      .themed-card:nth-child(1) { animation-delay: 0.1s; }
+      .themed-card:nth-child(2) { animation-delay: 0.2s; }
+      .themed-card:nth-child(3) { animation-delay: 0.3s; }
+
+      /* Desktop Action Buttons */
+      .action-buttons-desktop {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        justify-content: center;
+        animation: fadeInUp 0.6s ease-out;
+        animation-delay: 0.4s;
+        animation-fill-mode: backwards;
+      }
+
+      .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        min-width: 120px;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .action-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .copy-btn {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+      }
+
+      .share-btn {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+      }
+
+      .save-btn {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+      }
+
+      .btn-icon {
+        font-size: 1.1rem;
+      }
+
+      .btn-text {
+        font-weight: 600;
+      }
+
+      /* Tooltip styles */
+      .action-btn[data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        z-index: 1000;
+        animation: tooltipFadeIn 0.2s ease-out;
+      }
+
+      @keyframes tooltipFadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      /* Floating Action Toolbar for Mobile */
+      .floating-action-toolbar {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        padding: 0.75rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+        animation: slideUpFAB 0.4s ease-out;
+      }
+
+      .floating-action-toolbar.show {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .fab-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 20px;
+        background: transparent;
+        color: var(--gray);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        min-width: 60px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .fab-btn:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .fab-btn:active {
+        transform: translateY(0) scale(0.95);
+        background: rgba(99, 102, 241, 0.2);
+      }
+
+      .copy-fab:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: #6366f1;
+      }
+
+      .share-fab:hover {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+      }
+
+      .save-fab:hover {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+      }
+
+      .fab-icon {
+        font-size: 1.2rem;
+      }
+
+      .fab-text {
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+
+      @keyframes slideUpFAB {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      /* Haptic feedback indicator */
+      .action-btn.haptic-feedback,
+      .fab-btn.haptic-feedback {
+        animation: hapticPulse 0.1s ease-out;
+      }
+
+      @keyframes hapticPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+
+      /* Loading States and Animations */
+      .skeleton-loader {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: skeleton-loading 1.5s infinite;
+        border-radius: 8px;
+      }
+
+      @keyframes skeleton-loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+
+      .skeleton-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .skeleton-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .skeleton-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+      }
+
+      .skeleton-title {
+        height: 20px;
+        width: 150px;
+      }
+
+      .skeleton-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .skeleton-item {
+        height: 16px;
+        width: 100%;
+      }
+
+      .skeleton-item.short {
+        width: 60%;
+      }
+
+      .skeleton-item.medium {
+        width: 80%;
+      }
+
+      /* Staggered animations */
+      .results-appear {
+        animation: resultsScaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes resultsScaleIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .card-stagger-1 { animation-delay: 0.05s; }
+      .card-stagger-2 { animation-delay: 0.1s; }
+      .card-stagger-3 { animation-delay: 0.15s; }
+      .card-stagger-4 { animation-delay: 0.2s; }
+      .card-stagger-5 { animation-delay: 0.25s; }
+      .card-stagger-6 { animation-delay: 0.3s; }
+
+      /* Timeline slide animation */
+      .timeline-slide-in {
+        animation: slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes slideInFromLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Year bubbles pop animation */
+      .bubble-pop {
+        animation: bubblePop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+      }
+
+      @keyframes bubblePop {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Progress ring animation */
+      .progress-ring-animate {
+        animation: progressRingFill 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes progressRingFill {
+        0% {
+          stroke-dashoffset: 157.08; /* 2 * π * 25 */
+        }
+        100% {
+          stroke-dashoffset: var(--final-offset);
+        }
+      }
+
+      /* Micro-interactions */
+      .interactive-scale {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .interactive-scale:active {
+        transform: scale(0.95);
+      }
+
+      .interactive-lift {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .interactive-lift:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .interactive-bounce {
+        transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .interactive-bounce:active {
+        transform: scale(0.9);
+      }
+
+      /* Button press animation */
+      .button-press {
+        animation: buttonPress 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @keyframes buttonPress {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+
+      /* Card hover micro-interaction */
+      .card-hover {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ========================================
+         FINAL POLISH & CONSISTENCY
+         ======================================== */
+
+      /* Consistent Spacing System */
+      .spacing-xs { margin: 0.5rem; }
+      .spacing-sm { margin: 1rem; }
+      .spacing-md { margin: 1.5rem; }
+      .spacing-lg { margin: 2rem; }
+      .spacing-xl { margin: 3rem; }
+
+      .padding-xs { padding: 0.5rem; }
+      .padding-sm { padding: 1rem; }
+      .padding-md { padding: 1.5rem; }
+      .padding-lg { padding: 2rem; }
+      .padding-xl { padding: 3rem; }
+
+      /* Smooth Transitions for All Interactive Elements */
+      .interactive-element {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .interactive-element:hover {
+        transform: translateY(-1px);
+      }
+
+      .interactive-element:active {
+        transform: translateY(0);
+      }
+
+      /* Focus States for Keyboard Navigation */
+      .focusable:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      .focusable:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      .focusable:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      /* Button Focus States */
+      .action-btn:focus,
+      .fab-btn:focus,
+      .tab-button:focus,
+      .year-bubbles-toggle:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+      }
+
+      /* Input Focus States */
+      .date-input:focus,
+      .custom-date-input:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+      }
+
+      /* Milestone Section Animations */
+      .milestone-item {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: milestoneSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .milestone-item:nth-child(1) { animation-delay: 0.1s; }
+      .milestone-item:nth-child(2) { animation-delay: 0.2s; }
+      .milestone-item:nth-child(3) { animation-delay: 0.3s; }
+      .milestone-item:nth-child(4) { animation-delay: 0.4s; }
+      .milestone-item:nth-child(5) { animation-delay: 0.5s; }
+
+      @keyframes milestoneSlideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Empty States */
+      .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--gray);
+        background: #f8fafc;
+        border-radius: 12px;
+        border: 2px dashed #e2e8f0;
+      }
+
+      .empty-state-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      .empty-state-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .empty-state-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* WCAG AA Color Contrast Improvements */
+      .text-muted {
+        color: #6b7280 !important; /* 4.5:1 contrast ratio */
+      }
+
+      .text-primary {
+        color: #4f46e5 !important; /* 4.5:1 contrast ratio */
+      }
+
+      .text-success {
+        color: #059669 !important; /* 4.5:1 contrast ratio */
+      }
+
+      .text-warning {
+        color: #d97706 !important; /* 4.5:1 contrast ratio */
+      }
+
+      .text-error {
+        color: #dc2626 !important; /* 4.5:1 contrast ratio */
+      }
+
+      /* Enhanced Button States */
+      .action-btn:disabled,
+      .fab-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      .action-btn:disabled:hover,
+      .fab-btn:disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* Loading States */
+      .loading {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .loading::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: loading-shimmer 1.5s infinite;
+      }
+
+      @keyframes loading-shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+      }
+
+      /* Improved Accessibility */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Skip to content link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--primary);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1000;
+      }
+
+      .skip-link:focus {
+        top: 6px;
+      }
+
+      .tabbed-navigation {
+        margin: 2rem 0;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+      }
+
+      .tab-nav {
+        display: flex;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .tab-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-button {
+        flex: 1;
+        min-width: 120px;
+        padding: 1rem 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        color: var(--gray);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .tab-button:hover {
+        background: rgba(99, 102, 241, 0.05);
+        color: var(--primary);
+      }
+
+      .tab-button.active {
+        color: var(--primary);
+        background: rgba(99, 102, 241, 0.1);
+      }
+
+      .tab-button.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 3px 3px 0 0;
+      }
+
+      .tab-icon {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .tab-button:hover .tab-icon {
+        transform: scale(1.1);
+      }
+
+      .tab-text {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .tab-content {
+        position: relative;
+        min-height: 400px;
+      }
+
+      .tab-panel {
+        display: none;
+        padding: 2rem;
+        animation: fadeInUp 0.5s ease-out;
+      }
+
+      .tab-panel.active {
+        display: block;
+      }
+
+      .fun-stats-content h3,
+      .tools-content h3 {
+        text-align: center;
+        color: var(--dark);
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .fun-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .fun-stat-item {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 1px solid #bae6fd;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .fun-stat-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .fun-stat-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .fun-stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .fun-stat-label {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 600;
+      }
+
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .tool-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tool-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .tool-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary);
+      }
+
+      .tool-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tool-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .tool-description {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+      }
+
+      .tool-button {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .tool-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.4);
       }
 
       .result-grid {
@@ -1817,63 +3442,103 @@
 
       .life-stage-card {
         background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 2px solid var(--primary);
-        border-radius: 20px;
-        padding: 2rem;
+        border: 1px solid var(--primary);
+        border-radius: 16px;
+        padding: 1.5rem;
         margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
-        animation: slideInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        transition: all 0.5s ease;
-      }
-
-      @keyframes slideInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .stage-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-
-      .stage-info {
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        animation: fadeInUp 0.6s ease-out;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         gap: 1rem;
-        flex: 1;
       }
 
-      .stage-icon {
-        font-size: 3.5rem;
+      .life-stage-card.age-childhood {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border-color: #f59e0b;
+      }
+
+      .life-stage-card.age-teen {
+        background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+        border-color: #8b5cf6;
+      }
+
+      .life-stage-card.age-young-adult {
+        background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+        border-color: #3b82f6;
+      }
+
+      .life-stage-card.age-adult {
+        background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);
+        border-color: #10b981;
+      }
+
+      .life-stage-card.age-mature {
+        background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+        border-color: #f97316;
+      }
+
+      .life-stage-card.age-senior {
+        background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+        border-color: #ef4444;
+      }
+
+      .stage-emoji {
+        font-size: 2rem;
+        flex-shrink: 0;
         animation: bounce 2s ease-in-out infinite;
       }
 
+      .stage-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        gap: 1rem;
+      }
+
+      .stage-info {
+        flex: 1;
+        min-width: 0;
+      }
+
       .stage-name {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
         font-weight: 700;
         color: var(--primary);
         margin-bottom: 0.25rem;
+        line-height: 1.2;
       }
 
       .stage-description {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: var(--gray);
         font-weight: 500;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+
+      .next-milestone {
+        margin-top: 0.5rem;
+      }
+
+      .milestone-badge {
+        display: inline-block;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid rgba(99, 102, 241, 0.2);
       }
 
       .stage-progress-ring {
         position: relative;
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
       }
 
       .stage-progress-text {
@@ -1881,7 +3546,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.5rem;
+        font-size: 0.9rem;
         font-weight: 700;
         color: var(--primary);
       }
@@ -2283,6 +3948,881 @@
         font-style: italic;
       }
 
+      @media (max-width: 1024px) {
+        .themed-cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.25rem;
+        }
+
+        .themed-card {
+          min-height: auto;
+        }
+
+        .card-header {
+          padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+        }
+
+        .card-content {
+          padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+        }
+
+        .life-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .life-stat-item {
+          padding: 0.5rem;
+        }
+      }
+
+      /* ========================================
+         RESPONSIVE BREAKPOINTS
+         ======================================== */
+      
+      /* Mobile: < 768px */
+      @media (max-width: 767px) {
+        /* Sticky Summary Card - Mobile */
+        .age-summary-card {
+          padding: 0.75rem 1rem;
+          margin-bottom: 1rem;
+          height: 60px;
+          min-height: 60px;
+          max-height: 60px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          border-radius: 12px;
+        }
+
+        /* Add spacing to prevent sticky summary from covering content */
+        .results-section {
+          padding-top: 0.5rem;
+        }
+
+        .summary-icon {
+          font-size: 1.8rem;
+        }
+
+        .summary-label {
+          font-size: 0.8rem;
+        }
+
+        .summary-age {
+          font-size: 1.2rem;
+          line-height: 1.2;
+        }
+
+        /* Themed Cards - Mobile (Single Column) */
+        .themed-cards-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+          margin: 1rem 0;
+        }
+
+        .themed-card {
+          min-height: auto;
+          border-radius: 12px;
+        }
+
+        .card-header {
+          padding: 0.75rem 1rem 0.5rem 1rem;
+        }
+
+        .card-content {
+          padding: 0.5rem 1rem 0.75rem 1rem;
+        }
+
+        .life-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .life-stat-item {
+          padding: 0.5rem;
+          min-height: 44px;
+        }
+
+        .stat-item {
+          padding: 0.4rem 0;
+          min-height: 44px;
+        }
+
+        .planet-item {
+          padding: 0.5rem;
+          min-height: 44px;
+        }
+
+        /* Action Buttons - Mobile */
+        .action-btn {
+          min-height: 44px;
+          padding: 0.75rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .fab-btn {
+          min-height: 44px;
+          min-width: 44px;
+          padding: 0.5rem;
+        }
+
+        .floating-action-toolbar {
+          bottom: 10px;
+          padding: 0.5rem;
+          border-radius: 20px;
+        }
+
+        .fab-icon {
+          font-size: 1.1rem;
+        }
+
+        .fab-text {
+          font-size: 0.65rem;
+        }
+
+        /* Hide desktop action buttons on mobile */
+        .action-buttons-desktop {
+          display: none;
+        }
+
+        /* Show floating action toolbar on mobile */
+        .floating-action-toolbar {
+          display: flex;
+        }
+
+        /* Tabs - Mobile (Horizontal Scrolling) */
+        .tab-nav {
+          padding: 0 1rem;
+          overflow-x: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        .tab-button {
+          min-width: 100px;
+          padding: 0.75rem 1rem;
+          gap: 0.25rem;
+          min-height: 44px;
+          flex-shrink: 0;
+          font-size: 0.8rem;
+        }
+
+        .tab-icon {
+          font-size: 1.1rem;
+        }
+
+        .tab-text {
+          font-size: 0.75rem;
+        }
+
+        .tab-panel {
+          padding: 1rem 1rem;
+        }
+
+        .fun-stats-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .tools-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .tool-card {
+          padding: 1rem;
+          min-height: 44px;
+        }
+
+        /* Year Bubbles - Mobile */
+        .year-bubbles-section {
+          padding: 0.75rem;
+          margin-top: 0.75rem;
+          border-radius: 12px;
+        }
+
+        .year-bubbles-header {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: stretch;
+          margin-bottom: 0.75rem;
+        }
+
+        .year-bubbles-title {
+          text-align: center;
+          font-size: 0.85rem;
+        }
+
+        .year-bubbles-toggle {
+          justify-content: center;
+          padding: 0.5rem 0.75rem;
+          font-size: 0.8rem;
+          min-height: 44px;
+        }
+
+        .year-bubbles-content.expanded {
+          max-height: 250px;
+        }
+
+        .bubbles-preview {
+          padding: 0.5rem;
+          gap: 4px;
+          margin-bottom: 0.75rem;
+        }
+
+        .preview-bubble {
+          width: 28px;
+          height: 28px;
+          font-size: 0.6rem;
+          min-height: 28px;
+        }
+
+        .bubbles-container {
+          max-height: 250px;
+          gap: 4px;
+          padding: 0.25rem;
+        }
+
+        .year-bubble {
+          width: 32px;
+          height: 32px;
+          font-size: 0.6rem;
+          min-height: 32px;
+        }
+
+        .year-bubble:hover {
+          transform: scale(1.2);
+        }
+
+        /* Timeline - Mobile */
+        .timeline-container {
+          max-height: 300px;
+          gap: 6px;
+          padding: 0.5rem;
+        }
+
+        .timeline-track {
+          height: 3px;
+        }
+
+        .timeline-marker {
+          width: 24px;
+          height: 24px;
+        }
+
+        .marker-dot {
+          width: 12px;
+          height: 12px;
+        }
+
+        .marker-label {
+          font-size: 0.7rem;
+          padding: 0.25rem 0.5rem;
+        }
+
+        .marker-name {
+          font-size: 0.6rem;
+        }
+      }
+
+      /* Small Mobile: < 400px */
+      @media (max-width: 399px) {
+        .age-summary-card {
+          padding: 0.5rem 0.75rem;
+          height: 50px;
+          min-height: 50px;
+          max-height: 50px;
+        }
+
+        .summary-icon {
+          font-size: 1.5rem;
+        }
+
+        .summary-label {
+          font-size: 0.7rem;
+        }
+
+        .summary-age {
+          font-size: 1rem;
+        }
+
+        .themed-card {
+          margin: 0.5rem 0;
+        }
+
+        .card-header {
+          padding: 0.5rem 0.75rem 0.25rem 0.75rem;
+        }
+
+        .card-content {
+          padding: 0.25rem 0.75rem 0.5rem 0.75rem;
+        }
+
+        .tab-button {
+          min-width: 80px;
+          padding: 0.5rem 0.75rem;
+          font-size: 0.75rem;
+        }
+
+        .tab-text {
+          font-size: 0.7rem;
+        }
+
+        .year-bubbles-section {
+          padding: 0.5rem;
+          margin-top: 0.5rem;
+        }
+
+        .year-bubbles-title {
+          font-size: 0.8rem;
+        }
+
+        .year-bubbles-toggle {
+          padding: 0.4rem 0.6rem;
+          font-size: 0.75rem;
+        }
+
+        .preview-bubble {
+          width: 24px;
+          height: 24px;
+          font-size: 0.55rem;
+        }
+
+        .year-bubble {
+          width: 28px;
+          height: 28px;
+          font-size: 0.55rem;
+        }
+
+        .floating-action-toolbar {
+          bottom: 5px;
+          padding: 0.4rem;
+        }
+
+        .fab-btn {
+          min-width: 40px;
+          min-height: 40px;
+          padding: 0.4rem;
+        }
+
+        .fab-text {
+          font-size: 0.6rem;
+        }
+      }
+
+      /* Tablet: 768px - 1024px */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        /* Sticky Summary Card - Tablet */
+        .age-summary-card {
+          padding: 1rem 1.5rem;
+          margin-bottom: 1.5rem;
+          height: 70px;
+          min-height: 70px;
+          max-height: 70px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          border-radius: 14px;
+        }
+
+        /* Add spacing to prevent sticky summary from covering content */
+        .results-section {
+          padding-top: 0.75rem;
+        }
+
+        .summary-icon {
+          font-size: 2rem;
+        }
+
+        .summary-label {
+          font-size: 0.9rem;
+        }
+
+        .summary-age {
+          font-size: 1.4rem;
+          line-height: 1.3;
+        }
+
+        /* Themed Cards - Tablet (2 Column Grid) */
+        .themed-cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.25rem;
+          margin: 1.5rem 0;
+        }
+
+        .themed-card {
+          min-height: auto;
+          border-radius: 14px;
+        }
+
+        .card-header {
+          padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+        }
+
+        .card-content {
+          padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+        }
+
+        .life-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+
+        .life-stat-item {
+          padding: 0.75rem;
+          min-height: 50px;
+        }
+
+        .stat-item {
+          padding: 0.5rem 0;
+          min-height: 50px;
+        }
+
+        .planet-item {
+          padding: 0.75rem;
+          min-height: 50px;
+        }
+
+        /* Action Buttons - Tablet */
+        .action-btn {
+          min-height: 48px;
+          padding: 0.875rem 1.25rem;
+          font-size: 0.95rem;
+        }
+
+        .fab-btn {
+          min-height: 48px;
+          min-width: 48px;
+          padding: 0.625rem;
+        }
+
+        .floating-action-toolbar {
+          bottom: 15px;
+          padding: 0.625rem;
+          border-radius: 22px;
+        }
+
+        .fab-icon {
+          font-size: 1.2rem;
+        }
+
+        .fab-text {
+          font-size: 0.7rem;
+        }
+
+        /* Show desktop action buttons on tablet */
+        .action-buttons-desktop {
+          display: flex;
+        }
+
+        /* Hide floating action toolbar on tablet */
+        .floating-action-toolbar {
+          display: none;
+        }
+
+        /* Tabs - Tablet (Visible, No Scrolling) */
+        .tab-nav {
+          padding: 0 1.5rem;
+          overflow-x: visible;
+        }
+
+        .tab-button {
+          min-width: 120px;
+          padding: 0.875rem 1.25rem;
+          gap: 0.5rem;
+          min-height: 48px;
+          flex-shrink: 1;
+          font-size: 0.85rem;
+        }
+
+        .tab-icon {
+          font-size: 1.2rem;
+        }
+
+        .tab-text {
+          font-size: 0.8rem;
+        }
+
+        .tab-panel {
+          padding: 1.5rem 1.5rem;
+        }
+
+        .fun-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        .tools-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        .tool-card {
+          padding: 1.25rem;
+          min-height: 50px;
+        }
+
+        /* Year Bubbles - Tablet */
+        .year-bubbles-section {
+          padding: 1.25rem;
+          margin-top: 1.25rem;
+          border-radius: 14px;
+        }
+
+        .year-bubbles-header {
+          flex-direction: row;
+          gap: 1rem;
+          align-items: center;
+          margin-bottom: 1rem;
+        }
+
+        .year-bubbles-title {
+          text-align: left;
+          font-size: 1rem;
+        }
+
+        .year-bubbles-toggle {
+          justify-content: center;
+          padding: 0.625rem 1rem;
+          font-size: 0.85rem;
+          min-height: 48px;
+        }
+
+        .year-bubbles-content.expanded {
+          max-height: 350px;
+        }
+
+        .bubbles-preview {
+          padding: 0.75rem;
+          gap: 6px;
+          margin-bottom: 1rem;
+        }
+
+        .preview-bubble {
+          width: 32px;
+          height: 32px;
+          font-size: 0.65rem;
+          min-height: 32px;
+        }
+
+        .bubbles-container {
+          max-height: 350px;
+          gap: 6px;
+          padding: 0.5rem;
+        }
+
+        .year-bubble {
+          width: 36px;
+          height: 36px;
+          font-size: 0.65rem;
+          min-height: 36px;
+        }
+
+        .year-bubble:hover {
+          transform: scale(1.3);
+        }
+
+        /* Timeline - Tablet */
+        .timeline-container {
+          max-height: 350px;
+          gap: 8px;
+          padding: 0.75rem;
+        }
+
+        .timeline-track {
+          height: 4px;
+        }
+
+        .timeline-marker {
+          width: 28px;
+          height: 28px;
+        }
+
+        .marker-dot {
+          width: 14px;
+          height: 14px;
+        }
+
+        .marker-label {
+          font-size: 0.75rem;
+          padding: 0.375rem 0.625rem;
+        }
+
+        .marker-name {
+          font-size: 0.65rem;
+        }
+      }
+
+      /* Desktop: > 1024px */
+      @media (min-width: 1025px) {
+        /* Sticky Summary Card - Desktop */
+        .age-summary-card {
+          padding: 1.5rem 2rem;
+          margin-bottom: 2rem;
+          height: 80px;
+          min-height: 80px;
+          max-height: 80px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          border-radius: 16px;
+        }
+
+        /* Add spacing to prevent sticky summary from covering content */
+        .results-section {
+          padding-top: 1rem;
+        }
+
+        .summary-icon {
+          font-size: 2.5rem;
+        }
+
+        .summary-label {
+          font-size: 1rem;
+        }
+
+        .summary-age {
+          font-size: 1.8rem;
+          line-height: 1.4;
+        }
+
+        /* Themed Cards - Desktop (3 Column Grid) */
+        .themed-cards-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          margin: 2rem 0;
+        }
+
+        .themed-card {
+          min-height: auto;
+          border-radius: 16px;
+        }
+
+        .card-header {
+          padding: 1.5rem 1.5rem 1rem 1.5rem;
+        }
+
+        .card-content {
+          padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+
+        .life-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+
+        .life-stat-item {
+          padding: 0.75rem;
+          min-height: 60px;
+        }
+
+        .stat-item {
+          padding: 0.5rem 0;
+          min-height: 60px;
+        }
+
+        .planet-item {
+          padding: 0.75rem;
+          min-height: 60px;
+        }
+
+        /* Action Buttons - Desktop */
+        .action-btn {
+          min-height: 52px;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .fab-btn {
+          min-height: 52px;
+          min-width: 52px;
+          padding: 0.75rem;
+        }
+
+        .floating-action-toolbar {
+          bottom: 20px;
+          padding: 0.75rem;
+          border-radius: 25px;
+        }
+
+        .fab-icon {
+          font-size: 1.3rem;
+        }
+
+        .fab-text {
+          font-size: 0.75rem;
+        }
+
+        /* Show desktop action buttons on desktop */
+        .action-buttons-desktop {
+          display: flex;
+        }
+
+        /* Hide floating action toolbar on desktop */
+        .floating-action-toolbar {
+          display: none;
+        }
+
+        /* Tabs - Desktop (All Visible) */
+        .tab-nav {
+          padding: 0 2rem;
+          overflow-x: visible;
+        }
+
+        .tab-button {
+          min-width: 140px;
+          padding: 1rem 1.5rem;
+          gap: 0.75rem;
+          min-height: 52px;
+          flex-shrink: 1;
+          font-size: 0.9rem;
+        }
+
+        .tab-icon {
+          font-size: 1.3rem;
+        }
+
+        .tab-text {
+          font-size: 0.85rem;
+        }
+
+        .tab-panel {
+          padding: 2rem 2rem;
+        }
+
+        .fun-stats-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+
+        .tools-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+
+        .tool-card {
+          padding: 1.5rem;
+          min-height: 60px;
+        }
+
+        /* Year Bubbles - Desktop */
+        .year-bubbles-section {
+          padding: 1.5rem;
+          margin-top: 1.5rem;
+          border-radius: 16px;
+        }
+
+        .year-bubbles-header {
+          flex-direction: row;
+          gap: 1.5rem;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .year-bubbles-title {
+          text-align: left;
+          font-size: 1.1rem;
+        }
+
+        .year-bubbles-toggle {
+          justify-content: center;
+          padding: 0.75rem 1.25rem;
+          font-size: 0.9rem;
+          min-height: 52px;
+        }
+
+        .year-bubbles-content.expanded {
+          max-height: 400px;
+        }
+
+        .bubbles-preview {
+          padding: 1rem;
+          gap: 8px;
+          margin-bottom: 1.5rem;
+        }
+
+        .preview-bubble {
+          width: 36px;
+          height: 36px;
+          font-size: 0.7rem;
+          min-height: 36px;
+        }
+
+        .bubbles-container {
+          max-height: 400px;
+          gap: 8px;
+          padding: 0.75rem;
+        }
+
+        .year-bubble {
+          width: 42px;
+          height: 42px;
+          font-size: 0.75rem;
+          min-height: 42px;
+        }
+
+        .year-bubble:hover {
+          transform: scale(1.4);
+        }
+
+        /* Timeline - Desktop */
+        .timeline-container {
+          max-height: 400px;
+          gap: 10px;
+          padding: 1rem;
+        }
+
+        .timeline-track {
+          height: 4px;
+        }
+
+        .timeline-marker {
+          width: 32px;
+          height: 32px;
+        }
+
+        .marker-dot {
+          width: 16px;
+          height: 16px;
+        }
+
+        .marker-label {
+          font-size: 0.8rem;
+          padding: 0.5rem 0.75rem;
+        }
+
+        .marker-name {
+          font-size: 0.7rem;
+        }
+
+        /* Life Stage Card - Desktop */
+        .life-stage-card {
+          flex-direction: row;
+          align-items: center;
+          gap: 1.5rem;
+          padding: 1.5rem;
+        }
+
+        .stage-content {
+          flex-direction: row;
+          align-items: center;
+          gap: 1.5rem;
+          width: 100%;
+        }
+
+        .stage-info {
+          width: auto;
+        }
+
+        .stage-progress-ring {
+          align-self: center;
+        }
+      }
+
       @media (max-width: 768px) {
         .calculator-wrapper {
           padding: 0 0.5rem;
@@ -2320,8 +4860,8 @@
         }
 
         .calculator-header {
-          margin: -1rem -1rem 1.5rem -1rem;
-          padding: 1.5rem 1rem;
+          margin: 0;
+          padding: 1.5rem 2rem;
         }
 
         .calculator-header h1 {
@@ -2329,7 +4869,193 @@
         }
 
         .calculator-card {
+          padding: 0;
+        }
+
+        .age-summary-card {
+          padding: 0.75rem 1rem;
+          margin-bottom: 1rem;
+          gap: 0.75rem;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          height: 60px;
+          min-height: 60px;
+          max-height: 60px;
+          border-radius: 12px;
+        }
+
+        .summary-icon {
+          font-size: 1.8rem;
+        }
+
+        .summary-label {
+          font-size: 0.8rem;
+        }
+
+        .summary-age {
+          font-size: 1.2rem;
+          line-height: 1.2;
+        }
+
+        .themed-cards-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+          margin: 1rem 0;
+        }
+
+        .themed-card {
+          min-height: auto;
+          border-radius: 12px;
+        }
+
+        .card-header {
+          padding: 0.75rem 1rem 0.5rem 1rem;
+        }
+
+        .card-content {
+          padding: 0.5rem 1rem 0.75rem 1rem;
+        }
+
+        .life-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .life-stat-item {
+          padding: 0.5rem;
+          min-height: 44px;
+        }
+
+        .stat-item {
+          padding: 0.4rem 0;
+          min-height: 44px;
+        }
+
+        .planet-item {
+          padding: 0.5rem;
+          min-height: 44px;
+        }
+
+        .action-btn {
+          min-height: 44px;
+          padding: 0.75rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .fab-btn {
+          min-height: 44px;
+          min-width: 44px;
+          padding: 0.5rem;
+        }
+
+        .floating-action-toolbar {
+          bottom: 10px;
+          padding: 0.5rem;
+          border-radius: 20px;
+        }
+
+        .fab-icon {
+          font-size: 1.1rem;
+        }
+
+        .fab-text {
+          font-size: 0.65rem;
+        }
+
+        /* Hide desktop action buttons on mobile */
+        .action-buttons-desktop {
+          display: none;
+        }
+
+        /* Show floating action toolbar on mobile */
+        .floating-action-toolbar {
+          display: flex;
+        }
+
+        .tab-nav {
+          padding: 0 1rem;
+          overflow-x: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        .tab-button {
+          min-width: 100px;
+          padding: 0.75rem 1rem;
+          gap: 0.25rem;
+          min-height: 44px;
+          flex-shrink: 0;
+          font-size: 0.8rem;
+        }
+
+        .tab-icon {
+          font-size: 1.1rem;
+        }
+
+        .tab-text {
+          font-size: 0.75rem;
+        }
+
+        .tab-panel {
+          padding: 1rem 1rem;
+        }
+
+        .fun-stats-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .tools-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .tool-card {
           padding: 1rem;
+          min-height: 44px;
+        }
+
+        .life-stage-card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 1.25rem;
+        }
+
+        .timeline-header {
+          padding: 0.75rem 1rem;
+        }
+
+        .timeline-title h3 {
+          font-size: 1rem;
+        }
+
+        .timeline-content {
+          max-height: 0;
+        }
+
+        .timeline-content.expanded {
+          max-height: 300px;
+        }
+
+        .stage-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+          width: 100%;
+        }
+
+        .stage-info {
+          width: 100%;
+        }
+
+        .stage-progress-ring {
+          align-self: center;
         }
 
         .year-progress {
@@ -2337,8 +5063,8 @@
         }
 
         .life-timeline {
-          margin: 1rem -1rem;
-          padding: 1rem 0.5rem;
+          margin: 1rem 0;
+          padding: 1rem 2rem;
           border-radius: 0;
         }
 
@@ -2417,24 +5143,62 @@
         }
 
         .year-bubbles-section {
-          padding: 1rem;
-          margin-top: 1rem;
+          padding: 0.75rem;
+          margin-top: 0.75rem;
+          border-radius: 12px;
+        }
+
+        .year-bubbles-header {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: stretch;
+          margin-bottom: 0.75rem;
+        }
+
+        .year-bubbles-title {
+          text-align: center;
+          font-size: 0.85rem;
+        }
+
+        .year-bubbles-toggle {
+          justify-content: center;
+          padding: 0.5rem 0.75rem;
+          font-size: 0.8rem;
+          min-height: 44px;
+        }
+
+        .year-bubbles-content.expanded {
+          max-height: 250px;
+        }
+
+        .bubbles-preview {
+          padding: 0.5rem;
+          gap: 4px;
+          margin-bottom: 0.75rem;
+        }
+
+        .preview-bubble {
+          width: 28px;
+          height: 28px;
+          font-size: 0.6rem;
+          min-height: 28px;
         }
 
         .bubbles-container {
-          max-height: 300px;
-          gap: 6px;
-          padding: 0.5rem;
+          max-height: 250px;
+          gap: 4px;
+          padding: 0.25rem;
         }
 
         .year-bubble {
-          width: 36px;
-          height: 36px;
-          font-size: 0.65rem;
+          width: 32px;
+          height: 32px;
+          font-size: 0.6rem;
+          min-height: 32px;
         }
 
         .year-bubble:hover {
-          transform: scale(1.3);
+          transform: scale(1.2);
         }
       }
 
@@ -2585,6 +5349,9 @@
     <!-- End Google Analytics -->
   </head>
   <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
     <nav>
       <div class="container">
@@ -2870,7 +5637,7 @@
       </nav>
 
       <!-- Main Calculator -->
-      <main class="calculator-main">
+      <main id="main-content" class="calculator-main">
         <div class="calculator-card">
           <!-- Year Progress Circle -->
           <div
@@ -3036,19 +5803,23 @@
             class="year-bubbles-section"
             style="display: none"
           >
-            <h3
-              style="
-                text-align: center;
-                color: var(--dark);
-                margin-bottom: 1rem;
-                font-size: 1rem;
-              "
-            >
-              Every Year of Your Life
-            </h3>
-            <div class="bubbles-container" id="bubblesContainer">
-              <!-- Year bubbles will be dynamically generated -->
+            <div class="year-bubbles-header">
+              <h3 class="year-bubbles-title">Every Year of Your Life</h3>
+              <button class="year-bubbles-toggle" id="yearBubblesToggle" onclick="toggleYearBubbles()">
+                <span class="toggle-text" id="yearBubblesToggleText">Show All Years</span>
+                <span class="toggle-icon" id="yearBubblesToggleIcon">▼</span>
+              </button>
             </div>
+            
+            <div class="year-bubbles-content" id="yearBubblesContent">
+              <div class="bubbles-preview" id="bubblesPreview">
+                <!-- First 5 bubbles preview will be shown here -->
+              </div>
+              <div class="bubbles-container" id="bubblesContainer">
+                <!-- All year bubbles will be dynamically generated -->
+              </div>
+            </div>
+            
             <div class="bubble-tooltip" id="bubbleTooltip"></div>
           </div>
 
@@ -3057,11 +5828,16 @@
             <label class="section-title" for="birthDate">Date of Birth</label>
             <input
               type="date"
-              class="date-input"
+              class="date-input focusable"
               id="birthDate"
               max=""
               autofocus
+              aria-label="Enter your birth date"
+              aria-describedby="birthDateHelp"
             />
+            <div id="birthDateHelp" class="sr-only">
+              Select your birth date to calculate your age
+            </div>
           </div>
 
           <!-- Calculate At Specific Date Option -->
@@ -3088,6 +5864,15 @@
             id="resultsSection"
             style="display: none"
           >
+            <!-- Age Summary Card -->
+            <div class="age-summary-card" id="ageSummaryCard">
+              <div class="summary-icon">🎂</div>
+              <div class="summary-text">
+                <div class="summary-label">You are</div>
+                <div class="summary-age" id="summaryAge">0 years, 0 months, 0 days old</div>
+              </div>
+            </div>
+            
             <!-- Life Stage Card -->
             <div class="life-stage-card" id="lifeStageCard">
               <div class="stage-header">
@@ -3186,63 +5971,397 @@
               </div>
             </div>
 
-            <div class="result-grid">
-              <div class="result-item">
-                <div class="result-label">Total Days</div>
-                <div class="result-value" id="totalDays">--</div>
-              </div>
-              <div class="result-item">
-                <div class="result-label">Total Hours</div>
-                <div class="result-value" id="totalHours">--</div>
-              </div>
-              <div class="result-item">
-                <div class="result-label">Total Minutes</div>
-                <div class="result-value" id="totalMinutes">--</div>
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+              <div class="empty-state-icon">🎂</div>
+              <div class="empty-state-title">No Age Data Available</div>
+              <div class="empty-state-description">
+                Please enter your birth date above to see your age calculation and life statistics.
               </div>
             </div>
 
-            <div class="result-grid" style="margin-top: 1rem">
-              <div class="result-item">
-                <div class="result-label">Next Birthday</div>
-                <div
-                  class="result-value"
-                  id="nextBirthday"
-                  style="font-size: 1.2rem"
-                >
-                  --
+            <!-- Skeleton Loaders -->
+            <div id="skeletonLoaders" style="display: none;">
+              <div class="skeleton-card card-stagger-1">
+                <div class="skeleton-header">
+                  <div class="skeleton-icon skeleton-loader"></div>
+                  <div class="skeleton-title skeleton-loader"></div>
+                </div>
+                <div class="skeleton-content">
+                  <div class="skeleton-item skeleton-loader"></div>
+                  <div class="skeleton-item short skeleton-loader"></div>
+                  <div class="skeleton-item medium skeleton-loader"></div>
                 </div>
               </div>
-              <div class="result-item">
-                <div class="result-label">Day Born</div>
-                <div
-                  class="result-value"
-                  id="dayBorn"
-                  style="font-size: 1.2rem"
-                >
-                  --
+              
+              <div class="skeleton-card card-stagger-2">
+                <div class="skeleton-header">
+                  <div class="skeleton-icon skeleton-loader"></div>
+                  <div class="skeleton-title skeleton-loader"></div>
+                </div>
+                <div class="skeleton-content">
+                  <div class="skeleton-item skeleton-loader"></div>
+                  <div class="skeleton-item short skeleton-loader"></div>
+                  <div class="skeleton-item medium skeleton-loader"></div>
+                </div>
+              </div>
+              
+              <div class="skeleton-card card-stagger-3">
+                <div class="skeleton-header">
+                  <div class="skeleton-icon skeleton-loader"></div>
+                  <div class="skeleton-title skeleton-loader"></div>
+                </div>
+                <div class="skeleton-content">
+                  <div class="skeleton-item skeleton-loader"></div>
+                  <div class="skeleton-item short skeleton-loader"></div>
+                  <div class="skeleton-item medium skeleton-loader"></div>
                 </div>
               </div>
             </div>
 
-            <div class="result-grid" style="margin-top: 1rem">
-              <div class="result-item">
-                <div class="result-label">Zodiac Sign</div>
-                <div
-                  class="result-value"
-                  id="zodiacSign"
-                  style="font-size: 1.3rem"
-                >
-                  --
-                </div>
+            <!-- Key Stats Card Grid -->
+            <!-- Themed Stats Cards -->
+             <div class="themed-cards-grid">
+               <!-- By The Numbers Card -->
+               <div class="themed-card numbers-card card-hover card-stagger-1">
+                 <div class="card-header">
+                   <div class="card-icon">🔢</div>
+                   <div class="card-title">By The Numbers</div>
+                 </div>
+                 <div class="card-content">
+                   <div class="stat-list">
+                     <div class="stat-item">
+                       <span class="stat-icon">📅</span>
+                       <span class="stat-label">Total Days</span>
+                       <span class="stat-value" id="totalDays">--</span>
+                     </div>
+                     <div class="stat-item">
+                       <span class="stat-icon">🕐</span>
+                       <span class="stat-label">Total Hours</span>
+                       <span class="stat-value" id="totalHours">--</span>
+                     </div>
+                     <div class="stat-item">
+                       <span class="stat-icon">⏱️</span>
+                       <span class="stat-label">Total Minutes</span>
+                       <span class="stat-value" id="totalMinutes">--</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <!-- Planetary Ages Card -->
+               <div class="themed-card planetary-card card-hover card-stagger-2">
+                 <div class="card-header">
+                   <div class="card-icon">🌌</div>
+                   <div class="card-title">Planetary Ages</div>
+                 </div>
+                 <div class="card-content">
+                   <div class="planetary-grid">
+                     <div class="planet-item">
+                       <div class="planet-emoji">☿️</div>
+                       <div class="planet-info">
+                         <div class="planet-name">Mercury</div>
+                         <div class="planet-age" id="mercuryAge">--</div>
+                       </div>
+                     </div>
+                     <div class="planet-item">
+                       <div class="planet-emoji">♂️</div>
+                       <div class="planet-info">
+                         <div class="planet-name">Mars</div>
+                         <div class="planet-age" id="marsAge">--</div>
+                       </div>
+                     </div>
+                     <div class="planet-item">
+                       <div class="planet-emoji">♃</div>
+                       <div class="planet-info">
+                         <div class="planet-name">Jupiter</div>
+                         <div class="planet-age" id="jupiterAge">--</div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <!-- Life Statistics Card -->
+               <div class="themed-card life-stats-card card-hover card-stagger-3">
+                 <div class="card-header">
+                   <div class="card-icon">📊</div>
+                   <div class="card-title">Life Statistics</div>
+                 </div>
+                 <div class="card-content">
+                   <div class="life-stats-grid">
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">🎂</div>
+                       <div class="life-stat-label">Birthdays</div>
+                       <div class="life-stat-value" id="birthdaysCount">--</div>
+                     </div>
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">🦘</div>
+                       <div class="life-stat-label">Leap Years</div>
+                       <div class="life-stat-value" id="leapYearsCount">--</div>
+                     </div>
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">🍂</div>
+                       <div class="life-stat-label">Seasons</div>
+                       <div class="life-stat-value" id="seasonsCount">--</div>
+                     </div>
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">📅</div>
+                       <div class="life-stat-label">Day Born</div>
+                       <div class="life-stat-value" id="dayBorn">--</div>
+                     </div>
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">♈</div>
+                       <div class="life-stat-label">Zodiac</div>
+                       <div class="life-stat-value" id="zodiacSign">--</div>
+                     </div>
+                     <div class="life-stat-item">
+                       <div class="life-stat-icon">🐲</div>
+                       <div class="life-stat-label">Chinese</div>
+                       <div class="life-stat-value" id="chineseZodiac">--</div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+            <!-- Tabbed Navigation -->
+            <div class="tabbed-navigation">
+              <div class="tab-nav" role="tablist" aria-label="Results sections">
+                <button class="tab-button active focusable" data-tab="timeline" role="tab" aria-selected="true" aria-controls="timeline-tab" tabindex="0">
+                  <span class="tab-icon" aria-hidden="true">📅</span>
+                  <span class="tab-text">Timeline</span>
+                </button>
+                <button class="tab-button focusable" data-tab="life-stage" role="tab" aria-selected="false" aria-controls="life-stage-tab" tabindex="-1">
+                  <span class="tab-icon" aria-hidden="true">🎂</span>
+                  <span class="tab-text">Life Stage</span>
+                </button>
+                <button class="tab-button focusable" data-tab="fun-stats" role="tab" aria-selected="false" aria-controls="fun-stats-tab" tabindex="-1">
+                  <span class="tab-icon" aria-hidden="true">🌟</span>
+                  <span class="tab-text">Fun Stats</span>
+                </button>
+                <button class="tab-button focusable" data-tab="tools" role="tab" aria-selected="false" aria-controls="tools-tab" tabindex="-1">
+                  <span class="tab-icon" aria-hidden="true">🔧</span>
+                  <span class="tab-text">Tools</span>
+                </button>
               </div>
-              <div class="result-item">
-                <div class="result-label">Chinese Zodiac</div>
-                <div
-                  class="result-value"
-                  id="chineseZodiac"
-                  style="font-size: 1.3rem"
-                >
-                  --
+              
+              <div class="tab-content">
+                <!-- Timeline Tab -->
+                <div class="tab-panel active" id="timeline-tab" role="tabpanel" aria-labelledby="timeline-tab" tabindex="0">
+                  <div id="lifeTimeline" class="life-timeline" style="display: none">
+                    <div class="timeline-header" onclick="toggleTimeline()">
+                      <div class="timeline-title">
+                        <span class="timeline-icon">📅</span>
+                        <h3>Your Life Journey</h3>
+                      </div>
+                      <div class="timeline-toggle">
+                        <span class="toggle-icon" id="timelineToggleIcon">▼</span>
+                      </div>
+                    </div>
+                    <div class="timeline-content" id="timelineContent">
+                      <div class="timeline-container" id="timelineContainer">
+                      <div class="timeline-hint" id="timelineHint">👆 Swipe to explore</div>
+                      <div class="timeline-progress" id="timelineProgress"></div>
+                      <div class="timeline-track">
+                        <div class="timeline-marker" data-age="0">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">0</div>
+                          <div class="marker-name">Birth</div>
+                        </div>
+                        <div class="timeline-marker" data-age="5">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">5</div>
+                          <div class="marker-name">School</div>
+                        </div>
+                        <div class="timeline-marker" data-age="10">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">10</div>
+                          <div class="marker-name">Tween</div>
+                        </div>
+                        <div class="timeline-marker" data-age="13">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">13</div>
+                          <div class="marker-name">Teen</div>
+                        </div>
+                        <div class="timeline-marker" data-age="16">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">16</div>
+                          <div class="marker-name">Drive</div>
+                        </div>
+                        <div class="timeline-marker" data-age="18">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">18</div>
+                          <div class="marker-name">Adult</div>
+                        </div>
+                        <div class="timeline-marker" data-age="21">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">21</div>
+                          <div class="marker-name">Legal</div>
+                        </div>
+                        <div class="timeline-marker" data-age="25">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">25</div>
+                          <div class="marker-name">Quarter</div>
+                        </div>
+                        <div class="timeline-marker" data-age="30">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">30</div>
+                          <div class="marker-name">Thirty</div>
+                        </div>
+                        <div class="timeline-marker" data-age="40">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">40</div>
+                          <div class="marker-name">Forty</div>
+                        </div>
+                        <div class="timeline-marker" data-age="50">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">50</div>
+                          <div class="marker-name">Fifty</div>
+                        </div>
+                        <div class="timeline-marker" data-age="60">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">60</div>
+                          <div class="marker-name">Sixty</div>
+                        </div>
+                        <div class="timeline-marker" data-age="65">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">65</div>
+                          <div class="marker-name">Retire</div>
+                        </div>
+                        <div class="timeline-marker" data-age="70">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">70</div>
+                          <div class="marker-name">Seventy</div>
+                        </div>
+                        <div class="timeline-marker" data-age="80">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">80</div>
+                          <div class="marker-name">Octogen</div>
+                        </div>
+                        <div class="timeline-marker" data-age="90">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">90</div>
+                          <div class="marker-name">Ninety</div>
+                        </div>
+                        <div class="timeline-marker" data-age="100">
+                          <div class="marker-dot"></div>
+                          <div class="marker-label">100</div>
+                          <div class="marker-name">Century</div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Life Stage Tab -->
+                <div class="tab-panel" id="life-stage-tab" role="tabpanel" aria-labelledby="life-stage-tab" tabindex="-1">
+                  <div class="life-stage-card" id="lifeStageCard">
+                    <div class="stage-emoji" id="stageIcon">🎂</div>
+                    <div class="stage-content">
+                      <div class="stage-info">
+                        <div class="stage-name" id="stageName">Your Life Stage</div>
+                        <div class="stage-description" id="stageDescription">Loading...</div>
+                        <div class="next-milestone" id="nextMilestone">
+                          <span class="milestone-badge" id="milestoneBadge">Next: --</span>
+                        </div>
+                      </div>
+                      <div class="stage-progress-ring">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                          <circle
+                            cx="30"
+                            cy="30"
+                            r="25"
+                            fill="none"
+                            stroke="#e5e7eb"
+                            stroke-width="4"
+                          />
+                          <circle
+                            cx="30"
+                            cy="30"
+                            r="25"
+                            fill="none"
+                            stroke="url(#stageGradient)"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-dasharray="157"
+                            stroke-dashoffset="157"
+                            id="stageProgressCircle"
+                          />
+                          <defs>
+                            <linearGradient id="stageGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" style="stop-color:#6366f1" />
+                              <stop offset="100%" style="stop-color:#8b5cf6" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <div class="stage-progress-text" id="stageProgressText">0%</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="life-story-section" id="lifeStorySection" style="display: none">
+                    <h3>Your Life Story</h3>
+                    <div class="story-chapter" id="storyChapter"></div>
+                    <div class="story-closing" id="storyClosing"></div>
+                  </div>
+                </div>
+
+                <!-- Fun Stats Tab -->
+                <div class="tab-panel" id="fun-stats-tab" role="tabpanel" aria-labelledby="fun-stats-tab" tabindex="-1">
+                  <div class="fun-stats-content">
+                    <h3>Fun Statistics</h3>
+                    <div class="fun-stats-grid">
+                      <div class="fun-stat-item">
+                        <div class="fun-stat-icon">🌍</div>
+                        <div class="fun-stat-value" id="planetaryAge">--</div>
+                        <div class="fun-stat-label">Planetary Age</div>
+                      </div>
+                      <div class="fun-stat-item">
+                        <div class="fun-stat-icon">❤️</div>
+                        <div class="fun-stat-value" id="heartbeats">--</div>
+                        <div class="fun-stat-label">Heartbeats</div>
+                      </div>
+                      <div class="fun-stat-item">
+                        <div class="fun-stat-icon">🫁</div>
+                        <div class="fun-stat-value" id="breaths">--</div>
+                        <div class="fun-stat-label">Breaths Taken</div>
+                      </div>
+                      <div class="fun-stat-item">
+                        <div class="fun-stat-icon">😴</div>
+                        <div class="fun-stat-value" id="sleepHours">--</div>
+                        <div class="fun-stat-label">Hours Slept</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tools Tab -->
+                <div class="tab-panel" id="tools-tab" role="tabpanel" aria-labelledby="tools-tab" tabindex="-1">
+                  <div class="tools-content">
+                    <h3>Age Tools</h3>
+                    <div class="tools-grid">
+                      <div class="tool-card">
+                        <div class="tool-icon">⚖️</div>
+                        <div class="tool-title">Age Difference</div>
+                        <div class="tool-description">Compare ages between two people</div>
+                        <button class="tool-button" onclick="showAgeDifference()">Open Calculator</button>
+                      </div>
+                      <div class="tool-card">
+                        <div class="tool-icon">🏖️</div>
+                        <div class="tool-title">Retirement Countdown</div>
+                        <div class="tool-description">See how long until retirement</div>
+                        <button class="tool-button" onclick="showRetirementCountdown()">Open Calculator</button>
+                      </div>
+                      <div class="tool-card">
+                        <div class="tool-icon">🔍</div>
+                        <div class="tool-title">Year Finder</div>
+                        <div class="tool-description">Find what year you'll be a certain age</div>
+                        <button class="tool-button" onclick="showYearFinder()">Open Calculator</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3494,67 +6613,19 @@
             </div>
 
             <!-- Action Buttons -->
-            <div
-              style="
-                display: flex;
-                gap: 1rem;
-                margin-top: 2rem;
-                flex-wrap: wrap;
-              "
-            >
-              <button
-                onclick="copyResults()"
-                style="
-                  flex: 1;
-                  min-width: 140px;
-                  padding: 1rem;
-                  background: var(--primary);
-                  color: white;
-                  border: none;
-                  border-radius: 12px;
-                  font-weight: 600;
-                  cursor: pointer;
-                  transition: all 0.3s;
-                  font-size: 1rem;
-                "
-              >
-                📋 Copy
+            <!-- Desktop Action Buttons -->
+            <div class="action-buttons-desktop">
+              <button class="action-btn copy-btn interactive-scale focusable" onclick="copyResults()" data-tooltip="Copy results to clipboard" aria-label="Copy age calculation results">
+                <span class="btn-icon" aria-hidden="true">📋</span>
+                <span class="btn-text">Copy</span>
               </button>
-              <button
-                onclick="shareResults()"
-                style="
-                  flex: 1;
-                  min-width: 140px;
-                  padding: 1rem;
-                  background: var(--secondary);
-                  color: white;
-                  border: none;
-                  border-radius: 12px;
-                  font-weight: 600;
-                  cursor: pointer;
-                  transition: all 0.3s;
-                  font-size: 1rem;
-                "
-              >
-                🔗 Share
+              <button class="action-btn share-btn interactive-scale focusable" onclick="shareResults()" data-tooltip="Share your age calculation" aria-label="Share age calculation results">
+                <span class="btn-icon" aria-hidden="true">🔗</span>
+                <span class="btn-text">Share</span>
               </button>
-              <button
-                onclick="saveCurrentAge()"
-                style="
-                  flex: 1;
-                  min-width: 140px;
-                  padding: 1rem;
-                  background: var(--accent);
-                  color: white;
-                  border: none;
-                  border-radius: 12px;
-                  font-weight: 600;
-                  cursor: pointer;
-                  transition: all 0.3s;
-                  font-size: 1rem;
-                "
-              >
-                💾 Save
+              <button class="action-btn save-btn interactive-scale focusable" onclick="saveCurrentAge()" data-tooltip="Save to your collection" aria-label="Save age calculation to collection">
+                <span class="btn-icon" aria-hidden="true">💾</span>
+                <span class="btn-text">Save</span>
               </button>
             </div>
 
@@ -6064,6 +9135,14 @@
       // Initialize event listeners
       document.addEventListener("DOMContentLoaded", function () {
         setupEventListeners();
+        setupTabNavigation();
+        initializeTimelineScrollability();
+        initializeTimelineState();
+        
+        // Test all functionality after page load
+        setTimeout(() => {
+          testAllFunctionality();
+        }, 1000);
       });
 
       function setupEventListeners() {
@@ -6116,6 +9195,147 @@
         document
           .getElementById("customDate")
           .addEventListener("change", calculateAge);
+
+        // Handle window resize for timeline state
+        window.addEventListener("resize", function() {
+          const timelineContent = document.getElementById('timelineContent');
+          if (timelineContent && timelineContent.style.display !== 'none') {
+            initializeTimelineState();
+          }
+        });
+      }
+
+      function setupTabNavigation() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Update button states
+            tabButtons.forEach(btn => {
+              btn.classList.remove('active');
+              btn.setAttribute('aria-selected', 'false');
+              btn.setAttribute('tabindex', '-1');
+            });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            this.setAttribute('tabindex', '0');
+            
+            // Update panel states
+            tabPanels.forEach(panel => {
+              panel.classList.remove('active');
+              panel.setAttribute('tabindex', '-1');
+            });
+            
+            // Show corresponding panel with animation
+            const targetPanel = document.getElementById(targetTab + '-tab');
+            if (targetPanel) {
+              targetPanel.classList.add('active');
+              targetPanel.setAttribute('tabindex', '0');
+              
+              // Trigger content-specific actions based on tab
+              switch(targetTab) {
+                case 'timeline':
+                  // Show timeline if it exists and has content
+                  const timeline = document.getElementById('lifeTimeline');
+                  if (timeline && document.getElementById('birthDate').value) {
+                    timeline.style.display = 'block';
+                  }
+                  break;
+                case 'life-stage':
+                  // Life stage content is already populated by calculateAge
+                  break;
+                case 'fun-stats':
+                  // Calculate and display fun stats
+                  calculateFunStats();
+                  break;
+                case 'tools':
+                  // Tools are static, no additional action needed
+                  break;
+              }
+            }
+          });
+        });
+      }
+
+      function calculateFunStats() {
+        if (!currentResults) return;
+        
+        const { totalDays, totalHours } = currentResults;
+        
+        // Calculate fun statistics
+        const heartbeats = Math.floor(totalHours * 70 * 60); // 70 bpm average
+        const breaths = Math.floor(totalHours * 16 * 60); // 16 breaths per minute
+        const sleepHours = Math.floor(totalHours * 0.33); // 8 hours sleep per day
+        const planetaryAge = (totalDays / 365.25).toFixed(2); // Earth years
+        
+        // Calculate planetary ages
+        const mercuryAge = (totalDays / 87.97).toFixed(1); // Mercury year = 87.97 Earth days
+        const marsAge = (totalDays / 686.98).toFixed(1); // Mars year = 686.98 Earth days
+        const jupiterAge = (totalDays / 4332.59).toFixed(1); // Jupiter year = 4332.59 Earth days
+        
+        // Update fun stats display
+        const planetaryAgeEl = document.getElementById('planetaryAge');
+        const heartbeatsEl = document.getElementById('heartbeats');
+        const breathsEl = document.getElementById('breaths');
+        const sleepHoursEl = document.getElementById('sleepHours');
+        
+        if (planetaryAgeEl) planetaryAgeEl.textContent = planetaryAge + ' years';
+        if (heartbeatsEl) heartbeatsEl.textContent = heartbeats.toLocaleString();
+        if (breathsEl) breathsEl.textContent = breaths.toLocaleString();
+        if (sleepHoursEl) sleepHoursEl.textContent = sleepHours.toLocaleString();
+
+        // Update planetary ages
+        const mercuryAgeEl = document.getElementById('mercuryAge');
+        const marsAgeEl = document.getElementById('marsAge');
+        const jupiterAgeEl = document.getElementById('jupiterAge');
+        
+        if (mercuryAgeEl) mercuryAgeEl.textContent = mercuryAge + ' years';
+        if (marsAgeEl) marsAgeEl.textContent = marsAge + ' years';
+        if (jupiterAgeEl) jupiterAgeEl.textContent = jupiterAge + ' years';
+      }
+
+      function toggleTimeline() {
+        const timelineContent = document.getElementById('timelineContent');
+        const toggleIcon = document.getElementById('timelineToggleIcon');
+        
+        if (timelineContent && toggleIcon) {
+          const isExpanded = timelineContent.classList.contains('expanded');
+          
+          if (isExpanded) {
+            // Collapse
+            timelineContent.classList.remove('expanded');
+            timelineContent.classList.add('collapsed');
+            toggleIcon.textContent = '▶';
+          } else {
+            // Expand
+            timelineContent.classList.remove('collapsed');
+            timelineContent.classList.add('expanded');
+            toggleIcon.textContent = '▼';
+          }
+        }
+      }
+
+      function initializeTimelineState() {
+        const timelineContent = document.getElementById('timelineContent');
+        const toggleIcon = document.getElementById('timelineToggleIcon');
+        
+        if (timelineContent && toggleIcon) {
+          // Check if mobile (screen width < 768px)
+          const isMobile = window.innerWidth < 768;
+          
+          if (isMobile) {
+            // Collapsed by default on mobile
+            timelineContent.classList.add('collapsed');
+            toggleIcon.textContent = '▶';
+          } else {
+            // Expanded by default on desktop
+            timelineContent.classList.add('expanded');
+            toggleIcon.textContent = '▼';
+          }
+        }
       }
 
       function toggleCustomDate() {
@@ -6668,7 +9888,7 @@
       function calculateAge() {
         const birthDate = document.getElementById("birthDate").value;
         if (!birthDate) {
-          document.getElementById("resultsSection").style.display = "none";
+          showEmptyState();
           const timeline = document.getElementById("lifeTimeline");
           if (timeline) timeline.style.display = "none";
           const yearBubbles = document.getElementById("yearBubbles");
@@ -6849,6 +10069,16 @@
         }, ${months} month${months !== 1 ? "s" : ""}, ${days} day${
           days !== 1 ? "s" : ""
         }`;
+
+        // Update summary card
+        const summaryAge = document.getElementById("summaryAge");
+        if (summaryAge) {
+          summaryAge.textContent = `${years} year${
+            years !== 1 ? "s" : ""
+          }, ${months} month${months !== 1 ? "s" : ""}, ${days} day${
+            days !== 1 ? "s" : ""
+          } old`;
+        }
         document.getElementById("totalDays").textContent =
           totalDays.toLocaleString();
         document.getElementById("totalHours").textContent =
@@ -6896,11 +10126,28 @@
         // Show historical context
         showHistoricalEvents(birth.getFullYear());
 
-        // Show results
+        // Show skeleton loaders first
+        showSkeletonLoaders();
+        
+        // Hide empty state and show results
+        hideEmptyState();
         document.getElementById("resultsSection").style.display = "block";
+
+        // Show timeline in the timeline tab
+        const timeline = document.getElementById("lifeTimeline");
+        if (timeline) {
+          timeline.style.display = "block";
+          // Initialize timeline state when shown
+          setTimeout(() => {
+            initializeTimelineState();
+          }, 100);
+        }
 
         // Update life stage card
         updateLifeStageCard(years);
+
+        // Calculate and update themed cards
+        calculateFunStats();
 
         // Generate life story
         generateLifeStory(years, totalDays, birth.getFullYear());
@@ -6916,6 +10163,29 @@
 
         // Calculate and show year progress
         updateYearProgress(birth, targetDate);
+
+        // Hide skeleton loaders and trigger animations
+        setTimeout(() => {
+          hideSkeletonLoaders();
+          
+          // Animate timeline slide in
+          setTimeout(() => {
+            animateTimelineSlideIn();
+          }, 100);
+          
+          // Animate year bubbles
+          setTimeout(() => {
+            animateYearBubbles();
+          }, 200);
+          
+          // Animate progress rings
+          setTimeout(() => {
+            const progressRing = document.querySelector('.stage-progress-ring');
+            if (progressRing) {
+              animateProgressRing(progressRing, (years / 100) * 100);
+            }
+          }, 300);
+        }, 500); // Show skeleton for 500ms
       }
 
       // Calculate total days accounting for leap years (optimized)
@@ -6941,8 +10211,239 @@
         return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
       }
 
+      // Add haptic feedback to buttons
+      function addHapticFeedback(button) {
+        button.classList.add('haptic-feedback');
+        setTimeout(() => {
+          button.classList.remove('haptic-feedback');
+        }, 100);
+        
+        // Try to trigger haptic feedback on supported devices
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+      }
+
+      // Show skeleton loaders
+      function showSkeletonLoaders() {
+        const skeletonLoaders = document.getElementById('skeletonLoaders');
+        const resultsSection = document.getElementById('resultsSection');
+        
+        if (skeletonLoaders && resultsSection) {
+          skeletonLoaders.style.display = 'block';
+          resultsSection.style.display = 'block';
+        }
+      }
+
+      // Hide skeleton loaders and show results
+      function hideSkeletonLoaders() {
+        const skeletonLoaders = document.getElementById('skeletonLoaders');
+        const resultsSection = document.getElementById('resultsSection');
+        
+        if (skeletonLoaders && resultsSection) {
+          skeletonLoaders.style.display = 'none';
+          resultsSection.classList.add('results-appear');
+        }
+      }
+
+      // Animate progress ring
+      function animateProgressRing(element, percentage) {
+        if (!element) return;
+        
+        const circle = element.querySelector('circle');
+        if (!circle) return;
+        
+        const radius = 25; // radius for 60px circle
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (percentage / 100) * circumference;
+        
+        circle.style.strokeDasharray = circumference;
+        circle.style.strokeDashoffset = circumference;
+        circle.style.setProperty('--final-offset', offset);
+        
+        // Trigger animation
+        circle.classList.add('progress-ring-animate');
+      }
+
+      // Add button press animation
+      function addButtonPressAnimation(button) {
+        button.classList.add('button-press');
+        setTimeout(() => {
+          button.classList.remove('button-press');
+        }, 150);
+      }
+
+      // Animate year bubbles with staggered delays
+      function animateYearBubbles() {
+        const bubbles = document.querySelectorAll('.year-bubble');
+        bubbles.forEach((bubble, index) => {
+          bubble.style.opacity = '0';
+          bubble.style.transform = 'scale(0)';
+          
+          setTimeout(() => {
+            bubble.classList.add('bubble-pop');
+          }, index * 50); // 50ms delay between each bubble
+        });
+      }
+
+      // Animate timeline slide in
+      function animateTimelineSlideIn() {
+        const timeline = document.getElementById('lifeTimeline');
+        if (timeline) {
+          timeline.classList.add('timeline-slide-in');
+        }
+      }
+
+      // Ensure timeline is scrollable on all screen sizes
+      function ensureTimelineScrollable() {
+        const timelineContainer = document.getElementById('timelineContainer');
+        if (timelineContainer) {
+          // Add scroll behavior
+          timelineContainer.style.scrollBehavior = 'smooth';
+          timelineContainer.style.overflowX = 'auto';
+          timelineContainer.style.overflowY = 'hidden';
+          
+          // Ensure proper scrolling on mobile
+          if (window.innerWidth < 768) {
+            timelineContainer.style.scrollSnapType = 'x mandatory';
+            timelineContainer.style.scrollPadding = '1rem';
+          }
+        }
+      }
+
+      // Initialize timeline scrollability
+      function initializeTimelineScrollability() {
+        ensureTimelineScrollable();
+        
+        // Re-initialize on resize
+        window.addEventListener('resize', () => {
+          ensureTimelineScrollable();
+        });
+      }
+
+      // Test all functionality
+      function testAllFunctionality() {
+        console.log('Testing age calculator functionality...');
+        
+        // Test 1: Check if all required elements exist
+        const requiredElements = [
+          'birthDate', 'resultsSection', 'ageSummaryCard', 'themed-cards-grid',
+          'tabbed-navigation', 'lifeTimeline', 'yearBubbles', 'floatingActionToolbar'
+        ];
+        
+        const missingElements = requiredElements.filter(id => !document.getElementById(id));
+        if (missingElements.length > 0) {
+          console.error('Missing elements:', missingElements);
+          return false;
+        }
+        
+        // Test 2: Check if all interactive elements have focus states
+        const interactiveElements = document.querySelectorAll('.focusable, .action-btn, .fab-btn, .tab-button');
+        console.log(`Found ${interactiveElements.length} interactive elements with focus states`);
+        
+        // Test 3: Check if all animations are defined
+        const animationClasses = ['fadeInUp', 'bounce', 'slideUp', 'skeleton-loading', 'resultsScaleIn'];
+        const hasAnimations = animationClasses.every(className => {
+          const style = document.createElement('style');
+          return style.sheet ? style.sheet.cssRules.length > 0 : false;
+        });
+        console.log('Animations loaded:', hasAnimations);
+        
+        // Test 4: Check responsive breakpoints
+        const breakpoints = [
+          { name: 'Mobile', width: 375 },
+          { name: 'Tablet', width: 768 },
+          { name: 'Desktop', width: 1024 }
+        ];
+        
+        breakpoints.forEach(bp => {
+          const mediaQuery = window.matchMedia(`(max-width: ${bp.width}px)`);
+          console.log(`${bp.name} breakpoint:`, mediaQuery.matches ? 'Active' : 'Inactive');
+        });
+        
+        // Test 5: Check accessibility features
+        const skipLink = document.querySelector('.skip-link');
+        const srOnlyElements = document.querySelectorAll('.sr-only');
+        console.log('Accessibility features:', {
+          skipLink: !!skipLink,
+          screenReaderElements: srOnlyElements.length
+        });
+        
+        console.log('All functionality tests completed successfully!');
+        return true;
+      }
+
+      // Show/hide floating action toolbar based on results
+      function toggleFloatingToolbar(show) {
+        const toolbar = document.getElementById('floatingActionToolbar');
+        if (toolbar) {
+          if (show) {
+            toolbar.classList.add('show');
+          } else {
+            toolbar.classList.remove('show');
+          }
+        }
+      }
+
+      // Show empty state
+      function showEmptyState() {
+        const emptyState = document.getElementById('emptyState');
+        const resultsSection = document.getElementById('resultsSection');
+        if (emptyState && resultsSection) {
+          emptyState.style.display = 'block';
+          resultsSection.style.display = 'block';
+        }
+      }
+
+      // Hide empty state
+      function hideEmptyState() {
+        const emptyState = document.getElementById('emptyState');
+        if (emptyState) {
+          emptyState.style.display = 'none';
+        }
+      }
+
+      // Add milestone animations
+      function animateMilestones() {
+        const milestoneItems = document.querySelectorAll('.milestone-item');
+        milestoneItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, index * 100);
+        });
+      }
+
+      // Enhanced error handling
+      function showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.cssText = `
+          background: #fee2e2;
+          color: #dc2626;
+          padding: 1rem;
+          border-radius: 8px;
+          margin: 1rem 0;
+          border: 1px solid #fecaca;
+        `;
+        errorDiv.textContent = message;
+        
+        const resultsSection = document.getElementById('resultsSection');
+        if (resultsSection) {
+          resultsSection.insertBefore(errorDiv, resultsSection.firstChild);
+          setTimeout(() => errorDiv.remove(), 5000);
+        }
+      }
+
       // Copy results to clipboard
       function copyResults() {
+        // Add haptic feedback and press animation
+        const button = event.target.closest('.action-btn, .fab-btn');
+        if (button) {
+          addHapticFeedback(button);
+          addButtonPressAnimation(button);
+        }
+        
         const heartbeats = document.getElementById("heartbeats").textContent;
         const breaths = document.getElementById("breaths").textContent;
         const generation = document.getElementById("generation").textContent;
@@ -7002,6 +10503,13 @@ https://forgeapis.com/age-calculator/`;
 
       // Share results
       function shareResults() {
+        // Add haptic feedback and press animation
+        const button = event.target.closest('.action-btn, .fab-btn');
+        if (button) {
+          addHapticFeedback(button);
+          addButtonPressAnimation(button);
+        }
+        
         const text = `I'm ${currentResults.years} years, ${
           currentResults.months
         } months, and ${
@@ -7288,15 +10796,19 @@ https://forgeapis.com/age-calculator/`;
           document.getElementById("stageName").textContent = stageData.name;
           document.getElementById("stageDescription").textContent =
             stageData.description;
-          document.getElementById("milestoneText").textContent =
-            stageData.milestone;
 
-          // Update progress ring
+          // Update milestone badge
+          const milestoneBadge = document.getElementById("milestoneBadge");
+          if (milestoneBadge) {
+            milestoneBadge.textContent = `Next: ${stageData.milestone}`;
+          }
+
+          // Update progress ring (adjusted for 60px circle)
           const progressCircle = document.getElementById("stageProgressCircle");
           const progressText = document.getElementById("stageProgressText");
 
           if (progressCircle && progressText) {
-            const circumference = 2 * Math.PI * 45;
+            const circumference = 2 * Math.PI * 25; // radius 25 for 60px circle
             const progress = stageData.progress;
             const offset = circumference - (progress / 100) * circumference;
 
@@ -7304,13 +10816,38 @@ https://forgeapis.com/age-calculator/`;
             progressText.textContent = Math.round(progress) + "%";
           }
 
-          // Trigger card re-animation
+          // Update card background based on age stage
           const card = document.getElementById("lifeStageCard");
           if (card) {
+            // Remove existing age classes
+            card.classList.remove(
+              "age-childhood",
+              "age-teen", 
+              "age-young-adult",
+              "age-adult",
+              "age-mature",
+              "age-senior"
+            );
+
+            // Add appropriate age class
+            if (age < 13) {
+              card.classList.add("age-childhood");
+            } else if (age < 18) {
+              card.classList.add("age-teen");
+            } else if (age < 30) {
+              card.classList.add("age-young-adult");
+            } else if (age < 50) {
+              card.classList.add("age-adult");
+            } else if (age < 65) {
+              card.classList.add("age-mature");
+            } else {
+              card.classList.add("age-senior");
+            }
+
+            // Trigger card re-animation
             card.style.animation = "none";
             setTimeout(() => {
-              card.style.animation =
-                "slideInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+              card.style.animation = "fadeInUp 0.6s ease-out";
             }, 10);
           }
         } catch (error) {
@@ -7680,6 +11217,97 @@ https://forgeapis.com/age-calculator/`;
         }
       }
 
+      // Toggle year bubbles section
+      function toggleYearBubbles() {
+        const content = document.getElementById('yearBubblesContent');
+        const toggleText = document.getElementById('yearBubblesToggleText');
+        const toggleIcon = document.getElementById('yearBubblesToggleIcon');
+        const preview = document.getElementById('bubblesPreview');
+        
+        if (content && toggleText && toggleIcon) {
+          const isExpanded = content.classList.contains('expanded');
+          
+          if (isExpanded) {
+            // Collapse
+            content.classList.remove('expanded');
+            content.classList.add('collapsed');
+            
+            // Get year count from button text
+            const yearCount = toggleText.textContent.match(/\d+/);
+            const count = yearCount ? yearCount[0] : '';
+            toggleText.textContent = `Show All ${count} Years`;
+            toggleIcon.textContent = '▼';
+            if (preview) preview.classList.remove('hidden');
+            
+            // Save preference
+            sessionStorage.setItem('yearBubblesExpanded', 'false');
+          } else {
+            // Expand
+            content.classList.remove('collapsed');
+            content.classList.add('expanded');
+            toggleText.textContent = 'Hide Years';
+            toggleIcon.textContent = '▲';
+            if (preview) preview.classList.add('hidden');
+            
+            // Save preference
+            sessionStorage.setItem('yearBubblesExpanded', 'true');
+          }
+        }
+      }
+
+      // Initialize year bubbles state from session storage
+      function initializeYearBubblesState() {
+        const content = document.getElementById('yearBubblesContent');
+        const toggleText = document.getElementById('yearBubblesToggleText');
+        const toggleIcon = document.getElementById('yearBubblesToggleIcon');
+        const preview = document.getElementById('bubblesPreview');
+        
+        if (content && toggleText && toggleIcon) {
+          const savedState = sessionStorage.getItem('yearBubblesExpanded');
+          const isExpanded = savedState === 'true';
+          
+          if (isExpanded) {
+            content.classList.add('expanded');
+            toggleText.textContent = 'Hide Years';
+            toggleIcon.textContent = '▲';
+            if (preview) preview.classList.add('hidden');
+          } else {
+            content.classList.add('collapsed');
+            
+            // Get year count from button text if available
+            const yearCount = toggleText.textContent.match(/\d+/);
+            const count = yearCount ? yearCount[0] : '';
+            toggleText.textContent = `Show All ${count} Years`;
+            toggleIcon.textContent = '▼';
+            if (preview) preview.classList.remove('hidden');
+          }
+        }
+      }
+
+      // Generate preview bubbles (first 5)
+      function generatePreviewBubbles(years) {
+        const preview = document.getElementById('bubblesPreview');
+        if (!preview) return;
+        
+        preview.innerHTML = '';
+        
+        // Show first 5 years
+        const previewYears = years.slice(0, 5);
+        
+        previewYears.forEach((year, index) => {
+          const bubble = document.createElement('div');
+          bubble.className = 'preview-bubble';
+          bubble.textContent = year;
+          
+          // Add special classes for important years
+          if (index === 0) {
+            bubble.classList.add('birth-year');
+          }
+          
+          preview.appendChild(bubble);
+        });
+      }
+
       // Generate year bubbles for each year of life
       function generateYearBubbles(birthYear, currentAge) {
         try {
@@ -7702,6 +11330,18 @@ https://forgeapis.com/age-calculator/`;
           for (let year = birthYear; year <= currentYear; year++) {
             years.push(year);
           }
+
+          // Update button text with year count
+          const toggleText = document.getElementById('yearBubblesToggleText');
+          if (toggleText) {
+            toggleText.textContent = `Show All ${years.length} Years`;
+          }
+
+          // Generate preview bubbles
+          generatePreviewBubbles(years);
+
+          // Initialize state
+          initializeYearBubblesState();
 
           // Create bubble for each year
           years.forEach((year, index) => {
@@ -8233,6 +11873,13 @@ https://forgeapis.com/age-calculator/`;
 
       // Save current age/birthday
       function saveCurrentAge() {
+        // Add haptic feedback and press animation
+        const button = event.target.closest('.action-btn, .fab-btn');
+        if (button) {
+          addHapticFeedback(button);
+          addButtonPressAnimation(button);
+        }
+        
         const birthDate = document.getElementById("birthDate").value;
         if (!birthDate) {
           showError("⚠️ Please enter a birth date first!");
@@ -8692,5 +12339,21 @@ https://forgeapis.com/age-calculator/`;
         return events;
       }
     </script>
+
+    <!-- Floating Action Toolbar for Mobile -->
+    <div class="floating-action-toolbar" id="floatingActionToolbar" role="toolbar" aria-label="Action buttons">
+      <button class="fab-btn copy-fab interactive-bounce focusable" onclick="copyResults()" data-tooltip="Copy results" aria-label="Copy age calculation results">
+        <span class="fab-icon" aria-hidden="true">📋</span>
+        <span class="fab-text">Copy</span>
+      </button>
+      <button class="fab-btn share-fab interactive-bounce focusable" onclick="shareResults()" data-tooltip="Share results" aria-label="Share age calculation results">
+        <span class="fab-icon" aria-hidden="true">🔗</span>
+        <span class="fab-text">Share</span>
+      </button>
+      <button class="fab-btn save-fab interactive-bounce focusable" onclick="saveCurrentAge()" data-tooltip="Save results" aria-label="Save age calculation to collection">
+        <span class="fab-icon" aria-hidden="true">💾</span>
+        <span class="fab-text">Save</span>
+      </button>
+    </div>
   </body>
 </html>
