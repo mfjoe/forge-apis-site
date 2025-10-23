@@ -2050,6 +2050,36 @@
             <button class="action-btn secondary" id="clear-btn">Clear</button>
           </div>
 
+          <!-- Quick Tips Section -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: rgba(107, 91, 184, 0.15); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(107, 91, 184, 0.3); backdrop-filter: blur(10px); transition: all 0.2s ease;">
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; font-family: Impact, sans-serif; text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);">
+                <span style="font-size: 1.5rem;">💎</span> Quick V-Bucks Conversion Guide
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: rgba(255, 255, 255, 0.08); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); backdrop-filter: blur(5px);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">1,000 V-Bucks</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; font-family: Impact, sans-serif;">$8.99 USD</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.08); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); backdrop-filter: blur(5px);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">2,800 V-Bucks</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; font-family: Impact, sans-serif;">$22.99 USD</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.08); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); backdrop-filter: blur(5px);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">5,000 V-Bucks</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; font-family: Impact, sans-serif;">$36.99 USD</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary); box-shadow: 0 2px 8px rgba(212, 176, 0, 0.2); backdrop-filter: blur(5px);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">13,500 V-Bucks</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--secondary); font-family: Impact, sans-serif;">$89.99 USD <span style="font-size: 0.7rem; background: var(--secondary); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
+                </div>
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic; font-family: -apple-system, sans-serif;">
+                💡 Tip: The 13,500 package ($89.99) offers 25.8% better value per V-Buck than the 1,000 package
+              </p>
+            </div>
+          </section>
+
           <div
             id="currency-detected"
             style="
@@ -2583,8 +2613,8 @@
     </div>
 
     <!-- Include the existing JavaScript functionality -->
-    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
-    <script src="/gaming-calculators/assets/js/shared.js"></script>
+    <script src="../assets/js/currency-utils.js"></script>
+    <script src="../assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -2687,8 +2717,36 @@
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 1000 V-Bucks = $7.99
-      const VBUCKS_RATE = 7.99 / 1000; // $0.00799 per V-Buck
+      // V-Bucks packages with current pricing (October 2023+)
+      const VBUCKS_PACKAGES = [
+        { vbucks: 1000, price: 8.99, perCoin: 111 },      // $0.00899 per V-Buck
+        { vbucks: 2800, price: 22.99, perCoin: 122 },     // $0.00821 per V-Buck
+        { vbucks: 5000, price: 36.99, perCoin: 135 },     // $0.00740 per V-Buck
+        { vbucks: 13500, price: 89.99, perCoin: 150 }     // $0.00667 per V-Buck (BEST)
+      ];
+
+      // Use best-value rate for estimates (13,500 package)
+      const BEST_RATE_PER_VBUCK = 0.00667;
+      const BEST_RATE_VBUCKS_PER_DOLLAR = 150;
+
+      // Conversion functions
+      function calculateVbucksPrice(vbucks) {
+        if (vbucks <= 0) return 0;
+        
+        // Check for exact package match
+        const exactPackage = VBUCKS_PACKAGES.find(pkg => pkg.vbucks === vbucks);
+        if (exactPackage) {
+          return exactPackage.price; // Return exact package price
+        }
+        
+        // For non-package amounts, use best-value rate
+        return Math.round(vbucks * BEST_RATE_PER_VBUCK * 100) / 100;
+      }
+
+      function calculateVbucksFromUSD(usdAmount) {
+        if (usdAmount <= 0) return 0;
+        return Math.round(usdAmount * BEST_RATE_VBUCKS_PER_DOLLAR);
+      }
 
       // DOM elements
       const vbucksInput = document.getElementById("vbucks-input");
@@ -2700,17 +2758,27 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
-      vbucksInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleVbucksInput, 100)
-      );
-      usdInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleUsdInput, 100)
-      );
-      copyBtn.addEventListener("click", copyResult);
-      clearBtn.addEventListener("click", clearInputs);
-      currencySelect.addEventListener("change", handleCurrencyChange);
+      if (vbucksInput) {
+        vbucksInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleVbucksInput, 100)
+        );
+      }
+      if (usdInput) {
+        usdInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleUsdInput, 100)
+        );
+      }
+      if (copyBtn) {
+        copyBtn.addEventListener("click", copyResult);
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener("click", clearInputs);
+      }
+      if (currencySelect) {
+        currencySelect.addEventListener("change", handleCurrencyChange);
+      }
 
       quickBtns.forEach((btn) => {
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
@@ -2781,7 +2849,7 @@
         }
 
         const vbucks = validatedVbucks;
-        const usdValue = vbucks * VBUCKS_RATE;
+        const usdValue = calculateVbucksPrice(vbucks);
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -2815,7 +2883,7 @@
           inputValue,
           currentCurrency
         );
-        const vbucks = usdValue / VBUCKS_RATE;
+        const vbucks = calculateVbucksFromUSD(usdValue);
 
         isUpdating = true;
         vbucksInput.value = Math.round(vbucks);
@@ -3003,10 +3071,10 @@
         constructor() {
           this.packages = {
             vbucks: [
-              { amount: 1000, price: 7.99, rate: 0.00799 },
-              { amount: 2800, price: 19.99, rate: 0.00714 },
-              { amount: 5000, price: 31.99, rate: 0.0064 },
-              { amount: 13500, price: 79.99, rate: 0.00593 },
+              { amount: 1000, price: 8.99, rate: 0.00899 },
+              { amount: 2800, price: 22.99, rate: 0.00821 },
+              { amount: 5000, price: 36.99, rate: 0.00740 },
+              { amount: 13500, price: 89.99, rate: 0.00667 },
             ],
           };
           this.dealFinder = document.getElementById("dealFinder");
@@ -3072,6 +3140,9 @@
       // Initialize features
       let dealFinder;
 
+      // Initialize CurrencyManager
+      window.currencyManager = new CurrencyManager();
+
       // Initialize after currency system is ready
       async function initializeFeatures() {
         // Currency manager is already initialized by initializeCurrency()
@@ -3082,7 +3153,9 @@
 
       // Initialize features when page loads
       document.addEventListener("DOMContentLoaded", function () {
-        initializeFeatures();
+        initializeCurrency().then(() => {
+          initializeFeatures();
+        });
       });
     </script>
 
@@ -3172,52 +3245,68 @@
     </script>
 
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much is 1000 V-Bucks in USD?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "1000 V-Bucks costs $7.99 USD. This is the standard rate for the smallest V-Bucks package available in the Fortnite store."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the V-Bucks to dollar exchange rate?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The exchange rate is $0.00799 per V-Buck (1000 V-Bucks = $7.99). This rate is consistent across all V-Bucks packages, though larger packages may offer slight discounts per V-Buck."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does $10 get you in V-Bucks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "$10 gets you approximately 1,251 V-Bucks. This is based on the standard rate of $0.00799 per V-Buck."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much is 13,500 V-Bucks worth?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "13,500 V-Bucks costs $79.99 USD. This is the largest V-Bucks package available and offers the best value per V-Buck."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I get V-Bucks cheaper?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "V-Bucks prices are fixed by Epic Games. Beware of scams offering discounted V-Bucks - these are often fraudulent and can result in account bans."
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much is 1000 V-Bucks in USD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1000 V-Bucks costs $8.99 USD when purchasing directly from the Fortnite store or Epic Games launcher. This is the base rate for V-Bucks at $0.00899 per V-Buck. V-Bucks are Fortnite's premium currency used to purchase Battle Passes, outfits, emotes, pickaxes, and other cosmetic items from the Item Shop. Epic Games increased V-Bucks prices by 12.5-15% in October 2023, with the 13,500 package offering the best value at approximately $0.00667 per V-Buck."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the V-Bucks to dollar exchange rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard V-Bucks exchange rate is $0.00899 per V-Buck, meaning 1000 V-Bucks equals $8.99 USD. This rate applies to the smallest V-Bucks package. Larger packages offer better value: 2,800 V-Bucks at $22.99 ($0.00821 per V-Buck), 5,000 V-Bucks at $36.99 ($0.00740 per V-Buck), and 13,500 V-Bucks at $89.99 ($0.00667 per V-Buck). Epic Games increased prices by 12.5-15% in October 2023, with the largest package offering 25.8% better value compared to the smallest package."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does $10 get you in V-Bucks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$10 gets you approximately 1,500 V-Bucks based on the best-value exchange rate of $0.00667 per V-Buck. However, since Epic Games sells V-Bucks in fixed packages, you would typically purchase the 1000 V-Bucks package for $8.99, leaving $1.01 remaining. To maximize value with a $10 budget, consider saving for the 2,800 V-Bucks package at $22.99, which provides enough V-Bucks for a Battle Pass (950 V-Bucks) plus additional premium items from the Item Shop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is 13,500 V-Bucks worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "13,500 V-Bucks costs $89.99 USD and represents the largest and most cost-effective V-Bucks package available in Fortnite. At approximately $0.00667 per V-Buck, this package offers 25.8% better value compared to the smallest 1000 V-Bucks package. With 13,500 V-Bucks, you can purchase multiple Battle Passes (950 V-Bucks each), several Legendary outfits (typically 2,000 V-Bucks), and numerous emotes or pickaxes. This package is ideal for dedicated Fortnite players who regularly purchase cosmetic items."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get V-Bucks cheaper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "V-Bucks prices are fixed by Epic Games across all official platforms including PC, PlayStation, Xbox, Nintendo Switch, and mobile devices. Any website or service offering discounted V-Bucks outside official channels is a scam designed to steal account credentials or payment information. Epic Games occasionally offers bonus V-Bucks through promotions like the Fortnite Crew subscription which provides 1000 monthly V-Bucks plus exclusive cosmetics for $11.99. The most legitimate way to maximize V-Bucks value is purchasing the 13,500 package which offers the best per-V-Buck rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which currencies does this V-Bucks converter support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our V-Bucks converter supports five major currencies: USD (US Dollar), EUR (Euro), GBP (British Pound), CAD (Canadian Dollar), and AUD (Australian Dollar). The calculator uses current exchange rates updated regularly to provide accurate conversions for Fortnite players worldwide. Simply select your preferred currency from the dropdown menu and all calculations will automatically display values in your local currency. This helps international players understand exactly how much they are spending when purchasing V-Bucks from the Epic Games Store."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is the Fortnite Battle Pass in V-Bucks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Fortnite Battle Pass costs 950 V-Bucks per season, which equals approximately $7.59 USD at the standard V-Bucks rate. Each Battle Pass provides over 1500 V-Bucks worth of rewards as you progress through 100+ tiers, including exclusive outfits, emotes, pickaxes, back bling, and cosmetics. Players who complete the Battle Pass can earn enough V-Bucks to purchase the next season's pass without spending additional money. The Battle Pass typically lasts 10-12 weeks per season and offers the best value for regular Fortnite players."
+      }
+    }
+  ]
+}
     </script>
 
     <script type="application/ld+json">
@@ -3355,114 +3444,22 @@
     </section>
 
     <!-- Navigation to Other Calculators -->
-    <div
-      style="
-        background: rgba(255, 255, 255, 0.06);
-        padding: 2rem;
-        margin: 3rem 0;
-        border-radius: 16px;
-        border: 1px solid var(--glass-border);
-        box-shadow: 0 0 0 2px var(--glass-border),
-          0 8px 24px rgba(138, 43, 226, 0.18);
-        backdrop-filter: blur(10px);
-      "
-    >
-      <h3
-        style="
-          text-align: center;
-          margin-bottom: 1.5rem;
-          color: #ffffff;
-          font-size: 1.7rem;
-          font-weight: 900;
-          text-shadow: 0 0 14px rgba(138, 43, 226, 0.6);
-        "
-      >
-        More Gaming Calculators
-      </h3>
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        "
-      >
-        <a
-          href="/gaming-calculators/robux/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            text-decoration: none;
-            color: #e6e7ff;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18);
-            backdrop-filter: blur(6px);
-          "
-          >Robux Calculator</a
-        >
-        <a
-          href="/gaming-calculators/vbucks/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            text-decoration: none;
-            color: #e6e7ff;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18);
-            backdrop-filter: blur(6px);
-          "
-          >V-Bucks Calculator</a
-        >
-        <a
-          href="/gaming-calculators/minecoins/"
-          style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
-          "
-          >Minecoins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/cod-points/"
-          style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
-          "
-          >COD Points Calculator</a
-        >
-        <a
-          href="/gaming-calculators/apex-coins/"
-          style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
-          "
-          >Apex Coins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/fifa-points/"
-          style="
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #e0e0e0;
-          "
-          >FIFA Points Calculator</a
-        >
+    <div style="background: rgba(255, 255, 255, 0.06); padding: 2rem; margin: 3rem 0; border-radius: 16px; border: 1px solid var(--glass-border); box-shadow: 0 0 0 2px var(--glass-border), 0 8px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(10px);">
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: #ffffff; font-size: 1.7rem; font-weight: 900; text-shadow: 0 0 14px rgba(138, 43, 226, 0.6);">Related Gaming Currency Calculators</h3>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        
+        <a href="/gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: rgba(255, 255, 255, 0.08); border-radius: 12px; text-decoration: none; color: #e6e7ff; border: 1px solid var(--glass-border); box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(6px); font-weight: 600; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'; this.style.transform='translateY(0)';">Robux to USD Converter</a>
+        
+        <a href="/gaming-calculators/minecoins/" style="padding: 0.75rem 1.25rem; background: rgba(255, 255, 255, 0.08); border-radius: 12px; text-decoration: none; color: #e6e7ff; border: 1px solid var(--glass-border); box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(6px); font-weight: 600; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'; this.style.transform='translateY(0)';">Minecoins to USD Calculator</a>
+        
+        <a href="/gaming-calculators/cod-points/" style="padding: 0.75rem 1.25rem; background: rgba(255, 255, 255, 0.08); border-radius: 12px; text-decoration: none; color: #e6e7ff; border: 1px solid var(--glass-border); box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(6px); font-weight: 600; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'; this.style.transform='translateY(0)';">COD Points Calculator</a>
+        
+        <a href="/gaming-calculators/apex-coins/" style="padding: 0.75rem 1.25rem; background: rgba(255, 255, 255, 0.08); border-radius: 12px; text-decoration: none; color: #e6e7ff; border: 1px solid var(--glass-border); box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(6px); font-weight: 600; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'; this.style.transform='translateY(0)';">Apex Coins to USD</a>
+        
+        <a href="/gaming-calculators/fifa-points/" style="padding: 0.75rem 1.25rem; background: rgba(255, 255, 255, 0.08); border-radius: 12px; text-decoration: none; color: #e6e7ff; border: 1px solid var(--glass-border); box-shadow: 0 10px 24px rgba(138, 43, 226, 0.18); backdrop-filter: blur(6px); font-weight: 600; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'; this.style.transform='translateY(0)';">FIFA Points Converter</a>
+        
+        <a href="/gaming-calculators/" style="padding: 0.75rem 1.25rem; background: var(--primary); border-radius: 12px; text-decoration: none; color: white; border: 1px solid var(--primary-dark); font-weight: 700; box-shadow: 0 10px 24px rgba(107, 91, 184, 0.3); backdrop-filter: blur(6px); transition: all 0.2s ease;" onmouseover="this.style.background='var(--primary-dark)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='var(--primary)'; this.style.transform='translateY(0)';">View All Gaming Calculators</a>
+        
       </div>
     </div>
   </body>
