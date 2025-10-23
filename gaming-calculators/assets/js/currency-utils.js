@@ -40,7 +40,7 @@ class CurrencyManager {
         window.location.protocol === "file:";
 
       if (isLocalDevelopment) {
-        response = await fetch("/api/exchange-rates.json", {
+        response = await fetch("../../api/exchange-rates.json", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ class CurrencyManager {
 
         // If serverless function fails, try the static JSON file
         if (!response.ok) {
-          response = await fetch("/api/exchange-rates.json", {
+          response = await fetch("../../api/exchange-rates.json", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",

@@ -455,6 +455,34 @@
         font-weight: 600;
       }
 
+      /* Platform Selection */
+      .platform-btn {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #e5e7eb;
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+      }
+
+      .platform-btn:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .platform-btn.active {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: white;
+      }
+
+      .platform-btn.active span {
+        filter: brightness(0) invert(1);
+      }
+
       /* Currency Selector */
       .currency-selector {
         display: flex;
@@ -1636,7 +1664,7 @@
                 Robux Converter
               </h1>
               <img
-                src="/gaming-calculators/assets/images/[CITYPNG.COM]HD Roblox Black Symbol Sign Icon Logo PNG - 2000x2000.png"
+                src="../assets/images/[CITYPNG.COM]HD Roblox Black Symbol Sign Icon Logo PNG - 2000x2000.png"
                 alt="Roblox Logo"
                 style="height: 9rem; width: auto; object-fit: contain"
               />
@@ -1672,6 +1700,118 @@
             </div>
           </div>
 
+          <!-- Platform Selection (shows pricing differences) -->
+          <div style="background: var(--light-gray); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+            <label style="font-weight: 700; color: var(--dark); display: block; margin-bottom: 0.5rem;">
+              Purchase Platform:
+            </label>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="platform-btn active" onclick="setPlatform('web')" id="platform-web">
+                <span style="font-size: 1.2rem;">💻</span>
+                <div style="font-size: 0.9rem; font-weight: 700;">Web/Gift Card</div>
+                <div style="font-size: 0.75rem; opacity: 0.8;">Best Value +25%</div>
+              </button>
+              <button class="platform-btn" onclick="setPlatform('mobile')" id="platform-mobile">
+                <span style="font-size: 1.2rem;">📱</span>
+                <div style="font-size: 0.9rem; font-weight: 700;">Mobile App</div>
+                <div style="font-size: 0.75rem; opacity: 0.8;">iOS/Android</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mode Selection -->
+          <div class="converter-modes">
+            <button class="mode-btn active" onclick="setMode('purchase')">
+              <span class="mode-title">Buy Robux</span>
+              <span class="mode-subtitle">Convert USD to Robux</span>
+            </button>
+
+            <button class="mode-btn" onclick="setMode('devex')">
+              <span class="mode-title">Cash Out</span>
+              <span class="mode-subtitle">Robux to USD (DevEx)</span>
+            </button>
+
+            <button class="mode-btn" onclick="setMode('marketplace')">
+              <span class="mode-title">Marketplace</span>
+              <span class="mode-subtitle">After 30% tax</span>
+            </button>
+
+            <button class="mode-btn" onclick="setMode('devex_old')">
+              <span class="mode-title">DevEx (Old Rate)</span>
+              <span class="mode-subtitle">Pre-Sept 2025 earnings</span>
+            </button>
+          </div>
+
+          <div class="conversion-section">
+            <div class="input-group">
+              <label class="input-label" for="robux-input">Robux</label>
+              <input
+                type="number"
+                id="robux-input"
+                class="calculator-input"
+                placeholder="Enter Robux"
+                min="0"
+                step="1"
+              />
+            </div>
+
+            <div class="conversion-arrow">⇄</div>
+
+            <div class="input-group">
+              <label class="input-label" for="usd-input" id="currency-label"
+                ><span id="active-currency-flag">🇺🇸</span>
+                <span id="active-currency-name">USD ($)</span></label
+              >
+              <input
+                type="number"
+                id="usd-input"
+                class="calculator-input"
+                placeholder="Enter USD"
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div>
+
+          <div class="quick-amounts">
+            <button class="quick-btn" data-amount="500">500</button>
+            <button class="quick-btn" data-amount="1000">1,000</button>
+            <button class="quick-btn" data-amount="2000">2,000</button>
+            <button class="quick-btn" data-amount="5250">5,250</button>
+            <button class="quick-btn" data-amount="11000">11,000</button>
+            <button class="quick-btn" data-amount="24000">24,000</button>
+          </div>
+
+          <!-- Mobile-only second image -->
+          <img
+            src="../assets/images/45017c99d1ef188ab498c8c436000523.png"
+            alt="Roblox Economy"
+            class="mobile-second-image"
+            style="display: none"
+          />
+
+          <div class="action-buttons">
+            <button class="action-btn" id="copy-btn">Copy Result</button>
+            <button class="action-btn secondary" id="clear-btn">Clear</button>
+          </div>
+
+          <!-- Important Pricing Notice -->
+          <div style="background: linear-gradient(135deg, #02b757 0%, #00a34a 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 3px solid #00a34a;">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 2rem;">💡</span>
+              <h3 style="margin: 0; font-size: 1.3rem; font-weight: 900;">Get 25% More Robux!</h3>
+            </div>
+            <p style="margin: 0; line-height: 1.7; font-size: 1rem;">
+              <strong>Pro Tip:</strong> Buy Robux through <strong>Roblox.com</strong> or <strong>Gift Cards</strong> instead of mobile apps! 
+              Since November 2024, web purchases provide <strong>25% more Robux for the same price</strong> 
+              (e.g., $9.99 = 1,000 Robux on web vs. only 800 Robux on mobile). 
+              Our calculator uses the better web rates by default.
+            </p>
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); font-size: 0.9rem; opacity: 0.95;">
+              <strong>Example:</strong> 1,000 Robux = $9.99 (web) or 800 Robux = $9.99 (mobile) – Save 20% by buying on web!
+            </div>
+          </div>
+
           <!-- Quick Tips Section -->
           <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
             <div style="background: linear-gradient(135deg, rgba(226, 35, 26, 0.15) 0%, rgba(226, 35, 26, 0.05) 100%); border: 2px solid var(--primary); border-radius: 8px; padding: 1.5rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); transition: all 0.2s ease;">
@@ -1680,19 +1820,19 @@
               </h2>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">400 Robux</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">500 Robux</p>
                   <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$4.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">800 Robux</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">1,000 Robux</p>
                   <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$9.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">1,700 Robux</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">2,000 Robux</p>
                   <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$19.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">10,000 Robux</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">11,000 Robux</p>
                   <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--primary-dark);">$99.99 USD <span style="font-size: 0.7rem; background: var(--primary); color: white; padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.25rem;">BEST</span></p>
                 </div>
               </div>
@@ -1751,83 +1891,77 @@
             </div>
           </section>
 
-          <!-- Mode Selection -->
-          <div class="converter-modes">
-            <button class="mode-btn active" onclick="setMode('purchase')">
-              <span class="mode-title">Buy Robux</span>
-              <span class="mode-subtitle">Convert USD to Robux</span>
-            </button>
-
-            <button class="mode-btn" onclick="setMode('devex')">
-              <span class="mode-title">Cash Out</span>
-              <span class="mode-subtitle">Robux to USD (DevEx)</span>
-            </button>
-
-            <button class="mode-btn" onclick="setMode('marketplace')">
-              <span class="mode-title">Marketplace</span>
-              <span class="mode-subtitle">After 30% tax</span>
-            </button>
-          </div>
-
-          <div class="conversion-section">
-            <div class="input-group">
-              <label class="input-label" for="robux-input">Robux</label>
-              <input
-                type="number"
-                id="robux-input"
-                class="calculator-input"
-                placeholder="Enter Robux"
-                min="0"
-                step="1"
-              />
+          <!-- Mobile vs Web Pricing Comparison -->
+          <section style="background: white; padding: 2.5rem; margin: 3rem 0; border-radius: 16px; border: 3px solid var(--primary); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);">
+            <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; font-weight: 900; text-align: center;">
+              💻 📱 Web vs Mobile App Pricing
+            </h2>
+            
+            <div style="background: var(--light-gray); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+              <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                <strong>Important Update (November 2024):</strong> Roblox now offers two different price structures 
+                depending on where you buy Robux. This change was made to avoid Apple and Google's app store fees.
+              </p>
             </div>
 
-            <div class="conversion-arrow">⇄</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+              
+              <!-- Web/Gift Card Column -->
+              <div style="background: linear-gradient(135deg, #02b757 0%, #00a34a 100%); color: white; padding: 1.5rem; border-radius: 12px;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                  <span style="font-size: 3rem;">💻</span>
+                  <h3 style="margin: 0.5rem 0; font-size: 1.4rem;">Web & Gift Cards</h3>
+                  <div style="background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 6px; font-weight: 900; font-size: 1.1rem;">
+                    ✓ BEST VALUE +25%
+                  </div>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$4.99 = <strong>500 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$9.99 = <strong>1,000 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$19.99 = <strong>2,000 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$49.99 = <strong>5,250 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$99.99 = <strong>11,000 Robux</strong></li>
+                  <li style="padding: 0.5rem 0;">$199.99 = <strong>24,000 Robux</strong></li>
+                </ul>
+              </div>
 
-            <div class="input-group">
-              <label class="input-label" for="usd-input" id="currency-label"
-                ><span id="active-currency-flag">🇺🇸</span>
-                <span id="active-currency-name">USD ($)</span></label
-              >
-              <input
-                type="number"
-                id="usd-input"
-                class="calculator-input"
-                placeholder="Enter USD"
-                min="0"
-                step="0.01"
-              />
+              <!-- Mobile App Column -->
+              <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%); color: white; padding: 1.5rem; border-radius: 12px;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                  <span style="font-size: 3rem;">📱</span>
+                  <h3 style="margin: 0.5rem 0; font-size: 1.4rem;">Mobile Apps</h3>
+                  <div style="background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 6px; font-weight: 900; font-size: 1.1rem;">
+                    ⚠️ 20% LESS ROBUX
+                  </div>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$4.99 = <strong>400 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$9.99 = <strong>800 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$19.99 = <strong>1,700 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$49.99 = <strong>4,500 Robux</strong></li>
+                  <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">$99.99 = <strong>10,000 Robux</strong></li>
+                  <li style="padding: 0.5rem 0;">$199.99 = <strong>22,500 Robux</strong></li>
+                </ul>
+              </div>
+
             </div>
-          </div>
 
-          <div class="quick-amounts">
-            <button class="quick-btn" data-amount="400">400 Robux</button>
-            <button class="quick-btn" data-amount="800">800 Robux</button>
-            <button class="quick-btn" data-amount="1700">1,700 Robux</button>
-            <button class="quick-btn" data-amount="4500">4,500 Robux</button>
-            <button class="quick-btn" data-amount="8000">8,000 Robux</button>
-            <button class="quick-btn" data-amount="10000">10,000 Robux</button>
-          </div>
-
-          <!-- Mobile-only second image -->
-          <img
-            src="/gaming-calculators/assets/images/45017c99d1ef188ab498c8c436000523.png"
-            alt="Roblox Economy"
-            class="mobile-second-image"
-            style="display: none"
-          />
-
-          <div class="action-buttons">
-            <button class="action-btn" id="copy-btn">Copy Result</button>
-            <button class="action-btn secondary" id="clear-btn">Clear</button>
-          </div>
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 1.25rem; border-radius: 8px;">
+              <p style="margin: 0; color: #856404; font-weight: 600; line-height: 1.7;">
+                <strong>💡 Money-Saving Tip:</strong> Always buy Robux through <strong>Roblox.com</strong> 
+                on a computer/browser or with <strong>physical/digital gift cards</strong>. You'll get 25% more 
+                Robux for the exact same price! For example, $9.99 gets you 1,000 Robux on web but only 800 
+                on mobile – that's 200 extra Robux for free!
+              </p>
+            </div>
+          </section>
 
           <!-- The Roblox Economy: Understanding Robux Beyond the Numbers -->
           <div class="content-section">
             <h2 class="section-title" style="margin-bottom: 1rem">
               The Roblox Economy: Understanding Robux Beyond the Numbers
               <img
-                src="/gaming-calculators/assets/images/45017c99d1ef188ab498c8c436000523.png"
+                src="../assets/images/45017c99d1ef188ab498c8c436000523.png"
                 alt="Roblox Economy"
                 class="mobile-second-image"
                 style="
@@ -1842,14 +1976,17 @@
             <div class="section-content">
               <h3>The Developer Exchange (DevEx) Reality Check</h3>
               <p>
-                While Roblox promotes DevEx as a path to earning real money, the
-                mathematics reveal harsh truths. The DevEx rate ($0.0035 per
-                Robux) is 72% lower than the purchase rate ($0.0125). This means
-                players spend $12.50 for 1,000 Robux, but developers only
-                receive $3.50 when cashing out the same amount. To earn minimum
-                wage ($15/hour) through DevEx, a developer needs to generate
-                4,286 Robux per hour - requiring approximately 43 premium game
-                passes sold hourly at 100 Robux each.
+                While Roblox promotes DevEx as a path to earning real money, the mathematics 
+                reveal harsh truths. As of September 2025, Roblox uses a dual-rate system: 
+                the old DevEx rate ($0.0035 per Robux for earnings before Sept 5, 2025) and 
+                the new rate ($0.0038 per Robux for earnings after Sept 5, 2025). 
+                
+                Meanwhile, players spend approximately $0.01 per Robux on web purchases (or 
+                $0.0125 on mobile). This means players spend $10 for 1,000 Robux, but developers 
+                only receive $3.80 when cashing out the same amount at the new rate – a 62% gap.
+                
+                To earn minimum wage ($15/hour) through DevEx at the new rate, a developer needs 
+                to generate 3,947 Robux per hour in earned income after marketplace fees.
               </p>
 
               <p>
@@ -1897,8 +2034,8 @@
                 >
                 which adjust for regional purchasing power. Turkish players pay
                 13 TRY ($0.39) per 80 Robux while Americans pay $0.99 - a 60%
-                difference. However, Turkish developers receive the same $0.0035
-                per Robux via DevEx, creating massive inequality. A Turkish
+                difference. However, Turkish developers receive the same DevEx rates
+                ($0.0035-$0.0038 per Robux depending on earnings date) via DevEx, creating massive inequality. A Turkish
                 developer must generate 3x more local revenue to match US
                 developer earnings, making sustainable development nearly
                 impossible in lower-income regions.
@@ -2106,68 +2243,6 @@
           </div>
         </div>
 
-        <!-- Robux Prices Worldwide -->
-        <div class="content-section">
-          <h2 class="section-title">Robux Prices Worldwide</h2>
-          <p class="section-subtitle">
-            Current prices in USD, GBP, EUR, CAD, and AUD
-          </p>
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>Robux Amount</th>
-                <th>USD</th>
-                <th>GBP</th>
-                <th>EUR</th>
-                <th>CAD</th>
-                <th>AUD</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>400 Robux</td>
-                <td>$4.99</td>
-                <td>£3.89</td>
-                <td>€4.24</td>
-                <td>C$6.74</td>
-                <td>A$7.39</td>
-              </tr>
-              <tr>
-                <td>800 Robux</td>
-                <td>$9.99</td>
-                <td>£7.79</td>
-                <td>€8.49</td>
-                <td>C$13.49</td>
-                <td>A$14.79</td>
-              </tr>
-              <tr>
-                <td>1,700 Robux</td>
-                <td>$19.99</td>
-                <td>£15.59</td>
-                <td>€16.99</td>
-                <td>C$26.99</td>
-                <td>A$29.58</td>
-              </tr>
-              <tr>
-                <td>4,500 Robux</td>
-                <td>$49.99</td>
-                <td>£38.99</td>
-                <td>€42.49</td>
-                <td>C$67.49</td>
-                <td>A$73.99</td>
-              </tr>
-              <tr>
-                <td>10,000 Robux</td>
-                <td>$99.99</td>
-                <td>£77.99</td>
-                <td>€84.99</td>
-                <td>C$134.99</td>
-                <td>A$147.99</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
         <!-- Robux to USD Exchange Rate Table -->
         <div class="content-section">
           <h2 class="section-title">Robux to USD Exchange Rate Table</h2>
@@ -2182,34 +2257,40 @@
             </thead>
             <tbody>
               <tr>
-                <td>400</td>
+                <td>500</td>
                 <td data-usd="4.99">$4.99</td>
-                <td data-usd="0.0125">$0.0125</td>
+                <td data-usd="0.00998">$0.00998</td>
                 <td>Small Purchases</td>
               </tr>
               <tr>
-                <td>800</td>
+                <td>1,000</td>
                 <td data-usd="9.99">$9.99</td>
-                <td data-usd="0.0125">$0.0125</td>
-                <td>Medium Purchases</td>
+                <td data-usd="0.00999">$0.00999</td>
+                <td>Most Popular</td>
               </tr>
               <tr>
-                <td>1,700</td>
+                <td>2,000</td>
                 <td data-usd="19.99">$19.99</td>
-                <td data-usd="0.0118">$0.0118</td>
-                <td>Popular Choice</td>
+                <td data-usd="0.00995">$0.00995</td>
+                <td>Medium Value</td>
               </tr>
               <tr>
-                <td>4,500</td>
+                <td>5,250</td>
                 <td data-usd="49.99">$49.99</td>
-                <td data-usd="0.0111">$0.0111</td>
-                <td>Large Purchases</td>
+                <td data-usd="0.00952">$0.00952</td>
+                <td>Great Value</td>
               </tr>
               <tr>
-                <td>10,000</td>
+                <td>11,000</td>
                 <td data-usd="99.99">$99.99</td>
-                <td data-usd="0.0100">$0.0100</td>
-                <td>Bulk Purchases</td>
+                <td data-usd="0.00909">$0.00909</td>
+                <td>Excellent Value</td>
+              </tr>
+              <tr>
+                <td>24,000</td>
+                <td data-usd="199.99">$199.99</td>
+                <td data-usd="0.00833">$0.00833</td>
+                <td>Best Value (17% savings)</td>
               </tr>
             </tbody>
           </table>
@@ -2299,9 +2380,9 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              Player rate is $0.0125 per Robux for purchasing. DevEx rate is
-              $0.0035 per Robux for developers exchanging earned Robux for real
-              money.
+              Player rate is $0.00999 per Robux for web purchases. DevEx rates are
+              $0.0035-$0.0038 per Robux for developers exchanging earned Robux for real
+              money (depending on earnings date).
             </div>
           </div>
 
@@ -2311,8 +2392,8 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              $10 gets you approximately 800 Robux at the player purchase rate.
-              This is based on the standard rate of $0.0125 per Robux.
+              $10 gets you approximately 1,000 Robux at the web purchase rate.
+              This is based on the web purchase rate of $0.00999 per Robux.
             </div>
           </div>
 
@@ -2445,8 +2526,8 @@
     </div>
 
     <!-- Include the existing JavaScript functionality -->
-    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
-    <script src="/gaming-calculators/assets/js/shared.js"></script>
+    <script src="../assets/js/currency-utils.js"></script>
+    <script src="../assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -2544,18 +2625,96 @@
       // Initialize HTTPS enforcement
       SecurityManager.enforceHTTPS();
 
+      // Initialize Currency Manager
+      window.currencyManager = new CurrencyManager();
+
       // All existing JavaScript functionality remains the same
       // Calculator state
       let isUpdating = false;
       let currentMode = "player";
       let currentCurrency = "USD";
 
-      // Exchange rates
+      // Exchange rates - Roblox uses tiered pricing, not flat rates
       const RATES = {
-        player: 0.0125, // Purchase rate
-        devex: 0.0035, // DevEx cashout rate
-        marketplace: 0.00875, // After 30% tax (0.0125 * 0.7)
+        player: 0.00998,        // Average web purchase rate ($4.99/500 Robux)
+        devex_old: 0.0035,      // DevEx rate before Sept 5, 2025 10am PT
+        devex_new: 0.0038,      // DevEx rate after Sept 5, 2025 10am PT
+        devex: 0.0038,          // Default to new rate for current earnings
+        marketplace: 0.00266,   // After 30% marketplace fee: 0.0038 × 0.7 = 0.00266
+        marketplace_old: 0.00245 // Old rate after 30% fee: 0.0035 × 0.7 = 0.00245
       };
+
+      // Web/Gift Card pricing (25% more Robux than mobile - implemented Nov 2024)
+      const WEB_PACKAGE_PRICES = {
+        500: 4.99,
+        1000: 9.99,
+        2000: 19.99,
+        5250: 49.99,
+        11000: 99.99,
+        24000: 199.99
+      };
+
+      // Mobile App pricing (for reference - 20% fewer Robux due to app store fees)
+      const MOBILE_PACKAGE_PRICES = {
+        400: 4.99,
+        800: 9.99,
+        1700: 19.99,
+        4500: 49.99,
+        10000: 99.99,
+        22500: 199.99
+      };
+
+      // Default to web pricing (best value for users)
+      const PACKAGE_PRICES = WEB_PACKAGE_PRICES;
+
+      // Function to get the best package price for a given Robux amount
+      function getBestPackagePrice(robuxAmount) {
+        const packages = Object.keys(PACKAGE_PRICES).map(Number).sort((a, b) => a - b);
+        
+        // If exact package match, return that price
+        if (PACKAGE_PRICES[robuxAmount]) {
+          return PACKAGE_PRICES[robuxAmount];
+        }
+        
+        // Find the smallest package that provides enough Robux
+        for (const pkg of packages) {
+          if (pkg >= robuxAmount) {
+            return PACKAGE_PRICES[pkg];
+          }
+        }
+        
+        // If amount exceeds all single packages, calculate based on best rate
+        const largestPackage = packages[packages.length - 1];
+        const largestPrice = PACKAGE_PRICES[largestPackage];
+        const bestRate = largestPrice / largestPackage; // $0.00833 for 24000 package
+        
+        return robuxAmount * bestRate;
+      }
+
+      // Platform selection state
+      let currentPlatform = 'web'; // Default to web (better value)
+
+      function setPlatform(platform) {
+        currentPlatform = platform;
+        
+        // Update which package prices to use
+        if (platform === 'web') {
+          Object.assign(PACKAGE_PRICES, WEB_PACKAGE_PRICES);
+        } else {
+          Object.assign(PACKAGE_PRICES, MOBILE_PACKAGE_PRICES);
+        }
+        
+        // Update active button styling
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.getElementById(`platform-${platform}`).classList.add('active');
+        
+        // Recalculate if there's input
+        if (robuxInput.value) {
+          handleRobuxInput();
+        }
+      }
 
       // DOM elements
       const robuxInput = document.getElementById("robux-input");
@@ -2566,22 +2725,34 @@
       const currencySelect = document.getElementById("currency-select");
       const currencyLabel = document.getElementById("currency-label");
 
-      // Event listeners with security (debounced and validated)
-      robuxInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleRobuxInput, 100)
-      );
-      usdInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleUsdInput, 100)
-      );
-      copyBtn.addEventListener("click", copyResult);
-      clearBtn.addEventListener("click", clearInputs);
-      currencySelect.addEventListener("change", handleCurrencyChange);
+      // Check if all required elements exist
+      if (!robuxInput || !usdInput || !currencySelect) {
+        console.error("Required DOM elements not found:", {
+          robuxInput: !!robuxInput,
+          usdInput: !!usdInput,
+          currencySelect: !!currencySelect
+        });
+        // Don't proceed with initialization if critical elements are missing
+        console.warn("Calculator initialization skipped due to missing DOM elements");
+      } else {
+        // Proceed with initialization only if all elements exist
 
-      quickBtns.forEach((btn) => {
-        btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
-      });
+        // Event listeners with security (debounced and validated)
+        robuxInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleRobuxInput, 100)
+        );
+        usdInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleUsdInput, 100)
+        );
+        copyBtn.addEventListener("click", copyResult);
+        clearBtn.addEventListener("click", clearInputs);
+        currencySelect.addEventListener("change", handleCurrencyChange);
+
+        quickBtns.forEach((btn) => {
+          btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
+        });
 
       // Conversion arrow functionality - swap between Robux and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
@@ -2648,52 +2819,96 @@
       initializeCurrency().then(() => {
         updateRateDisplay();
         updatePricingTables();
+      }).catch(error => {
+        console.error("Error during currency initialization:", error);
+        // Continue with default settings
+        updateRateDisplay();
+        updatePricingTables();
       });
 
       function handleRobuxInput() {
         if (isUpdating) return;
 
-        // Security: Validate and sanitize input
-        const validatedRobux = SecurityManager.validateInput(robuxInput.value);
-        if (robuxInput.value !== String(validatedRobux)) {
-          robuxInput.value = validatedRobux;
+        try {
+          // Security: Validate and sanitize input
+          const validatedRobux = SecurityManager.validateInput(robuxInput.value);
+          if (robuxInput.value !== String(validatedRobux)) {
+            robuxInput.value = validatedRobux;
+          }
+
+          const robux = validatedRobux;
+          let usdValue;
+
+          if (currentMode === "player") {
+            // Use tiered pricing for player purchases
+            usdValue = getBestPackagePrice(robux);
+          } else {
+            // Use flat rate for DevEx and marketplace
+            usdValue = robux * RATES[currentMode];
+          }
+
+          const convertedValue = window.currencyManager.convertFromUSD(
+            usdValue,
+            currentCurrency
+          );
+
+          isUpdating = true;
+          usdInput.value = convertedValue.toFixed(2);
+          isUpdating = false;
+
+          saveCalculation();
+        } catch (error) {
+          console.error("Error in handleRobuxInput:", error);
+          isUpdating = false;
         }
-
-        const robux = validatedRobux;
-        const usdValue = robux * RATES[currentMode];
-        const convertedValue = window.currencyManager.convertFromUSD(
-          usdValue,
-          currentCurrency
-        );
-
-        isUpdating = true;
-        usdInput.value = convertedValue.toFixed(2);
-        isUpdating = false;
-
-        saveCalculation();
       }
 
       function handleUsdInput() {
         if (isUpdating) return;
 
-        // Security: Validate and sanitize input
-        const validatedInput = SecurityManager.validateInput(usdInput.value);
-        if (usdInput.value !== String(validatedInput)) {
-          usdInput.value = validatedInput;
+        try {
+          // Security: Validate and sanitize input
+          const validatedInput = SecurityManager.validateInput(usdInput.value);
+          if (usdInput.value !== String(validatedInput)) {
+            usdInput.value = validatedInput;
+          }
+
+          const inputValue = validatedInput;
+          const usdValue = window.currencyManager.convertToUSD(
+            inputValue,
+            currentCurrency
+          );
+          
+          let robux;
+
+          if (currentMode === "player") {
+            // For player purchases, find the closest package amount
+            const packages = Object.keys(PACKAGE_PRICES).map(Number).sort((a, b) => a - b);
+            let closestAmount = packages[0];
+            let minDifference = Math.abs(PACKAGE_PRICES[closestAmount] - usdValue);
+            
+            for (const pkg of packages) {
+              const difference = Math.abs(PACKAGE_PRICES[pkg] - usdValue);
+              if (difference < minDifference) {
+                minDifference = difference;
+                closestAmount = pkg;
+              }
+            }
+            robux = closestAmount;
+          } else {
+            // Use flat rate for DevEx and marketplace
+            robux = usdValue / RATES[currentMode];
+          }
+
+          isUpdating = true;
+          robuxInput.value = Math.round(robux);
+          isUpdating = false;
+
+          saveCalculation();
+        } catch (error) {
+          console.error("Error in handleUsdInput:", error);
+          isUpdating = false;
         }
-
-        const inputValue = validatedInput;
-        const usdValue = window.currencyManager.convertToUSD(
-          inputValue,
-          currentCurrency
-        );
-        const robux = usdValue / RATES[currentMode];
-
-        isUpdating = true;
-        robuxInput.value = Math.round(robux);
-        isUpdating = false;
-
-        saveCalculation();
       }
 
       function setQuickAmount(amount) {
@@ -2708,6 +2923,8 @@
         const modeMapping = {
           purchase: "player",
           devex: "devex",
+          devex_old: "devex_old",
+          devex_new: "devex",  // Map devex_new to devex for new rate
           marketplace: "marketplace",
         };
 
@@ -2770,7 +2987,7 @@
       function updatePricingTables() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
 
-        // Update all cells with data-usd attributes
+        // Update all cells with data-usd attributes (converts from USD)
         document.querySelectorAll("[data-usd]").forEach((cell) => {
           const usdValue = parseFloat(cell.getAttribute("data-usd"));
           const convertedValue = window.currencyManager.convertFromUSD(
@@ -2803,17 +3020,30 @@
 
       function updateRateDisplay() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
-        const rate = RATES[currentMode];
-        const convertedRate = window.currencyManager.convertFromUSD(
-          rate,
-          currentCurrency
-        );
-        // Update rate display if element exists
+        
         const rateDisplay = document.getElementById("rate-display");
         if (rateDisplay) {
-          rateDisplay.textContent = `${symbol}${convertedRate.toFixed(
-            4
-          )} per Robux`;
+          if (currentMode === "player") {
+            rateDisplay.textContent = "Package pricing varies by amount";
+          } else if (currentMode === "devex_old") {
+            const rate = RATES.devex_old;
+            const convertedRate = window.currencyManager.convertFromUSD(
+              rate,
+              currentCurrency
+            );
+            rateDisplay.textContent = `${symbol}${convertedRate.toFixed(4)} per Robux (Old Rate - Pre-Sept 2025)`;
+          } else {
+            const rate = RATES[currentMode];
+            const convertedRate = window.currencyManager.convertFromUSD(
+              rate,
+              currentCurrency
+            );
+            let rateLabel = "";
+            if (currentMode === "devex") {
+              rateLabel = " (New Rate - Post-Sept 2025)";
+            }
+            rateDisplay.textContent = `${symbol}${convertedRate.toFixed(4)} per Robux${rateLabel}`;
+          }
         }
       }
 
@@ -2869,20 +3099,28 @@
       }
 
       async function initializeCurrency() {
-        // Fetch latest exchange rates
-        await window.currencyManager.fetchRates();
+        try {
+          // Fetch latest exchange rates
+          await window.currencyManager.fetchRates();
 
-        // Check for saved currency preference
-        const savedCurrency = window.currencyManager.getSavedCurrency();
-        if (savedCurrency && window.currencyManager.rates[savedCurrency]) {
-          currentCurrency = savedCurrency;
+          // Check for saved currency preference
+          const savedCurrency = window.currencyManager.getSavedCurrency();
+          if (savedCurrency && window.currencyManager.rates[savedCurrency]) {
+            currentCurrency = savedCurrency;
+            currencySelect.value = currentCurrency;
+          } else {
+            currentCurrency = window.currencyManager.detectCurrency();
+            currencySelect.value = currentCurrency;
+          }
+
+          updateCurrencyLabel();
+        } catch (error) {
+          console.error("Error initializing currency:", error);
+          // Fallback to USD if initialization fails
+          currentCurrency = "USD";
           currencySelect.value = currentCurrency;
-        } else {
-          currentCurrency = window.currencyManager.detectCurrency();
-          currencySelect.value = currentCurrency;
+          updateCurrencyLabel();
         }
-
-        updateCurrencyLabel();
       }
 
       function showNotification(message) {
@@ -2921,11 +3159,12 @@
         constructor() {
           this.packages = {
             robux: [
-              { amount: 400, price: 4.99, rate: 0.0125 },
-              { amount: 800, price: 9.99, rate: 0.0125 },
-              { amount: 1700, price: 19.99, rate: 0.0118 },
-              { amount: 4500, price: 49.99, rate: 0.0111 },
-              { amount: 10000, price: 99.99, rate: 0.01 },
+              { amount: 500, price: 4.99, rate: 0.00998 },
+              { amount: 1000, price: 9.99, rate: 0.00999 },
+              { amount: 2000, price: 19.99, rate: 0.00995 },
+              { amount: 5250, price: 49.99, rate: 0.00952 },
+              { amount: 11000, price: 99.99, rate: 0.00909 },
+              { amount: 24000, price: 199.99, rate: 0.00833 },
             ],
           };
           this.dealFinder = document.getElementById("dealFinder");
@@ -3050,6 +3289,7 @@
           if (robuxInput.value) handleRobuxInput();
         }, 100);
       });
+      } // Close the else block for DOM element validation
     </script>
 
     <!-- FAQ Toggle Functionality -->
@@ -3147,7 +3387,7 @@
       "name": "How much is 1000 Robux in USD?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "1000 Robux costs $12.50 USD when purchasing directly from Roblox at the standard player rate of $0.0125 per Robux. However, the actual package structure means you would typically buy the 800 Robux package for $9.99 plus the 400 Robux package for $4.99 to get 1200 Robux total for $14.98. The most cost-effective approach is purchasing larger packages like the 1,700 Robux bundle at $19.99, which offers slightly better per-Robux value at $0.0118 per coin."
+        "text": "1000 Robux costs $9.99 USD when purchasing directly from Roblox at the web purchase rate of $0.00999 per Robux. This represents the new web/gift card pricing introduced in November 2024, which provides 25% more Robux than mobile app purchases. The most cost-effective approach is purchasing larger packages like the 2,000 Robux bundle at $19.99, which offers better per-Robux value at $0.00995 per coin."
       }
     },
     {
@@ -3155,7 +3395,7 @@
       "name": "What is the difference between Player and DevEx rates?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The Player rate is $0.0125 per Robux when purchasing Robux from Roblox, meaning 1000 Robux costs $12.50. The DevEx Developer Exchange rate is $0.0035 per Robux when cashing out earned Robux to real money, meaning 1000 Robux only converts to $3.50. This represents a 72% difference between what players pay and what developers receive. To earn $100 through DevEx, developers must generate approximately $357 worth of player spending, making it extremely difficult to profit from Roblox game development."
+        "text": "The Player rate is $0.00999 per Robux when purchasing Robux from Roblox via web/gift cards, meaning 1000 Robux costs $9.99. The DevEx Developer Exchange rates are $0.0035-$0.0038 per Robux when cashing out earned Robux to real money (depending on earnings date), meaning 1000 Robux converts to $3.50-$3.80. This represents a 62-65% difference between what players pay and what developers receive. To earn $100 through DevEx at the new rate, developers must generate approximately $263 worth of player spending, making it extremely difficult to profit from Roblox game development."
       }
     },
     {
@@ -3163,7 +3403,7 @@
       "name": "How much does $10 get you in Robux?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "$10 gets you 800 Robux when purchasing the $9.99 package directly from Roblox. This is the most common purchase option among players and represents the standard rate of $0.0125 per Robux. With 800 Robux, you can purchase several clothing items, accessories, or game passes. For better value, consider the 1,700 Robux package at $19.99, which provides more Robux for only $10 additional cost and offers a slightly improved rate of $0.0118 per Robux."
+        "text": "$10 gets you 1,000 Robux when purchasing the $9.99 package directly from Roblox via web/gift card. This is the most common purchase option among players and represents the web purchase rate of $0.00999 per Robux. With 1,000 Robux, you can purchase several clothing items, accessories, or game passes. For better value, consider the 2,000 Robux package at $19.99, which provides more Robux for only $10 additional cost and offers a slightly improved rate of $0.00995 per Robux."
       }
     },
     {
@@ -3171,7 +3411,7 @@
       "name": "What is the best Robux package to buy?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The 10,000 Robux package offers the best value at $99.99, providing a rate of $0.0100 per Robux compared to the standard $0.0125 rate for smaller packages. This represents a 20% savings compared to buying equivalent amounts in smaller packages. However, the best package depends on your needs - casual players may prefer the 800 Robux package at $9.99 for occasional purchases, while serious players or developers benefit most from the 10,000 Robux bulk option which provides maximum purchasing power."
+        "text": "The 24,000 Robux package offers the best value at $199.99, providing a rate of $0.00833 per Robux compared to the standard $0.00999 rate for smaller packages. This represents a 17% savings compared to buying equivalent amounts in smaller packages. However, the best package depends on your needs - casual players may prefer the 1,000 Robux package at $9.99 for occasional purchases, while serious players or developers benefit most from the 24,000 Robux bulk option which provides maximum purchasing power."
       }
     },
     {
@@ -3344,7 +3584,7 @@
         
         <div style="background: white; padding: 1.25rem; border-radius: 8px; border: 2px solid var(--light-gray); box-shadow: 2px 2px 0px rgba(0,0,0,0.05);">
           <h3 style="color: var(--primary-dark); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">💰 Robux Package Pricing 2025</h3>
-          <p style="margin: 0; line-height: 1.6; color: var(--dark); font-size: 0.95rem;">400 Robux ($4.99), 800 Robux ($9.99), 1,700 Robux ($19.99), 4,500 Robux ($49.99), and 10,000 Robux ($99.99) with best value on largest package.</p>
+          <p style="margin: 0; line-height: 1.6; color: var(--dark); font-size: 0.95rem;">500 Robux ($4.99), 1,000 Robux ($9.99), 2,000 Robux ($19.99), 5,250 Robux ($49.99), 11,000 Robux ($99.99), and 24,000 Robux ($199.99) with best value on largest package.</p>
         </div>
 
         <div style="background: white; padding: 1.25rem; border-radius: 8px; border: 2px solid var(--light-gray); box-shadow: 2px 2px 0px rgba(0,0,0,0.05);">
