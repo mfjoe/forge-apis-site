@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Mobile Optimization Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Apex Coins Converter">
+    <meta name="theme-color" content="#ff1744">
+    <meta name="format-detection" content="telephone=no">
+
     <!-- Google Site Verification -->
     <meta
       name="google-site-verification"
@@ -1499,7 +1507,7 @@
           display: none;
         }
 
-        /* Compact 2x2 quick buttons with cyberpunk colors */
+        /* Compact 2x3 quick buttons with cyberpunk colors */
         .quick-amounts {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -1508,9 +1516,9 @@
         }
 
         .quick-btn {
-          min-height: 44px;
-          font-size: 13px;
-          padding: 10px 8px;
+          min-height: 50px;
+          font-size: 12px;
+          padding: 8px 6px;
           border-radius: 0;
           font-weight: 700;
           white-space: nowrap;
@@ -1518,11 +1526,16 @@
           background: rgba(26, 32, 44, 0.6);
           color: var(--primary);
           box-shadow: inset 0 0 10px rgba(255, 23, 68, 0.2);
-          overflow: hidden;
+          overflow: visible;
           text-overflow: ellipsis;
           transition: all 0.2s ease;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
         .quick-btn:active {
@@ -1531,6 +1544,12 @@
           border-color: var(--secondary);
           transform: scale(0.98);
           box-shadow: var(--glow-red), 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Ensure bonus badges are visible on mobile */
+        .quick-btn span {
+          z-index: 10;
+          pointer-events: none;
         }
 
         /* Hide action buttons on mobile */
@@ -2286,18 +2305,11 @@
                 style="height: 5rem; width: auto; object-fit: contain"
               />
             </div>
-            <p
-              style="
-                text-align: center;
-                color: #6b7280;
-                font-size: 0.9rem;
-                margin: -10px 0 20px 0;
-              "
-            >
-              Last updated: January 2025 | Exchange rates verified monthly
-            </p>
             <p class="calculator-subtitle">
               Convert Apex Coins to USD, EUR, GBP, CAD, AUD & more currencies
+            </p>
+            <p style="text-align: center; color: var(--gray); font-size: 0.9rem; margin: -10px 0 20px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">
+              Last updated: January 2025 | Exchange rates verified monthly
             </p>
           </div>
 
@@ -2348,17 +2360,34 @@
           </div>
 
           <div class="quick-amounts">
+            <button class="quick-btn" data-amount="500">
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">500 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$4.99</span>
+            </button>
             <button class="quick-btn" data-amount="1000">
-              1,000 Apex Coins
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">1,000 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$9.99</span>
             </button>
-            <button class="quick-btn" data-amount="2150">
-              2,150 Apex Coins
+            <button class="quick-btn" data-amount="2150" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">2,150 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$19.99</span>
+              <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+150 BONUS</span>
             </button>
-            <button class="quick-btn" data-amount="4350">
-              4,350 Apex Coins
+            <button class="quick-btn" data-amount="4350" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">4,350 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$39.99</span>
+              <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+350 BONUS</span>
             </button>
-            <button class="quick-btn" data-amount="6700">
-              6,700 Apex Coins
+            <button class="quick-btn" data-amount="6700" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">6,700 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$59.99</span>
+              <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+700 BONUS</span>
+            </button>
+            <button class="quick-btn" data-amount="11500" style="border-color: #00d4ff; background: linear-gradient(135deg, rgba(255, 184, 0, 0.2), rgba(0, 212, 255, 0.2)); box-shadow: 0 0 20px rgba(255, 184, 0, 0.4);">
+              <span style="display: block; font-size: 1.2rem; font-weight: 900;">11,500 AC</span>
+              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$99.99</span>
+              <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+1,500 BONUS</span>
+              <span style="display: block; font-size: 0.7rem; color: #00d4ff; font-weight: 900; margin-top: 0.25rem;">⭐ BEST VALUE</span>
             </button>
           </div>
 
@@ -2375,11 +2404,434 @@
             <button class="action-btn secondary" id="clear-btn">Clear</button>
           </div>
 
-          <!-- Better Deal Finder -->
+          <!-- Quick Tips Section -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: rgba(255, 23, 68, 0.15); border: 2px solid var(--primary); border-radius: 0; padding: 1.5rem; box-shadow: 0 0 30px rgba(255, 23, 68, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(135deg, #ff1744 0%, #ff6b9d 50%, #00d4ff 100%); background-size: 200% 200%; animation: gradientShift 3s ease infinite;"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 15px rgba(255, 23, 68, 0.8), 0 0 5px rgba(0, 212, 255, 0.5);">
+                <span style="font-size: 1.5rem;">⚡</span> Quick Apex Coins Conversion Guide
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">1,000 Apex Coins</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$9.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">2,000 Apex Coins</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$19.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">6,000 Apex Coins</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$59.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 14, 26, 0.9); padding: 1rem; border-radius: 0; border-left: 4px solid var(--legendary); box-shadow: 0 0 15px rgba(255, 184, 0, 0.3); backdrop-filter: blur(5px); border: 1px solid rgba(255, 184, 0, 0.5); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(255, 184, 0, 0.5);">11,500 Apex Coins</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--legendary); text-shadow: 0 0 15px rgba(255, 184, 0, 0.8);">$99.99 USD <span style="font-size: 0.7rem; background: var(--legendary); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 2px; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
+                </div>
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">
+                💡 Tip: The 11,500 package offers 13% better value per Apex Coin
+              </p>
+            </div>
+          </section>
+
+          <!-- How to Use This Calculator -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: rgba(0, 212, 255, 0.1); border: 2px solid var(--secondary); border-radius: 0; padding: 1.5rem; box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 50%, #ff1744 100%); background-size: 200% 200%; animation: gradientShift 3s ease infinite;"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 15px rgba(0, 212, 255, 0.8), 0 0 5px rgba(255, 23, 68, 0.5);">
+                <span style="font-size: 1.5rem;">📊</span> How to Use This Calculator
+              </h2>
+              
+              <div style="display: grid; gap: 1rem;">
+                
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 14, 26, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.2); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); flex-shrink: 0; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));">1</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">Select Your Currency</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Choose your preferred currency from the dropdown menu - supports USD, GBP, EUR, CAD, and AUD.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 14, 26, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.2); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); flex-shrink: 0; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));">2</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">Enter Apex Coins or Currency Amount</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Type the number of Apex Coins or currency amount you want to convert. Use quick amount buttons for common purchases like Battle Pass.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 14, 26, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.2); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); flex-shrink: 0; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));">3</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">View Instant Results</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">The calculator automatically displays the conversion with current exchange rates. Copy results or clear to start over.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 14, 26, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.2); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 212, 255, 0.6); flex-shrink: 0; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));">4</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">Plan Your Apex Legends Purchases</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Use the results to budget for Battle Passes, Legend skins, weapon skins, and event cosmetics before purchasing.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <p style="margin: 1.25rem 0 0; padding-top: 1rem; border-top: 2px solid rgba(0, 212, 255, 0.2); color: var(--gray); font-size: 0.9rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">
+                ⚡ No registration required • Works offline • 100% free • Battle Pass calculator included
+              </p>
+            </div>
+          </section>
+
+          <!-- Apex Coins Package Comparison Table -->
+          <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+            <h2 style="color: #ffffff; font-size: 1.9rem; margin-bottom: 1.5rem; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(255, 23, 68, 0.8), 0 0 10px rgba(0, 212, 255, 0.6);">📊 Apex Coins Package Comparison</h2>
+            
+            <div style="overflow-x: auto; margin: 2rem 0;">
+              <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                <thead>
+                  <tr style="background: linear-gradient(135deg, #ff1744 0%, #ff6b9d 50%, #00d4ff 100%);">
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: left; border-bottom: 2px solid #ff1744;">Package</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Base + Bonus</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Total</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Price</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">EA Play Price</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Per-Coin</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Savings</th>
+                    <th style="padding: 1rem; color: white; font-weight: 700; text-align: center; border-bottom: 2px solid #ff1744;">Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Starter</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">500 + 0</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">500</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$4.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$4.49</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00998</td>
+                    <td style="padding: 1rem; text-align: center; color: #6b7280;">0%</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Small purchases</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Basic</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">1,000 + 0</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">1,000</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$9.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$8.99</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00999</td>
+                    <td style="padding: 1rem; text-align: center; color: #6b7280;">~0%</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Battle Pass (950 AC)</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Standard</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">2,000 + <span style="color: #ffb800; font-weight: 700;">150</span></td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">2,150</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$19.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$17.99</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00930</td>
+                    <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">6.8%</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Legendary skin + BP</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Advanced</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">4,000 + <span style="color: #ffb800; font-weight: 700;">350</span></td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">4,350</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$39.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$35.99</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00919</td>
+                    <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">7.9%</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Multiple skins</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Premium</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">6,000 + <span style="color: #ffb800; font-weight: 700;">700</span></td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">6,700</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$59.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$53.99</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00895</td>
+                    <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">10.3%</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Event bundles</td>
+                  </tr>
+                  <tr style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%); border: 2px solid #ffb800;">
+                    <td style="padding: 1rem; font-weight: 700; color: #2d2d2d;">Ultimate ⭐</td>
+                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">10,000 + <span style="color: #ffb800; font-weight: 900; font-size: 1.1em;">1,500</span></td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">11,500</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$99.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #ff8c00; font-size: 1.1em;">$89.99</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$0.00869</td>
+                    <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 900; font-size: 1.1em;">12.9%</td>
+                    <td style="padding: 1rem; text-align: center; font-weight: 700; color: #2d2d2d;">Maximum value</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="background: rgba(0, 212, 255, 0.08); padding: 1.5rem; margin-top: 2rem; border-radius: 8px; border-left: 4px solid #00d4ff; backdrop-filter: blur(10px); border: 1px solid rgba(0, 212, 255, 0.3);">
+              <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">💡 Pro Tip</h4>
+              <p style="line-height: 1.8; margin: 0; color: var(--gray); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Packages 2,150+ include bonus coins. The 11,500 package offers the best per-coin rate at $0.00869, saving you 12.9% compared to smaller packages. This makes it the most cost-effective choice for regular Apex Legends players.</p>
+            </div>
+          </section>
           <div class="deal-finder" id="dealFinder" style="display: none">
             <div class="deal-tip" id="dealTip">
               <!-- Dynamic content inserted here -->
             </div>
+          </div>
+          
+          <!-- Intelligent Recommendation Box -->
+          <div id="recommendationBox" style="display: none;">
+            <!-- Dynamic recommendation content will be inserted here -->
+          </div>
+          
+          <!-- Cross-Platform Pricing Disclaimer -->
+          <div id="platformDisclaimer" style="display: none; max-width: 900px; margin: 2rem auto; padding: 0 1.5rem;">
+            <div style="background: rgba(0, 212, 255, 0.08); padding: 1.5rem; border-radius: 12px; border: 2px solid #ff1744; backdrop-filter: blur(10px); position: relative;">
+              <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.5rem;">🎮</span>
+                <h3 style="color: #ffffff; margin: 0; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">Cross-Platform Pricing</h3>
+                <div style="position: relative; display: inline-block; margin-left: auto;">
+                  <span style="color: #00d4ff; font-size: 1.2rem; cursor: help;" title="Platform fees are absorbed by EA to maintain price consistency. Some regional currencies were adjusted in June 2023, but USD pricing remains unchanged.">ℹ️</span>
+                </div>
+              </div>
+              <p style="color: var(--gray); margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <strong>Apex Coins pricing is uniform across all platforms:</strong><br>
+                • <strong>PC:</strong> Origin/EA App, Steam, Epic Games Store<br>
+                • <strong>Xbox:</strong> Xbox One, Series X/S<br>
+                • <strong>PlayStation:</strong> PS4, PS5<br>
+                • <strong>Nintendo Switch</strong><br><br>
+                All platforms charge the same prices for each package. Unlike some games, Apex Legends maintains consistent pricing globally (in equivalent currency values).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- EA Play Discount Toggle -->
+        <div style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem;">
+          <div style="background: rgba(255, 140, 0, 0.08); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 140, 0, 0.3); backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #ffffff; font-weight: 600; font-size: 1.1rem;">
+                <input type="checkbox" id="eaPlayToggle" style="width: 20px; height: 20px; accent-color: #ff8c00;">
+                EA Play Member
+              </label>
+              <div style="position: relative; display: inline-block;">
+                <span style="color: #ff8c00; font-size: 1.2rem; cursor: help;" title="EA Play members get 10% off all Apex Coins purchases!">ℹ️</span>
+              </div>
+            </div>
+            
+            <div id="eaPlayMessage" style="display: none; text-align: center; margin-bottom: 1rem;">
+              <p style="color: #ff8c00; font-weight: 700; margin: 0; font-size: 1.1rem;">🎮 EA Play members get 10% off all Apex Coins purchases!</p>
+            </div>
+            
+            <div id="eaPlayInfo" style="display: none; background: rgba(255, 140, 0, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #ff8c00; margin-top: 1rem;">
+              <h4 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1rem; font-weight: 700;">EA Play Benefits</h4>
+              <p style="color: var(--gray); margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <strong>Cost:</strong> $5.99/month or $39.99/year<br>
+                <strong>Discount:</strong> 10% off all Apex Coins purchases on all platforms<br>
+                <strong>Break-even:</strong> After purchasing ~4,000-5,000 Apex Coins per year
+              </p>
+              
+              <div style="background: rgba(255, 140, 0, 0.2); padding: 0.8rem; border-radius: 6px; margin-top: 0.8rem; border: 1px solid rgba(255, 140, 0, 0.4);">
+                <p style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                  💰 <strong>Maximum Savings:</strong> With EA Play, buying the 11,500 package saves you $10.00 + the 12.9% bulk discount = <span style="color: #ff8c00;">total $24.78 savings</span> vs buying 500-coin packages!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Warning for Non-Package Amounts -->
+        <div id="package-warning" style="display: none; max-width: 600px; margin: 1.5rem auto;"></div>
+
+        <!-- What Can You Buy with Apex Coins Pricing Guide -->
+        <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+          <h2 style="color: #ffffff; font-size: 1.9rem; margin-bottom: 1.5rem; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(255, 23, 68, 0.8), 0 0 10px rgba(0, 212, 255, 0.6);">💰 What Can You Buy with Apex Coins?</h2>
+          
+          <!-- Battle Pass Section -->
+          <div style="background: rgba(255, 23, 68, 0.08); padding: 2rem; margin: 2rem 0; border-radius: 12px; border: 1px solid rgba(255, 23, 68, 0.3); backdrop-filter: blur(10px);">
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">🎯 Battle Pass Options</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">Premium Battle Pass</h4>
+                <p style="color: #ff1744; font-size: 1.2rem; font-weight: 800; margin: 0;">950 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$9.49 value • Self-sustaining if completed</p>
+              </div>
+              
+              <div style="background: rgba(255, 184, 0, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffb800; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">Ultimate Battle Pass</h4>
+                <p style="color: #ffb800; font-size: 1.2rem; font-weight: 800; margin: 0;">$10 USD</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">Real money only • Introduced Season 22</p>
+              </div>
+              
+              <div style="background: rgba(255, 184, 0, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffb800; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">Ultimate+ Battle Pass</h4>
+                <p style="color: #ffb800; font-size: 1.2rem; font-weight: 800; margin: 0;">$20 USD</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">Real money only • Premium rewards</p>
+              </div>
+            </div>
+            
+            <div style="background: rgba(0, 212, 255, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid #00d4ff;">
+              <p style="color: var(--gray); margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>💡 Note:</strong> Only the Premium Battle Pass can be purchased with Apex Coins. Ultimate and Ultimate+ versions require real money and cannot be bought with earned coins.</p>
+            </div>
+          </div>
+
+          <!-- Cosmetics Pricing Section -->
+          <div style="background: rgba(0, 212, 255, 0.08); padding: 2rem; margin: 2rem 0; border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(10px);">
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">🎨 Cosmetics Pricing</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">👑 Legendary Legend Skin</h4>
+                <p style="color: #ff1744; font-size: 1.2rem; font-weight: 800; margin: 0;">1,800 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$17.98 value</p>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">🔫 Legendary Weapon Skin</h4>
+                <p style="color: #ff1744; font-size: 1.2rem; font-weight: 800; margin: 0;">1,800 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$17.98 value</p>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #00d4ff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">⭐ Epic Legend Skin</h4>
+                <p style="color: #00d4ff; font-size: 1.2rem; font-weight: 800; margin: 0;">1,000 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$9.99 value</p>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #10b981; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">🎨 Rare Skin</h4>
+                <p style="color: #10b981; font-size: 1.2rem; font-weight: 800; margin: 0;">400-600 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$4-6 value</p>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #8b5cf6; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">📦 Apex Pack</h4>
+                <p style="color: #8b5cf6; font-size: 1.2rem; font-weight: 800; margin: 0;">100 AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">$0.99 each</p>
+              </div>
+              
+              <div style="background: rgba(255, 184, 0, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffb800; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 0.5rem; font-weight: 700;">🎉 Event Bundles</h4>
+                <p style="color: #ffb800; font-size: 1.2rem; font-weight: 800; margin: 0;">2,500-4,000+ AC</p>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0.5rem 0 0 0;">Limited-time pricing</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package Examples Section -->
+          <div style="background: rgba(255, 184, 0, 0.08); padding: 2rem; margin: 2rem 0; border-radius: 12px; border: 1px solid rgba(255, 184, 0, 0.3); backdrop-filter: blur(10px);">
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(255, 184, 0, 0.6);">📦 What Each Package Can Buy</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #6b7280; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">500 AC Package</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>5 Apex Packs</li>
+                  <li>1 Rare skin + 1 Apex Pack</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #00d4ff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">1,000 AC Package</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>1 Premium Battle Pass (+ 50 AC left)</li>
+                  <li>1 Epic Legend Skin</li>
+                  <li>10 Apex Packs</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">2,150 AC Package</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>1 Legendary skin + extras</li>
+                  <li>2 Premium Battle Passes</li>
+                  <li>1 Epic skin + 1 Battle Pass + packs</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">4,350 AC Package</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>2 Legendary skins + extras</li>
+                  <li>4 Premium Battle Passes</li>
+                  <li>1 Event Bundle + Battle Pass</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff1744; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">6,700 AC Package</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>3 Legendary skins + Battle Pass</li>
+                  <li>7 Premium Battle Passes</li>
+                  <li>1 Premium Event Bundle</li>
+                </ul>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffb800; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 2px solid rgba(255, 184, 0, 0.3);">
+                <h4 style="color: #2d2d2d; margin-bottom: 1rem; font-weight: 700;">11,500 AC Package ⭐</h4>
+                <ul style="color: #2d2d2d; margin: 0; padding-left: 1.2rem; line-height: 1.6;">
+                  <li>6 Legendary skins</li>
+                  <li>12 Premium Battle Passes</li>
+                  <li>2 Premium Event Bundles</li>
+                  <li>Mix of everything above</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Important Notes -->
+          <div style="background: rgba(239, 68, 68, 0.08); padding: 1.5rem; margin-top: 2rem; border-radius: 8px; border-left: 4px solid #ef4444; backdrop-filter: blur(10px); border: 1px solid rgba(239, 68, 68, 0.3);">
+            <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);">⚠️ Important Notes</h4>
+            <ul style="color: var(--gray); margin: 0; padding-left: 1.2rem; line-height: 1.8;">
+              <li><strong>Limited-time events</strong> often have higher pricing for exclusive items</li>
+              <li><strong>Ultimate/Ultimate+ Battle Passes</strong> require real money and cannot be purchased with Apex Coins</li>
+              <li><strong>Some premium bundles</strong> may only be available for real money during special events</li>
+              <li><strong>Prices may vary</strong> during sales or promotional periods</li>
+              <li><strong>Premium Battle Pass</strong> is self-sustaining - completing it gives you enough coins for the next season</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Battle Pass Changes Info Section -->
+        <div style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+          <div style="background: rgba(255, 193, 7, 0.08); padding: 1.5rem; border-radius: 12px; border: 2px solid #ffc107; backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.5rem;">ℹ️</span>
+              <h3 style="color: #ffffff; margin: 0; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);">Battle Pass Changes (2024-2025)</h3>
+            </div>
+            
+            <div id="battlePassInfo" style="display: none;">
+              <div style="background: rgba(255, 193, 7, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107; margin-bottom: 1rem;">
+                <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">What Changed in Season 22 (August 2024):</h4>
+                <ul style="color: var(--gray); margin: 0; padding-left: 1.2rem; line-height: 1.6; font-size: 0.95rem;">
+                  <li>Battle Pass split into <strong>TWO passes per season</strong> (instead of one 110-level pass)</li>
+                  <li>Each pass is <strong>60 levels</strong> and lasts one ranked split (~6 weeks)</li>
+                  <li>Premium tier still available for <strong>950 AC</strong> (self-sustainable)</li>
+                  <li>New <strong>Ultimate ($10)</strong> and <strong>Ultimate+ ($20)</strong> tiers require real money only</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 193, 7, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107; margin-bottom: 1rem;">
+                <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">What This Means for You:</h4>
+                <ul style="color: var(--gray); margin: 0; padding-left: 1.2rem; line-height: 1.6; font-size: 0.95rem;">
+                  <li>If you complete the Premium BP, you earn enough coins to buy the next one</li>
+                  <li>Seasonal cost doubled: <strong>~$20/season</strong> vs previous ~$10/season (for all content)</li>
+                  <li>You can choose to buy just Premium (950 AC) and skip Ultimate tiers</li>
+                </ul>
+              </div>
+              
+              <div style="background: rgba(255, 193, 7, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">Community Response:</h4>
+                <p style="color: var(--gray); margin: 0; line-height: 1.6; font-size: 0.95rem;">
+                  After significant backlash, Respawn partially reversed changes. The Premium tier can still be purchased with Apex Coins, but Ultimate tiers remain real-money only.
+                </p>
+              </div>
+            </div>
+            
+            <button onclick="toggleBattlePassInfo()" style="background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);" id="battlePassToggle">
+              Read more
+            </button>
           </div>
         </div>
 
@@ -2469,7 +2921,52 @@
           </div>
         </div>
 
-        <!-- Current Season 20 and Recent Updates -->
+        <!-- Gaming Currency Comparison -->
+        <div class="content-section">
+          <h2 class="section-title" style="text-shadow: 0 0 15px rgba(255, 23, 68, 0.8), 0 0 5px rgba(0, 212, 255, 0.5);">How Do Apex Coins Compare to Other Gaming Currencies?</h2>
+          <div class="section-content">
+            <p style="margin-bottom: 1.5rem; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Understanding Apex Coins value becomes clearer when comparing them to other popular gaming currencies. At $0.00999 per coin for standard packages, Apex Coins fall in the mid-range of gaming currency pricing - more expensive than V-Bucks but cheaper than Robux. Respawn Entertainment maintains transparent pricing with the 11,500 Coins bundle offering the best value. Let's compare Apex Coins to major gaming currencies to help you understand their relative value.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+              
+              <div style="background: linear-gradient(135deg, rgba(226, 35, 26, 0.2) 0%, rgba(226, 35, 26, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(226, 35, 26, 0.4); box-shadow: 0 0 15px rgba(226, 35, 26, 0.3), inset 0 0 10px rgba(226, 35, 26, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(226, 35, 26, 0.8);">🎮 Robux (Roblox)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Robux cost $0.0125 per coin, making them 20% more expensive than Apex Coins. Roblox also has exploitative DevEx rates with a 72% gap.</p>
+                <a href="../robux/" style="display: inline-block; background: rgba(226, 35, 26, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(226, 35, 26, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate Robux Value →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(107, 91, 184, 0.2) 0%, rgba(107, 91, 184, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(107, 91, 184, 0.4); box-shadow: 0 0 15px rgba(107, 91, 184, 0.3), inset 0 0 10px rgba(107, 91, 184, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(107, 91, 184, 0.8);">💜 V-Bucks (Fortnite)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">V-Bucks cost $0.00799 per coin, making them 20% cheaper than Apex Coins. Epic Games offers the most player-friendly pricing structure.</p>
+                <a href="../vbucks/" style="display: inline-block; background: rgba(107, 91, 184, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(107, 91, 184, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate V-Bucks →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(145, 200, 72, 0.2) 0%, rgba(145, 200, 72, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(145, 200, 72, 0.4); box-shadow: 0 0 15px rgba(145, 200, 72, 0.3), inset 0 0 10px rgba(145, 200, 72, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(145, 200, 72, 0.8);">⛏️ Minecoins (Minecraft)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Minecoins cost $0.00568-$0.00799 per coin, making them 20-43% cheaper than Apex Coins depending on package size.</p>
+                <a href="../minecoins/" style="display: inline-block; background: rgba(145, 200, 72, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(145, 200, 72, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate Minecoins →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(230, 126, 34, 0.2) 0%, rgba(230, 126, 34, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(230, 126, 34, 0.4); box-shadow: 0 0 15px rgba(230, 126, 34, 0.3), inset 0 0 10px rgba(230, 126, 34, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(230, 126, 34, 0.8);">🎯 COD Points</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Call of Duty Points cost approximately $0.0100 per point, making them nearly identical in price to Apex Coins with similar value propositions.</p>
+                <a href="../cod-points/" style="display: inline-block; background: rgba(230, 126, 34, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(230, 126, 34, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate COD Points →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(39, 174, 96, 0.2) 0%, rgba(39, 174, 96, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(39, 174, 96, 0.4); box-shadow: 0 0 15px rgba(39, 174, 96, 0.3), inset 0 0 10px rgba(39, 174, 96, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(39, 174, 96, 0.8);">⚽ FIFA Points</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">FIFA Points cost around $0.0100-0.0125 per point, similar to or slightly more expensive than Apex Coins. Used for Ultimate Team packs.</p>
+                <a href="../fifa-points/" style="display: inline-block; background: rgba(39, 174, 96, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(39, 174, 96, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate FIFA Points →</a>
+              </div>
+
+            </div>
+
+            <div style="background: rgba(0, 212, 255, 0.08); padding: 1.5rem; margin-top: 2rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(10px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);">
+              <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">💡 Key Takeaway</h4>
+              <p style="line-height: 1.8; margin: 0; color: var(--gray); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Apex Coins offer mid-range pricing at $0.00999 per coin for standard packages, with the 11,500 package offering better value at $0.00869 per coin (13% savings). This makes Apex Coins more expensive than V-Bucks (20% cheaper) and Minecoins (20-43% cheaper), but significantly cheaper than Robux (20% more expensive). Respawn Entertainment's transparent pricing and cosmetic-only model make Apex Coins a fair choice for players.</p>
+            </div>
+          </div>
+        </div>
         <div class="content-section">
           <h2 class="section-title">
             Season 20: Breakout and Current Apex Coins Economy
@@ -2751,6 +3248,11 @@
           </div>
         </div>
 
+        <!-- Link to Comprehensive Guide -->
+        <p style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 23, 68, 0.2) 0%, rgba(255, 23, 68, 0.05) 100%); border-radius: 0; line-height: 1.8; border: 2px solid var(--primary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); box-shadow: 0 0 20px rgba(255, 23, 68, 0.3), inset 0 0 15px rgba(0, 212, 255, 0.1);">
+          📚 <strong style="color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">Want to learn more about Apex Coins?</strong> <span style="color: var(--gray);">Read our comprehensive</span> <a href="/gaming-calculators/apex-coins/guide.html" style="color: var(--secondary); font-weight: bold; text-decoration: underline; text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);">Apex Coins Guide 2025</a> <span style="color: var(--gray);">covering pricing strategies, Battle Pass economics, cosmetic values, how to buy safely, regional pricing differences, Apex Packs system, and expert advice for maximizing your Apex Legends currency value.</span>
+        </p>
+
         <!-- FAQ Section -->
         <div class="faq-section">
           <h2 class="faq-title">Frequently Asked Questions</h2>
@@ -2772,9 +3274,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              The exchange rate is $0.00999 per Apex Coin (1000 Apex Coins =
-              $9.99). This rate is consistent across all Apex Coins packages,
-              though larger packages may offer slight discounts per Apex Coin.
+              Apex Coins are sold in 6 fixed packages ranging from 500 to 11,500 coins. The standard rate is $0.00999 per coin (1,000 package), but larger packages offer better value with bonus coins included. The best rate is $0.00869 per coin (11,500 package with 15% bonus), offering 12.9% savings compared to smaller packages.
             </div>
           </div>
 
@@ -2784,8 +3284,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              $10 gets you approximately 1,000 Apex Coins. This is based on the
-              standard rate of $0.00999 per Apex Coin.
+              $10 gets you exactly 1,000 Apex Coins through the standard package priced at $9.99. With 1,000 Apex Coins, you can purchase one Premium Battle Pass (950 AC) with 50 coins left over, or several weapon skins and smaller cosmetics.
             </div>
           </div>
 
@@ -2795,8 +3294,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              11,500 Apex Coins costs $99.99 USD. This is the largest Apex Coins
-              package available and offers the best value per Apex Coin.
+              11,500 Apex Coins costs $99.99 USD. This package includes 10,000 base coins + 1,500 bonus coins (15% bonus), making it the most cost-effective option at $0.00869 per coin. This represents 12.9% savings compared to buying smaller packages.
             </div>
           </div>
 
@@ -2831,11 +3329,27 @@
             <div class="faq-answer">
               Yes, EA occasionally offers discounts on Apex Coins during major
               events like Black Friday, anniversary celebrations, or season
-              launches. Discounts typically range from 10-30% off. EA Play
-              members always receive a 10% discount on coins. Some platforms
-              like PlayStation or Xbox also run their own sales on digital
-              currencies. Following Apex Legends social media accounts helps you
-              stay informed about upcoming sales.
+              launches. Discounts typically range from 10-30% off and are applied
+              uniformly across all platforms. EA Play members always receive a 10% 
+              discount on coins on all platforms. While some platforms may run their 
+              own promotional events, the base Apex Coins pricing remains consistent 
+              across PC, Xbox, PlayStation, and Nintendo Switch. Following Apex Legends 
+              social media accounts helps you stay informed about upcoming sales.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do larger Apex Coins packages include bonus coins?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes! Packages of $19.99 and above include bonus coins:
+              <br>• 2,150 AC ($19.99): +150 bonus (7.5%)
+              <br>• 4,350 AC ($39.99): +350 bonus (8.75%)
+              <br>• 6,700 AC ($59.99): +700 bonus (11.67%)
+              <br>• 11,500 AC ($99.99): +1,500 bonus (15%) ⭐ BEST VALUE
+              <br><br>The 500 and 1,000 coin packages do not include bonus coins.
             </div>
           </div>
 
@@ -2845,13 +3359,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              The 11,500 coins package ($99.99) offers the best per-coin value
-              at approximately $0.00869 per coin, compared to $0.00999 for the
-              basic 1,000 coin package. However, "best value" depends on your
-              spending habits. If you only buy the battle pass each season,
-              smaller packages make more sense. The larger package is only
-              worthwhile if you regularly purchase cosmetics and can use all the
-              coins within a reasonable timeframe.
+              The 11,500 Apex Coins package ($99.99) offers the best value at $0.00869 per coin - that's 12.9% cheaper than smaller packages. If you regularly purchase Battle Passes, skins, or participate in events, this package maximizes your purchasing power. For casual players, the 1,000 coin package ($9.99) is sufficient for one Battle Pass.
             </div>
           </div>
 
@@ -2865,9 +3373,21 @@
               them. If you buy coins on PlayStation, they won't appear on your
               PC or Xbox account, even with cross-progression enabled. However,
               items purchased with Apex Coins (skins, battle passes) do transfer
-              between platforms. Plan your purchases carefully if you play on
-              multiple platforms - buy coins on your primary platform where
-              you'll make purchases.
+              between platforms. The good news is that Apex Coins pricing is 
+              uniform across all platforms, so you'll pay the same price whether 
+              you buy on PC, Xbox, PlayStation, or Nintendo Switch. Plan your 
+              purchases carefully if you play on multiple platforms - buy coins 
+              on your primary platform where you'll make purchases.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I still buy Battle Pass with Apex Coins?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes! The Premium Battle Pass (950 AC) can still be purchased with Apex Coins. However, Ultimate ($10) and Ultimate+ ($20) tiers require real money and cannot be bought with AC. The Premium tier remains self-sustainable - if you complete it, you earn enough coins to buy the next season's Premium pass.
             </div>
           </div>
 
@@ -2943,8 +3463,8 @@
     </div>
 
     <!-- Include the existing JavaScript functionality -->
-    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
-    <script src="/gaming-calculators/assets/js/shared.js"></script>
+    <script src="../assets/js/currency-utils.js"></script>
+    <script src="../assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -3042,13 +3562,306 @@
       // Initialize HTTPS enforcement
       SecurityManager.enforceHTTPS();
 
+      // Initialize Currency Manager
+      window.currencyManager = new CurrencyManager();
+
       // All existing JavaScript functionality remains the same
       // Calculator state
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 1000 Apex Coins = $9.99
-      const APEX_RATE = 9.99 / 1000; // $0.00999 per Apex Coin
+      // Apex Coins Package Structure 2025 (with bonus coins)
+      const APEX_COINS_PACKAGES = [
+        { coins: 500, bonus: 0, total: 500, price: 4.99, perCoinRate: 0.00998, savings: 0 },
+        { coins: 1000, bonus: 0, total: 1000, price: 9.99, perCoinRate: 0.00999, savings: 0 },
+        { coins: 2000, bonus: 150, total: 2150, price: 19.99, perCoinRate: 0.00930, savings: 6.8 },
+        { coins: 4000, bonus: 350, total: 4350, price: 39.99, perCoinRate: 0.00919, savings: 7.9 },
+        { coins: 6000, bonus: 700, total: 6700, price: 59.99, perCoinRate: 0.00895, savings: 10.3 },
+        { coins: 10000, bonus: 1500, total: 11500, price: 99.99, perCoinRate: 0.00869, savings: 12.9 }
+      ];
+
+      // Best value rate for estimates (11,500 package rate)
+      const BEST_APEX_RATE = 0.00869;
+      
+      // EA Play discount functionality
+      let isEAPlayMember = false;
+      const EA_PLAY_DISCOUNT = 0.10; // 10% discount
+
+      // Helper functions for package matching
+      function findExactPackage(coins) {
+        return APEX_COINS_PACKAGES.find(pkg => pkg.total === coins);
+      }
+      
+      // EA Play discount functions
+      function getEAPlayPrice(originalPrice) {
+        return isEAPlayMember ? originalPrice * (1 - EA_PLAY_DISCOUNT) : originalPrice;
+      }
+      
+      function updateEAPlayDisplay() {
+        const eaPlayToggle = document.getElementById('eaPlayToggle');
+        const eaPlayMessage = document.getElementById('eaPlayMessage');
+        const eaPlayInfo = document.getElementById('eaPlayInfo');
+        
+        if (eaPlayToggle) {
+          isEAPlayMember = eaPlayToggle.checked;
+          
+          if (isEAPlayMember) {
+            eaPlayMessage.style.display = 'block';
+            eaPlayInfo.style.display = 'block';
+          } else {
+            eaPlayMessage.style.display = 'none';
+            eaPlayInfo.style.display = 'none';
+          }
+          
+          // Recalculate current values if inputs have values
+          const apexInput = document.getElementById('apexInput');
+          const usdInput = document.getElementById('usdInput');
+          
+          if (apexInput && apexInput.value) {
+            handleApexInput();
+          } else if (usdInput && usdInput.value) {
+            handleUsdInput();
+          }
+        }
+      }
+      
+      // Intelligent recommendation system
+      function generateRecommendation(usdAmount) {
+        if (!usdAmount || usdAmount <= 0) return null;
+        
+        const packages = APEX_COINS_PACKAGES.map(pkg => ({
+          ...pkg,
+          price: getEAPlayPrice(pkg.price)
+        }));
+        
+        // Sort packages by value (coins per dollar)
+        const sortedPackages = packages.sort((a, b) => (b.total / b.price) - (a.total / a.price));
+        
+        // Find the best single package within budget
+        const affordablePackages = packages.filter(pkg => pkg.price <= usdAmount);
+        const bestSinglePackage = affordablePackages.length > 0 ? 
+          affordablePackages.reduce((best, current) => 
+            (current.total / current.price) > (best.total / best.price) ? current : best
+          ) : null;
+        
+        // Find optimal combination for larger amounts
+        let bestCombination = null;
+        if (usdAmount >= 20) {
+          bestCombination = findOptimalCombination(usdAmount, packages);
+        }
+        
+        // Generate recommendation based on amount
+        if (usdAmount < 5) {
+          return {
+            type: 'budget',
+            message: "Consider the 500 AC package ($4.99) for best value at your budget",
+            packages: [packages[0]],
+            totalCoins: packages[0].total,
+            totalCost: packages[0].price,
+            bonusCoins: 0
+          };
+        } else if (usdAmount < 10) {
+          return {
+            type: 'upgrade',
+            message: "The 1,000 AC package ($9.99) gives you 100% more coins for just $5 more",
+            packages: [packages[1]],
+            totalCoins: packages[1].total,
+            totalCost: packages[1].price,
+            bonusCoins: 0
+          };
+        } else if (usdAmount < 20) {
+          return {
+            type: 'bonus',
+            message: "You're close to the 2,150 AC package ($19.99) which includes +150 bonus coins!",
+            packages: [packages[2]],
+            totalCoins: packages[2].total,
+            totalCost: packages[2].price,
+            bonusCoins: packages[2].bonus
+          };
+        } else if (usdAmount < 40) {
+          return {
+            type: 'value',
+            message: "Consider the 4,350 AC package ($39.99) with +350 bonus coins - much better value",
+            packages: [packages[3]],
+            totalCoins: packages[3].total,
+            totalCost: packages[3].price,
+            bonusCoins: packages[3].bonus
+          };
+        } else if (usdAmount < 60) {
+          return {
+            type: 'mid-tier',
+            message: "The 6,700 AC package ($59.99) includes +700 bonus coins for maximum mid-tier value",
+            packages: [packages[4]],
+            totalCoins: packages[4].total,
+            totalCost: packages[4].price,
+            bonusCoins: packages[4].bonus
+          };
+        } else {
+          const ultimatePackage = packages[5];
+          const additionalCost = ultimatePackage.price - usdAmount;
+          return {
+            type: 'ultimate',
+            message: `The 11,500 AC package ($${ultimatePackage.price.toFixed(2)}) is the best value at $${ultimatePackage.perCoinRate.toFixed(5)} per coin with +1,500 bonus. You'd pay $${additionalCost.toFixed(2)} more for maximum efficiency`,
+            packages: [ultimatePackage],
+            totalCoins: ultimatePackage.total,
+            totalCost: ultimatePackage.price,
+            bonusCoins: ultimatePackage.bonus
+          };
+        }
+      }
+      
+      function findOptimalCombination(targetUsd, packages) {
+        // For now, return the best single package within budget
+        // This could be enhanced with more sophisticated combination logic
+        const affordablePackages = packages.filter(pkg => pkg.price <= targetUsd);
+        return affordablePackages.length > 0 ? 
+          affordablePackages.reduce((best, current) => 
+            (current.total / current.price) > (best.total / best.price) ? current : best
+          ) : null;
+      }
+      
+      function displayRecommendation(recommendation) {
+        const recommendationBox = document.getElementById('recommendationBox');
+        if (!recommendationBox || !recommendation) return;
+        
+        const icon = recommendation.type === 'ultimate' ? '🎯' : '💡';
+        const packageText = recommendation.packages.length === 1 ? 
+          `${recommendation.packages[0].total.toLocaleString()} AC package` :
+          `${recommendation.packages.map(p => p.total).join(' + ')} AC packages`;
+        
+        const bonusText = recommendation.bonusCoins > 0 ? 
+          ` (+${recommendation.bonusCoins.toLocaleString()} bonus)` : '';
+        
+        const overTarget = recommendation.totalCoins > 0 ? 
+          ` (${(recommendation.totalCoins - 0).toLocaleString()} coins total)` : '';
+        
+        recommendationBox.innerHTML = `
+          <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 23, 68, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid #00d4ff; margin: 1rem 0; backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.5rem;">${icon}</span>
+              <h4 style="color: #ffffff; margin: 0; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Smart Recommendation</h4>
+            </div>
+            <p style="color: var(--gray); margin-bottom: 1rem; line-height: 1.6; font-size: 1rem;">${recommendation.message}</p>
+            <div style="background: rgba(255, 23, 68, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #ff1744; margin-bottom: 1rem;">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+                <div>
+                  <p style="color: #ffffff; font-weight: 700; margin: 0; font-size: 1.1rem;">${packageText}</p>
+                  <p style="color: #00d4ff; font-size: 0.9rem; margin: 0.3rem 0 0 0;">Recommended Package</p>
+                </div>
+                <div>
+                  <p style="color: #ffffff; font-weight: 700; margin: 0; font-size: 1.1rem;">${recommendation.totalCoins.toLocaleString()} AC${bonusText}</p>
+                  <p style="color: #00d4ff; font-size: 0.9rem; margin: 0.3rem 0 0 0;">Total Coins</p>
+                </div>
+                <div>
+                  <p style="color: #ffffff; font-weight: 700; margin: 0; font-size: 1.1rem;">$${recommendation.totalCost.toFixed(2)}</p>
+                  <p style="color: #00d4ff; font-size: 0.9rem; margin: 0.3rem 0 0 0;">Total Cost</p>
+                </div>
+              </div>
+            </div>
+            <button onclick="fillCalculatorWithRecommendation(${recommendation.totalCost})" style="background: linear-gradient(135deg, #ff1744 0%, #00d4ff 100%); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);">
+              Fill Calculator
+            </button>
+          </div>
+        `;
+        recommendationBox.style.display = 'block';
+      }
+      
+      function hideRecommendation() {
+        const recommendationBox = document.getElementById('recommendationBox');
+        if (recommendationBox) {
+          recommendationBox.style.display = 'none';
+        }
+      }
+      
+      function fillCalculatorWithRecommendation(usdAmount) {
+        const usdInput = document.getElementById('usd-input');
+        if (usdInput) {
+          usdInput.value = usdAmount.toFixed(2);
+          handleUsdInput();
+        }
+      }
+      
+      // Platform disclaimer functions
+      function showPlatformDisclaimer() {
+        const platformDisclaimer = document.getElementById('platformDisclaimer');
+        if (platformDisclaimer) {
+          platformDisclaimer.style.display = 'block';
+        }
+      }
+      
+      function hidePlatformDisclaimer() {
+        const platformDisclaimer = document.getElementById('platformDisclaimer');
+        if (platformDisclaimer) {
+          platformDisclaimer.style.display = 'none';
+        }
+      }
+      
+      
+      // Package warning functions for non-package amounts
+      function showPackageWarning(coins) {
+        // Find the closest package
+        const closestPackage = APEX_COINS_PACKAGES.reduce((prev, curr) => {
+          return Math.abs(curr.total - coins) < Math.abs(prev.total - coins) ? curr : prev;
+        });
+        
+        const warningDiv = document.getElementById('package-warning');
+        if (warningDiv) {
+          warningDiv.innerHTML = `
+            <div style="background: rgba(255, 184, 0, 0.15); border: 2px solid #ffb800; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+              <p style="margin: 0; color: #ffb800; font-weight: 700;">
+                ⚠️ Estimated Value Only
+              </p>
+              <p style="margin: 0.5rem 0 0 0; color: var(--gray); font-size: 0.9rem;">
+                Apex Coins are sold in fixed packages. You cannot buy exactly ${coins.toLocaleString()} coins. 
+                Closest package: <strong style="color: var(--secondary);">${closestPackage.total.toLocaleString()} AC for $${closestPackage.price}</strong>
+              </p>
+            </div>
+          `;
+          warningDiv.style.display = 'block';
+        }
+      }
+
+      function hidePackageWarning() {
+        const warningDiv = document.getElementById('package-warning');
+        if (warningDiv) {
+          warningDiv.style.display = 'none';
+        }
+      }
+      
+      // Battle Pass info toggle function
+      function toggleBattlePassInfo() {
+        const battlePassInfo = document.getElementById('battlePassInfo');
+        const battlePassToggle = document.getElementById('battlePassToggle');
+        
+        if (battlePassInfo && battlePassToggle) {
+          if (battlePassInfo.style.display === 'none' || battlePassInfo.style.display === '') {
+            battlePassInfo.style.display = 'block';
+            battlePassToggle.textContent = 'Read less';
+          } else {
+            battlePassInfo.style.display = 'none';
+            battlePassToggle.textContent = 'Read more';
+          }
+        }
+      }
+
+      function calculateApexToUSD(coins) {
+        const exactPackage = findExactPackage(coins);
+        if (exactPackage) {
+          hidePackageWarning(); // Hide warning for exact matches
+          return getEAPlayPrice(exactPackage.price);
+        }
+        
+        // For non-package amounts, show warning and estimate
+        showPackageWarning(coins);
+        return getEAPlayPrice(coins * BEST_APEX_RATE);
+      }
+
+      function calculateUSDToApex(usd) {
+        // Use best value rate for USD to Apex conversion
+        // Adjust for EA Play discount if applicable
+        const effectiveRate = isEAPlayMember ? BEST_APEX_RATE * (1 - EA_PLAY_DISCOUNT) : BEST_APEX_RATE;
+        return usd / effectiveRate;
+      }
 
       // DOM elements
       const apexInput = document.getElementById("apex-input");
@@ -3060,17 +3873,33 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
+      if (apexInput) {
       apexInput.addEventListener(
         "input",
         SecurityManager.debounce(handleApexInput, 100)
       );
+      }
+      if (usdInput) {
       usdInput.addEventListener(
         "input",
         SecurityManager.debounce(handleUsdInput, 100)
       );
+      }
+      if (copyBtn) {
       copyBtn.addEventListener("click", copyResult);
+      }
+      if (clearBtn) {
       clearBtn.addEventListener("click", clearInputs);
+      }
+      if (currencySelect) {
       currencySelect.addEventListener("change", handleCurrencyChange);
+      }
+
+      // EA Play toggle event listener
+      const eaPlayToggle = document.getElementById('eaPlayToggle');
+      if (eaPlayToggle) {
+        eaPlayToggle.addEventListener('change', updateEAPlayDisplay);
+      }
 
       quickBtns.forEach((btn) => {
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
@@ -3153,7 +3982,7 @@
         }
 
         const apexCoins = validatedApex;
-        const usdValue = apexCoins * APEX_RATE;
+        const usdValue = calculateApexToUSD(apexCoins);
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -3164,6 +3993,17 @@
         isUpdating = false;
 
         saveCalculation();
+
+        // Hide recommendations when converting from Apex Coins to USD
+        hideRecommendation();
+        
+        // Show platform disclaimer when results are displayed
+        if (apexCoins > 0) {
+          showPlatformDisclaimer();
+        } else {
+          hidePlatformDisclaimer();
+          hidePackageWarning(); // Hide warning when inputs are cleared
+        }
 
         // Add tracking
         if (apexInput.value && usdInput.value) {
@@ -3189,13 +4029,28 @@
           inputValue,
           currentCurrency
         );
-        const apexCoins = usdValue / APEX_RATE;
+        const apexCoins = calculateUSDToApex(usdValue);
 
         isUpdating = true;
         apexInput.value = Math.round(apexCoins);
         isUpdating = false;
 
         saveCalculation();
+
+        // Show intelligent recommendation for USD to Apex Coins conversion
+        if (usdValue > 0) {
+          const recommendation = generateRecommendation(usdValue);
+          if (recommendation) {
+            displayRecommendation(recommendation);
+          } else {
+            hideRecommendation();
+          }
+          // Show platform disclaimer when results are displayed
+          showPlatformDisclaimer();
+        } else {
+          hideRecommendation();
+          hidePlatformDisclaimer();
+        }
 
         // Add tracking
         if (apexInput.value && usdInput.value) {
@@ -3675,7 +4530,8 @@
       }
 
       // Initialize features when page loads
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async function () {
+        await initializeCurrency();
         initializeFeatures();
       });
 
@@ -3855,7 +4711,7 @@
             "name": "How much is 1000 Apex Coins in USD?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "1000 Apex Coins costs $9.99 USD. This is the standard rate for the smallest Apex Coins package available in the Apex Legends store."
+            "text": "1000 Apex Coins costs $9.99 USD when purchasing directly from the Apex Legends in-game store or through any platform store (Steam, PlayStation, Xbox, Origin, Nintendo eShop). This uniform pricing applies across all platforms at $0.00999 per Apex Coin. Apex Coins are Respawn Entertainment's premium currency used exclusively for cosmetic purchases including Legend skins, weapon skins, Battle Pass, Apex Packs, and cosmetic bundles. Larger packages offer better value, with the 11,500 Coins bundle providing the best per-coin rate at $0.00869."
             }
           },
           {
@@ -3863,7 +4719,7 @@
             "name": "What is the Apex Coins to dollar exchange rate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The exchange rate is $0.00999 per Apex Coin (1000 Apex Coins = $9.99). This rate is consistent across all Apex Coins packages, though larger packages may offer slight discounts per Apex Coin."
+            "text": "The standard Apex Coins exchange rate is $0.00999 per Apex Coin, meaning 1000 Apex Coins equals $9.99 USD. This uniform rate applies to the base 1000 Coins package across all platforms (PC, Xbox, PlayStation, Nintendo Switch). Larger packages offer improved value with bonus coins: 2,150 Coins ($19.99, $0.00930 per coin), 4,350 Coins ($39.99, $0.00919 per coin), 6,700 Coins ($59.99, $0.00895 per coin), and 11,500 Coins ($99.99, $0.00869 per coin offering 12.9% savings). Respawn Entertainment maintains consistent pricing across all platforms."
             }
           },
           {
@@ -3871,7 +4727,7 @@
             "name": "How much does $10 get you in Apex Coins?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "$10 gets you approximately 1,001 Apex Coins. This is based on the standard rate of $0.00999 per Apex Coin."
+            "text": "$10 gets you 1000 Apex Coins through the standard package priced at $9.99. With 1000 Apex Coins, you can purchase several weapon skins (typically 500-800 Coins), an Epic Legend skin (1,000 Coins), or save toward Legendary skins (1,800 Coins) and event cosmetics. Alternatively, you can purchase 10 Apex Packs at 100 Coins each. For regular players, saving for the 11,500 Coins package at $99.99 offers 13% better value per coin."
             }
           },
           {
@@ -3879,15 +4735,31 @@
             "name": "How much is 11,500 Apex Coins worth?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "11,500 Apex Coins costs $99.99 USD. This is the largest Apex Coins package available and offers the best value per Apex Coin."
+            "text": "11,500 Apex Coins costs $99.99 USD and represents the largest and most cost-effective package available in Apex Legends. At approximately $0.00869 per Apex Coin, this package offers 13% better value compared to the standard 1000 Coins package. With 11,500 Apex Coins, you can purchase multiple Legendary Legend skins (1,800 Coins each), several Battle Passes (950 Coins each), numerous weapon skins, and Apex Packs. This package is ideal for dedicated players who regularly purchase cosmetics or participate in limited-time events."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I get Apex Coins cheaper?",
+          "name": "Can I get Apex Coins cheaper or for free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Apex Coins prices are fixed by EA/Respawn Entertainment. Beware of scams offering discounted Apex Coins - these are often fraudulent and can result in account bans."
+            "text": "Apex Coins prices are fixed by Respawn Entertainment and EA across all official platforms including Steam, Origin, PlayStation Store, Xbox Store, and Nintendo eShop. Any website or service offering discounted or free Apex Coins outside official channels is a scam designed to steal account credentials, payment information, or install malware. The only legitimate way to obtain free Apex Coins is through the Battle Pass progression system, which returns approximately 1,000 Coins when completed. Never trust free Apex Coins generators or third-party sellers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which currencies does this Apex Coins converter support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our Apex Coins converter supports five major currencies: USD (US Dollar), EUR (Euro), GBP (British Pound), CAD (Canadian Dollar), and AUD (Australian Dollar). The calculator uses current exchange rates updated regularly to provide accurate conversions for Apex Legends players worldwide. Simply select your preferred currency from the dropdown menu and all calculations will automatically display values in your chosen currency. This helps international players understand exactly how much they are spending when purchasing Apex Coins from EA or platform stores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does the Apex Legends Battle Pass cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Apex Legends Battle Pass costs 950 Apex Coins per season, which equals approximately $9.49 USD at the standard Apex Coins rate. Each Battle Pass provides approximately 1,000 Apex Coins back through progression across 110 levels, plus exclusive Legend skins, weapon skins, Apex Packs, and crafting materials. Players who complete the Battle Pass earn enough Coins to purchase the next season's pass without spending additional money. The Battle Pass typically lasts 12-13 weeks per season and offers excellent value for regular players."
             }
           }
         ]
@@ -4030,6 +4902,45 @@
       </ul>
     </section>
 
+    <!-- People Also Search For -->
+    <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+      <h2 style="color: #ffffff; font-size: 1.9rem; margin-bottom: 1.5rem; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(255, 23, 68, 0.8), 0 0 10px rgba(0, 212, 255, 0.6);">People Also Search For</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">💰 Apex Coins Package Pricing 2025</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">1,000 Apex Coins ($9.99), 2,000 Apex Coins ($19.99), 6,000 Apex Coins ($59.99), and 11,500 Apex Coins ($99.99) with best value on largest package offering 13% savings.</p>
+        </div>
+
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">🎮 Apex Legends Battle Pass Cost</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Battle Pass costs 950 Apex Coins ($9.49) per season. Complete it to earn 1,000+ Apex Coins back, allowing you to buy next season's pass without spending more money.</p>
+        </div>
+
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">🌍 Apex Coins Regional Pricing</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Prices vary by region: US ($), UK (£), EU (€), AUS (A$), CAN (C$). Our converter supports all major currencies with live exchange rates updated monthly.</p>
+        </div>
+
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">📊 Legend & Weapon Skin Prices</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Legendary skins cost 1,800 Apex Coins ($17.98), Epic skins 1,000 Coins ($9.99), Rare skins 800 Coins ($7.99), and weapon skins 500-1,800 Coins depending on rarity.</p>
+        </div>
+
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">⚠️ Free Apex Coins Scams Warning</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Generators and third-party Apex Coins sites are always scams. Only purchase through official EA, Steam, PlayStation, Xbox, or Origin to avoid account bans.</p>
+        </div>
+
+        <div style="background: rgba(10, 14, 26, 0.8); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 23, 68, 0.5)'; this.style.boxShadow='0 0 25px rgba(255, 23, 68, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.2)';" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.boxShadow='0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(255, 23, 68, 0.1)';">
+          <h3 style="color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);">🎯 Apex Packs Cost & Value</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Apex Packs cost 100 Apex Coins each ($0.99). Each pack contains 3 cosmetic items with guaranteed Legendary item every 30 packs. Best value comes from Battle Pass rewards.</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Navigation to Other Calculators -->
     <div
       style="
@@ -4082,7 +4993,7 @@
           position: relative;
         "
       >
-        <span style="color: #00d4ff">&lt; </span>More Gaming Calculators<span
+        <span style="color: #00d4ff">&lt; </span>Related Gaming Currency Calculators<span
           style="color: #00d4ff"
         >
           &gt;</span
@@ -4097,7 +5008,7 @@
         "
       >
         <a
-          href="/gaming-calculators/robux/"
+          href="../robux/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);
@@ -4121,10 +5032,10 @@
           "
           onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
           onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
-          >Robux Calculator</a
+          >Robux to USD Converter</a
         >
         <a
-          href="/gaming-calculators/vbucks/"
+          href="../vbucks/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);
@@ -4148,10 +5059,10 @@
           "
           onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
           onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
-          >V-Bucks Calculator</a
+          >V-Bucks to Dollar Converter</a
         >
         <a
-          href="/gaming-calculators/minecoins/"
+          href="../minecoins/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);
@@ -4175,10 +5086,10 @@
           "
           onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
           onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
-          >Minecoins Calculator</a
+          >Minecoins to USD Calculator</a
         >
         <a
-          href="/gaming-calculators/cod-points/"
+          href="../cod-points/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);
@@ -4205,7 +5116,7 @@
           >COD Points Calculator</a
         >
         <a
-          href="/gaming-calculators/apex-coins/"
+          href="../"
           style="
             padding: 0.75rem 1.5rem;
             background: linear-gradient(
@@ -4235,10 +5146,10 @@
             );
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
           "
-          >Apex Coins Calculator</a
+          >View All Gaming Calculators</a
         >
         <a
-          href="/gaming-calculators/fifa-points/"
+          href="../fifa-points/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);
@@ -4262,7 +5173,7 @@
           "
           onmouseover="this.style.background='#ff1744'; this.style.borderColor='#00d4ff'; this.style.boxShadow='0 0 20px rgba(255, 23, 68, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)'; this.style.color='#ffffff';"
           onmouseout="this.style.background='rgba(10, 14, 26, 0.8)'; this.style.borderColor='#ff1744'; this.style.boxShadow='inset 0 0 10px rgba(255, 23, 68, 0.2)'; this.style.color='#ffffff';"
-          >FIFA Points Calculator</a
+          >FIFA Points Converter</a
         >
       </div>
     </div>
