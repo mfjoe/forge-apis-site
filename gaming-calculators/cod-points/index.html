@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Mobile Optimization Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="COD Points Converter">
+    <meta name="theme-color" content="#ff6b35">
+    <meta name="format-detection" content="telephone=no">
+
     <!-- Google Site Verification -->
     <meta
       name="google-site-verification"
@@ -2085,6 +2093,7 @@
             </p>
           </div>
 
+
           <!-- Currency Selector -->
           <div class="currency-selector">
             <label for="currency-select" class="currency-label"
@@ -2129,17 +2138,41 @@
             </div>
           </div>
 
-          <div class="quick-amounts">
-            <button class="quick-btn" data-amount="500">500 COD Points</button>
-            <button class="quick-btn" data-amount="1100">
-              1,100 COD Points
+          <!-- Quick Amount Buttons -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-top: 1.5rem;">
+            
+            <!-- 1,100 CP - Battle Pass Tier -->
+            <button onclick="setQuickAmount(1100)" style="padding: 1rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 149, 0, 0.3)); border: 2px solid rgba(255, 107, 53, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center; backdrop-filter: blur(5px);">
+              <div style="font-size: 1.3rem; margin-bottom: 0.25rem;">1,100 CP</div>
+              <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">$9.99</div>
+              <div style="font-size: 0.7rem; background: rgba(255, 184, 0, 0.3); padding: 0.15rem 0.4rem; border-radius: 3px; display: inline-block; color: #ffb800; font-weight: 800;">+100 BONUS</div>
+              <div style="font-size: 0.65rem; color: #ffb800; margin-top: 0.25rem; font-weight: 600;">⭐ BATTLE PASS</div>
             </button>
-            <button class="quick-btn" data-amount="2400">
-              2,400 COD Points
+            
+            <!-- 2,400 CP -->
+            <button onclick="setQuickAmount(2400)" style="padding: 1rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 149, 0, 0.3)); border: 2px solid rgba(255, 107, 53, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center; backdrop-filter: blur(5px);">
+              <div style="font-size: 1.3rem; margin-bottom: 0.25rem;">2,400 CP</div>
+              <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">$19.99</div>
+              <div style="font-size: 0.7rem; background: rgba(255, 184, 0, 0.3); padding: 0.15rem 0.4rem; border-radius: 3px; display: inline-block; color: #ffb800; font-weight: 800;">+400 BONUS</div>
+              <div style="font-size: 0.65rem; color: var(--gray); margin-top: 0.25rem;">16% savings</div>
             </button>
-            <button class="quick-btn" data-amount="5000">
-              5,000 COD Points
+            
+            <!-- 5,000 CP -->
+            <button onclick="setQuickAmount(5000)" style="padding: 1rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 149, 0, 0.3)); border: 2px solid rgba(255, 107, 53, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center; backdrop-filter: blur(5px);">
+              <div style="font-size: 1.3rem; margin-bottom: 0.25rem;">5,000 CP</div>
+              <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">$39.99</div>
+              <div style="font-size: 0.7rem; background: rgba(255, 184, 0, 0.3); padding: 0.15rem 0.4rem; border-radius: 3px; display: inline-block; color: #ffb800; font-weight: 800;">+1000 BONUS</div>
+              <div style="font-size: 0.65rem; color: var(--gray); margin-top: 0.25rem;">20% savings</div>
             </button>
+            
+            <!-- 13,000 CP - BEST VALUE -->
+            <button onclick="setQuickAmount(13000)" style="padding: 1rem; background: linear-gradient(135deg, rgba(255, 184, 0, 0.4), rgba(255, 149, 0, 0.4)); border: 2px solid #ffb800; color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(255, 184, 0, 0.4);">
+              <div style="font-size: 1.3rem; margin-bottom: 0.25rem;">13,000 CP</div>
+              <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">$99.99</div>
+              <div style="font-size: 0.7rem; background: rgba(255, 184, 0, 0.5); padding: 0.15rem 0.4rem; border-radius: 3px; display: inline-block; color: #ffb800; font-weight: 800;">+3000 BONUS</div>
+              <div style="font-size: 0.65rem; color: #ffb800; margin-top: 0.25rem; font-weight: 600;">⭐ BEST VALUE - 23% OFF</div>
+            </button>
+            
           </div>
 
           <img
@@ -2149,9 +2182,174 @@
             loading="lazy"
           />
 
-          <div class="action-buttons">
+          <div class="action-buttons" style="margin-top: 2rem;">
             <button class="action-btn" id="copy-btn">Copy Result</button>
             <button class="action-btn secondary" id="clear-btn">Clear</button>
+          </div>
+
+          <!-- Quick Tips Section -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border: 2px solid var(--primary); border-radius: 0; padding: 1.5rem; box-shadow: 0 0 20px rgba(255, 107, 53, 0.4), inset 0 0 15px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(45deg, #ff6b35, #ff6b35 10px, #1c1c1c 10px, #1c1c1c 20px);"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+                <span style="font-size: 1.5rem;">🎯</span> Quick COD Points Conversion Guide
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: rgba(13, 13, 13, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.4); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">1,000 COD Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(255, 107, 53, 0.5);">$9.99 USD</p>
+                </div>
+                <div style="background: rgba(13, 13, 13, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.4); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">2,400 COD Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(255, 107, 53, 0.5);">$19.99 USD</p>
+                </div>
+                <div style="background: rgba(13, 13, 13, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.4); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">5,000 COD Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(255, 107, 53, 0.5);">$39.99 USD</p>
+                </div>
+                <div style="background: rgba(13, 13, 13, 0.9); padding: 1rem; border-radius: 0; border-left: 4px solid var(--accent); box-shadow: 0 0 12px rgba(255, 184, 0, 0.3); backdrop-filter: blur(5px); border: 1px solid rgba(255, 184, 0, 0.5);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">13,000 COD Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--accent); text-shadow: 0 2px 4px rgba(255, 184, 0, 0.6);">$99.99 USD <span style="font-size: 0.7rem; background: var(--accent); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 0; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
+                </div>
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic; font-family: -apple-system, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                💡 Tip: The 13,000 package offers 23% better value per COD Point
+              </p>
+            </div>
+          </section>
+
+          <!-- How to Use This Calculator Guide -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(107, 124, 89, 0.2), rgba(107, 124, 89, 0.1)); border: 2px solid var(--secondary); border-radius: 0; padding: 1.5rem; box-shadow: 0 0 20px rgba(107, 124, 89, 0.3), inset 0 0 15px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(45deg, #6b7c59, #6b7c59 10px, #1c1c1c 10px, #1c1c1c 20px);"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+                <span style="font-size: 1.5rem;">📋</span> How to Use This Calculator
+              </h2>
+              
+              <div style="display: grid; gap: 1rem;">
+                
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(13, 13, 13, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 10px rgba(107, 124, 89, 0.5); flex-shrink: 0;">1</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Select Your Currency</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Choose your preferred currency from the dropdown menu - supports USD, GBP, EUR, CAD, and AUD.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(13, 13, 13, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 10px rgba(107, 124, 89, 0.5); flex-shrink: 0;">2</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Enter COD Points or Currency Amount</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Type the number of COD Points or currency amount you want to convert. Use quick amount buttons for common purchases like Battle Pass.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(13, 13, 13, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 10px rgba(107, 124, 89, 0.5); flex-shrink: 0;">3</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">View Instant Results</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">The calculator automatically displays the conversion with current exchange rates. Copy results or clear to start over.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(13, 13, 13, 0.8); border-radius: 0; backdrop-filter: blur(5px); border: 1px solid rgba(107, 124, 89, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--primary); box-shadow: 0 0 10px rgba(107, 124, 89, 0.5); flex-shrink: 0;">4</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Plan Your Call of Duty Purchases</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Use the results to budget for Battle Passes, operator skins, weapon blueprints, and bundles before purchasing.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <p style="margin: 1.25rem 0 0; padding-top: 1rem; border-top: 2px solid rgba(107, 124, 89, 0.3); color: var(--gray); font-size: 0.9rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                🎮 No registration required • Works offline • 100% free • Battle Pass calculator included
+              </p>
+            </div>
+          </section>
+
+          <!-- Platform Selector -->
+          <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border: 2px solid rgba(255, 107, 53, 0.5); padding: 1.5rem; margin: 2rem auto; max-width: 900px; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);">
+            
+            <div style="text-align: center; margin-bottom: 1rem;">
+              <h3 style="color: var(--highlight); font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+                🎮 SELECT YOUR PLATFORM
+              </h3>
+              <p style="margin: 0; color: var(--gray); font-size: 0.9rem;">
+                COD Points are platform-locked. Select where you play to see relevant information.
+              </p>
+            </div>
+            
+            <!-- Platform Buttons -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;">
+              
+              <button onclick="selectPlatform('playstation')" id="platform-playstation" class="platform-btn" style="padding: 1rem; background: linear-gradient(135deg, rgba(0, 67, 156, 0.3), rgba(0, 112, 209, 0.3)); border: 2px solid rgba(0, 112, 209, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-align: center; backdrop-filter: blur(5px);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🎮</div>
+                <div style="font-size: 0.95rem;">PlayStation</div>
+              </button>
+              
+              <button onclick="selectPlatform('xbox')" id="platform-xbox" class="platform-btn" style="padding: 1rem; background: linear-gradient(135deg, rgba(16, 124, 16, 0.3), rgba(16, 167, 16, 0.3)); border: 2px solid rgba(16, 167, 16, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-align: center; backdrop-filter: blur(5px);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🎮</div>
+                <div style="font-size: 0.95rem;">Xbox</div>
+              </button>
+              
+              <button onclick="selectPlatform('battlenet')" id="platform-battlenet" class="platform-btn" style="padding: 1rem; background: linear-gradient(135deg, rgba(0, 142, 214, 0.3), rgba(23, 162, 184, 0.3)); border: 2px solid rgba(0, 142, 214, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-align: center; backdrop-filter: blur(5px);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">💻</div>
+                <div style="font-size: 0.95rem;">Battle.net</div>
+              </button>
+              
+              <button onclick="selectPlatform('steam')" id="platform-steam" class="platform-btn" style="padding: 1rem; background: linear-gradient(135deg, rgba(23, 26, 33, 0.5), rgba(38, 43, 57, 0.5)); border: 2px solid rgba(102, 192, 244, 0.6); color: var(--white); font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-align: center; backdrop-filter: blur(5px);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">💻</div>
+                <div style="font-size: 0.95rem;">Steam</div>
+              </button>
+              
+            </div>
+            
+            <!-- Platform-Specific Info Display -->
+            <div id="platformInfo" style="background: rgba(0, 0, 0, 0.4); padding: 1rem; border-left: 4px solid rgba(255, 107, 53, 0.6); display: none;">
+              <div id="platformInfoContent" style="color: var(--gray); font-size: 0.9rem; line-height: 1.6;"></div>
+            </div>
+            
+          </div>
+
+          <!-- CRITICAL: Platform Lock Warning -->
+          <div style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 107, 53, 0.3)); border: 3px solid #ff0000; padding: 1.5rem; margin: 2rem auto; max-width: 900px; border-radius: 0; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.1); backdrop-filter: blur(10px); position: relative;">
+            
+            <!-- Red alert stripe at top -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(45deg, #ff0000, #ff0000 10px, #000 10px, #000 20px);"></div>
+            
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              
+              <!-- Warning Icon -->
+              <div style="font-size: 3rem; line-height: 1; flex-shrink: 0;">⚠️</div>
+              
+              <!-- Warning Content -->
+              <div style="flex: 1;">
+                <h3 style="color: #ff0000; font-size: 1.4rem; margin-bottom: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+                  CRITICAL: COD POINTS ARE PLATFORM-LOCKED!
+                </h3>
+                
+                <div style="color: var(--white); font-size: 1rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                  <strong>COD Points purchased on PlayStation ONLY work on PlayStation.</strong><br>
+                  <strong>COD Points purchased on Xbox ONLY work on Xbox.</strong><br>
+                  <strong>COD Points purchased on PC are locked to that specific platform (Battle.net, Steam, or Microsoft Store).</strong>
+                </div>
+                
+                <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem; border-left: 4px solid #ff0000; margin-top: 1rem;">
+                  <p style="margin: 0; color: var(--gray); font-size: 0.95rem; line-height: 1.6;">
+                    <strong style="color: #ffb800;">✓ GOOD NEWS:</strong> Items you BUY with COD Points (skins, operators, blueprints) DO transfer across all platforms.<br>
+                    <strong style="color: #ff0000;">✗ BAD NEWS:</strong> The currency itself (COD Points) NEVER transfers. ALL sales are final with NO REFUNDS.
+                  </p>
+                </div>
+                
+                <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 184, 0, 0.2); border: 1px solid #ffb800; border-radius: 4px;">
+                  <p style="margin: 0; color: #ffb800; font-size: 0.9rem; font-weight: 700;">
+                    💡 ALWAYS purchase COD Points on the platform where you play! Double-check before buying!
+                  </p>
+                </div>
+                
+              </div>
+            </div>
           </div>
 
           <!-- Better Deal Finder -->
@@ -2243,29 +2441,130 @@
           </div>
         </div>
 
-        <!-- COD Points Price Guide 2025 -->
-        <div class="content-section">
-          <h2 class="section-title">COD Points Price Guide 2025</h2>
-          <div class="section-content">
-            <p>
-              COD Points are Call of Duty's premium currency used to purchase
-              operator skins, weapon blueprints, battle passes, and bundles in
-              Warzone, Modern Warfare, and other COD titles.
-            </p>
-            <p>
-              Our converter supports multiple currencies including USD, EUR,
-              GBP, CAD, and AUD. The calculator automatically converts using
-              current exchange rates, making it easy for players worldwide to
-              understand COD Points values in their local currency.
-            </p>
-            <p>
-              The value of COD Points has remained consistent across Call of
-              Duty versions, with Activision maintaining stable pricing across
-              all regions. This calculator helps you understand the real-world
-              cost of your COD Points purchases.
+        <!-- What Are COD Points? -->
+        <div class="content-section" style="margin: 3rem 0;">
+          <h2 style="color: var(--highlight); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">
+            What Are COD Points?
+          </h2>
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem;">
+            COD Points (CP) are Call of Duty's premium virtual currency used across Modern Warfare III, Black Ops 6, Warzone, and all COD titles since 2015. Purchase operator bundles, weapon blueprints, Battle Passes, and exclusive cosmetic items. COD Points are <strong style="color: var(--highlight);">platform-locked</strong> (PlayStation, Xbox, Battle.net, Steam are all separate) but items purchased with CP transfer across all platforms via your Activision account.
+          </p>
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem;">
+            The <strong style="color: #ffb800;">13,000 CP package ($99.99)</strong> offers the best value with 3,000 bonus coins (30% bonus), saving 22.69% compared to smaller packages. The <strong style="color: #ffb800;">1,100 CP package ($9.99)</strong> is most popular as it matches the Battle Pass cost exactly. <strong style="color: #ff0000;">Important:</strong> All sales are final with no refunds, and chargebacks result in permanent account bans.
+          </p>
+        </div>
+
+        <!-- Battle Pass Economics (2025) -->
+        <div class="content-section" style="margin: 3rem 0;">
+          <h2 style="color: var(--highlight); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">
+            Battle Pass Economics (2025)
+          </h2>
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem;">
+            The Battle Pass costs <strong style="color: #ffb800;">1,100 COD Points ($9.99)</strong> per season and cannot be purchased with real money directly—only through COD Points. Complete the Battle Pass to earn back exactly <strong style="color: #ffb800;">1,100 CP</strong>, making it <strong style="color: #4ade80;">self-sustaining</strong> after your initial purchase. You can maintain Battle Pass access indefinitely by completing each season.
+          </p>
+          <div style="background: rgba(255, 0, 0, 0.15); border-left: 4px solid #ff0000; padding: 1rem; margin: 1rem 0;">
+            <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+              <strong style="color: #ff0000;">⚠️ November 2024 Change:</strong> Activision reduced Battle Pass CP earnings from 1,400 to 1,100 (21% reduction). Previously, players earned 300 CP profit per season to save for store bundles. Now it's break-even only—you can no longer accumulate CP through Battle Pass completion. This controversial change received significant community backlash.
             </p>
           </div>
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem;">
+            <strong style="color: #ffb800;">Free players</strong> can earn approximately 300 CP per season through free Battle Pass tiers, taking 3-4 seasons to afford their first paid Battle Pass. Once purchased and completed, the self-sustaining loop begins.
+          </p>
         </div>
+
+        <!-- Understanding Bonus Coins -->
+        <div class="content-section" style="margin: 3rem 0;">
+          <h2 style="color: var(--highlight); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">
+            Understanding Bonus Coins
+          </h2>
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem;">
+            COD Points packages include bonus coins starting at the 1,100 CP tier. The bonus structure scales from <strong style="color: #ffb800;">10% (100 bonus CP)</strong> at the $9.99 level to <strong style="color: #ffb800;">30% (3,000 bonus CP)</strong> at the $99.99 level, creating meaningful incentives for bulk purchases.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-left: 4px solid rgba(255, 107, 53, 0.6);">
+              <div style="font-size: 1.3rem; color: #ffb800; font-weight: 900; margin-bottom: 0.5rem;">+100 CP</div>
+              <div style="color: var(--gray); font-size: 0.9rem;">1,100 CP package</div>
+              <div style="color: var(--white); font-size: 0.85rem; margin-top: 0.25rem;">10% bonus</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-left: 4px solid rgba(255, 107, 53, 0.6);">
+              <div style="font-size: 1.3rem; color: #ffb800; font-weight: 900; margin-bottom: 0.5rem;">+400 CP</div>
+              <div style="color: var(--gray); font-size: 0.9rem;">2,400 CP package</div>
+              <div style="color: var(--white); font-size: 0.85rem; margin-top: 0.25rem;">20% bonus</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-left: 4px solid rgba(255, 107, 53, 0.6);">
+              <div style="font-size: 1.3rem; color: #ffb800; font-weight: 900; margin-bottom: 0.5rem;">+1,000 CP</div>
+              <div style="color: var(--gray); font-size: 0.9rem;">5,000 CP package</div>
+              <div style="color: var(--white); font-size: 0.85rem; margin-top: 0.25rem;">25% bonus</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.3), rgba(255, 149, 0, 0.3)); padding: 1.25rem; border-left: 4px solid #ffb800; box-shadow: 0 0 15px rgba(255, 184, 0, 0.3);">
+              <div style="font-size: 1.3rem; color: #ffb800; font-weight: 900; margin-bottom: 0.5rem;">+3,000 CP 🏆</div>
+              <div style="color: var(--gray); font-size: 0.9rem;">13,000 CP package</div>
+              <div style="color: #ffb800; font-size: 0.85rem; margin-top: 0.25rem; font-weight: 700;">30% bonus - BEST!</div>
+            </div>
+            
+          </div>
+          
+          <p style="color: var(--gray); line-height: 1.8; font-size: 0.95rem; margin-top: 1rem;">
+            <strong style="color: #ff0000;">Warning:</strong> The 200 CP and 500 CP packages include <strong>zero bonus coins</strong>, and surprisingly, the 500 CP package offers slightly worse per-point value than the 200 CP package. Bonus coins only begin at the 1,100 CP tier.
+          </p>
+        </div>
+
+        <!-- How Do COD Points Compare to Other Gaming Currencies? -->
+        <div class="content-section">
+          <h2 class="section-title" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">How Do COD Points Compare to Other Gaming Currencies?</h2>
+          <div class="section-content">
+            <p style="margin-bottom: 1.5rem; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Understanding COD Points value becomes clearer when comparing them to other popular gaming currencies. At $0.00999 per point for standard packages, COD Points fall in the mid-range of gaming currency pricing - identical to Apex Coins and slightly more expensive than V-Bucks but significantly cheaper than Robux. Activision maintains transparent pricing with the 13,000 Points bundle offering the best value. Let's compare COD Points to major gaming currencies to help you understand their relative value.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+              
+              <div style="background: linear-gradient(135deg, rgba(226, 35, 26, 0.2) 0%, rgba(226, 35, 26, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(226, 35, 26, 0.4); box-shadow: 0 0 12px rgba(226, 35, 26, 0.3), inset 0 0 10px rgba(226, 35, 26, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🎮 Robux (Roblox)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Robux cost $0.0125 per coin, making them 20% more expensive than COD Points. Roblox also has exploitative DevEx rates with a 72% gap.</p>
+                <a href="/gaming-calculators/robux/" style="display: inline-block; background: rgba(226, 35, 26, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(226, 35, 26, 1);">Calculate Robux Value →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(107, 91, 184, 0.2) 0%, rgba(107, 91, 184, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(107, 91, 184, 0.4); box-shadow: 0 0 12px rgba(107, 91, 184, 0.3), inset 0 0 10px rgba(107, 91, 184, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">💜 V-Bucks (Fortnite)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">V-Bucks cost $0.00799 per coin, making them 20% cheaper than COD Points. Epic Games offers the most player-friendly pricing structure.</p>
+                <a href="/gaming-calculators/vbucks/" style="display: inline-block; background: rgba(107, 91, 184, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(107, 91, 184, 1);">Calculate V-Bucks →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(145, 200, 72, 0.2) 0%, rgba(145, 200, 72, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(145, 200, 72, 0.4); box-shadow: 0 0 12px rgba(145, 200, 72, 0.3), inset 0 0 10px rgba(145, 200, 72, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⛏️ Minecoins (Minecraft)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Minecoins cost $0.00568-$0.00799 per coin, making them 20-43% cheaper than COD Points depending on package size.</p>
+                <a href="/gaming-calculators/minecoins/" style="display: inline-block; background: rgba(145, 200, 72, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(145, 200, 72, 1);">Calculate Minecoins →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 12px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⚡ Apex Coins</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Apex Coins cost approximately $0.00999 per coin, making them nearly identical in price to COD Points with similar value propositions.</p>
+                <a href="/gaming-calculators/apex-coins/" style="display: inline-block; background: rgba(0, 212, 255, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(0, 212, 255, 1);">Calculate Apex Coins →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(39, 174, 96, 0.2) 0%, rgba(39, 174, 96, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(39, 174, 96, 0.4); box-shadow: 0 0 12px rgba(39, 174, 96, 0.3), inset 0 0 10px rgba(39, 174, 96, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⚽ FIFA Points</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">FIFA Points cost around $0.0100-0.0125 per point, similar to or slightly more expensive than COD Points. Used for Ultimate Team packs.</p>
+                <a href="/gaming-calculators/fifa-points/" style="display: inline-block; background: rgba(39, 174, 96, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(39, 174, 96, 1);">Calculate FIFA Points →</a>
+              </div>
+
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(107, 124, 89, 0.15), rgba(107, 124, 89, 0.05)); padding: 1.5rem; margin-top: 2rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(10px); border: 1px solid rgba(107, 124, 89, 0.4); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+              <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">💡 Key Takeaway</h4>
+              <p style="line-height: 1.8; margin: 0; color: var(--gray); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">COD Points offer mid-range pricing at $0.00999 per point for standard packages, with the 13,000 package offering better value at $0.00769 per point (22.69% savings). This makes COD Points identical in price to Apex Coins, 20% more expensive than V-Bucks and Minecoins, but significantly cheaper than Robux (20% less expensive). Activision's transparent pricing, Battle Pass break-even model (1,100 points earned vs 1,100 spent after November 2024 changes), and cosmetic-only system make COD Points a fair choice for Call of Duty players across Warzone, Modern Warfare, and Black Ops titles.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Link to Comprehensive Guide -->
+        <p style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 107, 53, 0.05) 100%); border-radius: 0; line-height: 1.8; border: 2px solid var(--primary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 0 15px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1);">
+          📚 <strong style="color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Want to learn more about COD Points?</strong> <span style="color: var(--gray);">Read our comprehensive</span> <a href="guide.html" style="color: var(--highlight); font-weight: bold; text-decoration: underline; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">COD Points Guide 2025</a> <span style="color: var(--gray);">covering pricing strategies, Battle Pass economics, operator bundles, weapon blueprints, how to buy safely, Warzone-specific tips, regional pricing differences, and expert advice for maximizing your Call of Duty currency value across Modern Warfare, Warzone, and Black Ops.</span>
+        </p>
 
         <!-- Warzone's Impact on COD Points Spending -->
         <div class="content-section">
@@ -2444,54 +2743,112 @@
         <!-- COD Points to USD Exchange Rate Table -->
         <div class="content-section">
           <h2 class="section-title">COD Points to USD Exchange Rate Table</h2>
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>COD Points</th>
-                <th>USD Price</th>
-                <th>Per COD Point</th>
-                <th>Best For</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>200</td>
-                <td data-usd="1.99">$1.99</td>
-                <td data-usd="0.00995">$0.00995</td>
-                <td>Single Items</td>
-              </tr>
-              <tr>
-                <td>500</td>
-                <td data-usd="4.99">$4.99</td>
-                <td data-usd="0.00998">$0.00998</td>
-                <td>Small Bundles</td>
-              </tr>
-              <tr>
-                <td>1,100</td>
-                <td data-usd="9.99">$9.99</td>
-                <td data-usd="0.00908">$0.00908</td>
-                <td>Battle Pass</td>
-              </tr>
-              <tr>
-                <td>2,400</td>
-                <td data-usd="19.99">$19.99</td>
-                <td data-usd="0.00833">$0.00833</td>
-                <td>Multiple Bundles</td>
-              </tr>
-              <tr>
-                <td>5,000</td>
-                <td data-usd="39.99">$39.99</td>
-                <td data-usd="0.00800">$0.00800</td>
-                <td>Large Bundles</td>
-              </tr>
-              <tr>
-                <td>13,000</td>
-                <td data-usd="99.99">$99.99</td>
-                <td data-usd="0.00769">$0.00769</td>
-                <td>Bulk Purchases</td>
-              </tr>
-            </tbody>
-          </table>
+          
+          <!-- COD Points to USD Exchange Rate Table -->
+          <div style="overflow-x: auto; margin: 2rem 0;">
+            <table style="width: 100%; border-collapse: collapse; background: rgba(28, 28, 28, 0.6); backdrop-filter: blur(10px);">
+              <thead>
+                <tr style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 149, 0, 0.3)); border-bottom: 2px solid rgba(255, 107, 53, 0.6);">
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Package</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Base CP</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Bonus CP</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Total CP</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">USD Price</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Per CP Rate</th>
+                  <th style="padding: 1rem; text-align: left; color: var(--highlight); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Savings</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <!-- 200 CP - Baseline -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">200 CP</td>
+                  <td style="padding: 1rem; color: var(--gray);">200</td>
+                  <td style="padding: 1rem; color: var(--gray);">0</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">200</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$1.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.009950</td>
+                  <td style="padding: 1rem; color: var(--gray);">Baseline</td>
+                </tr>
+                
+                <!-- 500 CP - WORSE VALUE -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2); background: rgba(255, 0, 0, 0.05);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">500 CP</td>
+                  <td style="padding: 1rem; color: var(--gray);">500</td>
+                  <td style="padding: 1rem; color: var(--gray);">0</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">500</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$4.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.009980</td>
+                  <td style="padding: 1rem; color: #ff6b6b; font-weight: 700;">-0.30% ⚠️</td>
+                </tr>
+                
+                <!-- 1,100 CP - Battle Pass Tier -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2); background: rgba(255, 184, 0, 0.08);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">1,100 CP ⭐</td>
+                  <td style="padding: 1rem; color: var(--gray);">1,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 700;">+100</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">1,100</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$9.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.009082</td>
+                  <td style="padding: 1rem; color: #4ade80; font-weight: 700;">8.72%</td>
+                </tr>
+                
+                <!-- 2,400 CP -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">2,400 CP</td>
+                  <td style="padding: 1rem; color: var(--gray);">2,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 700;">+400</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">2,400</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$19.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.008329</td>
+                  <td style="padding: 1rem; color: #4ade80; font-weight: 700;">16.29%</td>
+                </tr>
+                
+                <!-- 5,000 CP -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">5,000 CP</td>
+                  <td style="padding: 1rem; color: var(--gray);">4,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 700;">+1,000</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">5,000</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$39.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.007998</td>
+                  <td style="padding: 1rem; color: #4ade80; font-weight: 700;">19.62%</td>
+                </tr>
+                
+                <!-- 9,500 CP -->
+                <tr style="border-bottom: 1px solid rgba(255, 107, 53, 0.2);">
+                  <td style="padding: 1rem; color: var(--white); font-weight: 600;">9,500 CP</td>
+                  <td style="padding: 1rem; color: var(--gray);">7,500</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 700;">+2,000</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">9,500</td>
+                  <td style="padding: 1rem; color: var(--white); font-weight: 700;">$74.99</td>
+                  <td style="padding: 1rem; color: var(--gray); font-family: monospace;">$0.007894</td>
+                  <td style="padding: 1rem; color: #4ade80; font-weight: 700;">20.66%</td>
+                </tr>
+                
+                <!-- 13,000 CP - BEST VALUE -->
+                <tr style="border-bottom: 2px solid #ffb800; background: linear-gradient(135deg, rgba(255, 184, 0, 0.15), rgba(255, 149, 0, 0.15)); box-shadow: 0 0 15px rgba(255, 184, 0, 0.3);">
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 800; font-size: 1.05rem;">13,000 CP 🏆</td>
+                  <td style="padding: 1rem; color: var(--gray);">10,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 800;">+3,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 800; font-size: 1.05rem;">13,000</td>
+                  <td style="padding: 1rem; color: #ffb800; font-weight: 800; font-size: 1.05rem;">$99.99</td>
+                  <td style="padding: 1rem; color: #ffb800; font-family: monospace; font-weight: 700;">$0.007692</td>
+                  <td style="padding: 1rem; color: #4ade80; font-weight: 800; font-size: 1.05rem;">22.69% 🏆</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Note -->
+          <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 184, 0, 0.1); border-left: 4px solid #ffb800;">
+            <p style="margin: 0; color: var(--gray); font-size: 0.9rem; line-height: 1.6;">
+              <strong style="color: #ffb800;">⭐ Battle Pass Tier:</strong> 1,100 CP ($9.99) is the most popular package - matches Battle Pass cost exactly.<br>
+              <strong style="color: #ffb800;">🏆 Best Value:</strong> 13,000 CP ($99.99) offers 30% bonus coins (3,000 extra) and saves 22.69% vs baseline.<br>
+              <strong style="color: #ff6b6b;">⚠️ Avoid:</strong> 500 CP package is actually WORSE value per point than 200 CP!
+            </p>
+          </div>
         </div>
 
         <!-- Parent's Guide to COD Points and Gaming Spending -->
@@ -2610,156 +2967,228 @@
           </div>
         </div>
 
+        <!-- Optimal Spending Strategies -->
+        <div class="content-section" style="margin: 3rem 0;">
+          <h2 style="color: var(--highlight); font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
+            💡 Smart Spending Strategies by Player Type
+          </h2>
+          
+          <p style="color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; text-align: center;">
+            Choose your spending strategy based on how often you play and what content matters most to you.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            
+            <!-- Casual Player -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border: 2px solid rgba(255, 107, 53, 0.5); padding: 1.5rem; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);">
+              <div style="text-align: center; margin-bottom: 1rem;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎮</div>
+                <h3 style="color: var(--highlight); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Casual Player</h3>
+                <div style="color: var(--gray); font-size: 0.9rem; font-style: italic;">Play occasionally on weekends</div>
+              </div>
+              
+              <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ffb800;">
+                <div style="font-size: 1.4rem; color: #ffb800; font-weight: 900; margin-bottom: 0.25rem;">1,100 CP</div>
+                <div style="color: var(--white); font-weight: 700;">$9.99 one-time</div>
+              </div>
+              
+              <div style="color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Strategy:</strong> Purchase Battle Pass once, complete each season to maintain indefinitely.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Benefits:</strong> 100+ items per season, guaranteed weapons, never pay again.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: #4ade80;">Annual cost: $9.99 total</strong></p>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gray);"><em>Best value for minimal investment!</em></p>
+              </div>
+            </div>
+            
+            <!-- Regular Player -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border: 2px solid rgba(255, 107, 53, 0.5); padding: 1.5rem; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);">
+              <div style="text-align: center; margin-bottom: 1rem;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                <h3 style="color: var(--highlight); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Regular Player</h3>
+                <div style="color: var(--gray); font-size: 0.9rem; font-style: italic;">Play several times per week</div>
+              </div>
+              
+              <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ffb800;">
+                <div style="font-size: 1.4rem; color: #ffb800; font-weight: 900; margin-bottom: 0.25rem;">2,400 CP</div>
+                <div style="color: var(--white); font-weight: 700;">$19.99 seasonally</div>
+              </div>
+              
+              <div style="color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Strategy:</strong> Battle Pass (1,100 CP) + one premium bundle (1,300 CP) per season.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Benefits:</strong> Self-sustaining Battle Pass + favorite operators/blueprints.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: #4ade80;">Annual cost: $40-60</strong></p>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gray);"><em>Balanced approach for engaged players.</em></p>
+              </div>
+            </div>
+            
+            <!-- Dedicated Player -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border: 2px solid rgba(255, 107, 53, 0.5); padding: 1.5rem; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);">
+              <div style="text-align: center; margin-bottom: 1rem;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
+                <h3 style="color: var(--highlight); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Dedicated Player</h3>
+                <div style="color: var(--gray); font-size: 0.9rem; font-style: italic;">Play daily, love customization</div>
+              </div>
+              
+              <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ffb800;">
+                <div style="font-size: 1.4rem; color: #ffb800; font-weight: 900; margin-bottom: 0.25rem;">5,000 CP</div>
+                <div style="color: var(--white); font-weight: 700;">$39.99 seasonally</div>
+              </div>
+              
+              <div style="color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Strategy:</strong> Battle Pass + 3-4 premium bundles per season.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Benefits:</strong> Multiple operators, blueprints, full cosmetic collection.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: #4ade80;">Annual cost: $120-180</strong></p>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gray);"><em>Great value with 25% bonus coins.</em></p>
+              </div>
+            </div>
+            
+            <!-- Collector/Whale -->
+            <div style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.3), rgba(255, 149, 0, 0.3)); border: 2px solid #ffb800; padding: 1.5rem; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(255, 184, 0, 0.4);">
+              <div style="text-align: center; margin-bottom: 1rem;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏆</div>
+                <h3 style="color: #ffb800; font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Collector</h3>
+                <div style="color: var(--gray); font-size: 0.9rem; font-style: italic;">Want everything, main game</div>
+              </div>
+              
+              <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ffb800;">
+                <div style="font-size: 1.4rem; color: #ffb800; font-weight: 900; margin-bottom: 0.25rem;">13,000 CP 🏆</div>
+                <div style="color: var(--white); font-weight: 700;">$99.99 (best value!)</div>
+              </div>
+              
+              <div style="color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Strategy:</strong> Maximum per-point value (30% bonus), covers Battle Pass + multiple premium bundles.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: var(--white);">Benefits:</strong> 3,000 bonus CP, 22.69% savings, full customization freedom.</p>
+                <p style="margin: 0 0 0.75rem 0;"><strong style="color: #4ade80;">Annual cost: $200-400+</strong></p>
+                <p style="margin: 0; font-size: 0.85rem; color: #ffb800; font-weight: 700;"><em>Best rate - save 23% per point!</em></p>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Additional Tips -->
+          <div style="margin-top: 2rem; background: rgba(255, 184, 0, 0.1); border: 2px solid rgba(255, 184, 0, 0.4); padding: 1.5rem; border-radius: 0; backdrop-filter: blur(10px);">
+            <h3 style="color: #ffb800; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800; text-transform: uppercase;">💡 Pro Tips for Maximizing Value</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; color: var(--gray); font-size: 0.95rem;">
+              <div>
+                <strong style="color: var(--white);">✓ Wait 24 hours:</strong> Avoid impulse purchases on premium bundles. Many players regret buying bundles they barely use.
+              </div>
+              <div>
+                <strong style="color: var(--white);">✓ Complete Battle Pass first:</strong> Get 100+ items for $9.99 before buying store bundles. Better value.
+              </div>
+              <div>
+                <strong style="color: var(--white);">✓ Track seasonal spending:</strong> Set a budget per season. COD's monetization can get expensive quickly.
+              </div>
+              <div>
+                <strong style="color: var(--white);">✓ Never buy 500 CP package:</strong> It's worse value per point than 200 CP. Skip to 1,100 CP minimum.
+              </div>
+              <div>
+                <strong style="color: var(--white);">✓ Platform check:</strong> ALWAYS verify you're purchasing on the correct platform. No refunds!
+              </div>
+              <div>
+                <strong style="color: var(--white);">✓ Free CP exists:</strong> Earn ~300 CP per season on free tier. Save 3-4 seasons for first Battle Pass.
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
         <!-- FAQ Section -->
-        <div class="faq-section">
-          <h2 class="faq-title">Frequently Asked Questions</h2>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>How much is 1000 COD Points in USD?</span>
-              <span class="faq-icon">+</span>
+        <div class="faq-section" style="margin: 3rem 0;">
+          <h2 style="text-align: center; margin-bottom: 2rem; color: var(--highlight); font-size: 2rem; text-transform: uppercase; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);">
+            Frequently Asked Questions
+          </h2>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <!-- FAQ 1: Platform Transfer -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Will my COD Points transfer if I switch from PlayStation to Xbox?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                <strong style="color: #ff0000;">NO.</strong> COD Points are <strong>permanently platform-locked</strong>. Points purchased on PlayStation ONLY work on PlayStation. Points on Xbox ONLY work on Xbox. PC platforms (Battle.net, Steam, Microsoft Store) are all separate too. However, <strong style="color: #4ade80;">items you BUY with COD Points (skins, operators, blueprints) DO transfer</strong> across all platforms via your Activision account. The currency itself never transfers.
+              </p>
             </div>
-            <div class="faq-answer">
-              1100 COD Points costs $9.99 USD. This is the standard rate for COD
-              Points packages in Call of Duty.
+            
+            <!-- FAQ 2: Cross-Game -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Do COD Points work in all Call of Duty games?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                <strong style="color: #4ade80;">YES</strong>, but only on the SAME platform. Your COD Points balance is shared across Modern Warfare III, Black Ops 6, Warzone, and all COD titles back to 2015. Spending 1,000 CP in Warzone reduces your balance in Black Ops 6 by the same amount. This shared wallet only works within the same platform family (all PlayStation, all Xbox, or all PC on same store).
+              </p>
             </div>
-          </div>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>What are the best COD Points deals?</span>
-              <span class="faq-icon">+</span>
+            
+            <!-- FAQ 3: Refunds -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Can I get a refund on COD Points?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                <strong style="color: #ff0000;">Official policy: NO.</strong> Activision does not offer refunds on COD Points purchases. All sales are final, even if unused or purchased on wrong platform. Rare exceptions: unauthorized purchases from hacked accounts (with proof) or provable technical errors on Activision's end. Steam offers the most lenient policy if you act immediately. <strong style="color: #ff0000;">Never initiate a chargeback</strong> - this results in immediate permanent account ban.
+              </p>
             </div>
-            <div class="faq-answer">
-              The 13000 COD Points package offers the best value at $99.99.
-              Larger packages typically provide better value per point.
+            
+            <!-- FAQ 4: Expiration -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Do COD Points expire?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                <strong style="color: #4ade80;">NO.</strong> COD Points never expire and remain on your account indefinitely, as long as your account remains in good standing. They carry over between COD titles and seasons. However, if your account is permanently banned for cheating or Terms of Service violations, you forfeit all COD Points with no refund.
+              </p>
             </div>
-          </div>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>How many COD Points can I get for $20?</span>
-              <span class="faq-icon">+</span>
+            
+            <!-- FAQ 5: Battle Pass -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ How much is the Battle Pass and can I earn COD Points back?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                The Battle Pass costs <strong style="color: #ffb800;">1,100 COD Points ($9.99)</strong>. If you complete it, you earn back exactly 1,100 CP, making it <strong style="color: #4ade80;">self-sustaining</strong> after your initial purchase. However, November 2024 brought a controversial change: previously you earned 1,400 CP (300 profit), but now you only earn 1,100 CP (break-even). You can maintain a Battle Pass forever by completing each season, but can no longer save CP for store bundles.
+              </p>
             </div>
-            <div class="faq-answer">
-              $20 gets you approximately 2400 COD Points. This is based on the
-              standard rate of $0.00833 per COD Point.
+            
+            <!-- FAQ 6: Missing CP -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Why can't I see my COD Points in [Game]?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                Common causes: (1) <strong>Wrong platform</strong> - CP only shows on the platform where purchased. (2) <strong>Processing delay</strong> - can take up to 24 hours to appear. (3) <strong>Not logged into purchase game first</strong> - log into the game where you bought CP, then check other games. (4) <strong>PC platform confusion</strong> - Battle.net CP doesn't show on Steam and vice versa. Restart console/game if not showing. Contact support only after 24-hour wait.
+              </p>
             </div>
-          </div>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>Are COD Points worth it?</span>
-              <span class="faq-icon">+</span>
+            
+            <!-- FAQ 7: Best Value -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Which COD Points package offers the best value?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                The <strong style="color: #ffb800;">13,000 CP package ($99.99)</strong> offers the best value at $0.007692 per point with <strong>3,000 bonus coins (30% bonus)</strong>, saving 22.69% compared to smaller packages. The <strong style="color: #ffb800;">1,100 CP package ($9.99)</strong> is most popular as it matches Battle Pass cost exactly. <strong style="color: #ff0000;">AVOID the 500 CP package</strong> - it's actually 0.30% WORSE value per point than the 200 CP package!
+              </p>
             </div>
-            <div class="faq-answer">
-              COD Points provide access to bundles and battle passes but value
-              depends on your play style. Consider your budget and gaming goals
-              before purchasing.
+            
+            <!-- FAQ 8: Currencies -->
+            <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.5rem; border-left: 4px solid rgba(255, 107, 53, 0.6); backdrop-filter: blur(10px);">
+              <h3 style="color: var(--highlight); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 800;">
+                ❓ Which currencies does this converter support?
+              </h3>
+              <p style="margin: 0; color: var(--gray); line-height: 1.8; font-size: 0.95rem;">
+                Our converter supports <strong style="color: #ffb800;">USD, EUR, GBP, CAD, and AUD</strong> with exchange rates updated monthly. COD Points pricing varies slightly by region: UK players get approximately 15% better value at £8.50 for 1,100 CP compared to direct USD conversion. European pricing includes VAT. Regional prices appear in official platform stores (PlayStation Store, Xbox Store, Battle.net, Steam).
+              </p>
             </div>
-          </div>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>Do COD Points transfer between games?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              COD Points DO transfer between Modern Warfare III, Warzone, and
-              Black Ops Cold War/Vanguard on the SAME platform. However, they
-              don't transfer between different platforms (PlayStation to Xbox,
-              etc.).
-            </div>
-          </div>
-
-          <div class="faq-item active">
-            <div class="faq-question">
-              <span>Which currencies does this converter support?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              Our COD Points converter supports USD, EUR, GBP, CAD, and AUD with
-              real-time exchange rates.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Can I earn COD Points for free?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              No legitimate way exists to earn free COD Points beyond the battle
-              pass, which returns 1300 points if fully completed (costing 1000
-              points initially). Beware of scams promising free points through
-              generators, surveys, or third-party sites - these steal account
-              information or install malware. Some promotional events include
-              small amounts (100-200 points) with game purchases, but these are
-              rare. Microsoft Rewards occasionally offers COD Points
-              redemptions, but requires months of point accumulation for
-              meaningful amounts.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Do COD Points expire?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              COD Points don't expire as long as your Activision account remains
-              active. However, they're locked to your account platform -
-              PlayStation points won't transfer to Xbox or PC, even with
-              cross-progression enabled. If your account is banned for
-              violations, you lose all COD Points without refund. Some regions
-              have laws requiring refunds for unused virtual currency, but
-              enforcement varies. Always spend points before taking breaks from
-              the game, as inactive accounts may be deleted after extended
-              periods.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>What's the best value COD Points package?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              The 13,000 points package ($99.99) offers the best per-point value
-              at $0.00769 per point, compared to $0.00995 for the smallest
-              package. However, "best value" depends on your spending habits. If
-              you only buy the battle pass each season (4 times yearly), smaller
-              packages make more sense. The large package is only worthwhile if
-              you regularly purchase bundles and can use all points within a
-              reasonable timeframe. Consider that $100 in COD Points equals 1.5
-              full-priced games - evaluate whether cosmetics provide that much
-              value to you.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Are there alternatives to buying COD Points?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              While you can't avoid COD Points for store purchases, alternatives
-              exist for cosmetics. The free battle pass tier offers some items
-              without payment. Weapon camouflage challenges provide extensive
-              customization through gameplay. Campaign and special event rewards
-              include exclusive operators and blueprints. Prime Gaming members
-              receive monthly COD bundles without using points. Consider whether
-              the premium cosmetics significantly enhance your enjoyment
-              compared to earned alternatives.
-            </div>
+            
           </div>
         </div>
       </div>
     </div>
 
     <!-- Include the existing JavaScript functionality -->
-    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
-    <script src="/gaming-calculators/assets/js/shared.js"></script>
+    <script src="../assets/js/currency-utils.js"></script>
+    <script src="../assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -2854,13 +3283,204 @@
       // Initialize HTTPS enforcement
       SecurityManager.enforceHTTPS();
 
+      // ===== PLATFORM SELECTOR =====
+      // Global variable to track selected platform
+      let selectedPlatform = null;
+
+      // Platform-specific information
+      const platformDetails = {
+        playstation: {
+          name: 'PlayStation',
+          icon: '🎮',
+          color: '#0070d1',
+          notes: [
+            '✓ Standard pricing across PS4 and PS5',
+            '✓ COD Points work across all PlayStation consoles',
+            '⚠️ CP purchased on PlayStation ONLY work on PlayStation',
+            '⚠️ Cannot transfer to Xbox, PC, or other platforms',
+            '✓ Items bought WITH CP do transfer cross-platform'
+          ],
+          warning: 'If you switch to Xbox or PC, you will lose all COD Points purchased on PlayStation!'
+        },
+        xbox: {
+          name: 'Xbox',
+          icon: '🎮',
+          color: '#10a710',
+          notes: [
+            '✓ Standard pricing across Xbox One, Series X|S',
+            '✓ Works with Xbox Game Pass and Microsoft Store',
+            '⚠️ CP purchased on Xbox ONLY work on Xbox',
+            '⚠️ Cannot transfer to PlayStation, PC, or other platforms',
+            '✓ Items bought WITH CP do transfer cross-platform'
+          ],
+          warning: 'If you switch to PlayStation or PC, you will lose all COD Points purchased on Xbox!'
+        },
+        battlenet: {
+          name: 'Battle.net (PC)',
+          icon: '💻',
+          color: '#008ed6',
+          notes: [
+            '✓ Best pricing - no platform fees',
+            '✓ Direct purchase from Activision',
+            '⚠️ CP purchased on Battle.net ONLY work on Battle.net',
+            '⚠️ Steam and Microsoft Store PC are SEPARATE platforms',
+            '⚠️ Battle.net CP does NOT work on Steam PC',
+            '✓ Items bought WITH CP do transfer cross-platform'
+          ],
+          warning: 'Battle.net and Steam are separate platforms! CP purchased on Battle.net CANNOT be used on Steam, even on the same PC!'
+        },
+        steam: {
+          name: 'Steam (PC)',
+          icon: '💻',
+          color: '#66c0f4',
+          notes: [
+            '⚠️ ALWAYS buy in-game, NOT through Steam store',
+            '⚠️ Steam store adds ~10% platform fee',
+            '✓ In-game purchases match Battle.net pricing',
+            '⚠️ CP purchased on Steam ONLY work on Steam',
+            '⚠️ Battle.net and Microsoft Store PC are SEPARATE platforms',
+            '⚠️ Steam CP does NOT work on Battle.net PC',
+            '✓ Items bought WITH CP do transfer cross-platform'
+          ],
+          warning: 'Steam and Battle.net are separate platforms! CP purchased on Steam CANNOT be used on Battle.net, even on the same PC!'
+        }
+      };
+
+      function selectPlatform(platform) {
+        selectedPlatform = platform;
+        const details = platformDetails[platform];
+        
+        // Update button styles - reset all first
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+          btn.style.transform = 'scale(1)';
+          btn.style.boxShadow = 'none';
+        });
+        
+        // Highlight selected platform
+        const selectedBtn = document.getElementById(`platform-${platform}`);
+        selectedBtn.style.transform = 'scale(1.05)';
+        selectedBtn.style.boxShadow = `0 0 20px ${details.color}`;
+        
+        // Show platform info
+        const platformInfo = document.getElementById('platformInfo');
+        const platformInfoContent = document.getElementById('platformInfoContent');
+        
+        let notesHTML = details.notes.map(note => `<div style="margin-bottom: 0.5rem;">${note}</div>`).join('');
+        
+        platformInfoContent.innerHTML = `
+          <div style="font-size: 1.1rem; color: var(--highlight); font-weight: 800; margin-bottom: 0.75rem;">
+            ${details.icon} ${details.name} - Important Information
+          </div>
+          ${notesHTML}
+          <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff0000; border-radius: 4px;">
+            <strong style="color: #ff0000;">⚠️ WARNING:</strong> ${details.warning}
+          </div>
+        `;
+        
+        platformInfo.style.display = 'block';
+      }
+
       // All existing JavaScript functionality remains the same
       // Calculator state
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 1100 COD Points = $9.99
+      // COD Points packages with exact pricing
+      const COD_POINTS_PACKAGES = [
+        { total: 1100, price: 9.99, displayName: "1,100 COD Points", base: 1100, bonus: 0 },
+        { total: 2400, price: 19.99, displayName: "2,400 COD Points", base: 2400, bonus: 0 },
+        { total: 5000, price: 39.99, displayName: "5,000 COD Points", base: 5000, bonus: 0 },
+        { total: 9500, price: 74.99, displayName: "9,500 COD Points", base: 9500, bonus: 0 },
+        { total: 13000, price: 99.99, displayName: "13,000 COD Points", base: 13000, bonus: 0 }
+      ];
+      
+      // Best value rate for estimates (13,000 package rate)
+      const BEST_COD_RATE = 99.99 / 13000; // $0.007692 per COD Point
+      
+      // Legacy rate for backward compatibility
       const COD_RATE = 9.99 / 1100; // $0.00908 per COD Point (using 1100 point package as base)
+
+      // Helper functions for package matching
+      function findExactPackage(points) {
+        return COD_POINTS_PACKAGES.find(pkg => pkg.total === points);
+      }
+
+      function calculateCodToUSD(points) {
+        // First, check if the amount matches an exact package
+        const exactPackage = findExactPackage(points);
+        
+        if (exactPackage) {
+          // Exact package match - return the exact price
+          return exactPackage.price;
+        }
+        
+        // No exact match - estimate using best value rate
+        // Use BEST_COD_RATE (0.007692) for the most favorable estimate
+        return points * BEST_COD_RATE;
+      }
+
+      function getPackageInfo(points) {
+        const exactPackage = findExactPackage(points);
+        
+        if (exactPackage) {
+          return {
+            isExact: true,
+            package: exactPackage,
+            message: exactPackage.bonus > 0 
+              ? `✓ Exact match: ${exactPackage.displayName} (${exactPackage.base} + ${exactPackage.bonus} bonus)` 
+              : `✓ Exact match: ${exactPackage.displayName}`
+          };
+        }
+        
+        // Find closest package for suggestions
+        const closestPackage = COD_POINTS_PACKAGES.reduce((prev, curr) => {
+          return Math.abs(curr.total - points) < Math.abs(prev.total - points) ? curr : prev;
+        });
+        
+        return {
+          isExact: false,
+          closest: closestPackage,
+          message: `⚠️ Estimated value. Closest package: ${closestPackage.displayName} (${closestPackage.total} CP = $${closestPackage.price})`
+        };
+      }
+
+      function calculateUSDtoCod(dollars) {
+        // Use the best value rate for conversion (13,000 CP package rate)
+        // This gives users the most favorable estimate
+        const points = dollars / BEST_COD_RATE;
+        return Math.round(points); // Round to nearest whole number
+      }
+
+      function suggestOptimalPackage(dollars) {
+        // Find the best package combination for a given dollar amount
+        let bestMatch = null;
+        let smallestDifference = Infinity;
+        
+        // Check each package
+        for (const pkg of COD_POINTS_PACKAGES) {
+          const difference = Math.abs(pkg.price - dollars);
+          
+          if (difference < smallestDifference) {
+            smallestDifference = difference;
+            bestMatch = pkg;
+          }
+        }
+        
+        // If very close to a package price (within $0.50), suggest that package
+        if (bestMatch && smallestDifference <= 0.50) {
+          return {
+            suggested: true,
+            package: bestMatch,
+            message: `💡 Consider buying ${bestMatch.displayName} for $${bestMatch.price}` + 
+                     (bestMatch.bonus > 0 ? ` (includes ${bestMatch.bonus} bonus CP)` : '')
+          };
+        }
+        
+        return {
+          suggested: false,
+          message: 'Estimated CP based on best value rate'
+        };
+      }
 
       // DOM elements
       const codInput = document.getElementById("cod-input");
@@ -2872,21 +3492,29 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
-      codInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleCodInput, 100)
-      );
-      usdInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleUsdInput, 100)
-      );
-      copyBtn.addEventListener("click", copyResult);
-      clearBtn.addEventListener("click", clearInputs);
-      currencySelect.addEventListener("change", handleCurrencyChange);
+      if (codInput) {
+        codInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleCodInput, 100)
+        );
+      }
+      if (usdInput) {
+        usdInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleUsdInput, 100)
+        );
+      }
+      if (copyBtn) {
+        copyBtn.addEventListener("click", copyResult);
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener("click", clearInputs);
+      }
+      if (currencySelect) {
+        currencySelect.addEventListener("change", handleCurrencyChange);
+      }
 
-      quickBtns.forEach((btn) => {
-        btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
-      });
+      // Quick buttons now use inline onclick handlers - no need for event listeners
 
       // Conversion arrow functionality - swap between COD Points and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
@@ -2931,11 +3559,7 @@
       } else {
       }
 
-      // Initialize currency and load saved calculation
-      initializeCurrency().then(() => {
-        updatePricingTables();
-        loadSavedCalculation();
-      });
+      // Currency initialization moved to DOMContentLoaded event
 
       function handleCodInput() {
         if (isUpdating) return;
@@ -2947,7 +3571,7 @@
         }
 
         const codPoints = validatedCod;
-        const usdValue = codPoints * COD_RATE;
+        const usdValue = calculateCodToUSD(codPoints);
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -2981,10 +3605,10 @@
           inputValue,
           currentCurrency
         );
-        const codPoints = usdValue / COD_RATE;
+        const codPoints = calculateUSDtoCod(usdValue);
 
         isUpdating = true;
-        codInput.value = Math.round(codPoints);
+        codInput.value = codPoints;
         isUpdating = false;
 
         saveCalculation();
@@ -3218,8 +3842,14 @@
 
       // Deal tracking will be integrated into the original functions
 
+      // Initialize CurrencyManager
+      window.currencyManager = new CurrencyManager();
+
       // Initialize features when page loads
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async function () {
+        await initializeCurrency();
+        updatePricingTables();
+        loadSavedCalculation();
         initializeFeatures();
       });
     </script>
@@ -3310,53 +3940,69 @@
     </script>
 
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much is 1000 COD Points in USD?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "1100 COD Points costs $9.99 USD. This is the standard rate for COD Points packages in Call of Duty."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the best COD Points deals?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The 13000 COD Points package offers the best value at $99.99. Larger packages typically provide better value per point."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many COD Points can I get for $20?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "$20 gets you approximately 2400 COD Points. This is based on the standard rate of $0.00833 per COD Point."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are COD Points worth it?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "COD Points provide access to bundles and battle passes but value depends on your play style. Consider your budget and gaming goals before purchasing."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do COD Points transfer between games?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "COD Points DO transfer between Modern Warfare III, Warzone, and Black Ops Cold War/Vanguard on the SAME platform. However, they don't transfer between different platforms (PlayStation to Xbox, etc.)."
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much is 1000 COD Points in USD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1000 COD Points costs $9.99 USD when purchasing directly from the Call of Duty in-game store, Battle.net, PlayStation Store, Xbox Store, or Steam. This is the base rate at $0.00999 per COD Point. COD Points are Activision's premium currency used across Call of Duty titles including Modern Warfare, Warzone, Black Ops, and Vanguard for purchasing Battle Passes, operator skins, weapon blueprints, and cosmetic bundles. Larger packages offer slightly better value, with the 13,000 Points bundle providing the best per-point rate at approximately 15% savings."
       }
-    </script>
+    },
+    {
+      "@type": "Question",
+      "name": "What is the COD Points to dollar exchange rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard COD Points exchange rate is $0.00999 per point, meaning 1000 COD Points equals $9.99 USD. This rate applies to most packages including 1000, 2400, and 5000 Points bundles. Larger packages offer improved value: 9500 COD Points ($74.99, $0.00789 per point with 21% savings) and 13000 Points ($99.99, $0.00769 per point with 23% savings). Activision maintains consistent pricing across all platforms including PC, PlayStation, Xbox, and mobile versions of Call of Duty games."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does $10 get you in COD Points?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$10 gets you 1000 COD Points through the standard package priced at $9.99. With 1000 COD Points, you can purchase the Battle Pass (typically 1000 Points), several weapon blueprints (400-800 Points each), operator skin bundles, or save toward larger cosmetic packs and bundles. For regular Call of Duty players, saving for the 9500 or 13000 Points packages offers 21-23% better value per point, making them more cost-effective for frequent purchases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is 13,000 COD Points worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "13,000 COD Points costs $99.99 USD and represents the largest and most cost-effective package available across Call of Duty titles. At approximately $0.00769 per COD Point, this package offers 23% better value compared to the standard 1000 Points package. With 13,000 COD Points, you can purchase multiple Battle Passes across seasons, numerous operator bundles (typically 1800-2400 Points), weapon blueprint packs, and premium cosmetics. This package is ideal for dedicated Call of Duty players who regularly purchase Battle Passes and cosmetic content across Warzone, Modern Warfare, or Black Ops."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get COD Points cheaper or for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "COD Points prices are fixed by Activision across all official platforms including Battle.net, Steam, PlayStation Store, Xbox Store, and in-game stores. Any website or service offering discounted or free COD Points outside official channels is a scam designed to steal account credentials, payment information, or compromise your device with malware. The only legitimate way to earn free COD Points is through Battle Pass progression, which returns 1300 Points when fully completed (300 point profit after the 1000 point purchase). Never trust COD Points generators, third-party sellers, or social media giveaways."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which currencies does this COD Points converter support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our COD Points converter supports five major currencies: USD (US Dollar), EUR (Euro), GBP (British Pound), CAD (Canadian Dollar), and AUD (Australian Dollar). The calculator uses current exchange rates updated regularly to provide accurate conversions for Call of Duty players worldwide. Simply select your preferred currency from the dropdown menu and all calculations will automatically display values in your chosen currency. This helps international players understand exactly how much they are spending when purchasing COD Points from Activision, Battle.net, or platform stores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does the Call of Duty Battle Pass cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Call of Duty Battle Pass costs 1000 COD Points per season, which equals $9.99 USD at the standard rate. Each Battle Pass provides 1300 COD Points back through progression across 100 tiers, plus exclusive operator skins, weapon blueprints, XP tokens, and cosmetics. Players who complete the Battle Pass earn a net profit of 300 COD Points, which helps fund future Battle Passes. The Battle Pass typically lasts 2-3 months per season and offers the best value in Call of Duty for regular players who want consistent cosmetic content and progression rewards."
+      }
+    }
+  ]
+}
+</script>
 
     <script type="application/ld+json">
       {
@@ -3393,7 +4039,92 @@
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
-    ></script>
+    >    </script>
+
+    <!-- Important Disclaimers & Legal Notices -->
+    <div style="background: linear-gradient(135deg, rgba(28, 28, 28, 0.9), rgba(20, 20, 20, 0.9)); border: 2px solid rgba(255, 107, 53, 0.4); padding: 2rem; margin: 3rem 0; border-radius: 0; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 107, 53, 0.05);">
+      
+      <h2 style="color: var(--highlight); font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+        ⚠️ Important Disclaimers & Legal Information
+      </h2>
+      
+      <!-- Unofficial Tool Disclaimer -->
+      <div style="background: rgba(255, 107, 53, 0.15); border-left: 4px solid rgba(255, 107, 53, 0.6); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">📋 Unofficial Calculator</h3>
+        <p style="margin: 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          This COD Points converter is an <strong style="color: var(--white);">unofficial, fan-made tool</strong> and is <strong style="color: var(--white);">not affiliated with, endorsed by, or sponsored by Activision</strong>, Call of Duty, or any related entities. All trademarks, logos, and brand names are property of their respective owners. We are not responsible for any decisions made based on information provided by this calculator.
+        </p>
+      </div>
+      
+      <!-- Accuracy Disclaimer -->
+      <div style="background: rgba(255, 184, 0, 0.15); border-left: 4px solid rgba(255, 184, 0, 0.6); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h3 style="color: #ffb800; font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">📊 Accuracy & Updates</h3>
+        <p style="margin: 0 0 0.75rem 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          COD Points pricing and conversion rates are accurate as of <strong style="color: var(--white);">October 2025</strong> based on official Activision pricing. Package prices, bonus structures, and Battle Pass costs are subject to change at Activision's discretion. Exchange rates for international currencies are updated monthly and may vary from real-time rates.
+        </p>
+        <p style="margin: 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          <strong style="color: #ffb800;">Always verify current pricing</strong> through official channels (Battle.net, PlayStation Store, Xbox Store, Steam) before making purchases. We cannot guarantee future pricing accuracy or be held responsible for pricing changes.
+        </p>
+      </div>
+      
+      <!-- Purchase Responsibility -->
+      <div style="background: rgba(255, 0, 0, 0.15); border-left: 4px solid rgba(255, 0, 0, 0.6); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h3 style="color: #ff6b6b; font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">🚫 Purchase Responsibility</h3>
+        <p style="margin: 0 0 0.75rem 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          <strong style="color: var(--white);">You are solely responsible for all COD Points purchases.</strong> This calculator provides estimates and information only. We are not liable for:
+        </p>
+        <ul style="margin: 0; padding-left: 1.5rem; color: var(--gray); line-height: 1.8;">
+          <li>Wrong platform purchases (no refunds from Activision)</li>
+          <li>Account bans resulting in forfeited COD Points</li>
+          <li>Pricing discrepancies or calculation errors</li>
+          <li>Regional pricing variations not reflected in calculator</li>
+          <li>Changes to Battle Pass structure or CP earnings</li>
+          <li>Any financial losses from purchase decisions</li>
+        </ul>
+      </div>
+      
+      <!-- Platform Lock Warning (Summary) -->
+      <div style="background: rgba(255, 107, 53, 0.15); border-left: 4px solid rgba(255, 107, 53, 0.6); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">🔒 Platform Lock Reminder</h3>
+        <p style="margin: 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          <strong style="color: #ff0000;">COD Points are permanently platform-locked.</strong> PlayStation, Xbox, Battle.net, Steam, and Microsoft Store are all separate ecosystems. CP purchased on one platform <strong style="color: #ff0000;">CANNOT be transferred</strong> to another. Verify your platform before every purchase. All sales are final with no refunds. <strong style="color: var(--white);">Items purchased WITH CP do transfer cross-platform.</strong>
+        </p>
+      </div>
+      
+      <!-- Age Rating & Responsible Gaming -->
+      <div style="background: rgba(255, 149, 0, 0.15); border-left: 4px solid rgba(255, 149, 0, 0.6); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h3 style="color: #ff9500; font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">🎮 Age Rating & Responsible Gaming</h3>
+        <p style="margin: 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          Call of Duty is rated <strong style="color: var(--white);">M for Mature (17+)</strong> by the ESRB and <strong style="color: var(--white);">18+ by PEGI</strong>. COD Points are real-money transactions. <strong style="color: #ff9500;">Please game responsibly</strong> and within your budget. Set spending limits. COD's monetization uses psychological pricing strategies. Wait 24 hours before impulse purchases. If you or someone you know has concerns about gaming spending, seek help from support resources.
+        </p>
+      </div>
+      
+      <!-- Official Resources -->
+      <div style="background: rgba(76, 222, 128, 0.15); border-left: 4px solid rgba(76, 222, 128, 0.6); padding: 1.25rem;">
+        <h3 style="color: #4ade80; font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800;">🔗 Official Resources</h3>
+        <p style="margin: 0 0 0.75rem 0; color: var(--gray); line-height: 1.7; font-size: 0.95rem;">
+          For official information, pricing, support, and purchases:
+        </p>
+        <ul style="margin: 0; padding-left: 1.5rem; color: var(--gray); line-height: 1.8;">
+          <li><strong style="color: var(--white);">Activision Support:</strong> support.activision.com</li>
+          <li><strong style="color: var(--white);">Call of Duty Official Site:</strong> callofduty.com</li>
+          <li><strong style="color: var(--white);">Battle.net Store:</strong> shop.battle.net</li>
+          <li><strong style="color: var(--white);">Activision Terms of Sale:</strong> activision.com/legal/terms-of-sale</li>
+          <li><strong style="color: var(--white);">Security & Enforcement Policy:</strong> support.activision.com/account-recovery</li>
+        </ul>
+      </div>
+      
+      <!-- Data Privacy Notice -->
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 107, 53, 0.3); text-align: center;">
+        <p style="margin: 0; color: var(--gray); font-size: 0.85rem; line-height: 1.6;">
+          <strong style="color: var(--white);">Privacy Notice:</strong> This calculator operates entirely in your browser. We do not collect, store, or transmit any personal information, purchase data, or calculation history. All conversions are performed client-side with no server communication.
+        </p>
+        <p style="margin: 1rem 0 0 0; color: var(--gray); font-size: 0.85rem;">
+          Last updated: <strong style="color: var(--white);">October 2025</strong> • Pricing verified against official Activision sources
+        </p>
+      </div>
+      
+    </div>
 
     <!-- Gaming Calculator Footer -->
     <footer id="footer-container"></footer>
@@ -3537,178 +4268,65 @@
       </ul>
     </section>
 
+    <!-- People Also Search For -->
+    <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+      <h2 style="color: #ffffff; font-size: 1.9rem; margin-bottom: 1.5rem; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255, 107, 53, 0.6), 0 2px 4px rgba(0, 0, 0, 0.5);">People Also Search For</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">💰 COD Points Package Pricing 2025</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">1,000 COD Points ($9.99), 2,400 Points ($19.99), 5,000 Points ($39.99), and 13,000 Points ($99.99) with best value on largest package offering 23% savings.</p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🎮 Call of Duty Battle Pass Cost</h3>
+            <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Battle Pass costs 1,100 COD Points ($9.99) per season. Complete it to earn exactly 1,100 COD Points back, making it self-sustaining (but with ZERO profit). November 2024 reduced earnings from 1,400 CP to 1,100 CP.</p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌍 COD Points Regional Pricing</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Prices vary by region: US ($), UK (£), EU (€), AUS (A$), CAN (C$). Our converter supports all major currencies with live exchange rates updated monthly.</p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">📊 Operator & Blueprint Prices</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Operator bundles cost 1800-2400 COD Points ($17.98-$23.98), weapon blueprints 400-1200 Points ($3.99-$11.99), and cosmetic packs 500-800 Points depending on rarity.</p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⚠️ Free COD Points Scams Warning</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Generators and third-party COD Points sites are always scams. Only purchase through official Activision, Battle.net, Steam, PlayStation, or Xbox to avoid account bans.</p>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); padding: 1.25rem; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 107, 53, 0.6)'; this.style.boxShadow='0 0 18px rgba(255, 107, 53, 0.5), inset 0 0 15px rgba(255, 107, 53, 0.15)';" onmouseout="this.style.borderColor='rgba(255, 107, 53, 0.4)'; this.style.boxShadow='0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1)';">
+          <h3 style="color: var(--highlight); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🎯 Warzone vs Modern Warfare Pricing</h3>
+          <p style="margin: 0; line-height: 1.6; color: var(--gray); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">COD Points work across all Call of Duty titles including Warzone, Modern Warfare, Black Ops, and Vanguard. Purchase once, use everywhere with cross-platform support.</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Navigation to Other Calculators -->
-    <div
-      style="
-        background: rgba(28, 28, 28, 0.8);
-        padding: 2rem;
-        margin: 3rem 0;
-        border-radius: 0;
-        border: 2px solid rgba(255, 107, 53, 0.5);
-        box-shadow: 0 0 20px rgba(255, 107, 53, 0.3),
-          inset 0 0 20px rgba(255, 107, 53, 0.1);
-        backdrop-filter: blur(10px);
-        position: relative;
-      "
-    >
-      <div
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 8px;
-          background: repeating-linear-gradient(
-            45deg,
-            #ff6b35,
-            #ff6b35 10px,
-            #1c1c1c 10px,
-            #1c1c1c 20px
-          );
-        "
-      ></div>
-      <h3
-        style="
-          text-align: center;
-          margin-bottom: 1.5rem;
-          color: #fff;
-          font-size: 1.8rem;
-          text-transform: uppercase;
-          font-weight: 900;
-          letter-spacing: 2px;
-          text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
-        "
-      >
-        More Gaming Calculators
+    <div style="background: rgba(28, 28, 28, 0.8); padding: 2rem; margin: 3rem 0; border-radius: 0; border: 2px solid rgba(255, 107, 53, 0.5); box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), inset 0 0 20px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px); position: relative;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(45deg, #ff6b35, #ff6b35 10px, #1c1c1c 10px, #1c1c1c 20px);"></div>
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: #fff; font-size: 1.8rem; text-transform: uppercase; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);">
+        Related Gaming Currency Calculators
       </h3>
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        "
-      >
-        <a
-          href="/gaming-calculators/robux/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >Robux Calculator</a
-        >
-        <a
-          href="/gaming-calculators/vbucks/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >V-Bucks Calculator</a
-        >
-        <a
-          href="/gaming-calculators/minecoins/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >Minecoins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/cod-points/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >COD Points Calculator</a
-        >
-        <a
-          href="/gaming-calculators/apex-coins/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >Apex Coins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/fifa-points/"
-          style="
-            padding: 0.75rem 1.25rem;
-            background: linear-gradient(
-              135deg,
-              rgba(255, 107, 53, 0.2),
-              rgba(255, 149, 0, 0.2)
-            );
-            border-radius: 0;
-            text-decoration: none;
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          "
-          >FIFA Points Calculator</a
-        >
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        
+        <a href="/gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border-radius: 0; text-decoration: none; color: #f0f0f0; border: 1px solid rgba(255, 107, 53, 0.4); transition: all 0.3s ease; font-weight: 600; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 149, 0, 0.4))'; this.style.borderColor='rgba(255, 107, 53, 0.8)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2))'; this.style.borderColor='rgba(255, 107, 53, 0.4)';">Robux to USD Converter</a>
+        
+        <a href="/gaming-calculators/vbucks/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border-radius: 0; text-decoration: none; color: #f0f0f0; border: 1px solid rgba(255, 107, 53, 0.4); transition: all 0.3s ease; font-weight: 600; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 149, 0, 0.4))'; this.style.borderColor='rgba(255, 107, 53, 0.8)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2))'; this.style.borderColor='rgba(255, 107, 53, 0.4)';">V-Bucks to Dollar Calculator</a>
+        
+        <a href="/gaming-calculators/minecoins/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border-radius: 0; text-decoration: none; color: #f0f0f0; border: 1px solid rgba(255, 107, 53, 0.4); transition: all 0.3s ease; font-weight: 600; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 149, 0, 0.4))'; this.style.borderColor='rgba(255, 107, 53, 0.8)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2))'; this.style.borderColor='rgba(255, 107, 53, 0.4)';">Minecoins to USD</a>
+        
+        <a href="/gaming-calculators/apex-coins/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border-radius: 0; text-decoration: none; color: #f0f0f0; border: 1px solid rgba(255, 107, 53, 0.4); transition: all 0.3s ease; font-weight: 600; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 149, 0, 0.4))'; this.style.borderColor='rgba(255, 107, 53, 0.8)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2))'; this.style.borderColor='rgba(255, 107, 53, 0.4)';">Apex Coins Converter</a>
+        
+        <a href="/gaming-calculators/fifa-points/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2)); border-radius: 0; text-decoration: none; color: #f0f0f0; border: 1px solid rgba(255, 107, 53, 0.4); transition: all 0.3s ease; font-weight: 600; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 149, 0, 0.4))'; this.style.borderColor='rgba(255, 107, 53, 0.8)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 149, 0, 0.2))'; this.style.borderColor='rgba(255, 107, 53, 0.4)';">FIFA Points Calculator</a>
+        
+        <a href="/gaming-calculators/" style="padding: 0.75rem 1.25rem; background: repeating-linear-gradient(45deg, #ff6b35, #ff6b35 10px, #ff9500 10px, #ff9500 20px); border-radius: 0; text-decoration: none; color: #0d0d0d; border: 2px solid #ffb800; font-weight: 900; backdrop-filter: blur(5px); box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5); text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);" onmouseover="this.style.boxShadow='0 6px 16px rgba(255, 107, 53, 0.7)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 4px 12px rgba(255, 107, 53, 0.5)'; this.style.transform='translateY(0)';">View All Gaming Calculators</a>
+        
       </div>
     </div>
 
