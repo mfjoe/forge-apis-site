@@ -2509,7 +2509,7 @@
             #138808 100%
           );
           color: white;
-          padding: 25px 20px;
+          padding: 15px 20px;
           text-align: center;
           position: relative;
           overflow: hidden;
@@ -2522,8 +2522,8 @@
           top: 10px;
           left: 50%;
           transform: translateX(-50%);
-          width: 40px;
-          height: 26px;
+          width: 32px;
+          height: 21px;
           background: linear-gradient(
             to bottom,
             #ff9933 33%,
@@ -2538,11 +2538,11 @@
         .mobile-header::after {
           content: "";
           position: absolute;
-          top: 18px;
+          top: 16px;
           left: 50%;
           transform: translateX(-50%);
-          width: 10px;
-          height: 10px;
+          width: 8px;
+          height: 8px;
           border: 2px solid #000080;
           border-radius: 50%;
           background: transparent;
@@ -2649,8 +2649,8 @@
         }
 
         .mobile-header h1 {
-          font-size: 26px;
-          margin: 20px 0 0 0;
+          font-size: 22px;
+          margin: 10px 0 0 0;
           font-weight: 700;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -2738,12 +2738,25 @@
         /* Enhanced results section */
         .mobile-results {
           background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-          padding: 20px;
+          padding: 20px 20px 30px 20px;
           border-radius: 12px;
           margin-top: 20px;
           border: 1px solid rgba(6, 102, 255, 0.1);
           position: relative;
           z-index: 1;
+        }
+
+        /* Add proper spacing to People Also Search For section on mobile */
+        @media (max-width: 768px) {
+          section[style*="People Also Search For"] {
+            margin-top: 3rem !important;
+            padding-top: 1.5rem;
+          }
+          
+          /* Hide Indian flag SVG on mobile */
+          .calculator-header-compact svg {
+            display: none !important;
+          }
         }
 
         .result-line {
@@ -2843,11 +2856,36 @@
       </div>
 
       <div class="mobile-card">
+
+        <div class="quick-presets" style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 14px; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">Select GST Rate:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <button class="preset-btn" data-rate="5" style="padding: 1rem 0.75rem; background: white; border: 2px solid #10b981; border-radius: 10px; font-size: 13px; font-weight: 600; color: #059669; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; transition: all 0.2s;">
+              <span style="font-size: 18px;">5%</span>
+              <span style="font-size: 11px; font-weight: 500; opacity: 0.8;">Restaurant</span>
+            </button>
+            <button class="preset-btn" data-rate="18" style="padding: 1rem 0.75rem; background: white; border: 2px solid #3b82f6; border-radius: 10px; font-size: 13px; font-weight: 600; color: #2563eb; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; transition: all 0.2s;">
+              <span style="font-size: 18px;">18%</span>
+              <span style="font-size: 11px; font-weight: 500; opacity: 0.8;">Services</span>
+            </button>
+            <button class="preset-btn" data-rate="12" style="padding: 1rem 0.75rem; background: white; border: 2px solid #8b5cf6; border-radius: 10px; font-size: 13px; font-weight: 600; color: #7c3aed; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; transition: all 0.2s;">
+              <span style="font-size: 18px;">12%</span>
+              <span style="font-size: 11px; font-weight: 500; opacity: 0.8;">Electronics</span>
+            </button>
+            <button class="preset-btn active" data-rate="28" style="padding: 1rem 0.75rem; background: #ef4444; border: 2px solid #dc2626; border-radius: 10px; font-size: 13px; font-weight: 600; color: white; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; transition: all 0.2s; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);">
+              <span style="font-size: 18px;">28%</span>
+              <span style="font-size: 11px; font-weight: 500; opacity: 0.95;">Luxury</span>
+            </button>
+          </div>
+        </div>
+
         <div class="mobile-input-group">
           <label>Amount (₹)</label>
           <input type="number" id="mobileAmount" placeholder="1000" />
         </div>
 
+        <!-- GST Rate dropdown removed - now using quick preset buttons -->
+        <!--
         <div class="mobile-input-group">
           <label>GST Rate</label>
           <select id="mobileRate">
@@ -2856,6 +2894,23 @@
             <option value="18" selected>18% - Services</option>
             <option value="28">28% - Luxury</option>
           </select>
+        </div>
+        -->
+
+        <div class="mobile-calc-type" style="margin: 1rem 0; padding: 0.75rem; background: #f9fafb; border-radius: 10px; border: 1px solid #e5e7eb;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #6b7280; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">Calculation Type:</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="mobile-type-btn active" data-type="exclusive" style="flex: 1; padding: 0.7rem; background: #0066ff; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600;">
+              ➕ Add GST
+            </button>
+            <button class="mobile-type-btn" data-type="inclusive" style="flex: 1; padding: 0.7rem; background: white; color: #6b7280; border: 2px solid #d1d5db; border-radius: 8px; font-size: 13px; font-weight: 600;">
+              ➖ Remove GST
+            </button>
+          </div>
+          <p style="font-size: 11px; color: #9ca3af; margin-top: 0.5rem; margin-bottom: 0; line-height: 1.4;">
+            <strong>Add GST:</strong> Enter price before tax<br>
+            <strong>Remove GST:</strong> Enter price with tax included
+          </p>
         </div>
 
         <div class="mobile-results">
@@ -2870,6 +2925,43 @@
           <div class="result-line total">
             <span>Total:</span>
             <span id="mobileTotal">₹0</span>
+          </div>
+        </div>
+
+        <div class="mobile-info-box" style="margin-top: 1.5rem; border: 2px solid #fbbf24; border-radius: 12px; overflow: hidden; background: #fffbeb;">
+          <button class="info-toggle" style="width: 100%; padding: 1rem; background: transparent; border: none; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #92400e;">
+            <span>ℹ️ What is CGST, SGST, IGST?</span>
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+          </button>
+          <div class="info-content" style="display: none; padding: 0 1rem 1rem 1rem;">
+            <p style="font-size: 13px; line-height: 1.6; color: #78350f; margin: 0;">
+              <strong>CGST:</strong> Central GST (goes to central govt)<br>
+              <strong>SGST:</strong> State GST (goes to state govt)<br>
+              <strong>IGST:</strong> Integrated GST (for interstate trade)<br><br>
+              For same-state sales: CGST + SGST = Total GST<br>
+              For different-state sales: IGST = Total GST
+            </p>
+          </div>
+        </div>
+
+        <div class="mobile-faq" style="margin-top: 1rem;">
+          <button class="faq-toggle" style="width: 100%; padding: 1rem; background: #f3f4f6; border: 2px solid #e5e7eb; border-radius: 12px; font-weight: 600; color: #374151; display: flex; justify-content: space-between; align-items: center;">
+            <span>❓ Common Questions</span>
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+          </button>
+          <div class="faq-content" style="display: none; margin-top: 0.5rem; padding: 1rem; background: white; border: 2px solid #e5e7eb; border-radius: 12px;">
+            <div style="margin-bottom: 1rem;">
+              <p style="font-weight: 600; font-size: 13px; color: #1f2937; margin-bottom: 0.5rem;">How do I calculate GST?</p>
+              <p style="font-size: 12px; color: #6b7280; line-height: 1.5; margin: 0;">Multiply your amount by the GST rate. Example: ₹1000 × 18% = ₹180 GST</p>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <p style="font-weight: 600; font-size: 13px; color: #1f2937; margin-bottom: 0.5rem;">What are the GST rates in India?</p>
+              <p style="font-size: 12px; color: #6b7280; line-height: 1.5; margin: 0;">0%, 5%, 12%, 18%, 28%, and 40% (new luxury rate for 2025)</p>
+            </div>
+            <div>
+              <p style="font-weight: 600; font-size: 13px; color: #1f2937; margin-bottom: 0.5rem;">When to use GST inclusive vs exclusive?</p>
+              <p style="font-size: 12px; color: #6b7280; line-height: 1.5; margin: 0;">Inclusive = Price already has GST (remove it). Exclusive = Add GST to price.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -4844,36 +4936,131 @@
       faqSchemaScript.textContent = JSON.stringify(faqSchema);
       document.head.appendChild(faqSchemaScript);
 
-      // Mobile Calculator
+      // Mobile Calculator - Updated Implementation
       function initMobileCalculator() {
         const mobileAmount = document.getElementById("mobileAmount");
-        const mobileRate = document.getElementById("mobileRate");
         const mobileBase = document.getElementById("mobileBase");
         const mobileGST = document.getElementById("mobileGST");
         const mobileTotal = document.getElementById("mobileTotal");
 
-        if (!mobileAmount || !mobileRate) {
+        if (!mobileAmount) {
           console.log("Mobile calculator elements not found");
           return;
         }
 
-        function calculateMobile() {
-          const amount = parseFloat(mobileAmount.value) || 0;
-          const rate = parseFloat(mobileRate.value) || 18;
+        // Store selected rate and calc type
+        let mobileSelectedRate = 28; // Default to 28% (Luxury - active button)
+        let mobileCalcType = 'exclusive'; // Default
 
-          const gst = (amount * rate) / 100;
-          const total = amount + gst;
-
-          if (mobileBase) mobileBase.textContent = "₹" + amount.toFixed(2);
-          if (mobileGST) mobileGST.textContent = "₹" + gst.toFixed(2);
-          if (mobileTotal) mobileTotal.textContent = "₹" + total.toFixed(2);
+        // Mobile GST Calculation Function
+        function calculateMobileGST() {
+          const amount = parseFloat(mobileAmount?.value) || 0;
+          
+          let baseAmount, gstAmount, totalAmount;
+          
+          if (mobileCalcType === 'exclusive') {
+            // Add GST to amount
+            baseAmount = amount;
+            gstAmount = (amount * mobileSelectedRate) / 100;
+            totalAmount = baseAmount + gstAmount;
+          } else {
+            // Remove GST from amount
+            totalAmount = amount;
+            baseAmount = amount / (1 + mobileSelectedRate / 100);
+            gstAmount = totalAmount - baseAmount;
+          }
+          
+          // Update display
+          if (mobileBase) mobileBase.textContent = '₹' + baseAmount.toFixed(2);
+          if (mobileGST) mobileGST.textContent = '₹' + gstAmount.toFixed(2);
+          if (mobileTotal) mobileTotal.textContent = '₹' + totalAmount.toFixed(2);
         }
 
-        // Add event listeners for automatic calculation
-        mobileAmount.addEventListener("input", calculateMobile);
-        mobileRate.addEventListener("change", calculateMobile);
+        // Quick presets - now the main rate selector
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            // Visual feedback - reset all buttons
+            document.querySelectorAll('.preset-btn').forEach(b => {
+              b.classList.remove('active');
+              b.style.background = 'white';
+              b.style.boxShadow = 'none';
+              // Reset border colors and text colors based on original color
+              const rate = b.dataset.rate;
+              if(rate === '5') {
+                b.style.borderColor = '#10b981';
+                b.style.color = '#059669';
+              }
+              if(rate === '18') {
+                b.style.borderColor = '#3b82f6';
+                b.style.color = '#2563eb';
+              }
+              if(rate === '12') {
+                b.style.borderColor = '#8b5cf6';
+                b.style.color = '#7c3aed';
+              }
+              if(rate === '28') {
+                b.style.borderColor = '#dc2626';
+                b.style.color = '#dc2626';
+              }
+            });
+            
+            // Activate selected button
+            this.classList.add('active');
+            const rate = this.dataset.rate;
+            mobileSelectedRate = parseFloat(rate);
+            
+            // Special styling for active button with proper text color
+            if(rate === '5') {
+              this.style.background = '#10b981';
+              this.style.borderColor = '#059669';
+              this.style.color = 'white';
+            } else if(rate === '18') {
+              this.style.background = '#3b82f6';
+              this.style.borderColor = '#2563eb';
+              this.style.color = 'white';
+            } else if(rate === '12') {
+              this.style.background = '#8b5cf6';
+              this.style.borderColor = '#7c3aed';
+              this.style.color = 'white';
+            } else if(rate === '28') {
+              this.style.background = '#ef4444';
+              this.style.borderColor = '#dc2626';
+              this.style.color = 'white';
+            }
+            this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+            
+            // Recalculate
+            calculateMobileGST();
+          });
+        });
 
-        console.log("Mobile calculator initialized");
+        // Calc type toggle - Add vs Remove GST
+        document.querySelectorAll('.mobile-type-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.mobile-type-btn').forEach(b => {
+              b.classList.remove('active');
+              b.style.background = 'white';
+              b.style.color = '#6b7280';
+              b.style.border = '2px solid #d1d5db';
+            });
+            
+            this.classList.add('active');
+            this.style.background = '#0066ff';
+            this.style.color = 'white';
+            this.style.border = '2px solid #0066ff';
+            
+            mobileCalcType = this.dataset.type;
+            calculateMobileGST();
+          });
+        });
+
+        // Trigger calculation on amount input
+        mobileAmount.addEventListener('input', calculateMobileGST);
+
+        // Initial calculation
+        calculateMobileGST();
+
+        console.log("Mobile calculator initialized with new functionality");
       }
 
       // Initialize mobile calculator
@@ -4933,6 +5120,50 @@
 
       // Initialize mobile navigation
       initMobileNav();
+
+      // Calc type toggle
+      document.querySelectorAll('.mobile-type-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.mobile-type-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'white';
+            b.style.color = '#6b7280';
+            b.style.border = '1px solid #d1d5db';
+          });
+          this.classList.add('active');
+          this.style.background = '#0066ff';
+          this.style.color = 'white';
+          this.style.border = '1px solid #0066ff';
+        });
+      });
+
+      // Quick presets now handled in initMobileCalculator() function
+
+      // Info box toggle
+      document.querySelector('.info-toggle')?.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const arrow = this.querySelector('.arrow');
+        if(content.style.display === 'none') {
+          content.style.display = 'block';
+          arrow.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.display = 'none';
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // FAQ toggle
+      document.querySelector('.faq-toggle')?.addEventListener('click', function() {
+        const content = this.parentElement.querySelector('.faq-content');
+        const arrow = this.querySelector('.arrow');
+        if(content.style.display === 'none') {
+          content.style.display = 'block';
+          arrow.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.display = 'none';
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      });
     </script>
   </body>
 </html>
