@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FIFA Points Converter">
+    <meta name="theme-color" content="#00b464">
+    <meta name="format-detection" content="telephone=no">
 
     <!-- Google Site Verification -->
     <meta
@@ -22,15 +28,15 @@
     />
 
     <title>
-      EA FC 25 Points Converter - Convert to USD, EUR, GBP & More (2025)
+      EA FC 25 Points Calculator - FC Points to USD Converter (2025)
     </title>
     <meta
       name="description"
-      content="Free EA FC 25 Points converter for Ultimate Team. Convert to USD, EUR, GBP, CAD, AUD instantly. Calculate pack values and FUT points costs worldwide."
+      content="Free EA FC 25 Points calculator with accurate 2025 pricing. Convert FC Points to USD, EUR, GBP instantly. Standard rate: $0.00952 per point. Includes EA Play 10% discount and all 8 official bundles."
     />
     <meta
       name="keywords"
-      content="fifa points calculator, ea fc currency converter, fifa points to usd, fifa money calculator, fifa points value, ultimate team calculator"
+      content="fc points calculator, ea sports fc 25 points, fc points to usd, ea play discount, fc points value, ultimate team calculator, fifa points converter, ea fc 25 currency"
     />
     <link
       rel="canonical"
@@ -171,7 +177,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 60px;
+        height: 50px;
         background: var(--light-gray);
         box-shadow: 0 2px 8px rgba(0, 255, 135, 0.2),
           0 0 20px rgba(0, 0, 0, 0.5);
@@ -345,7 +351,7 @@
         }
 
         body {
-          padding-top: 60px;
+          padding-top: 50px;
         }
 
         /* Hide desktop breadcrumb on mobile */
@@ -363,9 +369,9 @@
       /* Breadcrumb Navigation */
       .breadcrumb {
         background: var(--light-gray);
-        padding: 1rem 0;
+        padding: 0.5rem 0;
         border-bottom: 1px solid rgba(0, 180, 100, 0.15);
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
           0 2px 10px rgba(0, 0, 0, 0.3);
       }
@@ -531,15 +537,17 @@
       /* Calculator Styles */
       .calculator-container {
         background: var(--light-gray);
-        border-radius: 16px;
+        border-radius: 0;
         padding: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
-          0 2px 10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(0, 255, 135, 0.1);
+        border: 4px solid var(--secondary);
+        border-top: 8px solid var(--primary-dark);
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3),
+          4px 4px 0px rgba(0, 0, 0, 0.2), 2px 2px 0px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease-out;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(0, 255, 135, 0.2);
+        z-index: 1;
       }
 
       .calculator-container::before {
@@ -548,20 +556,29 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--secondary) 0%,
-          var(--highlight) 100%
-        );
-        background-size: 200% 200%;
+        height: 8px;
+        background: var(--secondary);
+        z-index: 1;
         animation: gradientShift 3s ease infinite;
-        box-shadow: var(--glow-green);
+      }
+
+      .calculator-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--secondary);
+        z-index: 1;
       }
 
       .calculator-header {
         text-align: center;
         margin-bottom: 2rem;
+        position: relative;
+        z-index: 2;
+        padding-top: 1rem;
       }
 
       .calculator-title {
@@ -1058,6 +1075,66 @@
           display: none !important;
         }
 
+        /* Combined Currency Selector & EA Play Toggle - Mobile */
+        .currency-selector {
+          flex-direction: column !important;
+          gap: 1rem !important;
+        }
+        
+        .currency-selector > div:first-child {
+          min-width: 100% !important;
+        }
+        
+        .ea-play-toggle {
+          padding: 10px 12px !important;
+          margin-bottom: 10px !important;
+          flex-direction: row !important;
+          gap: 8px !important;
+        }
+
+        .ea-play-toggle > div:first-child {
+          flex: 1;
+        }
+
+        .ea-play-toggle > div:first-child > div:first-child {
+          font-size: 0.9rem !important;
+        }
+
+        .ea-play-toggle > div:first-child > div:last-child {
+          font-size: 0.75rem !important;
+        }
+
+        .toggle-switch {
+          width: 44px !important;
+          height: 24px !important;
+          flex-shrink: 0;
+        }
+
+        .toggle-slider:before {
+          height: 16px !important;
+          width: 16px !important;
+          left: 3px !important;
+          bottom: 2px !important;
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+          transform: translateX(20px) !important;
+        }
+
+        #bundle-notification {
+          padding: 10px 12px !important;
+          font-size: 0.85rem !important;
+          margin-top: 10px !important;
+        }
+
+        #bundle-notification > div:first-child span:last-child {
+          font-size: 0.9rem !important;
+        }
+
+        #bundle-notification > div:last-child {
+          font-size: 0.8rem !important;
+        }
+
         /* Footer - hidden */
         #footer-container {
           display: none;
@@ -1085,24 +1162,36 @@
         }
 
         .calculator-container::before {
-          display: none;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 8px;
+          background: var(--secondary);
+          z-index: 1;
         }
 
         .calculator-header {
           margin-bottom: 12px;
           text-align: center;
-          background: var(--primary);
+          background: transparent;
           padding: 12px 10px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0, 180, 100, 0.25), var(--glow-green);
-          border: 1px solid var(--secondary);
+          padding-top: 20px;
+          border-radius: 0;
+          position: relative;
+          z-index: 2;
         }
 
-        .calculator-header > div {
-          flex-direction: row !important;
-          gap: 8px !important;
-          align-items: center;
-          justify-content: center;
+        .calculator-header::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: var(--secondary);
+          z-index: 1;
         }
 
         .calculator-title {
@@ -1542,6 +1631,65 @@
           margin-top: 2rem;
         }
       }
+
+      /* EA Play Toggle Switch Styles */
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 28px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.3s;
+        border-radius: 28px;
+        border: 2px solid #ccc;
+      }
+
+      .toggle-switch input:checked + .toggle-slider {
+        background-color: var(--secondary) !important;
+        border-color: var(--secondary) !important;
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 2px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+
+      .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(24px);
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
 
     <!-- Google Analytics -->
@@ -1583,43 +1731,43 @@
       </div>
       <ul class="drawer-menu">
         <li>
-          <a href="/">
+          <a href="../../">
             <span class="menu-icon">🏠</span>
             <span>Home</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/">
+          <a href="../">
             <span class="menu-icon">🎮</span>
             <span>Gaming Calculators</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/vbucks/">
+          <a href="../vbucks/">
             <span class="menu-icon">💎</span>
             <span>V-Bucks Calculator</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/robux/">
+          <a href="../robux/">
             <span class="menu-icon">🎁</span>
             <span>Robux Calculator</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/cod-points/">
+          <a href="../cod-points/">
             <span class="menu-icon">🎯</span>
             <span>COD Points Calculator</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/apex-coins/">
+          <a href="../apex-coins/">
             <span class="menu-icon">🔫</span>
             <span>Apex Coins Calculator</span>
           </a>
         </li>
         <li>
-          <a href="/gaming-calculators/minecoins/">
+          <a href="../minecoins/">
             <span class="menu-icon">⛏️</span>
             <span>Minecoins Calculator</span>
           </a>
@@ -1644,7 +1792,7 @@
       <div class="container">
         <nav class="breadcrumb-list" aria-label="Breadcrumb">
           <div class="breadcrumb-item">
-            <a href="/" class="breadcrumb-link logo-link">
+            <a href="../../" class="breadcrumb-link logo-link">
               <svg
                 width="120"
                 height="20"
@@ -1810,12 +1958,12 @@
             </a>
           </div>
           <div class="breadcrumb-item">
-            <a href="/gaming-calculators/" class="breadcrumb-link"
+            <a href="../" class="breadcrumb-link"
               >Gaming Calculators</a
             >
           </div>
           <div class="breadcrumb-item">
-            <span class="breadcrumb-current">FIFA Points Calculator</span>
+            <span class="breadcrumb-current">EA FC 25 Points Calculator</span>
           </div>
         </nav>
       </div>
@@ -1836,30 +1984,26 @@
               "
             >
               <h1 class="calculator-title" style="margin: 0">
-                FIFA Points Converter
+                EA FC 25 Points Calculator
               </h1>
               <img
-                src="/gaming-calculators/assets/images/cristiano-ronaldo-fifa-18-fifa-17-fifa-16-real-madrid-c-f-fifa-2ec8a21d0ca5aa0c605668ec9638e9ca.png"
-                alt="FIFA Logo"
-                class="ronaldo-header-image"
-                style="height: 16rem; width: auto; object-fit: contain"
+                src="../assets/images/cristiano-ronaldo-fifa-18-fifa-17-fifa-16-real-madrid-c-f-fifa-2ec8a21d0ca5aa0c605668ec9638e9ca.png"
+                alt="EA Sports FC 25"
+                style="height: 10rem; width: auto; object-fit: contain"
                 fetchpriority="high"
                 decoding="async"
               />
             </div>
-            <p
-              style="
-                text-align: center;
-                color: #6b7280;
-                font-size: 0.9rem;
-                margin: -10px 0 20px 0;
-              "
-            >
-              Last updated: January 2025 | Exchange rates verified monthly
-            </p>
-            <p class="calculator-subtitle">
-              Convert FIFA Points to USD, EUR, GBP, CAD, AUD & more currencies
-            </p>
+            
+            <!-- Last Updated Timestamp -->
+            <div style="text-align: center; margin: 0.5rem 0 1.5rem; padding: 0.5rem 1rem; background: rgba(0, 180, 100, 0.1); border-radius: 6px; display: inline-block; width: 100%; max-width: 500px;">
+              <p style="margin: 0; color: var(--gray); font-size: 0.875rem; font-weight: 600;">
+                <span style="color: var(--primary-dark);">✓</span> Last Updated: <time datetime="2025-01-24">January 24, 2025</time>
+              </p>
+              <p style="margin: 0.25rem 0 0; color: var(--gray); font-size: 0.75rem;">
+                Convert FC Points to USD, EUR, GBP, CAD, AUD & more
+              </p>
+            </div>
           </div>
 
           <!-- Currency Selector -->
@@ -1867,7 +2011,7 @@
             <p
               style="
                 text-align: center;
-                color: var(--dark);
+                color: var(--white);
                 font-weight: 600;
                 margin-bottom: 0.5rem;
               "
@@ -1887,6 +2031,7 @@
               </select>
             </div>
           </div>
+
 
           <div class="conversion-section">
             <div class="input-group">
@@ -1918,23 +2063,16 @@
             </div>
           </div>
 
+
           <div class="quick-amounts">
-            <button class="quick-btn" data-amount="1000">
-              1,000 FIFA Points
-            </button>
-            <button class="quick-btn" data-amount="2500">
-              2,500 FIFA Points
-            </button>
-            <button class="quick-btn" data-amount="5000">
-              5,000 FIFA Points
-            </button>
-            <button class="quick-btn" data-amount="12000">
-              12,000 FIFA Points
-            </button>
+            <button class="quick-btn" data-amount="1050">1,050 FC Points</button>
+            <button class="quick-btn" data-amount="2800">2,800 FC Points</button>
+            <button class="quick-btn" data-amount="5900">5,900 FC Points</button>
+            <button class="quick-btn" data-amount="18500">18,500 FC Points</button>
           </div>
 
           <img
-            src="/gaming-calculators/assets/images/ocd8on0tive002pt2lvellrh7v.png"
+            src="../assets/images/ocd8on0tive002pt2lvellrh7v.png"
             alt="FIFA Character"
             class="mobile-fifa-image mobile-only"
             loading="lazy"
@@ -1943,12 +2081,132 @@
           <div class="action-buttons">
             <button class="action-btn" id="copy-btn">Copy Result</button>
             <button class="action-btn secondary" id="clear-btn">Clear</button>
+            
+            <!-- EA Play Toggle -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-left: 1rem;">
+              <span style="font-size: 1.2rem;">🎮</span>
+              <span style="color: var(--white); font-weight: 600; font-size: 0.9rem;">EA Play</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="ea-play-toggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
           </div>
+
+          <!-- Quick Tips Section -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(0, 180, 100, 0.25), rgba(0, 180, 100, 0.1)); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(0, 180, 100, 0.3), inset 0 0 15px rgba(0, 180, 100, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary) 0%, var(--highlight) 100%); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5);"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+                <span style="font-size: 1.5rem;">⚽</span> Quick FIFA Points Conversion Guide
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: rgba(10, 10, 10, 0.8); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">1,000 FIFA Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 180, 100, 0.4);">$9.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 10, 10, 0.8); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">2,500 FIFA Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 180, 100, 0.4);">$24.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 10, 10, 0.8); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">5,000 FIFA Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 180, 100, 0.4);">$49.99 USD</p>
+                </div>
+                <div style="background: rgba(10, 10, 10, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); box-shadow: 0 0 12px rgba(255, 215, 0, 0.3); backdrop-filter: blur(5px); border: 1px solid rgba(255, 215, 0, 0.4);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif;">12,000 FIFA Points</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--accent); text-shadow: 0 2px 4px rgba(255, 215, 0, 0.5);">$99.99 USD <span style="font-size: 0.7rem; background: var(--accent); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 4px; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
+                </div>
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic; font-family: -apple-system, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                💡 Tip: The 12,000 package offers 17% better value per FIFA Point
+              </p>
+            </div>
+          </section>
+
+        </div>
+        <!-- End of calculator-container -->
+
+          <!-- How to Use This Calculator Guide -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.25), rgba(30, 58, 95, 0.1)); border: 2px solid rgba(0, 212, 255, 0.4); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(0, 180, 100, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, rgba(0, 212, 255, 0.6) 0%, rgba(0, 180, 100, 0.6) 100%); box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);"></div>
+              <h2 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+                <span style="font-size: 1.5rem;">📋</span> How to Use This Calculator
+              </h2>
+              
+              <div style="display: grid; gap: 1rem;">
+                
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 10, 10, 0.8); border-radius: 8px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--highlight); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5); flex-shrink: 0;">1</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Select Your Currency</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Choose your preferred currency from the dropdown menu - supports USD, GBP, EUR, CAD, and AUD for Ultimate Team players worldwide.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 10, 10, 0.8); border-radius: 8px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--highlight); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5); flex-shrink: 0;">2</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Enter FIFA Points or Currency Amount</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Type the number of FIFA Points or currency amount you want to convert. Use quick amount buttons for common pack purchases.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 10, 10, 0.8); border-radius: 8px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--highlight); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5); flex-shrink: 0;">3</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">View Instant Results</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">The calculator automatically displays the conversion with current exchange rates. Copy results or clear to start over.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(10, 10, 10, 0.8); border-radius: 8px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);">
+                  <div style="min-width: 36px; height: 36px; background: var(--secondary); color: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--highlight); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5); flex-shrink: 0;">4</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: #ffffff; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">Plan Your Ultimate Team Purchases</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Use the results to budget for packs, promotional events like Team of the Year, and player items before purchasing.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <p style="margin: 1.25rem 0 0; padding-top: 1rem; border-top: 2px solid rgba(0, 180, 100, 0.3); color: var(--gray); font-size: 0.9rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+                ⚽ No registration required • Works offline • 100% free • Ultimate Team pack calculator included
+              </p>
+            </div>
+          </section>
 
           <!-- Better Deal Finder -->
           <div class="deal-finder" id="dealFinder" style="display: none">
             <div class="deal-tip" id="dealTip">
               <!-- Dynamic content inserted here -->
+            </div>
+          </div>
+
+
+        <!-- Pricing Update Notice -->
+        <div style="background: linear-gradient(135deg, rgba(0, 180, 100, 0.25), rgba(0, 180, 100, 0.1)); padding: 1.5rem; border-radius: 12px; border: 2px solid var(--secondary); margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0, 180, 100, 0.2);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+            <span style="font-size: 2rem;">✨</span>
+            <h3 style="margin: 0; color: var(--white); font-size: 1.3rem; font-weight: 700;">Updated for EA Sports FC 25 (2025)</h3>
+          </div>
+          <p style="margin: 0; line-height: 1.7; color: var(--gray);">
+            This calculator uses <strong style="color: var(--white);">official EA Sports FC 25 bundle pricing</strong> verified as of October 2025. 
+            When you enter an amount, the calculator shows <strong style="color: var(--secondary);">what you'll actually pay</strong> based on which bundle you'd need to buy. 
+            For example: 1,000 points costs $9.99 (requires 1,050 bundle), 18,500 points costs $149.99 (exact bundle). 
+            Larger bundles offer better rates - the 18,500 bundle is 15% cheaper per point than the 1,050 bundle. 
+            EA Play members receive 10% off all bundles. Prices are consistent across PlayStation, Xbox, PC/Steam, and EA App.
+          </p>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+            <div style="background: rgba(0, 180, 100, 0.15); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 180, 100, 0.3);">
+              <span style="color: var(--secondary); font-weight: 600; font-size: 0.85rem;">🎯 8 Official Bundles</span>
+            </div>
+            <div style="background: rgba(0, 180, 100, 0.15); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 180, 100, 0.3);">
+              <span style="color: var(--secondary); font-weight: 600; font-size: 0.85rem;">💎 Best Value: 18% Savings</span>
+            </div>
+            <div style="background: rgba(0, 180, 100, 0.15); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 180, 100, 0.3);">
+              <span style="color: var(--secondary); font-weight: 600; font-size: 0.85rem;">🎮 EA Play 10% Discount</span>
             </div>
           </div>
         </div>
@@ -1958,7 +2216,7 @@
           <h2 class="section-title" style="margin-bottom: 1rem">
             The Ultimate Team Economy: Understanding FIFA Points and Pack Odds
             <img
-              src="/gaming-calculators/assets/images/ocd8on0tive002pt2lvellrh7v.png"
+              src="../assets/images/ocd8on0tive002pt2lvellrh7v.png"
               alt="FIFA Ultimate Team"
               style="
                 height: 7rem;
@@ -1970,6 +2228,27 @@
             />
           </h2>
           <div class="section-content">
+            <div style="background: linear-gradient(135deg, rgba(0, 180, 100, 0.2), rgba(0, 180, 100, 0.1)); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--secondary); margin-bottom: 1.5rem; border: 1px solid rgba(0, 180, 100, 0.3);">
+              <h4 style="color: var(--secondary); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 700;">⚠️ Important: FC Points vs FIFA Coins</h4>
+              <p style="margin: 0; line-height: 1.7; color: var(--gray);">
+                <strong style="color: var(--white);">FC Points</strong> (formerly FIFA Points) are the <strong>purchasable premium currency</strong> you buy with real money from EA. 
+                <strong style="color: var(--white);">FIFA Coins</strong> are the <strong>in-game earned currency</strong> that cannot be purchased directly - they're earned through gameplay, trading, and rewards. 
+                This calculator converts FC Points (the purchasable currency) to real-world money.
+              </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.1)); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #8A2BE2; margin-bottom: 1.5rem; border: 1px solid rgba(138, 43, 226, 0.3);">
+              <h4 style="color: #9D6FDB; margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 700;">🎮 EA Play Members Save 10% on All FC Points</h4>
+              <p style="margin: 0; line-height: 1.7; color: var(--gray);">
+                EA Play subscribers ($4.99/month or $29.99/year) receive a <strong style="color: var(--white);">10% discount on all FC Points purchases</strong>. 
+                For example, the 1,050 bundle becomes <strong style="color: var(--white);">$8.99 instead of $9.99</strong>, and the 18,500 bundle drops to <strong style="color: var(--white);">$134.99 instead of $149.99</strong> - saving you $15 on the largest bundle. 
+                The discount applies universally across all eight bundle tiers and all platforms (PlayStation, Xbox, PC/Steam, EA App). 
+                Use the toggle above to see EA Play pricing in the calculator.
+              </p>
+              <p style="margin: 0.75rem 0 0 0; line-height: 1.7; color: var(--gray); font-size: 0.9rem;">
+                💡 <strong style="color: var(--white);">Pro Tip:</strong> If you plan to spend $150+ on FC Points annually, an EA Play subscription pays for itself through the 10% discount alone, plus you get access to EA's game vault and other perks.
+              </p>
+            </div>
             <h3>The Mathematical Reality of FIFA Pack Odds</h3>
             <p>
               EA Sports publishes pack probabilities, but understanding the math
@@ -2111,11 +2390,63 @@
             <p>
               The value of FIFA Points has remained consistent across EA FC
               versions, with EA maintaining stable pricing across all regions.
+              EA never discounts FC Points themselves - they maintain fixed pricing year-round. However, <strong>EA Play members receive a permanent 10% discount</strong> on all FC Points purchases, making it the only legitimate way to reduce your spending.
               This calculator helps you understand the real-world cost of your
               FIFA Points purchases.
             </p>
           </div>
         </div>
+
+        <!-- How Do FIFA Points Compare to Other Gaming Currencies? -->
+        <div class="content-section">
+          <h2 class="section-title">How Do FIFA Points Compare to Other Gaming Currencies?</h2>
+          <div class="section-content">
+            <p style="margin-bottom: 1.5rem; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Understanding FC Points value becomes clearer when comparing them to other popular gaming currencies. FC Points use tiered bundle pricing, ranging from $0.00990 per point (100 bundle) down to $0.00811 per point (18,500 bundle). The most popular 1,050 bundle costs $0.00952 per point, placing FC Points in the mid-range of gaming currency pricing - similar to COD Points ($0.00999) and Apex Coins ($0.00999), slightly more expensive than V-Bucks ($0.00799), but significantly cheaper than Robux ($0.0125). EA's eight bundle tiers deliver up to 18% savings when buying larger amounts. Let's compare FC Points to major gaming currencies to help you understand their relative value.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+              
+              <div style="background: linear-gradient(135deg, rgba(226, 35, 26, 0.2) 0%, rgba(226, 35, 26, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(226, 35, 26, 0.4); box-shadow: 0 0 12px rgba(226, 35, 26, 0.3), inset 0 0 10px rgba(226, 35, 26, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🎮 Robux (Roblox)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Robux cost $0.0125 per coin, making them 20% more expensive than FIFA Points. Roblox also has exploitative DevEx rates with a 72% gap.</p>
+                <a href="../robux/" style="display: inline-block; background: rgba(226, 35, 26, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(226, 35, 26, 1);">Calculate Robux Value →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(107, 91, 184, 0.2) 0%, rgba(107, 91, 184, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(107, 91, 184, 0.4); box-shadow: 0 0 12px rgba(107, 91, 184, 0.3), inset 0 0 10px rgba(107, 91, 184, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">💜 V-Bucks (Fortnite)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">V-Bucks cost $0.00799 per coin, making them 20% cheaper than FIFA Points. Epic Games offers the most player-friendly pricing structure.</p>
+                <a href="../vbucks/" style="display: inline-block; background: rgba(107, 91, 184, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(107, 91, 184, 1);">Calculate V-Bucks →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(145, 200, 72, 0.2) 0%, rgba(145, 200, 72, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(145, 200, 72, 0.4); box-shadow: 0 0 12px rgba(145, 200, 72, 0.3), inset 0 0 10px rgba(145, 200, 72, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⛏️ Minecoins (Minecraft)</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Minecoins cost $0.00568-$0.00799 per coin, making them 20-43% cheaper than FIFA Points depending on package size.</p>
+                <a href="../minecoins/" style="display: inline-block; background: rgba(145, 200, 72, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(145, 200, 72, 1);">Calculate Minecoins →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 107, 53, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(255, 107, 53, 0.4); box-shadow: 0 0 12px rgba(255, 107, 53, 0.3), inset 0 0 10px rgba(255, 107, 53, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🎯 COD Points</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">COD Points cost approximately $0.00999 per point, making them 23% more expensive than FC Points with the best-value bundle.</p>
+                <a href="../cod-points/" style="display: inline-block; background: rgba(255, 107, 53, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(255, 107, 53, 1);">Calculate COD Points →</a>
+              </div>
+
+              <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 12px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.1); backdrop-filter: blur(10px);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">⚡ Apex Coins</h3>
+                <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Apex Coins cost approximately $0.00869 per coin, making them 7% more expensive than FC Points with the best-value bundle.</p>
+                <a href="../apex-coins/" style="display: inline-block; background: rgba(0, 212, 255, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(0, 212, 255, 1);">Calculate Apex Coins →</a>
+              </div>
+
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(0, 180, 100, 0.15)); padding: 1.5rem; margin-top: 2rem; border-radius: 12px; border-left: 4px solid var(--secondary); backdrop-filter: blur(10px); border: 1px solid rgba(0, 180, 100, 0.4); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+              <h4 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">💡 Key Takeaway</h4>
+              <p style="line-height: 1.8; margin: 0; color: var(--gray); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">FC Points use tiered bundle pricing from $0.00990/point (smallest) to $0.00811/point (largest). The popular 1,050 bundle ($9.99) costs $0.00952 per point, making FC Points comparable to COD Points ($0.00999) and Apex Coins ($0.00999), about 19% more expensive than V-Bucks ($0.00799), and 24% cheaper than Robux ($0.0125). EA's transparent eight-tier system rewards bulk purchases - the 18,500 bundle ($149.99) delivers 18% better value per point than smaller packs. This calculator shows actual bundle costs so you know exactly what you'll pay. Ultimate Team's pack-based economy makes FC Points essential for EA Sports FC 25, though pack odds and the annual game reset remain concerns for value-conscious players.</p>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 180, 100, 0.2) 0%, rgba(0, 180, 100, 0.05) 100%); border-radius: 0; line-height: 1.8; border: 2px solid var(--secondary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 0 15px rgba(0, 180, 100, 0.3), inset 0 0 10px rgba(0, 180, 100, 0.1);">
+          ⚽ <strong style="color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Want to learn more about FIFA Points?</strong> <span style="color: var(--gray);">Read our comprehensive</span> <a href="guide.html" style="color: var(--secondary); font-weight: bold; text-decoration: underline; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">FIFA Points Guide 2025</a> <span style="color: var(--gray);">covering pricing strategies, Ultimate Team pack economics, TOTY and promo event values, how to buy safely, pack probability mathematics, regional pricing differences, parental controls for young players, and expert advice for maximizing your EA FC currency value across all platforms including PlayStation, Xbox, PC, and mobile.</span>
+        </p>
 
         <!-- Pay-to-Win or Pay-to-Compete? The Real Cost of FUT Success -->
         <div class="content-section">
@@ -2125,15 +2456,7 @@
           <div class="section-content">
             <h3>The FUT Champions Arms Race</h3>
             <p>
-              Competitive FUT Champions requires a team worth 2-5 million coins
-              minimum to reach Elite Division. At pack return rates, this
-              represents $400-800 in FIFA Points, assuming average pack luck.
-              Professional players and content creators often spend
-              $5,000-10,000 per year maintaining competitive squads across
-              different game cycles and events. The constant release of improved
-              cards through Team of the Season, Team of the Year, and other
-              promos creates perpetual obsolescence - your $500 team from
-              October becomes outdated by December.
+              Competitive FUT Champions requires a team worth 2-5 million coins minimum to reach Elite Division. At current pack return rates, this represents $500-1,000 in FC Points, assuming average pack luck. Professional players and content creators often spend $5,000-10,000 per year maintaining competitive squads across different game cycles and events. With the best-value 18,500 bundle at $0.00811 per point ($149.99), building a top-tier squad requires multiple bundle purchases. The constant release of improved cards through Team of the Season, Team of the Year, and other promos creates perpetual obsolescence - your $500 team from October becomes outdated by December.
             </p>
 
             <h3>The Hidden Time Investment</h3>
@@ -2150,14 +2473,7 @@
 
             <h3>Content Creator Economy and Influence</h3>
             <p>
-              Popular FIFA YouTubers and streamers receive "FIFA Points grants"
-              from EA - often 100,000+ points monthly ($1,000 value) to create
-              pack opening content. This creates unrealistic expectations among
-              viewers who see constant elite pulls without understanding the
-              volume of packs opened. Studies show that 78% of young FUT players
-              cite content creators as their primary motivation for purchasing
-              FIFA Points, not recognizing the artificial nature of sponsored
-              content.
+              Popular FIFA YouTubers and streamers receive "FC Points grants" from EA - often 100,000+ points monthly ($811+ value with current 2025 rates, or $1,234+ at old bundle prices) to create pack opening content. This creates unrealistic expectations among viewers who see constant elite pulls without understanding the volume of packs opened. Studies show that 78% of young FUT players cite content creators as their primary motivation for purchasing FC Points, not recognizing the artificial nature of sponsored content.
             </p>
 
             <h3>The September Reset Problem</h3>
@@ -2168,7 +2484,7 @@
               means FIFA Points purchases have a maximum 12-month lifespan,
               often less as the game becomes obsolete by June when major leagues
               end. Unlike
-              <a href="/gaming-calculators/cod-points/">COD Points</a> which
+              <a href="../cod-points/">COD Points</a> which
               refresh seasonally but maintain some continuity, FIFA Points
               represent a depreciating asset with guaranteed zero terminal
               value.
@@ -2204,36 +2520,60 @@
             </thead>
             <tbody>
               <tr>
-                <td>1,000 FIFA Points</td>
+                <td>100 FC Points</td>
+                <td>$0.99</td>
+                <td>£0.79</td>
+                <td>€0.89</td>
+                <td>C$1.39</td>
+                <td>A$1.55</td>
+              </tr>
+              <tr>
+                <td>500 FC Points</td>
+                <td>$4.99</td>
+                <td>£3.99</td>
+                <td>€4.49</td>
+                <td>C$6.99</td>
+                <td>A$7.55</td>
+              </tr>
+              <tr>
+                <td>1,050 FC Points</td>
                 <td>$9.99</td>
-                <td>£7.79</td>
-                <td>€8.49</td>
-                <td>C$13.49</td>
-                <td>A$14.79</td>
+                <td>£7.99</td>
+                <td>€8.99</td>
+                <td>C$13.99</td>
+                <td>A$14.95</td>
               </tr>
               <tr>
-                <td>2,500 FIFA Points</td>
+                <td>2,800 FC Points</td>
                 <td>$24.99</td>
-                <td>£19.49</td>
-                <td>€21.24</td>
-                <td>C$33.74</td>
-                <td>A$36.99</td>
+                <td>£19.99</td>
+                <td>€22.49</td>
+                <td>C$34.99</td>
+                <td>A$37.95</td>
               </tr>
               <tr>
-                <td>5,000 FIFA Points</td>
+                <td>5,900 FC Points</td>
                 <td>$49.99</td>
-                <td>£38.99</td>
-                <td>€42.49</td>
-                <td>C$67.49</td>
-                <td>A$73.99</td>
+                <td>£39.99</td>
+                <td>€44.99</td>
+                <td>C$69.99</td>
+                <td>A$74.95</td>
               </tr>
               <tr>
-                <td>12,000 FIFA Points</td>
+                <td>12,000 FC Points</td>
                 <td>$99.99</td>
-                <td>£77.99</td>
-                <td>€84.99</td>
-                <td>C$134.99</td>
-                <td>A$147.99</td>
+                <td>£79.99</td>
+                <td>€89.99</td>
+                <td>C$139.99</td>
+                <td>A$149.95</td>
+              </tr>
+              <tr style="background: linear-gradient(135deg, rgba(0, 180, 100, 0.2), rgba(0, 180, 100, 0.05)); border: 2px solid var(--secondary);">
+                <td><strong>18,500 FC Points ⭐</strong></td>
+                <td><strong>$149.99</strong></td>
+                <td><strong>£119.99</strong></td>
+                <td><strong>€134.99</strong></td>
+                <td><strong>C$209.99</strong></td>
+                <td><strong>A$224.95</strong></td>
               </tr>
             </tbody>
           </table>
@@ -2253,28 +2593,46 @@
             </thead>
             <tbody>
               <tr>
-                <td>1,000</td>
+                <td>100</td>
+                <td data-usd="0.99">$0.99</td>
+                <td data-usd="0.00990">$0.00990</td>
+                <td>Testing Small Amounts</td>
+              </tr>
+              <tr>
+                <td>500</td>
+                <td data-usd="4.99">$4.99</td>
+                <td data-usd="0.00998">$0.00998</td>
+                <td>Single Premium Pack</td>
+              </tr>
+              <tr>
+                <td>1,050</td>
                 <td data-usd="9.99">$9.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Single Packs</td>
+                <td data-usd="0.00952">$0.00952</td>
+                <td>Couple of Packs</td>
               </tr>
               <tr>
-                <td>2,500</td>
+                <td>2,800</td>
                 <td data-usd="24.99">$24.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Multiple Packs</td>
+                <td data-usd="0.00892">$0.00892</td>
+                <td>Small Budget</td>
               </tr>
               <tr>
-                <td>5,000</td>
+                <td>5,900</td>
                 <td data-usd="49.99">$49.99</td>
-                <td data-usd="0.00999">$0.00999</td>
-                <td>Popular Choice</td>
+                <td data-usd="0.00847">$0.00847</td>
+                <td>Mid-Tier Budget</td>
               </tr>
               <tr>
                 <td>12,000</td>
                 <td data-usd="99.99">$99.99</td>
                 <td data-usd="0.00833">$0.00833</td>
-                <td>Bulk Purchases</td>
+                <td>Serious Players</td>
+              </tr>
+              <tr style="background: linear-gradient(135deg, rgba(0, 180, 100, 0.2), rgba(0, 180, 100, 0.05)); border: 2px solid var(--secondary);">
+                <td><strong>18,500 ⭐</strong></td>
+                <td data-usd="149.99"><strong>$149.99</strong></td>
+                <td data-usd="0.00811"><strong>$0.00811</strong></td>
+                <td><strong>Best Value (18% savings)</strong></td>
               </tr>
             </tbody>
           </table>
@@ -2328,7 +2686,7 @@
             <p>
               Many countries now classify FIFA packs as gambling, with Belgium
               and Netherlands banning them entirely, similar to how
-              <a href="/gaming-calculators/robux/"
+              <a href="../robux/"
                 >Roblox's gambling mechanics</a
               >
               have faced scrutiny. Discuss with young players how pack mechanics
@@ -2415,6 +2773,18 @@
         <div class="faq-section">
           <h2 class="faq-title">Frequently Asked Questions</h2>
 
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What's the difference between FC Points and FIFA Coins?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p><strong>FC Points</strong> (formerly FIFA Points) are the <strong>premium currency you purchase with real money</strong> directly from EA. You can buy them in bundles ranging from 100 to 18,500 points. FC Points are used to buy packs, draft entries, and other Ultimate Team content.</p>
+              <p><strong>FIFA Coins</strong> are the <strong>in-game currency you earn through gameplay</strong> - you cannot buy FIFA Coins directly from EA. You earn coins by playing matches, completing objectives, trading players on the transfer market, and opening packs. Buying coins from third-party sellers violates EA's Terms of Service and can result in account bans.</p>
+              <p><strong>This calculator converts FC Points</strong> (the purchasable currency) to real-world money to help you understand the actual cost of your Ultimate Team spending.</p>
+            </div>
+          </div>
+
           <div class="faq-item active">
             <div class="faq-question">
               <span>Which currencies does this converter support?</span>
@@ -2445,10 +2815,11 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              The 12000 FIFA Points package offers the best value at $99.99
-              ($0.00833 per point). Only this largest package provides a
-              discount - all other packages have the same $0.00999 per point
-              rate.
+              The 18,500 FC Points package offers the best value at $149.99
+              ($0.00811 per point). This largest package provides significant
+              savings compared to smaller packages. EA Play members receive an
+              additional 10% discount on all bundles, making the 18,500 package
+              $134.99 ($0.00730 per point).
             </div>
           </div>
 
@@ -2458,8 +2829,11 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              $20 gets you approximately 2000 FIFA Points. This is based on the
-              standard rate of $0.00999 per FIFA Point.
+              $20 gets you approximately 2,470 FC Points based on the best-value
+              rate of $0.00811 per point (18,500 bundle). With EA Play discount,
+              you'd get approximately 2,740 FC Points for $20. This allows you
+              to purchase several Premium Gold Packs or save toward larger pack
+              bundles.
             </div>
           </div>
 
@@ -2567,8 +2941,8 @@
     </div>
 
     <!-- Include the existing JavaScript functionality -->
-    <script src="/gaming-calculators/assets/js/currency-utils.js"></script>
-    <script src="/gaming-calculators/assets/js/shared.js"></script>
+    <script src="../assets/js/currency-utils.js"></script>
+    <script src="../assets/js/shared.js"></script>
     <script>
       // ===== SECURITY MODULE =====
       // Input validation and sanitization
@@ -2666,13 +3040,60 @@
       // Initialize HTTPS enforcement
       SecurityManager.enforceHTTPS();
 
+      // Initialize Currency Manager
+      window.currencyManager = new CurrencyManager();
+
       // All existing JavaScript functionality remains the same
       // Calculator state
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Exchange rate: 1000 FIFA Points = $9.99
-      const FIFA_RATE = 9.99 / 1000; // $0.00999 per FIFA Point
+      // Official EA Sports FC 25 bundle pricing (October 2025)
+      const FC_BUNDLES = [
+        { points: 100, price: 0.99, priceEA: 0.89 },
+        { points: 500, price: 4.99, priceEA: 4.49 },
+        { points: 1050, price: 9.99, priceEA: 8.99 },
+        { points: 2800, price: 24.99, priceEA: 22.49 },
+        { points: 5900, price: 49.99, priceEA: 44.99 },
+        { points: 12000, price: 99.99, priceEA: 89.99 },
+        { points: 18500, price: 149.99, priceEA: 134.99 }
+      ];
+      let useEAPlayDiscount = false;
+
+      function getBundleForPoints(points) {
+        // Find the smallest bundle that covers the requested points
+        for (let i = FC_BUNDLES.length - 1; i >= 0; i--) {
+          if (points <= FC_BUNDLES[i].points) {
+            return FC_BUNDLES[i];
+          }
+        }
+        // If more than largest bundle, use the largest bundle rate
+        return FC_BUNDLES[FC_BUNDLES.length - 1];
+      }
+
+      function calculatePrice(points) {
+        const bundle = getBundleForPoints(points);
+        const price = useEAPlayDiscount ? bundle.priceEA : bundle.price;
+        const rate = price / bundle.points;
+        return points * rate;
+      }
+
+      function calculatePoints(price) {
+        // Find which bundle this price falls into
+        let bestBundle = FC_BUNDLES[0];
+        const actualPrice = price; // Price is already in correct currency
+        
+        for (let bundle of FC_BUNDLES) {
+          const bundlePrice = useEAPlayDiscount ? bundle.priceEA : bundle.price;
+          if (actualPrice >= bundlePrice) {
+            bestBundle = bundle;
+          }
+        }
+        
+        const bundlePrice = useEAPlayDiscount ? bestBundle.priceEA : bestBundle.price;
+        const rate = bundlePrice / bestBundle.points;
+        return price / rate;
+      }
 
       // DOM elements
       const fifaInput = document.getElementById("fifa-input");
@@ -2684,17 +3105,33 @@
       const currencyLabel = document.getElementById("currency-label");
 
       // Event listeners with security (debounced and validated)
-      fifaInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleFifaInput, 100)
-      );
-      usdInput.addEventListener(
-        "input",
-        SecurityManager.debounce(handleUsdInput, 100)
-      );
-      copyBtn.addEventListener("click", copyResult);
-      clearBtn.addEventListener("click", clearInputs);
-      currencySelect.addEventListener("change", handleCurrencyChange);
+      if (fifaInput) {
+        fifaInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleFifaInput, 100)
+        );
+      }
+      if (usdInput) {
+        usdInput.addEventListener(
+          "input",
+          SecurityManager.debounce(handleUsdInput, 100)
+        );
+      }
+      if (copyBtn) {
+        copyBtn.addEventListener("click", copyResult);
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener("click", clearInputs);
+      }
+      if (currencySelect) {
+        currencySelect.addEventListener("change", handleCurrencyChange);
+      }
+
+      // EA Play toggle event listener
+      const eaPlayToggle = document.getElementById("ea-play-toggle");
+      if (eaPlayToggle) {
+        eaPlayToggle.addEventListener("change", handleEAPlayToggle);
+      }
 
       quickBtns.forEach((btn) => {
         btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
@@ -2703,23 +3140,14 @@
       // Conversion arrow functionality - swap between FIFA Points and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
 
-      console.log("Conversion arrow element:", conversionArrow);
-
       if (conversionArrow) {
-        console.log("Adding click event listener to conversion arrow");
-
         conversionArrow.addEventListener("click", (e) => {
-          console.log("Conversion arrow clicked!");
           e.preventDefault();
 
           // Get the input groups using more reliable selectors
           const allInputGroups = document.querySelectorAll(".input-group");
 
-          console.log("Found input groups:", allInputGroups.length);
-
           if (allInputGroups.length >= 2) {
-            console.log("Swapping input field positions");
-
             // Get the parent container
             const conversionSection = document.querySelector(
               ".conversion-section"
@@ -2730,8 +3158,6 @@
               const firstGroup = allInputGroups[0];
               const secondGroup = allInputGroups[1];
 
-              console.log("First group:", firstGroup);
-              console.log("Second group:", secondGroup);
 
               // Get the arrow element to preserve its position
               const arrowElement = document.querySelector(".conversion-arrow");
@@ -2749,13 +3175,11 @@
                 arrowElement.nextSibling
               );
 
-              console.log("Fields swapped successfully");
             }
           } else {
             console.error("Could not find enough input groups to swap");
           }
 
-          console.log("Swap completed");
         });
       } else {
         console.error("Conversion arrow element not found!");
@@ -2763,6 +3187,7 @@
 
       // Initialize currency and load saved calculation
       initializeCurrency().then(() => {
+        loadEAPlayPreference();
         updatePricingTables();
         loadSavedCalculation();
       });
@@ -2777,7 +3202,7 @@
         }
 
         const fifaPoints = validatedFifa;
-        const usdValue = fifaPoints * FIFA_RATE;
+        const usdValue = calculatePrice(fifaPoints);
         const convertedValue = window.currencyManager.convertFromUSD(
           usdValue,
           currentCurrency
@@ -2797,6 +3222,8 @@
             dealFinder.checkDeal(gameAmount, currencyAmount, currentCurrency);
           }
         }
+
+        checkBundleMatch(fifaInput.value);
       }
 
       function handleUsdInput() {
@@ -2813,7 +3240,7 @@
           inputValue,
           currentCurrency
         );
-        const fifaPoints = usdValue / FIFA_RATE;
+        const fifaPoints = calculatePoints(usdValue);
 
         isUpdating = true;
         fifaInput.value = Math.round(fifaPoints);
@@ -2853,6 +3280,73 @@
         window.currencyManager.saveCurrency(currentCurrency);
       }
 
+      function handleEAPlayToggle() {
+        useEAPlayDiscount = eaPlayToggle.checked;
+        
+        // Recalculate current values with new rate
+        if (fifaInput.value) {
+          handleFifaInput();
+        } else if (usdInput.value) {
+          handleUsdInput();
+        }
+        
+        // Update pricing tables to reflect EA Play discount
+        updatePricingTables();
+        
+        // Save preference
+        try {
+          localStorage.setItem('eaPlayDiscount', useEAPlayDiscount);
+        } catch (e) {
+          console.log('Could not save EA Play preference');
+        }
+        
+        // Update savings tip
+        const savingsTip = document.getElementById('savings-tip');
+        if (savingsTip) {
+          if (useEAPlayDiscount) {
+            savingsTip.textContent = '💰 EA Play active: All bundles 10% off! 18,500 bundle = $134.99 (save $15)';
+          } else {
+            savingsTip.textContent = '💰 Larger bundles offer better rates: 18,500 bundle = $0.00811/point vs $0.00952 for 1,050';
+          }
+        }
+      }
+
+      function checkBundleMatch(points) {
+        const match = FC_BUNDLES.find(b => b.points === parseInt(points));
+        
+        let notificationDiv = document.getElementById('bundle-notification');
+        
+        if (match) {
+          const price = useEAPlayDiscount ? match.priceEA : match.price;
+          const discount = useEAPlayDiscount ? ' (EA Play discount)' : '';
+          const rate = (price / match.points).toFixed(5);
+          const savings = match.points === 18500 ? ' - Best value!' : '';
+          
+          if (!notificationDiv) {
+            notificationDiv = document.createElement('div');
+            notificationDiv.id = 'bundle-notification';
+            notificationDiv.style.cssText = 'background: linear-gradient(135deg, rgba(0, 180, 100, 0.2), rgba(0, 180, 100, 0.1)); padding: 12px 16px; border-radius: 8px; margin-top: 12px; border: 2px solid var(--secondary); text-align: center; animation: slideIn 0.3s ease-out;';
+            document.querySelector('.calculator-container').appendChild(notificationDiv);
+          }
+          
+          notificationDiv.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span style="font-size: 1.2rem;">✅</span>
+              <span style="color: var(--white); font-weight: 600;">Official Bundle Match!</span>
+            </div>
+            <div style="color: var(--gray); font-size: 0.9rem; margin-top: 4px;">
+              ${match.points.toLocaleString()} FC Points = <strong style="color: var(--white);">$${price.toFixed(2)}</strong>${discount}
+            </div>
+            <div style="color: var(--secondary); font-size: 0.8rem; margin-top: 4px;">
+              Rate: $${rate}/point${savings}
+            </div>
+          `;
+          notificationDiv.style.display = 'block';
+        } else if (notificationDiv) {
+          notificationDiv.style.display = 'none';
+        }
+      }
+
       function updateCurrencyDisplay() {
         const currencyDisplay = document.getElementById(
           "current-currency-display"
@@ -2870,13 +3364,14 @@
       }
 
       function updatePricingTables() {
+        const rateMultiplier = useEAPlayDiscount ? 0.9 : 1.0; // Apply 10% discount if EA Play is enabled
         const symbol = window.currencyManager.getSymbol(currentCurrency);
 
         // Update all cells with data-usd attributes
         document.querySelectorAll("[data-usd]").forEach((cell) => {
           const usdValue = parseFloat(cell.getAttribute("data-usd"));
           const convertedValue = window.currencyManager.convertFromUSD(
-            usdValue,
+            usdValue * rateMultiplier,
             currentCurrency
           );
           cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
@@ -2937,6 +3432,21 @@
         }
       }
 
+      function loadEAPlayPreference() {
+        try {
+          const savedPreference = localStorage.getItem('eaPlayDiscount');
+          if (savedPreference !== null) {
+            useEAPlayDiscount = savedPreference === 'true';
+            const eaPlayToggle = document.getElementById("ea-play-toggle");
+            if (eaPlayToggle) {
+              eaPlayToggle.checked = useEAPlayDiscount;
+            }
+          }
+        } catch (e) {
+          console.log('Could not load EA Play preference');
+        }
+      }
+
       async function initializeCurrency() {
         // Fetch latest exchange rates
         await window.currencyManager.fetchRates();
@@ -2945,10 +3455,10 @@
         const savedCurrency = window.currencyManager.getSavedCurrency();
         if (savedCurrency && window.currencyManager.rates[savedCurrency]) {
           currentCurrency = savedCurrency;
-          currencySelect.value = currentCurrency;
+          if (currencySelect) currencySelect.value = currentCurrency;
         } else {
           currentCurrency = window.currencyManager.detectCurrency();
-          currencySelect.value = currentCurrency;
+          if (currencySelect) currencySelect.value = currentCurrency;
         }
 
         updateCurrencyLabel();
@@ -3069,7 +3579,8 @@
       }
 
       // Initialize features when page loads
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async function () {
+        await initializeCurrency();
         initializeFeatures();
       });
     </script>
@@ -3160,52 +3671,68 @@
     </script>
 
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much is 1000 FIFA Points in USD?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "1000 FIFA Points costs $9.99 USD. This is the standard rate for FIFA Points packages in EA FC."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the best FIFA Points deals?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The 12000 FIFA Points package offers the best value at $99.99 ($0.00833 per point). Only this largest package provides a discount - all other packages have the same $0.00999 per point rate."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many FIFA Points can I get for $20?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "$20 gets you approximately 2000 FIFA Points. This is based on the standard rate of $0.00999 per FIFA Point."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are FIFA Points worth it?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "FIFA Points provide access to Ultimate Team packs but value depends on your play style. Consider your budget and gaming goals before purchasing."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do FIFA Points transfer between games?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, FIFA Points do not transfer between different FIFA/EA FC versions. Points are tied to the specific game version."
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much is 1000 FIFA Points in USD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1000 FC Points costs $9.99 USD when purchasing directly from EA Sports through the EA FC 25 in-game store, PlayStation Store, Xbox Store, Steam, or Origin. This is the standard rate across all platforms. FC Points are EA's premium currency used in Ultimate Team mode to purchase packs, player items, and cosmetic content. The 18,500 FC Points bundle offers the best value at $149.99 ($0.00811 per point), providing significant savings compared to smaller packages. EA Play members receive an additional 10% discount on all bundles."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the best FIFA Points deals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 18,500 FC Points package offers the best value at $149.99, providing a rate of $0.00811 per point - significant savings compared to smaller packages. EA Play members receive an additional 10% discount on all FC Points purchases year-round, making the 18,500 package $134.99 ($0.00730 per point). EA occasionally offers additional discounts during Black Friday or special events, but the EA Play discount is the most consistent way to save on FC Points purchases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many FIFA Points can I get for $20?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$20 gets you approximately 2,470 FC Points based on the best-value rate of $0.00811 per point (18,500 bundle). With EA Play discount, you'd get approximately 2,740 FC Points for $20. With these FC Points, you can purchase several Premium Gold Packs (150 Points each), multiple Rare Players Packs (300 Points), or save toward larger pack bundles like the Jumbo Rare Players Pack (2,000 Points). The exact purchasing power depends on which pack types are available in the Ultimate Team store during promotional events like Team of the Year or Team of the Season."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are FIFA Points worth it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FIFA Points value depends heavily on your Ultimate Team goals and budget. Pack odds are poor - Premium Gold Packs have less than 1% chance for 84+ rated players and under 0.1% for elite 90+ cards. Professional traders often generate more coins through market manipulation than purchasing packs with FIFA Points. However, FIFA Points offer convenience and immediate access to packs during limited-time promotional events. Consider your budget, play style, and whether you prefer trading time versus spending money before purchasing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do FIFA Points transfer between games?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, FIFA Points do not automatically transfer between different FIFA or EA FC versions. When the new game releases each September, your FIFA Points remain in the previous game. EA does offer a one-time transfer option during the first few months after release, allowing you to move unused points from the old game to the new version. This transfer is permanent and irreversible. All Ultimate Team progress, including players, coins, and squad building, resets completely with each new game version."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which currencies does this FIFA Points converter support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our FIFA Points converter supports five major currencies: USD (US Dollar), EUR (Euro), GBP (British Pound), CAD (Canadian Dollar), and AUD (Australian Dollar). The calculator uses current exchange rates updated regularly to provide accurate conversions for Ultimate Team players worldwide. Simply select your preferred currency from the dropdown menu and all calculations will automatically display values in your chosen currency. This helps international players understand exactly how much they are spending when purchasing FIFA Points from EA Sports or platform stores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the actual odds of getting good players from FIFA packs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EA publishes pack probabilities in-game, but odds are significantly worse than most players realize. Premium Gold Packs have less than 1% chance for 84+ rated players and under 0.1% chance for 87+ rated cards. Promotional cards during events like Team of the Year have even lower odds, typically 0.01-0.001% for top-tier players. To statistically guarantee a specific 90+ rated player, you would need to spend thousands of dollars opening packs. The pack weight system means popular meta players have lower odds than their rating suggests, making professional trading strategies more reliable than pack purchases."
+      }
+    }
+  ]
+}
     </script>
 
     <script type="application/ld+json">
@@ -3254,237 +3781,100 @@
       }
     </script>
 
-    <!-- Recent Searches Section -->
-    <section
-      style="
-        background: linear-gradient(
-          135deg,
-          rgba(30, 58, 95, 0.6) 0%,
-          rgba(15, 27, 60, 0.8) 100%
-        );
-        padding: 2rem;
-        margin: 3rem 0;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 180, 100, 0.3);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
-          0 0 20px rgba(0, 180, 100, 0.2);
-        backdrop-filter: blur(10px);
-      "
-    >
-      <h2
-        style="
-          color: #fff;
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-          text-align: center;
-          font-weight: 800;
-          text-shadow: 0 2px 8px rgba(0, 180, 100, 0.4);
-        "
-      >
-        🔍 Popular FIFA Points Searches
+    <!-- People Also Search For Section -->
+    <section style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.6) 0%, rgba(15, 27, 60, 0.8) 100%); padding: 2rem; margin: 3rem 0; border-radius: 12px; border: 1px solid rgba(0, 180, 100, 0.3); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 180, 100, 0.2); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary) 0%, var(--highlight) 100%); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5);"></div>
+      <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; font-weight: 800; text-shadow: 0 2px 8px rgba(0, 180, 100, 0.4); text-transform: uppercase; letter-spacing: 1px;">
+        🔍 People Also Search For
       </h2>
-      <ul
-        style="
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1rem;
-        "
-      >
-        <li
-          style="
-            background: linear-gradient(
-              135deg,
-              rgba(30, 58, 95, 0.5),
-              rgba(0, 180, 100, 0.15)
-            );
-            padding: 1rem 1.25rem;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            border: 1px solid rgba(0, 180, 100, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-          "
-        >
-          💰 How much is 1000 FIFA Points in USD?
+      <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">💰</span>
+          <span>How much is 1000 FIFA Points in USD?</span>
         </li>
-        <li
-          style="
-            background: linear-gradient(
-              135deg,
-              rgba(30, 58, 95, 0.5),
-              rgba(0, 180, 100, 0.15)
-            );
-            padding: 1rem 1.25rem;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            border: 1px solid rgba(0, 180, 100, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-          "
-        >
-          🔄 FIFA Points to USD converter 2025
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">🔄</span>
+          <span>FIFA Points to USD converter 2025</span>
         </li>
-        <li
-          style="
-            background: linear-gradient(
-              135deg,
-              rgba(30, 58, 95, 0.5),
-              rgba(0, 180, 100, 0.15)
-            );
-            padding: 1rem 1.25rem;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            border: 1px solid rgba(0, 180, 100, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-          "
-        >
-          ⭐ Best FIFA Points calculator online
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">⚽</span>
+          <span>EA FC 25 Ultimate Team currency calculator</span>
         </li>
-        <li
-          style="
-            background: linear-gradient(
-              135deg,
-              rgba(30, 58, 95, 0.5),
-              rgba(0, 180, 100, 0.15)
-            );
-            padding: 1rem 1.25rem;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            border: 1px solid rgba(0, 180, 100, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-          "
-        >
-          📊 EA FC 25 currency exchange rate today
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">📊</span>
+          <span>Best FIFA Points calculator online free</span>
         </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">💷</span>
+          <span>FIFA Points GBP to EUR exchange rate</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">🎮</span>
+          <span>How much are FUT packs worth in real money?</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">🌍</span>
+          <span>FIFA Points prices by country comparison</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">⭐</span>
+          <span>Best FIFA Points deals and discount codes</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">🔐</span>
+          <span>Safe way to buy FIFA Points cheap</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">🏆</span>
+          <span>Team of the Year pack value calculator</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">📱</span>
+          <span>How to get FIFA Points on mobile</span>
+        </li>
+        
+        <li style="background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15)); padding: 1rem 1.25rem; border-radius: 8px; color: #fff; font-size: 0.95rem; border: 1px solid rgba(0, 180, 100, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 180, 100, 0.3), rgba(0, 180, 100, 0.2))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 180, 100, 0.3)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(0, 180, 100, 0.15))'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';">
+          <span style="font-size: 1.5rem;">💎</span>
+          <span>Are FIFA Points worth it in 2025?</span>
+        </li>
+        
       </ul>
+      <p style="text-align: center; margin-top: 1.5rem; color: var(--gray); font-size: 0.9rem; font-style: italic; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
+        💡 These searches help us understand what FIFA and Ultimate Team players are looking for
+      </p>
     </section>
 
     <!-- Navigation to Other Calculators -->
-    <div
-      style="
-        background: var(--light-gray);
-        padding: 2rem;
-        margin: 3rem 0;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 255, 135, 0.2);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      "
-    >
-      <h3
-        style="
-          text-align: center;
-          margin-bottom: 1.5rem;
-          color: var(--white);
-          text-shadow: 0 2px 8px rgba(0, 255, 135, 0.3);
-        "
-      >
-        More Gaming Calculators
+    <div style="background: var(--light-gray); padding: 2rem; margin: 3rem 0; border-radius: 12px; border: 1px solid rgba(0, 255, 135, 0.2); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary) 0%, var(--highlight) 100%); box-shadow: 0 0 10px rgba(0, 180, 100, 0.5);"></div>
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--white); text-shadow: 0 2px 8px rgba(0, 255, 135, 0.3); font-size: 1.8rem; font-weight: 800;">
+        Related Gaming Currency Calculators
       </h3>
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        "
-      >
-        <a
-          href="/gaming-calculators/robux/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--dark);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--white);
-            border: 2px solid var(--secondary);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
-          "
-          >Robux Calculator</a
-        >
-        <a
-          href="/gaming-calculators/vbucks/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--dark);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--white);
-            border: 2px solid var(--secondary);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
-          "
-          >V-Bucks Calculator</a
-        >
-        <a
-          href="/gaming-calculators/minecoins/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--dark);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--white);
-            border: 2px solid var(--secondary);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
-          "
-          >Minecoins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/cod-points/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--dark);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--white);
-            border: 2px solid var(--secondary);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
-          "
-          >COD Points Calculator</a
-        >
-        <a
-          href="/gaming-calculators/apex-coins/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--dark);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--white);
-            border: 2px solid var(--secondary);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
-          "
-          >Apex Coins Calculator</a
-        >
-        <a
-          href="/gaming-calculators/fifa-points/"
-          style="
-            padding: 0.5rem 1rem;
-            background: var(--secondary);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--dark);
-            border: 2px solid var(--secondary);
-            font-weight: 600;
-            box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
-          "
-          >FIFA Points Calculator</a
-        >
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        
+        <a href="../robux/" style="padding: 0.75rem 1.25rem; background: var(--dark); border-radius: 8px; text-decoration: none; color: var(--white); border: 2px solid var(--secondary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--secondary)'; this.style.color='var(--dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 135, 0.4)';" onmouseout="this.style.background='var(--dark)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 255, 135, 0.2)';">Robux to USD Converter</a>
+        
+        <a href="../vbucks/" style="padding: 0.75rem 1.25rem; background: var(--dark); border-radius: 8px; text-decoration: none; color: var(--white); border: 2px solid var(--secondary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--secondary)'; this.style.color='var(--dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 135, 0.4)';" onmouseout="this.style.background='var(--dark)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 255, 135, 0.2)';">V-Bucks to Dollar Calculator</a>
+        
+        <a href="../minecoins/" style="padding: 0.75rem 1.25rem; background: var(--dark); border-radius: 8px; text-decoration: none; color: var(--white); border: 2px solid var(--secondary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--secondary)'; this.style.color='var(--dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 135, 0.4)';" onmouseout="this.style.background='var(--dark)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 255, 135, 0.2)';">Minecoins to USD</a>
+        
+        <a href="../cod-points/" style="padding: 0.75rem 1.25rem; background: var(--dark); border-radius: 8px; text-decoration: none; color: var(--white); border: 2px solid var(--secondary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--secondary)'; this.style.color='var(--dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 135, 0.4)';" onmouseout="this.style.background='var(--dark)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 255, 135, 0.2)';">COD Points Converter</a>
+        
+        <a href="../apex-coins/" style="padding: 0.75rem 1.25rem; background: var(--dark); border-radius: 8px; text-decoration: none; color: var(--white); border: 2px solid var(--secondary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--secondary)'; this.style.color='var(--dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 135, 0.4)';" onmouseout="this.style.background='var(--dark)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 255, 135, 0.2)';">Apex Coins Calculator</a>
+        
+        <a href="../" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, var(--secondary) 0%, var(--highlight) 100%); border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--accent); font-weight: 900; box-shadow: 0 0 20px rgba(0, 255, 135, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 30px rgba(0, 255, 135, 0.7), 0 6px 20px rgba(0, 0, 0, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(0, 255, 135, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3)';">View All Gaming Calculators</a>
+        
       </div>
     </div>
 
