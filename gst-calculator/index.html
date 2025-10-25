@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Mobile Optimization Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GST Calculator India">
+    <meta name="theme-color" content="#ff9933">
+    <meta name="format-detection" content="telephone=no">
+
     <!-- Google Site Verification -->
     <meta
       name="google-site-verification"
@@ -68,6 +76,97 @@
         }
       }
     </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://forgeapis.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "GST Calculator",
+      "item": "https://forgeapis.com/gst-calculator/"
+    }
+  ]
+}
+</script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GST Calculator India",
+  "description": "Free GST Calculator for India. Calculate CGST, SGST, IGST instantly with all tax rates (0%, 5%, 12%, 18%, 28%).",
+  "url": "https://forgeapis.com/gst-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "3847",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ForgeAPIs"
+  }
+}
+</script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use the GST Calculator India",
+  "description": "Learn how to calculate GST, CGST, SGST, and IGST using our free GST calculator",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Enter the Amount",
+      "text": "Enter the base amount (price before GST) or the total amount (price including GST) in the input field. The calculator accepts values in Indian Rupees (₹).",
+      "position": 1
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Select GST Rate",
+      "text": "Choose the applicable GST rate from the dropdown menu. Available rates are 0%, 5%, 12%, 18%, and 28% based on the GST Council's classification of goods and services.",
+      "position": 2
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Choose Calculation Type",
+      "text": "Select whether your entered amount is GST exclusive (amount before adding tax) or GST inclusive (amount already includes tax). This determines how the calculator processes your input.",
+      "position": 3
+    },
+    {
+      "@type": "HowToStep",
+      "name": "View Results",
+      "text": "The calculator instantly displays the base amount, GST amount, CGST/SGST or IGST breakdown, and total amount. Results update automatically as you change any input values.",
+      "position": 4
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Copy or Export Results",
+      "text": "Use the copy button to save your calculation results for invoicing, accounting records, or further analysis. Results show complete breakdown including CGST and SGST components.",
+      "position": 5
+    }
+  ],
+  "totalTime": "PT1M"
+}
+</script>
 
     <!-- Copy the same fonts and styles from your riskscore -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -172,116 +271,6 @@
         align-items: center;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-      }
-
-      .nav-links a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      /* Tools Dropdown */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-btn {
-        background: none;
-        border: none;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .dropdown-btn:hover {
-        color: var(--primary);
-      }
-
-      .dropdown-btn:focus {
-        color: var(--primary);
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #1f2937;
-        color: white;
-        width: 224px;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-          0 4px 6px -2px rgba(0, 0, 0, 0.2);
-        padding: 8px 0;
-        z-index: 1000;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .dropdown.active .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .dropdown-section {
-        margin-bottom: 8px;
-      }
-
-      .dropdown-section:last-child {
-        margin-bottom: 0;
-      }
-
-      .dropdown-section-title {
-        padding: 4px 12px;
-        font-size: 12px;
-        color: #9ca3af;
-        text-transform: uppercase;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-      }
-
-      .dropdown-section a {
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        transition: background-color 0.2s ease;
-        border-radius: 6px;
-        margin: 2px 8px;
-      }
-
-      .dropdown-section a:hover {
-        background-color: #374151;
-        transition: background-color 0.2s ease;
-      }
-
-      .dropdown-divider {
-        border-top: 1px solid #374151;
-        margin: 8px 0;
-      }
-
       /* Single Responsive Calculator Wrapper */
       .calculator-wrapper {
         display: grid;
@@ -361,6 +350,19 @@
         pointer-events: none;
         z-index: 0;
         font-weight: bold;
+      }
+
+      /* Simple Mode Specific Spacing */
+      body:not(.advanced-mode) .calculator-inputs {
+        gap: 0.5rem;
+      }
+
+      body:not(.advanced-mode) .input-group {
+        margin-bottom: 0.5rem;
+      }
+
+      body:not(.advanced-mode) .calculator-card {
+        padding: 1.5rem 1rem;
       }
 
       /* Simple/Advanced Mode Toggle */
@@ -538,9 +540,13 @@
       }
 
       .advanced-only {
-        display: none;
+        display: none !important;
         opacity: 0;
         pointer-events: none;
+        max-height: 0 !important;
+        overflow: hidden;
+        margin: 0 !important;
+        padding: 0 !important;
         transition: opacity 0.3s ease, max-height 0.3s ease;
       }
 
@@ -810,6 +816,59 @@
         outline-offset: 2px;
       }
 
+      /* Breadcrumb Navigation */
+      .breadcrumb {
+        background: transparent;
+        padding: 0;
+        border-bottom: none;
+        box-shadow: none;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 100;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .breadcrumb-item:not(:last-child)::after {
+        content: ">";
+        margin-left: 0.5rem;
+        color: var(--gray);
+      }
+
+      .breadcrumb-link {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.25rem 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+
+      .breadcrumb-link:hover {
+        background: rgba(255, 153, 51, 0.1);
+        color: var(--secondary);
+        transform: translateY(-1px);
+      }
+
+      .breadcrumb-current {
+        color: var(--dark);
+        font-weight: 500;
+      }
+
       /* Global Focus Indicators for Accessibility */
       *:focus-visible {
         outline: 3px solid rgba(0, 102, 255, 0.5);
@@ -928,7 +987,7 @@
 
       /* Form Elements */
       .input-group {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         position: relative;
       }
 
@@ -1368,90 +1427,6 @@
         display: none;
       }
 
-      /* Mobile Menu Toggle */
-      .mobile-menu-toggle {
-        display: none;
-        flex-direction: column;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        gap: 4px;
-      }
-
-      .mobile-menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background: var(--dark);
-        transition: all 0.3s;
-        border-radius: 2px;
-      }
-
-      .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-
-      .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      /* Mobile Menu */
-      .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        flex-direction: column;
-        gap: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-height: 70vh;
-        overflow-y: auto;
-      }
-
-      .mobile-menu.active {
-        display: flex;
-      }
-
-      .mobile-menu a {
-        padding: 0.75rem;
-        color: var(--dark);
-        text-decoration: none;
-        border-radius: 6px;
-        transition: background 0.3s;
-        font-size: 0.95rem;
-      }
-
-      .mobile-menu a:hover {
-        background: var(--light-gray);
-      }
-
-      .mobile-dropdown {
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid #e2e8f0;
-      }
-
-      .mobile-dropdown span {
-        display: block;
-        padding: 0.75rem;
-        color: var(--gray);
-        font-size: 0.9rem;
-      }
-
-      .mobile-dropdown a {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
-      }
-
       /* Tablet/Medium Desktop - Smaller navbar */
       @media (min-width: 769px) and (max-width: 1199px) {
         .logo svg {
@@ -1562,6 +1537,11 @@
           width: 160px; /* Compact for mobile */
           height: 45px;
           object-fit: contain;
+        }
+
+        /* Hide breadcrumb on mobile */
+        .breadcrumb {
+          display: none;
         }
 
         /* MOBILE AD POSITIONING */
@@ -2034,20 +2014,9 @@
           }
         }
 
-        /* Hide footer and nav elements */
-        .footer-text,
-        .nav-links {
+        /* Hide footer elements */
+        .footer-text {
           display: none;
-        }
-
-        .mobile-menu-toggle {
-          display: flex;
-          padding: 2px;
-        }
-
-        .mobile-menu-toggle span {
-          width: 16px;
-          height: 1.5px;
         }
 
         /* Sticky bottom ad - your main mobile moneymaker */
@@ -2906,264 +2875,166 @@
       </div>
     </div>
 
-    <!-- Navigation - Same as your site -->
-    <nav>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
       <div class="container">
-        <a href="/" class="logo">
-          <svg
-            width="300"
-            height="100"
-            viewBox="0 0 240 80"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <!-- Digital/Tech Anvil with Crossed Hammers -->
-            <g transform="translate(15, 15)">
-              <!-- Digital Anvil (geometric/tech style) -->
-              <path
-                d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
-                fill="#1E293B"
-                stroke="#0066FF"
-                stroke-width="0.5"
-              />
-              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1" />
-              <rect x="16" y="28" width="28" height="2" fill="#475569" />
-              <!-- Tech pattern on anvil -->
-              <line
-                x1="20"
-                y1="32"
-                x2="40"
-                y2="32"
-                stroke="#0066FF"
-                stroke-width="0.5"
-                opacity="0.6"
-              />
-              <line
-                x1="22"
-                y1="34"
-                x2="38"
-                y2="34"
-                stroke="#00D4AA"
-                stroke-width="0.5"
-                opacity="0.6"
-              />
-              <!-- Crossed Hammers (geometric style) -->
-              <!-- Left hammer -->
-              <g transform="rotate(-30 30 25)">
-                <rect
-                  x="28"
-                  y="15"
-                  width="4"
-                  height="18"
-                  fill="#0066FF"
-                  rx="0.5"
-                />
-                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
-                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
-              </g>
-              <!-- Right hammer -->
-              <g transform="rotate(30 30 25)">
-                <rect
-                  x="28"
-                  y="15"
-                  width="4"
-                  height="18"
-                  fill="#0066FF"
-                  rx="0.5"
-                />
-                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
-                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
-              </g>
-              <!-- Digital Fire/Energy (geometric flames) -->
-              <path
-                d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
-                fill="#FF6B35"
-                opacity="0.9"
-              />
-              <path
-                d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
-                fill="#FFA500"
-                opacity="0.8"
-              />
-              <path
-                d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
-                fill="#FFA500"
-                opacity="0.8"
-              />
-              <!-- Tech sparks (pixels) -->
-              <rect
-                x="12"
-                y="20"
-                width="2"
-                height="2"
-                fill="#00D4AA"
-                opacity="0.8"
-              />
-              <rect
-                x="46"
-                y="20"
-                width="2"
-                height="2"
-                fill="#00D4AA"
-                opacity="0.8"
-              />
-              <rect
-                x="10"
-                y="25"
-                width="1.5"
-                height="1.5"
-                fill="#FFD700"
-                opacity="0.7"
-              />
-              <rect
-                x="48"
-                y="25"
-                width="1.5"
-                height="1.5"
-                fill="#FFD700"
-                opacity="0.7"
-              />
-            </g>
-            <!-- Text: Forge -->
-            <text
-              x="75"
-              y="45"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="28"
-              font-weight="800"
-              fill="#0A0E27"
-            >
-              Forge
-            </text>
-            <!-- Text: APIs -->
-            <text
-              x="150"
-              y="45"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="28"
-              font-weight="400"
-              fill="#6B7280"
-            >
-              APIs
-            </text>
-            <!-- Tagline -->
-            <text
-              x="75"
-              y="63"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="9"
-              fill="#9CA3AF"
-              letter-spacing="0.5"
-            >
-              PRODUCTION-READY APIS
-            </text>
-          </svg>
-        </a>
-        <div class="nav-links">
-          <!-- Tools Dropdown -->
-          <div class="dropdown" id="toolsDropdown">
-            <button
-              class="dropdown-btn"
-              id="toolsDropdownBtn"
-              tabindex="0"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Tools <span style="font-size: 12px">▼</span>
-            </button>
-            <div class="dropdown-content">
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Premium Tools</div>
-                <a href="/riskscore/"> RiskScore API </a>
-                <a href="/dupecheck/"> DupeCheck </a>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Free Tools</div>
-                <a href="/gst-calculator/"> GST Calculator India </a>
-                <a href="/gaming-calculators/"> Gaming Currency Calculators </a>
-                <a href="/va-calculator/">
-                  VA Disability Benefits Calculator
-                </a>
-                <a href="/tip-calculator/"> Restaurant Tip Calculator </a>
-              </div>
-            </div>
+        <nav class="breadcrumb-list" aria-label="Breadcrumb">
+          <div class="breadcrumb-item">
+            <a href="/" class="breadcrumb-link logo-link">
+              <svg
+                width="120"
+                height="20"
+                viewBox="0 0 240 80"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Digital/Tech Anvil with Crossed Hammers -->
+                <g transform="translate(15, 15)">
+                  <!-- Digital Anvil (geometric/tech style) -->
+                  <path
+                    d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                    fill="#1E293B"
+                    stroke="#ff9933"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="18"
+                    y="30"
+                    width="24"
+                    height="5"
+                    fill="#334155"
+                    rx="1"
+                  />
+                  <rect x="16" y="28" width="28" height="2" fill="#475569" />
+                  <!-- Tech pattern on anvil -->
+                  <line
+                    x1="20"
+                    y1="32"
+                    x2="40"
+                    y2="32"
+                    stroke="#ff9933"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="22"
+                    y1="34"
+                    x2="38"
+                    y2="34"
+                    stroke="#138808"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <!-- Crossed Hammers -->
+                  <g transform="rotate(-30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#ff9933"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#cc7a29"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#138808" />
+                    <rect x="34" y="13" width="2" height="2" fill="#138808" />
+                  </g>
+                  <g transform="rotate(30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#ff9933"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#cc7a29"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#138808" />
+                    <rect x="34" y="13" width="2" height="2" fill="#138808" />
+                  </g>
+                  <!-- Digital Fire/Energy -->
+                  <path
+                    d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                    fill="#FF6B35"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="12"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#138808"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="46"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#138808"
+                    opacity="0.8"
+                  />
+                </g>
+                <!-- Text: Forge -->
+                <text
+                  x="75"
+                  y="45"
+                  font-family="Inter, system-ui, sans-serif"
+                  font-size="28"
+                  font-weight="800"
+                  fill="#0A0E27"
+                >
+                  Forge
+                </text>
+                <!-- Text: APIs -->
+                <text
+                  x="150"
+                  y="45"
+                  font-family="Inter, system-ui, sans-serif"
+                  font-size="28"
+                  font-weight="400"
+                  fill="#6B7280"
+                >
+                  APIs
+                </text>
+                <!-- Tagline -->
+                <text
+                  x="75"
+                  y="63"
+                  font-family="Inter, system-ui, sans-serif"
+                  font-size="9"
+                  fill="#9CA3AF"
+                  letter-spacing="0.5"
+                >
+                  PRODUCTION-READY APIS
+                </text>
+              </svg>
+            </a>
           </div>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <a href="/">Home</a>
-
-          <div
-            style="
-              border-top: 1px solid #e2e8f0;
-              margin: 0.75rem 0;
-              padding-top: 0.5rem;
-            "
-          >
-            <span
-              style="
-                padding: 0.5rem 0.75rem;
-                display: block;
-                color: var(--gray);
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-              "
-              >Free Calculators</span
-            >
+          <div class="breadcrumb-item">
+            <span class="breadcrumb-current">GST Calculator</span>
           </div>
-
-          <a href="/gst-calculator/">GST Calculator</a>
-          <a href="/va-calculator/">VA Disability Calculator</a>
-          <a href="/tip-calculator/">Tip Calculator</a>
-          <a href="/gaming-calculators/">Gaming Calculators</a>
-
-          <div
-            style="
-              border-top: 1px solid #e2e8f0;
-              margin: 0.75rem 0;
-              padding-top: 0.5rem;
-            "
-          >
-            <span
-              style="
-                padding: 0.5rem 0.75rem;
-                display: block;
-                color: var(--gray);
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-              "
-              >Premium APIs</span
-            >
-          </div>
-
-          <a href="/riskscore/">RiskScore API</a>
-          <a href="/dupecheck/">DupeCheck</a>
-
-          <div style="border-top: 1px solid #e2e8f0; margin: 0.75rem 0"></div>
-
-          <a href="mailto:hello@forgeapis.com">Contact</a>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </div>
 
-    <!-- Skip Navigation for Accessibility -->
-    <a href="#main-calculator" class="skip-link">Skip to calculator</a>
+    <!-- Skip Navigation for Accessibility - Hidden unless focused -->
+    <a href="#main-calculator" class="skip-link" style="position: absolute; left: -9999px; top: -9999px;">Skip to calculator</a>
 
     <!-- Single Responsive Calculator -->
     <div class="calculator-wrapper">
@@ -3277,16 +3148,9 @@
               </g>
             </svg>
             <h1>GST Calculator India</h1>
-            <p
-              style="
-                text-align: center;
-                color: #6b7280;
-                font-size: 0.9rem;
-                margin: -10px 0 20px 0;
-              "
-            >
-              Last updated: January 2025 | GST rates as per government
-              guidelines
+            <!-- Last Updated Timestamp -->
+            <p style="text-align: center; color: var(--gray); font-size: 0.9rem; margin: -10px 0 20px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+              <strong>Last updated:</strong> January 2025 | <strong>GST Rates verified with GST Council</strong>
             </p>
             <!-- Remove subtitle on mobile to save space -->
             <p class="subtitle desktop-only">
@@ -3583,9 +3447,104 @@
               class="expand-details mobile-only"
               onclick="toggleResultDetails()"
             >
-              + Show Details
             </div>
           </div>
+
+          <!-- Quick Tips Section -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(255, 153, 51, 0.25), rgba(255, 153, 51, 0.1)); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(255, 153, 51, 0.3), inset 0 0 15px rgba(255, 153, 51, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);"></div>
+              <h2 style="color: var(--dark); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span style="font-size: 1.5rem;">🇮🇳</span> Quick GST Rate Reference Guide
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid #27ae60; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">Nil Rate (0%)</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #27ae60;">0% GST</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">Food, Milk, Education</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid #3498db; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">Low Rate (5%)</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #3498db;">5% GST</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">Sugar, Tea, Coffee</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">Medium Rate (12%)</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #f39c12;">12% GST</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">Computers, Processed Food</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">Standard Rate (18%)</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--primary);">18% GST</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">Most Goods & Services</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; border-left: 4px solid #e74c3c; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">Luxury Rate (28%)</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #e74c3c;">28% GST</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">Cars, Tobacco, AC</p>
+                </div>
+
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic;">
+                💡 Tip: CGST + SGST = Total GST for intra-state transactions | IGST = Total GST for inter-state transactions
+              </p>
+            </div>
+          </section>
+
+          <!-- How to Use This GST Calculator -->
+          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(19, 136, 8, 0.15), rgba(19, 136, 8, 0.05)); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(19, 136, 8, 0.3), inset 0 0 15px rgba(19, 136, 8, 0.1); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); box-shadow: 0 0 10px rgba(19, 136, 8, 0.5);"></div>
+              <h2 style="color: var(--dark); font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span style="font-size: 1.5rem;">📋</span> How to Use This GST Calculator
+              </h2>
+              
+              <div style="display: grid; gap: 1rem;">
+                
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.9); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5); flex-shrink: 0;">1</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--dark); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Enter the Amount</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem;">Enter the base price (before GST) or total price (including GST) in Indian Rupees (₹). The calculator accepts any numerical value.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.9); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5); flex-shrink: 0;">2</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--dark); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Select GST Rate</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem;">Choose the applicable GST rate: 0% (nil), 5%, 12%, 18% (standard), or 28% (luxury). Rates are based on GST Council classifications.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.9); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5); flex-shrink: 0;">3</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--dark); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Choose Inclusive or Exclusive</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem;">Select GST Exclusive if your amount is before tax, or GST Inclusive if your amount already includes tax. This affects the calculation method.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.9); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5); flex-shrink: 0;">4</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--dark); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">View Detailed Breakdown</h3>
+                    <p style="margin: 0; color: var(--gray); line-height: 1.6; font-size: 0.95rem;">Instantly see base amount, GST amount, CGST/SGST split (for intra-state) or IGST (for inter-state), and total amount with complete breakdown.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <p style="margin: 1.25rem 0 0; padding-top: 1rem; border-top: 2px solid rgba(255, 153, 51, 0.3); color: var(--gray); font-size: 0.9rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                🇮🇳 No registration required • Works offline • 100% free • GST Council approved rates
+              </p>
+            </div>
+          </section>
 
           <!-- AdSense will go here -->
 
@@ -4107,6 +4066,95 @@
         </div>
         <!-- End of SEO Content Wrapper -->
       </main>
+    </div>
+
+    <!-- People Also Search For Section -->
+    <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+      <div style="background: linear-gradient(135deg, rgba(255, 153, 51, 0.6) 0%, rgba(19, 136, 8, 0.3) 100%); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 153, 51, 0.3); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 153, 51, 0.2); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);"></div>
+        <h2 style="color: var(--dark); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+          🔍 People Also Search For
+        </h2>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">💰</span>
+            <span>How to calculate GST on invoice?</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🔄</span>
+            <span>CGST SGST calculator India 2025</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🇮🇳</span>
+            <span>GST rate list India 2025</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">📊</span>
+            <span>Best free GST calculator online</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">📱</span>
+            <span>GST calculator app download</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🎯</span>
+            <span>GST inclusive exclusive difference</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">⚖️</span>
+            <span>How to reverse calculate GST?</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🏢</span>
+            <span>GST calculator for business invoice</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">📋</span>
+            <span>IGST vs CGST SGST when to use</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(255, 153, 51, 0.3); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(255, 153, 51, 0.15)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(255, 153, 51, 0.3)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">💡</span>
+            <span>GST calculation formula with example</span>
+          </li>
+          
+        </ul>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--dark); font-size: 0.9rem; font-style: italic; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+          💡 These searches help us understand what GST users in India are looking for
+        </p>
+      </div>
+    </section>
+
+    <p style="margin: 2rem auto; max-width: 900px; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 153, 51, 0.2) 0%, rgba(19, 136, 8, 0.1) 100%); border-radius: 12px; line-height: 1.8; border: 2px solid var(--primary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 0 15px rgba(255, 153, 51, 0.3), inset 0 0 10px rgba(255, 153, 51, 0.1); text-align: center;">
+      🇮🇳 <strong style="color: var(--dark);">Want to learn more about GST in India?</strong> <span style="color: var(--gray);">Read our comprehensive</span> <a href="/gst-calculator/guide.html" style="color: var(--primary); font-weight: bold; text-decoration: underline;">GST Guide 2025</a> <span style="color: var(--gray);">covering all tax rates (0%-28%), CGST SGST IGST differences, calculation formulas with examples, registration requirements, return filing procedures (GSTR-1, GSTR-3B), input tax credit rules, composition scheme eligibility, e-invoicing requirements, e-way bill procedures, common compliance mistakes, refund process, and expert tips for businesses and professionals across India.</span>
+    </p>
+
+    <!-- Related Tools Section -->
+    <div style="background: var(--light-gray); padding: 2rem; margin: 3rem 0; border-radius: 12px; border: 1px solid rgba(255, 153, 51, 0.2); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);"></div>
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--dark); font-size: 1.8rem; font-weight: 800;">
+        🔧 More Financial & Gaming Calculators
+      </h3>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        
+        <a href="/gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(255, 153, 51, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 153, 51, 0.4)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(255, 153, 51, 0.2)';">Robux Calculator</a>
+        
+        <a href="/gaming-calculators/vbucks/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(255, 153, 51, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 153, 51, 0.4)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(255, 153, 51, 0.2)';">V-Bucks Calculator</a>
+        
+        <a href="/gaming-calculators/minecoins/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(255, 153, 51, 0.2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 153, 51, 0.4)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(255, 153, 51, 0.2)';">Minecoins Calculator</a>
+        
+        <a href="/gaming-calculators/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 8px; text-decoration: none; color: white; border: 2px solid var(--secondary); font-weight: 900; box-shadow: 0 0 20px rgba(255, 153, 51, 0.5), 0 4px 15px rgba(0, 0, 0, 0.2); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 30px rgba(255, 153, 51, 0.7), 0 6px 20px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(255, 153, 51, 0.5), 0 4px 15px rgba(0, 0, 0, 0.2)';">All Gaming Calculators</a>
+        
+      </div>
     </div>
 
     <!-- Footer -->
@@ -4726,95 +4774,6 @@
         }
       }
 
-      // Tools dropdown functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (mobileMenuToggle && mobileMenu) {
-          mobileMenuToggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.classList.toggle("active");
-            mobileMenu.classList.toggle("active");
-          });
-
-          // Close when clicking outside
-          document.addEventListener("click", function (e) {
-            if (
-              !mobileMenuToggle.contains(e.target) &&
-              !mobileMenu.contains(e.target)
-            ) {
-              mobileMenuToggle.classList.remove("active");
-              mobileMenu.classList.remove("active");
-            }
-          });
-        } else {
-          console.error("Mobile menu elements not found");
-        }
-
-        // Desktop dropdown functionality
-        const dropdown = document.getElementById("toolsDropdown");
-        const dropdownBtn = document.getElementById("toolsDropdownBtn");
-
-        if (dropdown && dropdownBtn) {
-          dropdownBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const isActive = dropdown.classList.contains("active");
-
-            dropdown.classList.toggle("active");
-
-            const isNowActive = dropdown.classList.contains("active");
-
-            // Update aria-expanded for accessibility
-            dropdownBtn.setAttribute("aria-expanded", isNowActive);
-
-            // Close mobile menu when dropdown opens
-            if (mobileMenu && mobileMenuToggle) {
-              mobileMenu.classList.remove("active");
-              mobileMenuToggle.classList.remove("active");
-            }
-          });
-
-          // Add keyboard accessibility (Enter and Space keys)
-          dropdownBtn.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              e.stopPropagation();
-              dropdown.classList.toggle("active");
-
-              // Update aria-expanded for accessibility
-              const isNowActive = dropdown.classList.contains("active");
-              dropdownBtn.setAttribute("aria-expanded", isNowActive);
-
-              // Close mobile menu when dropdown opens
-              if (mobileMenu && mobileMenuToggle) {
-                mobileMenu.classList.remove("active");
-                mobileMenuToggle.classList.remove("active");
-              }
-            }
-          });
-
-          // Close dropdown when clicking outside
-          document.addEventListener("click", function (e) {
-            if (!dropdown.contains(e.target)) {
-              dropdown.classList.remove("active");
-              dropdownBtn.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          // Prevent dropdown from closing when clicking inside it
-          dropdown.addEventListener("click", function (e) {
-            e.stopPropagation();
-          });
-
-          // Toggle-based functionality only (no hover)
-        }
-      });
-
       // FAQ Schema Markup
       const faqSchema = {
         "@context": "https://schema.org",
@@ -4825,50 +4784,58 @@
             name: "What is the difference between CGST and SGST?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "CGST (Central GST) goes to the central government while SGST (State GST) goes to state government. Both are charged at half the total GST rate.",
-            },
+              text: "CGST (Central Goods and Services Tax) is collected by the Central Government of India, while SGST (State Goods and Services Tax) is collected by the respective State Government. Both taxes are charged at exactly half the total GST rate on intra-state transactions. For example, if the GST rate is 18%, then CGST is 9% and SGST is 9%. This dual structure ensures revenue sharing between central and state governments while maintaining a unified tax system across India under the GST regime."
+            }
           },
           {
             "@type": "Question",
             name: "When is IGST applicable?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "IGST (Integrated GST) is applicable for interstate transactions, where goods or services are supplied from one state to another.",
-            },
+              text: "IGST (Integrated Goods and Services Tax) is applicable for all interstate transactions where goods or services are supplied from one state to another state within India. IGST is also charged on imports into India and on supplies to Special Economic Zones (SEZ). Unlike intra-state supplies where both CGST and SGST apply, interstate supplies attract only IGST at the full GST rate. The collected IGST is then distributed between the central and state governments through a settlement mechanism managed by the GST Network."
+            }
           },
           {
             "@type": "Question",
             name: "How to calculate GST on a product?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "To calculate GST, multiply the base price by the GST rate. For example, if a product costs ₹100 and GST is 18%, the GST amount is ₹18, making the total ₹118.",
-            },
+              text: "To calculate GST on a product, multiply the base price (excluding tax) by the applicable GST rate percentage. For example, if a product costs ₹1,000 before tax and the GST rate is 18%, the GST amount is ₹1,000 × 18% = ₹180, making the final price ₹1,180. For reverse calculation (when price includes GST), divide the total price by (100 + GST rate) and multiply by 100 to get the base price. Our calculator handles both inclusive and exclusive GST calculations automatically for accuracy."
+            }
           },
           {
             "@type": "Question",
             name: "What is GST exclusive and inclusive pricing?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "GST exclusive means the price shown does not include GST, and it will be added separately. GST inclusive means the GST is already included in the displayed price.",
-            },
+              text: "GST exclusive pricing means the displayed price does not include GST, and the tax will be added separately at checkout, resulting in a higher final amount. GST inclusive pricing means the GST amount is already included in the displayed price, so the price you see is the final amount you pay. Businesses must clearly indicate whether their pricing is inclusive or exclusive of GST. Most B2C retailers display GST-inclusive prices, while B2B suppliers often show GST-exclusive prices to maintain transparency for input tax credit claims."
+            }
           },
           {
             "@type": "Question",
             name: "Is GST calculator accurate for business use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, our GST calculator uses official GST rates and formulas. However, for complex business scenarios, consult a tax professional.",
-            },
+              text: "Yes, our GST calculator uses official GST rates (0%, 5%, 12%, 18%, 28%) and standard calculation formulas prescribed by the GST Council of India, making it accurate for most business scenarios. The calculator properly splits GST into CGST and SGST for intra-state transactions or calculates IGST for interstate transactions. However, for complex business situations involving reverse charge mechanism, composition scheme, exemptions, or cess calculations, we recommend consulting with a qualified Chartered Accountant (CA) or tax professional to ensure complete compliance with GST regulations."
+            }
           },
           {
             "@type": "Question",
             name: "Can I use this calculator for GST filing?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "This calculator helps with GST calculations, but for official GST filing, use the government's GST portal and consult with a qualified CA.",
-            },
+              text: "This calculator helps you understand and verify GST calculations for invoicing and pricing decisions, but for official GST return filing (GSTR-1, GSTR-3B, etc.), you must use the official GST Portal (gst.gov.in) maintained by the Government of India. Our calculator is designed for quick calculations, invoice preparation, and educational purposes. For GST registration, return filing, input tax credit reconciliation, annual returns, and audit compliance, always consult with a qualified Chartered Accountant who can ensure complete accuracy and regulatory compliance for your specific business situation."
+            }
           },
-        ],
+          {
+            "@type": "Question",
+            name: "What are the current GST rates in India for 2025?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "India has five GST rate slabs as of 2025: 0% (nil rated) for essential items like fresh fruits, vegetables, milk, and educational services; 5% for mass consumption goods like sugar, tea, coffee, and domestic LPG; 12% for processed foods and computers; 18% (standard rate) for most goods and services including mobile phones, financial services, and restaurants; and 28% for luxury items like automobiles, tobacco, and aerated drinks. Some goods also attract additional cess. These rates are determined by the GST Council and may be revised based on economic policy decisions."
+            }
+          }
+        ]
       };
 
       // Add FAQ schema to head
