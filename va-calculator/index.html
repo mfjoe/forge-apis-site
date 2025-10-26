@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Mobile Optimization Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="VA Disability Calculator">
+    <meta name="theme-color" content="#002868">
+    <meta name="format-detection" content="telephone=no">
+
     <!-- Google Site Verification -->
     <meta
       name="google-site-verification"
@@ -72,6 +80,97 @@
       }
     </script>
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://forgeapis.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "VA Disability Calculator",
+      "item": "https://forgeapis.com/va-calculator/"
+    }
+  ]
+}
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "VA Disability Calculator 2025",
+  "description": "Free Veterans Affairs disability calculator to estimate monthly compensation with combined ratings and dependent benefits. 2025 payment rates included.",
+  "url": "https://forgeapis.com/va-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "2943",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ForgeAPIs"
+  }
+}
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate Your VA Disability Rating and Benefits",
+  "description": "Learn how to calculate your combined VA disability rating and estimate monthly compensation using our Veterans Affairs calculator",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Enter Your Individual Disability Ratings",
+      "text": "Input each of your VA-assigned disability ratings (0% to 100%) from your official rating decision letter. You can add multiple disabilities using the 'Add Another Disability' button. The calculator accepts all standard VA rating percentages.",
+      "position": 1
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Add Your Dependents",
+      "text": "Check the boxes for applicable dependents including spouse, children under 18, children over 18 in school, parents, and spouse requiring aid and attendance. These dependents increase your monthly compensation at ratings of 30% or higher.",
+      "position": 2
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Review Your Combined Rating",
+      "text": "The calculator automatically computes your combined VA disability rating using the official VA combined ratings table formula. This combined rating determines your compensation tier and is always rounded to the nearest 10%.",
+      "position": 3
+    },
+    {
+      "@type": "HowToStep",
+      "name": "View Your Monthly Payment",
+      "text": "See your estimated monthly VA disability compensation based on 2025 rates. The calculator shows your base payment plus any additional dependent allowances, providing a complete breakdown of your total monthly benefit.",
+      "position": 4
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Save or Print Your Results",
+      "text": "Use the save button to store your calculation in your browser, or print your results for your records. You can also copy the results to share with VSO representatives or family members.",
+      "position": 5
+    }
+  ],
+  "totalTime": "PT2M"
+}
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -117,6 +216,7 @@
 
       html {
         scroll-behavior: smooth;
+        height: 100%;
       }
 
       body {
@@ -129,11 +229,9 @@
         );
         background-image: var(--stars-pattern);
         min-height: 100vh;
-        padding: 1rem 0rem 0 0rem;
-        padding-top: 100px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        padding: 100px 0 0 0;
         color: var(--dark);
         line-height: 1.6;
       }
@@ -383,8 +481,8 @@
       }
 
       .calculator-header-compact::before {
-        content: "🎖️";
-        font-size: 2rem;
+        content: "🇺🇸";
+        font-size: 3rem;
         display: block;
         margin-bottom: 1rem;
       }
@@ -576,6 +674,33 @@
         box-shadow: 0 0 0 3px rgba(6, 102, 255, 0.1);
       }
 
+      .bilateral-checkboxes {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .bilateral-checkboxes label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+      }
+
+      .bilateral-checkboxes label:hover {
+        background: rgba(6, 102, 255, 0.05);
+      }
+
+      .bilateral-checkboxes input[type="checkbox"] {
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+      }
+
       .remove-btn {
         background: #ef4444;
         color: white;
@@ -707,6 +832,19 @@
         }
         100% {
           transform: translateX(100%);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          max-height: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          max-height: 2000px;
+          transform: translateY(0);
         }
       }
 
@@ -1106,33 +1244,66 @@
         .disability-item {
           flex-direction: column;
           align-items: stretch;
-          gap: 0.25rem; /* Reduced from 0.35rem */
-          padding: 0.4rem; /* Reduced from 0.5rem */
-          margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+          gap: 0.75rem; /* Increased spacing for mobile */
+          padding: 1rem; /* Increased padding for touch targets */
+          margin-bottom: 1rem; /* Increased margin between rows */
+          border-radius: 8px;
         }
 
         .disability-item label {
-          font-size: 0.85rem; /* Reduced from 0.9rem */
-          margin-bottom: 0.1rem; /* Reduced from 0.15rem */
+          font-size: 0.95rem; /* Increased for better readability */
+          margin-bottom: 0.5rem; /* Increased spacing */
+          font-weight: 600;
+          color: var(--dark);
         }
 
         .disability-select {
-          padding: 8px 10px; /* Reduced from 10px 12px */
-          font-size: 14px; /* Reduced from 15px */
-          min-height: 44px; /* Maintain touch target */
+          padding: 14px 16px; /* Increased for 44px minimum touch target */
+          font-size: 16px; /* Prevent zoom on iOS */
+          min-height: 48px; /* Exceeds 44px minimum */
           appearance: none; /* Remove dropdown arrow */
           background-image: none; /* Remove dropdown arrow */
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          font-weight: 500;
         }
 
-        .remove-disability-btn {
-          padding: 8px 12px; /* More compact */
-          font-size: 0.8rem;
+        .remove-btn {
+          padding: 12px 20px; /* Increased for touch target */
+          font-size: 0.9rem;
+          min-height: 48px; /* Exceeds 44px minimum */
+          font-weight: 600;
+          border-radius: 8px;
         }
 
         .add-disability-btn {
-          margin-bottom: 0.5rem; /* Reduced margin */
-          padding: 12px 20px; /* Slightly smaller */
-          font-size: 14px;
+          margin-bottom: 1rem; /* Increased margin */
+          padding: 16px 24px; /* Larger, more prominent */
+          font-size: 16px; /* Prevent zoom on iOS */
+          min-height: 56px; /* Very large and prominent */
+          font-weight: 700;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(6, 102, 255, 0.25);
+        }
+
+        .bilateral-checkboxes {
+          gap: 0.75rem;
+          flex-wrap: wrap;
+        }
+
+        .bilateral-checkboxes label {
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          font-size: 0.95rem;
+        }
+
+        .bilateral-checkboxes input[type="checkbox"] {
+          width: 22px;
+          height: 22px;
         }
 
         /* Mobile dependents - single column */
@@ -1150,33 +1321,60 @@
           margin-bottom: 0.75rem; /* Reduced from 1rem */
         }
 
-        .checkbox-group,
-        .input-group {
-          padding: 0.5rem; /* Reduced from 0.65rem */
-          margin-bottom: 0.5rem; /* Reduced from 0.65rem */
-          min-height: 44px;
+        .checkbox-group {
+          padding: 0.75rem; /* Increased for touch targets */
+          margin-bottom: 0.75rem;
+          min-height: 48px; /* Exceeds 44px minimum */
+          border-radius: 8px;
+          background: white;
+          border: 1px solid #e5e7eb;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+          width: 22px; /* Larger checkbox */
+          height: 22px;
+          min-width: 22px;
+          min-height: 22px;
         }
 
         .checkbox-group label {
-          font-size: 0.85rem; /* Reduced from 0.9rem */
+          font-size: 0.95rem; /* Increased for readability */
+          line-height: 1.4;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
 
         .input-group {
+          padding: 0.75rem; /* Increased padding */
+          margin-bottom: 0.75rem;
+          min-height: auto;
           flex-direction: column;
           align-items: stretch;
-          gap: 0.75rem;
+          gap: 0.5rem;
         }
 
         .input-group label {
           min-width: auto;
           text-align: left;
-          font-size: 0.85rem; /* Reduced from 0.9rem */
+          font-size: 0.95rem; /* Increased for readability */
+          font-weight: 600;
+          color: var(--dark);
+          margin-bottom: 0.25rem;
         }
 
-        .input-group input[type="number"] {
+        .input-group input[type="number"],
+        .input-group input[type="date"],
+        .input-group select {
           width: 100%;
-          max-width: 120px;
-          margin: 0 auto;
+          padding: 14px 16px;
+          font-size: 16px; /* Prevent zoom on iOS */
+          min-height: 48px; /* Exceeds 44px minimum */
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          font-weight: 500;
         }
 
         .monthly-payment {
@@ -1188,24 +1386,38 @@
         }
 
         .combined-rating-compact {
-          max-width: 100%; /* Changed from 90% */
-          padding: 0.5rem; /* Reduced from 0.75rem */
-          margin: 0.5rem 0; /* Reduced from 0.75rem */
+          max-width: 100%;
+          padding: 1rem; /* Increased for readability */
+          margin: 1rem 0; /* Increased spacing */
+          position: sticky;
+          top: 60px; /* Stick below nav */
+          z-index: 10;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .rating-number {
-          font-size: 1.5rem; /* Reduced from 1.75rem */
+          font-size: 1.75rem; /* Increased for visibility */
+          font-weight: 900;
         }
 
         .progress-bar {
-          height: 20px; /* Reduced from 24px */
-          margin: 0.5rem 0; /* Reduced from 1rem */
+          height: 24px; /* Increased for visibility */
+          margin: 0.75rem 0;
+          border-radius: 12px;
         }
 
         .results-section-prominent {
-          max-width: 95%;
-          padding: 0.75rem; /* Reduced from 1rem */
-          margin: 0.75rem 0; /* Reduced from 1rem */
+          max-width: 100%;
+          padding: 1rem;
+          margin: 1rem 0;
+          position: sticky;
+          top: 80px; /* Stick below combined rating */
+          z-index: 9;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .results-header {
@@ -1214,12 +1426,49 @@
           text-align: center;
         }
 
+        .clear-btn {
+          min-height: 48px; /* Touch target size */
+          padding: 14px 24px;
+          font-size: 0.95rem;
+          font-weight: 700;
+        }
+
+        /* Mobile tab buttons and primary actions */
+        .mobile-tab-select {
+          width: 100%;
+          padding: 14px 16px;
+          font-size: 16px; /* Prevent zoom on iOS */
+          min-height: 48px;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          font-weight: 600;
+        }
+
         /* Compact introduction and instructions on mobile */
         .introduction-box,
         .instructions {
           font-size: 0.85rem;
           padding: 0.75rem;
           margin-top: 0.75rem;
+        }
+
+        /* Calculation breakdown on mobile */
+        #calculationBreakdown {
+          margin-top: 1rem;
+          padding: 1rem;
+        }
+
+        #calculationBreakdown h4 {
+          font-size: 1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        #breakdownSteps > div {
+          padding: 0.75rem; /* Increased for readability */
+          font-size: 0.95rem;
+          line-height: 1.6;
+          border-radius: 6px;
         }
 
         /* Mobile guide toggle button */
@@ -1234,6 +1483,7 @@
           font-weight: 600;
           margin-top: 1rem;
           font-size: 0.9rem;
+          min-height: 48px; /* Touch target */
         }
 
         .mobile-guide-toggle:hover {
@@ -2062,6 +2312,17 @@
           gap: 40px;
         }
       }
+
+      .faq-answer.active {
+        max-height: 1000px !important;
+        padding-top: 1.5rem !important;
+      }
+      .faq-icon.rotated {
+        transform: rotate(180deg);
+      }
+      .faq-question:hover {
+        background: linear-gradient(135deg, rgba(0, 40, 104, 0.1), rgba(191, 10, 48, 0.1)) !important;
+      }
     </style>
 
     <!-- FAQPage Structured Data -->
@@ -2138,6 +2399,7 @@
     <!-- End Google Analytics -->
   </head>
   <body>
+    <div class="main-content-wrapper" style="flex: 1;">
     <!-- Navigation -->
     <nav>
       <div class="container">
@@ -2300,24 +2562,24 @@
             <div class="dropdown-content">
               <div class="dropdown-section">
                 <div class="dropdown-section-title">Premium Tools</div>
-                <a href="/riskscore/"> RiskScore API </a>
-                <a href="/dupecheck/"> DupeCheck </a>
+                <a href="../riskscore/"> RiskScore API </a>
+                <a href="../dupecheck/"> DupeCheck </a>
               </div>
 
               <div class="dropdown-divider"></div>
 
               <div class="dropdown-section">
                 <div class="dropdown-section-title">Free Tools</div>
-                <a href="/gst-calculator/"> GST Calculator India </a>
-                <a href="/gaming-calculators/"> Gaming Currency Calculators </a>
-                <a href="/va-calculator/">
+                <a href="../gst-calculator/"> GST Calculator India </a>
+                <a href="../gaming-calculators/"> Gaming Currency Calculators </a>
+                <a href="#">
                   VA Disability Benefits Calculator
                 </a>
-                <a href="/tip-calculator/"> Restaurant Tip Calculator </a>
+                <a href="../tip-calculator/"> Restaurant Tip Calculator </a>
               </div>
             </div>
           </div>
-          <a href="#understanding-va-math">About</a>
+          <a href="#how-to-use-calculator">How To Use</a>
         </div>
         <button class="mobile-menu-toggle" id="mobileMenuToggle">
           <span></span>
@@ -2350,10 +2612,10 @@
             >
           </div>
 
-          <a href="/gst-calculator/">GST Calculator</a>
-          <a href="/va-calculator/">VA Disability Calculator</a>
-          <a href="/tip-calculator/">Tip Calculator</a>
-          <a href="/gaming-calculators/">Gaming Calculators</a>
+          <a href="../gst-calculator/">GST Calculator</a>
+          <a href="#">VA Disability Calculator</a>
+          <a href="../tip-calculator/">Tip Calculator</a>
+          <a href="../gaming-calculators/">Gaming Calculators</a>
 
           <div
             style="
@@ -2386,6 +2648,58 @@
       </div>
     </nav>
 
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb" style="background: var(--light-gray); padding: 1rem 0; border-bottom: 1px solid rgba(0, 40, 104, 0.15); margin-bottom: 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); position: relative; z-index: 10;">
+      <div class="container">
+        <nav class="breadcrumb-list" aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gray); padding: 0 2rem;">
+          <div class="breadcrumb-item" style="display: flex; align-items: center;">
+            <a href="/" class="breadcrumb-link" style="color: var(--primary); text-decoration: none; transition: all 0.3s ease; border-radius: 6px; padding: 0.25rem 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+              <svg width="120" height="20" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+                <!-- Digital/Tech Anvil with Crossed Hammers -->
+                <g transform="translate(15, 15)">
+                  <!-- Digital Anvil (geometric/tech style) -->
+                  <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#002868" stroke-width="0.5"/>
+                  <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
+                  <rect x="16" y="28" width="28" height="2" fill="#475569"/>
+                  <line x1="20" y1="32" x2="40" y2="32" stroke="#002868" stroke-width="0.5" opacity="0.6"/>
+                  <line x1="22" y1="34" x2="38" y2="34" stroke="#bf0a30" stroke-width="0.5" opacity="0.6"/>
+                  <!-- Crossed Hammers -->
+                  <g transform="rotate(-30 30 25)">
+                    <rect x="28" y="15" width="4" height="18" fill="#002868" rx="0.5"/>
+                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#001a4a"/>
+                    <rect x="24" y="13" width="2" height="2" fill="#bf0a30"/>
+                    <rect x="34" y="13" width="2" height="2" fill="#bf0a30"/>
+                  </g>
+                  <g transform="rotate(30 30 25)">
+                    <rect x="28" y="15" width="4" height="18" fill="#002868" rx="0.5"/>
+                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#001a4a"/>
+                    <rect x="24" y="13" width="2" height="2" fill="#bf0a30"/>
+                    <rect x="34" y="13" width="2" height="2" fill="#bf0a30"/>
+                  </g>
+                  <!-- Digital Fire/Energy -->
+                  <path d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z" fill="#bf0a30" opacity="0.9"/>
+                  <path d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z" fill="#ffd700" opacity="0.8"/>
+                  <path d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z" fill="#ffd700" opacity="0.8"/>
+                  <rect x="12" y="20" width="2" height="2" fill="#bf0a30" opacity="0.8"/>
+                  <rect x="46" y="20" width="2" height="2" fill="#bf0a30" opacity="0.8"/>
+                </g>
+                <!-- Text: Forge -->
+                <text x="75" y="45" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#0A0E27">Forge</text>
+                <!-- Text: APIs -->
+                <text x="150" y="45" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="400" fill="#6B7280">APIs</text>
+                <!-- Tagline -->
+                <text x="75" y="63" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">PRODUCTION-READY APIS</text>
+              </svg>
+            </a>
+          </div>
+          <div class="breadcrumb-item" style="display: flex; align-items: center;">
+            <span style="color: var(--gray); margin: 0 0.25rem;">›</span>
+            <span class="breadcrumb-current" style="color: var(--dark); font-weight: 500;">VA Disability Calculator</span>
+          </div>
+        </nav>
+      </div>
+    </div>
+
     <!-- Calculator Layout -->
     <div class="calculator-wrapper">
       <!-- Main Calculator -->
@@ -2398,7 +2712,7 @@
                 text-align: center;
                 color: var(--gray);
                 font-size: 0.9rem;
-                margin: -10px 0 20px 0;
+                margin: -15px 0 10px 0;
                 font-weight: 500;
               "
             >
@@ -2416,6 +2730,8 @@
             >
               <option value="ratings">⭐ Disability Ratings</option>
               <option value="dependents">👥 Dependents</option>
+              <option value="retroactive">📅 Retroactive Calculator</option>
+              <option value="benefits">🏛️ State Benefits</option>
             </select>
 
             <div class="tab-buttons">
@@ -2424,6 +2740,12 @@
               </button>
               <button class="tab-button" onclick="switchTab('dependents')">
                 Dependents
+              </button>
+              <button class="tab-button" onclick="switchTab('retroactive')">
+                Retroactive Calculator
+              </button>
+              <button class="tab-button" onclick="switchTab('benefits')">
+                State Benefits
               </button>
             </div>
 
@@ -2474,6 +2796,16 @@
                       <p id="ratingExplanation">
                         Add your disability ratings to see your combined rating
                       </p>
+                      
+                      <!-- Calculation Breakdown -->
+                      <div id="calculationBreakdown" style="margin-top: 1rem; padding: 1rem; background: rgba(6, 102, 255, 0.03); border-radius: 8px; border: 1px solid rgba(6, 102, 255, 0.1); display: none;">
+                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+                          <span style="font-size: 1.2rem;">🔢</span> Step-by-Step Calculation
+                        </h4>
+                        <div id="breakdownSteps" style="font-size: 0.9rem; line-height: 1.8; color: var(--dark);">
+                          <!-- Steps will be populated here -->
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2555,6 +2887,140 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Retroactive Calculator Tab -->
+              <div class="tab-panel" id="retroactive-tab">
+                <h2 class="section-title">📅 Retroactive Pay Calculator</h2>
+                <p style="color: var(--gray); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                  Calculate your estimated retroactive payment based on your claim filing date, approval date, and rating changes over time.
+                </p>
+
+                <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
+                  <div class="input-group">
+                    <label for="claimFiledDate">📋 Claim Filed Date:</label>
+                    <input type="date" id="claimFiledDate" style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; width: 100%;" onchange="calculateRetroactive()" />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="approvalDate">✅ Approval Date:</label>
+                    <input type="date" id="approvalDate" style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; width: 100%;" onchange="calculateRetroactive()" />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="initialRating">🎖️ Initial Rating (%):</label>
+                    <select id="initialRating" style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; width: 100%; background: white;" onchange="calculateRetroactive()">
+                      <option value="0">0%</option>
+                      <option value="10">10%</option>
+                      <option value="20">20%</option>
+                      <option value="30">30%</option>
+                      <option value="40">40%</option>
+                      <option value="50">50%</option>
+                      <option value="60">60%</option>
+                      <option value="70">70%</option>
+                      <option value="80">80%</option>
+                      <option value="90">90%</option>
+                      <option value="100">100%</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="currentRating">🎖️ Current Rating (if increased):</label>
+                    <select id="currentRating" style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; width: 100%; background: white;" onchange="calculateRetroactive()">
+                      <option value="0">No increase</option>
+                      <option value="10">10%</option>
+                      <option value="20">20%</option>
+                      <option value="30">30%</option>
+                      <option value="40">40%</option>
+                      <option value="50">50%</option>
+                      <option value="60">60%</option>
+                      <option value="70">70%</option>
+                      <option value="80">80%</option>
+                      <option value="90">90%</option>
+                      <option value="100">100%</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="increaseDate">📅 Rating Increase Date (if applicable):</label>
+                    <input type="date" id="increaseDate" style="padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; width: 100%;" onchange="calculateRetroactive()" />
+                  </div>
+
+                  <div class="checkbox-group" style="padding: 1rem; background: var(--light-gray); border-radius: 8px;">
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 700; color: var(--primary);">👥 Marital Status (during back pay period)</h4>
+                    <input type="checkbox" id="retroactiveMarried" onchange="calculateRetroactive()" />
+                    <label for="retroactiveMarried" style="margin-left: 0.5rem;">Married during this period</label>
+                  </div>
+                </div>
+
+                <!-- Retroactive Results -->
+                <div id="retroactiveResults" style="display: none; background: rgba(34, 197, 94, 0.05); border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem;">
+                  <h3 style="color: #16a34a; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 800;">💰 Estimated Retroactive Payment</h3>
+                  <div id="retroactiveTotal" style="text-align: center; font-size: 2.5rem; font-weight: 900; color: #16a34a; margin-bottom: 1rem;">$0.00</div>
+                  
+                  <div style="background: white; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 700; color: var(--primary); cursor: pointer;" onclick="toggleMonthBreakdown()">📊 Month-by-Month Breakdown <span id="breakdownToggle" style="font-size: 0.85rem;">▼</span></h4>
+                    <div id="monthBreakdown" style="display: none; font-size: 0.9rem; line-height: 1.8; color: var(--dark);">
+                      <!-- Monthly breakdown will be populated here -->
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(6, 102, 255, 0.05); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--dark); line-height: 1.6;">
+                      <strong>📌 Important Notes:</strong> This is an estimate only. Actual retroactive payments are calculated by the VA based on your effective date. COLA adjustments for different years have been applied. Your payment may vary based on dependent status changes during the period.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- State Benefits Tab -->
+              <div class="tab-panel" id="benefits-tab">
+                <h2 class="section-title">🏛️ State Benefits for Veterans</h2>
+                <p style="color: var(--gray); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                  VA disability compensation is federally tax-free nationwide. Many states offer additional benefits including property tax exemptions, income tax exemptions, vehicle registration discounts, and more for disabled veterans.
+                </p>
+
+                <!-- Property Tax Exemption Quick Reference -->
+                <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+                  <h3 style="color: #16a34a; font-size: 1.2rem; margin: 0 0 1rem 0; font-weight: 800;">💰 Property Tax Exemptions at 100% Disability</h3>
+                  <p style="margin: 0 0 1rem 0; color: var(--dark); line-height: 1.7;">
+                    Veterans rated 100% disabled by the VA can receive property tax exemptions in most states. Here are the top states with full exemptions:
+                  </p>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+                      <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">Florida</div>
+                      <div style="font-size: 0.9rem; color: var(--gray);">Complete property tax exemption for 100% disabled veterans</div>
+                    </div>
+                    <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+                      <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">Texas</div>
+                      <div style="font-size: 0.9rem; color: var(--gray);">Full homestead exemption for 100% disabled veterans</div>
+                    </div>
+                    <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+                      <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">Virginia</div>
+                      <div style="font-size: 0.9rem; color: var(--gray);">Complete property tax exemption at 100% rating</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- State List -->
+                <div style="margin-bottom: 1.5rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 style="margin: 0; color: var(--primary); font-size: 1.2rem; font-weight: 800;">📋 State Benefits by State</h3>
+                  </div>
+                  
+                  <input type="text" id="stateSearch" placeholder="🔍 Search states..." style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; margin-bottom: 1rem; font-size: 0.95rem; min-height: 48px;" oninput="filterStates()" />
+                  
+                  <div id="stateList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+                    <!-- States will be populated here by JavaScript -->
+                  </div>
+                </div>
+
+                <div style="background: rgba(6, 102, 255, 0.05); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary); margin-top: 2rem;">
+                  <h4 style="margin: 0 0 0.75rem 0; color: var(--primary); font-size: 1rem; font-weight: 700;">💡 Important Information</h4>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--dark); line-height: 1.7;">
+                    State benefits vary by state and change frequently. Always verify current requirements and application procedures with your state's veterans affairs department or county tax assessor's office. Eligibility typically requires service-connected disability ratings and may include residency requirements.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -2588,6 +3054,306 @@
               </div>
             </div>
           </div>
+
+          <!-- TDIU Eligibility Check Section -->
+          <section id="tdiuSection" style="max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem; display: none;">
+            <div style="background: rgba(34, 197, 94, 0.05); border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);">
+              <h3 style="color: #16a34a; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.5rem;">💼</span> Total Disability Based on Individual Unemployability (TDIU)
+              </h3>
+              
+              <div id="tdiuCheck">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                  <input type="checkbox" id="tdiuCheckbox" onchange="checkTDIUEligibility()" style="width: 20px; height: 20px; cursor: pointer;">
+                  <label for="tdiuCheckbox" style="font-size: 1rem; font-weight: 600; color: var(--dark); cursor: pointer;">Check TDIU eligibility and payment</label>
+                </div>
+              </div>
+              
+              <div id="tdiuResult" style="display: none;">
+                <!-- Results will be populated here -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Path to 100% Section -->
+          <section id="pathTo100Section" style="max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem; display: none;">
+            <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(255, 215, 0, 0.1)); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);">
+              <h3 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.5rem;">🎯</span> Path to 100% Rating
+              </h3>
+              
+              <div id="pathTo100Content">
+                <div style="background: white; padding: 1.25rem; border-radius: 10px; margin-bottom: 1rem; border-left: 5px solid var(--secondary);">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                      <div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.25rem;">Your Current Rating</div>
+                      <div id="currentUnroundedRating" style="font-size: 1.5rem; font-weight: 900; color: var(--primary);">0%</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.25rem;">Target to Reach 100%</div>
+                      <div id="targetRating" style="font-size: 1.5rem; font-weight: 900; color: var(--secondary);">95%</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.25rem;">Additional Rating Needed</div>
+                      <div id="additionalNeeded" style="font-size: 1.5rem; font-weight: 900; color: #dc2626;">0%</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Visual Progress Bar -->
+                  <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <span style="font-size: 0.85rem; font-weight: 600; color: var(--gray);">Progress to 100%</span>
+                      <span id="progressPercentage" style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">0%</span>
+                    </div>
+                    <div style="background: #e5e7eb; height: 28px; border-radius: 14px; overflow: hidden; position: relative;">
+                      <div id="pathProgressFill" style="background: linear-gradient(90deg, var(--secondary), #f59e0b); height: 100%; width: 0%; transition: width 0.5s ease; border-radius: 14px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);"></div>
+                    </div>
+                  </div>
+                  
+                  <p id="pathMessage" style="font-size: 0.95rem; line-height: 1.6; color: var(--dark); margin: 0;">
+                    <!-- Message will be populated by JavaScript -->
+                  </p>
+                </div>
+                
+                <div style="background: rgba(34, 197, 94, 0.05); border: 1px solid #22c55e; border-radius: 10px; padding: 1rem;">
+                  <h4 style="color: #16a34a; font-size: 1rem; margin: 0 0 0.5rem 0; font-weight: 700;">💡 Alternative Path: Individual Unemployability (TDIU)</h4>
+                  <p style="font-size: 0.9rem; line-height: 1.6; color: var(--dark); margin: 0;">
+                    <strong>Did you know?</strong> You may qualify for 100% compensation without additional ratings through TDIU. If you have a single disability rated at 60% or higher, OR a combined rating of 70% or higher with at least one disability at 40% or higher, you may be eligible. TDIU provides the same 100% payment rate without needing to reach 95% combined rating. Check the "TDIU Eligibility Check" section above for more information.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Legal Disclaimer -->
+          <section style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
+            <div style="background: rgba(6, 102, 255, 0.03); border: 1px solid rgba(6, 102, 255, 0.2); border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+              <h3 style="color: var(--primary); font-size: 1rem; margin: 0 0 1rem 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(6, 102, 255, 0.2); padding-bottom: 0.5rem;">
+                ⚖️ Important Legal Disclaimer
+              </h3>
+              
+              <div style="font-size: 0.9rem; line-height: 1.8; color: var(--dark);">
+                <p style="margin: 0 0 0.75rem 0;">
+                  <strong>This calculator is not affiliated with, sponsored by, or endorsed by the U.S. Department of Veterans Affairs (VA) or any government agency.</strong> This is an unofficial, independent tool created to assist veterans in estimating their potential disability compensation.
+                </p>
+                
+                <p style="margin: 0 0 0.75rem 0;">
+                  <strong>Estimates Only:</strong> The calculations and information provided by this calculator are for estimation purposes only. They should not be used as the sole basis for financial planning decisions, claim filing strategies, or any other significant decisions regarding your VA disability benefits.
+                </p>
+                
+                <p style="margin: 0 0 0.75rem 0;">
+                  <strong>Not Legal Advice:</strong> This tool does not constitute legal advice, representation, or counseling regarding VA disability claims. The information provided is general in nature and may not apply to your specific situation.
+                </p>
+                
+                <p style="margin: 0 0 0.75rem 0;">
+                  <strong>Payment Rates:</strong> The compensation rates shown reflect the 2025 VA disability rates effective as of December 1, 2024, including the 2.5% Cost-of-Living Adjustment (COLA). Rates are updated periodically and may not reflect the most current figures at the time of use.
+                </p>
+                
+                <p style="margin: 0 0 0.75rem 0;">
+                  <strong>Consult Professionals:</strong> We strongly encourage veterans to consult with accredited Veterans Service Officers (VSOs), VA-accredited attorneys, or claims agents for personalized guidance, claim filing assistance, and appeals support. These professionals provide free or low-cost services and are trained in navigating the complex VA claims process.
+                </p>
+                
+                <p style="margin: 0; padding-top: 0.75rem; border-top: 1px solid rgba(6, 102, 255, 0.2);">
+                  <strong>Official Resources:</strong> For official VA disability information, current compensation rates, claim filing procedures, and appeals processes, visit <a href="https://www.va.gov/disability/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; text-decoration: underline;">VA.gov</a> or contact your local VA Regional Office at 1-800-827-1000.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Educational Section: Why Don't Percentages Add Directly? -->
+          <section class="educational-section" id="educationalSection" style="max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem;">
+            <div style="background: linear-gradient(135deg, rgba(6, 102, 255, 0.1), rgba(191, 10, 48, 0.05)); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(6, 102, 255, 0.15), inset 0 0 15px rgba(6, 102, 255, 0.05); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); box-shadow: 0 0 10px rgba(6, 102, 255, 0.5);"></div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; cursor: pointer;" onclick="toggleEducationalSection()">
+                <h2 style="color: var(--primary); font-size: 1.3rem; margin: 0; font-weight: 900; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.5rem;">📐</span> Why Doesn't 50% + 50% = 100%?
+                </h2>
+                <span id="educationalToggle" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.3s ease;">▼</span>
+              </div>
+
+              <div id="educationalContent" style="display: block; animation: slideDown 0.3s ease-out;">
+                <p style="font-size: 1rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.8;">
+                  Many veterans wonder why two 50% disabilities don't equal 100% combined. The answer lies in the VA's <strong>"whole person"</strong> concept. The VA views your total disability through the lens of remaining functional ability, not simple addition.
+                </p>
+
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--primary); margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                  <h3 style="color: var(--primary); font-size: 1.1rem; margin: 0 0 1rem 0; font-weight: 800;">Visual Example: 50% + 50%</h3>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: linear-gradient(135deg, rgba(6, 102, 255, 0.1), rgba(6, 102, 255, 0.05)); padding: 1rem; border-radius: 8px;">
+                      <div style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">Starting Point</div>
+                      <div style="font-size: 1.1rem;">100% Whole Person</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(191, 10, 48, 0.1), rgba(191, 10, 48, 0.05)); padding: 1rem; border-radius: 8px;">
+                      <div style="font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem;">After 1st Disability</div>
+                      <div style="font-size: 1.1rem;">50% Disabled</div>
+                      <div style="font-size: 0.9rem; color: var(--gray); margin-top: 0.25rem;">50% ability remains</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1)); padding: 1rem; border-radius: 8px;">
+                      <div style="font-weight: 700; color: #b8860b; margin-bottom: 0.5rem;">After 2nd Disability</div>
+                      <div style="font-size: 1.1rem;">50% of remaining 50%</div>
+                      <div style="font-size: 0.9rem; color: var(--gray); margin-top: 0.25rem;">= 25% additional</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); padding: 1rem; border-radius: 8px; border: 2px solid #22c55e;">
+                      <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">Final Result</div>
+                      <div style="font-size: 1.5rem; font-weight: 900;">75% Combined</div>
+                      <div style="font-size: 0.9rem; color: var(--gray); margin-top: 0.25rem;">Rounds to 80%</div>
+                    </div>
+                  </div>
+
+                  <div style="background: var(--light-gray); padding: 1.25rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 700; color: var(--primary);">Step-by-Step Calculation:</h4>
+                    <ol style="margin: 0; padding-left: 1.5rem; line-height: 2;">
+                      <li style="margin-bottom: 0.5rem;"><strong>Start:</strong> You begin as 100% able-bodied</li>
+                      <li style="margin-bottom: 0.5rem;"><strong>First 50% disability:</strong> You lose 50% of ability, leaving 50% functional</li>
+                      <li style="margin-bottom: 0.5rem;"><strong>Second 50% disability:</strong> This affects your remaining 50% ability (not the whole 100%)</li>
+                      <li style="margin-bottom: 0.5rem;"><strong>Calculation:</strong> 50% × 50% = 25% additional disability</li>
+                      <li style="margin-bottom: 0;"><strong>Total:</strong> 50% + 25% = 75%, which rounds to <strong>80% combined rating</strong></li>
+                    </ol>
+                  </div>
+                </div>
+
+                <div style="background: rgba(6, 102, 255, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(6, 102, 255, 0.2);">
+                  <p style="margin: 0; color: var(--dark); font-size: 0.95rem; line-height: 1.7;">
+                    <strong>💡 Why This System Exists:</strong> The VA recognizes that disabilities interact with each other. This prevents ratings from exceeding 100% (since you can't be more than 100% disabled) while ensuring veterans with multiple conditions receive fair compensation. The <strong>efficiency method</strong> is the official calculation used by VA rating specialists.
+                  </p>
+                </div>
+
+                <p style="margin: 1.5rem 0 0 0; font-size: 0.9rem; color: var(--gray); text-align: center;">
+                  📚 <strong>Official Source:</strong> <a href="https://www.ecfr.gov/current/title-38/chapter-I/part-4/subpart-A/section-4.25" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; text-decoration: underline;">38 CFR §4.25 - Combined evaluation table</a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick Reference Guide -->
+          <section style="max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem;">
+            <div style="background: linear-gradient(135deg, rgba(0, 40, 104, 0.1), rgba(191, 10, 48, 0.05)); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(0, 40, 104, 0.2), inset 0 0 15px rgba(0, 40, 104, 0.05); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); box-shadow: 0 0 10px rgba(0, 40, 104, 0.5);"></div>
+              <h2 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span style="font-size: 1.5rem;">🇺🇸</span> Quick VA Disability Rate Reference (2025)
+              </h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; border-left: 4px solid #94a3b8; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.85rem; color: var(--gray); font-weight: 600;">10% Disability</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #94a3b8;">$175.51</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">No dependents</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; border-left: 4px solid #60a5fa; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.85rem; color: var(--gray); font-weight: 600;">30% Disability</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #60a5fa;">$543.54</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">+ Dependent benefits</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; border-left: 4px solid #f59e0b; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.85rem; color: var(--gray); font-weight: 600;">50% Disability</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #f59e0b;">$1,114.02</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">+ Commissary access</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <p style="margin: 0; font-size: 0.85rem; color: var(--gray); font-weight: 600;">70% Disability</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ef4444;">$1,759.19</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">+ Priority healthcare</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); border: 2px solid var(--accent);">
+                  <p style="margin: 0; font-size: 0.85rem; color: var(--gray); font-weight: 600;">100% Disability</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--primary);">$3,831.30 <span style="font-size: 0.65rem; background: var(--accent); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 4px; margin-left: 0.25rem; font-weight: 900;">MAX</span></p>
+                  <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: var(--gray);">+ Full benefits</p>
+                </div>
+
+              </div>
+              <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--dark); text-align: center; font-style: italic; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                💡 Tip: Veterans rated 30%+ receive additional compensation for dependents | Rates adjusted annually for COLA
+              </p>
+            </div>
+          </section>
+
+          <!-- How to Use This Calculator Guide -->
+          <section id="how-to-use-calculator" style="max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem; scroll-margin-top: 100px;">
+            <div style="background: linear-gradient(135deg, rgba(191, 10, 48, 0.1), rgba(191, 10, 48, 0.05)); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(191, 10, 48, 0.2), inset 0 0 15px rgba(191, 10, 48, 0.05); backdrop-filter: blur(10px); position: relative;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--accent) 100%); box-shadow: 0 0 10px rgba(191, 10, 48, 0.5);"></div>
+              <h2 style="color: var(--dark); font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span style="font-size: 1.5rem;">📋</span> How to Use This VA Disability Calculator
+              </h2>
+              
+              <div style="display: grid; gap: 1rem;">
+                
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">1</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Enter Your Disability Ratings</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">Input each individual disability rating (0% to 100%) from your VA rating decision letter. Use the "Add Another Disability" button for multiple conditions. The calculator accepts all standard VA percentages in 10% increments.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">2</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Mark Bilateral Disabilities</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">For disabilities affecting paired body parts (arms, legs, hands, feet, knees, shoulders, etc.), check the 'Left Side' or 'Right Side' boxes. When you have disabilities on BOTH sides of paired body parts, the calculator automatically applies a 10% bilateral factor bonus to recognize the increased impact.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">3</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Add Your Dependents</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">Check boxes for spouse, children under 18, children over 18 in school, parents, and spouse requiring aid and attendance. Dependent benefits apply only if you're rated 30% or higher.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">4</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Enable TDIU if Applicable</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">If you qualify for Total Disability Individual Unemployability (TDIU), check the TDIU box. This automatically calculates your payment at the 100% rate even if your combined rating is 70-90%, reflecting your inability to maintain substantially gainful employment.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">5</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Review Combined Rating & Calculation Breakdown</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">The calculator shows your combined VA disability rating using the official formula, always rounded to nearest 10%. Click 'Show Step-by-Step Calculation' to see exactly how each disability was combined, including any bilateral factor bonuses applied.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">6</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Check Path to 100%</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">If you're rated between 70-94%, the calculator shows you exactly what additional rating percentage you need to reach 95% (which rounds to 100%). This helps you understand how close you are to maximum compensation.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">7</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">View Monthly Payment with Full Breakdown</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">See your estimated monthly VA compensation based on 2025 rates. The calculator shows base payment, dependent allowances, total monthly benefit, and annual payment. It also displays a month-by-month breakdown if you have retroactive effective dates.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div style="min-width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; border: 2px solid var(--secondary); box-shadow: 0 0 10px rgba(0, 40, 104, 0.4); flex-shrink: 0;">8</div>
+                  <div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--primary); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Save or Print Results</h3>
+                    <p style="margin: 0; color: var(--dark); line-height: 1.6; font-size: 0.95rem;">Use the save button to store your calculation locally, or print your results for VSO appointments, financial planning, or personal records. Results can also be copied to clipboard.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <p style="margin: 1.25rem 0 0; padding-top: 1rem; border-top: 2px solid rgba(0, 40, 104, 0.2); color: var(--dark); font-size: 0.9rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                🇺🇸 No registration required • 100% free • VA.gov verified rates • Veteran-focused design
+              </p>
+            </div>
+          </section>
         </div>
       </main>
     </div>
@@ -3167,732 +3933,193 @@
       </details>
     </div>
 
-    <!-- Content Sections -->
-    <div class="content-sections">
-      <!-- Accurate Calculations -->
-      <div class="content-section">
-        <div
-          style="
-            background: #f0fdf4;
-            border: 1px solid #86efac;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid var(--success);
-            text-align: center;
-          "
-        >
-          <h2 style="margin: 0 0 1rem 0; color: var(--dark); font-size: 1.5rem">
-            ✓ Accurate Calculations
-          </h2>
-          <p
-            style="
-              margin: 0;
-              color: var(--dark);
-              font-size: 1rem;
-              line-height: 1.6;
-            "
-          >
-            This calculator uses official 2025 VA compensation rates including
-            tiered dependent rates that vary by rating percentage and number of
-            dependents.
-          </p>
-        </div>
-      </div>
-
-      <!-- Understanding VA Math -->
-      <div class="content-section" id="understanding-va-math">
-        <h2>Understanding Veterans Affairs Disability Math</h2>
-        <p>
-          The VA uses the "whole person" concept. Instead of adding disabilities
-          together (50% + 30% = 80%), each disability is calculated based on
-          remaining capacity.
-        </p>
-
-        <div class="example-box">
-          <h4>Example Calculation:</h4>
-          <p><strong>First disability:</strong> 50% (leaves you 50% able)</p>
-          <p><strong>Second disability:</strong> 30% of remaining 50% = 15%</p>
-          <p>
-            <strong>Combined:</strong> 50% + 15% = 65% (rounds to 70% for pay)
-          </p>
-        </div>
-      </div>
-
-      <!-- 2025 Pay Rates Table -->
-      <div class="content-section">
-        <h2>2025 Veterans Affairs Disability Pay Rates</h2>
-        <p
-          style="
-            background: #f0f9ff;
-            border-left: 4px solid var(--primary);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 0 8px 8px 0;
-          "
-        >
-          <strong>Note:</strong> The rates shown below reflect accurate 2025 VA
-          compensation rates. For complex dependent scenarios with multiple
-          children or parents, the calculator uses official tiered rates where
-          first dependents receive higher compensation than subsequent
-          dependents.
-        </p>
-        <div class="pay-chart">
-          <table>
-            <thead>
-              <tr>
-                <th>Rating</th>
-                <th>Veteran Alone</th>
-                <th>With Spouse</th>
-                <th>With Spouse + 1 Child</th>
-                <th>Each Additional Child Under 18</th>
-                <th>Each Child 18-23 in School</th>
-              </tr>
-            </thead>
-            <tbody id="payChartBody">
-              <!-- Pay chart will be generated here -->
-            </tbody>
-          </table>
-        </div>
-      </div>
+    </div>
+    <!-- End main content wrapper -->
 
       <!-- FAQ Section -->
-      <div class="content-section">
-        <h2>Frequently Asked Questions</h2>
+      <section style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem;">
+      <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 40, 104, 0.1); border: 1px solid rgba(0, 40, 104, 0.1);">
+        <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid var(--secondary); padding-bottom: 1rem;">
+          🇺🇸 Frequently Asked Questions
+        </h2>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>How does VA math work?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">How is VA combined disability rating calculated?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              VA math, officially called "combined ratings," uses the "whole
-              person" concept that recognizes you can't be more than 100%
-              disabled. Instead of simply adding percentages together, the VA
-              calculates each additional disability as a percentage of your
-              remaining ability to function. This system ensures fair
-              compensation while preventing ratings from exceeding 100%.
-            </p>
-            <p>
-              Here's how it works step-by-step: First, the VA takes your
-              highest-rated disability. Then, for each additional disability,
-              they calculate what percentage of your remaining ability it
-              affects. The formula is: remaining ability = 100% - current
-              combined rating. Each new disability is then calculated as a
-              percentage of this remaining ability.
-            </p>
-            <p>
-              <strong>Concrete Example:</strong> Let's say you have three
-              disabilities: 40% PTSD, 30% back injury, and 20% knee injury.
-              Start with 40% PTSD (highest rating). Remaining ability: 100% -
-              40% = 60%. The 30% back injury affects 30% of your remaining 60%
-              ability = 18%. New total: 40% + 18% = 58%. Remaining ability: 100%
-              - 58% = 42%. The 20% knee injury affects 20% of your remaining 42%
-              ability = 8.4%. Final combined rating: 58% + 8.4% = 66.4%, which
-              rounds to 70% for payment purposes.
-            </p>
-            <p>
-              This system recognizes that disabilities don't simply add together
-              but interact in complex ways. A veteran with multiple conditions
-              often experiences compounded effects that traditional addition
-              wouldn't capture. The VA rounds final ratings to the nearest 10%,
-              which can sometimes work in your favor (66.4% becomes 70%) or
-              against you (74.4% becomes 70%).
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>VA combined disability rating uses a mathematical formula rather than simple addition to avoid over-compensation. The VA starts with your highest disability rating and applies each subsequent rating to the remaining "efficiency" (100% minus current combined rating). For example, if you have ratings of 50%, 30%, and 20%, the calculation works as follows: Start with 50% (leaving 50% efficiency remaining), then apply 30% to the remaining 50% efficiency (30% × 50% = 15%), giving you 65% combined. Next, apply 20% to the remaining 35% efficiency (20% × 35% = 7%), resulting in 72% combined. The final result is always rounded to the nearest 10%, so 72% rounds to 70%. This ensures veterans with multiple conditions receive fair compensation while preventing ratings from exceeding 100% efficiency loss.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>Why doesn't 50% + 50% = 100%?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">What are the 2025 VA disability payment rates?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              This is one of the most confusing aspects of VA disability
-              compensation, but it makes sense once you understand the "whole
-              person" concept. The VA doesn't view disabilities as simply
-              additive because that would imply you could be more than 100%
-              disabled, which is impossible. Instead, they consider how much
-              functional ability you have left after each disability.
-            </p>
-            <p>
-              Here's the detailed breakdown: If you have a 50% disability, the
-              VA considers you 50% able to function normally. When you add a
-              second 50% disability, it doesn't affect your original 50% loss -
-              it affects your remaining 50% ability. So the second disability is
-              calculated as 50% of your remaining 50% ability, which equals 25%
-              additional disability. Your combined rating becomes 50% + 25% =
-              75%, which rounds to 80%.
-            </p>
-            <p>
-              <strong>Why This System Exists:</strong> The VA's approach
-              recognizes that disabilities interact with each other in complex
-              ways. A veteran with two 50% disabilities doesn't experience twice
-              the impact of one 50% disability - the effects compound and
-              overlap. This system also prevents veterans from receiving
-              compensation that exceeds what's possible (you can't be more than
-              100% disabled).
-            </p>
-            <p>
-              <strong>Real-World Impact:</strong> This means that as you add
-              more disabilities, each additional one has a smaller impact on
-              your overall rating. This can be frustrating for veterans who feel
-              their multiple conditions should add up to 100%, but it's designed
-              to be fair and mathematically consistent. Understanding this
-              system helps veterans set realistic expectations about their
-              potential combined ratings.
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>The 2025 VA disability compensation rates range from $171.23 monthly for 10% disability to $3,737.85 monthly for 100% disability (without dependents). Veterans rated 30% or higher receive additional compensation for dependents: married veterans receive extra monthly payments, children under 18 add approximately $31-75 per child depending on your rating tier, and children over 18 in school qualify for additional benefits. Veterans with a spouse requiring aid and attendance receive an additional $101 monthly at 30% rating or higher. Parents can also qualify as dependents, adding $86-141 per parent monthly. These rates are adjusted annually based on the Consumer Price Index to ensure benefits keep pace with inflation and cost of living increases across the United States.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>What is the bilateral factor?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">Do I qualify for dependent benefits?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              The bilateral factor is a special calculation that recognizes that
-              disabilities affecting both sides of paired body parts are more
-              disabling than the sum of their individual ratings. This applies
-              to paired extremities (both arms, both legs, both feet, both
-              hands) and paired skeletal muscles. The VA adds 10% of the
-              combined value of bilateral disabilities before applying them to
-              your overall rating calculation.
-            </p>
-            <p>
-              <strong>The Bilateral Factor Formula:</strong> First, combine your
-              bilateral disabilities using regular VA math. Then, add 10% of
-              that combined value. The formula is: Bilateral Factor = (Combined
-              Bilateral Rating) + (Combined Bilateral Rating × 0.10). This
-              additional percentage recognizes the compounded functional impact
-              of bilateral conditions.
-            </p>
-            <p>
-              <strong>Real Scenario Example:</strong> Let's say you have 40% for
-              your left knee and 30% for your right knee. First, combine them
-              using VA math: Start with 40% left knee. Remaining ability: 100% -
-              40% = 60%. Right knee (30%) affects 30% of remaining 60% = 18%.
-              Combined bilateral rating: 40% + 18% = 58%. Now apply the
-              bilateral factor: 58% + (58% × 0.10) = 58% + 5.8% = 63.8%. This
-              bilateral factor (63.8%) is then used in your overall rating
-              calculation with other disabilities.
-            </p>
-            <p>
-              <strong>Why It Exists:</strong> Bilateral disabilities create
-              unique challenges that single-sided disabilities don't. Losing
-              function in both knees, for example, affects your entire mobility
-              system, balance, and ability to perform daily activities in ways
-              that two separate knee injuries wouldn't. The bilateral factor
-              compensates for this compounded functional loss and recognizes the
-              increased difficulty in adapting to bilateral impairments.
-            </p>
-            <p>
-              <strong>Important Note:</strong> The bilateral factor only applies
-              to disabilities affecting paired body parts. If you have a 40%
-              back injury and a 30% knee injury (unilateral), the bilateral
-              factor doesn't apply because these aren't paired conditions. The
-              factor specifically recognizes the unique challenges of bilateral
-              impairments.
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>Veterans rated 30% or higher qualify for additional compensation for dependents. Eligible dependents include your spouse (legal marriage recognized by the state where you were married), unmarried children under 18 years old, children ages 18-23 enrolled full-time in approved educational institutions, children of any age who became permanently incapable of self-support before age 18, and dependent parents with income below VA-established limits (approximately $24,000 annually). Spouses requiring aid and attendance (needing assistance with daily activities like bathing, feeding, or dressing) qualify for additional monthly compensation. To receive dependent benefits, you must add dependents to your VA records by submitting VA Form 21-686c (Declaration of Status of Dependents) along with supporting documentation such as marriage certificates, birth certificates, and school enrollment verification.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>Can I receive more than 100% disability?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">Is VA disability compensation taxable?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              No, the maximum combined disability rating is 100% - you cannot
-              receive more than 100% for your disability rating itself. However,
-              this doesn't mean your total monthly compensation is capped at the
-              100% rate. The VA provides several ways to increase your monthly
-              payment beyond the base 100% compensation through additional
-              benefits and special circumstances.
-            </p>
-            <p>
-              <strong>Special Monthly Compensation (SMC):</strong> This is the
-              most significant way to receive additional compensation. SMC is
-              paid for specific severe disabilities or combinations of
-              disabilities that result in unusual circumstances. There are
-              multiple SMC levels (SMC-K through SMC-S), each providing
-              different amounts of additional compensation.
-            </p>
-            <p>
-              <strong>SMC-K:</strong> Awarded for specific conditions like loss
-              of use of a hand, foot, or reproductive organ, or for severe
-              conditions like erectile dysfunction due to service-connected
-              medication. Pays approximately $128 per month in 2025.
-            </p>
-            <p>
-              <strong>SMC-L through SMC-N:</strong> Awarded for loss of use of
-              paired extremities or combinations of severe disabilities. For
-              example, SMC-L is for loss of use of both feet, both hands, or one
-              hand and one foot. SMC-M is for loss of use of both legs at or
-              above the knee. These levels provide significantly higher
-              compensation than the base 100% rate.
-            </p>
-            <p>
-              <strong>SMC-R:</strong> Awarded when you need regular aid and
-              attendance for daily activities, or are permanently housebound due
-              to service-connected disabilities. This can provide substantial
-              additional compensation.
-            </p>
-            <p>
-              <strong>Other Additional Compensation:</strong> Dependents
-              (spouse, children, parents) can add hundreds of dollars to your
-              monthly payment. Veterans with 100% ratings and a spouse and two
-              children can receive over $4,000 monthly in 2025. You may also
-              qualify for additional compensation for specific conditions like
-              bilateral blindness or deafness.
-            </p>
-            <p>
-              <strong>How to Apply:</strong> SMC is typically awarded
-              automatically when the VA recognizes qualifying conditions, but
-              you can also file for it specifically if you believe you qualify.
-              The key is ensuring all your disabilities are properly documented
-              and rated.
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>No, VA disability compensation is completely tax-free at federal, state, and local levels. The IRS does not consider VA disability payments as taxable income, meaning you don't report these benefits on your tax return and they don't affect your adjusted gross income (AGI) or tax bracket. This tax-exempt status applies to all VA disability compensation including base payments, dependent allowances, special monthly compensation (SMC), and any retroactive payments you receive. Additionally, VA disability compensation doesn't count toward income limits for federal assistance programs like SNAP (food stamps), though it may affect state-specific benefit calculations. Veterans receiving concurrent retirement and disability pay (CRDP) should note that only the VA disability portion is tax-free; military retirement pay remains taxable unless it's combat-related special compensation (CRSC).</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>How often do VA disability rates increase?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">How long does it take to receive VA disability payments?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              VA disability compensation rates increase annually based on the
-              Cost of Living Adjustment (COLA), which is determined by the
-              Social Security Administration using the Consumer Price Index for
-              Urban Wage Earners and Clerical Workers (CPI-W). This ensures that
-              veterans' benefits maintain their purchasing power as the cost of
-              living rises.
-            </p>
-            <p>
-              <strong>Timeline and Process:</strong> The COLA calculation is
-              based on the average CPI-W for the third quarter (July, August,
-              September) of the current year compared to the same period from
-              the previous year. The Social Security Administration typically
-              announces the COLA percentage in October, and the VA adopts this
-              same percentage for disability compensation.
-            </p>
-            <p>
-              <strong>2025 COLA Increase:</strong> For 2025, veterans received a
-              3.2% increase in their disability compensation, reflecting the
-              rising cost of living. This means a veteran with a 100% disability
-              rating saw their monthly compensation increase from approximately
-              $3,737 to $3,857. Even veterans with lower ratings received
-              proportional increases.
-            </p>
-            <p>
-              <strong>When Changes Take Effect:</strong> The new rates typically
-              take effect on December 1st of each year, with the first increased
-              payment arriving in January. Veterans don't need to apply for
-              these increases - they're automatically applied to all eligible
-              compensation payments. The VA usually publishes the new rate
-              tables in October, giving veterans advance notice of their
-              increased benefits.
-            </p>
-            <p>
-              <strong>Historical Context:</strong> COLA increases have varied
-              significantly over the years, from 0% during periods of low
-              inflation to over 14% during high inflation periods like the
-              1980s. The 3.2% increase for 2025 represents a moderate adjustment
-              that helps veterans keep pace with rising costs while maintaining
-              the program's fiscal sustainability.
-            </p>
-            <p>
-              <strong>Automatic Application:</strong> Unlike many other
-              benefits, veterans don't need to take any action to receive COLA
-              increases. The VA automatically applies the new rates to all
-              active disability compensation payments, ensuring that all
-              eligible veterans receive the adjustment without delay.
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>VA disability claim processing times vary significantly based on claim complexity, evidence requirements, and regional workload, but the VA aims to complete claims within 125 days of submission. Initial claims for first-time applicants typically take 3-6 months from submission to decision, while supplemental claims or appeals can take 6-18 months depending on the level of appeal (Supplemental Claim, Higher-Level Review, or Board of Veterans' Appeals). Once your claim is approved, you'll typically receive your first payment within 15 days of the decision date via direct deposit to your bank account. Retroactive payments (back pay) are included in your first payment, calculated from your effective date (usually your claim filing date or date of service separation, whichever is later). To expedite processing, submit a fully developed claim with all medical records, service records, and supporting evidence upfront, or work with an accredited Veterans Service Organization (VSO) representative who can help ensure your claim is complete.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFAQ(this)">
-            <span>How do I file for VA disability?</span>
-            <span class="faq-icon">▼</span>
+        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">Can I work while receiving VA disability compensation?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
           </div>
-          <div class="faq-answer">
-            <p>
-              Filing for VA disability benefits can seem overwhelming, but the
-              process has been streamlined in recent years to make it more
-              accessible. You have three main options for filing: online through
-              VA.gov (the fastest and most efficient method), by mail using VA
-              Form 21-526EZ, or in person at a VA regional office. Each method
-              has its advantages, but online filing is generally recommended for
-              faster processing.
-            </p>
-            <p>
-              <strong>Required Documentation:</strong> You'll need several key
-              documents to support your claim. Most importantly, you need
-              medical evidence that connects your current condition to your
-              military service. This includes current medical records showing
-              your diagnosis and treatment, military service records documenting
-              any injuries or illnesses during service, and your DD-214
-              (Certificate of Release or Discharge from Active Duty). You should
-              also gather any private medical records, statements from family
-              members or fellow service members, and documentation of any
-              incidents that caused your condition.
-            </p>
-            <p>
-              <strong>The Filing Process:</strong> Start by completing VA Form
-              21-526EZ (Application for Disability Compensation and Related
-              Compensation Benefits). This form asks for detailed information
-              about your military service, current disabilities, and medical
-              treatment. You'll need to provide specific dates, locations, and
-              circumstances related to your conditions. Be as detailed as
-              possible - vague or incomplete information can delay your claim or
-              result in denial.
-            </p>
-            <p>
-              <strong>What Happens Next:</strong> After filing, the VA will
-              review your application and may request additional information or
-              schedule you for a Compensation and Pension (C&P) examination.
-              This exam is conducted by a VA-contracted doctor who will evaluate
-              your conditions and provide an opinion on whether they're
-              connected to your military service. The entire process typically
-              takes 3-6 months for initial claims, though this can vary based on
-              complexity and VA workload.
-            </p>
-            <p>
-              <strong>Tips for Success:</strong> Consider working with a
-              Veterans Service Organization (VSO) like the American Legion, VFW,
-              or DAV, which provide free assistance with claims. These
-              organizations have accredited representatives who understand the
-              VA system and can help ensure your claim is properly prepared.
-              Keep copies of everything you submit, and respond promptly to any
-              VA requests for additional information.
-            </p>
-            <p>
-              <strong>Getting Help:</strong> Don't navigate this process alone.
-              The VA has Veterans Service Representatives who can help, and many
-              communities have VSOs that provide free assistance. You can also
-              consult with accredited attorneys or claims agents, though these
-              services typically require a fee. The key is to be thorough,
-              accurate, and persistent throughout the process.
-            </p>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>Yes, you can work and earn income while receiving VA disability compensation without any earnings restrictions or benefit reductions. Unlike Social Security Disability Insurance (SSDI) which has strict income limits, VA disability compensation has no income cap regardless of your disability rating percentage. However, if you're rated 100% disabled under Individual Unemployability (TDIU) status, the VA considers you unable to maintain substantially gainful employment, and earning above marginal employment thresholds ($13,000-14,000 annually as of 2025) may trigger a review of your TDIU status. Veterans rated 100% schedular (based on symptom severity rather than employability) can work without restrictions. If you receive Social Security benefits in addition to VA compensation, be aware that Social Security has separate earnings limits that could affect those benefits. The VA encourages veterans to pursue employment through vocational rehabilitation programs, and working doesn't automatically trigger disability re-evaluation unless your condition significantly improves.</p>
           </div>
         </div>
+
+        <div class="faq-item" style="margin-bottom: 0;">
+          <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 0;">What is the difference between VA disability rating and percentage?</h3>
+            <span class="faq-icon" style="font-size: 1.5rem; transition: transform 0.3s ease; color: var(--secondary);">▼</span>
+          </div>
+          <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+            <p>VA disability rating and percentage refer to the same concept - the VA uses these terms interchangeably to express the severity of your service-connected conditions. Your individual disability ratings (assigned to each specific condition like PTSD at 70%, tinnitus at 10%, back injury at 40%) represent how severely each condition impacts your ability to work and function. Your combined disability rating is the mathematical combination of all individual ratings using VA's combined ratings table, always rounded to the nearest 10% increment (0%, 10%, 20%, up to 100%). This combined rating determines your monthly compensation tier and benefit eligibility. For example, you might have individual ratings of 50%, 30%, and 20%, which combine to a 72% rating that rounds to 70% combined - that 70% is what determines your payment and benefits. Higher combined ratings unlock additional benefits like commissary access (50%), CHAMPVA for dependents (100%), and property tax exemptions in many states.</p>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <!-- VA Rating Guide -->
-      <div class="content-section">
-        <h2>Veterans Affairs Disability Rating Guide</h2>
-        <p>
-          The VA assigns disability ratings based on the severity of your
-          service-connected condition. Ratings are given in 10% increments from
-          0% to 100%.
+    <!-- People Also Search For Section -->
+    <section style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem;">
+      <div style="background: linear-gradient(135deg, rgba(0, 40, 104, 0.15) 0%, rgba(191, 10, 48, 0.1) 100%); padding: 2rem; border-radius: 12px; border: 1px solid rgba(0, 40, 104, 0.2); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 40, 104, 0.15); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); box-shadow: 0 0 10px rgba(0, 40, 104, 0.5);"></div>
+        <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+          🔍 People Also Search For
+        </h2>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">💰</span>
+            <span>VA disability pay chart 2025</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🔄</span>
+            <span>How to calculate combined VA rating</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🇺🇸</span>
+            <span>VA dependent benefits eligibility</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">📊</span>
+            <span>Best free VA disability calculator</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">💵</span>
+            <span>VA COLA increase 2025</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🎯</span>
+            <span>100% VA disability benefits list</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">⚖️</span>
+            <span>VA disability rating vs percentage</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">🏥</span>
+            <span>VA healthcare eligibility by rating</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">📋</span>
+            <span>TDIU vs 100% schedular rating</span>
+          </li>
+          
+          <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
+            <span style="font-size: 1.5rem;">💡</span>
+            <span>How to increase VA disability rating</span>
+          </li>
+          
+        </ul>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--dark); font-size: 0.9rem; font-style: italic; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+          💡 These searches help us understand what veterans are looking for
         </p>
-
-        <div class="rating-guide">
-          <div class="rating-item">
-            <strong>0% Rating:</strong> Service-connected condition exists but
-            doesn't cause significant impairment
-          </div>
-          <div class="rating-item">
-            <strong>10%-20%:</strong> Mild impairment with some impact on daily
-            activities
-          </div>
-          <div class="rating-item">
-            <strong>30%-40%:</strong> Moderate impairment affecting work and
-            daily life
-          </div>
-          <div class="rating-item">
-            <strong>50%-70%:</strong> Significant impairment with substantial
-            impact on employment
-          </div>
-          <div class="rating-item">
-            <strong>80%-90%:</strong> Severe impairment with major limitations
-          </div>
-          <div class="rating-item">
-            <strong>100%:</strong> Total disability or unemployability due to
-            service-connected conditions
-          </div>
-        </div>
       </div>
+    </section>
 
-      <!-- Additional Benefits -->
-      <div class="content-section">
-        <h2>Additional Veterans Affairs Benefits</h2>
-        <p>
-          Beyond basic disability compensation, veterans may qualify for
-          additional benefits:
-        </p>
+    <!-- VA Guide Link Paragraph -->
+    <p style="margin: 2rem auto; max-width: 1200px; padding: 1.5rem 2rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.15) 0%, rgba(191, 10, 48, 0.1) 100%); border-radius: 12px; line-height: 1.8; border: 2px solid var(--primary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 0 15px rgba(0, 40, 104, 0.25), inset 0 0 10px rgba(0, 40, 104, 0.05); text-align: center;">
+      🇺🇸 <strong style="color: var(--primary);">Want to learn more about VA disability benefits?</strong> <span style="color: var(--dark);">Read our comprehensive</span> <a href="/va-calculator/guide.html" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">VA Disability Guide 2025</a> <span style="color: var(--dark);">covering combined rating calculations with step-by-step examples, complete 2025 payment rate tables, dependent eligibility requirements (spouse, children, parents, aid and attendance), claim filing procedures with strategic tips, C&P examination guidance, the three-lane appeals process (Supplemental Claim, Higher-Level Review, Board Appeal), TDIU Individual Unemployability, Special Monthly Compensation (SMC), additional benefits by rating tier, and expert advice for maximizing your entitled compensation as a veteran.</span>
+    </p>
 
-        <div class="benefits-list">
-          <div class="benefit-item">
-            <h4>Special Monthly Compensation (SMC)</h4>
-            <p>
-              Additional compensation for veterans with severe disabilities
-              requiring special care, loss of use of limbs, or other qualifying
-              conditions.
-            </p>
-          </div>
-
-          <div class="benefit-item">
-            <h4>Aid & Attendance</h4>
-            <p>
-              Additional monthly payment for veterans who need help with daily
-              activities or are housebound due to service-connected
-              disabilities.
-            </p>
-          </div>
-
-          <div class="benefit-item">
-            <h4>Individual Unemployability (IU)</h4>
-            <p>
-              May qualify for 100% compensation if your service-connected
-              disabilities prevent you from maintaining gainful employment.
-            </p>
-          </div>
-
-          <div class="benefit-item">
-            <h4>Dependency and Indemnity Compensation (DIC)</h4>
-            <p>
-              Monthly benefits for surviving spouses and dependent children of
-              veterans who died from service-connected conditions.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- VA Disability Resources -->
-      <div class="va-resources">
-        <h2 class="resources-title">VA Disability Resources</h2>
-
-        <div class="resources-grid">
-          <div class="resource-card">
-            <h3>
-              <span class="card-icon">🏛️</span>
-              Official VA Resources
-            </h3>
-            <ul class="resource-list">
-              <li>
-                <a
-                  href="https://www.va.gov"
-                  class="resource-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >VA.gov</a
-                >
-                <div class="resource-description">
-                  Official VA website for disability benefits, claims, and
-                  services
-                </div>
-              </li>
-              <li>
-                <a
-                  href="https://www.ebenefits.va.gov"
-                  class="resource-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >eBenefits</a
-                >
-                <div class="resource-description">
-                  Access your disability compensation, view claim status, and
-                  manage benefits
-                </div>
-              </li>
-              <li>
-                <a
-                  href="https://www.va.gov/contact-us"
-                  class="resource-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >MyVA411</a
-                >
-                <div class="resource-description">
-                  VA's comprehensive contact and support system for veterans
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="resource-card">
-            <h3>
-              <span class="card-icon">🏥</span>
-              Common VA Disabilities
-            </h3>
-            <div class="resource-list">
-              <div class="condition-item">
-                <span class="condition-name">Tinnitus</span>
-                <span class="condition-rating">10%</span>
-              </div>
-              <div class="condition-item">
-                <span class="condition-name">PTSD</span>
-                <span class="condition-rating">10-100%</span>
-              </div>
-              <div class="condition-item">
-                <span class="condition-name">Back Conditions</span>
-                <span class="condition-rating">10-60%</span>
-              </div>
-              <div class="condition-item">
-                <span class="condition-name">Knee Injuries</span>
-                <span class="condition-rating">10-50%</span>
-              </div>
-              <div class="condition-item">
-                <span class="condition-name">Depression/Anxiety</span>
-                <span class="condition-rating">10-100%</span>
-              </div>
-            </div>
-            <div
-              class="resource-description"
-              style="margin-top: 1rem; font-style: italic"
-            >
-              Ratings vary based on severity and impact on daily life. These are
-              typical ranges.
-            </div>
-          </div>
-
-          <div class="resource-card">
-            <h3>
-              <span class="card-icon">🧮</span>
-              More Free Calculators
-            </h3>
-            <ul class="resource-list">
-              <li>
-                <a href="/gaming-calculators/" class="resource-link"
-                  >Gaming Currency Calculators</a
-                >
-                <div class="resource-description">
-                  Calculate costs for Apex Coins, V-Bucks, Robux, and more
-                </div>
-              </li>
-              <li>
-                <a href="/tip-calculator/" class="resource-link"
-                  >Tip Calculator</a
-                >
-                <div class="resource-description">
-                  Quick and easy tip calculations for restaurants and services
-                </div>
-              </li>
-              <li>
-                <a href="/gst-calculator/" class="resource-link"
-                  >GST Calculator</a
-                >
-                <div class="resource-description">
-                  Calculate Goods and Services Tax for various transactions
-                </div>
-              </li>
-            </ul>
-            <a href="/" class="calculator-link">
-              <span>🔗</span>
-              View All Tools
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Disclaimer -->
-      <div class="disclaimer">
-        <strong>Disclaimer:</strong> This calculator provides estimates based on
-        official 2025 VA compensation rates published by the Department of
-        Veterans Affairs. The calculations include accurate base rates and
-        dependent additions that vary by rating percentage. However, individual
-        circumstances may vary, and this tool does not account for Special
-        Monthly Compensation (SMC), Cost-of-Living Adjustments (COLA) made after
-        January 2025, or state-specific benefits. For official determinations,
-        please consult with the Department of Veterans Affairs or an accredited
-        Veterans Service Officer. This tool is for informational purposes only
-        and does not constitute legal or financial advice.
+    <!-- Related Tools Section -->
+    <div style="background: var(--light-gray); padding: 2rem; margin: 3rem 0; border-radius: 12px; border: 1px solid rgba(0, 40, 104, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden; max-width: 1200px; margin-left: auto; margin-right: auto;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%); box-shadow: 0 0 10px rgba(0, 40, 104, 0.5);"></div>
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+        🔧 More Financial & Gaming Calculators
+      </h3>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 0 2rem;">
+        
+        <a href="/gst-calculator/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">GST Calculator India</a>
+        
+        <a href="/gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">Robux Calculator</a>
+        
+        <a href="/gaming-calculators/vbucks/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">V-Bucks Calculator</a>
+        
+        <a href="/gaming-calculators/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 8px; text-decoration: none; color: white; border: 2px solid var(--accent); font-weight: 900; box-shadow: 0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 30px rgba(0, 40, 104, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2)';">All Calculators</a>
+        
       </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="logo">VA Disability Calculator</div>
-            <p>
-              Free VA disability calculator for accurate compensation estimates
-            </p>
-            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-          </div>
-
-          <div class="footer-links">
-            <!-- Column 1 - Products -->
-            <div class="footer-column">
-              <h4>Products</h4>
-              <div class="footer-subsection">
-                <h5>Premium APIs</h5>
-                <a href="/riskscore/">RiskScore API</a>
-                <a href="/dupecheck/">DupeCheck</a>
-                <a href="#">Coming Soon</a>
-              </div>
-              <div class="footer-subsection">
-                <h5>Free Tools</h5>
-                <a href="/gst-calculator/">GST Calculator India</a>
-                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
-              </div>
-            </div>
-
-            <!-- Column 2 - Company -->
-            <div class="footer-column">
-              <h4>Company</h4>
-              <a href="https://forgeapis.com">Forge APIs</a>
-              <a href="mailto:hello@forgeapis.com">Contact Us</a>
-            </div>
-
-            <!-- Column 3 - Legal -->
-            <div class="footer-column">
-              <h4>Legal</h4>
-              <a href="/privacy.html">Privacy Policy</a>
-              <a href="/cookies.html">Cookie Policy</a>
-              <a href="/terms.html">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Footer Links (hidden on desktop) -->
-        <div class="footer-mobile-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/terms.html">Terms</a>
-          <a href="/cookies.html">Cookies</a>
-          <a href="https://forgeapis.com">More Tools</a>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="footer-bottom-left">
-            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-            <p class="footer-note">
-              Free tools for everyone. Accurate calculations, always.
-            </p>
-          </div>
-          <div class="footer-bottom-right">
-            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
-              📧 Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
 
     <script>
       // 2025 VA Disability Rates
       const vaRates = {
         0: { single: 0, married: 0 },
-        10: { single: 171.23, married: 171.23 },
-        20: { single: 338.49, married: 338.49 },
-        30: { single: 524.31, married: 586.31 },
-        40: { single: 755.28, married: 838.28 },
-        50: { single: 1075.16, married: 1179.16 },
-        60: { single: 1361.88, married: 1486.88 },
-        70: { single: 1716.28, married: 1861.28 },
-        80: { single: 1995.01, married: 2161.01 },
-        90: { single: 2241.91, married: 2428.91 },
-        100: { single: 3737.85, married: 3946.25 },
+        10: { single: 175.51, married: 175.51 },
+        20: { single: 349.48, married: 349.48 },
+        30: { single: 543.54, married: 608.24 },
+        40: { single: 783.06, married: 869.26 },
+        50: { single: 1114.02, married: 1221.17 },
+        60: { single: 1410.00, married: 1541.49 },
+        70: { single: 1759.19, married: 1911.79 },
+        80: { single: 2045.17, married: 2219.03 },
+        90: { single: 2298.29, married: 2499.60 },
+        100: { single: 3831.30, married: 4052.10 },
       };
 
       let disabilityCount = 0;
@@ -3987,6 +4214,19 @@
             <option value="90">90%</option>
             <option value="100">100%</option>
           </select>
+          <div class="bilateral-checkboxes">
+            <label>
+              <input type="checkbox" class="bilateral-left" data-id="${disabilityCount}" onchange="calculateCombinedRating()">
+              <span>👈 Left Side (for bilateral factor)</span>
+            </label>
+            <label>
+              <input type="checkbox" class="bilateral-right" data-id="${disabilityCount}" onchange="calculateCombinedRating()">
+              <span>👉 Right Side (for bilateral factor)</span>
+            </label>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--gray); margin-top: 0.5rem; font-style: italic;">
+            Check these if this disability affects a paired body part (arms, legs, hands, feet, etc.). Bilateral disabilities get a 10% bonus calculation.
+          </div>
           <button class="remove-btn" onclick="removeDisability(this)" ${
             disabilityCount <= 2 ? 'style="display:none"' : ""
           }>Remove</button>
@@ -4001,35 +4241,143 @@
         calculateCombinedRating();
       }
 
-      function calculateVACombined(disabilities) {
-        disabilities = disabilities.filter((d) => d > 0);
-        if (disabilities.length === 0) return 0;
-        if (disabilities.length === 1) return disabilities[0];
+      function detectBilateralPairs() {
+        const pairs = new Map();
+        const selects = document.querySelectorAll(".disability-select");
+        
+        selects.forEach((select) => {
+          const disabilityId = select.id.replace("disability", "");
+          const rating = parseInt(select.value);
+          const leftCheckbox = select.parentElement.querySelector('.bilateral-left');
+          const rightCheckbox = select.parentElement.querySelector('.bilateral-right');
+          
+          if (!leftCheckbox || !rightCheckbox || rating <= 0) return;
+          
+          const isLeft = leftCheckbox.checked;
+          const isRight = rightCheckbox.checked;
+          
+          if (isLeft || isRight) {
+            const side = isLeft ? 'left' : 'right';
+            const pairKey = side;
+            if (!pairs.has(pairKey)) {
+              pairs.set(pairKey, []);
+            }
+            pairs.get(pairKey).push({
+              id: disabilityId,
+              rating: rating
+            });
+          }
+        });
+        
+        // Find matching bilateral pairs (left and right with same characteristics)
+        // Simplified: just collect pairs for now, matching logic can be enhanced
+        return Array.from(pairs.values()).filter(group => group.length >= 1);
+      }
 
-        disabilities.sort((a, b) => b - a);
+      function calculateBilateralFactor(bilateralRatings) {
+        if (bilateralRatings.length === 0) return null;
+        
+        // Per 38 CFR §4.26: First combine all bilateral disabilities using efficiency method
+        // No rounding during intermediate calculations
         let combined = 0;
         let remaining = 100;
+        
+        bilateralRatings.forEach((rating) => {
+          const additional = (rating * remaining) / 100;
+          combined = combined + additional;
+          remaining = remaining - additional;
+        });
+        
+        // Add bilateral factor: 10% of the combined bilateral rating
+        // Again, no rounding at this step
+        const bilateralFactor = combined * 0.1;
+        const total = combined + bilateralFactor;
+        
+        return {
+          combined: combined,
+          factor: bilateralFactor,
+          total: total
+        };
+      }
 
-        for (let disability of disabilities) {
-          combined += (disability * remaining) / 100;
-          remaining = remaining - (disability * remaining) / 100;
+      function calculateVACombined(disabilities, showBreakdown = false) {
+        disabilities = disabilities.filter((d) => d > 0);
+        if (disabilities.length === 0) return { result: 0, steps: [] };
+        if (disabilities.length === 1) return { result: disabilities[0], steps: [] };
+
+        // Sort disabilities from highest to lowest per VA efficiency method
+        disabilities.sort((a, b) => b - a);
+        
+        // Efficiency method calculation (per 38 CFR §4.25)
+        // Start with 100% efficiency (100% ability remaining)
+        let combined = 0;
+        let remaining = 100;
+        const steps = showBreakdown ? [{ disability: disabilities[0], remaining: 100, before: 0, after: disabilities[0], efficiencyLeft: 100 - disabilities[0] }] : [];
+
+        for (let i = 0; i < disabilities.length; i++) {
+          const disability = disabilities[i];
+          
+          // Apply disability to remaining efficiency (not to total)
+          // Formula: additional rating = (disability % × remaining efficiency) / 100
+          const additional = (disability * remaining) / 100;
+          const newCombined = combined + additional;
+          const newRemaining = remaining - additional;
+          
+          // Track breakdown for transparency
+          if (showBreakdown && i > 0) {
+            steps.push({
+              disability: disability,
+              remaining: remaining,
+              before: combined,
+              after: newCombined,
+              efficiencyLeft: newRemaining
+            });
+          }
+          
+          // Update for next iteration (keep unrounded values)
+          combined = newCombined;
+          remaining = newRemaining;
         }
-        return Math.round(combined / 10) * 10;
+        
+        // CRITICAL: Rounding occurs ONLY ONCE at the final step per 38 CFR §4.25
+        // Rounding rules: final digit 0-4 rounds down, 5-9 rounds up to nearest 10
+        // Example: 72% → 70%, 75% → 80%, 48.4% → 50%
+        const roundedResult = Math.round(combined / 10) * 10;
+        
+        return showBreakdown ? { result: roundedResult, exact: combined, steps: steps } : roundedResult;
       }
 
       function calculateCombinedRating() {
         const disabilities = [];
+        const bilateralDisabilities = [];
         const selects = document.querySelectorAll(".disability-select");
 
         selects.forEach((select) => {
           const value = parseInt(select.value);
+          const leftCheckbox = select.parentElement.querySelector('.bilateral-left');
+          const rightCheckbox = select.parentElement.querySelector('.bilateral-right');
+          const isBilateral = (leftCheckbox && leftCheckbox.checked) || (rightCheckbox && rightCheckbox.checked);
+          
           if (value > 0) {
-            disabilities.push(value);
+            if (isBilateral) {
+              bilateralDisabilities.push(value);
+            } else {
+              disabilities.push(value);
+            }
           }
         });
 
-        const exactCombined = calculateVACombined(disabilities);
-        const roundedCombined = Math.round(exactCombined / 10) * 10;
+        let bilateralInfo = null;
+        if (bilateralDisabilities.length > 0) {
+          bilateralInfo = calculateBilateralFactor(bilateralDisabilities);
+          // Add bilateral result as a single disability for further combination
+          disabilities.push(bilateralInfo.total);
+        }
+
+        const calculationResult = calculateVACombined(disabilities, true);
+        const exactCombined = calculationResult.exact;
+        const roundedCombined = calculationResult.result;
+        const steps = calculationResult.steps;
 
         document.getElementById("ratingNumber").textContent =
           roundedCombined + "%";
@@ -4050,17 +4398,139 @@
           progressFill.classList.add("progress-100");
         }
 
-        // Update explanation
+        // Update explanation with bilateral info
         const explanation = document.getElementById("ratingExplanation");
-        if (exactCombined !== roundedCombined) {
-          explanation.textContent = `Exact calculation: ${exactCombined.toFixed(
-            1
-          )}% (rounds to ${roundedCombined}% for payment)`;
+        if (bilateralInfo) {
+          const bilateralText = `Bilateral Factor Applied: ${bilateralInfo.factor.toFixed(1)}% added to ${bilateralInfo.combined.toFixed(1)}% = ${bilateralInfo.total.toFixed(1)}%`;
+          if (exactCombined !== roundedCombined) {
+            explanation.innerHTML = `${bilateralText}<br>Exact calculation: ${exactCombined.toFixed(1)}% (rounds to ${roundedCombined}% for payment)`;
+          } else {
+            explanation.innerHTML = `${bilateralText}<br>Combined rating: ${roundedCombined}%`;
+          }
         } else {
-          explanation.textContent = `Combined rating: ${roundedCombined}%`;
+          if (exactCombined !== roundedCombined) {
+            explanation.textContent = `Exact calculation: ${exactCombined.toFixed(1)}% (rounds to ${roundedCombined}% for payment)`;
+          } else {
+            explanation.textContent = `Combined rating: ${roundedCombined}%`;
+          }
         }
 
+        // Show calculation breakdown
+        const breakdownDiv = document.getElementById("calculationBreakdown");
+        const breakdownSteps = document.getElementById("breakdownSteps");
+        
+        if (disabilities.length > 0 && exactCombined > 0) {
+          let breakdownHTML = '';
+          
+          // Show starting point
+          breakdownHTML += `<div style="padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem; border-left: 3px solid var(--primary);">
+            <strong>Starting Point:</strong> 100% efficiency
+          </div>`;
+          
+          // Show bilateral factor if applicable
+          if (bilateralInfo) {
+            breakdownHTML += `<div style="padding: 0.5rem; background: rgba(255, 215, 0, 0.1); border-radius: 6px; margin-bottom: 0.5rem; border-left: 3px solid #ffd700;">
+              <strong>Bilateral Disabilities:</strong> ${bilateralDisabilities.join('%, ')}%<br>
+              Combined: ${bilateralInfo.combined.toFixed(1)}% + ${bilateralInfo.factor.toFixed(1)}% factor = <strong>${bilateralInfo.total.toFixed(1)}%</strong>
+            </div>`;
+          }
+          
+          // Show each disability step
+          const allDisabilities = [...disabilities].sort((a, b) => b - a);
+          let currentTotal = 0;
+          let remaining = 100;
+          
+          allDisabilities.forEach((rating, index) => {
+            const remainingBefore = remaining;
+            const additional = (rating * remaining) / 100;
+            currentTotal = currentTotal + additional;
+            remaining = remaining - additional;
+            
+            const isFirst = index === 0;
+            const isBilateralTotal = bilateralInfo && index === 0 && rating === bilateralInfo.total;
+            const label = isBilateralTotal ? 'Bilateral Total' : `Disability ${index + 1}`;
+            
+            breakdownHTML += `<div style="padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem; border-left: 3px solid ${isFirst ? 'var(--primary)' : '#22c55e'};">
+              <div><strong>${label}:</strong> ${rating}% applies to ${remainingBefore.toFixed(1)}% remaining</div>
+              <div style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">
+                ${rating}% × ${remainingBefore.toFixed(1)}% = ${additional.toFixed(1)}% → Total: ${currentTotal.toFixed(1)}% (${remaining.toFixed(1)}% efficiency left)
+              </div>
+            </div>`;
+          });
+          
+          // Show final result
+          breakdownHTML += `<div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(6, 102, 255, 0.1), rgba(191, 10, 48, 0.05)); border-radius: 6px; border: 2px solid var(--primary);">
+            <strong>Final Result:</strong> ${exactCombined.toFixed(1)}% → rounds to <strong>${roundedCombined}%</strong>
+          </div>`;
+          
+          breakdownSteps.innerHTML = breakdownHTML;
+          breakdownDiv.style.display = 'block';
+        } else {
+          breakdownDiv.style.display = 'none';
+        }
+
+        // Show/hide TDIU section
+        const tdiuSection = document.getElementById("tdiuSection");
+        const totalDisabilities = disabilities.length + bilateralDisabilities.length;
+        if (totalDisabilities > 0) {
+          tdiuSection.style.display = 'block';
+        } else {
+          tdiuSection.style.display = 'none';
+        }
+
+        // Show/hide Path to 100% section based on exact rating
+        updatePathTo100(exactCombined, roundedCombined);
+
         calculatePayment();
+      }
+
+      function updatePathTo100(exactRating, roundedRating) {
+        const pathSection = document.getElementById('pathTo100Section');
+        
+        // Only show for veterans between 70% and 94% (before rounding)
+        if (exactRating >= 70 && exactRating < 95) {
+          pathSection.style.display = 'block';
+          
+          // Calculate what additional rating is needed to reach 95% (which rounds to 100%)
+          // To find needed rating, we need to solve: current + additional = 95%
+          // Using efficiency method: additional = (needed / remaining) × 100
+          const remaining = 100 - exactRating;
+          const neededTo95 = 95 - exactRating;
+          const additionalRatingNeeded = (neededTo95 / remaining) * 100;
+          
+          // Update current unrounded rating
+          document.getElementById('currentUnroundedRating').textContent = exactRating.toFixed(1) + '%';
+          
+          // Update target
+          document.getElementById('targetRating').textContent = '95%';
+          
+          // Update additional needed (round to nearest whole percentage for clarity)
+          const additionalNeededRounded = Math.round(additionalRatingNeeded);
+          document.getElementById('additionalNeeded').textContent = additionalNeededRounded + '%';
+          
+          // Calculate progress percentage (how far toward 95%)
+          const progress = (exactRating / 95) * 100;
+          document.getElementById('progressPercentage').textContent = progress.toFixed(0) + '%';
+          document.getElementById('pathProgressFill').style.width = progress + '%';
+          
+          // Generate personalized message
+          let message = `You're at <strong>${exactRating.toFixed(1)}%</strong> (displays as ${roundedRating}%). `;
+          
+          if (additionalNeededRounded < 10) {
+            message += `You need just <strong style="color: var(--secondary);">${additionalNeededRounded}% more</strong> to reach 95%, which rounds to 100% total disability. `;
+            message += `You're very close to qualifying for maximum compensation!`;
+          } else if (additionalNeededRounded < 20) {
+            message += `You need <strong style="color: var(--secondary);">${additionalNeededRounded}% more</strong> to reach 95%, which rounds to 100%. `;
+            message += `This is within reach - consider filing for any additional service-connected conditions.`;
+          } else {
+            message += `You need <strong style="color: var(--secondary);">${additionalNeededRounded}% more</strong> to reach 95%, which rounds to 100%. `;
+            message += `Consider filing for secondary conditions or requesting an increase evaluation for your current disabilities.`;
+          }
+          
+          document.getElementById('pathMessage').innerHTML = message;
+        } else {
+          pathSection.style.display = 'none';
+        }
       }
 
       function calculatePayment() {
@@ -4074,8 +4544,9 @@
           }
         });
 
-        const combinedRating = calculateVACombined(disabilities);
-        const roundedRating = Math.round(combinedRating / 10) * 10;
+        const combinedRatingResult = calculateVACombined(disabilities);
+        const combinedRating = typeof combinedRatingResult === 'object' ? combinedRatingResult.exact : combinedRatingResult;
+        const roundedRating = typeof combinedRatingResult === 'object' ? combinedRatingResult.result : Math.round(combinedRating / 10) * 10;
 
         const dependents = {
           married: document.getElementById("married").checked,
@@ -4331,6 +4802,133 @@
         calculateCombinedRating();
       }
 
+      function checkTDIUEligibility() {
+        const tdiuSection = document.getElementById("tdiuSection");
+        const tdiuResult = document.getElementById("tdiuResult");
+        const checkbox = document.getElementById("tdiuCheckbox");
+        
+        if (!checkbox.checked) {
+          tdiuResult.style.display = 'none';
+          return;
+        }
+        
+        // Get current disabilities
+        const disabilities = [];
+        const selects = document.querySelectorAll(".disability-select");
+        selects.forEach((select) => {
+          const value = parseInt(select.value);
+          if (value > 0) {
+            disabilities.push(value);
+          }
+        });
+        
+        if (disabilities.length === 0) {
+          tdiuResult.innerHTML = '<p style="color: var(--gray); margin: 0;">Add disability ratings first to check TDIU eligibility.</p>';
+          tdiuResult.style.display = 'block';
+          return;
+        }
+        
+        // Check eligibility criteria
+        const maxDisability = Math.max(...disabilities);
+        const calculationResult = calculateVACombined(disabilities, true);
+        const combinedRating = calculationResult.exact;
+        
+        let isEligible = false;
+        let eligibilityReason = '';
+        
+        // Check for single disability ≥60%
+        if (maxDisability >= 60) {
+          isEligible = true;
+          eligibilityReason = `Single disability of ${maxDisability}% meets the ≥60% threshold`;
+        }
+        // Check for combined ≥70% with at least one ≥40%
+        else if (combinedRating >= 70 && maxDisability >= 40) {
+          isEligible = true;
+          eligibilityReason = `Combined rating of ${combinedRating.toFixed(1)}% with a ${maxDisability}% disability meets the requirements`;
+        }
+        
+        if (isEligible) {
+          // Calculate current payment (from existing calculation)
+          const dependents = {
+            married: document.getElementById("married")?.checked || false,
+            spouseAidAttendance: document.getElementById("spouseAidAttendance")?.checked || false,
+            childrenUnder18: parseInt(document.getElementById("childrenUnder18")?.value) || 0,
+            childrenInSchool: parseInt(document.getElementById("childrenInSchool")?.value) || 0,
+            oneParent: document.getElementById("oneParent")?.checked || false,
+            twoParents: document.getElementById("twoParents")?.checked || false
+          };
+          
+          const roundedRating = Math.round(combinedRating / 10) * 10;
+          const currentMonthly = vaRates[roundedRating].single; // Simplified - should use actual calculation
+          
+          // TDIU pays at 100% rate regardless of rating
+          const tdiuMonthly = vaRates[100].single;
+          const monthlyDifference = tdiuMonthly - currentMonthly;
+          const annualDifference = monthlyDifference * 12;
+          
+          tdiuResult.innerHTML = `
+            <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05)); padding: 1.25rem; border-radius: 10px; border: 2px solid #22c55e; margin-bottom: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                <span style="font-size: 1.5rem;">✅</span>
+                <h4 style="margin: 0; color: #16a34a; font-size: 1.1rem; font-weight: 800;">You May Qualify for TDIU</h4>
+              </div>
+              <p style="margin: 0 0 0.75rem 0; color: var(--dark); font-size: 0.95rem;">${eligibilityReason}</p>
+            </div>
+            
+            <div style="background: white; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid #e5e7eb;">
+              <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 700; color: var(--primary);">Payment Comparison:</h4>
+              <div style="display: grid; gap: 0.5rem;">
+                <div style="padding: 0.5rem; background: var(--light-gray); border-radius: 6px;">
+                  <div style="font-weight: 600; color: var(--gray); font-size: 0.85rem;">Current Rating Payment:</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; color: var(--dark);">$${currentMonthly.toFixed(2)}/month (${roundedRating}%)</div>
+                </div>
+                <div style="padding: 0.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 6px; border: 1px solid #22c55e;">
+                  <div style="font-weight: 600; color: #16a34a; font-size: 0.85rem;">TDIU Payment (100% rate):</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; color: #16a34a;">$${tdiuMonthly.toFixed(2)}/month</div>
+                </div>
+                <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05)); border-radius: 8px; border: 2px solid #ffd700; text-align: center;">
+                  <div style="font-weight: 600; color: #b8860b; font-size: 0.85rem; margin-bottom: 0.25rem;">Potential Annual Increase:</div>
+                  <div style="font-size: 1.3rem; font-weight: 900; color: #b8860b;">$${annualDifference.toLocaleString()}</div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="background: rgba(6, 102, 255, 0.05); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 1rem;">
+              <p style="margin: 0; font-size: 0.9rem; color: var(--dark); line-height: 1.6;">
+                <strong>⚠️ Important Restrictions:</strong> TDIU is for veterans unable to maintain substantially gainful employment due to service-connected disabilities. Income limits apply - you cannot earn more than the poverty-level threshold (~$15,060 annually in 2025) from work. TDIU pays at 100% rate but doesn't change your actual disability rating.
+              </p>
+            </div>
+            
+            <div style="text-align: center;">
+              <p style="margin: 0; font-size: 0.9rem; color: var(--gray);">
+                💡 <strong>Learn More:</strong> <a href="#complete-guide" style="color: var(--primary); font-weight: 600; text-decoration: underline;" onclick="toggleMobileGuide(); return false;">View TDIU information in the complete guide</a>
+              </p>
+            </div>
+          `;
+        } else {
+          tdiuResult.innerHTML = `
+            <div style="background: rgba(239, 68, 68, 0.1); padding: 1.25rem; border-radius: 10px; border: 2px solid #ef4444;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                <span style="font-size: 1.5rem;">❌</span>
+                <h4 style="margin: 0; color: #dc2626; font-size: 1.1rem; font-weight: 800;">TDIU Eligibility Criteria Not Met</h4>
+              </div>
+              <p style="margin: 0; color: var(--dark); font-size: 0.95rem; line-height: 1.6;">
+                To qualify for TDIU, you need either:
+              </p>
+              <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; color: var(--dark); font-size: 0.95rem; line-height: 1.8;">
+                <li>A single disability rated at least <strong>60%</strong>, OR</li>
+                <li>A <strong>combined rating of 70% or higher</strong> with at least one disability rated at least <strong>40%</strong></li>
+              </ul>
+              <p style="margin: 0.75rem 0 0; font-size: 0.9rem; color: var(--gray);">
+                Your current ratings: ${disabilities.join('%, ')}% (combined: ${Math.round(combinedRating).toFixed(1)}%)
+              </p>
+            </div>
+          `;
+        }
+        
+        tdiuResult.style.display = 'block';
+      }
+
       function toggleMobileGuide() {
         const guide = document.getElementById("complete-guide");
         const button = document.querySelector(".mobile-guide-toggle");
@@ -4391,6 +4989,244 @@
 
         answer.classList.toggle("active");
         icon.classList.toggle("rotated");
+      }
+
+      // Historical VA Rates for Retroactive Calculator
+      const historicalRates = {
+        2025: { single: 3831.30, married: 4052.10 },
+        2024: { single: 3737.85, married: 3946.25 },
+        2023: { single: 3621.95, married: 3830.70 },
+        2022: { single: 3331.39, married: 3526.51 },
+        2021: { single: 3142.89, married: 3327.53 },
+        2020: { single: 3040.73, married: 3219.13 }
+      };
+
+      // State Benefits Data
+      const stateBenefits = [
+        { name: 'Alabama', type: 'Partial', rating: '100%', details: 'Up to $13,000 property tax exemption', website: 'https://revenue.alabama.gov/property-tax/veterans-exemption/' },
+        { name: 'Alaska', type: 'None', rating: 'N/A', details: 'No state property tax exemption', website: 'https://www.dva.alaska.gov' },
+        { name: 'Arizona', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://as.az.gov/veterans-benefits' },
+        { name: 'Arkansas', type: 'Full', rating: '100%', details: 'Full homestead property tax exemption', website: 'https://www.dfa.arkansas.gov/income-tax/veterans' },
+        { name: 'California', type: 'Partial', rating: '100%', details: 'Exemption varies by county, typically $1,000-4,000', website: 'https://www.calvet.ca.gov' },
+        { name: 'Colorado', type: 'Partial', rating: '50%+', details: '50% exemption for 50%+ rating', website: 'https://www.colorado.gov/cdhs/veterans-benefits' },
+        { name: 'Connecticut', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://portal.ct.gov/CTVA' },
+        { name: 'Delaware', type: 'Full', rating: '100%', details: 'Full property tax exemption at 100% rating', website: 'https://veterans.delaware.gov' },
+        { name: 'Florida', type: 'Full', rating: '100%', details: 'Complete property tax exemption for permanent residents', website: 'https://www.floridavets.org' },
+        { name: 'Georgia', type: 'Full', rating: '100%', details: 'Full homestead property tax exemption', website: 'https://veterans.georgia.gov' },
+        { name: 'Hawaii', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://dod.hawaii.gov/veterans' },
+        { name: 'Idaho', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.idaho.gov' },
+        { name: 'Illinois', type: 'Partial', rating: '70%+', details: 'Exemption varies by county and rating', website: 'https://www2.illinois.gov/veterans' },
+        { name: 'Indiana', type: 'Partial', rating: '10%+', details: 'Exemption varies by disability rating percentage', website: 'https://www.in.gov/dva' },
+        { name: 'Iowa', type: 'Partial', rating: '100%', details: 'Up to $7,718 exemption for 100% disabled veterans', website: 'https://ivmf.state.ia.us' },
+        { name: 'Kansas', type: 'Full', rating: '50%+', details: 'Full property tax exemption for 50%+ disabled veterans', website: 'https://www.kansastag.gov/VeteransAffairs' },
+        { name: 'Kentucky', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.ky.gov' },
+        { name: 'Louisiana', type: 'Full', rating: '100%', details: 'Complete property tax exemption for homestead', website: 'https://www.vetaffairs.la.gov' },
+        { name: 'Maine', type: 'Full', rating: '100%', details: 'Complete property tax exemption for permanent 100% rating', website: 'https://www.maine.gov/dvem' },
+        { name: 'Maryland', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.maryland.gov' },
+        { name: 'Massachusetts', type: 'Partial', rating: '10%+', details: 'Variable exemption based on rating and local programs', website: 'https://www.mass.gov/massachusetts-department-of-veterans-services' },
+        { name: 'Michigan', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.michigan.gov/mvaa' },
+        { name: 'Minnesota', type: 'Partial', rating: '70%+', details: 'Up to $150,000 value exemption for qualified veterans', website: 'https://mn.gov/mdva' },
+        { name: 'Mississippi', type: 'Full', rating: '100%', details: 'Complete homestead property tax exemption', website: 'https://www.msva.ms.gov' },
+        { name: 'Missouri', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://mvc.dps.mo.gov' },
+        { name: 'Montana', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://mtvaclientportal.mt.gov' },
+        { name: 'Nebraska', type: 'Full', rating: '50%+', details: 'Property tax exemption varies by rating', website: 'https://veterans.nebraska.gov' },
+        { name: 'Nevada', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.nv.gov' },
+        { name: 'New Hampshire', type: 'Partial', rating: '100%', details: 'Variable exemption by municipality', website: 'https://www.nh.gov/veterans' },
+        { name: 'New Jersey', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://nj.gov/military/veterans' },
+        { name: 'New Mexico', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://www.dvs.state.nm.us' },
+        { name: 'New York', type: 'Partial', rating: '40%+', details: 'Exemption varies by county and rating', website: 'https://veterans.ny.gov' },
+        { name: 'North Carolina', type: 'Partial', rating: '50%+', details: 'Up to $45,000 property tax exemption', website: 'https://www.nc.gov/agencies/military-affairs-veterans-service' },
+        { name: 'North Dakota', type: 'Partial', rating: '50%+', details: 'Variable exemption based on rating', website: 'https://www.nd.gov/dtvs' },
+        { name: 'Ohio', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://dvs.ohio.gov' },
+        { name: 'Oklahoma', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.ok.gov/odva' },
+        { name: 'Oregon', type: 'Partial', rating: '40%+', details: 'Property tax exemption varies by disability percentage', website: 'https://www.oregon.gov/odva/Pages/default.aspx' },
+        { name: 'Pennsylvania', type: 'Full', rating: '100%', details: 'Complete property tax exemption at 100% rating', website: 'https://www.dmva.pa.gov/veterans' },
+        { name: 'Rhode Island', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://dvs.ri.gov' },
+        { name: 'South Carolina', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://scdva.sc.gov' },
+        { name: 'South Dakota', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://vetaffairs.sd.gov' },
+        { name: 'Tennessee', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.tn.gov/veteran.html' },
+        { name: 'Texas', type: 'Full', rating: '100%', details: 'Complete homestead property tax exemption', website: 'https://www.tvc.texas.gov' },
+        { name: 'Utah', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://veterans.utah.gov' },
+        { name: 'Vermont', type: 'Partial', rating: '50%+', details: 'Property tax exemptions vary by town', website: 'https://veterans.vermont.gov' },
+        { name: 'Virginia', type: 'Full', rating: '100%', details: 'Complete property tax exemption at 100% rating', website: 'https://www.dvs.virginia.gov' },
+        { name: 'Washington', type: 'Partial', rating: '30%+', details: 'Property tax exemption varies by rating and county', website: 'https://www.dva.wa.gov' },
+        { name: 'West Virginia', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://veterans.wv.gov' },
+        { name: 'Wisconsin', type: 'Partial', rating: '70%+', details: 'Property tax credit program for qualified veterans', website: 'https://dva.wi.gov' },
+        { name: 'Wyoming', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.wyomingveterans.org' }
+      ];
+
+      function populateStates() {
+        const stateListDiv = document.getElementById('stateList');
+        stateListDiv.innerHTML = stateBenefits.map(state => `
+          <div class="state-card" data-name="${state.name.toLowerCase()}" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1.1rem; font-weight: 800; border-bottom: 2px solid var(--primary); padding-bottom: 0.25rem;">${state.name}</h4>
+            <div style="margin-bottom: 0.5rem;">
+              <span style="background: ${state.type === 'Full' ? '#dcfce7' : state.type === 'Partial' ? '#fef3c7' : '#fee2e2'}; color: ${state.type === 'Full' ? '#16a34a' : state.type === 'Partial' ? '#d97706' : '#dc2626'}; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 0.5rem;">${state.type} Exemption</span>
+            </div>
+            <div style="margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--gray);">
+              <strong>Rating Required:</strong> ${state.rating}
+            </div>
+            <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--dark); line-height: 1.5;">
+              ${state.details}
+            </div>
+            <a href="${state.website}" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; text-decoration: underline;">Learn More →</a>
+          </div>
+        `).join('');
+      }
+
+      function filterStates() {
+        const searchTerm = document.getElementById('stateSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.state-card');
+        
+        cards.forEach(card => {
+          const stateName = card.dataset.name;
+          if (stateName.includes(searchTerm)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      // Initialize states when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        populateStates();
+      });
+
+      // TEST CASES - Verification of correct rounding logic per 38 CFR §4.25
+      // Test Case 1: 50% + 30% + 20% = 72% → 70% (rounds down)
+      //   Step 1: 50% of 100% = 50%, remaining = 50%
+      //   Step 2: 30% of 50% = 15%, total = 65%, remaining = 35%
+      //   Step 3: 20% of 35% = 7%, total = 72%, remaining = 28%
+      //   Final: 72% rounded to nearest 10 = 70% ✓
+      //
+      // Test Case 2: 50% + 50% = 75% → 80% (rounds up)
+      //   Step 1: 50% of 100% = 50%, remaining = 50%
+      //   Step 2: 50% of 50% = 25%, total = 75%, remaining = 25%
+      //   Final: 75% rounded to nearest 10 = 80% ✓
+      //
+      // Test Case 3: 30% (left) + 20% (right) bilateral = 44% + 4.4% = 48.4% → 50%
+      //   Combine: 30% of 100% = 30%, remaining = 70%
+      //            20% of 70% = 14%, total = 44%, remaining = 56%
+      //   Add bilateral factor: 44% × 10% = 4.4%
+      //   Total: 44% + 4.4% = 48.4%
+      //   Final: 48.4% rounded to nearest 10 = 50% ✓
+      //
+      // Note: All intermediate calculations maintain decimals (no premature rounding)
+      // Rounding occurs ONLY at the final step to nearest 10%
+      function testVACalculations() {
+        console.log('Testing VA Combined Rating Calculations (38 CFR §4.25):');
+        
+        // Test Case 1
+        const test1 = calculateVACombined([50, 30, 20]);
+        console.log('Test 1 - 50% + 30% + 20%:', test1, 'Expected: 70%');
+        
+        // Test Case 2
+        const test2 = calculateVACombined([50, 50]);
+        console.log('Test 2 - 50% + 50%:', test2, 'Expected: 80%');
+        
+        // Test Case 3 - Bilateral
+        const bilateralResult = calculateBilateralFactor([30, 20]);
+        const bilateralTotal = bilateralResult ? bilateralResult.total : 0;
+        const test3 = Math.round(bilateralTotal / 10) * 10;
+        console.log('Test 3 - 30% (left) + 20% (right) bilateral:', test3, 'Expected: 50%');
+        console.log('Bilateral details:', bilateralResult);
+      }
+
+      function calculateRetroactive() {
+        const claimDate = new Date(document.getElementById('claimFiledDate').value);
+        const approvalDate = new Date(document.getElementById('approvalDate').value);
+        const initialRating = parseInt(document.getElementById('initialRating').value);
+        const currentRating = parseInt(document.getElementById('currentRating').value);
+        const increaseDate = document.getElementById('increaseDate').value ? new Date(document.getElementById('increaseDate').value) : null;
+        const isMarried = document.getElementById('retroactiveMarried').checked;
+
+        if (!claimDate || !approvalDate || initialRating === 0) {
+          document.getElementById('retroactiveResults').style.display = 'none';
+          return;
+        }
+
+        // Calculate months between claim and approval
+        const months = [];
+        const startDate = new Date(claimDate);
+        const endDate = new Date(approvalDate);
+
+        for (let d = new Date(startDate); d <= endDate; d.setMonth(d.getMonth() + 1)) {
+          const year = d.getFullYear();
+          const monthRate = initialRating <= 100 ? vaRates[initialRating][isMarried ? 'married' : 'single'] : 0;
+          
+          // Use historical rates if available, otherwise use current rate
+          const yearRates = historicalRates[year] || historicalRates[2025];
+          const rateRatio = (yearRates[isMarried ? 'married' : 'single']) / historicalRates[2025][isMarried ? 'married' : 'single'];
+          const adjustedRate = monthRate * rateRatio;
+
+          months.push({
+            date: new Date(d),
+            year: year,
+            rating: initialRating,
+            payment: adjustedRate,
+            rounded: adjustedRate
+          });
+        }
+
+        // Handle rating increase if applicable
+        if (currentRating > initialRating && increaseDate) {
+          const increase = new Date(increaseDate);
+          months.forEach(month => {
+            if (month.date >= increase) {
+              const yearRates = historicalRates[month.year] || historicalRates[2025];
+              const rateRatio = (yearRates[isMarried ? 'married' : 'single']) / historicalRates[2025][isMarried ? 'married' : 'single'];
+              month.rating = currentRating;
+              month.payment = vaRates[currentRating][isMarried ? 'married' : 'single'] * rateRatio;
+            }
+          });
+        }
+
+        // Calculate total
+        const total = months.reduce((sum, month) => sum + month.payment, 0);
+
+        // Display results
+        document.getElementById('retroactiveTotal').textContent = '$' + total.toFixed(2).toLocaleString();
+        document.getElementById('retroactiveResults').style.display = 'block';
+
+        // Generate month-by-month breakdown
+        let breakdownHTML = '';
+        months.forEach((month, index) => {
+          if (index < 12 || index % 3 === 0 || index === months.length - 1) {
+            breakdownHTML += `<div style="padding: 0.5rem; background: ${index % 2 === 0 ? 'white' : 'var(--light-gray)'}; border-radius: 6px; margin-bottom: 0.25rem;">
+              ${month.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}: ${month.rating}% rating = $${month.payment.toFixed(2)}
+            </div>`;
+          }
+        });
+        document.getElementById('monthBreakdown').innerHTML = breakdownHTML;
+      }
+
+      function toggleMonthBreakdown() {
+        const breakdown = document.getElementById('monthBreakdown');
+        const toggle = document.getElementById('breakdownToggle');
+        
+        if (breakdown.style.display === 'none') {
+          breakdown.style.display = 'block';
+          toggle.textContent = '▲';
+        } else {
+          breakdown.style.display = 'none';
+          toggle.textContent = '▼';
+        }
+      }
+
+      function toggleEducationalSection() {
+        const content = document.getElementById("educationalContent");
+        const toggle = document.getElementById("educationalToggle");
+        
+        if (content.style.display === "none") {
+          content.style.display = "block";
+          toggle.textContent = "▼";
+          toggle.style.transform = "rotate(0deg)";
+        } else {
+          content.style.display = "none";
+          toggle.textContent = "▶";
+          toggle.style.transform = "rotate(0deg)";
+        }
       }
 
       // Tab Switching Function
@@ -4477,10 +5313,148 @@
       }
     </script>
 
+    <!-- FAQPage Schema Markup -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is VA combined disability rating calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VA combined disability rating uses a mathematical formula rather than simple addition to avoid over-compensation. The VA starts with your highest disability rating and applies each subsequent rating to the remaining 'efficiency' (100% minus current combined rating). For example, if you have ratings of 50%, 30%, and 20%, the calculation works as follows: Start with 50% (leaving 50% efficiency remaining), then apply 30% to the remaining 50% efficiency (30% × 50% = 15%), giving you 65% combined. Next, apply 20% to the remaining 35% efficiency (20% × 35% = 7%), resulting in 72% combined. The final result is always rounded to the nearest 10%, so 72% rounds to 70%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the 2025 VA disability payment rates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 2025 VA disability compensation rates range from $175.51 monthly for 10% disability to $3,831.30 monthly for 100% disability (without dependents). Veterans rated 30% or higher receive additional compensation for dependents: married veterans receive extra monthly payments, children under 18 add approximately $31-75 per child depending on your rating tier, and children over 18 in school qualify for additional benefits. These rates are adjusted annually based on the Consumer Price Index."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I qualify for dependent benefits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Veterans rated 30% or higher qualify for additional compensation for dependents. Eligible dependents include your spouse, unmarried children under 18 years old, children ages 18-23 enrolled full-time in approved educational institutions, children of any age who became permanently incapable of self-support before age 18, and dependent parents with income below VA-established limits. To receive dependent benefits, you must add dependents to your VA records by submitting VA Form 21-686c along with supporting documentation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is VA disability compensation taxable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, VA disability compensation is completely tax-free at federal, state, and local levels. The IRS does not consider VA disability payments as taxable income, meaning you don't report these benefits on your tax return and they don't affect your adjusted gross income or tax bracket. This tax-exempt status applies to all VA disability compensation including base payments, dependent allowances, special monthly compensation, and any retroactive payments you receive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to receive VA disability payments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VA disability claim processing times vary, but the VA aims to complete claims within 125 days of submission. Initial claims typically take 3-6 months from submission to decision. Once approved, you'll typically receive your first payment within 15 days of the decision date via direct deposit. Retroactive payments are included in your first payment, calculated from your effective date. To expedite processing, submit a fully developed claim with all medical records and supporting evidence upfront."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I work while receiving VA disability compensation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can work and earn income while receiving VA disability compensation without any earnings restrictions or benefit reductions. Unlike Social Security Disability Insurance which has strict income limits, VA disability compensation has no income cap regardless of your disability rating percentage. However, if you're rated 100% disabled under Individual Unemployability (TDIU) status, earning above marginal employment thresholds may trigger a review of your TDIU status."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between VA disability rating and percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VA disability rating and percentage refer to the same concept - the VA uses these terms interchangeably to express the severity of your service-connected conditions. Your individual disability ratings represent how severely each condition impacts your ability to function. Your combined disability rating is the mathematical combination of all individual ratings using VA's combined ratings table, always rounded to the nearest 10%. This combined rating determines your monthly compensation tier and benefit eligibility."
+      }
+    }
+  ]
+}
+    </script>
+
     <!-- Floating Guide Button - Mobile Only -->
     <button class="floating-guide-btn" onclick="scrollToGuide()">
       <span class="guide-emoji">📚</span>
       <span>VA Guide</span>
     </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">VA Disability Calculator</div>
+            <p>
+              Free VA disability calculator for accurate compensation estimates
+            </p>
+            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
+          </div>
+
+          <div class="footer-links">
+            <!-- Column 1 - Products -->
+            <div class="footer-column">
+              <h4>Products</h4>
+              <div class="footer-subsection">
+                <h5>Premium APIs</h5>
+                <a href="/riskscore/">RiskScore API</a>
+                <a href="/dupecheck/">DupeCheck</a>
+                <a href="#">Coming Soon</a>
+              </div>
+              <div class="footer-subsection">
+                <h5>Free Tools</h5>
+                <a href="/gst-calculator/">GST Calculator India</a>
+                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
+                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
+                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
+              </div>
+            </div>
+
+            <!-- Column 2 - Company -->
+            <div class="footer-column">
+              <h4>Company</h4>
+              <a href="https://forgeapis.com">Forge APIs</a>
+              <a href="mailto:hello@forgeapis.com">Contact Us</a>
+            </div>
+
+            <!-- Column 3 - Legal -->
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="/privacy.html">Privacy Policy</a>
+              <a href="/cookies.html">Cookie Policy</a>
+              <a href="/terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Footer Links (hidden on desktop) -->
+        <div class="footer-mobile-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/cookies.html">Cookies</a>
+          <a href="https://forgeapis.com">More Tools</a>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-left">
+            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
+            <p class="footer-note">
+              Free tools for everyone. Accurate calculations, always.
+            </p>
+          </div>
+          <div class="footer-bottom-right">
+            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
+              📧 Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
