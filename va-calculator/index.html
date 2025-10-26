@@ -4023,7 +4023,7 @@
         <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
           🔍 People Also Search For
         </h2>
-        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">💰</span>
@@ -5003,22 +5003,22 @@
 
       // State Benefits Data
       const stateBenefits = [
-        { name: 'Alabama', type: 'Partial', rating: '100%', details: 'Up to $13,000 property tax exemption', website: 'https://revenue.alabama.gov/property-tax/veterans-exemption/' },
-        { name: 'Alaska', type: 'None', rating: 'N/A', details: 'No state property tax exemption', website: 'https://www.dva.alaska.gov' },
-        { name: 'Arizona', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://as.az.gov/veterans-benefits' },
+        { name: 'Alabama', type: 'Partial', rating: '100%', details: 'Up to $13,000 property tax exemption', website: 'https://revenue.alabama.gov/property-tax/homestead-exemptions/' },
+        { name: 'Alaska', type: 'None', rating: 'N/A', details: 'No state property tax exemption', website: 'https://veterans.alaska.gov' },
+        { name: 'Arizona', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://dvs.az.gov' },
         { name: 'Arkansas', type: 'Full', rating: '100%', details: 'Full homestead property tax exemption', website: 'https://www.dfa.arkansas.gov/income-tax/veterans' },
-        { name: 'California', type: 'Partial', rating: '100%', details: 'Exemption varies by county, typically $1,000-4,000', website: 'https://www.calvet.ca.gov' },
-        { name: 'Colorado', type: 'Partial', rating: '50%+', details: '50% exemption for 50%+ rating', website: 'https://www.colorado.gov/cdhs/veterans-benefits' },
-        { name: 'Connecticut', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://portal.ct.gov/CTVA' },
+        { name: 'California', type: 'Partial', rating: '100%', details: 'Exemption varies by county, typically $1,000-4,000', website: 'https://www.calvet.ca.gov/pages/property-tax-assistance-program.aspx' },
+        { name: 'Colorado', type: 'Partial', rating: '50%+', details: '50% exemption for 50%+ rating', website: 'https://cdmva.colorado.gov' },
+        { name: 'Connecticut', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://portal.ct.gov/DVA' },
         { name: 'Delaware', type: 'Full', rating: '100%', details: 'Full property tax exemption at 100% rating', website: 'https://veterans.delaware.gov' },
         { name: 'Florida', type: 'Full', rating: '100%', details: 'Complete property tax exemption for permanent residents', website: 'https://www.floridavets.org' },
         { name: 'Georgia', type: 'Full', rating: '100%', details: 'Full homestead property tax exemption', website: 'https://veterans.georgia.gov' },
-        { name: 'Hawaii', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://dod.hawaii.gov/veterans' },
+        { name: 'Hawaii', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://dod.hawaii.gov/ovs/' },
         { name: 'Idaho', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.idaho.gov' },
-        { name: 'Illinois', type: 'Partial', rating: '70%+', details: 'Exemption varies by county and rating', website: 'https://www2.illinois.gov/veterans' },
+        { name: 'Illinois', type: 'Partial', rating: '70%+', details: 'Exemption varies by county and rating', website: 'https://veterans.illinois.gov' },
         { name: 'Indiana', type: 'Partial', rating: '10%+', details: 'Exemption varies by disability rating percentage', website: 'https://www.in.gov/dva' },
-        { name: 'Iowa', type: 'Partial', rating: '100%', details: 'Up to $7,718 exemption for 100% disabled veterans', website: 'https://ivmf.state.ia.us' },
-        { name: 'Kansas', type: 'Full', rating: '50%+', details: 'Full property tax exemption for 50%+ disabled veterans', website: 'https://www.kansastag.gov/VeteransAffairs' },
+        { name: 'Iowa', type: 'Partial', rating: '100%', details: 'Up to $7,718 exemption for 100% disabled veterans', website: 'https://va.iowa.gov' },
+        { name: 'Kansas', type: 'Full', rating: '50%+', details: 'Full property tax exemption for 50%+ disabled veterans', website: 'https://kcsdv.org' },
         { name: 'Kentucky', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.ky.gov' },
         { name: 'Louisiana', type: 'Full', rating: '100%', details: 'Complete property tax exemption for homestead', website: 'https://www.vetaffairs.la.gov' },
         { name: 'Maine', type: 'Full', rating: '100%', details: 'Complete property tax exemption for permanent 100% rating', website: 'https://www.maine.gov/dvem' },
@@ -5028,14 +5028,14 @@
         { name: 'Minnesota', type: 'Partial', rating: '70%+', details: 'Up to $150,000 value exemption for qualified veterans', website: 'https://mn.gov/mdva' },
         { name: 'Mississippi', type: 'Full', rating: '100%', details: 'Complete homestead property tax exemption', website: 'https://www.msva.ms.gov' },
         { name: 'Missouri', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://mvc.dps.mo.gov' },
-        { name: 'Montana', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://mtvaclientportal.mt.gov' },
+        { name: 'Montana', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://montanaveterans.mt.gov' },
         { name: 'Nebraska', type: 'Full', rating: '50%+', details: 'Property tax exemption varies by rating', website: 'https://veterans.nebraska.gov' },
         { name: 'Nevada', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://veterans.nv.gov' },
         { name: 'New Hampshire', type: 'Partial', rating: '100%', details: 'Variable exemption by municipality', website: 'https://www.nh.gov/veterans' },
         { name: 'New Jersey', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://nj.gov/military/veterans' },
         { name: 'New Mexico', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://www.dvs.state.nm.us' },
         { name: 'New York', type: 'Partial', rating: '40%+', details: 'Exemption varies by county and rating', website: 'https://veterans.ny.gov' },
-        { name: 'North Carolina', type: 'Partial', rating: '50%+', details: 'Up to $45,000 property tax exemption', website: 'https://www.nc.gov/agencies/military-affairs-veterans-service' },
+        { name: 'North Carolina', type: 'Partial', rating: '50%+', details: 'Up to $45,000 property tax exemption', website: 'https://www.nc.gov/services/veterans-military' },
         { name: 'North Dakota', type: 'Partial', rating: '50%+', details: 'Variable exemption based on rating', website: 'https://www.nd.gov/dtvs' },
         { name: 'Ohio', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% disabled veterans', website: 'https://dvs.ohio.gov' },
         { name: 'Oklahoma', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.ok.gov/odva' },
@@ -5052,7 +5052,7 @@
         { name: 'Washington', type: 'Partial', rating: '30%+', details: 'Property tax exemption varies by rating and county', website: 'https://www.dva.wa.gov' },
         { name: 'West Virginia', type: 'Full', rating: '100%', details: 'Complete property tax exemption for 100% rating', website: 'https://veterans.wv.gov' },
         { name: 'Wisconsin', type: 'Partial', rating: '70%+', details: 'Property tax credit program for qualified veterans', website: 'https://dva.wi.gov' },
-        { name: 'Wyoming', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://www.wyomingveterans.org' }
+        { name: 'Wyoming', type: 'Full', rating: '100%', details: 'Complete property tax exemption', website: 'https://wyomilitary.wyo.gov' }
       ];
 
       function populateStates() {
