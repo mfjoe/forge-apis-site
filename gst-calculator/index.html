@@ -971,11 +971,12 @@
         width: 100%;
       }
 
-      h1::after {
+      /* Flag emoji removed to avoid duplication with mobile header flag */
+      /* h1::after {
         content: "🇮🇳";
         margin-left: 0.5rem;
         font-size: 1.2rem;
-      }
+      } */
 
       .subtitle {
         color: var(--accent);
@@ -1541,6 +1542,11 @@
 
         /* Hide breadcrumb on mobile */
         .breadcrumb {
+          display: none;
+        }
+
+        /* Hide footer logo on mobile to avoid duplicate */
+        .footer-brand .logo {
           display: none;
         }
 
@@ -2650,7 +2656,7 @@
 
         .mobile-header h1 {
           font-size: 22px;
-          margin: 10px 0 0 0;
+          margin: 18px 0 0 0;
           font-weight: 700;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
