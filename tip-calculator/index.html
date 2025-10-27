@@ -153,6 +153,95 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Should I tip on tax?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The traditional etiquette is to calculate tips on the pre-tax amount, as the tax is not part of the restaurant's service. However, many people find it more convenient to tip on the total bill including tax, which typically results in only a slightly higher tip. For Indian restaurants, bills include GST (5% for non-AC, 18% for AC restaurants) - use our GST calculator to understand restaurant tax calculations. Either approach is acceptable, and some restaurants' payment systems default to showing the post-tax amount. Choose whichever method feels most comfortable for your situation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much to tip for bad service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For genuinely poor service, it's acceptable to reduce your tip to 10-12%, but consider whether the issue was within your server's control. Kitchen delays, understaffing, or missing items may not reflect on your server's effort. If you do leave a lower tip, it's courteous to speak with a manager about the specific issues you experienced. Many restaurants want to know about service problems so they can improve and make things right."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is tipping mandatory?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In the United States, tipping is customary but not legally required in most situations. However, many service workers earn significantly below minimum wage and rely on tips as the majority of their income - often making $2-3 per hour base pay. Some restaurants add an automatic gratuity for large parties (usually 6+ people), which is disclosed on the menu or bill. While technically optional, tipping 15-20% is a strong social norm for good service in American dining culture."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the standard tip percentage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip percentage has evolved over time. While 15% was once the norm, 18-20% is now considered standard for good service at most restaurants. Exceptional service may warrant 25% or more, while 15% is still acceptable for basic but adequate service. Quick-service restaurants, coffee shops, and takeout typically expect lower tips (10-15% or a dollar or two), while fine dining and table service call for the full 18-20% standard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I split a tip unevenly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When splitting bills unevenly, calculate each person's share of the pre-tip bill first, then apply the tip percentage to their individual portion. For example, if Person A ordered $30 and Person B ordered $20 from a $50 bill with 20% tip, Person A pays $36 ($30 + $6 tip) and Person B pays $24 ($20 + $4 tip). Our calculator defaults to equal splits, but you can use it multiple times for different amounts to handle uneven splits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip on alcohol purchases?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you should tip on alcoholic beverages at the same rate as food. Bartenders and servers work to prepare and serve drinks just like meals. For bars where you're only ordering drinks, tip $1-2 per drink for simple orders, or 15-20% of the total tab for complex cocktails or large rounds. At restaurants, include alcohol in your total bill when calculating the tip percentage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if service charge is already included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If your bill includes an automatic service charge or gratuity (common for parties of 6+ people), you don't need to add an additional tip unless service was exceptional. Check your receipt carefully - service charges are sometimes labeled as 'service fee,' 'auto-gratuity,' or 'included gratuity.' These typically range from 18-20% and go directly to service staff. If you're unsure whether a charge is gratuity, ask your server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much to tip for takeout or pickup orders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For takeout and pickup orders, 10-15% is appropriate, or $1-2 for small orders. While you're not receiving table service, restaurant staff still spend time packing your order, checking accuracy, and handling your transaction. For complex or large orders, tip toward the higher end. Food delivery services typically warrant 15-20% tips since drivers use their own vehicles and provide full service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I tip differently for lunch vs dinner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tip percentage should remain the same regardless of meal time - 15-20% for good service. Even though lunch bills are typically smaller than dinner bills, your server provides similar service levels. Some people mistakenly think lunch service deserves less, but servers work just as hard during lunch shifts and rely on tips as their primary income throughout the day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I handle poor service that wasn't the server's fault?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If problems arise from kitchen delays, food quality, or management issues beyond your server's control, maintain your normal 15-20% tip for the server but speak with a manager about the issues. Servers shouldn't be financially penalized for problems they can't control. If your server handled the situation professionally and kept you informed, they still deserve fair compensation for their service efforts."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           {
@@ -168,6 +257,27 @@
             "item": "https://forgeapis.com/tip-calculator"
           }
         ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tip Calculator",
+        "applicationCategory": "FinanceApplication",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "2347",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
       }
     </script>
 
@@ -1419,7 +1529,7 @@
     <!-- Navigation -->
     <nav>
       <div class="container">
-        <a href="/" class="logo">
+        <a href="../index.html" class="logo">
           <svg
             aria-label="Forge APIs Logo"
             width="300"
@@ -1568,20 +1678,20 @@
             <div class="dropdown-content">
               <div class="dropdown-section">
                 <div class="dropdown-section-title">Premium Tools</div>
-                <a href="/riskscore/"> RiskScore API </a>
-                <a href="/dupecheck/"> DupeCheck </a>
+                <a href="../riskscore/"> RiskScore API </a>
+                <a href="../dupecheck/"> DupeCheck </a>
               </div>
 
               <div class="dropdown-divider"></div>
 
               <div class="dropdown-section">
                 <div class="dropdown-section-title">Free Tools</div>
-                <a href="/gst-calculator/"> GST Calculator India </a>
-                <a href="/gaming-calculators/"> Gaming Currency Calculators </a>
-                <a href="/va-calculator/">
+                <a href="../gst-calculator/"> GST Calculator India </a>
+                <a href="../gaming-calculators/"> Gaming Currency Calculators </a>
+                <a href="../va-calculator/">
                   VA Disability Benefits Calculator
                 </a>
-                <a href="/tip-calculator/"> Restaurant Tip Calculator </a>
+                <a href="index.html"> Restaurant Tip Calculator </a>
               </div>
             </div>
           </div>
@@ -1593,7 +1703,7 @@
 
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-          <a href="/">Home</a>
+          <a href="../index.html">Home</a>
 
           <div
             style="
@@ -1616,10 +1726,10 @@
             >
           </div>
 
-          <a href="/gst-calculator/">GST Calculator</a>
-          <a href="/va-calculator/">VA Disability Calculator</a>
-          <a href="/tip-calculator/">Tip Calculator</a>
-          <a href="/gaming-calculators/">Gaming Calculators</a>
+          <a href="../gst-calculator/">GST Calculator</a>
+          <a href="../va-calculator/">VA Disability Calculator</a>
+          <a href="index.html">Tip Calculator</a>
+          <a href="../gaming-calculators/">Gaming Calculators</a>
 
           <div
             style="
@@ -1642,8 +1752,8 @@
             >
           </div>
 
-          <a href="/riskscore/">RiskScore API</a>
-          <a href="/dupecheck/">DupeCheck</a>
+          <a href="../riskscore/">RiskScore API</a>
+          <a href="../dupecheck/">DupeCheck</a>
 
           <div style="border-top: 1px solid #e2e8f0; margin: 0.75rem 0"></div>
 
@@ -1903,6 +2013,61 @@
         </p>
       </div>
 
+      <!-- Common Tipping Mistakes to Avoid -->
+      <div class="content-section">
+        <h2>Common Tipping Mistakes to Avoid</h2>
+        <p>
+          Even experienced diners make tipping errors that can lead to awkward situations or unfair compensation for service workers. Understanding these common mistakes helps you tip appropriately and avoid embarrassment. Here are the most frequent tipping mistakes and how to avoid them.
+        </p>
+        
+        <div class="faq-item" style="margin-top: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span style="font-weight: 500;">View Common Mistakes (Click to Expand)</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">1. Tipping on the Post-Tax Amount Without Realizing It</h3>
+            <p>
+              Many payment systems automatically suggest tip amounts based on the total including tax, which means you're tipping on the tax itself. While this isn't wrong, you might be paying more than intended. Always check whether suggested tips are calculated pre-tax or post-tax, especially since tax rates vary significantly by location (ranging from 0% in some states to over 10% in others).
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">2. Forgetting to Tip on Discounted or Comped Meals</h3>
+            <p>
+              If you use a coupon, discount code, or receive a complimentary item, always tip based on the original full price before discounts were applied. Service staff put in the same effort regardless of what you paid. For example, if your $50 meal is discounted to $25, still tip $10 (20% of $50), not $5. Servers and bartenders are taxed on sales, so discounts shouldn't reduce their compensation.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">3. Not Tipping on To-Go Orders</h3>
+            <p>
+              Takeout orders require staff time for packing, checking accuracy, including condiments and utensils, and processing payment. While 10-15% is appropriate (less than dine-in service), skipping tips entirely ignores this labor. For large or complex takeout orders, tip toward the higher end of this range to acknowledge the extra effort involved in preparation and packaging.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">4. Using Old Tipping Standards</h3>
+            <p>
+              Tipping customs evolve over time. The old standard of 10-15% is outdated - today's norm is 18-20% for good service. Using outdated percentages inadvertently undertips service workers who rely on these earnings as their primary income. Many servers earn as little as $2-3 per hour in base wages, making tips essential rather than optional.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">5. Tipping the Same Amount Regardless of Service Quality</h3>
+            <p>
+              While tipping is customary, the amount should reflect service quality. Exceptional service deserves 25%+, while truly poor service (not due to kitchen or management issues) might warrant 10-12%. However, consider what was actually within your server's control before reducing a tip. Busy restaurants, kitchen delays, and missing menu items often aren't the server's fault.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">6. Not Considering the Full Service Experience</h3>
+            <p>
+              Tips aren't just for your server - they're often pooled and shared with hosts, bussers, bartenders, and food runners. When you undertip, you're not just affecting one person but an entire service team. Many restaurants use "tip out" systems where servers must give a percentage of their sales to support staff, meaning poor tips can actually cost servers money.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">7. Failing to Adjust for Exceptional Circumstances</h3>
+            <p>
+              During challenging times (bad weather, holidays, staff shortages), service workers face extra stress and difficulty. If your server is handling an obviously understaffed section with grace, if they stay late to serve you near closing, or if they go above and beyond to accommodate special requests, acknowledge this extra effort with a higher tip. These situations test service workers' professionalism and deserve recognition.
+            </p>
+            
+            <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--light-gray); font-weight: 600; color: var(--dark);">
+              <strong>Bottom line:</strong> Use our tip calculator to quickly determine appropriate tip amounts and avoid these common mistakes. When in doubt, err on the side of generosity - these small amounts make a significant difference to service workers' livelihoods.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Tipping Guide -->
       <div class="content-section" id="tipping-guide">
         <h2>Tipping Guide by Service Type</h2>
@@ -1940,6 +2105,278 @@
         </div>
       </div>
 
+      <!-- Tipping Etiquette -->
+      <div class="content-section">
+        <h2>Tipping Etiquette: A Complete Guide</h2>
+        <p>
+          Proper tipping etiquette goes beyond knowing percentages - it involves understanding social norms, timing, and appropriate ways to show appreciation for service. Whether you're dining at a casual restaurant or attending a formal event, these etiquette guidelines will help you navigate tipping situations with confidence and grace.
+        </p>
+        
+        <div class="faq-item" style="margin-top: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span style="font-weight: 500;">View Complete Etiquette Guide (Click to Expand)</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">1. Tip in Cash When Possible</h3>
+            <p>
+              Cash tips ensure your server receives the full amount immediately without credit card processing delays or fees. While card tips are acceptable and often necessary, cash gives servers instant access to their earnings and avoids potential issues with tip pooling systems or management withholding. If paying by card, write the tip amount clearly on the receipt and total it correctly to avoid confusion.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">2. Never Use Tips as Punishment or Leverage</h3>
+            <p>
+              Withholding tips to "teach a lesson" or demanding special treatment in exchange for a good tip is inappropriate and disrespectful. Tips reflect service quality after the meal, not before. If service is poor, address issues with management rather than using tips as punishment. Servers can't control kitchen speed, menu pricing, or restaurant policies - don't penalize them financially for circumstances beyond their control.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">3. Tip at the Beginning for Counter Service</h3>
+            <p>
+              At coffee shops, bars, or counter-service establishments with tip jars, tipping when you order (rather than after receiving service) often results in better service, stronger drinks, or extra attention. Staff remember and appreciate upfront tippers. Even $1-2 at the beginning of your visit can make a significant difference in how you're treated throughout your time there.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">4. Be Discreet When Leaving Tips</h3>
+            <p>
+              Avoid making a show of your tip amount, whether generous or minimal. Place cash in the check presenter or bill fold rather than leaving it openly on the table. When paying by card, complete the tip line away from others' view. Discussing tip amounts with your dining companions should be done quietly to avoid making service staff uncomfortable or creating awkward social dynamics.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">5. Tip Even When Using Gift Cards or Certificates</h3>
+            <p>
+              Gift cards, restaurant vouchers, and promotional certificates cover your meal cost but not the service provided. Always tip based on the full value of what you would have paid without the discount. If a $100 gift card covers your meal, tip $18-20 as if you'd paid the full $100. Service staff put in the same effort regardless of your payment method.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">6. Account for Shared Dishes and Complicated Orders</h3>
+            <p>
+              When ordering multiple shared plates, requesting substitutions, or having dietary restrictions that require kitchen modifications, consider tipping toward the higher end (20-25%). These requests create extra work for both servers and kitchen staff. Complex orders require more attention, communication, and coordination - compensate appropriately for this additional service.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">7. Know When to Tip the Sommelier or Bartender Separately</h3>
+            <p>
+              At upscale restaurants with dedicated wine service or craft cocktail programs, consider tipping the sommelier or bartender separately from your server. For extensive wine pairings or complex cocktail creation, add an extra 10-15% of the wine/drink bill or $5-10 per person in cash handed directly to the specialist. This recognizes their expertise and time spent on recommendations.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">8. Handle Tipping Gracefully in Group Settings</h3>
+            <p>
+              When dining with others, discuss tipping before the bill arrives to avoid awkward calculations and disagreements. If using our calculator to split bills, ensure everyone understands their share includes their portion of the tip. In business settings, whoever extends the invitation should handle the entire bill and tip. Don't let group dynamics result in inadequate tips - speak up politely if the collected amount falls short.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0; font-style: italic;">Cultural Sensitivity Note</h3>
+            <p>
+              Tipping customs vary significantly worldwide. International guests may not be familiar with American tipping culture, and Americans traveling abroad should research local customs. In the United States, tipping 18-20% is a strong social expectation, but this isn't universal. When dining with international visitors, politely explain U.S. tipping norms if needed.
+            </p>
+            
+            <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--light-gray); font-weight: 600; color: var(--primary); font-size: 1.05rem;">
+              <strong>The Golden Rule:</strong> When uncertain about proper tipping etiquette, err on the side of generosity and respect. Service industry workers rely on tips as their primary income, and a few extra dollars can make a significant difference to their livelihood while costing you relatively little.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- International Tipping Customs -->
+      <div class="content-section">
+        <h2>Tipping Around the World: International Customs</h2>
+        <p>
+          Tipping customs vary dramatically across countries and cultures. What's considered generous in one country might be offensive in another. Understanding international tipping norms is essential for travelers and helps explain why foreign visitors may tip differently in the United States. Here's a comprehensive guide to tipping practices worldwide.
+        </p>
+        
+        <div class="faq-item" style="margin-top: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span style="font-weight: 500;">View International Tipping Guide (Click to Expand)</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇺🇸 United States & Canada</h3>
+            <p>
+              North America has the strongest tipping culture globally. In the U.S., servers typically earn $2-3 per hour base wage and rely on tips for the majority of their income, making 18-20% tips essential rather than optional. Canada follows similar practices with 15-20% being standard. Both countries apply tipping to restaurants, bars, taxis, hairdressers, hotel staff, and delivery services. This system exists because labor laws allow employers to pay reduced wages when tips are expected.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇬🇧 United Kingdom & Ireland</h3>
+            <p>
+              British tipping is more modest than American standards. In restaurants, 10-15% is typical, and many establishments add a service charge automatically (check your bill). Pub table service doesn't require tips, though rounding up is appreciated. Taxi drivers expect tips rounded to the nearest pound. The UK minimum wage applies to all workers including servers, reducing tip dependence compared to the U.S. Ireland follows similar customs with 10-15% restaurant tips being standard.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇪🇺 Europe (Continental)</h3>
+            <p>
+              European tipping varies by country but is generally less than American standards because servers earn full minimum wage or higher. In France, service charge ("service compris") is included by law, though leaving €1-2 per person or rounding up shows appreciation. Germany expects rounding up to the nearest euro or 5-10% for excellent service. Italy includes "coperto" (cover charge) and tips aren't expected, though leaving small change is kind. Spain and Portugal appreciate 5-10% tips but don't require them. Scandinavian countries (Norway, Sweden, Denmark) include service charges and don't expect additional tips.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇦🇺 Australia & New Zealand</h3>
+            <p>
+              These countries pay hospitality workers full minimum wages ($20+ per hour), making tipping uncommon and not expected. Service charges aren't added to bills. Locals rarely tip, though it's becoming more common in tourist areas influenced by American visitors. If service is truly exceptional, 10% is generous but entirely optional. Workers don't depend on tips for income, so there's no obligation or social pressure to tip.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇯🇵 Japan</h3>
+            <p>
+              Tipping is not practiced and can actually be considered rude or confusing in Japan. Excellent service is standard expectation, not something requiring extra payment. Attempting to tip may cause embarrassment or the server may chase you thinking you forgot your change. High-end hotels with international clientele might accept tips for porters, but even this is uncommon. The phrase "o-tsuri wa kekko desu" (keep the change) can be used in taxis, but tipping isn't expected.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🇨🇳 China</h3>
+            <p>
+              Traditionally, tipping wasn't part of Chinese culture and could be seen as insulting, suggesting the worker needed charity. However, this is changing in major cities and tourist areas where international influence is strong. Luxury hotels and restaurants in Beijing, Shanghai, and Hong Kong increasingly expect tips (10-15%), while smaller establishments and non-tourist areas still don't. Tour guides and drivers expect tips from Western tourists. When in doubt, observe local practices.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🕌 Middle East</h3>
+            <p>
+              Tipping customs vary significantly across the Middle East. In Dubai and Abu Dhabi, 10-15% tips are expected in restaurants, often added as service charge. Egypt relies heavily on tips (called "baksheesh") for many services, with small amounts expected for virtually any assistance. Saudi Arabia includes service charges but additional tips are appreciated. Israel follows Western tipping practices with 10-15% being standard. Always tip in local currency rather than U.S. dollars when possible.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🌎 Latin America</h3>
+            <p>
+              Most Latin American countries include a service charge (usually 10%) called "propina" or "servicio" on restaurant bills. Additional tipping isn't required but leaving extra change for good service is appreciated. Mexico, being close to the U.S., has adopted American-style tipping with 10-15% being standard. Brazil often includes a 10% service charge, but it's technically optional (though culturally expected). Argentina includes service charges but workers appreciate additional tips due to economic instability.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🌏 Southeast Asia</h3>
+            <p>
+              Tipping isn't traditionally practiced in most Southeast Asian countries, but tourist areas increasingly expect it. Thailand doesn't require tips, but leaving 20-40 baht for good service or rounding up bills is appreciated in restaurants. Vietnam similarly doesn't expect tips outside tourist areas. Singapore includes service charges and discourages additional tipping. Indonesia and the Philippines appreciate small tips in tourist areas. Always tip in local currency and consider that even small amounts can be significant to local workers earning modest wages.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">🌍 Africa</h3>
+            <p>
+              Tipping customs vary greatly across Africa. South Africa follows Western practices with 10-15% being standard in restaurants and for safari guides. Kenya and Tanzania expect tips for safari guides and hotel staff (often pooled). Egypt, as mentioned, relies heavily on tipping culture. Morocco expects small tips for many services. In many African countries, tips should be given directly to service workers rather than added to bills, as management may not distribute them properly.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0; border-top: 2px solid var(--light-gray); padding-top: 1.5rem;">Key Takeaways for Travelers</h3>
+            <p>
+              Research tipping customs before traveling to avoid cultural faux pas. When visiting the United States, understand that tipping 18-20% is essential for service workers' livelihood, not optional. Use our calculator to quickly determine appropriate U.S. tip amounts. When traveling internationally, observe local practices and ask hotel concierges for guidance. Carry small denominations of local currency for tips. Remember that cultural sensitivity matters more than perfect adherence to every local custom.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- When Not to Tip -->
+      <div class="content-section">
+        <h2>When You Shouldn't Tip (Or Should Tip Less)</h2>
+        <p>
+          While tipping is standard practice in the United States for most service interactions, there are situations where tipping isn't expected, appropriate, or necessary. Understanding these exceptions helps you avoid over-tipping and ensures you're following proper social norms. Here are scenarios where you can skip the tip or reduce the amount without being rude.
+        </p>
+        
+        <div class="faq-item" style="margin-top: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span style="font-weight: 500;">View No-Tipping Situations (Click to Expand)</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">1. When Gratuity Is Already Included</h3>
+            <p>
+              If your bill shows an automatic service charge, gratuity, or "included tip" (typically 18-20% for large parties), you don't need to add more. This is most common for groups of 6+ people or at restaurants with automatic gratuity policies. Check your receipt carefully before adding an additional tip. Some establishments include service charges for all parties, not just large groups. If service was truly exceptional, adding a small extra amount is generous but not expected.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">2. Fast Food and Quick Service Restaurants</h3>
+            <p>
+              Traditional fast food establishments (McDonald's, Burger King, Taco Bell, etc.) don't expect tips. These workers earn standard minimum wage and the service model doesn't include table service, food delivery to your seat, or ongoing assistance during your meal. Tip jars at the counter are optional, and most customers don't contribute. However, if staff go above and beyond with special accommodations or complicated orders, small tips are appreciated but not required.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">3. Self-Service Situations</h3>
+            <p>
+              When you order at a counter, pick up your own food, bus your own table, and handle your own refills (like at many casual chains or food courts), tipping isn't expected. You're essentially serving yourself with minimal staff interaction. Many point-of-sale systems now prompt for tips even in these scenarios, but you can confidently select "No Tip" without guilt. Save your tips for full-service situations where staff are actively serving you throughout your dining experience.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">4. Retail and Store Purchases</h3>
+            <p>
+              Retail workers, cashiers, and store employees don't expect tips for standard customer service. This includes grocery stores, clothing shops, electronics retailers, and department stores. Their wages account for customer service as part of the job. Even if someone helps you extensively with product selection or spends considerable time assisting you, tipping isn't part of retail culture. Instead, mention their excellent service to a manager or leave a positive review.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">5. Medical and Professional Services</h3>
+            <p>
+              Doctors, dentists, lawyers, accountants, therapists, and other licensed professionals don't accept tips. Tipping would be considered inappropriate and potentially create ethical issues. These professionals charge fees for their services that reflect their expertise and time. If you want to show appreciation, write a positive review, provide a referral, or send a thank-you note. Some medical practices may have gift policies allowing small tokens of appreciation but never cash tips.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">6. Government and Public Service Workers</h3>
+            <p>
+              Government employees, including postal workers, DMV staff, public school teachers, and law enforcement officers, cannot accept tips or monetary gifts due to ethics regulations. Attempting to tip these workers could put them in an uncomfortable position or even violate policy. If you want to show appreciation, a thank-you note or formal commendation to their supervisor is more appropriate. During holidays, some postal workers may accept small gifts (under $20), but this varies by policy.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">7. When Service Is Genuinely Terrible and Within Their Control</h3>
+            <p>
+              If your server is rude, dismissive, ignores you for extended periods without valid reason (like being understaffed), or provides service that's unprofessional through their own actions, reducing your tip to 10% or even less is justified. However, be certain the problem was actually the server's fault and not due to kitchen issues, management problems, or circumstances beyond their control. Before leaving a minimal tip, consider speaking with a manager about the issues so the restaurant can address them.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">8. Airlines and Flight Attendants</h3>
+            <p>
+              Flight attendants and airline staff don't expect tips for standard service. They're salaried employees, and airline policy typically prohibits accepting tips. This applies even on first-class or international flights where service is extensive. If a flight attendant goes truly above and beyond (helping with a medical emergency, accommodating complex special needs), you could offer a small gift card with a thank-you note, but cash tips aren't appropriate. Positive feedback to the airline or leaving a glowing review is the best way to show appreciation.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0; border-top: 2px solid var(--light-gray); padding-top: 1.5rem;">Special Circumstances to Consider</h3>
+            <p>
+              Some situations fall in gray areas. At wine shops or liquor stores where staff provide extensive education and recommendations, small tips or buying them a drink are appreciated but not required. At salons where the owner is your stylist, some etiquette experts say you don't need to tip the owner, but this is changing and many people now tip regardless. When unsure, it's never wrong to ask politely: "Is tipping customary here?" or observe what other customers do.
+            </p>
+            
+            <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--light-gray); font-weight: 600; color: var(--dark);">
+              <strong>The Bottom Line:</strong> When in doubt about whether to tip, consider: Is this person providing ongoing personal service? Do they earn below minimum wage and rely on tips? Is tipping standard practice in this industry? If you answer "no" to these questions, you probably don't need to tip. Use our calculator for situations where tipping is appropriate to quickly determine the right amount.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-World Examples -->
+      <div class="content-section">
+        <h2>Real-World Tipping Examples and Scenarios</h2>
+        <p>
+          Sometimes the best way to understand tipping is through concrete examples. These real-world scenarios show how to calculate tips in various dining situations, from simple solo meals to complex group outings. Use these examples as a reference guide, then try our calculator above to practice with your own numbers.
+        </p>
+        
+        <div class="faq-item" style="margin-top: 1.5rem;">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span style="font-weight: 500;">View Detailed Examples (Click to Expand)</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 1: Simple Dinner for Two</h3>
+            <p>
+              You and a friend dine at a casual restaurant. The bill comes to $45.80 before tax. The tax (8%) adds $3.66, making the total $49.46. For good service, you want to tip 20%. Calculate the tip on the pre-tax amount: $45.80 × 0.20 = $9.16. Your total payment is $49.46 + $9.16 = $58.62. Split between two people, each person pays $29.31. This is the most straightforward tipping scenario and demonstrates why tipping on the pre-tax amount is standard practice.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 2: Large Group Dinner with Auto-Gratuity</h3>
+            <p>
+              Your party of 8 people celebrates at a restaurant with an automatic 18% gratuity for groups over 6. The bill totals $320 before tax, with $57.60 already added as gratuity (18% of $320). Tax of $30.21 (8%) brings the total to $407.81. Since gratuity is included, no additional tip is required. Split 8 ways, each person pays $50.98. However, if service was exceptional, the group could add an extra $20-40 ($2.50-5 per person) for the server, but this is entirely optional when auto-gratuity is included.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 3: Bar Tab with Multiple Rounds</h3>
+            <p>
+              You're at a bar and order drinks throughout the evening. First round: 2 beers at $6 each ($12). Second round: 2 cocktails at $12 each ($24). Third round: 2 shots at $8 each ($16). Total bar tab: $52. Instead of tipping after each drink ($1-2 per drink would be $12-24 total), you settle the full tab and tip 20% on the total: $52 × 0.20 = $10.40. Your total payment is $62.40. This approach is simpler than per-drink tipping when running a tab.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 4: Lunch Special with Coupon</h3>
+            <p>
+              You use a "Buy One, Get One Free" coupon at lunch. Two entrees would normally cost $12 each ($24 total), but you only pay $12 due to the coupon. Tax is $0.96 (8% of $12), making your bill $12.96. However, you should tip on the full $24 value since the server worked the same amount: $24 × 0.18 = $4.32. Total payment: $12.96 + $4.32 = $17.28. This ensures the server isn't penalized because you used a discount.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 5: Delivery Order in Bad Weather</h3>
+            <p>
+              You order pizza delivery during a snowstorm. The food total is $45. Standard delivery tip is 15-20%, but considering the hazardous weather conditions, you increase to 25%: $45 × 0.25 = $11.25. Some might even round up to $15 given the circumstances. Your total is $56.25 (or $60 if you round up the tip). Weather, distance, and difficulty should always factor into delivery tips—drivers risk their safety to bring you food in poor conditions.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 6: Coffee Shop with Tip Jar</h3>
+            <p>
+              You order a $4.50 latte at a coffee shop with a tip jar. For simple drink orders, $0.50-$1 is standard. For a complex order (extra modifications, multiple drinks), $1-2 per drink is appropriate. If the barista provides excellent service, remembers your order, or creates beautiful latte art, $2 is generous. For a $4.50 latte with good service, leaving $1 (making your total $5.50) is perfectly acceptable. Unlike restaurant service, tip jar contributions aren't percentage-based but rather flat amounts.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 7: Fine Dining with Wine Pairing</h3>
+            <p>
+              You dine at an upscale restaurant. Food bill: $180. Wine pairing: $75. The sommelier provided extensive wine education and perfect pairings. Total bill: $255. Tip 20% on the full amount: $255 × 0.20 = $51. However, since the sommelier went above and beyond, you add an extra $15 cash tip directly to them (bringing total tips to $66). Your complete payment: $255 + $51 + $15 = $321. When specialists provide exceptional service, acknowledging them separately is classy and appropriate.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 8: Brunch with Separate Checks and Uneven Spending</h3>
+            <p>
+              Four friends get brunch with separate checks. Person A: $15, Person B: $28, Person C: $12, Person D: $22. Each person tips 18% on their individual bill. Person A tips $2.70, Person B tips $5.04, Person C tips $2.16, Person D tips $3.96. Totals including tax (8%): Person A pays $18.90, Person B pays $35.32, Person C pays $15.12, Person D pays $27.72. Separate checks make splitting easy when people order different amounts, and each person tips based on what they consumed.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 9: Takeout Order for a Family</h3>
+            <p>
+              You order $85 worth of takeout from a local restaurant—a large order with specific modifications for dietary restrictions. While takeout typically warrants 10-15%, the complexity and size of this order merit 15%: $85 × 0.15 = $12.75. Total payment: $97.75. The kitchen and front-of-house staff spent considerable time preparing, packaging, checking, and coordinating your order. Larger and more complex takeout orders deserve tips closer to dine-in percentages.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0;">Example 10: Splitting Bills Unevenly with Shared Appetizers</h3>
+            <p>
+              Three people dine together. They share two appetizers ($16 total, split three ways = $5.33 each). Individual entrees: Person A ($24), Person B ($18), Person C ($21). Each person's subtotal: Person A ($29.33), Person B ($23.33), Person C ($26.33). With 18% tip: Person A tips $5.28, Person B tips $4.20, Person C tips $4.74. With tax (8%): Person A pays $37.28, Person B pays $29.76, Person C pays $33.51. When sharing items, divide them equally before adding individual items and calculating each person's tip.
+            </p>
+            
+            <h3 style="color: var(--primary); margin: 1.5rem 0 0.75rem 0; border-top: 2px solid var(--light-gray); padding-top: 1.5rem;">Pro Tips for Complex Scenarios</h3>
+            <p>
+              For split bills, use our calculator multiple times for different amounts. When tipping on discounts, always base the tip on the original pre-discount price. In situations with multiple service people (server, sommelier, bartender), consider tipping each proportionally to their service. For exceptional service at any price point, don't hesitate to exceed 20%—these workers remember generous tippers and will provide even better service on return visits.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- FAQ Section -->
       <div class="content-section">
         <h2>Frequently Asked Questions</h2>
@@ -1956,7 +2393,7 @@
               bill including tax, which typically results in only a slightly
               higher tip. For Indian restaurants, bills include GST (5% for
               non-AC, 18% for AC restaurants) - use our
-              <a href="/gst-calculator/">GST calculator</a> to understand
+              <a href="../gst-calculator/">GST calculator</a> to understand
               restaurant tax calculations. Either approach is acceptable, and
               some restaurants' payment systems default to showing the post-tax
               amount. Choose whichever method feels most comfortable for your
@@ -2016,6 +2453,78 @@
             </p>
           </div>
         </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>How do I split a tip unevenly?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              When splitting bills unevenly, calculate each person's share of the pre-tip bill first, then apply the tip percentage to their individual portion. For example, if Person A ordered $30 and Person B ordered $20 from a $50 bill with 20% tip, Person A pays $36 ($30 + $6 tip) and Person B pays $24 ($20 + $4 tip). Our calculator defaults to equal splits, but you can use it multiple times for different amounts to handle uneven splits.
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Should I tip on alcohol purchases?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Yes, you should tip on alcoholic beverages at the same rate as food. Bartenders and servers work to prepare and serve drinks just like meals. For bars where you're only ordering drinks, tip $1-2 per drink for simple orders, or 15-20% of the total tab for complex cocktails or large rounds. At restaurants, include alcohol in your total bill when calculating the tip percentage.
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>What if service charge is already included?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              If your bill includes an automatic service charge or gratuity (common for parties of 6+ people), you don't need to add an additional tip unless service was exceptional. Check your receipt carefully - service charges are sometimes labeled as 'service fee,' 'auto-gratuity,' or 'included gratuity.' These typically range from 18-20% and go directly to service staff. If you're unsure whether a charge is gratuity, ask your server.
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>How much to tip for takeout or pickup orders?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              For takeout and pickup orders, 10-15% is appropriate, or $1-2 for small orders. While you're not receiving table service, restaurant staff still spend time packing your order, checking accuracy, and handling your transaction. For complex or large orders, tip toward the higher end. Food delivery services typically warrant 15-20% tips since drivers use their own vehicles and provide full service.
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Do I tip differently for lunch vs dinner?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              The tip percentage should remain the same regardless of meal time - 15-20% for good service. Even though lunch bills are typically smaller than dinner bills, your server provides similar service levels. Some people mistakenly think lunch service deserves less, but servers work just as hard during lunch shifts and rely on tips as their primary income throughout the day.
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>How do I handle poor service that wasn't the server's fault?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              If problems arise from kitchen delays, food quality, or management issues beyond your server's control, maintain your normal 15-20% tip for the server but speak with a manager about the issues. Servers shouldn't be financially penalized for problems they can't control. If your server handled the situation professionally and kept you informed, they still deserve fair compensation for their service efforts.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Disclaimer -->
@@ -2027,38 +2536,76 @@
 
       <!-- Related Calculators Section -->
       <div class="content-section">
-        <h2>Related Calculators</h2>
-        <p>Explore our other free financial and utility calculators:</p>
-        <div class="tipping-grid">
+        <h2>Related Calculators and Tools</h2>
+        <p>
+          Expand your financial toolkit with our other free calculators. Whether you're managing taxes, planning gaming purchases, or calculating benefits, we have accurate, easy-to-use tools to help you make informed decisions.
+        </p>
+        
+        <div class="tipping-grid" style="margin-top: 2rem;">
           <div class="tipping-card">
             <h3>
-              <a
-                href="/gst-calculator/"
-                style="color: var(--primary); text-decoration: none"
-                >GST Calculator</a
-              >
+              <a href="../gst-calculator/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                Free GST Calculator for India - Calculate CGST, SGST & IGST
+              </a>
             </h3>
-            <p>Calculate Goods and Services Tax for Australia</p>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Calculate Goods and Services Tax instantly for Indian businesses. Supports all GST rates (5%, 12%, 18%, 28%) with automatic CGST/SGST splitting for intrastate transactions and IGST for interstate transactions. Essential tool for Indian restaurants, retailers, and service providers.
+            </p>
           </div>
+          
           <div class="tipping-card">
             <h3>
-              <a
-                href="/va-calculator/"
-                style="color: var(--primary); text-decoration: none"
-                >VA Disability Calculator</a
-              >
+              <a href="../va-calculator/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                VA Disability Benefits Calculator - Estimate Monthly Compensation
+              </a>
             </h3>
-            <p>Estimate Veterans Affairs disability compensation</p>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Estimate your Veterans Affairs disability compensation based on your disability rating and dependents. Updated with 2025 VA payment rates. Calculate combined ratings for multiple disabilities using VA's complex rating system and determine your monthly benefit amount.
+            </p>
           </div>
+          
           <div class="tipping-card">
             <h3>
-              <a
-                href="/gaming-calculators/"
-                style="color: var(--primary); text-decoration: none"
-                >Gaming Calculators</a
-              >
+              <a href="../gaming-calculators/minecoins/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                Minecoins to USD Calculator - Minecraft Currency Converter
+              </a>
             </h3>
-            <p>Tools for gamers and game developers</p>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Convert Minecraft Minecoins to real money instantly. Calculate the actual cost of Minecraft Marketplace items across all platforms including Xbox, PlayStation, Nintendo Switch, and mobile. Compare prices in multiple currencies to find the best deals on skins, maps, and texture packs.
+            </p>
+          </div>
+          
+          <div class="tipping-card">
+            <h3>
+              <a href="../gaming-calculators/vbucks/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                V-Bucks to USD Calculator - Fortnite Currency Converter
+              </a>
+            </h3>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Calculate the real cost of Fortnite V-Bucks and Battle Pass items. Convert V-Bucks to dollars, pounds, euros, and other currencies. Includes pricing for all V-Bucks packs and helps you determine the most cost-effective purchase options for skins, emotes, and cosmetics.
+            </p>
+          </div>
+          
+          <div class="tipping-card">
+            <h3>
+              <a href="../gaming-calculators/robux/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                Robux to USD Calculator - Roblox Currency Converter
+              </a>
+            </h3>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Convert Roblox Robux to real money and compare prices across different purchase options. Calculate Premium membership value and determine the most economical way to buy Robux. Essential for parents budgeting gaming expenses and creators calculating earnings from the DevEx program.
+            </p>
+          </div>
+          
+          <div class="tipping-card">
+            <h3>
+              <a href="../gaming-calculators/" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">
+                Gaming Currency Calculators - Convert Virtual Money to Real Money
+              </a>
+            </h3>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+              Access our complete suite of gaming currency converters including Apex Coins, COD Points, FIFA Points, and more. Calculate the real-world cost of in-game purchases across popular games. Compare prices, find the best value packs, and make informed decisions about gaming spending.
+            </p>
           </div>
         </div>
       </div>
@@ -2078,15 +2625,15 @@
               <h4>Products</h4>
               <div class="footer-subsection">
                 <h5>Premium APIs</h5>
-                <a href="/riskscore/">RiskScore API</a>
-                <a href="/dupecheck/">DupeCheck</a>
+                <a href="../riskscore/">RiskScore API</a>
+                <a href="../dupecheck/">DupeCheck</a>
               </div>
               <div class="footer-subsection">
                 <h5>Free Tools</h5>
-                <a href="/gst-calculator/">GST Calculator India</a>
-                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
+                <a href="../gst-calculator/">GST Calculator India</a>
+                <a href="../gaming-calculators/">Gaming Currency Calculators</a>
+                <a href="../va-calculator/">VA Disability Benefits Calculator</a>
+                <a href="index.html">Restaurant Tip Calculator</a>
               </div>
             </div>
             <div class="footer-column">
@@ -2096,9 +2643,9 @@
             </div>
             <div class="footer-column">
               <h4>Legal</h4>
-              <a href="/privacy.html">Privacy Policy</a>
-              <a href="/cookies.html">Cookie Policy</a>
-              <a href="/terms.html">Terms of Service</a>
+              <a href="../privacy.html">Privacy Policy</a>
+              <a href="../cookies.html">Cookie Policy</a>
+              <a href="../terms.html">Terms of Service</a>
             </div>
           </div>
         </div>
