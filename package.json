@@ -1,0 +1,24 @@
+{
+  "name": "va-calculator-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for VA Disability Calculator",
+  "type": "module",
+  "scripts": {
+    "install-browsers": "playwright install",
+    "test": "playwright test",
+    "test:all": "node tests/run-all-tests.js",
+    "test:calculations": "playwright test tests/calculations.spec.js",
+    "test:bilateral": "playwright test tests/bilateral.spec.js",
+    "test:dependents": "playwright test tests/dependents.spec.js",
+    "test:ui": "playwright test tests/ui-interactions.spec.js",
+    "test:mobile": "playwright test tests/mobile.spec.js",
+    "test:headed": "playwright test --headed",
+    "test:uimode": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
+

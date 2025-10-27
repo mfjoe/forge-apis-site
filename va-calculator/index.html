@@ -168,7 +168,7 @@
     }
   ],
   "totalTime": "PT2M"
-}
+      }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1179,7 +1179,9 @@
         }
 
         .calculator-header-compact::before {
-          display: none; /* Remove medal emoji to save space */
+          display: block !important; /* Show American flag emoji */
+          font-size: 2rem; /* Smaller on mobile */
+          margin-bottom: 0.5rem;
         }
 
         .calculator-header-compact p {
@@ -1222,8 +1224,21 @@
         }
 
         .calculator-card {
-          padding: 0.5rem; /* Reduced from 0.75rem */
-          margin-bottom: 0.75rem; /* Reduced from 1rem */
+          padding: 0.75rem;
+          margin-bottom: 0.5rem;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .calculator-wrapper {
+          padding: 0;
+          max-width: 100%;
+          margin: 0;
+        }
+
+        .calculator-main {
+          width: 100%;
+          padding: 0.5rem;
         }
 
         .tab-button {
@@ -1392,14 +1407,24 @@
           position: sticky;
           top: 60px; /* Stick below nav */
           z-index: 10;
-          background: white;
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(0, 40, 104, 0.02));
           border-radius: 12px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          border: 2px solid var(--primary);
+          color: var(--dark) !important;
+        }
+
+        .combined-rating-compact .rating-summary,
+        .combined-rating-compact .rating-label,
+        .combined-rating-compact .rating-number,
+        .combined-rating-compact p {
+          color: var(--dark) !important;
         }
 
         .rating-number {
           font-size: 1.75rem; /* Increased for visibility */
           font-weight: 900;
+          color: var(--primary) !important;
         }
 
         .progress-bar {
@@ -1614,6 +1639,1096 @@
         .footer-mobile-links a:hover {
           color: white;
           background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hide breadcrumb on mobile */
+        .breadcrumb {
+          display: none !important;
+        }
+
+        /* Results section mobile optimization */
+        .result-card {
+          padding: 1rem 0.75rem;
+          margin: 0.75rem 0;
+        }
+
+        .result-card h3 {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .payment-display {
+          padding: 1rem;
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          background: white;
+          border: 2px solid var(--accent);
+          border-radius: 12px;
+          margin: 1rem 0;
+        }
+
+        .monthly-payment {
+          font-size: 1.75rem !important;
+          font-weight: 800;
+          color: var(--success) !important;
+          text-align: center;
+          margin-bottom: 0.5rem;
+          display: block !important;
+        }
+
+        .annual-payment {
+          font-size: 1rem !important;
+          margin-top: 0.5rem;
+          color: var(--dark) !important;
+          text-align: center;
+          display: block !important;
+        }
+
+        .payment-breakdown {
+          font-size: 0.85rem;
+          padding: 0.75rem;
+          margin-top: 0.75rem;
+          display: block !important;
+        }
+
+        .breakdown {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          background: white;
+          padding: 1rem;
+          border-radius: 8px;
+          margin-top: 1rem;
+          border: 1px solid #e5e7eb;
+        }
+
+        .breakdown h4 {
+          color: var(--dark) !important;
+          font-size: 1rem;
+          font-weight: 700;
+          margin-bottom: 0.75rem;
+        }
+
+        .breakdown-item {
+          display: flex !important;
+          justify-content: space-between;
+          padding: 0.75rem 0;
+          color: var(--dark) !important;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breakdown-item:last-child {
+          border-bottom: none;
+        }
+
+        /* How to Use section mobile */
+        .calculator-header-compact + section {
+          padding: 0 1rem !important;
+          margin: 1rem auto !important;
+        }
+
+        .calculator-header-compact + section > div {
+          padding: 1rem !important;
+        }
+
+        .calculator-header-compact + section h2 {
+          font-size: 1.1rem !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .calculator-header-compact + section h3 {
+          font-size: 0.95rem !important;
+          margin-bottom: 0.4rem !important;
+        }
+
+        .calculator-header-compact + section p {
+          font-size: 0.85rem !important;
+          line-height: 1.5 !important;
+        }
+
+        /* Step number badges */
+        .calculator-header-compact + section [style*="min-width: 36px"] {
+          min-width: 32px !important;
+          height: 32px !important;
+          font-size: 0.95rem !important;
+        }
+
+        /* Tables and charts mobile */
+        .pay-chart {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          margin: 1rem -0.75rem;
+          padding: 0 0.75rem;
+        }
+
+        .pay-chart table {
+          font-size: 0.85rem;
+          min-width: 100%; /* Changed from 600px */
+          max-width: 100%; /* Ensure it doesn't exceed container */
+          display: block; /* Make it scrollable */
+          overflow-x: auto;
+        }
+
+        .pay-chart th,
+        .pay-chart td {
+          padding: 0.5rem 0.35rem; /* Reduced from 0.75rem 0.5rem */
+          white-space: normal; /* Allow wrapping instead of nowrap */
+          font-size: 0.75rem; /* Slightly smaller on mobile */
+          word-break: break-word; /* Break long words */
+        }
+
+        .pay-chart th {
+          font-size: 0.8rem;
+          position: sticky;
+          left: 0;
+          background: var(--primary);
+          z-index: 1;
+        }
+
+        /* Add scroll hint */
+        .pay-chart::after {
+          content: "← Swipe to see more →";
+          display: block;
+          text-align: center;
+          font-size: 0.75rem;
+          color: var(--gray);
+          padding: 0.5rem;
+          font-style: italic;
+        }
+
+        /* Comprehensive guide mobile */
+        .comprehensive-guide {
+          padding: 0 0.75rem;
+          padding-top: 60px;
+        }
+
+        .comprehensive-guide h2 {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+          padding: 0 0.25rem;
+        }
+
+        .guide-section {
+          margin-bottom: 1rem;
+          border-radius: 8px;
+        }
+
+        .guide-section summary {
+          padding: 1rem;
+          font-size: 1rem;
+          line-height: 1.3;
+          cursor: pointer;
+        }
+
+        .guide-content {
+          padding: 1rem;
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+
+        .guide-content h3 {
+          font-size: 1.1rem;
+          margin: 1rem 0 0.75rem;
+        }
+
+        .guide-content h4 {
+          font-size: 1rem;
+          margin: 0.75rem 0 0.5rem;
+        }
+
+        .guide-content p {
+          margin-bottom: 0.75rem;
+        }
+
+        .guide-content ul,
+        .guide-content ol {
+          margin-left: 1.25rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .guide-content li {
+          margin-bottom: 0.5rem;
+          line-height: 1.5;
+        }
+
+        /* Content sections mobile */
+        .content-section {
+          padding: 1rem;
+          margin-bottom: 1rem;
+          border-radius: 12px;
+        }
+
+        .content-section h2 {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+        }
+
+        .content-section h3 {
+          font-size: 1.2rem;
+          margin: 1rem 0 0.75rem;
+        }
+
+        .content-section h4 {
+          font-size: 1.05rem;
+          margin: 0.75rem 0 0.5rem;
+        }
+
+        .content-section p {
+          font-size: 0.9rem;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+        }
+
+        .example-box {
+          padding: 1rem;
+          margin: 1rem 0;
+          border-radius: 8px;
+          font-size: 0.9rem;
+        }
+
+        .example-box h4 {
+          font-size: 1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        /* Resource cards mobile */
+        .resources-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .resource-card {
+          padding: 1rem;
+        }
+
+        .resource-card h3 {
+          font-size: 1.1rem;
+        }
+
+        /* Global mobile typography */
+        h1 {
+          font-size: 1.5rem !important;
+          line-height: 1.2;
+        }
+
+        h2 {
+          font-size: 1.3rem !important;
+          line-height: 1.3;
+        }
+
+        h3 {
+          font-size: 1.15rem !important;
+          line-height: 1.3;
+        }
+
+        /* Improve touch scrolling */
+        * {
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+          -webkit-touch-callout: none;
+        }
+
+        /* Ensure no horizontal scroll - CRITICAL */
+        html, body {
+          overflow-x: hidden;
+          max-width: 100vw;
+        }
+
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          max-width: 100%;
+          overflow-x: hidden; /* Add this */
+        }
+
+        /* Fix any elements that might overflow */
+        * {
+          max-width: 100%;
+        }
+
+        /* Specifically fix tables */
+        table {
+          width: 100% !important;
+          max-width: 100% !important;
+          table-layout: auto;
+        }
+
+        .pay-chart {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          margin: 1rem -0.75rem;
+          padding: 0 0.75rem;
+          max-width: calc(100vw - 2rem); /* Ensure container respects viewport */
+        }
+
+        .pay-chart table {
+          font-size: 0.85rem;
+          min-width: 100%; /* Changed from 600px */
+          max-width: 100%;
+          display: block; /* Make it scrollable */
+          overflow-x: auto;
+        }
+
+        .pay-chart th,
+        .pay-chart td {
+          padding: 0.5rem 0.35rem; /* Reduced from 0.75rem 0.5rem */
+          white-space: normal; /* Allow wrapping instead of nowrap */
+          font-size: 0.75rem; /* Slightly smaller on mobile */
+          word-break: break-word; /* Break long words */
+        }
+
+        /* Ensure calculator wrapper doesn't overflow */
+        .calculator-wrapper {
+          padding: 0;
+          max-width: 100%;
+          margin: 0;
+          overflow-x: hidden; /* Add this */
+        }
+
+        .calculator-main {
+          width: 100%;
+          max-width: 100%; /* Add this */
+          padding: 0.5rem;
+          overflow-x: hidden; /* Add this */
+        }
+
+        /* Fix tab panels */
+        .tab-panel {
+          padding: 0.75rem;
+          max-width: 100%; /* Add this */
+          overflow-x: hidden; /* Add this */
+        }
+
+        /* Ensure all cards fit */
+        .calculator-card {
+          padding: 0.75rem;
+          margin-bottom: 0.5rem;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          max-width: 100%; /* Add this */
+          overflow-x: hidden; /* Add this */
+        }
+
+        /* Mobile-specific utility classes */
+        .mobile-only {
+          display: block !important;
+        }
+
+        .desktop-only {
+          display: none !important;
+        }
+
+        /* Improve form elements on mobile */
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+          font-size: 16px !important; /* Prevents iOS zoom */
+          max-width: 100%;
+        }
+
+        /* Hide navbar and footer on mobile */
+        nav {
+          display: none !important;
+        }
+
+        .footer {
+          display: none !important;
+        }
+
+        body {
+          padding-top: 0 !important;
+          padding-bottom: 100px !important; /* Space for sticky bar */
+        }
+
+        /* Mobile sticky results bar */
+        .mobile-results-sticky {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: white;
+          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+          padding: 1rem;
+          z-index: 1000;
+          border-top: 3px solid var(--primary);
+          display: block !important;
+        }
+
+        .mobile-results-sticky button {
+          touch-action: manipulation;
+          min-height: 44px;
+        }
+
+        /* Collapsible sections */
+        .mobile-collapsible-section {
+          background: white;
+          border: 2px solid #e5e7eb;
+          border-radius: 12px;
+          margin-bottom: 1rem;
+          overflow: hidden;
+        }
+
+        .mobile-collapsible-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem;
+          cursor: pointer;
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(0, 40, 104, 0.02));
+          user-select: none;
+          touch-action: manipulation;
+          min-height: 60px;
+        }
+
+        .mobile-collapsible-header h3 {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: var(--dark);
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .mobile-collapsible-badge {
+          font-size: 0.75rem;
+          background: var(--success);
+          color: white;
+          padding: 0.25rem 0.5rem;
+          border-radius: 12px;
+          font-weight: 600;
+          margin-left: 0.5rem;
+        }
+
+        .mobile-collapsible-icon {
+          font-size: 1.5rem;
+          color: var(--primary);
+          transition: transform 0.3s ease;
+        }
+
+        .mobile-collapsible-icon.expanded {
+          transform: rotate(180deg);
+        }
+
+        .mobile-collapsible-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+
+        .mobile-collapsible-content.expanded {
+          max-height: 2000px;
+          padding: 1rem;
+        }
+
+        .mobile-section-empty-state {
+          color: var(--gray);
+          font-size: 0.9rem;
+          font-style: italic;
+        }
+
+        /* Advanced Options collapsed by default on mobile */
+        #advancedContent {
+          max-height: 0;
+        }
+        
+        #advancedIcon {
+          transform: rotate(0deg);
+        }
+
+        /* Disability section should not be collapsible - always show */
+        #disabilities-tab {
+          display: block !important;
+        }
+        
+        /* Make sure disability inputs are prominent */
+        .disability-item {
+          background: white;
+          border: 2px solid #e5e7eb;
+          border-radius: 12px;
+          padding: 1.25rem;
+          margin-bottom: 1rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Highlight the section header */
+        .section-title {
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.08), rgba(0, 40, 104, 0.03));
+          padding: 1rem;
+          border-radius: 10px;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .section-title::before {
+          content: "🎖️";
+          font-size: 1.5rem;
+        }
+
+        /* Touch feedback */
+        .mobile-collapsible-header:active {
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.1), rgba(0, 40, 104, 0.05));
+          transform: scale(0.98);
+        }
+
+        button:active,
+        .btn:active {
+          transform: scale(0.95);
+          transition: transform 0.1s ease;
+        }
+
+        /* Smooth transitions */
+        * {
+          -webkit-tap-highlight-color: rgba(0, 40, 104, 0.1);
+          transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        /* Loading state for calculations */
+        .calculating {
+          opacity: 0.6;
+          pointer-events: none;
+        }
+
+        /* Pulse animation for new results */
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+
+        .mobile-results-sticky.updated {
+          animation: pulse 0.3s ease;
+        }
+
+        .mobile-tab-select {
+          font-size: 16px !important; /* Prevent iOS zoom */
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-tab-select:focus {
+          outline: none;
+          border-color: var(--secondary);
+          box-shadow: 0 0 0 3px rgba(191, 10, 48, 0.1);
+        }
+
+        /* Hide desktop-only elements */
+        .breadcrumb {
+          display: none !important;
+        }
+
+        .quick-stats {
+          display: none !important;
+        }
+
+        .calculator-info-box {
+          display: none !important;
+        }
+
+        /* Simplify header on mobile */
+        .calculator-header-compact p:last-of-type {
+          display: none; /* Hide "last updated" text */
+        }
+
+        .trust-badge .separator {
+          display: none; /* Hide separators to save space */
+        }
+
+        /* Hide complex calculation breakdown on mobile - show in modal instead */
+        .breakdown-container {
+          display: none !important;
+        }
+
+        /* Path to 100% - make more compact */
+        #pathTo100Section {
+          padding: 1rem;
+          margin: 1rem 0;
+        }
+
+        #pathTo100Section h3 {
+          font-size: 1.1rem;
+        }
+
+        #pathTo100Section p {
+          font-size: 0.9rem;
+        }
+
+        /* Compact the results display in tab */
+        #results-tab .result-card {
+          padding: 1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        /* Since we have sticky bar, make results tab more detailed */
+        #results-tab {
+          padding-bottom: 120px; /* Extra space for sticky bar */
+        }
+
+        /* Force single column layout on mobile */
+        .ratings-layout {
+          grid-template-columns: 1fr !important;
+          gap: 1rem !important;
+        }
+
+        .disability-inputs {
+          min-height: 50px !important;
+          padding: 0.5rem 0;
+        }
+
+        .disability-item {
+          min-height: 60px !important;
+        }
+
+        /* Ensure proper spacing with sticky bar */
+        .calculator-main {
+          padding-bottom: 120px;
+          min-height: 100vh;
+        }
+
+        /* Improve form field spacing */
+        .disability-item,
+        .checkbox-group,
+        .input-group {
+          margin-bottom: 1rem;
+        }
+
+        /* Make labels more prominent */
+        label {
+          font-weight: 600;
+          color: var(--dark);
+          font-size: 0.95rem;
+        }
+
+        /* Better focus states for accessibility */
+        input:focus,
+        select:focus,
+        button:focus {
+          outline: 3px solid rgba(0, 40, 104, 0.3);
+          outline-offset: 2px;
+        }
+
+        /* Prevent text selection on UI elements */
+        .mobile-collapsible-header,
+        button,
+        .btn {
+          user-select: none;
+          -webkit-user-select: none;
+        }
+
+        /* Optimize images and icons */
+        svg,
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        /* Loading spinner for calculations */
+        .loading-spinner {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(0, 40, 104, 0.3);
+          border-top-color: var(--primary);
+          border-radius: 50%;
+          animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
+        /* Results section mobile visibility */
+        .results-section-prominent {
+          display: block !important;
+          background: white;
+          padding: 1rem;
+          border-radius: 12px;
+          margin-bottom: 1rem;
+        }
+
+        .results-header {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 2px solid var(--primary);
+        }
+
+        .results-header h2 {
+          display: block !important;
+          font-size: 1.2rem !important;
+          font-weight: 700 !important;
+          color: var(--dark) !important;
+          margin: 0 !important;
+        }
+
+        .clear-btn {
+          display: flex !important;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: #ef4444;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          min-height: 44px;
+        }
+
+        .clear-btn span {
+          font-size: 1.2rem;
+        }
+
+        /* Payment display mobile improvements */
+        .payment-display {
+          background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)) !important;
+          border: 2px solid var(--success) !important;
+          border-radius: 12px;
+          padding: 1.5rem;
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        /* Breakdown section mobile styling */
+        .breakdown {
+          background: #f7fafc !important;
+          border-radius: 10px;
+          padding: 1rem;
+          border: 1px solid #e5e7eb;
+        }
+
+        .breakdown h4 {
+          font-size: 1rem !important;
+          font-weight: 700 !important;
+          color: var(--dark) !important;
+          margin: 0 0 1rem 0 !important;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breakdown-item {
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center;
+          padding: 0.75rem 0;
+          font-size: 0.95rem;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .breakdown-item:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .breakdown-item span:first-child {
+          font-weight: 600;
+          color: var(--dark);
+        }
+
+        .breakdown-item span:last-child {
+          font-weight: 700;
+          color: var(--primary);
+          font-size: 1.1rem;
+        }
+
+        /* How to Use Section - Mobile Optimized */
+        .how-to-section {
+          padding: 1.5rem 1rem;
+          margin: 1rem 0;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .how-to-section h2 {
+          font-size: 1.4rem !important;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          color: var(--primary);
+          font-weight: 700;
+          line-height: 1.3;
+          padding: 0 0.5rem;
+        }
+
+        .how-to-step {
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.03), rgba(191, 10, 48, 0.02));
+          border: 2px solid #e5e7eb;
+          border-left: 4px solid var(--primary);
+          border-radius: 12px;
+          padding: 1.25rem;
+          margin-bottom: 1.25rem;
+          position: relative;
+        }
+
+        .how-to-step:last-child {
+          margin-bottom: 0;
+        }
+
+        .how-to-step-number {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: var(--primary);
+          color: white;
+          border-radius: 50%;
+          font-size: 1.25rem;
+          font-weight: 800;
+          margin-bottom: 0.75rem;
+          box-shadow: 0 2px 8px rgba(0, 40, 104, 0.3);
+        }
+
+        .how-to-step-title {
+          font-size: 1.1rem !important;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.75rem;
+          line-height: 1.4;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .how-to-step-content {
+          font-size: 0.95rem;
+          line-height: 1.7;
+          color: var(--dark);
+          margin: 0;
+        }
+
+        /* Collapsible Version Styles */
+        .how-to-collapsible {
+          background: white;
+          border: 2px solid #e5e7eb;
+          border-radius: 12px;
+          margin-bottom: 0.75rem;
+          overflow: hidden;
+        }
+
+        .how-to-collapsible-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1rem;
+          cursor: pointer;
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(0, 40, 104, 0.02));
+          user-select: none;
+          touch-action: manipulation;
+          transition: background 0.2s ease;
+        }
+
+        .how-to-collapsible-header:active {
+          background: linear-gradient(135deg, rgba(0, 40, 104, 0.1), rgba(0, 40, 104, 0.05));
+        }
+
+        .how-to-collapsible-header .step-number {
+          flex-shrink: 0;
+          width: 36px;
+          height: 36px;
+          background: var(--primary);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          font-weight: 800;
+          box-shadow: 0 2px 6px rgba(0, 40, 104, 0.3);
+        }
+
+        .how-to-collapsible-header .step-title {
+          flex: 1;
+          font-size: 1rem;
+          font-weight: 700;
+          color: var(--dark);
+          line-height: 1.3;
+          margin: 0;
+        }
+
+        .how-to-collapsible-header .chevron {
+          flex-shrink: 0;
+          font-size: 1.2rem;
+          color: var(--primary);
+          transition: transform 0.3s ease;
+        }
+
+        .how-to-collapsible-header.expanded .chevron {
+          transform: rotate(180deg);
+        }
+
+        .how-to-collapsible-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+
+        .how-to-collapsible-content.expanded {
+          max-height: 500px;
+          padding: 1rem;
+          border-top: 1px solid #e5e7eb;
+        }
+
+        .how-to-collapsible-content p {
+          font-size: 0.9rem;
+          line-height: 1.7;
+          color: var(--dark);
+          margin: 0;
+        }
+
+        /* Extra small screens optimization */
+        @media (max-width: 400px) {
+          .how-to-section {
+            padding: 1rem 0.75rem;
+          }
+          
+          .how-to-step {
+            padding: 1rem;
+          }
+          
+          .how-to-step-number {
+            width: 36px;
+            height: 36px;
+            font-size: 1.1rem;
+          }
+          
+          .how-to-step-title {
+            font-size: 1rem !important;
+          }
+          
+          .how-to-step-content {
+            font-size: 0.9rem;
+          }
+        }
+
+        /* ===== MOBILE ONLY - How to Use Collapsible Styles ===== */
+        /* Desktop is completely unaffected by these styles */
+
+        /* On mobile, convert each step to collapsible card */
+        .how-to-step-item {
+          background: white !important;
+          border: 2px solid #e5e7eb !important;
+          border-radius: 12px !important;
+          margin-bottom: 0.75rem !important;
+          overflow: hidden !important;
+          display: block !important;
+          padding: 0 !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+          cursor: pointer !important;
+        }
+
+        /* Step number and title in header */
+        .how-to-step-item > div:first-child {
+          /* Number circle */
+          display: inline-flex !important;
+          margin: 1rem !important;
+          flex-shrink: 0 !important;
+          vertical-align: top !important;
+        }
+
+        .how-to-step-item > div:last-child {
+          /* Content container */
+          display: inline-block !important;
+          width: calc(100% - 70px) !important;
+          vertical-align: top !important;
+          padding: 1rem 1rem 0 0 !important;
+        }
+
+        .how-to-step-item h3 {
+          font-size: 0.95rem !important;
+          margin: 0 !important;
+          padding: 0 1rem 0 0 !important;
+          cursor: pointer !important;
+          user-select: none !important;
+          position: relative !important;
+          line-height: 1.3 !important;
+        }
+
+        /* Chevron indicator */
+        .how-to-step-item h3::after {
+          content: '▼';
+          position: absolute;
+          right: 0;
+          top: 0;
+          font-size: 0.9rem;
+          color: var(--primary);
+          transition: transform 0.3s ease;
+        }
+
+        /* Content paragraph - hidden by default on mobile */
+        .how-to-step-item p {
+          max-height: 0 !important;
+          overflow: hidden !important;
+          opacity: 0 !important;
+          transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease !important;
+          font-size: 0.88rem !important;
+          line-height: 1.6 !important;
+          margin: 0 !important;
+          padding: 0 1rem 0 0 !important;
+        }
+
+        /* Expanded state */
+        .how-to-step-item.mobile-expanded p {
+          max-height: 800px !important;
+          opacity: 1 !important;
+          margin-top: 0.75rem !important;
+          margin-bottom: 1rem !important;
+        }
+
+        /* Rotate chevron when expanded */
+        .how-to-step-item.mobile-expanded h3::after {
+          transform: rotate(180deg);
+        }
+
+        /* Make whole card tappable on mobile */
+        .how-to-step-item.mobile-collapsed {
+          cursor: pointer;
+        }
+
+        /* Reduce padding on mobile for compactness */
+        .how-to-guide-wrapper {
+          padding: 1rem !important;
+        }
+
+        .how-to-guide-wrapper h2 {
+          font-size: 1.2rem !important;
+          margin-bottom: 1rem !important;
+          text-align: center !important;
+        }
+
+        /* Reduce section padding on mobile */
+        #how-to-use-calculator {
+          padding: 0 1rem !important;
+          margin: 1rem auto !important;
+        }
+
+        /* Fix "People Also Search For" horizontal overflow */
+        /* Target all grid lists with 3 columns on mobile */
+        ul[style*="grid-template-columns: repeat(3, 1fr)"] {
+          grid-template-columns: 1fr !important;
+          gap: 0.75rem !important;
+          display: grid !important;
+        }
+
+        /* Target li elements in those grids */
+        section li[style*="display: flex"] {
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 0.875rem 1rem !important;
+          font-size: 0.9rem !important;
+        }
+
+        /* Make sure section containers don't overflow */
+        section[style*="max-width: 1200px"] {
+          padding: 0 1rem !important;
+          margin: 2rem auto !important;
+          overflow-x: hidden !important;
         }
       }
 
@@ -2724,14 +3839,27 @@
           <!-- Tab Interface -->
           <div class="tab-container">
             <!-- Mobile Tab Dropdown (hidden on desktop) -->
-            <select
-              class="mobile-tab-select"
-              onchange="switchTabMobile(this.value)"
-            >
-              <option value="ratings">⭐ Disability Ratings</option>
-              <option value="dependents">👥 Dependents</option>
-              <option value="retroactive">📅 Retroactive Calculator</option>
-              <option value="benefits">🏛️ State Benefits</option>
+            <select class="mobile-tab-select" onchange="switchTabMobile(this.value)" style="
+              width: 100%;
+              padding: 1rem;
+              font-size: 1rem;
+              font-weight: 600;
+              border: 2px solid var(--primary);
+              border-radius: 12px;
+              background: white;
+              color: var(--dark);
+              margin-bottom: 1rem;
+              appearance: none;
+              background-image: url('data:image/svg+xml;utf8,<svg fill=&quot;%23002868&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M7 10l5 5 5-5z&quot;/></svg>');
+              background-repeat: no-repeat;
+              background-position: right 1rem center;
+              background-size: 24px;
+              cursor: pointer;
+              min-height: 56px;
+            ">
+              <option value="ratings">🎖️ Disability Ratings</option>
+              <option value="dependents">👨‍👩‍👧‍👦 Dependents</option>
+              <option value="results">📊 View Results</option>
             </select>
 
             <div class="tab-buttons">
@@ -2754,7 +3882,7 @@
               <div class="tab-panel active" id="ratings-tab">
                 <h2 class="section-title">Disability Ratings</h2>
 
-                <!-- Two-column layout for disability ratings -->
+                <!-- Two-column layout for disability ratings (single column on mobile) -->
                 <div
                   style="
                     display: grid;
@@ -2762,16 +3890,17 @@
                     gap: 2rem;
                     align-items: start;
                   "
+                  class="ratings-layout"
                 >
                   <!-- Left Column: Disability Inputs -->
-                  <div>
+                  <div style="min-height: 100px;">
                     <div class="disability-inputs" id="disabilityInputs">
                       <!-- Disability inputs will be generated here -->
                     </div>
                   </div>
 
                   <!-- Right Column: Add Button and Combined Rating -->
-                  <div>
+                  <div style="min-height: 100px;">
                     <button class="add-disability-btn" id="addDisabilityBtn">
                       <span>🎖️</span>
                       Add Disability Rating
@@ -3128,11 +4257,14 @@
           <!-- Legal Disclaimer -->
           <section style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
             <div style="background: rgba(6, 102, 255, 0.03); border: 1px solid rgba(6, 102, 255, 0.2); border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
-              <h3 style="color: var(--primary); font-size: 1rem; margin: 0 0 1rem 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(6, 102, 255, 0.2); padding-bottom: 0.5rem;">
-                ⚖️ Important Legal Disclaimer
-              </h3>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; cursor: pointer;" onclick="toggleDisclaimerSection()">
+                <h3 style="color: var(--primary); font-size: 1rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.5rem;">
+                  ⚖️ Important Legal Disclaimer
+                </h3>
+                <span id="disclaimerToggle" style="font-size: 1.5rem; color: var(--primary); transition: transform 0.3s ease;">▶</span>
+              </div>
               
-              <div style="font-size: 0.9rem; line-height: 1.8; color: var(--dark);">
+              <div id="disclaimerContent" style="display: none; font-size: 0.9rem; line-height: 1.8; color: var(--dark);">
                 <p style="margin: 0 0 0.75rem 0;">
                   <strong>This calculator is not affiliated with, sponsored by, or endorsed by the U.S. Department of Veterans Affairs (VA) or any government agency.</strong> This is an unofficial, independent tool created to assist veterans in estimating their potential disability compensation.
                 </p>
@@ -3933,7 +5065,7 @@
       </details>
     </div>
 
-    </div>
+        </div>
     <!-- End main content wrapper -->
 
       <!-- FAQ Section -->
@@ -4000,8 +5132,8 @@
           </div>
           <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
             <p>Yes, you can work and earn income while receiving VA disability compensation without any earnings restrictions or benefit reductions. Unlike Social Security Disability Insurance (SSDI) which has strict income limits, VA disability compensation has no income cap regardless of your disability rating percentage. However, if you're rated 100% disabled under Individual Unemployability (TDIU) status, the VA considers you unable to maintain substantially gainful employment, and earning above marginal employment thresholds ($13,000-14,000 annually as of 2025) may trigger a review of your TDIU status. Veterans rated 100% schedular (based on symptom severity rather than employability) can work without restrictions. If you receive Social Security benefits in addition to VA compensation, be aware that Social Security has separate earnings limits that could affect those benefits. The VA encourages veterans to pursue employment through vocational rehabilitation programs, and working doesn't automatically trigger disability re-evaluation unless your condition significantly improves.</p>
-          </div>
         </div>
+      </div>
 
         <div class="faq-item" style="margin-bottom: 0;">
           <div class="faq-question" onclick="toggleFAQ(this)" style="cursor: pointer; padding: 1rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.05), rgba(191, 10, 48, 0.05)); border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;">
@@ -4010,10 +5142,10 @@
           </div>
           <div class="faq-answer" style="padding: 1.5rem 1rem 0; line-height: 1.8; color: var(--dark); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
             <p>VA disability rating and percentage refer to the same concept - the VA uses these terms interchangeably to express the severity of your service-connected conditions. Your individual disability ratings (assigned to each specific condition like PTSD at 70%, tinnitus at 10%, back injury at 40%) represent how severely each condition impacts your ability to work and function. Your combined disability rating is the mathematical combination of all individual ratings using VA's combined ratings table, always rounded to the nearest 10% increment (0%, 10%, 20%, up to 100%). This combined rating determines your monthly compensation tier and benefit eligibility. For example, you might have individual ratings of 50%, 30%, and 20%, which combine to a 72% rating that rounds to 70% combined - that 70% is what determines your payment and benefits. Higher combined ratings unlock additional benefits like commissary access (50%), CHAMPVA for dependents (100%), and property tax exemptions in many states.</p>
-          </div>
         </div>
-
       </div>
+
+          </div>
     </section>
 
     <!-- People Also Search For Section -->
@@ -4043,17 +5175,17 @@
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">📊</span>
             <span>Best free VA disability calculator</span>
-          </li>
+              </li>
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">💵</span>
             <span>VA COLA increase 2025</span>
-          </li>
+              </li>
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">🎯</span>
             <span>100% VA disability benefits list</span>
-          </li>
+              </li>
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">⚖️</span>
@@ -4063,28 +5195,28 @@
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">🏥</span>
             <span>VA healthcare eligibility by rating</span>
-          </li>
+              </li>
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">📋</span>
             <span>TDIU vs 100% schedular rating</span>
-          </li>
+              </li>
           
           <li style="background: rgba(255, 255, 255, 0.95); padding: 1rem 1.25rem; border-radius: 8px; color: var(--dark); font-size: 0.95rem; border: 1px solid rgba(0, 40, 104, 0.2); transition: all 0.3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: default;" onmouseover="this.style.background='rgba(0, 40, 104, 0.1)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 40, 104, 0.25)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.95)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';">
             <span style="font-size: 1.5rem;">💡</span>
             <span>How to increase VA disability rating</span>
-          </li>
+              </li>
           
-        </ul>
+            </ul>
         <p style="text-align: center; margin-top: 1.5rem; color: var(--dark); font-size: 0.9rem; font-style: italic; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           💡 These searches help us understand what veterans are looking for
         </p>
-      </div>
+          </div>
     </section>
 
     <!-- VA Guide Link Paragraph -->
     <p style="margin: 2rem auto; max-width: 1200px; padding: 1.5rem 2rem; background: linear-gradient(135deg, rgba(0, 40, 104, 0.15) 0%, rgba(191, 10, 48, 0.1) 100%); border-radius: 12px; line-height: 1.8; border: 2px solid var(--primary); backdrop-filter: blur(10px); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 0 15px rgba(0, 40, 104, 0.25), inset 0 0 10px rgba(0, 40, 104, 0.05); text-align: center;">
-      🇺🇸 <strong style="color: var(--primary);">Want to learn more about VA disability benefits?</strong> <span style="color: var(--dark);">Read our comprehensive</span> <a href="/va-calculator/guide.html" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">VA Disability Guide 2025</a> <span style="color: var(--dark);">covering combined rating calculations with step-by-step examples, complete 2025 payment rate tables, dependent eligibility requirements (spouse, children, parents, aid and attendance), claim filing procedures with strategic tips, C&P examination guidance, the three-lane appeals process (Supplemental Claim, Higher-Level Review, Board Appeal), TDIU Individual Unemployability, Special Monthly Compensation (SMC), additional benefits by rating tier, and expert advice for maximizing your entitled compensation as a veteran.</span>
+      🇺🇸 <strong style="color: var(--primary);">Want to learn more about VA disability benefits?</strong> <span style="color: var(--dark);">Read our comprehensive</span> <a href="guide.html" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">VA Disability Guide 2025</a> <span style="color: var(--dark);">covering combined rating calculations with step-by-step examples, complete 2025 payment rate tables, dependent eligibility requirements (spouse, children, parents, aid and attendance), claim filing procedures with strategic tips, C&P examination guidance, the three-lane appeals process (Supplemental Claim, Higher-Level Review, Board Appeal), TDIU Individual Unemployability, Special Monthly Compensation (SMC), additional benefits by rating tier, and expert advice for maximizing your entitled compensation as a veteran.</span>
     </p>
 
     <!-- Related Tools Section -->
@@ -4095,16 +5227,16 @@
       </h3>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 0 2rem;">
         
-        <a href="/gst-calculator/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">GST Calculator India</a>
+        <a href="../gst-calculator/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">GST Calculator India</a>
         
-        <a href="/gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">Robux Calculator</a>
+        <a href="../gaming-calculators/robux/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">Robux Calculator</a>
         
-        <a href="/gaming-calculators/vbucks/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">V-Bucks Calculator</a>
+        <a href="../gaming-calculators/vbucks/" style="padding: 0.75rem 1.25rem; background: white; border-radius: 8px; text-decoration: none; color: var(--dark); border: 2px solid var(--primary); transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0, 40, 104, 0.15); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 40, 104, 0.3)';" onmouseout="this.style.background='white'; this.style.color='var(--dark)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 10px rgba(0, 40, 104, 0.15)';">V-Bucks Calculator</a>
         
-        <a href="/gaming-calculators/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 8px; text-decoration: none; color: white; border: 2px solid var(--accent); font-weight: 900; box-shadow: 0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 30px rgba(0, 40, 104, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2)';">All Calculators</a>
+        <a href="../gaming-calculators/" style="padding: 0.75rem 1.25rem; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 8px; text-decoration: none; color: white; border: 2px solid var(--accent); font-weight: 900; box-shadow: 0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 30px rgba(0, 40, 104, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(0, 40, 104, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2)';">All Calculators</a>
         
-      </div>
-    </div>
+          </div>
+          </div>
 
     <script>
       // 2025 VA Disability Rates
@@ -4302,8 +5434,8 @@
 
       function calculateVACombined(disabilities, showBreakdown = false) {
         disabilities = disabilities.filter((d) => d > 0);
-        if (disabilities.length === 0) return { result: 0, steps: [] };
-        if (disabilities.length === 1) return { result: disabilities[0], steps: [] };
+        if (disabilities.length === 0) return { result: 0, exact: 0, steps: [] };
+        if (disabilities.length === 1) return { result: disabilities[0], exact: disabilities[0], steps: [] };
 
         // Sort disabilities from highest to lowest per VA efficiency method
         disabilities.sort((a, b) => b - a);
@@ -4362,7 +5494,7 @@
             if (isBilateral) {
               bilateralDisabilities.push(value);
             } else {
-              disabilities.push(value);
+            disabilities.push(value);
             }
           }
         });
@@ -4402,7 +5534,7 @@
         const explanation = document.getElementById("ratingExplanation");
         if (bilateralInfo) {
           const bilateralText = `Bilateral Factor Applied: ${bilateralInfo.factor.toFixed(1)}% added to ${bilateralInfo.combined.toFixed(1)}% = ${bilateralInfo.total.toFixed(1)}%`;
-          if (exactCombined !== roundedCombined) {
+        if (exactCombined !== roundedCombined) {
             explanation.innerHTML = `${bilateralText}<br>Exact calculation: ${exactCombined.toFixed(1)}% (rounds to ${roundedCombined}% for payment)`;
           } else {
             explanation.innerHTML = `${bilateralText}<br>Combined rating: ${roundedCombined}%`;
@@ -4410,8 +5542,8 @@
         } else {
           if (exactCombined !== roundedCombined) {
             explanation.textContent = `Exact calculation: ${exactCombined.toFixed(1)}% (rounds to ${roundedCombined}% for payment)`;
-          } else {
-            explanation.textContent = `Combined rating: ${roundedCombined}%`;
+        } else {
+          explanation.textContent = `Combined rating: ${roundedCombined}%`;
           }
         }
 
@@ -4654,6 +5786,29 @@
         } else {
           document.getElementById("dependentAdditions").style.display = "none";
         }
+
+        // Update mobile sticky results bar
+        if (window.innerWidth <= 768) {
+          const mobileSticky = document.getElementById('mobileResultsSticky');
+          if (mobileSticky) {
+            mobileSticky.style.display = 'block';
+            const stickyRating = mobileSticky.querySelector('.mobile-sticky-rating');
+            const stickyPayment = mobileSticky.querySelector('.mobile-sticky-payment');
+            
+            if (stickyRating) {
+              stickyRating.textContent = roundedRating + '%';
+            }
+            if (stickyPayment) {
+              stickyPayment.textContent = '$' + monthlyPayment.toFixed(2);
+            }
+
+            // Trigger pulse animation
+            mobileSticky.classList.add('updated');
+            setTimeout(() => {
+              mobileSticky.classList.remove('updated');
+            }, 300);
+          }
+        }
       }
 
       function getParentRate(rating, parentCount) {
@@ -4710,6 +5865,19 @@
         printWindow.document.write(htmlContent);
         printWindow.document.close();
         printWindow.print();
+      }
+
+      function toggleMobileBreakdown() {
+        const resultsPanel = document.getElementById('results-tab');
+        if (resultsPanel) {
+          // Switch to results tab
+          switchTabMobile('results');
+          
+          // Scroll to results smoothly
+          setTimeout(() => {
+            resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
       }
 
       function saveCalculation() {
@@ -4963,6 +6131,11 @@
       // Generate Pay Chart
       function generatePayChart() {
         const tbody = document.getElementById("payChartBody");
+        if (!tbody) {
+          // Pay chart table not present in this version
+          return;
+        }
+        
         tbody.innerHTML = "";
 
         for (let rating = 10; rating <= 100; rating += 10) {
@@ -5229,6 +6402,100 @@
         }
       }
 
+      function toggleDisclaimerSection() {
+        const content = document.getElementById("disclaimerContent");
+        const toggle = document.getElementById("disclaimerToggle");
+        
+        if (content.style.display === "none") {
+          content.style.display = "block";
+          toggle.textContent = "▼";
+          toggle.style.transform = "rotate(0deg)";
+        } else {
+          content.style.display = "none";
+          toggle.textContent = "▶";
+          toggle.style.transform = "rotate(0deg)";
+        }
+      }
+
+      function toggleHowToStep(header) {
+        const content = header.nextElementSibling;
+        const isExpanded = header.classList.contains('expanded');
+        
+        // Close all other sections first (accordion behavior - only one open at a time)
+        document.querySelectorAll('.how-to-collapsible-header.expanded').forEach(h => {
+          if (h !== header) {
+            h.classList.remove('expanded');
+            h.nextElementSibling.classList.remove('expanded');
+          }
+        });
+        
+        // Toggle the clicked section
+        if (!isExpanded) {
+          header.classList.add('expanded');
+          content.classList.add('expanded');
+        } else {
+          header.classList.remove('expanded');
+          content.classList.remove('expanded');
+        }
+      }
+
+      // Mobile-only collapsible "How to Use" steps
+      // Desktop is completely unaffected
+      document.addEventListener('DOMContentLoaded', function() {
+        
+        // Function to setup mobile collapsible behavior
+        function setupMobileHowTo() {
+          // ONLY run on mobile viewports
+          if (window.innerWidth <= 768) {
+            const howToSteps = document.querySelectorAll('.how-to-step-item');
+            
+            // Start all steps collapsed on mobile
+            howToSteps.forEach(step => {
+              step.classList.add('mobile-collapsed');
+              step.classList.remove('mobile-expanded');
+            });
+            
+            // Add click handlers to each step
+            howToSteps.forEach(step => {
+              // Remove any existing click listeners to avoid duplicates
+              const newStep = step.cloneNode(true);
+              step.parentNode.replaceChild(newStep, step);
+              
+              // Add click to entire card
+              newStep.addEventListener('click', function(e) {
+                const isCollapsed = newStep.classList.contains('mobile-collapsed');
+                
+                if (isCollapsed) {
+                  // Expand this step
+                  newStep.classList.remove('mobile-collapsed');
+                  newStep.classList.add('mobile-expanded');
+                } else {
+                  // Collapse this step
+                  newStep.classList.remove('mobile-expanded');
+                  newStep.classList.add('mobile-collapsed');
+                }
+              });
+            });
+          }
+        }
+        
+        // Setup on initial load
+        setupMobileHowTo();
+        
+        // Re-setup if user resizes from desktop to mobile
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            // Only re-run if now on mobile
+            if (window.innerWidth <= 768) {
+              setupMobileHowTo();
+            }
+          }, 250);
+        });
+        
+      });
+
       // Tab Switching Function
       function switchTab(tabName) {
         // Remove active class from all tabs and panels
@@ -5259,7 +6526,17 @@
           .forEach((panel) => panel.classList.remove("active"));
 
         // Add active class to selected panel
-        document.getElementById(tabName + "-tab").classList.add("active");
+        const activePanel = document.getElementById(tabName + "-tab");
+        if (activePanel) {
+          activePanel.classList.add("active");
+          
+          // Smooth scroll to top of panel on mobile
+          if (window.innerWidth <= 768) {
+            setTimeout(() => {
+              activePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+          }
+        }
 
         // Update desktop tabs to match (if visible)
         document
@@ -5268,7 +6545,7 @@
 
         const buttons = document.querySelectorAll(".tab-button");
         buttons.forEach((btn) => {
-          if (btn.onclick.toString().includes(tabName)) {
+          if (btn.onclick && btn.onclick.toString().includes(tabName)) {
             btn.classList.add("active");
           }
         });
@@ -5379,6 +6656,149 @@
 }
     </script>
 
+    <script>
+      // Mobile collapsible sections functionality
+      function toggleMobileSection(sectionName) {
+        if (window.innerWidth > 768) return; // Only on mobile
+        
+        const content = document.getElementById(sectionName + 'Content');
+        const icon = document.getElementById(sectionName + 'Icon');
+        
+        if (content && icon) {
+          const isExpanded = content.classList.contains('expanded');
+          
+          if (isExpanded) {
+            content.classList.remove('expanded');
+            icon.classList.remove('expanded');
+          } else {
+            content.classList.add('expanded');
+            icon.classList.add('expanded');
+          }
+        }
+      }
+
+      function updateDependentsBadge() {
+        if (window.innerWidth > 768) return;
+        
+        const married = document.getElementById('married').checked;
+        const childrenUnder18 = parseInt(document.getElementById('childrenUnder18').value) || 0;
+        const childrenInSchool = parseInt(document.getElementById('childrenInSchool').value) || 0;
+        const oneParent = document.getElementById('oneParent').checked;
+        const twoParents = document.getElementById('twoParents').checked;
+        const spouseAid = document.getElementById('spouseAidAttendance').checked;
+        
+        let count = 0;
+        if (married) count++;
+        count += childrenUnder18;
+        count += childrenInSchool;
+        if (oneParent) count++;
+        if (twoParents) count++;
+        if (spouseAid) count++;
+        
+        const badge = document.getElementById('dependentsBadge');
+        if (badge) {
+          if (count > 0) {
+            badge.style.display = 'inline-block';
+            badge.textContent = '✓ ' + count;
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+      }
+
+      function updateAdvancedBadge() {
+        if (window.innerWidth > 768) return;
+        
+        const tdiuChecked = document.getElementById('tdiuEnable')?.checked;
+        const effectiveDate = document.getElementById('effectiveDate')?.value;
+        
+        const badge = document.getElementById('advancedBadge');
+        if (badge) {
+          if (tdiuChecked || effectiveDate) {
+            badge.style.display = 'inline-block';
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+      }
+
+      function showMobileLoading() {
+        const sticky = document.getElementById('mobileResultsSticky');
+        if (sticky && window.innerWidth <= 768) {
+          sticky.classList.add('calculating');
+        }
+      }
+
+      function hideMobileLoading() {
+        const sticky = document.getElementById('mobileResultsSticky');
+        if (sticky) {
+          sticky.classList.remove('calculating');
+        }
+      }
+
+      // Call updateDependentsBadge() whenever any dependent field changes
+      document.addEventListener('DOMContentLoaded', function() {
+        const dependentFields = ['married', 'spouseAidAttendance', 'childrenUnder18', 'childrenInSchool', 'oneParent', 'twoParents'];
+        dependentFields.forEach(function(fieldId) {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener('change', function() {
+              updateDependentsBadge();
+            });
+          }
+        });
+      });
+
+      // Auto-update on any input change
+      document.addEventListener('DOMContentLoaded', function() {
+        // Update dependents badge on any dependent change
+        const dependentInputs = [
+          'married', 'spouseAidAttendance', 'childrenUnder18', 
+          'childrenInSchool', 'oneParent', 'twoParents'
+        ];
+        
+        dependentInputs.forEach(id => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.addEventListener('change', () => {
+              updateDependentsBadge();
+              calculateCombinedRating();
+            });
+          }
+        });
+        
+        // Update advanced badge on TDIU or date change
+        const advancedInputs = ['tdiuEnable', 'effectiveDate'];
+        advancedInputs.forEach(id => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.addEventListener('change', () => {
+              updateAdvancedBadge();
+              calculateCombinedRating();
+            });
+          }
+        });
+        
+        // Initialize on page load
+        if (window.innerWidth <= 768) {
+          updateDependentsBadge();
+          updateAdvancedBadge();
+        }
+        
+        // Re-initialize on window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            if (window.innerWidth <= 768) {
+              updateDependentsBadge();
+              updateAdvancedBadge();
+            }
+          }, 250);
+        });
+      });
+    </script>
+
     <!-- Floating Guide Button - Mobile Only -->
     <button class="floating-guide-btn" onclick="scrollToGuide()">
       <span class="guide-emoji">📚</span>
@@ -5403,16 +6823,16 @@
               <h4>Products</h4>
               <div class="footer-subsection">
                 <h5>Premium APIs</h5>
-                <a href="/riskscore/">RiskScore API</a>
-                <a href="/dupecheck/">DupeCheck</a>
+                <a href="../riskscore/">RiskScore API</a>
+                <a href="../dupecheck/">DupeCheck</a>
                 <a href="#">Coming Soon</a>
               </div>
               <div class="footer-subsection">
                 <h5>Free Tools</h5>
-                <a href="/gst-calculator/">GST Calculator India</a>
-                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
+                <a href="../gst-calculator/">GST Calculator India</a>
+                <a href="../gaming-calculators/">Gaming Currency Calculators</a>
+                <a href="index.html">VA Disability Benefits Calculator</a>
+                <a href="../tip-calculator/">Restaurant Tip Calculator</a>
               </div>
             </div>
 
@@ -5426,18 +6846,18 @@
             <!-- Column 3 - Legal -->
             <div class="footer-column">
               <h4>Legal</h4>
-              <a href="/privacy.html">Privacy Policy</a>
-              <a href="/cookies.html">Cookie Policy</a>
-              <a href="/terms.html">Terms of Service</a>
+              <a href="../privacy.html">Privacy Policy</a>
+              <a href="../cookies.html">Cookie Policy</a>
+              <a href="../terms.html">Terms of Service</a>
             </div>
           </div>
         </div>
 
         <!-- Mobile Footer Links (hidden on desktop) -->
         <div class="footer-mobile-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/terms.html">Terms</a>
-          <a href="/cookies.html">Cookies</a>
+          <a href="../privacy.html">Privacy</a>
+          <a href="../terms.html">Terms</a>
+          <a href="../cookies.html">Cookies</a>
           <a href="https://forgeapis.com">More Tools</a>
         </div>
 
@@ -5456,5 +6876,22 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mobile Sticky Results Bar -->
+    <div class="mobile-results-sticky" id="mobileResultsSticky" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div style="flex: 1;">
+          <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">Combined Rating</div>
+          <div class="mobile-sticky-rating" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">0%</div>
+        </div>
+        <div style="flex: 1;">
+          <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">Monthly Payment</div>
+          <div class="mobile-sticky-payment" style="font-size: 1.25rem; font-weight: 700; color: var(--success);">$0.00</div>
+        </div>
+        <button onclick="toggleMobileBreakdown()" style="padding: 0.75rem 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; cursor: pointer;">
+          Details
+        </button>
+      </div>
+    </div>
   </body>
 </html>
