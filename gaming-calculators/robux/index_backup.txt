@@ -40,7 +40,7 @@
     />
     <link
       rel="canonical"
-      href="https://gaming-tools.co.uk/gaming-calculators/robux/"
+      href="https://forgeapis.com/gaming-calculators/robux/"
     />
     <meta
       property="og:title"
@@ -53,7 +53,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://gaming-tools.co.uk/gaming-calculators/robux/"
+      content="https://forgeapis.com/gaming-calculators/robux/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -182,71 +182,22 @@
         padding: 0 15px;
       }
 
-      /* Breadcrumb Navigation - Roblox Playful Theme */
+      /* Breadcrumb Navigation */
       .breadcrumb {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.98) 0%,
-          rgba(245, 245, 245, 0.95) 100%
-        );
+        background: var(--white);
         padding: 1rem 0;
-        border-bottom: 4px solid var(--primary);
-        border-top: 2px solid rgba(226, 35, 26, 0.2);
-        margin-bottom: 1.5rem;
-        box-shadow: 0 8px 32px rgba(226, 35, 26, 0.15),
-          0 4px 16px rgba(0, 0, 0, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .breadcrumb::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--primary),
-          var(--accent),
-          var(--secondary),
-          transparent
-        );
-        animation: rainbowSlide 3s linear infinite;
-      }
-
-      .breadcrumb::after {
-        content: "ROBUX";
-        position: absolute;
-        bottom: 10px;
-        right: 30px;
-        font-size: 4rem;
-        font-weight: 900;
-        color: rgba(226, 35, 26, 0.03);
-        pointer-events: none;
-        font-family: "Nunito", sans-serif;
-        letter-spacing: 0.5rem;
-      }
-
-      @keyframes rainbowSlide {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
       }
 
       .breadcrumb-list {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--dark);
-        font-family: "Nunito", sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        position: relative;
-        z-index: 1;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
       }
 
       .breadcrumb-item {
@@ -255,143 +206,45 @@
       }
 
       .breadcrumb-item:not(:last-child)::after {
-        content: "▶";
-        margin-left: 0.75rem;
-        color: var(--primary);
-        font-size: 1rem;
-        text-shadow: 0 2px 4px rgba(226, 35, 26, 0.3);
-        animation: bounceArrow 2s ease-in-out infinite;
-      }
-
-      @keyframes bounceArrow {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(3px); }
+        content: ">";
+        margin-left: 0.5rem;
+        color: var(--gray);
       }
 
       .breadcrumb-link {
         color: var(--primary);
         text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border-radius: 12px;
-        padding: 0.5rem 0.75rem;
-        background: rgba(226, 35, 26, 0.05);
-        border: 2px solid rgba(226, 35, 26, 0.2);
-        font-weight: 700;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        box-shadow: 0 2px 8px rgba(226, 35, 26, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        position: relative;
-      }
-
-      .breadcrumb-link::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 12px;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 199, 0, 0.2),
-          rgba(2, 183, 87, 0.2)
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .breadcrumb-link:hover::before {
-        opacity: 1;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.25rem 0.5rem;
       }
 
       .breadcrumb-link:hover {
-        color: var(--white);
-        background: var(--primary);
-        border-color: var(--primary-dark);
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 6px 20px rgba(226, 35, 26, 0.4),
-          0 2px 8px rgba(0, 0, 0, 0.2),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-
-      .breadcrumb-link:active {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 2px 8px rgba(226, 35, 26, 0.2);
+        color: var(--primary-dark);
+        background: rgba(255, 107, 107, 0.1);
+        transform: translateY(-1px);
       }
 
       .logo-link {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-weight: 800;
-        padding: 0.4rem 0.75rem;
-        background: rgba(255, 199, 0, 0.1);
-        border: 2px solid rgba(255, 199, 0, 0.3);
-        border-radius: 12px;
+        font-weight: 600;
       }
 
-      .logo-link:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 199, 0, 0.2),
-          rgba(2, 183, 87, 0.15)
-        );
-        border-color: var(--accent);
-        transform: translateY(-2px) scale(1.05) rotate(-2deg);
-        box-shadow: 0 8px 24px rgba(255, 199, 0, 0.4),
-          0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      .logo-link svg,
-      .logo-link img {
-        width: auto;
-        height: 60px;
+      .logo-link svg {
+        width: 120px;
+        height: 72px;
         flex-shrink: 0;
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
-        transition: filter 0.3s ease;
-      }
-
-      .logo-link:hover svg,
-      .logo-link:hover img {
-        filter: drop-shadow(0 4px 12px rgba(255, 199, 0, 0.6));
       }
 
       .logo-text {
-        font-size: 0.95rem;
-        text-transform: uppercase;
+        font-size: 0.9rem;
       }
 
       .breadcrumb-current {
-        color: var(--white);
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        padding: 0.5rem 0.75rem;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--highlight) 100%
-        );
-        border-radius: 12px;
-        border: 2px solid var(--primary-dark);
-        box-shadow: 0 4px 16px rgba(226, 35, 26, 0.4),
-          0 2px 8px rgba(0, 0, 0, 0.2),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3),
-          inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-        position: relative;
-        animation: gentlePulse 3s ease-in-out infinite;
-      }
-
-      @keyframes gentlePulse {
-        0%, 100% {
-          box-shadow: 0 4px 16px rgba(226, 35, 26, 0.4),
-            0 2px 8px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-        50% {
-          box-shadow: 0 6px 20px rgba(226, 35, 26, 0.6),
-            0 4px 12px rgba(0, 0, 0, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
+        color: var(--dark);
+        font-weight: 500;
       }
 
       /* FAQ Section */
@@ -1617,16 +1470,177 @@
         <nav class="breadcrumb-list" aria-label="Breadcrumb">
           <div class="breadcrumb-item">
             <a href="../../" class="breadcrumb-link logo-link">
-              <img src="../../assets/images/logo.svg" alt="Logo" style="height: 80px; width: auto;" />
+              <svg
+                width="120"
+                height="20"
+                viewBox="0 0 240 80"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Digital/Tech Anvil with Crossed Hammers -->
+                <g transform="translate(15, 15)">
+                  <!-- Digital Anvil (geometric/tech style) -->
+                  <path
+                    d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                    fill="#1E293B"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="18"
+                    y="30"
+                    width="24"
+                    height="5"
+                    fill="#334155"
+                    rx="1"
+                  />
+                  <rect x="16" y="28" width="28" height="2" fill="#475569" />
+                  <!-- Tech pattern on anvil -->
+                  <line
+                    x1="20"
+                    y1="32"
+                    x2="40"
+                    y2="32"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="22"
+                    y1="34"
+                    x2="38"
+                    y2="34"
+                    stroke="#00D4AA"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <!-- Crossed Hammers (geometric style) -->
+                  <!-- Left hammer -->
+                  <g transform="rotate(-30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Right hammer -->
+                  <g transform="rotate(30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Digital Fire/Energy (geometric flames) -->
+                  <path
+                    d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                    fill="#FF6B35"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <!-- Tech sparks (pixels) -->
+                  <rect
+                    x="12"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="46"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="10"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                  <rect
+                    x="48"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                </g>
+                <!-- Text: Forge -->
+                <text
+                  x="75"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="800"
+                  fill="#0A0E27"
+                >
+                  Forge
+                </text>
+                <!-- Text: APIs -->
+                <text
+                  x="150"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="400"
+                  fill="#6B7280"
+                >
+                  APIs
+                </text>
+                <!-- Tagline -->
+                <text
+                  x="75"
+                  y="63"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="9"
+                  fill="#9CA3AF"
+                  letter-spacing="0.5"
+                >
+                  PRODUCTION-READY APIS
+                </text>
+              </svg>
             </a>
           </div>
           <div class="breadcrumb-item">
             <a href="../" class="breadcrumb-link"
-              >GAMING CALCULATORS</a
+              >Gaming Calculators</a
             >
           </div>
           <div class="breadcrumb-item">
-            <span class="breadcrumb-current">ROBUX CALCULATOR</span>
+            <span class="breadcrumb-current">Robux Calculator</span>
           </div>
         </nav>
       </div>
@@ -1668,12 +1682,6 @@
             <p class="calculator-subtitle">
               Convert Robux to USD, EUR, GBP, CAD, AUD & more currencies
             </p>
-            
-            <div style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: center;">
-              <p style="margin: 0; font-weight: 600; font-size: 0.95rem;">
-                ℹ️ This calculator helps you understand official Roblox pricing. Always purchase through official Roblox channels for your safety.
-              </p>
-            </div>
           </div>
 
           <!-- Currency Selector -->
@@ -1738,14 +1746,13 @@
             <div class="input-group">
               <label class="input-label" for="robux-input">Robux</label>
               <input
-              type="number"
-              id="robux-input"
-              class="calculator-input"
-              placeholder="Enter Robux"
-              min="0"
-              step="1"
-              aria-label="Robux amount input"
-            />
+                type="number"
+                id="robux-input"
+                class="calculator-input"
+                placeholder="Enter Robux"
+                min="0"
+                step="1"
+              />
             </div>
 
             <div class="conversion-arrow">⇄</div>
@@ -1756,14 +1763,13 @@
                 <span id="active-currency-name">USD ($)</span></label
               >
               <input
-              type="number"
-              id="usd-input"
-              class="calculator-input"
-              placeholder="Enter USD"
-              min="0"
-              step="0.01"
-              aria-label="Currency amount input"
-            />
+                type="number"
+                id="usd-input"
+                class="calculator-input"
+                placeholder="Enter USD"
+                min="0"
+                step="0.01"
+              />
             </div>
           </div>
 
@@ -2185,21 +2191,55 @@
             Protecting Young Players: The Hidden Costs of Robux
           </h2>
           <div class="section-content">
-            <h3>Understanding Young Developers on Roblox</h3>
+            <h3>The Child Labor Problem Nobody Discusses</h3>
             <p>
-              Roblox's developer community includes many young creators learning game development skills. While Roblox promotes this as educational, young developers should understand that creating profitable games requires significant time, advanced skills, and often results in earnings below minimum wage when accounting for hours invested. The Developer Exchange program requires a 100,000 Robux minimum (worth $350), which most young developers never reach. Parents should supervise their children's development activities and set realistic expectations about potential earnings.
+              Roblox's developer community includes millions of minors creating
+              content for other children. These young developers work without
+              labor protections, minimum wage guarantees, or oversight. A
+              13-year-old spending 40 hours weekly developing games might earn
+              $50 monthly - less than $0.30 per hour. Roblox profits from this
+              child labor while framing it as "learning opportunities" and
+              "creativity." Professional studios increasingly hire teenage
+              developers for fraction of minimum wage, exploiting their
+              enthusiasm and naivety about fair compensation.
             </p>
 
-            <h3>Understanding In-Game Purchase Patterns</h3>
+            <h3>Psychological Manipulation Tactics</h3>
             <p>
-              Like many online games, Roblox uses common engagement techniques including limited-time offers, daily login bonuses, and social features that showcase items friends own. Parents should be aware of these patterns and can use parental controls to manage spending. Roblox provides tools to set spending limits, require PIN codes for purchases, and review purchase history. Open communication with children about virtual spending and setting clear budgets helps develop healthy digital habits.
+              Roblox employs dark patterns specifically targeting children's
+              underdeveloped impulse control. Limited-time offers create
+              artificial urgency. Daily login bonuses build addictive habits.
+              "Group funds" encourage pooling money, normalizing spending. The
+              avatar shop constantly showcases items friends own, triggering
+              social comparison. Premium membership advertises "earning Robux"
+              but provides only 15% of its cost monthly, teaching children that
+              subscriptions paying for themselves is normal when it's
+              mathematically impossible.
             </p>
 
-            <h3>Social Aspects of Roblox Economy</h3>
+            <h3>The Social Currency Trap</h3>
             <p>
-              Robux and avatar customization play a role in social interaction within Roblox. Children may feel pressure to purchase items to fit in with friend groups. Parents can help by discussing the difference between virtual items and real-world value, setting clear spending boundaries, and encouraging children to appreciate gameplay over cosmetic purchases. Free avatar options are available, and many popular games can be enjoyed without spending money.
+              Robux have become social currency in schools, with children judged
+              by their avatar's items and game passes owned. Kids without Robux
+              face exclusion from friend groups who play premium-only games.
+              Bullying over "bacon hair" (default avatars) is widespread.
+              Parents report children crying about being "poor" in Roblox
+              despite comfortable real-world circumstances. This virtual class
+              system teaches children that spending money equals social
+              acceptance - a harmful lesson with lifelong implications.
             </p>
 
+            <h3>Gambling Mechanics Disguised as Games</h3>
+            <p>
+              Despite Roblox's policies, thousands of games incorporate gambling
+              mechanics. "Trading" games where children bet Robux on dice rolls.
+              "Case opening" simulators mimicking CS:GO gambling. "Auction
+              houses" that are disguised casinos. These games exploit legal
+              loopholes since Robux aren't legally currency. Children develop
+              gambling habits before understanding money, risk, or addiction.
+              Reports indicate 35% of Roblox players have participated in Robux
+              gambling, with average losses of 500 Robux monthly.
+            </p>
           </div>
         </div>
 
@@ -2262,14 +2302,52 @@
             The Developer Reality: Making Money on Roblox
           </h2>
           <div class="section-content">
-            <h3>Understanding Developer Success Rates</h3>
+            <h3>The Success Rate Statistics Roblox Won't Share</h3>
             <p>
-              Game development on Roblox is highly competitive. While the platform offers opportunities for creators, reaching the Developer Exchange threshold of 100,000 Robux requires creating games with substantial player engagement. Success typically requires advanced programming skills, marketing knowledge, and significant time investment. Most developers treat Roblox development as a learning experience and creative hobby rather than an income source.
+              Independent analysis reveals that 99.5% of Roblox developers never
+              reach the 100,000 Robux threshold for DevEx cashout. Of those who
+              do, 90% earn less than $1,000 annually. The top 100 games generate
+              70% of all platform revenue, leaving millions of developers
+              competing for scraps. New developers have a 0.01% chance of
+              creating a profitable game without significant advertising
+              investment - typically $10,000+ for meaningful visibility.
             </p>
 
-            <h3>Official Ways to Obtain Robux</h3>
+            <h3>The Hidden Costs of Development</h3>
             <p>
-              Official methods to obtain Robux include purchasing directly from Roblox, buying Roblox Premium subscription (which includes monthly Robux stipend), creating and selling virtual items through the Avatar Shop (requires Premium), and participating in the Developer Exchange program for successful game creators. All methods should go through official Roblox channels to maintain account security.
+              Creating a successful Roblox game requires more than coding
+              skills. Professional developers report average costs of
+              $5,000-15,000 per game including: advertisements (1000 Robux
+              minimum daily for visibility), hiring builders/scripters
+              (2,000-10,000 Robux per asset), group creation (100 Robux), game
+              thumbnails/icons (500-2000 Robux each), and premium features to
+              compete. Most developers spend more on development than they ever
+              earn back, effectively paying Roblox to work for free.
+            </p>
+
+            <h3>The Advertising Money Pit</h3>
+            <p>
+              Roblox's advertising system requires constant investment for
+              visibility. Sponsored games cost 1,000+ Robux per day for minimal
+              impressions. Without advertising, new games receive essentially
+              zero organic discovery. Developers report spending 50-80% of
+              earnings on advertising just to maintain player counts. This
+              creates a vicious cycle where only already-successful developers
+              can afford visibility, making breakthrough virtually impossible
+              for newcomers regardless of game quality.
+            </p>
+
+            <h3>Alternative Paths to Robux</h3>
+            <p>
+              Given the exploitation in game development, consider alternatives:
+              Creating clothing items (requires Premium but lower time
+              investment), building for established developers (guaranteed
+              payment but low rates), trading limited items (requires
+              significant initial investment and market knowledge), or group
+              funding pools (risky but communal). However, all paths ultimately
+              favor Roblox Corporation over individual creators. The most
+              financially sound decision is often not participating in the
+              creator economy at all.
             </p>
           </div>
         </div>
@@ -2332,23 +2410,21 @@
 
           <div class="faq-item active">
             <div class="faq-question">
-              <span>How can I earn Robux through official channels?</span>
+              <span>Can I get Robux for free?</span>
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              You can earn Robux through Roblox's official Developer Exchange (DevEx) program by creating successful games. 
-              <strong>DevEx Requirements:</strong> You must earn a minimum of 100,000 Robux (approximately $350) to cash out, be 13+ years old, have verified ID, and meet Roblox's eligibility requirements. This requires significant time investment and most developers never reach this threshold.
-              <strong>Important:</strong> Only obtain Robux through official Roblox channels - the Roblox website, official mobile app, or authorized retail gift cards.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Where should I purchase Robux?</span>
-              <span class="faq-icon">+</span>
-            </div>
-            <div class="faq-answer">
-              Purchase Robux only through official Roblox channels for your safety and account protection. Official sources include: the Roblox website (roblox.com), the official Roblox mobile app (iOS/Android), and authorized physical or digital gift cards from major retailers like Amazon, Walmart, Target, and GameStop. Purchasing through official channels ensures your account remains secure and in good standing.
+              You can earn Robux through Roblox Developer Exchange (DevEx) by
+              creating popular games, but this requires significant time and
+              skill investment.
+              <strong>Important DevEx Requirements:</strong> You must earn a
+              minimum of 100,000 Robux (approximately $350) before you can cash
+              out to real money. This requires generating over $1,250 in player
+              spending. Additionally, you must be 13+ years old, have a valid
+              government ID, and meet Roblox's strict eligibility requirements.
+              Most developers never reach the minimum threshold, and even
+              successful creators often earn less than minimum wage when
+              accounting for development time.
             </div>
           </div>
 
@@ -2424,6 +2500,25 @@
             </div>
           </div>
 
+          <div class="faq-item">
+            <div class="faq-question">
+              <span
+                >What are the risks of Robux trading and black market
+                sites?</span
+              >
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Never use third-party Robux sites - they're all scams or policy
+              violations resulting in permanent bans. Common scams include:
+              "Free Robux generators" that steal passwords, "discount Robux"
+              from stolen credit cards (making you an accessory to fraud),
+              "trading sites" that never deliver after payment, and "group
+              funds" that disappear after contribution. Even legitimate-seeming
+              methods like buying from other players violate Terms of Service.
+              Roblox actively monitors and bans accounts involved in
+              unauthorized transactions. The only safe source for Robux is
+              official Roblox channels, despite the inflated prices.
             </div>
           </div>
         </div>
@@ -2541,11 +2636,11 @@
 
       // Exchange rates - Roblox uses tiered pricing, not flat rates
       const RATES = {
-        player: 0.0125,         // Correct base player rate  // Average web purchase rate ($4.99/500 Robux)
+        player: 0.00998,        // Average web purchase rate ($4.99/500 Robux)
         devex_old: 0.0035,      // DevEx rate before Sept 5, 2025 10am PT
         devex_new: 0.0038,      // DevEx rate after Sept 5, 2025 10am PT
         devex: 0.0038,          // Default to new rate for current earnings
-        marketplace: 0.00245,   // After 30% marketplace fee: 0.0035 × 0.7 = 0.00245   // After 30% marketplace fee: 0.0038 × 0.7 = 0.00266
+        marketplace: 0.00266,   // After 30% marketplace fee: 0.0038 × 0.7 = 0.00266
         marketplace_old: 0.00245 // Old rate after 30% fee: 0.0035 × 0.7 = 0.00245
       };
 
@@ -2570,28 +2665,23 @@
       };
 
       // Default to web pricing (best value for users)
-      let PACKAGE_PRICES = {...WEB_PACKAGE_PRICES};
+      const PACKAGE_PRICES = WEB_PACKAGE_PRICES;
 
       // Function to get the best package price for a given Robux amount
       function getBestPackagePrice(robuxAmount) {
-  // Handle zero or negative amounts
-  if (robuxAmount <= 0) {
-    return 0;
-  }
-  
-  const packages = Object.keys(PACKAGE_PRICES).map(Number).sort((a, b) => a - b);
-  
-  // If exact package match, return that price
-  if (PACKAGE_PRICES[robuxAmount]) {
-    return PACKAGE_PRICES[robuxAmount];
-  }
-  
-  // Find the smallest package that provides enough Robux
-  for (const pkg of packages) {
-    if (pkg >= robuxAmount) {
-      return PACKAGE_PRICES[pkg];
-    }
-  }
+        const packages = Object.keys(PACKAGE_PRICES).map(Number).sort((a, b) => a - b);
+        
+        // If exact package match, return that price
+        if (PACKAGE_PRICES[robuxAmount]) {
+          return PACKAGE_PRICES[robuxAmount];
+        }
+        
+        // Find the smallest package that provides enough Robux
+        for (const pkg of packages) {
+          if (pkg >= robuxAmount) {
+            return PACKAGE_PRICES[pkg];
+          }
+        }
         
         // If amount exceeds all single packages, calculate based on best rate
         const largestPackage = packages[packages.length - 1];
@@ -2656,31 +2746,7 @@
           "input",
           SecurityManager.debounce(handleUsdInput, 100)
         );
-        copyBtn.addEventListener("click", async () => {
-          const result = usdInput.value;
-          
-          try {
-            await navigator.clipboard.writeText(result);
-            
-            // Show feedback
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = "Copied!";
-            copyBtn.style.background = "#10b981"; // Green
-            
-            setTimeout(() => {
-              copyBtn.textContent = originalText;
-              copyBtn.style.background = ""; // Reset to original
-            }, 2000);
-            
-          } catch (err) {
-            console.error("Failed to copy:", err);
-            // Fallback for older browsers
-            copyBtn.textContent = "Copy Failed";
-            setTimeout(() => {
-              copyBtn.textContent = "Copy Result";
-            }, 2000);
-          }
-        });
+        copyBtn.addEventListener("click", copyResult);
         clearBtn.addEventListener("click", clearInputs);
         currencySelect.addEventListener("change", handleCurrencyChange);
 
@@ -2697,20 +2763,53 @@
         console.log("Adding click event listener to conversion arrow");
 
         conversionArrow.addEventListener("click", (e) => {
-          console.log("Conversion arrow clicked - swapping values!");
+          console.log("Conversion arrow clicked!");
           e.preventDefault();
 
-          // Simply swap the input values
-          const robuxValue = robuxInput.value;
-          const usdValue = usdInput.value;
-          
-          robuxInput.value = usdValue.replace(/[^0-9.]/g, ''); // Remove currency symbols
-          usdInput.value = robuxValue;
-          
-          // Trigger recalculation
-          handleRobuxInput();
-          
-          console.log("Values swapped");
+          // Get the input groups using more reliable selectors
+          const allInputGroups = document.querySelectorAll(".input-group");
+
+          console.log("Found input groups:", allInputGroups.length);
+
+          if (allInputGroups.length >= 2) {
+            console.log("Swapping input field positions");
+
+            // Get the parent container
+            const conversionSection = document.querySelector(
+              ".conversion-section"
+            );
+
+            if (conversionSection) {
+              // Always swap the first two input groups (regardless of their current order)
+              const firstGroup = allInputGroups[0];
+              const secondGroup = allInputGroups[1];
+
+              console.log("First group:", firstGroup);
+              console.log("Second group:", secondGroup);
+
+              // Get the arrow element to preserve its position
+              const arrowElement = document.querySelector(".conversion-arrow");
+
+              // Remove both groups from their current positions
+              firstGroup.remove();
+              secondGroup.remove();
+
+              // Insert them back in swapped order, ensuring arrow stays in the middle
+              // Insert second group first (before arrow)
+              conversionSection.insertBefore(secondGroup, arrowElement);
+              // Insert first group last (after arrow)
+              conversionSection.insertBefore(
+                firstGroup,
+                arrowElement.nextSibling
+              );
+
+              console.log("Fields swapped successfully");
+            }
+          } else {
+            console.error("Could not find enough input groups to swap");
+          }
+
+          console.log("Swap completed");
         });
       } else {
         console.error("Conversion arrow element not found!");
@@ -3229,7 +3328,7 @@
         "@type": "WebApplication",
         "name": "Robux Currency Converter",
         "description": "Free Robux converter to convert between Robux and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly. DevEx rates and marketplace fees included.",
-        "url": "https://gaming-tools.co.uk/gaming-calculators/robux/",
+        "url": "https://forgeapis.com/gaming-calculators/robux/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -3246,7 +3345,7 @@
         "dateModified": "2025-01-24",
         "author": {
           "@type": "Organization",
-          "name": "Gaming Tools"
+          "name": "ForgeAPI"
         }
       }
     </script>
@@ -3260,19 +3359,19 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://gaming-tools.co.uk/"
+            "item": "https://forgeapis.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Gaming Calculators",
-            "item": "https://gaming-tools.co.uk/gaming-calculators/"
+            "item": "https://forgeapis.com/gaming-calculators/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Robux Calculator",
-            "item": "https://gaming-tools.co.uk/gaming-calculators/robux/"
+            "item": "https://forgeapis.com/gaming-calculators/robux/"
           }
         ]
       }
@@ -3317,18 +3416,10 @@
     },
     {
       "@type": "Question",
-      "name": "How can I earn Robux through official channels?",
+      "name": "Can I get Robux for free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can earn Robux through Roblox's official Developer Exchange (DevEx) program by creating successful games. DevEx Requirements: You must earn a minimum of 100,000 Robux (approximately $350) to cash out, be 13+ years old, have verified ID, and meet Roblox's eligibility requirements. This requires significant time investment and most developers never reach this threshold. Important: Only obtain Robux through official Roblox channels - the Roblox website, official mobile app, or authorized retail gift cards."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where should I purchase Robux?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Purchase Robux only through official Roblox channels for your safety and account protection. Official sources include: the Roblox website (roblox.com), the official Roblox mobile app (iOS/Android), and authorized physical or digital gift cards from major retailers like Amazon, Walmart, Target, and GameStop. Purchasing through official channels ensures your account remains secure and in good standing."
+        "text": "You can earn Robux through Roblox Developer Exchange DevEx by creating popular games, but this requires significant time, skill investment, and meeting strict eligibility requirements. You must earn a minimum of 100,000 Robux (worth $350 via DevEx but requiring over $1,250 in player spending to generate), be 13+ years old, have a verified government ID, and maintain good account standing. Most developers never reach the minimum threshold. Beware of free Robux scams and generators which are always fraudulent and designed to steal account credentials or payment information."
       }
     },
     {
@@ -3384,6 +3475,15 @@
             "text": "Use the copy button to save your calculation results"
           }
         ]
+      }
+    </script>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
       }
     </script>
 
@@ -3534,14 +3634,5 @@
         
       </div>
     </div>
-
-    <!-- Gaming Calculator Footer -->
-    <footer id="footer-container"></footer>
-    <script>
-      // Load shared footer
-      if (typeof loadGamingFooter === "function") {
-        loadGamingFooter();
-      }
-    </script>
   </body>
 </html>
