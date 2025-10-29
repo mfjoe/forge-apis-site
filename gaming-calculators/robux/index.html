@@ -1815,19 +1815,19 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">500 Robux</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$4.99 USD</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);" id="price-500">$4.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">1,000 Robux</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$9.99 USD</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);" id="price-1000">$9.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">2,000 Robux</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);">$19.99 USD</p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--dark);" id="price-2000">$19.99 USD</p>
                 </div>
                 <div style="background: white; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600;">11,000 Robux</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--primary-dark);">$99.99 USD <span style="font-size: 0.7rem; background: var(--primary); color: white; padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.25rem;">BEST</span></p>
+                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--primary-dark);" id="price-11000">$99.99 USD <span style="font-size: 0.7rem; background: var(--primary); color: white; padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.25rem;">BEST</span></p>
                 </div>
               </div>
               <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic;">
@@ -2691,13 +2691,8 @@
       // Conversion arrow functionality - swap between Robux and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
 
-      console.log("Conversion arrow element:", conversionArrow);
-
       if (conversionArrow) {
-        console.log("Adding click event listener to conversion arrow");
-
         conversionArrow.addEventListener("click", (e) => {
-          console.log("Conversion arrow clicked - swapping values!");
           e.preventDefault();
 
           // Simply swap the input values
@@ -2709,11 +2704,7 @@
           
           // Trigger recalculation
           handleRobuxInput();
-          
-          console.log("Values swapped");
         });
-      } else {
-        console.error("Conversion arrow element not found!");
       }
 
       // Initialize currency and rate display
@@ -2896,6 +2887,29 @@
             currentCurrency
           );
           cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
+        });
+
+        // Update the Quick Conversion Guide cards
+        const guideCards = [
+          { id: 'price-500', robux: 500 },
+          { id: 'price-1000', robux: 1000 },
+          { id: 'price-2000', robux: 2000 },
+          { id: 'price-11000', robux: 11000 }
+        ];
+        
+        guideCards.forEach(card => {
+          const element = document.getElementById(card.id);
+          if (element) {
+            const usdPrice = getBestPackagePrice(card.robux);
+            const convertedPrice = window.currencyManager.convertFromUSD(usdPrice, currentCurrency);
+            
+            // Handle the BEST card differently (it has a span inside)
+            if (card.id === 'price-11000') {
+              element.innerHTML = `${symbol}${convertedPrice.toFixed(2)} ${currentCurrency} <span style="font-size: 0.7rem; background: var(--primary); color: white; padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.25rem;">BEST</span>`;
+            } else {
+              element.textContent = `${symbol}${convertedPrice.toFixed(2)} ${currentCurrency}`;
+            }
+          }
         });
       }
 

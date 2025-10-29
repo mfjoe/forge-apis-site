@@ -79,7 +79,7 @@ class CurrencyManager {
         console.warn("Using fallback rates:", data.error);
       }
     } catch (error) {
-      console.error("Failed to fetch exchange rates:", error);
+      // Silently fail - exchange rates not critical for regional pricing
       // Keep existing rates as fallback
     }
 

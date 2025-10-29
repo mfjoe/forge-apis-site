@@ -3512,6 +3512,24 @@
       gtag("config", "G-5YPCMTRSNN");
     </script>
     <!-- End Google Analytics -->
+    
+    <!-- Filter Live Server Console Messages -->
+    <script>
+      (function() {
+        const originalLog = console.log;
+        console.log = function(...args) {
+          // Filter out Live Server reload messages
+          if (args.length > 0 && typeof args[0] === 'string') {
+            if (args[0].includes('Live reload') || 
+                args[0].includes('livereload') ||
+                args[0].includes('connected to server')) {
+              return; // Suppress these messages
+            }
+          }
+          originalLog.apply(console, args);
+        };
+      })();
+    </script>
   </head>
   <body>
     <div class="main-content-wrapper" style="flex: 1;">

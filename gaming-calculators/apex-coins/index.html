@@ -3544,7 +3544,6 @@
           try {
             return localStorage.getItem(key);
           } catch (error) {
-            console.warn("localStorage get failed:", error);
             return null;
           }
         },
@@ -3554,7 +3553,6 @@
             localStorage.setItem(key, value);
             return true;
           } catch (error) {
-            console.warn("localStorage set failed:", error);
             return false;
           }
         },
@@ -3564,7 +3562,6 @@
             localStorage.removeItem(key);
             return true;
           } catch (error) {
-            console.warn("localStorage remove failed:", error);
             return false;
           }
         },
@@ -3690,21 +3687,9 @@
         if (eaPlayToggle) {
           isEAPlayMember = eaPlayToggle.checked;
           
-          console.log('[Multi-Currency] EA Play status changed:', isEAPlayMember ? 'ACTIVE (10% discount)' : 'INACTIVE');
-          
           if (isEAPlayMember) {
             eaPlayMessage.style.display = 'block';
             eaPlayInfo.style.display = 'block';
-            
-            // Log example discount for current currency
-            const currency = currentCurrency || 'USD';
-            const examplePkg = APEX_COINS_PACKAGES[5]; // 11,500 AC package
-            const originalPrice = examplePkg.prices[currency];
-            const discountedPrice = originalPrice * 0.9;
-            const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currency) : '$';
-            console.log('[Multi-Currency] EA Play Example: 11,500 AC package', 
-                       originalPrice, currency, '→', discountedPrice.toFixed(2), currency,
-                       '(Saved:', currencySymbol + (originalPrice - discountedPrice).toFixed(2) + ')');
           } else {
             eaPlayMessage.style.display = 'none';
             eaPlayInfo.style.display = 'none';
@@ -3731,8 +3716,6 @@
         
         const currency = currentCurrency || 'USD';
         const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currency) : '$';
-        
-        console.log('[Regional Pricing] Generating recommendation for', currencyAmount, currency, '(using actual EA store prices)');
         
         // Create packages array with REGIONAL PRICES and EA Play discount applied
         const packages = APEX_COINS_PACKAGES.map(pkg => {
@@ -3863,8 +3846,6 @@
         const currencySymbol = recommendation.currencySymbol || '$';
         const currency = recommendation.currency || 'USD';
         
-        console.log('[Multi-Currency] Displaying recommendation:', recommendation.type, 'for', recommendation.totalCost, currency);
-        
         recommendationBox.innerHTML = `
           <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 23, 68, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid #00d4ff; margin: 1rem 0; backdrop-filter: blur(10px);">
             <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
@@ -3954,8 +3935,6 @@
             </div>
           `;
           warningDiv.style.display = 'block';
-          
-          console.log('[Regional Pricing] Package warning shown:', closestPackage.total, 'AC =', currencySymbol + regionalPrice.toFixed(2));
         }
       }
 
@@ -3986,14 +3965,11 @@
       function calculateApexToCurrency(coins, currency) {
         const curr = currency || currentCurrency || 'USD';
         
-        console.log('[Regional Pricing] Calculating', coins, 'AC to', curr, '(using actual EA store prices)');
-        
         // Check if exact package match exists
         if (APEX_COINS_REGIONAL_PRICES[coins]) {
           hidePackageWarning();
           const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][curr];
           const finalPrice = getEAPlayPrice(regionalPrice, curr);
-          console.log('[Regional Pricing] Exact package:', coins, 'AC =', curr, finalPrice.toFixed(2), '(EA Play:', isEAPlayMember, ')');
           return finalPrice;
         }
         
@@ -4006,15 +3982,12 @@
         const estimatedPrice = coins * perCoinRate;
         const finalPrice = getEAPlayPrice(estimatedPrice, curr);
         
-        console.log('[Regional Pricing] Estimated:', coins, 'AC ≈', curr, finalPrice.toFixed(2), '(rate:', perCoinRate.toFixed(5), 'per coin)');
         return finalPrice;
       }
 
       // Calculate Currency to Apex Coins using REGIONAL PRICES ONLY (no conversions)
       function calculateCurrencyToApex(amount, currency) {
         const curr = currency || currentCurrency || 'USD';
-        
-        console.log('[Regional Pricing] Calculating', amount, curr, 'to AC (using actual EA store prices)');
         
         // Use best value package (11,500 AC) rate for this currency
         const bestPackagePrice = APEX_COINS_REGIONAL_PRICES[11500][curr];
@@ -4025,7 +3998,6 @@
         const perCoinRate = effectivePrice / 11500;
         const coins = amount / perCoinRate;
         
-        console.log('[Regional Pricing] Result:', coins.toFixed(0), 'AC for', amount, curr, '(EA Play:', isEAPlayMember, ')');
         return coins;
       }
       
@@ -4083,23 +4055,14 @@
       // Conversion arrow functionality - swap between Apex Coins and USD inputs
       const conversionArrow = document.querySelector(".conversion-arrow");
 
-      console.log("Conversion arrow element:", conversionArrow);
-
       if (conversionArrow) {
-        console.log("Adding click event listener to conversion arrow");
-
         conversionArrow.addEventListener("click", (e) => {
-          console.log("Conversion arrow clicked!");
           e.preventDefault();
 
           // Get the input groups using more reliable selectors
           const allInputGroups = document.querySelectorAll(".input-group");
 
-          console.log("Found input groups:", allInputGroups.length);
-
           if (allInputGroups.length >= 2) {
-            console.log("Swapping input field positions");
-
             // Get the parent container
             const conversionSection = document.querySelector(
               ".conversion-section"
@@ -4109,9 +4072,6 @@
               // Always swap the first two input groups (regardless of their current order)
               const firstGroup = allInputGroups[0];
               const secondGroup = allInputGroups[1];
-
-              console.log("First group:", firstGroup);
-              console.log("Second group:", secondGroup);
 
               // Get the arrow element to preserve its position
               const arrowElement = document.querySelector(".conversion-arrow");
@@ -4128,17 +4088,9 @@
                 firstGroup,
                 arrowElement.nextSibling
               );
-
-              console.log("Fields swapped successfully");
             }
-          } else {
-            console.error("Could not find enough input groups to swap");
           }
-
-          console.log("Swap completed");
         });
-      } else {
-        console.error("Conversion arrow element not found!");
       }
 
       // Initialize currency and load saved calculation
@@ -4249,8 +4201,6 @@
         const quickButtons = document.querySelectorAll('.quick-btn');
         const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currentCurrency) : '$';
         
-        console.log('[Regional Pricing] Updating quick buttons for', currentCurrency, 'with symbol', currencySymbol);
-        
         APEX_COINS_PACKAGES.forEach((pkg, index) => {
           const button = quickButtons[index];
           if (button) {
@@ -4262,16 +4212,12 @@
             }
           }
         });
-        
-        console.log('[Regional Pricing] Quick buttons updated with actual EA store prices');
       }
 
       // Function to update Quick Conversion Guide with REGIONAL PRICES
       function updateQuickConversionGuide() {
         const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currentCurrency) : '$';
         const currencyCode = currentCurrency || 'USD';
-        
-        console.log('[Regional Pricing] Updating Quick Conversion Guide for', currencyCode);
         
         // Define the conversion amounts we need to display
         const conversionAmounts = [1000, 2000, 6000, 11500];
@@ -4288,15 +4234,12 @@
             } else {
               element.textContent = `${currencySymbol}${price.toFixed(2)} ${currencyCode}`;
             }
-            
-            console.log('[Regional Pricing] Guide updated:', amount, 'AC =', currencySymbol + price.toFixed(2));
           }
         });
       }
 
       function handleCurrencyChange() {
         currentCurrency = currencySelect.value;
-        console.log('[Multi-Currency] Currency changed to:', currentCurrency);
         
         updateCurrencyLabel();
         updateQuickButtons();
@@ -4310,58 +4253,44 @@
 
         // Save currency preference
         window.currencyManager.saveCurrency(currentCurrency);
-        
-        console.log('[Multi-Currency] All UI elements updated for', currentCurrency);
       }
 
       // Update all pricing tables with REGIONAL PRICES (no conversions)
       function updateAllTables() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
         const currency = currentCurrency || 'USD';
-        
-        console.log('[Regional Pricing] Updating all tables for', currency, 'with symbol', symbol, '(using actual EA store prices)');
 
         // Update Package Comparison table with REGIONAL PRICES
-        let priceCount = 0;
         document.querySelectorAll('.pkg-price').forEach((cell) => {
           const coins = parseInt(cell.getAttribute('data-coins'));
           if (APEX_COINS_REGIONAL_PRICES[coins]) {
             const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
             cell.textContent = `${symbol}${regionalPrice.toFixed(2)}`;
-            priceCount++;
           }
         });
-        console.log('[Regional Pricing] Updated', priceCount, 'package prices with actual EA store prices');
 
         // Update EA Play prices in Package Comparison table with REGIONAL PRICES
-        let eaCount = 0;
         document.querySelectorAll('.pkg-ea-price').forEach((cell) => {
           const coins = parseInt(cell.getAttribute('data-coins'));
           if (APEX_COINS_REGIONAL_PRICES[coins]) {
             const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
             const eaPrice = regionalPrice * 0.9; // 10% EA Play discount on REGIONAL price
             cell.textContent = `${symbol}${eaPrice.toFixed(2)}`;
-            eaCount++;
           }
         });
-        console.log('[Regional Pricing] Updated', eaCount, 'EA Play prices (10% off regional prices)');
 
         // Update per-coin rates in Package Comparison table with REGIONAL PRICES
-        let rateCount = 0;
         document.querySelectorAll('.pkg-per-coin').forEach((cell) => {
           const coins = parseInt(cell.getAttribute('data-coins'));
           if (APEX_COINS_REGIONAL_PRICES[coins]) {
             const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
             const perCoin = regionalPrice / coins;
             cell.textContent = `${symbol}${perCoin.toFixed(5)}`;
-            rateCount++;
           }
         });
-        console.log('[Regional Pricing] Updated', rateCount, 'per-coin rates (based on regional prices)');
 
         // Update all cells with data-usd attributes (for the exchange rate table)
         // Note: These still use conversion as they're showing exchange rate examples
-        let exchangeCount = 0;
         document.querySelectorAll("[data-usd]").forEach((cell) => {
           const usdValue = parseFloat(cell.getAttribute("data-usd"));
           const convertedValue = window.currencyManager.convertFromUSD(
@@ -4369,10 +4298,7 @@
             currentCurrency
           );
           cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
-          exchangeCount++;
         });
-        console.log('[Regional Pricing] Updated', exchangeCount, 'exchange rate cells (for reference)');
-        console.log('[Regional Pricing] All tables update complete!');
       }
 
       // Legacy function name for backward compatibility
@@ -4429,7 +4355,7 @@
               }
             }
           } catch (error) {
-            console.error("Error loading saved calculation:", error);
+            // Silently handle parsing errors
           }
         }
       }
@@ -4546,7 +4472,7 @@
               this.history = history;
               return this.cleanupHistory();
             } catch (e) {
-              console.warn("Failed to parse spending history:", e);
+              // Silently handle parsing errors
             }
           }
           return [];

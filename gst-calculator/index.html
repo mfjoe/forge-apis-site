@@ -4950,7 +4950,6 @@
         const mobileTotal = document.getElementById("mobileTotal");
 
         if (!mobileAmount) {
-          console.log("Mobile calculator elements not found");
           return;
         }
 
@@ -5065,8 +5064,6 @@
 
         // Initial calculation
         calculateMobileGST();
-
-        console.log("Mobile calculator initialized with new functionality");
       }
 
       // Initialize mobile calculator
@@ -5079,7 +5076,6 @@
         const mobileNavOverlay = document.getElementById("mobileNavOverlay");
 
         if (!mobileNavToggle || !mobileNavMenu || !mobileNavOverlay) {
-          console.log("Mobile nav elements not found");
           return;
         }
 
@@ -5120,8 +5116,6 @@
         navLinks.forEach((link) => {
           link.addEventListener("click", closeNav);
         });
-
-        console.log("Mobile navigation initialized");
       }
 
       // Initialize mobile navigation
