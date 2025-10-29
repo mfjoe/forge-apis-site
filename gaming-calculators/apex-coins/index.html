@@ -40,7 +40,7 @@
     />
     <link
       rel="canonical"
-      href="https://forgeapis.com/gaming-calculators/apex-coins/"
+      href="https://gaming-tools.co.uk/gaming-calculators/apex-coins/"
     />
     <meta
       property="og:title"
@@ -53,7 +53,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://forgeapis.com/gaming-calculators/apex-coins/"
+      content="https://gaming-tools.co.uk/gaming-calculators/apex-coins/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -249,23 +249,87 @@
         padding: 0 15px;
       }
 
-      /* Breadcrumb Navigation */
+      /* Breadcrumb Navigation - Apex Legends Futuristic Theme */
       .breadcrumb {
-        background: rgba(26, 32, 44, 0.8);
+        background: linear-gradient(
+          135deg,
+          rgba(10, 14, 26, 0.95) 0%,
+          rgba(26, 32, 44, 0.9) 100%
+        );
         padding: 1rem 0;
-        border-bottom: 2px solid var(--primary);
-        margin-bottom: 2rem;
-        box-shadow: 0 0 20px rgba(255, 23, 68, 0.3),
+        border-bottom: 3px solid var(--secondary);
+        border-top: 2px solid rgba(255, 23, 68, 0.5);
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.4),
+          0 8px 32px rgba(0, 0, 0, 0.6),
           inset 0 0 20px rgba(0, 212, 255, 0.1);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 15px) 0,
+          100% 15px,
+          100% 100%,
+          15px 100%,
+          0 calc(100% - 15px)
+        );
+      }
+
+      .breadcrumb::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          rgba(0, 212, 255, 0.03) 1px,
+          transparent 2px,
+          transparent 50px
+        );
+        animation: scanline 3s linear infinite;
+      }
+
+      .breadcrumb::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--secondary),
+          var(--primary),
+          var(--secondary),
+          transparent
+        );
+        animation: neonSweep 2s ease-in-out infinite;
+      }
+
+      @keyframes scanline {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(50px); }
+      }
+
+      @keyframes neonSweep {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
       }
 
       .breadcrumb-list {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        color: var(--gray);
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--white);
+        font-family: "Rajdhani", "Orbitron", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
       }
 
       .breadcrumb-item {
@@ -274,10 +338,14 @@
       }
 
       .breadcrumb-item:not(:last-child)::after {
-        content: ">";
-        margin-left: 0.5rem;
+        content: "▸";
+        margin-left: 0.75rem;
         color: var(--secondary);
-        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+        font-size: 1.2rem;
+        text-shadow: 0 0 15px rgba(0, 212, 255, 1),
+          0 0 30px rgba(0, 212, 255, 0.5);
+        filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.8));
+        animation: neonPulse 3s ease-in-out infinite;
       }
 
       .breadcrumb-link {
@@ -285,42 +353,179 @@
         text-decoration: none;
         transition: all 0.3s ease;
         border-radius: 0;
-        padding: 0.25rem 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background: rgba(0, 212, 255, 0.08);
+        border: 2px solid rgba(0, 212, 255, 0.3);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 600;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.1),
+          0 0 15px rgba(0, 212, 255, 0.2);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% 100%,
+          8px 100%,
+          0 calc(100% - 8px)
+        );
+        position: relative;
+      }
+
+      .breadcrumb-link::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          transparent,
+          rgba(0, 212, 255, 0.2),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+      }
+
+      .breadcrumb-link:hover::before {
+        transform: translateX(100%);
       }
 
       .breadcrumb-link:hover {
         color: var(--primary);
-        background: rgba(255, 23, 68, 0.2);
-        box-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+        background: rgba(255, 23, 68, 0.15);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px rgba(255, 23, 68, 0.8),
+          inset 0 0 15px rgba(255, 23, 68, 0.2),
+          0 4px 12px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 15px rgba(255, 23, 68, 1),
+          0 0 30px rgba(255, 23, 68, 0.5);
+      }
+
+      .breadcrumb-link:active {
+        transform: translateY(0);
+        box-shadow: 0 0 15px rgba(255, 23, 68, 0.5);
       }
 
       .logo-link {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-weight: 700;
+        font-weight: 900;
+        padding: 0.35rem 0.65rem;
+        background: rgba(0, 212, 255, 0.12);
+        border: 2px solid rgba(0, 212, 255, 0.4);
+        clip-path: polygon(
+          0 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
       }
 
-      .logo-link svg {
-        width: 120px;
-        height: 72px;
+      .logo-link:hover {
+        background: rgba(255, 184, 0, 0.15);
+        border-color: var(--accent);
+        box-shadow: 0 0 30px rgba(255, 184, 0, 0.8),
+          inset 0 0 15px rgba(255, 184, 0, 0.2);
+        text-shadow: 0 0 15px rgba(255, 184, 0, 0.8);
+      }
+
+      .logo-link svg,
+      .logo-link img {
+        width: auto;
+        height: 60px;
         flex-shrink: 0;
-        filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.8));
+      }
+
+      .logo-link:hover svg,
+      .logo-link:hover img {
+        filter: drop-shadow(0 0 15px rgba(255, 184, 0, 1));
       }
 
       .logo-text {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        text-transform: uppercase;
       }
 
       .breadcrumb-current {
         color: var(--white);
-        font-weight: 700;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.2em;
+        text-shadow: 0 0 20px rgba(255, 23, 68, 1),
+          0 0 40px rgba(255, 23, 68, 0.6),
+          0 0 10px rgba(0, 212, 255, 0.8);
+        padding: 0.5rem 0.75rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 23, 68, 0.2),
+          rgba(0, 212, 255, 0.15)
+        );
+        border-radius: 0;
+        border: 2px solid var(--primary);
+        box-shadow: 0 0 25px rgba(255, 23, 68, 0.6),
+          0 0 50px rgba(0, 212, 255, 0.3),
+          inset 0 0 20px rgba(255, 23, 68, 0.2);
+        position: relative;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
+        animation: neonGlow 2s ease-in-out infinite;
+      }
+
+      .breadcrumb-current::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          45deg,
+          var(--primary),
+          var(--secondary),
+          var(--primary)
+        );
+        border-radius: 0;
+        opacity: 0.3;
+        z-index: -1;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
+        animation: borderRotate 3s linear infinite;
+      }
+
+      @keyframes neonGlow {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(255, 23, 68, 0.6),
+            0 0 40px rgba(0, 212, 255, 0.3),
+            inset 0 0 15px rgba(255, 23, 68, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 23, 68, 0.8),
+            0 0 60px rgba(0, 212, 255, 0.5),
+            inset 0 0 25px rgba(255, 23, 68, 0.3);
+        }
+      }
+
+      @keyframes borderRotate {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.5; }
       }
 
       /* FAQ Section */
@@ -2024,7 +2229,7 @@
           <span></span>
         </div>
       </button>
-      <div class="mobile-logo">ForgeAPIs</div>
+      <div class="mobile-logo">Gaming Tools</div>
     </div>
 
     <!-- Mobile Drawer Menu -->
@@ -2106,168 +2311,7 @@
         <nav class="breadcrumb-list" aria-label="Breadcrumb">
           <div class="breadcrumb-item">
             <a href="../../" class="breadcrumb-link logo-link">
-              <svg
-                width="120"
-                height="20"
-                viewBox="0 0 240 80"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <!-- Digital/Tech Anvil with Crossed Hammers -->
-                <g transform="translate(15, 15)">
-                  <!-- Digital Anvil (geometric/tech style) -->
-                  <path
-                    d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
-                    fill="#1E293B"
-                    stroke="#0066FF"
-                    stroke-width="0.5"
-                  />
-                  <rect
-                    x="18"
-                    y="30"
-                    width="24"
-                    height="5"
-                    fill="#334155"
-                    rx="1"
-                  />
-                  <rect x="16" y="28" width="28" height="2" fill="#475569" />
-                  <!-- Tech pattern on anvil -->
-                  <line
-                    x1="20"
-                    y1="32"
-                    x2="40"
-                    y2="32"
-                    stroke="#0066FF"
-                    stroke-width="0.5"
-                    opacity="0.6"
-                  />
-                  <line
-                    x1="22"
-                    y1="34"
-                    x2="38"
-                    y2="34"
-                    stroke="#00D4AA"
-                    stroke-width="0.5"
-                    opacity="0.6"
-                  />
-                  <!-- Crossed Hammers (geometric style) -->
-                  <!-- Left hammer -->
-                  <g transform="rotate(-30 30 25)">
-                    <rect
-                      x="28"
-                      y="15"
-                      width="4"
-                      height="18"
-                      fill="#0066FF"
-                      rx="0.5"
-                    />
-                    <path
-                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
-                      fill="#0052CC"
-                    />
-                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
-                  </g>
-                  <!-- Right hammer -->
-                  <g transform="rotate(30 30 25)">
-                    <rect
-                      x="28"
-                      y="15"
-                      width="4"
-                      height="18"
-                      fill="#0066FF"
-                      rx="0.5"
-                    />
-                    <path
-                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
-                      fill="#0052CC"
-                    />
-                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
-                  </g>
-                  <!-- Digital Fire/Energy (geometric flames) -->
-                  <path
-                    d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
-                    fill="#FF6B35"
-                    opacity="0.9"
-                  />
-                  <path
-                    d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
-                    fill="#FFA500"
-                    opacity="0.8"
-                  />
-                  <path
-                    d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
-                    fill="#FFA500"
-                    opacity="0.8"
-                  />
-                  <!-- Tech sparks (pixels) -->
-                  <rect
-                    x="12"
-                    y="20"
-                    width="2"
-                    height="2"
-                    fill="#00D4AA"
-                    opacity="0.8"
-                  />
-                  <rect
-                    x="46"
-                    y="20"
-                    width="2"
-                    height="2"
-                    fill="#00D4AA"
-                    opacity="0.8"
-                  />
-                  <rect
-                    x="10"
-                    y="25"
-                    width="1.5"
-                    height="1.5"
-                    fill="#FFD700"
-                    opacity="0.7"
-                  />
-                  <rect
-                    x="48"
-                    y="25"
-                    width="1.5"
-                    height="1.5"
-                    fill="#FFD700"
-                    opacity="0.7"
-                  />
-                </g>
-                <!-- Text: Forge -->
-                <text
-                  x="75"
-                  y="45"
-                  font-family="Inter, system-ui, -apple-system, sans-serif"
-                  font-size="28"
-                  font-weight="800"
-                  fill="#0A0E27"
-                >
-                  Forge
-                </text>
-                <!-- Text: APIs -->
-                <text
-                  x="150"
-                  y="45"
-                  font-family="Inter, system-ui, -apple-system, sans-serif"
-                  font-size="28"
-                  font-weight="400"
-                  fill="#6B7280"
-                >
-                  APIs
-                </text>
-                <!-- Tagline -->
-                <text
-                  x="75"
-                  y="63"
-                  font-family="Inter, system-ui, -apple-system, sans-serif"
-                  font-size="9"
-                  fill="#9CA3AF"
-                  letter-spacing="0.5"
-                >
-                  PRODUCTION-READY APIS
-                </text>
-              </svg>
+              <img src="../assets/images/logo.svg" alt="Logo" style="height: 80px; width: auto;" onerror="this.style.display='none';" />
             </a>
           </div>
           <div class="breadcrumb-item">
@@ -2361,31 +2405,31 @@
 
           <div class="quick-amounts">
             <button class="quick-btn" data-amount="500">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">500 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$4.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">500 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$4.99</span>
             </button>
             <button class="quick-btn" data-amount="1000">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">1,000 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$9.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">1,000 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$9.99</span>
             </button>
             <button class="quick-btn" data-amount="2150" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">2,150 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$19.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">2,150 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$19.99</span>
               <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+150 BONUS</span>
             </button>
             <button class="quick-btn" data-amount="4350" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">4,350 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$39.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">4,350 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$39.99</span>
               <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+350 BONUS</span>
             </button>
             <button class="quick-btn" data-amount="6700" style="border-color: #ffb800; position: relative; background: rgba(255, 184, 0, 0.1);">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">6,700 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$59.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">6,700 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$59.99</span>
               <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+700 BONUS</span>
             </button>
             <button class="quick-btn" data-amount="11500" style="border-color: #00d4ff; background: linear-gradient(135deg, rgba(255, 184, 0, 0.2), rgba(0, 212, 255, 0.2)); box-shadow: 0 0 20px rgba(255, 184, 0, 0.4);">
-              <span style="display: block; font-size: 1.2rem; font-weight: 900;">11,500 AC</span>
-              <span style="display: block; font-size: 0.9rem; color: var(--secondary);">$99.99</span>
+              <span class="coin-amount" style="display: block; font-size: 1.2rem; font-weight: 900;">11,500 AC</span>
+              <span class="price-amount" style="display: block; font-size: 0.9rem; color: var(--secondary);">$99.99</span>
               <span style="display: block; font-size: 0.75rem; color: #ffb800; font-weight: 700; margin-top: 0.25rem;">+1,500 BONUS</span>
               <span style="display: block; font-size: 0.7rem; color: #00d4ff; font-weight: 900; margin-top: 0.25rem;">⭐ BEST VALUE</span>
             </button>
@@ -2414,19 +2458,19 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">1,000 Apex Coins</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$9.99 USD</p>
+                  <p id="guide-price-1000" style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$9.99 USD</p>
                 </div>
                 <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">2,000 Apex Coins</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$19.99 USD</p>
+                  <p id="guide-price-2000" style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$19.99 USD</p>
                 </div>
                 <div style="background: rgba(10, 14, 26, 0.8); padding: 1rem; border-radius: 0; border-left: 4px solid var(--secondary); backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">6,000 Apex Coins</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$59.99 USD</p>
+                  <p id="guide-price-6000" style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px rgba(255, 23, 68, 0.6);">$59.99 USD</p>
                 </div>
                 <div style="background: rgba(10, 14, 26, 0.9); padding: 1rem; border-radius: 0; border-left: 4px solid var(--legendary); box-shadow: 0 0 15px rgba(255, 184, 0, 0.3); backdrop-filter: blur(5px); border: 1px solid rgba(255, 184, 0, 0.5); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">
                   <p style="margin: 0; font-size: 0.9rem; color: var(--gray); font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(255, 184, 0, 0.5);">11,500 Apex Coins</p>
-                  <p style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--legendary); text-shadow: 0 0 15px rgba(255, 184, 0, 0.8);">$99.99 USD <span style="font-size: 0.7rem; background: var(--legendary); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 2px; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
+                  <p id="guide-price-11500" style="margin: 0.25rem 0 0; font-size: 1.3rem; font-weight: 900; color: var(--legendary); text-shadow: 0 0 15px rgba(255, 184, 0, 0.8);">$99.99 USD <span style="font-size: 0.7rem; background: var(--legendary); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 2px; margin-left: 0.25rem; font-weight: 900;">BEST</span></p>
                 </div>
               </div>
               <p style="margin: 1rem 0 0; font-size: 0.85rem; color: var(--gray); text-align: center; font-style: italic; font-family: -apple-system, sans-serif; text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);">
@@ -2508,9 +2552,9 @@
                     <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Starter</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">500 + 0</td>
                     <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">500</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$4.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$4.49</td>
-                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00998</td>
+                    <td class="pkg-price" data-coins="500" style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$4.99</td>
+                    <td class="pkg-ea-price" data-coins="500" style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$4.49</td>
+                    <td class="pkg-per-coin" data-coins="500" style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00998</td>
                     <td style="padding: 1rem; text-align: center; color: #6b7280;">0%</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Small purchases</td>
                   </tr>
@@ -2518,9 +2562,9 @@
                     <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Basic</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">1,000 + 0</td>
                     <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">1,000</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$9.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$8.99</td>
-                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00999</td>
+                    <td class="pkg-price" data-coins="1000" style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$9.99</td>
+                    <td class="pkg-ea-price" data-coins="1000" style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$8.99</td>
+                    <td class="pkg-per-coin" data-coins="1000" style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00999</td>
                     <td style="padding: 1rem; text-align: center; color: #6b7280;">~0%</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Battle Pass (950 AC)</td>
                   </tr>
@@ -2528,9 +2572,9 @@
                     <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Standard</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">2,000 + <span style="color: #ffb800; font-weight: 700;">150</span></td>
                     <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">2,150</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$19.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$17.99</td>
-                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00930</td>
+                    <td class="pkg-price" data-coins="2150" style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$19.99</td>
+                    <td class="pkg-ea-price" data-coins="2150" style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$17.99</td>
+                    <td class="pkg-per-coin" data-coins="2150" style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00930</td>
                     <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">6.8%</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Legendary skin + BP</td>
                   </tr>
@@ -2538,9 +2582,9 @@
                     <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Advanced</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">4,000 + <span style="color: #ffb800; font-weight: 700;">350</span></td>
                     <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">4,350</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$39.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$35.99</td>
-                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00919</td>
+                    <td class="pkg-price" data-coins="4350" style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$39.99</td>
+                    <td class="pkg-ea-price" data-coins="4350" style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$35.99</td>
+                    <td class="pkg-per-coin" data-coins="4350" style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00919</td>
                     <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">7.9%</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Multiple skins</td>
                   </tr>
@@ -2548,9 +2592,9 @@
                     <td style="padding: 1rem; font-weight: 600; color: #2d2d2d;">Premium</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">6,000 + <span style="color: #ffb800; font-weight: 700;">700</span></td>
                     <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">6,700</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$59.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$53.99</td>
-                    <td style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00895</td>
+                    <td class="pkg-price" data-coins="6700" style="padding: 1rem; text-align: center; font-weight: 600; color: #2d2d2d;">$59.99</td>
+                    <td class="pkg-ea-price" data-coins="6700" style="padding: 1rem; text-align: center; font-weight: 600; color: #ff8c00;">$53.99</td>
+                    <td class="pkg-per-coin" data-coins="6700" style="padding: 1rem; text-align: center; color: #2d2d2d;">$0.00895</td>
                     <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">10.3%</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">Event bundles</td>
                   </tr>
@@ -2558,9 +2602,9 @@
                     <td style="padding: 1rem; font-weight: 700; color: #2d2d2d;">Ultimate ⭐</td>
                     <td style="padding: 1rem; text-align: center; color: #2d2d2d;">10,000 + <span style="color: #ffb800; font-weight: 900; font-size: 1.1em;">1,500</span></td>
                     <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">11,500</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$99.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #ff8c00; font-size: 1.1em;">$89.99</td>
-                    <td style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$0.00869</td>
+                    <td class="pkg-price" data-coins="11500" style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$99.99</td>
+                    <td class="pkg-ea-price" data-coins="11500" style="padding: 1rem; text-align: center; font-weight: 900; color: #ff8c00; font-size: 1.1em;">$89.99</td>
+                    <td class="pkg-per-coin" data-coins="11500" style="padding: 1rem; text-align: center; font-weight: 900; color: #2d2d2d; font-size: 1.1em;">$0.00869</td>
                     <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 900; font-size: 1.1em;">12.9%</td>
                     <td style="padding: 1rem; text-align: center; font-weight: 700; color: #2d2d2d;">Maximum value</td>
                   </tr>
@@ -3570,14 +3614,54 @@
       let isUpdating = false;
       let currentCurrency = "USD";
 
-      // Apex Coins Package Structure 2025 (with bonus coins)
+      // Actual EA Store Regional Prices (NOT exchange rate conversions)
+      const APEX_COINS_REGIONAL_PRICES = {
+        500: { USD: 4.99, GBP: 3.99, EUR: 4.49, CAD: 6.49, AUD: 7.45 },
+        1000: { USD: 9.99, GBP: 7.99, EUR: 8.99, CAD: 12.99, AUD: 14.95 },
+        2150: { USD: 19.99, GBP: 15.99, EUR: 17.99, CAD: 25.99, AUD: 29.95 },
+        4350: { USD: 39.99, GBP: 31.99, EUR: 35.99, CAD: 51.99, AUD: 59.95 },
+        6700: { USD: 59.99, GBP: 47.99, EUR: 53.99, CAD: 77.99, AUD: 89.95 },
+        11500: { USD: 99.99, GBP: 79.99, EUR: 89.99, CAD: 129.99, AUD: 149.95 }
+      };
+
+      // Apex Coins Package Structure 2025 (with bonus coins - prices from APEX_COINS_REGIONAL_PRICES)
       const APEX_COINS_PACKAGES = [
-        { coins: 500, bonus: 0, total: 500, price: 4.99, perCoinRate: 0.00998, savings: 0 },
-        { coins: 1000, bonus: 0, total: 1000, price: 9.99, perCoinRate: 0.00999, savings: 0 },
-        { coins: 2000, bonus: 150, total: 2150, price: 19.99, perCoinRate: 0.00930, savings: 6.8 },
-        { coins: 4000, bonus: 350, total: 4350, price: 39.99, perCoinRate: 0.00919, savings: 7.9 },
-        { coins: 6000, bonus: 700, total: 6700, price: 59.99, perCoinRate: 0.00895, savings: 10.3 },
-        { coins: 10000, bonus: 1500, total: 11500, price: 99.99, perCoinRate: 0.00869, savings: 12.9 }
+        { 
+          coins: 500, 
+          bonus: 0, 
+          total: 500,
+          prices: APEX_COINS_REGIONAL_PRICES[500]
+        },
+        { 
+          coins: 1000, 
+          bonus: 0, 
+          total: 1000,
+          prices: APEX_COINS_REGIONAL_PRICES[1000]
+        },
+        { 
+          coins: 2000, 
+          bonus: 150, 
+          total: 2150,
+          prices: APEX_COINS_REGIONAL_PRICES[2150]
+        },
+        { 
+          coins: 4000, 
+          bonus: 350, 
+          total: 4350,
+          prices: APEX_COINS_REGIONAL_PRICES[4350]
+        },
+        { 
+          coins: 6000, 
+          bonus: 700, 
+          total: 6700,
+          prices: APEX_COINS_REGIONAL_PRICES[6700]
+        },
+        { 
+          coins: 10000, 
+          bonus: 1500, 
+          total: 11500,
+          prices: APEX_COINS_REGIONAL_PRICES[11500]
+        }
       ];
 
       // Best value rate for estimates (11,500 package rate)
@@ -3593,7 +3677,8 @@
       }
       
       // EA Play discount functions
-      function getEAPlayPrice(originalPrice) {
+      function getEAPlayPrice(originalPrice, currency) {
+        // Apply EA Play discount if member
         return isEAPlayMember ? originalPrice * (1 - EA_PLAY_DISCOUNT) : originalPrice;
       }
       
@@ -3605,9 +3690,21 @@
         if (eaPlayToggle) {
           isEAPlayMember = eaPlayToggle.checked;
           
+          console.log('[Multi-Currency] EA Play status changed:', isEAPlayMember ? 'ACTIVE (10% discount)' : 'INACTIVE');
+          
           if (isEAPlayMember) {
             eaPlayMessage.style.display = 'block';
             eaPlayInfo.style.display = 'block';
+            
+            // Log example discount for current currency
+            const currency = currentCurrency || 'USD';
+            const examplePkg = APEX_COINS_PACKAGES[5]; // 11,500 AC package
+            const originalPrice = examplePkg.prices[currency];
+            const discountedPrice = originalPrice * 0.9;
+            const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currency) : '$';
+            console.log('[Multi-Currency] EA Play Example: 11,500 AC package', 
+                       originalPrice, currency, '→', discountedPrice.toFixed(2), currency,
+                       '(Saved:', currencySymbol + (originalPrice - discountedPrice).toFixed(2) + ')');
           } else {
             eaPlayMessage.style.display = 'none';
             eaPlayInfo.style.display = 'none';
@@ -3622,90 +3719,121 @@
           } else if (usdInput && usdInput.value) {
             handleUsdInput();
           }
+          
+          // Update all tables to reflect EA Play prices
+          updateAllTables();
         }
       }
       
-      // Intelligent recommendation system
-      function generateRecommendation(usdAmount) {
-        if (!usdAmount || usdAmount <= 0) return null;
+      // Intelligent recommendation system using REGIONAL PRICES
+      function generateRecommendation(currencyAmount) {
+        if (!currencyAmount || currencyAmount <= 0) return null;
         
-        const packages = APEX_COINS_PACKAGES.map(pkg => ({
-          ...pkg,
-          price: getEAPlayPrice(pkg.price)
-        }));
+        const currency = currentCurrency || 'USD';
+        const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currency) : '$';
         
-        // Sort packages by value (coins per dollar)
+        console.log('[Regional Pricing] Generating recommendation for', currencyAmount, currency, '(using actual EA store prices)');
+        
+        // Create packages array with REGIONAL PRICES and EA Play discount applied
+        const packages = APEX_COINS_PACKAGES.map(pkg => {
+          const regionalPrice = APEX_COINS_REGIONAL_PRICES[pkg.total][currency];
+          return {
+            ...pkg,
+            price: getEAPlayPrice(regionalPrice, currency),
+            originalPrice: regionalPrice
+          };
+        });
+        
+        // Sort packages by value (coins per currency unit)
         const sortedPackages = packages.sort((a, b) => (b.total / b.price) - (a.total / a.price));
         
         // Find the best single package within budget
-        const affordablePackages = packages.filter(pkg => pkg.price <= usdAmount);
+        const affordablePackages = packages.filter(pkg => pkg.price <= currencyAmount);
         const bestSinglePackage = affordablePackages.length > 0 ? 
           affordablePackages.reduce((best, current) => 
             (current.total / current.price) > (best.total / best.price) ? current : best
           ) : null;
         
-        // Find optimal combination for larger amounts
-        let bestCombination = null;
-        if (usdAmount >= 20) {
-          bestCombination = findOptimalCombination(usdAmount, packages);
-        }
+        // Generate recommendation based on amount (dynamically scaled to currency)
+        const pkg0 = packages[0]; // 500 AC
+        const pkg1 = packages[1]; // 1,000 AC
+        const pkg2 = packages[2]; // 2,150 AC
+        const pkg3 = packages[3]; // 4,350 AC
+        const pkg4 = packages[4]; // 6,700 AC
+        const pkg5 = packages[5]; // 11,500 AC
         
-        // Generate recommendation based on amount
-        if (usdAmount < 5) {
+        if (currencyAmount < pkg0.price * 1.5) {
           return {
             type: 'budget',
-            message: "Consider the 500 AC package ($4.99) for best value at your budget",
-            packages: [packages[0]],
-            totalCoins: packages[0].total,
-            totalCost: packages[0].price,
-            bonusCoins: 0
+            message: `Consider the 500 AC package (${currencySymbol}${pkg0.price.toFixed(2)}) for best value at your budget`,
+            packages: [pkg0],
+            totalCoins: pkg0.total,
+            totalCost: pkg0.price,
+            bonusCoins: 0,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
-        } else if (usdAmount < 10) {
+        } else if (currencyAmount < pkg1.price * 1.5) {
+          const extraCost = (pkg1.price - pkg0.price).toFixed(2);
           return {
             type: 'upgrade',
-            message: "The 1,000 AC package ($9.99) gives you 100% more coins for just $5 more",
-            packages: [packages[1]],
-            totalCoins: packages[1].total,
-            totalCost: packages[1].price,
-            bonusCoins: 0
+            message: `The 1,000 AC package (${currencySymbol}${pkg1.price.toFixed(2)}) gives you 100% more coins for just ${currencySymbol}${extraCost} more`,
+            packages: [pkg1],
+            totalCoins: pkg1.total,
+            totalCost: pkg1.price,
+            bonusCoins: 0,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
-        } else if (usdAmount < 20) {
+        } else if (currencyAmount < pkg2.price * 1.5) {
           return {
             type: 'bonus',
-            message: "You're close to the 2,150 AC package ($19.99) which includes +150 bonus coins!",
-            packages: [packages[2]],
-            totalCoins: packages[2].total,
-            totalCost: packages[2].price,
-            bonusCoins: packages[2].bonus
+            message: `You're close to the 2,150 AC package (${currencySymbol}${pkg2.price.toFixed(2)}) which includes +150 bonus coins!`,
+            packages: [pkg2],
+            totalCoins: pkg2.total,
+            totalCost: pkg2.price,
+            bonusCoins: pkg2.bonus,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
-        } else if (usdAmount < 40) {
+        } else if (currencyAmount < pkg3.price * 1.5) {
           return {
             type: 'value',
-            message: "Consider the 4,350 AC package ($39.99) with +350 bonus coins - much better value",
-            packages: [packages[3]],
-            totalCoins: packages[3].total,
-            totalCost: packages[3].price,
-            bonusCoins: packages[3].bonus
+            message: `Consider the 4,350 AC package (${currencySymbol}${pkg3.price.toFixed(2)}) with +350 bonus coins - much better value`,
+            packages: [pkg3],
+            totalCoins: pkg3.total,
+            totalCost: pkg3.price,
+            bonusCoins: pkg3.bonus,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
-        } else if (usdAmount < 60) {
+        } else if (currencyAmount < pkg4.price * 1.5) {
           return {
             type: 'mid-tier',
-            message: "The 6,700 AC package ($59.99) includes +700 bonus coins for maximum mid-tier value",
-            packages: [packages[4]],
-            totalCoins: packages[4].total,
-            totalCost: packages[4].price,
-            bonusCoins: packages[4].bonus
+            message: `The 6,700 AC package (${currencySymbol}${pkg4.price.toFixed(2)}) includes +700 bonus coins for maximum mid-tier value`,
+            packages: [pkg4],
+            totalCoins: pkg4.total,
+            totalCost: pkg4.price,
+            bonusCoins: pkg4.bonus,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
         } else {
-          const ultimatePackage = packages[5];
-          const additionalCost = ultimatePackage.price - usdAmount;
+          const perCoinRate = (pkg5.price / pkg5.total).toFixed(5);
+          const additionalCost = Math.max(0, pkg5.price - currencyAmount);
+          const message = additionalCost > 0 
+            ? `The 11,500 AC package (${currencySymbol}${pkg5.price.toFixed(2)}) is the best value at ${currencySymbol}${perCoinRate} per coin with +1,500 bonus. You'd pay ${currencySymbol}${additionalCost.toFixed(2)} more for maximum efficiency`
+            : `The 11,500 AC package (${currencySymbol}${pkg5.price.toFixed(2)}) is the best value at ${currencySymbol}${perCoinRate} per coin with +1,500 bonus`;
+          
           return {
             type: 'ultimate',
-            message: `The 11,500 AC package ($${ultimatePackage.price.toFixed(2)}) is the best value at $${ultimatePackage.perCoinRate.toFixed(5)} per coin with +1,500 bonus. You'd pay $${additionalCost.toFixed(2)} more for maximum efficiency`,
-            packages: [ultimatePackage],
-            totalCoins: ultimatePackage.total,
-            totalCost: ultimatePackage.price,
-            bonusCoins: ultimatePackage.bonus
+            message: message,
+            packages: [pkg5],
+            totalCoins: pkg5.total,
+            totalCost: pkg5.price,
+            bonusCoins: pkg5.bonus,
+            currency: currency,
+            currencySymbol: currencySymbol
           };
         }
       }
@@ -3732,8 +3860,10 @@
         const bonusText = recommendation.bonusCoins > 0 ? 
           ` (+${recommendation.bonusCoins.toLocaleString()} bonus)` : '';
         
-        const overTarget = recommendation.totalCoins > 0 ? 
-          ` (${(recommendation.totalCoins - 0).toLocaleString()} coins total)` : '';
+        const currencySymbol = recommendation.currencySymbol || '$';
+        const currency = recommendation.currency || 'USD';
+        
+        console.log('[Multi-Currency] Displaying recommendation:', recommendation.type, 'for', recommendation.totalCost, currency);
         
         recommendationBox.innerHTML = `
           <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 23, 68, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid #00d4ff; margin: 1rem 0; backdrop-filter: blur(10px);">
@@ -3753,7 +3883,7 @@
                   <p style="color: #00d4ff; font-size: 0.9rem; margin: 0.3rem 0 0 0;">Total Coins</p>
                 </div>
                 <div>
-                  <p style="color: #ffffff; font-weight: 700; margin: 0; font-size: 1.1rem;">$${recommendation.totalCost.toFixed(2)}</p>
+                  <p style="color: #ffffff; font-weight: 700; margin: 0; font-size: 1.1rem;">${currencySymbol}${recommendation.totalCost.toFixed(2)} ${currency}</p>
                   <p style="color: #00d4ff; font-size: 0.9rem; margin: 0.3rem 0 0 0;">Total Cost</p>
                 </div>
               </div>
@@ -3797,12 +3927,18 @@
       }
       
       
-      // Package warning functions for non-package amounts
+      // Package warning functions for non-package amounts using REGIONAL PRICES
       function showPackageWarning(coins) {
         // Find the closest package
         const closestPackage = APEX_COINS_PACKAGES.reduce((prev, curr) => {
           return Math.abs(curr.total - coins) < Math.abs(prev.total - coins) ? curr : prev;
         });
+        
+        const currency = currentCurrency || 'USD';
+        const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currency) : '$';
+        
+        // Get actual EA Store regional price (not converted)
+        const regionalPrice = APEX_COINS_REGIONAL_PRICES[closestPackage.total][currency];
         
         const warningDiv = document.getElementById('package-warning');
         if (warningDiv) {
@@ -3813,11 +3949,13 @@
               </p>
               <p style="margin: 0.5rem 0 0 0; color: var(--gray); font-size: 0.9rem;">
                 Apex Coins are sold in fixed packages. You cannot buy exactly ${coins.toLocaleString()} coins. 
-                Closest package: <strong style="color: var(--secondary);">${closestPackage.total.toLocaleString()} AC for $${closestPackage.price}</strong>
+                Closest package: <strong style="color: var(--secondary);">${closestPackage.total.toLocaleString()} AC for ${currencySymbol}${regionalPrice.toFixed(2)}</strong>
               </p>
             </div>
           `;
           warningDiv.style.display = 'block';
+          
+          console.log('[Regional Pricing] Package warning shown:', closestPackage.total, 'AC =', currencySymbol + regionalPrice.toFixed(2));
         }
       }
 
@@ -3844,23 +3982,60 @@
         }
       }
 
-      function calculateApexToUSD(coins) {
-        const exactPackage = findExactPackage(coins);
-        if (exactPackage) {
-          hidePackageWarning(); // Hide warning for exact matches
-          return getEAPlayPrice(exactPackage.price);
+      // Calculate Apex Coins to Currency using REGIONAL PRICES ONLY (no conversions)
+      function calculateApexToCurrency(coins, currency) {
+        const curr = currency || currentCurrency || 'USD';
+        
+        console.log('[Regional Pricing] Calculating', coins, 'AC to', curr, '(using actual EA store prices)');
+        
+        // Check if exact package match exists
+        if (APEX_COINS_REGIONAL_PRICES[coins]) {
+          hidePackageWarning();
+          const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][curr];
+          const finalPrice = getEAPlayPrice(regionalPrice, curr);
+          console.log('[Regional Pricing] Exact package:', coins, 'AC =', curr, finalPrice.toFixed(2), '(EA Play:', isEAPlayMember, ')');
+          return finalPrice;
         }
         
-        // For non-package amounts, show warning and estimate
+        // For non-package amounts, show warning and estimate using best value rate
         showPackageWarning(coins);
-        return getEAPlayPrice(coins * BEST_APEX_RATE);
+        
+        // Calculate per-coin rate from 11,500 package (best value) for this currency
+        const bestPackagePrice = APEX_COINS_REGIONAL_PRICES[11500][curr];
+        const perCoinRate = bestPackagePrice / 11500;
+        const estimatedPrice = coins * perCoinRate;
+        const finalPrice = getEAPlayPrice(estimatedPrice, curr);
+        
+        console.log('[Regional Pricing] Estimated:', coins, 'AC ≈', curr, finalPrice.toFixed(2), '(rate:', perCoinRate.toFixed(5), 'per coin)');
+        return finalPrice;
       }
 
+      // Calculate Currency to Apex Coins using REGIONAL PRICES ONLY (no conversions)
+      function calculateCurrencyToApex(amount, currency) {
+        const curr = currency || currentCurrency || 'USD';
+        
+        console.log('[Regional Pricing] Calculating', amount, curr, 'to AC (using actual EA store prices)');
+        
+        // Use best value package (11,500 AC) rate for this currency
+        const bestPackagePrice = APEX_COINS_REGIONAL_PRICES[11500][curr];
+        const effectivePrice = isEAPlayMember 
+          ? bestPackagePrice * (1 - EA_PLAY_DISCOUNT) 
+          : bestPackagePrice;
+        
+        const perCoinRate = effectivePrice / 11500;
+        const coins = amount / perCoinRate;
+        
+        console.log('[Regional Pricing] Result:', coins.toFixed(0), 'AC for', amount, curr, '(EA Play:', isEAPlayMember, ')');
+        return coins;
+      }
+      
+      // Legacy function names for backward compatibility
+      function calculateApexToUSD(coins) {
+        return calculateApexToCurrency(coins);
+      }
+      
       function calculateUSDToApex(usd) {
-        // Use best value rate for USD to Apex conversion
-        // Adjust for EA Play discount if applicable
-        const effectiveRate = isEAPlayMember ? BEST_APEX_RATE * (1 - EA_PLAY_DISCOUNT) : BEST_APEX_RATE;
-        return usd / effectiveRate;
+        return calculateCurrencyToApex(usd);
       }
 
       // DOM elements
@@ -3968,6 +4143,8 @@
 
       // Initialize currency and load saved calculation
       initializeCurrency().then(() => {
+        updateQuickButtons();
+        updateQuickConversionGuide();
         updatePricingTables();
         loadSavedCalculation();
       });
@@ -3982,19 +4159,18 @@
         }
 
         const apexCoins = validatedApex;
-        const usdValue = calculateApexToUSD(apexCoins);
-        const convertedValue = window.currencyManager.convertFromUSD(
-          usdValue,
-          currentCurrency
-        );
+        
+        // Calculate using REGIONAL PRICES ONLY (no currency conversion)
+        const regionalPrice = calculateApexToCurrency(apexCoins, currentCurrency);
+        const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currentCurrency) : '$';
 
         isUpdating = true;
-        usdInput.value = convertedValue.toFixed(2);
+        usdInput.value = regionalPrice.toFixed(2);
         isUpdating = false;
 
         saveCalculation();
 
-        // Hide recommendations when converting from Apex Coins to USD
+        // Hide recommendations when converting from Apex Coins to Currency
         hideRecommendation();
         
         // Show platform disclaimer when results are displayed
@@ -4024,12 +4200,10 @@
           usdInput.value = validatedInput;
         }
 
-        const inputValue = validatedInput;
-        const usdValue = window.currencyManager.convertToUSD(
-          inputValue,
-          currentCurrency
-        );
-        const apexCoins = calculateUSDToApex(usdValue);
+        const inputValue = parseFloat(validatedInput);
+        
+        // Calculate using REGIONAL PRICES ONLY (no USD conversion)
+        const apexCoins = calculateCurrencyToApex(inputValue, currentCurrency);
 
         isUpdating = true;
         apexInput.value = Math.round(apexCoins);
@@ -4037,9 +4211,10 @@
 
         saveCalculation();
 
-        // Show intelligent recommendation for USD to Apex Coins conversion
-        if (usdValue > 0) {
-          const recommendation = generateRecommendation(usdValue);
+        // Show intelligent recommendation for Currency to Apex Coins conversion
+        // Use the actual input value in the selected currency
+        if (inputValue > 0) {
+          const recommendation = generateRecommendation(inputValue);
           if (recommendation) {
             displayRecommendation(recommendation);
           } else {
@@ -4069,9 +4244,63 @@
         handleApexInput();
       }
 
+      // Function to update quick amount buttons with REGIONAL PRICES
+      function updateQuickButtons() {
+        const quickButtons = document.querySelectorAll('.quick-btn');
+        const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currentCurrency) : '$';
+        
+        console.log('[Regional Pricing] Updating quick buttons for', currentCurrency, 'with symbol', currencySymbol);
+        
+        APEX_COINS_PACKAGES.forEach((pkg, index) => {
+          const button = quickButtons[index];
+          if (button) {
+            // Get actual EA Store regional price (not converted)
+            const regionalPrice = APEX_COINS_REGIONAL_PRICES[pkg.total][currentCurrency];
+            const priceSpan = button.querySelector('.price-amount');
+            if (priceSpan) {
+              priceSpan.textContent = `${currencySymbol}${regionalPrice.toFixed(2)}`;
+            }
+          }
+        });
+        
+        console.log('[Regional Pricing] Quick buttons updated with actual EA store prices');
+      }
+
+      // Function to update Quick Conversion Guide with REGIONAL PRICES
+      function updateQuickConversionGuide() {
+        const currencySymbol = window.currencyManager ? window.currencyManager.getSymbol(currentCurrency) : '$';
+        const currencyCode = currentCurrency || 'USD';
+        
+        console.log('[Regional Pricing] Updating Quick Conversion Guide for', currencyCode);
+        
+        // Define the conversion amounts we need to display
+        const conversionAmounts = [1000, 2000, 6000, 11500];
+        
+        conversionAmounts.forEach(amount => {
+          const element = document.getElementById(`guide-price-${amount}`);
+          if (element) {
+            // Get actual EA Store regional price
+            const price = calculateApexToCurrency(amount, currentCurrency);
+            
+            // Preserve the BEST badge for 11500
+            if (amount === 11500) {
+              element.innerHTML = `${currencySymbol}${price.toFixed(2)} ${currencyCode} <span style="font-size: 0.7rem; background: var(--legendary); color: var(--dark); padding: 0.2rem 0.4rem; border-radius: 2px; margin-left: 0.25rem; font-weight: 900;">BEST</span>`;
+            } else {
+              element.textContent = `${currencySymbol}${price.toFixed(2)} ${currencyCode}`;
+            }
+            
+            console.log('[Regional Pricing] Guide updated:', amount, 'AC =', currencySymbol + price.toFixed(2));
+          }
+        });
+      }
+
       function handleCurrencyChange() {
         currentCurrency = currencySelect.value;
+        console.log('[Multi-Currency] Currency changed to:', currentCurrency);
+        
         updateCurrencyLabel();
+        updateQuickButtons();
+        updateQuickConversionGuide();
         updatePricingTables();
 
         // Recalculate if there's input
@@ -4081,12 +4310,58 @@
 
         // Save currency preference
         window.currencyManager.saveCurrency(currentCurrency);
+        
+        console.log('[Multi-Currency] All UI elements updated for', currentCurrency);
       }
 
-      function updatePricingTables() {
+      // Update all pricing tables with REGIONAL PRICES (no conversions)
+      function updateAllTables() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
+        const currency = currentCurrency || 'USD';
+        
+        console.log('[Regional Pricing] Updating all tables for', currency, 'with symbol', symbol, '(using actual EA store prices)');
 
-        // Update all cells with data-usd attributes
+        // Update Package Comparison table with REGIONAL PRICES
+        let priceCount = 0;
+        document.querySelectorAll('.pkg-price').forEach((cell) => {
+          const coins = parseInt(cell.getAttribute('data-coins'));
+          if (APEX_COINS_REGIONAL_PRICES[coins]) {
+            const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
+            cell.textContent = `${symbol}${regionalPrice.toFixed(2)}`;
+            priceCount++;
+          }
+        });
+        console.log('[Regional Pricing] Updated', priceCount, 'package prices with actual EA store prices');
+
+        // Update EA Play prices in Package Comparison table with REGIONAL PRICES
+        let eaCount = 0;
+        document.querySelectorAll('.pkg-ea-price').forEach((cell) => {
+          const coins = parseInt(cell.getAttribute('data-coins'));
+          if (APEX_COINS_REGIONAL_PRICES[coins]) {
+            const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
+            const eaPrice = regionalPrice * 0.9; // 10% EA Play discount on REGIONAL price
+            cell.textContent = `${symbol}${eaPrice.toFixed(2)}`;
+            eaCount++;
+          }
+        });
+        console.log('[Regional Pricing] Updated', eaCount, 'EA Play prices (10% off regional prices)');
+
+        // Update per-coin rates in Package Comparison table with REGIONAL PRICES
+        let rateCount = 0;
+        document.querySelectorAll('.pkg-per-coin').forEach((cell) => {
+          const coins = parseInt(cell.getAttribute('data-coins'));
+          if (APEX_COINS_REGIONAL_PRICES[coins]) {
+            const regionalPrice = APEX_COINS_REGIONAL_PRICES[coins][currency];
+            const perCoin = regionalPrice / coins;
+            cell.textContent = `${symbol}${perCoin.toFixed(5)}`;
+            rateCount++;
+          }
+        });
+        console.log('[Regional Pricing] Updated', rateCount, 'per-coin rates (based on regional prices)');
+
+        // Update all cells with data-usd attributes (for the exchange rate table)
+        // Note: These still use conversion as they're showing exchange rate examples
+        let exchangeCount = 0;
         document.querySelectorAll("[data-usd]").forEach((cell) => {
           const usdValue = parseFloat(cell.getAttribute("data-usd"));
           const convertedValue = window.currencyManager.convertFromUSD(
@@ -4094,7 +4369,15 @@
             currentCurrency
           );
           cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
+          exchangeCount++;
         });
+        console.log('[Regional Pricing] Updated', exchangeCount, 'exchange rate cells (for reference)');
+        console.log('[Regional Pricing] All tables update complete!');
+      }
+
+      // Legacy function name for backward compatibility
+      function updatePricingTables() {
+        updateAllTables();
       }
 
       function updateCurrencyLabel() {
@@ -4532,6 +4815,8 @@
       // Initialize features when page loads
       document.addEventListener("DOMContentLoaded", async function () {
         await initializeCurrency();
+        updateQuickButtons();
+        updateQuickConversionGuide();
         initializeFeatures();
       });
 
@@ -4652,7 +4937,7 @@
         "@type": "WebApplication",
         "name": "Apex Coins Currency Converter",
         "description": "Free Apex Coins calculator to convert between Apex Coins and USD. Calculate Apex Legends currency value, battle pass, and store items instantly. Updated 2025 rates.",
-        "url": "https://forgeapis.com/gaming-calculators/apex-coins/",
+        "url": "https://gaming-tools.co.uk/gaming-calculators/apex-coins/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -4669,7 +4954,7 @@
         "dateModified": "2025-01-24",
         "author": {
           "@type": "Organization",
-          "name": "ForgeAPI"
+          "name": "Gaming Tools"
         }
       }
     </script>
@@ -4683,19 +4968,19 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://forgeapis.com/"
+            "item": "https://gaming-tools.co.uk/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Gaming Calculators",
-            "item": "https://forgeapis.com/gaming-calculators/"
+            "item": "https://gaming-tools.co.uk/gaming-calculators/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Apex Coins Calculator",
-            "item": "https://forgeapis.com/gaming-calculators/apex-coins/"
+            "item": "https://gaming-tools.co.uk/gaming-calculators/apex-coins/"
           }
         ]
       }
@@ -4804,15 +5089,6 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Gaming Calculator Footer -->
-    <footer id="footer-container"></footer>
-    <script>
-      // Load shared footer
-      if (typeof loadGamingFooter === "function") {
-        loadGamingFooter();
-      }
-    </script>
 
     <!-- Recent Searches Section -->
     <section
@@ -5177,5 +5453,14 @@
         >
       </div>
     </div>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
+      }
+    </script>
   </body>
 </html>

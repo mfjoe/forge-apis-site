@@ -40,7 +40,7 @@
     />
     <link
       rel="canonical"
-      href="https://gaming-tools.co.uk/gaming-calculators/minecoins/"
+      href="https://forgeapis.com/gaming-calculators/minecoins/"
     />
     <meta
       property="og:title"
@@ -53,7 +53,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://gaming-tools.co.uk/gaming-calculators/minecoins/"
+      content="https://forgeapis.com/gaming-calculators/minecoins/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -783,6 +783,7 @@
         border: 3px solid var(--gray);
         border-radius: 0;
         padding: 1.5rem;
+        cursor: pointer;
         transition: all 0.2s ease;
         text-align: center;
         box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
@@ -1127,18 +1128,6 @@
         text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
-      }
-
-      .quick-price {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--gray);
-        opacity: 0.8;
       }
 
       .quick-btn:hover {
@@ -1152,16 +1141,10 @@
         text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
       }
 
-      .quick-btn:hover .quick-price {
-        color: var(--white);
-        opacity: 1;
-      }
-
       .action-buttons {
         display: flex;
         justify-content: center;
         gap: 1rem;
-        margin-top: 1.5rem;
         margin-bottom: 2rem;
       }
 
@@ -1627,16 +1610,6 @@
           overflow: hidden;
           text-overflow: ellipsis;
           transition: all 0.1s ease;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 2px;
-        }
-
-        .quick-btn .quick-price {
-          font-size: 10px;
-          opacity: 0.7;
         }
 
         .quick-btn:active {
@@ -2072,43 +2045,22 @@
         }
       }
 
-      /* Breadcrumb Styles - Minecraft Themed */
+      /* Breadcrumb Styles */
       .breadcrumb {
-        background: linear-gradient(180deg, #91c848 0%, #5a7c2f 100%);
+        background: var(--white);
         padding: 1rem 0;
-        border-bottom: 4px solid var(--dirt-brown);
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3),
-          0 8px 16px rgba(0, 0, 0, 0.3);
-        position: relative;
-        image-rendering: pixelated;
-      }
-
-      .breadcrumb::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: repeating-linear-gradient(
-          90deg,
-          #76ee00 0px,
-          #76ee00 8px,
-          #91c848 8px,
-          #91c848 16px
-        );
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 10px rgba(0, 0, 0, 0.06);
       }
 
       .breadcrumb-list {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--white);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-weight: 700;
-        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
       }
 
       .breadcrumb-item {
@@ -2117,85 +2069,47 @@
       }
 
       .breadcrumb-item:not(:last-child)::after {
-        content: "▶";
-        margin-left: 0.75rem;
-        color: var(--accent);
-        font-size: 0.9rem;
-        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+        content: ">";
+        margin-left: 0.5rem;
+        color: var(--gray);
       }
 
       .breadcrumb-link {
-        color: var(--white);
+        color: var(--primary);
         text-decoration: none;
-        transition: all 0.2s ease;
-        border-radius: 0;
-        padding: 0.5rem 0.75rem;
-        background: rgba(0, 0, 0, 0.2);
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        font-weight: 700;
-        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-        image-rendering: pixelated;
-        position: relative;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.25rem 0.5rem;
       }
 
       .breadcrumb-link:hover {
-        background: var(--dirt-brown);
-        border-color: var(--accent);
-        transform: translate(-2px, -2px);
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4),
-          0 0 12px rgba(255, 215, 0, 0.4);
-      }
-
-      .breadcrumb-link:active {
-        transform: translate(0, 0);
-        box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+        color: var(--primary-dark);
+        background: rgba(145, 200, 72, 0.1);
+        transform: translateY(-1px);
       }
 
       .logo-link {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-weight: 800;
-        padding: 0.4rem 0.75rem;
-        background: rgba(0, 0, 0, 0.3);
-        border: 3px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+        font-weight: 600;
       }
 
-      .logo-link:hover {
-        background: rgba(0, 0, 0, 0.4);
-        border-color: var(--diamond-blue);
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5),
-          0 0 16px rgba(92, 219, 213, 0.5);
+      .logo-link svg {
+        transition: all 0.3s ease;
       }
 
-      .logo-link svg,
-      .logo-link img {
-        width: auto;
-        height: 60px;
-        flex-shrink: 0;
-        filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.5));
-        image-rendering: pixelated;
+      .logo-link:hover svg {
+        transform: scale(1.05);
       }
 
       .logo-text {
-        font-size: 0.95rem;
-        text-transform: uppercase;
+        font-size: 0.9rem;
       }
 
       .breadcrumb-current {
-        color: var(--accent);
-        font-weight: 800;
-        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6),
-          0 0 10px rgba(255, 215, 0, 0.8);
-        padding: 0.5rem 0.75rem;
-        background: rgba(139, 69, 19, 0.5);
-        border-radius: 0;
-        border: 3px solid var(--accent);
-        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4),
-          inset 0 0 8px rgba(255, 215, 0, 0.3);
+        color: var(--dark);
+        font-weight: 500;
       }
 
       @media (max-width: 768px) {
@@ -2233,16 +2147,177 @@
         <nav class="breadcrumb-list" aria-label="Breadcrumb">
           <div class="breadcrumb-item">
             <a href="../../" class="breadcrumb-link logo-link">
-              <img src="../assets/images/logo.svg" alt="Logo" style="height: 80px; width: auto;" onerror="this.style.display='none';" />
+              <svg
+                width="120"
+                height="20"
+                viewBox="0 0 240 80"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Digital/Tech Anvil with Crossed Hammers -->
+                <g transform="translate(15, 15)">
+                  <!-- Digital Anvil (geometric/tech style) -->
+                  <path
+                    d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                    fill="#1E293B"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="18"
+                    y="30"
+                    width="24"
+                    height="5"
+                    fill="#334155"
+                    rx="1"
+                  />
+                  <rect x="16" y="28" width="28" height="2" fill="#475569" />
+                  <!-- Tech pattern on anvil -->
+                  <line
+                    x1="20"
+                    y1="32"
+                    x2="40"
+                    y2="32"
+                    stroke="#0066FF"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="22"
+                    y1="34"
+                    x2="38"
+                    y2="34"
+                    stroke="#00D4AA"
+                    stroke-width="0.5"
+                    opacity="0.6"
+                  />
+                  <!-- Crossed Hammers (geometric style) -->
+                  <!-- Left hammer -->
+                  <g transform="rotate(-30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Right hammer -->
+                  <g transform="rotate(30 30 25)">
+                    <rect
+                      x="28"
+                      y="15"
+                      width="4"
+                      height="18"
+                      fill="#0066FF"
+                      rx="0.5"
+                    />
+                    <path
+                      d="M 25 12 L 35 12 L 36 16 L 24 16 Z"
+                      fill="#0052CC"
+                    />
+                    <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                    <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                  </g>
+                  <!-- Digital Fire/Energy (geometric flames) -->
+                  <path
+                    d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                    fill="#FF6B35"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <path
+                    d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                    fill="#FFA500"
+                    opacity="0.8"
+                  />
+                  <!-- Tech sparks (pixels) -->
+                  <rect
+                    x="12"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="46"
+                    y="20"
+                    width="2"
+                    height="2"
+                    fill="#00D4AA"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="10"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                  <rect
+                    x="48"
+                    y="25"
+                    width="1.5"
+                    height="1.5"
+                    fill="#FFD700"
+                    opacity="0.7"
+                  />
+                </g>
+                <!-- Text: Forge -->
+                <text
+                  x="75"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="800"
+                  fill="#0A0E27"
+                >
+                  Forge
+                </text>
+                <!-- Text: APIs -->
+                <text
+                  x="150"
+                  y="45"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="28"
+                  font-weight="400"
+                  fill="#6B7280"
+                >
+                  APIs
+                </text>
+                <!-- Tagline -->
+                <text
+                  x="75"
+                  y="63"
+                  font-family="Inter, system-ui, -apple-system, sans-serif"
+                  font-size="9"
+                  fill="#9CA3AF"
+                  letter-spacing="0.5"
+                >
+                  PRODUCTION-READY APIS
+                </text>
+              </svg>
             </a>
           </div>
           <div class="breadcrumb-item">
             <a href="../" class="breadcrumb-link"
-              >GAMING CALCULATORS</a
+              >Gaming Calculators</a
             >
           </div>
           <div class="breadcrumb-item">
-            <span class="breadcrumb-current">MINECOINS CALCULATOR</span>
+            <span class="breadcrumb-current">Minecoins Calculator</span>
           </div>
         </nav>
       </div>
@@ -2342,27 +2417,16 @@
           <!-- Conversion Message -->
           <div id="conversion-message" style="text-align: center; margin-top: 1rem; font-size: 0.9rem; font-weight: 500; min-height: 1.5rem;"></div>
 
-          <!-- Quick Amount Buttons -->
           <div class="quick-amounts">
-            <button class="quick-btn" data-amount="320" id="quick-btn-320">
-              320
-              <span class="quick-price" id="quick-price-320">$1.99</span>
+            <button class="quick-btn" data-amount="320">320 Minecoins</button>
+            <button class="quick-btn" data-amount="1020">
+              1,020 Minecoins
             </button>
-            <button class="quick-btn" data-amount="1020" id="quick-btn-1020">
-              1,020
-              <span class="quick-price" id="quick-price-1020">$5.99</span>
+            <button class="quick-btn" data-amount="1720">
+              1,720 Minecoins
             </button>
-            <button class="quick-btn" data-amount="1720" id="quick-btn-1720">
-              1,720
-              <span class="quick-price" id="quick-price-1720">$9.99</span>
-            </button>
-            <button class="quick-btn" data-amount="3500" id="quick-btn-3500">
-              3,500
-              <span class="quick-price" id="quick-price-3500">$19.99</span>
-            </button>
-            <button class="quick-btn" data-amount="8800" id="quick-btn-8800">
-              8,800
-              <span class="quick-price" id="quick-price-8800">$49.99</span>
+            <button class="quick-btn" data-amount="3500">
+              3,500 Minecoins
             </button>
           </div>
 
@@ -2452,16 +2516,16 @@
               <span class="package-icon">📦</span>
               Official Minecoins Packages
             </h3>
-            <p class="package-section-subtitle">Prices shown in your selected currency</p>
+            <p class="package-section-subtitle">Click any package to calculate its value</p>
             
             <div class="package-grid">
               <div class="package-card" data-minecoins="320" data-price="1.99" data-rate="0.00622" data-rating="standard">
                 <div class="package-header">
                   <div class="package-minecoins">320</div>
-                  <div class="package-price" id="price-320">$1.99 USD</div>
+                  <div class="package-price">$1.99 USD</div>
                 </div>
                 <div class="package-details">
-                  <div class="package-rate" id="rate-320">$0.00622 per coin</div>
+                  <div class="package-rate">$0.00622 per coin</div>
                   <div class="package-rating standard">Standard</div>
                 </div>
               </div>
@@ -2469,10 +2533,10 @@
               <div class="package-card" data-minecoins="1020" data-price="5.99" data-rate="0.00587" data-rating="good">
                 <div class="package-header">
                   <div class="package-minecoins">1,020</div>
-                  <div class="package-price" id="price-1020">$5.99 USD</div>
+                  <div class="package-price">$5.99 USD</div>
                 </div>
                 <div class="package-details">
-                  <div class="package-rate" id="rate-1020">$0.00587 per coin</div>
+                  <div class="package-rate">$0.00587 per coin</div>
                   <div class="package-rating good">Good</div>
                 </div>
               </div>
@@ -2480,10 +2544,10 @@
               <div class="package-card" data-minecoins="1720" data-price="9.99" data-rate="0.00581" data-rating="better">
                 <div class="package-header">
                   <div class="package-minecoins">1,720</div>
-                  <div class="package-price" id="price-1720">$9.99 USD</div>
+                  <div class="package-price">$9.99 USD</div>
                 </div>
                 <div class="package-details">
-                  <div class="package-rate" id="rate-1720">$0.00581 per coin</div>
+                  <div class="package-rate">$0.00581 per coin</div>
                   <div class="package-rating better">Better</div>
                 </div>
               </div>
@@ -2491,10 +2555,10 @@
               <div class="package-card" data-minecoins="3500" data-price="19.99" data-rate="0.00571" data-rating="best">
                 <div class="package-header">
                   <div class="package-minecoins">3,500</div>
-                  <div class="package-price" id="price-3500">$19.99 USD</div>
+                  <div class="package-price">$19.99 USD</div>
                 </div>
                 <div class="package-details">
-                  <div class="package-rate" id="rate-3500">$0.00571 per coin</div>
+                  <div class="package-rate">$0.00571 per coin</div>
                   <div class="package-rating best">Best</div>
                 </div>
               </div>
@@ -2502,10 +2566,10 @@
               <div class="package-card best-value" data-minecoins="8800" data-price="49.99" data-rate="0.00568" data-rating="best-value">
                 <div class="package-header">
                   <div class="package-minecoins">8,800</div>
-                  <div class="package-price" id="price-8800">$49.99 USD</div>
+                  <div class="package-price">$49.99 USD</div>
                 </div>
                 <div class="package-details">
-                  <div class="package-rate" id="rate-8800">$0.00568 per coin</div>
+                  <div class="package-rate">$0.00568 per coin</div>
                   <div class="package-rating best-value">BEST VALUE - Save 8.7%</div>
                 </div>
               </div>
@@ -2513,6 +2577,7 @@
           </div>
         </div>
 
+        
 
         <!-- How to Use This Calculator -->
         <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
@@ -3158,131 +3223,28 @@
         { minecoins: 8800, price: 49.99, perCoin: 176.04 }   // $0.00568 per coin (best value)
       ];
 
-      // Regional pricing data for multi-currency support (official pricing, not conversions)
-      const MINE_CURRENCY_PRICES = {
-        USD: {
-          symbol: '$',
-          prices: {
-            320: 1.99,
-            1020: 5.99,
-            1720: 9.99,
-            3500: 19.99,
-            8800: 49.99
-          },
-          rates: {
-            320: 0.00622,
-            1020: 0.00587,
-            1720: 0.00581,
-            3500: 0.00571,
-            8800: 0.00568
-          }
-        },
-        GBP: {
-          symbol: '£',
-          prices: {
-            320: 1.55,
-            1020: 4.67,
-            1720: 7.79,
-            3500: 15.59,
-            8800: 38.99
-          },
-          rates: {
-            320: 0.00484,
-            1020: 0.00458,
-            1720: 0.00453,
-            3500: 0.00445,
-            8800: 0.00443
-          }
-        },
-        EUR: {
-          symbol: '€',
-          prices: {
-            320: 1.69,
-            1020: 5.09,
-            1720: 8.49,
-            3500: 16.99,
-            8800: 42.49
-          },
-          rates: {
-            320: 0.00528,
-            1020: 0.00499,
-            1720: 0.00494,
-            3500: 0.00485,
-            8800: 0.00483
-          }
-        },
-        CAD: {
-          symbol: 'C$',
-          prices: {
-            320: 2.69,
-            1020: 8.09,
-            1720: 13.49,
-            3500: 26.99,
-            8800: 67.49
-          },
-          rates: {
-            320: 0.00841,
-            1020: 0.00793,
-            1720: 0.00784,
-            3500: 0.00771,
-            8800: 0.00767
-          }
-        },
-        AUD: {
-          symbol: 'A$',
-          prices: {
-            320: 2.95,
-            1020: 8.87,
-            1720: 14.79,
-            3500: 29.58,
-            8800: 73.99
-          },
-          rates: {
-            320: 0.00922,
-            1020: 0.00870,
-            1720: 0.00860,
-            3500: 0.00845,
-            8800: 0.00841
-          }
-        }
-      };
-
       // Best value rate: $0.00568 per coin (176.04 coins per dollar)
       const BEST_RATE_PER_COIN = 0.00568;
       const BEST_RATE_COINS_PER_DOLLAR = 176.04;
 
-      // Function to calculate price based on regional package pricing
+      // Function to calculate price based on best-value rate
       function calculateMinecoinsPrice(minecoins) {
         if (minecoins <= 0) return 0;
         
-        // Get regional packages for current currency
-        const currencyData = MINE_CURRENCY_PRICES[currentCurrency] || MINE_CURRENCY_PRICES.USD;
-        const prices = currencyData.prices;
-        const rates = currencyData.rates;
-        
         // Check if it matches an exact package
-        if (prices[minecoins] !== undefined) {
-          return prices[minecoins];
+        const exactPackage = MINECOINS_PACKAGES.find(pkg => pkg.minecoins === minecoins);
+        if (exactPackage) {
+          return exactPackage.price; // Return exact package price
         }
         
-        // For non-package amounts, use the best-value rate from current currency
-        const bestValueRate = rates[8800]; // 8,800 package has best rate
-        return Math.round(minecoins * bestValueRate * 100) / 100;
+        // For non-package amounts, use best-value rate as estimate
+        return Math.round(minecoins * BEST_RATE_PER_COIN * 100) / 100;
       }
 
-      // Function to calculate Minecoins from currency amount using regional pricing
-      function calculateMinecoinsFromUSD(currencyAmount) {
-        if (currencyAmount <= 0) return 0;
-        
-        // Get regional packages for current currency
-        const currencyData = MINE_CURRENCY_PRICES[currentCurrency] || MINE_CURRENCY_PRICES.USD;
-        const rates = currencyData.rates;
-        
-        // Use the best-value rate (8,800 package) for calculations
-        const bestValueRate = rates[8800];
-        const coinsPerUnit = 1 / bestValueRate; // Calculate coins per currency unit
-        
-        return Math.round(currencyAmount * coinsPerUnit);
+      // Function to calculate Minecoins from USD using best-value rate
+      function calculateMinecoinsFromUSD(usdAmount) {
+        if (usdAmount <= 0) return 0;
+        return Math.round(usdAmount * BEST_RATE_COINS_PER_DOLLAR);
       }
 
       // DOM elements
@@ -3651,8 +3613,6 @@
       }
 
       // Initialize package calculator functionality
-      // COMMENTED OUT: Package cards are now non-clickable and only display currency-converted prices
-      /*
       function initializePackageCalculator() {
         const packageCards = document.querySelectorAll('.package-card');
         
@@ -3690,7 +3650,6 @@
           });
         });
       }
-      */
 
       // Core calculator functions
       function handleMinecoinsInput() {
@@ -3708,28 +3667,22 @@
         }
 
         const minecoins = validatedMinecoins;
-        const currencyValue = calculateMinecoinsPrice(minecoins);
+        const usdValue = calculateMinecoinsPrice(minecoins);
+        const convertedValue = window.currencyManager.convertFromUSD(usdValue, currentCurrency);
 
         isUpdating = true;
-        usdInput.value = currencyValue.toFixed(2);
+        usdInput.value = convertedValue.toFixed(2);
         isUpdating = false;
 
         // Show appropriate message based on whether it's an exact package or estimate
-        const currencyData = MINE_CURRENCY_PRICES[currentCurrency] || MINE_CURRENCY_PRICES.USD;
-        const prices = currencyData.prices;
-        const rates = currencyData.rates;
-        const exactPrice = prices[minecoins];
+        const exactPackage = MINECOINS_PACKAGES.find(pkg => pkg.minecoins === minecoins);
         const messageElement = document.getElementById("conversion-message");
-        
         if (messageElement) {
-          if (exactPrice !== undefined) {
-            const symbol = window.currencyManager.getSymbol(currentCurrency);
-            messageElement.innerHTML = `✅ Exact package price: ${minecoins.toLocaleString()} Minecoins = ${symbol}${exactPrice.toFixed(2)} ${currentCurrency}`;
+          if (exactPackage) {
+            messageElement.innerHTML = `✅ Exact package price: ${exactPackage.minecoins} Minecoins = $${exactPackage.price}`;
             messageElement.style.color = "#22c55e";
           } else if (minecoins > 8800) {
-            const bestPackageRate = rates[8800];
-            const symbol = window.currencyManager.getSymbol(currentCurrency);
-            messageElement.innerHTML = `ℹ️ Based on buying multiple 8,800-coin packages at best rate (${symbol}${bestPackageRate.toFixed(5)} per coin)`;
+            messageElement.innerHTML = `ℹ️ Based on buying multiple 8,800-coin packages at best rate ($0.00568 per coin)`;
             messageElement.style.color = "#3b82f6";
           } else {
             messageElement.innerHTML = `⚠️ Estimated value. Minecoins are sold in packages: 320, 1,020, 1,720, 3,500, 8,800`;
@@ -3755,8 +3708,8 @@
         }
 
         const inputValue = validatedInput;
-        // calculateMinecoinsFromUSD now uses regional pricing directly (currencyAmount, not USD)
-        const minecoins = calculateMinecoinsFromUSD(inputValue);
+        const usdValue = window.currencyManager.convertToUSD(inputValue, currentCurrency);
+        const minecoins = calculateMinecoinsFromUSD(usdValue);
 
         isUpdating = true;
         minecoinsInput.value = Math.round(minecoins);
@@ -3765,10 +3718,10 @@
         saveCalculation();
 
         // Update volume discount info
-        updateVolumeDiscount(inputValue);
+        updateVolumeDiscount(usdValue);
 
         // Update package recommendation
-        updatePackageRecommendation(inputValue);
+        updatePackageRecommendation(usdValue);
       }
 
       function copyResult() {
@@ -3810,8 +3763,6 @@
         currentCurrency = currencySelect.value;
         window.currencyManager.saveCurrency(currentCurrency);
         updateCurrencyLabel();
-        updatePricingTables();
-        updateMinecoinsPricesUI(currentCurrency);
         
         // Recalculate if there's input
         const minecoinsInput = document.getElementById("minecoins-input");
@@ -3874,101 +3825,29 @@
         await window.currencyManager.fetchRates();
           updateCurrencyLabel();
           updatePricingTables();
-          updateMinecoinsPricesUI(currentCurrency);
         } catch (error) {
           console.error("Failed to initialize currency:", error);
           // Fallback to USD
           currentCurrency = "USD";
           updateCurrencyLabel();
-          updatePricingTables();
-          updateMinecoinsPricesUI(currentCurrency);
         }
       }
 
       function updatePricingTables() {
-        const symbol = window.currencyManager.getSymbol(currentCurrency);
-        
-        // Update all cells with data-usd attributes
         const usdCells = document.querySelectorAll("[data-usd]");
         usdCells.forEach((cell) => {
           const usdValue = parseFloat(cell.dataset.usd);
           const convertedValue = window.currencyManager.convertFromUSD(usdValue, currentCurrency);
-          // Preserve existing formatting - some cells may already have symbols
-          const existingText = cell.textContent.trim();
-          if (existingText.startsWith('$') || existingText.match(/^[£€]/)) {
-            cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
-          } else {
-            cell.textContent = convertedValue.toFixed(2);
-          }
+          cell.textContent = convertedValue.toFixed(2);
         });
-
-        // Update the Package Card prices and rates using regional pricing
-        const currencyData = MINE_CURRENCY_PRICES[currentCurrency] || MINE_CURRENCY_PRICES.USD;
-        const prices = currencyData.prices;
-        const rates = currencyData.rates;
-        
-        // Package card amounts
-        const packageAmounts = [320, 1020, 1720, 3500, 8800];
-        
-        packageAmounts.forEach((amount) => {
-          const priceId = `price-${amount}`;
-          const rateId = `rate-${amount}`;
-          
-          // Update price
-          const priceElement = document.getElementById(priceId);
-          if (priceElement && prices[amount]) {
-            priceElement.textContent = `${symbol}${prices[amount].toFixed(2)} ${currentCurrency}`;
-          }
-          
-          // Update rate
-          const rateElement = document.getElementById(rateId);
-          if (rateElement && rates[amount]) {
-            rateElement.textContent = `${symbol}${rates[amount].toFixed(5)} per coin`;
-          }
-        });
-        
-      }
-
-      // Update Minecoins prices in UI based on selected currency
-      function updateMinecoinsPricesUI(currency) {
-        const currencyData = MINE_CURRENCY_PRICES[currency];
-        if (!currencyData) return;
-        
-        const symbol = currencyData.symbol;
-        const prices = currencyData.prices;
-        
-        // Update quick amount buttons
-        const quickPriceElements = {
-          320: document.getElementById('quick-price-320'),
-          1020: document.getElementById('quick-price-1020'),
-          1720: document.getElementById('quick-price-1720'),
-          3500: document.getElementById('quick-price-3500'),
-          8800: document.getElementById('quick-price-8800')
-        };
-        
-        Object.keys(quickPriceElements).forEach(amount => {
-          const element = quickPriceElements[amount];
-          if (element && prices[parseInt(amount)]) {
-            element.textContent = `${symbol}${prices[parseInt(amount)].toFixed(2)}`;
-          }
-        });
-        
       }
 
       function updateCurrencyLabel() {
         const symbol = window.currencyManager.getSymbol(currentCurrency);
-        
-        // Update all elements with .currency-label class
         const labels = document.querySelectorAll(".currency-label");
         labels.forEach((label) => {
           label.textContent = symbol;
         });
-        
-        // Update the element with id="currency-label" (the input label)
-        const currencyLabelElement = document.getElementById("currency-label");
-        if (currencyLabelElement) {
-          currencyLabelElement.textContent = `${currentCurrency} (${symbol})`;
-        }
       }
 
       function showNotification(message) {
@@ -4070,7 +3949,7 @@
           loadSavedCalculation();
           handleModeChange();
           initializeCreatorEarnings();
-          // initializePackageCalculator(); // COMMENTED OUT: Package cards are now non-clickable
+          initializePackageCalculator();
         });
 
         initializeFeatures();
@@ -4153,7 +4032,7 @@
         "@type": "WebApplication",
         "name": "Minecoins Currency Converter",
         "description": "Free Minecoins converter for multiple currencies. Convert Minecoins to USD, EUR, GBP, CAD, AUD instantly for Minecraft Marketplace.",
-        "url": "https://gaming-tools.co.uk/gaming-calculators/minecoins/",
+        "url": "https://forgeapis.com/gaming-calculators/minecoins/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -4164,7 +4043,7 @@
         "dateModified": "2025-01-24",
         "author": {
           "@type": "Organization",
-          "name": "Gaming Tools"
+          "name": "ForgeAPI"
         }
       }
     </script>
@@ -4178,19 +4057,19 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://gaming-tools.co.uk/"
+            "item": "https://forgeapis.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Gaming Calculators",
-            "item": "https://gaming-tools.co.uk/gaming-calculators/"
+            "item": "https://forgeapis.com/gaming-calculators/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Minecoins Calculator",
-            "item": "https://gaming-tools.co.uk/gaming-calculators/minecoins/"
+            "item": "https://forgeapis.com/gaming-calculators/minecoins/"
           }
         ]
       }
@@ -4242,6 +4121,15 @@
             }
           }
         ]
+      }
+    </script>
+
+    <!-- Gaming Calculator Footer -->
+    <footer id="footer-container"></footer>
+    <script>
+      // Load shared footer
+      if (typeof loadGamingFooter === "function") {
+        loadGamingFooter();
       }
     </script>
 
@@ -4401,14 +4289,5 @@
       </div>
       </div>
     </div>
-
-    <!-- Gaming Calculator Footer -->
-    <footer id="footer-container"></footer>
-    <script>
-      // Load shared footer
-      if (typeof loadGamingFooter === "function") {
-        loadGamingFooter();
-      }
-    </script>
   </body>
 </html>
