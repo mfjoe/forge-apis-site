@@ -1,0 +1,34 @@
+{
+  "name": "gst-calculator-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive Playwright tests for GST Calculator India",
+  "main": "playwright.config.js",
+  "scripts": {
+    "preflight": "node preflight-check.js",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
+    "report": "playwright show-report",
+    "install": "playwright install --with-deps",
+    "check": "node preflight-check.js",
+    "help": "cat QUICK-REFERENCE.md"
+  },
+  "keywords": [
+    "gst",
+    "calculator",
+    "india",
+    "tax",
+    "testing",
+    "playwright",
+    "e2e"
+  ],
+  "author": "ForgeAPIs",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
