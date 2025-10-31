@@ -24,15 +24,15 @@
     <meta
       http-equiv="Content-Security-Policy"
       content="
-    default-src 'self' https:;
-    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    font-src 'self' https://fonts.gstatic.com data:;
-    img-src 'self' data: https:;
-    connect-src 'self' https://api.riskscore.com https://web-production-2c40.up.railway.app;
-    frame-src 'self' https://web-production-2c40.up.railway.app;
+    default-src 'self' https: http: data:;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:;
+    style-src 'self' 'unsafe-inline' https: http:;
+    font-src 'self' https: http: data:;
+    img-src 'self' data: https: http:;
+    connect-src 'self' https: http: ws: wss:;
+    frame-src 'self' https: http:;
     base-uri 'self';
-    form-action 'self' https://buy.stripe.com https://web-production-2c40.up.railway.app;
+    form-action 'self' https:;
 "
     />
     <meta name="google-adsense-account" content="ca-pub-2499973683982164" />
@@ -3034,16 +3034,17 @@
               <h4>Products</h4>
               <div class="footer-subsection">
                 <h5>Premium APIs</h5>
-                <a href="/riskscore/">RiskScore API</a>
-                <a href="/dupecheck/">DupeCheck</a>
+                <a href="riskscore/">RiskScore API</a>
+                <a href="dupecheck/">DupeCheck</a>
                 <a href="#">Coming Soon</a>
               </div>
               <div class="footer-subsection">
                 <h5>Free Tools</h5>
-                <a href="/gst-calculator/">GST Calculator India</a>
-                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
+                <a href="dpi-calculator/">DPI Calculator</a>
+                <a href="gaming-calculators/">Gaming Currency Calculators</a>
+                <a href="gst-calculator/">GST Calculator India</a>
+                <a href="va-calculator/">VA Disability Benefits Calculator</a>
+                <a href="tip-calculator/">Restaurant Tip Calculator</a>
               </div>
             </div>
 
@@ -3057,9 +3058,9 @@
             <!-- Column 3 - Legal -->
             <div class="footer-column">
               <h4>Legal</h4>
-              <a href="/privacy.html">Privacy Policy</a>
-              <a href="/cookies.html">Cookie Policy</a>
-              <a href="/terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="cookies.html">Cookie Policy</a>
+              <a href="terms.html">Terms of Service</a>
             </div>
           </div>
         </div>
@@ -3110,7 +3111,7 @@
           <p style="margin: 0; font-size: 14px">
             🍪 We use cookies to improve your experience and analyze site
             traffic.
-            <a href="/cookies.html" style="color: #00d4aa">Learn more</a>
+            <a href="cookies.html" style="color: #00d4aa">Learn more</a>
           </p>
         </div>
         <div style="display: flex; gap: 10px">
