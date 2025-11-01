@@ -30,8 +30,19 @@ class CurrencyManager {
       return this.rates;
     }
 
+    // Determine possible paths for the static JSON file based on current location
+    // From gaming-calculators/robux/ -> ../../api/exchange-rates.json
+    // From gaming-calculators/assets/js/ -> ../../api/exchange-rates.json
+    const possiblePaths = [
+      "../../api/exchange-rates.json",
+      "../api/exchange-rates.json",
+      "/api/exchange-rates.json",
+      "api/exchange-rates.json"
+    ];
+
     try {
-      let response;
+      let response = null;
+      let data = null;
 
       // Skip serverless function in development/local environment
       const isLocalDevelopment =
@@ -40,47 +51,81 @@ class CurrencyManager {
         window.location.protocol === "file:";
 
       if (isLocalDevelopment) {
-        response = await fetch("../../api/exchange-rates.json", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        // In development, try static JSON paths
+        for (const path of possiblePaths) {
+          try {
+            response = await fetch(path, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            if (response.ok) {
+              data = await response.json();
+              break;
+            }
+          } catch (err) {
+            continue; // Try next path
+          }
+        }
       } else {
-        // Try the serverless function first in production
-        response = await fetch("/api/exchange-rates", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        // If serverless function fails, try the static JSON file
-        if (!response.ok) {
-          response = await fetch("../../api/exchange-rates.json", {
+        // In production, try serverless function first, then fallback to static JSON
+        try {
+          response = await fetch("/api/exchange-rates", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
           });
+          
+          if (response.ok) {
+            data = await response.json();
+          } else {
+            // Serverless function returned error, try static JSON
+            throw new Error(`API returned ${response.status}`);
+          }
+        } catch (apiError) {
+          // Serverless function failed (expected if endpoint doesn't exist), try static JSON paths
+          response = null; // Reset response
+          for (const path of possiblePaths) {
+            try {
+              response = await fetch(path, {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              if (response.ok) {
+                data = await response.json();
+                break;
+              }
+            } catch (err) {
+              continue; // Try next path
+            }
+          }
         }
       }
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      if (data.success && data.rates) {
-        this.rates = data.rates;
-        this.lastFetch = now;
+      // Process the data if we successfully fetched it
+      if (data && response && response.ok) {
+        if (data.success && data.rates) {
+          this.rates = data.rates;
+          this.lastFetch = now;
+        } else if (data.rates) {
+          // Some static JSON files might not have success flag
+          this.rates = data.rates;
+          this.lastFetch = now;
+        } else {
+          console.warn("Using fallback rates: Invalid data structure");
+        }
       } else {
-        console.warn("Using fallback rates:", data.error);
+        // If all fetches failed, keep existing fallback rates
+        console.warn("Exchange rates fetch failed, using default rates");
       }
     } catch (error) {
       // Silently fail - exchange rates not critical for regional pricing
       // Keep existing rates as fallback
+      console.warn("Exchange rates fetch error:", error.message);
     }
 
     return this.rates;

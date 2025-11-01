@@ -15,7 +15,15 @@
     "test:headed": "playwright test --headed",
     "test:uimode": "playwright test --ui",
     "test:debug": "playwright test --debug",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "test:dpi": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js",
+    "test:dpi:headed": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --headed",
+    "test:dpi:debug": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --debug",
+    "test:dpi:ui": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --ui",
+    "test:dpi:report": "playwright show-report",
+    "test:dpi:chrome": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --project=chromium",
+    "test:dpi:firefox": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --project=firefox",
+    "test:dpi:mobile": "playwright test tests/e2e/dpi-calculator.spec.js --config=tests/e2e/playwright.config.js --project=mobile-chrome"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0"
