@@ -2688,24 +2688,50 @@
           btn.addEventListener("click", () => setQuickAmount(btn.dataset.amount));
         });
 
-      // Conversion arrow functionality - swap between Robux and USD inputs
-      const conversionArrow = document.querySelector(".conversion-arrow");
+        // Conversion arrow functionality - swap between Robux and USD inputs
+        const conversionArrow = document.querySelector(".conversion-arrow");
 
-      if (conversionArrow) {
-        conversionArrow.addEventListener("click", (e) => {
-          e.preventDefault();
+        if (conversionArrow) {
+          conversionArrow.addEventListener("click", (e) => {
+            e.preventDefault();
 
-          // Simply swap the input values
-          const robuxValue = robuxInput.value;
-          const usdValue = usdInput.value;
-          
-          robuxInput.value = usdValue.replace(/[^0-9.]/g, ''); // Remove currency symbols
-          usdInput.value = robuxValue;
-          
-          // Trigger recalculation
-          handleRobuxInput();
-        });
-      }
+            // Get the input groups using more reliable selectors
+            const allInputGroups = document.querySelectorAll(".input-group");
+
+            if (allInputGroups.length >= 2) {
+              // Get the parent container
+              const conversionSection = document.querySelector(
+                ".conversion-section"
+              );
+
+              if (conversionSection) {
+                // Always swap the first two input groups (regardless of their current order)
+                const firstGroup = allInputGroups[0];
+                const secondGroup = allInputGroups[1];
+
+                // Get the arrow element to preserve its position
+                const arrowElement = document.querySelector(".conversion-arrow");
+
+                // Remove both groups from their current positions
+                firstGroup.remove();
+                secondGroup.remove();
+
+                // Insert them back in swapped order, ensuring arrow stays in the middle
+                // Insert second group first (before arrow)
+                conversionSection.insertBefore(secondGroup, arrowElement);
+                // Insert first group last (after arrow)
+                conversionSection.insertBefore(
+                  firstGroup,
+                  arrowElement.nextSibling
+                );
+
+                // Fields swapped successfully
+              }
+            } else {
+              // Could not find enough input groups to swap
+            }
+          });
+        }
 
       // Initialize currency and rate display
       initializeCurrency().then(() => {
