@@ -1,0 +1,2813 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]: Forge APIs PRODUCTION-READY APIS
+      - generic [ref=e27]:
+        - link "Calculators" [ref=e28] [cursor=pointer]:
+          - /url: "#calculators"
+        - link "About" [ref=e29] [cursor=pointer]:
+          - /url: "#intro"
+        - link "More Tools" [ref=e30] [cursor=pointer]:
+          - /url: "#tools"
+        - link "DPI Calculator" [ref=e31] [cursor=pointer]:
+          - /url: /dpi-calculator/
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - generic [ref=e35]: 🖥️
+      - text: Display Optimization Tool
+    - heading "Monitor Response Time Calculator" [level=1] [ref=e36]
+    - paragraph [ref=e37]: Calculate Total Input Lag & Find Your Perfect Gaming Monitor
+  - generic [ref=e40]:
+    - heading "Why This Calculator Exists" [level=2] [ref=e41]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e44]: 🚫
+        - heading "Manufacturers Hide Input Lag" [level=3] [ref=e45]
+        - paragraph [ref=e46]: They only advertise cherry-picked response times, never total input lag
+      - generic [ref=e47]:
+        - generic [ref=e48]: 🤥
+        - heading "\"1ms\" Is Marketing Lies" [level=3] [ref=e49]
+        - paragraph [ref=e50]: Real response times are 3-6ms average, not the advertised spec
+      - generic [ref=e51]:
+        - generic [ref=e52]: ❌
+        - heading "Spec Sheets Don't Show Reality" [level=3] [ref=e53]
+        - paragraph [ref=e54]: Processing delays, refresh cycles, and panel behavior aren't listed
+      - generic [ref=e55]:
+        - generic [ref=e56]: ✅
+        - heading "We Calculate Real Performance" [level=3] [ref=e57]
+        - paragraph [ref=e58]: Based on professional testing methodologies, not marketing
+  - generic [ref=e61]:
+    - heading "Understanding Monitor Response Time & Input Lag" [level=2] [ref=e62]
+    - paragraph [ref=e63]: Monitor response time is one of the most misunderstood specifications in gaming displays. While manufacturers love to advertise "1ms response time" as a selling point, the reality is far more complex. True input lag—the delay between your action and what you see on screen—involves multiple components working together, and that "1ms" number only tells part of the story.
+    - paragraph [ref=e64]:
+      - strong [ref=e65]: What is response time?
+      - text: Response time measures how quickly a pixel can change from one color to another, typically measured in milliseconds (ms). The most common metric is GtG (Gray-to-Gray), which tracks how fast pixels transition between shades of gray. However, this doesn't account for the full picture. MPRT (Moving Picture Response Time) measures perceived motion blur, which is often higher than GtG claims. Most importantly, neither of these directly measures input lag—the delay from when your GPU sends a frame to when it appears on your monitor.
+    - paragraph [ref=e66]:
+      - strong [ref=e67]: "The total system latency equation:"
+      - text: "Real-world input lag is calculated by combining multiple delays: monitor processing time (typically 5-15ms), panel response time (GtG, usually 1-5ms), refresh rate delay (16.67ms at 60Hz, 8.33ms at 120Hz, 4.17ms at 240Hz, 2.78ms at 360Hz), GPU frame time (varies), and peripheral input delay (1-5ms for mice/keyboards). This means a monitor with \"1ms GtG\" might still have 15-25ms of total input lag, while a monitor with \"5ms GtG\" could have lower total input lag if it has better processing and higher refresh rates."
+    - paragraph [ref=e68]:
+      - strong [ref=e69]: "Why refresh rate matters more than advertised response time:"
+      - text: A 360Hz monitor with 5ms GtG will feel dramatically more responsive than a 60Hz monitor with 1ms GtG. This is because refresh rate directly impacts input lag—higher refresh rates mean less time between frames, resulting in lower perceived latency. For competitive gaming, many professionals prioritize high refresh rates (240Hz, 360Hz) over ultra-low response time claims, especially since most modern gaming monitors have sufficiently fast response times when properly configured with overdrive settings.
+    - generic [ref=e70]:
+      - heading "⚠️ Industry-Wide \"Joint Deception\"" [level=3] [ref=e71]
+      - paragraph [ref=e72]:
+        - text: Professional testing labs describe the gaming monitor industry as engaging in
+        - strong [ref=e73]: "\"joint deception\""
+        - text: ". Every manufacturer uses identical cherry-picking tactics:"
+      - list [ref=e74]:
+        - listitem [ref=e75]: Quote only the single fastest GtG transition (5-10% of all transitions)
+        - listitem [ref=e76]: Test with extreme overdrive causing unusable artifacts
+        - listitem [ref=e77]: Use outdated measurement methods appearing 2-3x faster than reality
+        - listitem [ref=e78]: Completely omit input lag specifications
+      - paragraph [ref=e79]:
+        - strong [ref=e80]: "Result:"
+        - text: Monitors advertised as "1ms GtG" typically measure 3-6ms average with proper testing, and 10-15ms worst-case. This calculator uses professional testing methodologies to reveal real-world performance.
+    - table [ref=e82]:
+      - rowgroup [ref=e83]:
+        - row "Monitor Advertised Manufacturer Claims Professional Testing Results Reality" [ref=e84]:
+          - cell "Monitor Advertised" [ref=e85]
+          - cell "Manufacturer Claims" [ref=e86]
+          - cell "Professional Testing Results" [ref=e87]
+          - cell "Reality" [ref=e88]
+      - rowgroup [ref=e89]:
+        - row "Generic \"1ms\" Gaming Monitor 1ms GtG Response Time 3-6ms average (gamma-corrected) 10-15ms worst-case transitions 3-6x slower than claimed" [ref=e90]:
+          - cell "Generic \"1ms\" Gaming Monitor" [ref=e91]
+          - cell "1ms GtG Response Time" [ref=e92]
+          - cell "3-6ms average (gamma-corrected) 10-15ms worst-case transitions" [ref=e93]:
+            - text: 3-6ms average (gamma-corrected)
+            - text: 10-15ms worst-case transitions
+          - cell "3-6x slower than claimed" [ref=e94]
+        - row "VA Panel \"1ms MPRT\" 1ms MPRT, Fast Response 8-15ms average response 20-30ms black transitions 10-30x slower than claimed" [ref=e95]:
+          - cell "VA Panel \"1ms MPRT\"" [ref=e96]
+          - cell "1ms MPRT, Fast Response" [ref=e97]
+          - cell "8-15ms average response 20-30ms black transitions" [ref=e98]:
+            - text: 8-15ms average response
+            - text: 20-30ms black transitions
+          - cell "10-30x slower than claimed" [ref=e99]
+        - row "144Hz \"0.1ms MPRT\" 0.1ms MPRT (backlight strobing) 6.94ms actual MPRT without strobing Strobing mode reduces brightness 50%+ 70x slower (mode not default)" [ref=e100]:
+          - cell "144Hz \"0.1ms MPRT\"" [ref=e101]
+          - cell "0.1ms MPRT (backlight strobing)" [ref=e102]
+          - cell "6.94ms actual MPRT without strobing Strobing mode reduces brightness 50%+" [ref=e103]:
+            - text: 6.94ms actual MPRT without strobing
+            - text: Strobing mode reduces brightness 50%+
+          - cell "70x slower (mode not default)" [ref=e104]
+        - row "Professional Esports Monitor 0.5ms GtG, 240Hz 1.82ms average (BenQ XL2566K) 9ms total input lag Honest (rare exception)" [ref=e105]:
+          - cell "Professional Esports Monitor" [ref=e106]
+          - cell "0.5ms GtG, 240Hz" [ref=e107]
+          - cell "1.82ms average (BenQ XL2566K) 9ms total input lag" [ref=e108]:
+            - text: 1.82ms average (BenQ XL2566K)
+            - text: 9ms total input lag
+          - cell "Honest (rare exception)" [ref=e109]
+    - paragraph [ref=e110]: "Source: TFTCentral, Hardware Unboxed, RTings professional testing with gamma-corrected measurements"
+    - table [ref=e112]:
+      - rowgroup [ref=e113]:
+        - row "Feature This Calculator PC Part Picker Manufacturer Specs Professional Reviews" [ref=e114]:
+          - cell "Feature" [ref=e115]
+          - cell "This Calculator" [ref=e116]
+          - cell "PC Part Picker" [ref=e117]
+          - cell "Manufacturer Specs" [ref=e118]
+          - cell "Professional Reviews" [ref=e119]
+      - rowgroup [ref=e120]:
+        - row "Real Input Lag ✅ Calculated ❌ Not shown ❌ Hidden ✅ Tested (limited coverage)" [ref=e121]:
+          - cell "Real Input Lag" [ref=e122]
+          - cell "✅ Calculated" [ref=e123]
+          - cell "❌ Not shown" [ref=e124]
+          - cell "❌ Hidden" [ref=e125]
+          - cell "✅ Tested (limited coverage)" [ref=e126]
+        - row "Response Time Reality ✅ Adjusted for panel/overdrive ❌ Manufacturer claims only ❌ Cherry-picked ✅ Gamma-corrected" [ref=e127]:
+          - cell "Response Time Reality" [ref=e128]
+          - cell "✅ Adjusted for panel/overdrive" [ref=e129]
+          - cell "❌ Manufacturer claims only" [ref=e130]
+          - cell "❌ Cherry-picked" [ref=e131]
+          - cell "✅ Gamma-corrected" [ref=e132]
+        - row "Interactive Comparison ✅ Side-by-side calculator ⚠️ Basic filtering ❌ None ❌ Separate reviews" [ref=e133]:
+          - cell "Interactive Comparison" [ref=e134]
+          - cell "✅ Side-by-side calculator" [ref=e135]
+          - cell "⚠️ Basic filtering" [ref=e136]
+          - cell "❌ None" [ref=e137]
+          - cell "❌ Separate reviews" [ref=e138]
+        - row "GPU Compatibility ✅ FPS matching ❌ Not checked ❌ Not relevant ❌ Not covered" [ref=e139]:
+          - cell "GPU Compatibility" [ref=e140]
+          - cell "✅ FPS matching" [ref=e141]
+          - cell "❌ Not checked" [ref=e142]
+          - cell "❌ Not relevant" [ref=e143]
+          - cell "❌ Not covered" [ref=e144]
+        - row "Use Case Matching ✅ Game-specific ❌ Generic ❌ None ⚠️ General guidance" [ref=e145]:
+          - cell "Use Case Matching" [ref=e146]
+          - cell "✅ Game-specific" [ref=e147]
+          - cell "❌ Generic" [ref=e148]
+          - cell "❌ None" [ref=e149]
+          - cell "⚠️ General guidance" [ref=e150]
+    - generic [ref=e151]: 🔒 🔒 All calculations work offline. No data sent to servers. 100% private.
+    - generic [ref=e152]:
+      - generic [ref=e153]: 🖱️
+      - generic [ref=e154]:
+        - text: Already optimized your monitor?
+        - link "Optimize your mouse DPI settings next →" [ref=e155] [cursor=pointer]:
+          - /url: /dpi-calculator/
+  - generic [ref=e157]:
+    - heading "Gaming Monitor Performance Tiers" [level=2] [ref=e158]
+    - paragraph [ref=e159]: Based on professional testing and competitive requirements, not manufacturer marketing
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - generic [ref=e162]: GOD TIER
+        - heading "Professional Esports (Sub-8ms Total Lag)" [level=3] [ref=e163]
+        - paragraph [ref=e164]: 360Hz+ | 0.5-2ms response | OLED or Fast IPS | Variable overdrive | $600-1200
+        - generic [ref=e165]:
+          - strong [ref=e166]: "Examples:"
+          - text: ASUS ROG Swift PG259QN (3ms @ 360Hz), BenQ Zowie XL2566K (1.82ms @ 360Hz), ASUS PG32UCDP OLED (2ms @ 480Hz)
+          - strong [ref=e167]: "Who Needs This:"
+          - text: Professional/semi-pro players, top 1% skill level, can perceive 1-2ms differences
+      - generic [ref=e168]:
+        - generic [ref=e169]: S TIER
+        - heading "Competitive Gaming (8-12ms Total Lag)" [level=3] [ref=e170]
+        - paragraph [ref=e171]: 240Hz | 1-3ms response | Fast IPS or TN | $350-600
+        - generic [ref=e172]:
+          - strong [ref=e173]: "Examples:"
+          - text: ASUS VG259QM (280Hz), Dell S2522HG (240Hz), ViewSonic XG2431 (240Hz)
+          - strong [ref=e174]: "Who Needs This:"
+          - text: Competitive ranked players, Diamond+ skill level, FPS/fighting game mains
+      - generic [ref=e175]:
+        - generic [ref=e176]: A TIER
+        - heading "Enthusiast Gaming (12-16ms Total Lag)" [level=3] [ref=e177]
+        - paragraph [ref=e178]: 144-165Hz | 3-5ms response | IPS | $250-400
+        - generic [ref=e179]:
+          - strong [ref=e180]: "Examples:"
+          - text: LG 27GP850-B (165Hz 1440p), Gigabyte M27Q (170Hz), AOC 24G2 (144Hz)
+          - strong [ref=e181]: "Who Needs This:"
+          - text: Serious gamers, Gold-Platinum rank, balanced gaming + quality
+      - generic [ref=e182]:
+        - generic [ref=e183]: B TIER
+        - heading "Casual Gaming (16-25ms Total Lag)" [level=3] [ref=e184]
+        - paragraph [ref=e185]: 120-144Hz | 5-8ms response | IPS or VA | $180-280
+        - generic [ref=e186]:
+          - strong [ref=e187]: "Examples:"
+          - text: ASUS TUF VG249Q1R (165Hz), HP Omen 27q (165Hz 1440p)
+          - strong [ref=e188]: "Who Needs This:"
+          - text: Casual gamers, single-player focus, budget-conscious buyers
+      - generic [ref=e189]:
+        - generic [ref=e190]: AVOID
+        - heading "Budget/Office (25ms+ Total Lag)" [level=3] [ref=e191]
+        - paragraph [ref=e192]: 60-75Hz | 8ms+ response | VA or cheap IPS | Under $180
+        - generic [ref=e193]:
+          - strong [ref=e194]: "Warning:"
+          - text: Not suitable for competitive gaming. Noticeable lag and ghosting. Fine for office work, media consumption, slow-paced games.
+          - strong [ref=e195]: "Who This Is For:"
+          - text: Non-gamers, extreme budget constraints, productivity-only setups
+    - paragraph [ref=e197]:
+      - strong [ref=e198]: "💡 Pro Tip:"
+      - text: Moving up one tier ($200-300 investment) makes a bigger difference than upgrading your $2000 GPU by 10%. Most gamers blame their skill when it's actually 30ms of input lag holding them back. Use our calculator to find which tier your current monitor actually falls into.
+  - generic [ref=e200]:
+    - generic [ref=e201]:
+      - generic [ref=e202] [cursor=pointer]:
+        - generic [ref=e203]: ⚡
+        - text: Response Time Calculator
+      - generic [ref=e204] [cursor=pointer]:
+        - generic [ref=e205]: ⚖️
+        - text: Monitor Comparison
+      - generic [ref=e206] [cursor=pointer]:
+        - generic [ref=e207]: 🎯
+        - text: Monitor Recommender
+      - generic [ref=e208] [cursor=pointer]:
+        - generic [ref=e209]: 📊
+        - text: Refresh Rate vs FPS
+    - generic [ref=e211]:
+      - generic [ref=e212]:
+        - heading "⚡ Response Time Calculator" [level=3] [ref=e213]
+        - paragraph [ref=e214]: Calculate total input lag from monitor specifications
+      - generic [ref=e215]:
+        - generic [ref=e216]:
+          - generic [ref=e217]: Monitor Response Time (ms)
+          - spinbutton "Monitor Response Time (ms)" [active] [ref=e218]: "0.1"
+          - generic [ref=e219]:
+            - text: Enter your monitor's advertised response time (0.5-20ms).
+            - strong [ref=e220]: "Note:"
+            - text: Professional testing uses gamma-corrected measurements. Manufacturer specs use older methods that appear 2-3x faster than real-world performance.
+        - generic [ref=e221]:
+          - generic [ref=e222]: Response Time Type ℹ️
+          - combobox "Response Time Type ℹ️" [ref=e223]:
+            - option "GtG (Gray to Gray)" [selected]
+            - option "MPRT (Motion Picture Response Time)"
+            - option "Actual measured"
+          - generic [ref=e224]: Most monitors advertise GtG. MPRT is typically lower than actual input lag.
+        - generic [ref=e225]:
+          - generic [ref=e226]: Refresh Rate (Hz)
+          - combobox "Refresh Rate (Hz)" [ref=e227]:
+            - option "60 Hz"
+            - option "75 Hz"
+            - option "120 Hz"
+            - option "144 Hz"
+            - option "165 Hz"
+            - option "240 Hz" [selected]
+            - option "280 Hz"
+            - option "360 Hz"
+            - option "480 Hz"
+        - generic [ref=e228]:
+          - generic [ref=e229]: Panel Type
+          - combobox "Panel Type" [ref=e230]:
+            - option "IPS" [selected]
+            - option "TN"
+            - option "VA"
+            - option "OLED"
+          - generic [ref=e231]: Panel type affects response time consistency
+        - generic [ref=e232]:
+          - generic [ref=e233]: Overdrive Setting ℹ️
+          - combobox "Overdrive Setting ℹ️" [ref=e234]:
+            - option "Off"
+            - option "Normal" [selected]
+            - option "Extreme/Fast"
+          - generic [ref=e235]: Overdrive reduces ghosting but can cause inverse ghosting at extreme settings
+        - generic [ref=e236]:
+          - generic [ref=e237]: Signal Processing Mode ℹ️
+          - combobox "Signal Processing Mode ℹ️" [ref=e238]:
+            - option "Gaming Mode - Minimal Processing (2-3ms)"
+            - option "Standard Mode (5-8ms)"
+            - option "Enhanced Processing (10-15ms)" [selected]
+            - option "Picture Quality Mode (25-50ms)"
+            - option "TV Picture Mode - Heavy Processing (60-110ms)"
+          - generic [ref=e239]: Image processing (deinterlacing, motion interpolation, noise reduction, HDR tone mapping, upscaling) adds latency. Gaming monitors in 'Game Mode' bypass most processing. TVs in picture quality modes can add 60-110ms! Always use Game Mode for competitive gaming.
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - checkbox "Running Non-Native Resolution (adds scaler delay)" [ref=e242]
+            - text: Running Non-Native Resolution (adds scaler delay)
+          - generic [ref=e243]: Running non-native resolution forces the monitor's scaler to convert the signal, adding 5-15ms latency. Some monitors route signals through scalers even at native resolution, adding 1-16ms overhead. For lowest latency, always run your native resolution. Check professional reviews to see if your monitor has 'scaler bypass' at native resolution.
+      - button "Calculate Total Input Lag" [disabled] [ref=e244]
+  - generic [ref=e248]:
+    - heading "Found Your Perfect Monitor?" [level=2] [ref=e249]
+    - paragraph [ref=e250]: Bookmark this page and share it with your gaming friends. Our monitor calculator suite is 100% free and always will be.
+    - generic [ref=e251]:
+      - button "Calculate Again ↑" [ref=e252]
+      - link "Optimize Mouse DPI →" [ref=e253] [cursor=pointer]:
+        - /url: /dpi-calculator/
+  - generic [ref=e256]:
+    - generic [ref=e257]:
+      - heading "Frequently Asked Questions About Gaming Monitors" [level=2] [ref=e258]
+      - paragraph [ref=e259]: Everything you need to know about monitor response time, input lag, and refresh rates
+    - textbox "🔍 Search FAQs..." [ref=e261]
+    - generic [ref=e262]:
+      - heading "Quick Navigation:" [level=4] [ref=e263]
+      - generic [ref=e264]:
+        - link "Response Time" [ref=e265] [cursor=pointer]:
+          - /url: "#faq-response-time"
+        - link "Refresh Rates" [ref=e266] [cursor=pointer]:
+          - /url: "#faq-refresh-rate"
+        - link "Panel Types" [ref=e267] [cursor=pointer]:
+          - /url: "#faq-panel-types"
+        - link "Input Lag" [ref=e268] [cursor=pointer]:
+          - /url: "#faq-input-lag"
+        - link "Buying Guide" [ref=e269] [cursor=pointer]:
+          - /url: "#faq-buying"
+        - link "Technical" [ref=e270] [cursor=pointer]:
+          - /url: "#faq-technical"
+    - generic [ref=e271]:
+      - generic [ref=e272]: ⚡
+      - heading "Response Time Questions" [level=3] [ref=e273]
+    - generic [ref=e274]:
+      - button "What is monitor response time and why does it matter? ▼" [ref=e275] [cursor=pointer]:
+        - generic [ref=e276]: What is monitor response time and why does it matter?
+        - generic [ref=e277]: ▼
+      - generic [ref=e278]:
+        - paragraph [ref=e279]:
+          - strong [ref=e280]: Response time
+          - text: measures how quickly a pixel can change from one color to another, typically measured in milliseconds (ms). For gaming, response time directly affects motion clarity and ghosting. A faster response time (1ms) means pixels transition quickly, reducing blur trails behind moving objects. A slower response time (5ms+) can cause visible ghosting, where previous frames leave faint afterimages.
+        - paragraph [ref=e281]:
+          - text: Response time matters most in
+          - strong [ref=e282]: fast-paced competitive games
+          - text: like CS2, Valorant, and racing games where objects move quickly across the screen. In slower-paced games like strategy or RPGs, higher response times are less noticeable. Most modern gaming monitors aim for 1-5ms response times. Professional esports players typically use monitors with 0.5-1ms response times to maintain maximum clarity during rapid movements and flick shots.
+    - generic [ref=e283]:
+      - button "What's the difference between response time and input lag? ▼" [ref=e284] [cursor=pointer]:
+        - generic [ref=e285]: What's the difference between response time and input lag?
+        - generic [ref=e286]: ▼
+      - generic [ref=e287]:
+        - paragraph [ref=e288]:
+          - strong [ref=e289]: Response time
+          - text: and
+          - strong [ref=e290]: input lag
+          - text: "are completely different metrics that both affect gaming performance:"
+        - paragraph [ref=e291]:
+          - strong [ref=e292]: "Response Time:"
+          - text: How fast pixels change colors (affects motion blur and ghosting). This is measured in Gray-to-Gray (GtG) transitions and is usually advertised by manufacturers. Fast response time = clearer motion.
+        - paragraph [ref=e293]:
+          - strong [ref=e294]: "Input Lag:"
+          - text: Total delay from your input (mouse click, keyboard press) to seeing the result on screen. This includes signal processing time, pixel response time, and refresh cycle delay. Lower input lag = more responsive gameplay.
+        - paragraph [ref=e295]: A monitor can have fast 1ms response time but high input lag if its internal processing is slow. For competitive gaming, you want BOTH low response time AND low input lag. Total input lag under 20ms is ideal for esports-level play.
+    - generic [ref=e296]:
+      - button "What does \"1ms GtG\" actually mean? ▼" [ref=e297] [cursor=pointer]:
+        - generic [ref=e298]: What does "1ms GtG" actually mean?
+        - generic [ref=e299]: ▼
+      - generic [ref=e300]:
+        - paragraph [ref=e301]:
+          - strong [ref=e302]: GtG stands for "Gray-to-Gray"
+          - text: and measures how long it takes a pixel to transition between two shades of gray. This is the most common response time metric manufacturers use. However, GtG only measures the fastest pixel transition, not the slowest, which can be misleading.
+        - paragraph [ref=e303]: A monitor advertising "1ms GtG" means its pixels can transition between certain gray shades in 1 millisecond. However, transitions between very different colors (like black to white) may take 3-5ms or more. Real-world response times are often higher than advertised GtG times because games display various colors, not just gray transitions.
+        - paragraph [ref=e304]: MPRT (Moving Picture Response Time) is often more accurate for gaming because it measures response time during actual motion, accounting for all color transitions. If a monitor claims 1ms GtG, expect actual gaming response times of 2-4ms.
+    - generic [ref=e305]:
+      - button "Is lower response time always better? ▼" [ref=e306] [cursor=pointer]:
+        - generic [ref=e307]: Is lower response time always better?
+        - generic [ref=e308]: ▼
+      - generic [ref=e309]:
+        - paragraph [ref=e310]:
+          - strong [ref=e311]: Not always.
+          - text: While faster response times reduce ghosting, there's a point of diminishing returns, and aggressive overdrive settings that push response times too low can cause
+          - strong [ref=e312]: inverse ghosting
+          - text: (corona effects or overshoot).
+        - paragraph [ref=e313]: For competitive gaming (FPS, racing), 1-2ms is ideal. Going below 0.5ms often requires extreme overdrive settings that introduce visual artifacts. For casual gaming or single-player experiences, 3-5ms is perfectly acceptable and may provide better color accuracy.
+        - paragraph [ref=e314]: Very low response times (<0.5ms) typically require TN or Fast IPS panels, which sacrifice color quality. Most gamers find the sweet spot is 1-2ms for competitive play, balancing speed with visual quality. Professional esports players might prioritize ultra-low response times, but casual gamers won't notice the difference between 1ms and 3ms.
+    - generic [ref=e315]:
+      - button "What is the difference between MPRT and GtG response time? ▼" [ref=e316] [cursor=pointer]:
+        - generic [ref=e317]: What is the difference between MPRT and GtG response time?
+        - generic [ref=e318]: ▼
+      - generic [ref=e319]:
+        - paragraph [ref=e320]:
+          - strong [ref=e321]: GtG (Gray-to-Gray)
+          - text: measures pixel transition speed between two gray shades.
+          - strong [ref=e322]: MPRT (Moving Picture Response Time)
+          - text: measures perceived blur during motion, which is more relevant for gaming.
+        - paragraph [ref=e323]: GtG only shows the fastest transition the panel can achieve. MPRT accounts for pixel persistence, motion blur, and how the human eye perceives moving objects. A monitor might have 1ms GtG but 5ms MPRT, meaning motion still appears blurry despite fast pixel transitions.
+        - paragraph [ref=e324]:
+          - text: For gaming,
+          - strong [ref=e325]: MPRT is often more accurate
+          - text: because it reflects real-world motion clarity. Monitors with low MPRT (1-2ms) provide clearer motion. Many manufacturers now advertise both metrics. When choosing a gaming monitor, prioritize low MPRT if available, as it better represents actual gaming performance.
+    - generic [ref=e326]:
+      - generic [ref=e327]: 🔄
+      - heading "Refresh Rate Questions" [level=3] [ref=e328]
+    - generic [ref=e329]:
+      - button "What refresh rate do I need for gaming? ▼" [ref=e330] [cursor=pointer]:
+        - generic [ref=e331]: What refresh rate do I need for gaming?
+        - generic [ref=e332]: ▼
+      - generic [ref=e333]:
+        - paragraph [ref=e334]:
+          - strong [ref=e335]: 144Hz is the modern gaming standard
+          - text: and provides a massive improvement over 60Hz. For competitive FPS games (CS2, Valorant, Apex), 240Hz or higher is ideal if your GPU can maintain those frame rates. For casual or single-player gaming, 144Hz is excellent.
+        - paragraph [ref=e336]:
+          - strong [ref=e337]: "60Hz:"
+          - text: Budget option, still acceptable for casual gaming. You'll notice stutter in fast-paced games.
+        - paragraph [ref=e338]:
+          - strong [ref=e339]: "144Hz:"
+          - text: Sweet spot for most gamers. Noticeable improvement in smoothness and responsiveness. Best value proposition.
+        - paragraph [ref=e340]:
+          - strong [ref=e341]: "240Hz:"
+          - text: For competitive gamers with high-end GPUs. Diminishing returns compared to 144Hz, but still noticeable for skilled players.
+        - paragraph [ref=e342]:
+          - strong [ref=e343]: "360Hz+:"
+          - text: Elite competitive gaming. Only beneficial if you can consistently hit 360+ FPS and have the skill to perceive the difference.
+        - paragraph [ref=e344]: "Remember: Your refresh rate should match your GPU's FPS output. A 360Hz monitor is wasted if you only get 120 FPS."
+    - generic [ref=e345]:
+      - button "Is 144Hz vs 240Hz noticeable? ▼" [ref=e346] [cursor=pointer]:
+        - generic [ref=e347]: Is 144Hz vs 240Hz noticeable?
+        - generic [ref=e348]: ▼
+      - generic [ref=e349]:
+        - paragraph [ref=e350]:
+          - strong [ref=e351]: Yes, 240Hz is noticeably smoother than 144Hz
+          - text: ", but the difference is less dramatic than 60Hz to 144Hz. The jump from 144Hz (6.9ms per frame) to 240Hz (4.2ms per frame) saves 2.7ms per frame, which competitive gamers can perceive during fast flicks and tracking."
+        - paragraph [ref=e352]:
+          - strong [ref=e353]: "Who benefits most:"
+        - list [ref=e354]:
+          - listitem [ref=e355]:
+            - strong [ref=e356]: Competitive FPS players
+            - text: (CS2, Valorant, Apex) notice the smoother motion tracking
+          - listitem [ref=e357]:
+            - strong [ref=e358]: High-skilled players
+            - text: with fast reaction times appreciate the reduced motion blur
+          - listitem [ref=e359]:
+            - strong [ref=e360]: Players with high-end PCs
+            - text: who can maintain 240+ FPS consistently
+        - paragraph [ref=e361]:
+          - strong [ref=e362]: "Who might not notice:"
+          - text: Casual gamers, players who can't maintain 240 FPS, or those playing slower-paced games. If you're debating between 1080p 240Hz and 1440p 144Hz, consider that resolution upgrade might provide more visual benefit than the refresh rate increase, unless you're focused solely on competitive performance.
+    - generic [ref=e363]:
+      - button "Can you see the difference between 240Hz and 360Hz? ▼" [ref=e364] [cursor=pointer]:
+        - generic [ref=e365]: Can you see the difference between 240Hz and 360Hz?
+        - generic [ref=e366]: ▼
+      - generic [ref=e367]:
+        - paragraph [ref=e368]:
+          - strong [ref=e369]: Yes, but only for elite competitive players
+          - text: with exceptional skill and reaction times. The difference from 240Hz (4.2ms) to 360Hz (2.8ms) saves just 1.4ms per frame, which is barely perceptible for most people.
+        - paragraph [ref=e370]: Professional esports players competing at the highest levels can perceive and benefit from 360Hz. For 99% of gamers, 240Hz is the practical ceiling. The jump from 240Hz to 360Hz is much smaller than 144Hz to 240Hz.
+        - paragraph [ref=e371]: Additionally, you need a GPU that can consistently deliver 360+ FPS in your games. Most titles can't reach 360 FPS even with top-tier hardware. Unless you're a professional competitive player with unlimited budget, 240Hz provides the best balance of performance and value.
+    - generic [ref=e372]:
+      - button "Do I need high FPS to benefit from a high refresh rate monitor? ▼" [ref=e373] [cursor=pointer]:
+        - generic [ref=e374]: Do I need high FPS to benefit from a high refresh rate monitor?
+        - generic [ref=e375]: ▼
+      - generic [ref=e376]:
+        - paragraph [ref=e377]:
+          - strong [ref=e378]: Yes, absolutely.
+          - text: A 240Hz monitor only displays 240 frames per second maximum. If your GPU only outputs 80 FPS, you're wasting money on a 240Hz monitor—you'll only see 80 FPS anyway.
+        - paragraph [ref=e379]: To fully utilize a high refresh rate monitor, your GPU must match or exceed that refresh rate in FPS. For a 144Hz monitor, aim for 144+ FPS. For 240Hz, you need 240+ FPS consistently. Frame rate below the refresh rate means the monitor shows duplicate frames, reducing the smoothness benefit.
+        - paragraph [ref=e380]:
+          - text: However, with
+          - strong [ref=e381]: G-Sync or FreeSync
+          - text: enabled, lower FPS (within the sync range) can still benefit from higher refresh rates. Adaptive sync eliminates screen tearing and provides smoothness even when FPS fluctuates below the maximum refresh rate.
+    - generic [ref=e382]:
+      - 'button "What''s better for competitive gaming: 1080p 240Hz or 1440p 144Hz? ▼" [ref=e383] [cursor=pointer]':
+        - generic [ref=e384]: "What's better for competitive gaming: 1080p 240Hz or 1440p 144Hz?"
+        - generic [ref=e385]: ▼
+      - generic [ref=e386]:
+        - paragraph [ref=e387]: "This depends on your priorities and skill level:"
+        - paragraph [ref=e388]:
+          - strong [ref=e389]: "1080p 240Hz is better for:"
+          - text: Pure competitive performance, professional esports players, players prioritizing maximum smoothness and motion clarity over visual quality. The higher refresh rate provides a tangible advantage in fast-paced FPS games.
+        - paragraph [ref=e390]:
+          - strong [ref=e391]: "1440p 144Hz is better for:"
+          - text: Visual clarity, immersive gaming, casual competitive players, those who play varied game types. The resolution upgrade provides better image quality, easier target identification at distance, and more screen real estate.
+        - paragraph [ref=e392]: Most competitive players choose 1080p 240Hz because the refresh rate advantage matters more than resolution in competitive FPS. However, if you play a mix of competitive and single-player games, 1440p 144Hz offers a better all-around experience. Your GPU must be powerful enough to maintain the chosen refresh rate consistently.
+    - generic [ref=e393]:
+      - generic [ref=e394]: 🖥️
+      - heading "Panel Technology Questions" [level=3] [ref=e395]
+    - generic [ref=e396]:
+      - button "What's the best panel type for gaming - IPS, TN, VA, or OLED? ▼" [ref=e397] [cursor=pointer]:
+        - generic [ref=e398]: What's the best panel type for gaming - IPS, TN, VA, or OLED?
+        - generic [ref=e399]: ▼
+      - generic [ref=e400]:
+        - paragraph [ref=e401]: "Each panel type has trade-offs:"
+        - paragraph [ref=e402]:
+          - strong [ref=e403]: "TN Panels:"
+          - text: "Fastest response times (0.5-1ms), lowest input lag, cheapest. Poor colors and viewing angles. Best for: Competitive FPS players prioritizing speed over visuals."
+        - paragraph [ref=e404]:
+          - strong [ref=e405]: "IPS Panels:"
+          - text: "Great colors, good viewing angles, fast response times (1-2ms on modern \"Fast IPS\"). Slight IPS glow. Best for: Gamers wanting speed AND visual quality, content creators."
+        - paragraph [ref=e406]:
+          - strong [ref=e407]: "VA Panels:"
+          - text: "Best contrast and deep blacks, but slower response times (3-5ms) with ghosting issues. Best for: Single-player games, movie watching, less competitive gaming."
+        - paragraph [ref=e408]:
+          - strong [ref=e409]: "OLED:"
+          - text: "Perfect blacks, infinite contrast, near-instant response (0.1ms), stunning colors. Expensive and risk of burn-in. Best for: Premium gaming experience with varied content, those who can afford $1000+ monitors."
+        - paragraph [ref=e410]:
+          - strong [ref=e411]: "Verdict:"
+          - text: For competitive gaming, Fast IPS or TN. For immersive single-player, VA or OLED. Most gamers choose IPS for the best all-around balance.
+    - generic [ref=e412]:
+      - button "Why do pro gamers use TN panels? ▼" [ref=e413] [cursor=pointer]:
+        - generic [ref=e414]: Why do pro gamers use TN panels?
+        - generic [ref=e415]: ▼
+      - generic [ref=e416]:
+        - paragraph [ref=e417]:
+          - strong [ref=e418]: Professional esports players choose TN panels
+          - text: for their absolute fastest response times (0.5ms) and lowest input lag. Every millisecond matters at the professional level, where split-second reactions determine wins.
+        - paragraph [ref=e419]: TN panels excel at pixel transition speed, which reduces ghosting and motion blur during rapid movements. They also have minimal signal processing delay, resulting in the lowest total input lag available. For competitive FPS games where players make hundreds of rapid mouse movements per game, the motion clarity advantage outweighs poor color reproduction.
+        - paragraph [ref=e420]: However, this preference is changing. Modern "Fast IPS" panels achieve 1ms response times with better colors, making them competitive alternatives. Many new professional players are switching to Fast IPS monitors that offer TN-like speed with superior visual quality. TN panels are becoming less common as Fast IPS technology improves.
+    - generic [ref=e421]:
+      - button "Is IPS fast enough for competitive gaming? ▼" [ref=e422] [cursor=pointer]:
+        - generic [ref=e423]: Is IPS fast enough for competitive gaming?
+        - generic [ref=e424]: ▼
+      - generic [ref=e425]:
+        - paragraph [ref=e426]:
+          - strong [ref=e427]: Yes, modern Fast IPS panels are absolutely fast enough
+          - text: for competitive gaming. Early IPS panels had 5-8ms response times, making them too slow for competitive play. However, "Fast IPS" technology now achieves 1ms GtG response times, matching traditional TN panels while offering superior colors and viewing angles.
+        - paragraph [ref=e428]: Professional players are increasingly adopting Fast IPS monitors. The motion clarity is essentially identical to TN, but with much better color accuracy and viewing angles. Unless you're competing at the absolute elite level where 0.1ms differences matter, Fast IPS provides the best balance of speed and visual quality.
+        - paragraph [ref=e429]: For 99% of competitive gamers, Fast IPS (1-2ms) is indistinguishable from TN (0.5-1ms) in terms of motion clarity during gameplay. The visual quality improvement is immediately noticeable and doesn't come at a meaningful performance cost.
+    - generic [ref=e430]:
+      - button "What are the pros and cons of VA panels for gaming? ▼" [ref=e431] [cursor=pointer]:
+        - generic [ref=e432]: What are the pros and cons of VA panels for gaming?
+        - generic [ref=e433]: ▼
+      - generic [ref=e434]:
+        - paragraph [ref=e435]:
+          - strong [ref=e436]: "VA Panel Pros:"
+          - text: Excellent contrast ratios (3000:1 vs 1000:1 for IPS), deep blacks that create immersive visuals, better for dark game scenes, typically cheaper than IPS, no IPS glow, good for mixed use (gaming + media consumption).
+        - paragraph [ref=e437]:
+          - strong [ref=e438]: "VA Panel Cons:"
+          - text: Slower response times (3-5ms) cause visible ghosting in fast-paced games, color shifting at angles, less accurate colors than IPS, smearing/black smudge during rapid dark-to-light transitions, not ideal for competitive FPS.
+        - paragraph [ref=e439]:
+          - strong [ref=e440]: "Best Use Cases:"
+          - text: Single-player games, RPGs, strategy games, horror games (deep blacks enhance atmosphere), media consumption, casual gaming. VA panels excel in immersive, visually rich experiences where motion speed matters less.
+        - paragraph [ref=e441]:
+          - strong [ref=e442]: "Avoid VA for:"
+          - text: Competitive FPS gaming, fast-paced action games, professional esports. The slower response times create visible ghosting that impacts performance.
+    - generic [ref=e443]:
+      - button "Are OLED monitors good for gaming? ▼" [ref=e444] [cursor=pointer]:
+        - generic [ref=e445]: Are OLED monitors good for gaming?
+        - generic [ref=e446]: ▼
+      - generic [ref=e447]:
+        - paragraph [ref=e448]:
+          - strong [ref=e449]: OLED monitors are excellent for gaming
+          - text: but have trade-offs. They offer near-instant response times (0.1ms), perfect blacks, infinite contrast, stunning colors, and wide viewing angles. The visual quality is unmatched by any other panel technology.
+        - paragraph [ref=e450]:
+          - strong [ref=e451]: "OLED Gaming Advantages:"
+          - text: Fastest response time available (0.01-0.03ms), zero motion blur, perfect black levels create incredible immersion, exceptional HDR performance, vibrant colors that enhance gaming visuals.
+        - paragraph [ref=e452]:
+          - strong [ref=e453]: "OLED Gaming Concerns:"
+          - text: While OLED has near-instant 0.01-0.03ms pixel response for most transitions, it can still exhibit
+          - strong [ref=e454]: black-to-gray smearing
+          - text: where transitions FROM black can take multiple refresh cycles. This is rare but can occur in specific scenarios (dark UI elements appearing on black backgrounds).
+        - paragraph [ref=e455]:
+          - strong [ref=e456]: "Burn-in Risk:"
+          - text: Modern OLEDs have 3-year warranties and burn-in protection, but static UI elements (game HUDs, minimaps, health bars) pose long-term risk. Best for varied content, not 5000+ hours of the same game with static UI elements. If you play one game exclusively with persistent UI, LCD is safer.
+        - paragraph [ref=e457]: For gaming, OLED is best for varied content (don't play one game with static UI for thousands of hours). If budget allows and you play varied games, OLED provides the ultimate gaming experience.
+    - generic [ref=e458]:
+      - generic [ref=e459]: ⚡
+      - heading "Input Lag & Performance Questions" [level=3] [ref=e460]
+    - generic [ref=e461]:
+      - button "How do I calculate total input lag? ▼" [ref=e462] [cursor=pointer]:
+        - generic [ref=e463]: How do I calculate total input lag?
+        - generic [ref=e464]: ▼
+      - generic [ref=e465]:
+        - paragraph [ref=e466]:
+          - strong [ref=e467]: Total input lag
+          - text: "combines multiple components: display latency (one full frame time - 1000 ÷ refresh rate), pixel response time (adjusted for panel type and overdrive), and system latency (signal processing, typically 1-5ms)."
+        - paragraph [ref=e468]:
+          - text: "The formula:"
+          - strong [ref=e469]: Total Input Lag = Display Latency + (Response Time × Panel Multiplier) + System Latency
+        - paragraph [ref=e470]:
+          - strong [ref=e471]: "Display Latency:"
+          - text: "1000 ÷ Refresh Rate. For 144Hz: 1000 ÷ 144 = 6.94ms. This is the minimum frame time - one full refresh cycle. Research shows minimum input lag equals one FULL frame time, not half."
+        - paragraph [ref=e472]:
+          - strong [ref=e473]: "Response Time Adjustment:"
+          - text: "GtG response time multiplied by panel type factor (IPS: 1.0x, TN: 0.9x, VA: 1.3x, OLED: 0.2x) and overdrive setting (Off: +3ms, Normal: 0ms, Extreme: -1ms)."
+        - paragraph [ref=e474]:
+          - strong [ref=e475]: "System Latency:"
+          - text: Internal processing delay, usually 1-10ms depending on the monitor's processing speed.
+        - paragraph [ref=e476]: Our monitor calculator automatically calculates total input lag based on these factors. Competitive gaming monitors typically achieve 8-15ms total input lag, with elite monitors reaching 5-8ms.
+    - generic [ref=e477]:
+      - 'button "What matters more: response time or input lag? ▼" [ref=e478] [cursor=pointer]':
+        - generic [ref=e479]: "What matters more: response time or input lag?"
+        - generic [ref=e480]: ▼
+      - generic [ref=e481]:
+        - paragraph [ref=e482]:
+          - strong [ref=e483]: Input lag matters significantly more for competitive gaming.
+          - text: "Here's why:"
+        - paragraph [ref=e484]:
+          - strong [ref=e485]: "Response time affects:"
+          - text: Motion clarity (ghosting/blur trails). A bad response time (8ms+) makes fast movement look smeared, but you can still aim precisely.
+        - paragraph [ref=e486]:
+          - strong [ref=e487]: "Input lag affects:"
+          - text: Your actual ability to hit targets. Even 10ms of extra input lag means your crosshair is 10ms behind where you think it is. In competitive FPS at 240Hz, enemies move several pixels in 10ms - enough to miss shots.
+        - paragraph [ref=e488]:
+          - strong [ref=e489]: "The Math:"
+          - text: A monitor with 5ms response time and 8ms input lag (13ms total) will FEEL faster and more responsive than a monitor with 1ms response time and 15ms input lag (16ms total), despite the second having 'better' advertised specs.
+        - paragraph [ref=e490]:
+          - strong [ref=e491]: "Professional Opinion:"
+          - text: Input lag under 15ms is mandatory for competitive play. Response time under 5ms is highly recommended. If forced to choose, prioritize input lag reduction over response time improvement.
+        - paragraph [ref=e492]: This is why our calculator emphasizes TOTAL input lag, not just response time specs.
+    - generic [ref=e493]:
+      - button "What causes input lag in gaming monitors? ▼" [ref=e494] [cursor=pointer]:
+        - generic [ref=e495]: What causes input lag in gaming monitors?
+        - generic [ref=e496]: ▼
+      - generic [ref=e497]:
+        - paragraph [ref=e498]:
+          - strong [ref=e499]: "Input lag comes from multiple sources:"
+        - list [ref=e500]:
+          - listitem [ref=e501]:
+            - strong [ref=e502]: "Display Latency:"
+            - text: Time waiting for the next refresh cycle. Lower refresh rates = higher latency. 60Hz = 16.67ms, 144Hz = 6.94ms, 240Hz = 4.17ms (one full frame time).
+          - listitem [ref=e503]:
+            - strong [ref=e504]: "Signal Processing:"
+            - text: Monitor's internal processing (scaling, color correction, HDR) adds 1-5ms delay. Gaming mode typically disables unnecessary processing.
+          - listitem [ref=e505]:
+            - strong [ref=e506]: "Pixel Response Time:"
+            - text: How fast pixels change colors. Slower response = visible delay, especially during rapid movements.
+          - listitem [ref=e507]:
+            - strong [ref=e508]: "Overdrive Settings:"
+            - text: Extreme overdrive can reduce response time but may increase input lag slightly due to processing overhead.
+          - listitem [ref=e509]:
+            - strong [ref=e510]: "VSync/G-Sync:"
+            - text: "VSync adds significant input lag (20-50ms). Adaptive sync (G-Sync/FreeSync) adds negligible input lag (0-2.5ms based on comprehensive testing), which is less than one frame at high refresh rates and often within measurement error. However, VRR creates a critical overdrive problem: fixed overdrive settings optimized for maximum refresh rates become too aggressive at lower framerates, causing severe inverse ghosting. G-SYNC modules include variable overdrive that automatically adjusts, while most FreeSync monitors use fixed overdrive requiring manual adjustment."
+        - paragraph [ref=e511]: "To minimize input lag: Use highest refresh rate possible, enable gaming mode, disable unnecessary image processing, use G-Sync instead of V-Sync, choose monitors with fast signal processing."
+    - generic [ref=e512]:
+      - button "What is \"display latency\" vs \"pixel response time\"? ▼" [ref=e513] [cursor=pointer]:
+        - generic [ref=e514]: What is "display latency" vs "pixel response time"?
+        - generic [ref=e515]: ▼
+      - generic [ref=e516]:
+        - paragraph [ref=e517]:
+          - strong [ref=e518]: Display latency
+          - text: and
+          - strong [ref=e519]: pixel response time
+          - text: "are often confused but measure different things:"
+        - paragraph [ref=e520]:
+          - strong [ref=e521]: "Display Latency:"
+          - text: How long you wait for the monitor to display a new frame. This equals one full frame time (1000 ÷ refresh rate). At 144Hz, a new frame arrives every 6.94ms, which is the minimum input lag. Research shows minimum input lag equals one FULL frame time, not half. Higher refresh rates reduce display latency.
+        - paragraph [ref=e522]:
+          - strong [ref=e523]: "Pixel Response Time:"
+          - text: How fast individual pixels can change colors once they receive the signal. A 1ms response time means pixels transition quickly, but you still wait for the refresh cycle to send the signal.
+        - paragraph [ref=e524]: "Think of it this way: Display latency is waiting for the bus (refresh cycle), pixel response time is how fast the bus accelerates once it arrives. Both contribute to total input lag, but display latency is typically the larger component and is reduced by higher refresh rates."
+    - generic [ref=e525]:
+      - button "How much input lag is acceptable for competitive gaming? ▼" [ref=e526] [cursor=pointer]:
+        - generic [ref=e527]: How much input lag is acceptable for competitive gaming?
+        - generic [ref=e528]: ▼
+      - generic [ref=e529]:
+        - paragraph [ref=e530]:
+          - strong [ref=e531]: For competitive gaming, aim for under 15ms total input lag
+          - text: ", with elite players preferring under 10ms. Professional esports players typically use monitors with 5-8ms input lag for maximum responsiveness."
+        - paragraph [ref=e532]:
+          - strong [ref=e533]: "Input Lag Tiers:"
+        - list [ref=e534]:
+          - listitem [ref=e535]:
+            - strong [ref=e536]: "Under 10ms:"
+            - text: Elite competitive level. Used by professional players and high-tier monitors.
+          - listitem [ref=e537]:
+            - strong [ref=e538]: "10-15ms:"
+            - text: Excellent for competitive gaming. Most dedicated gaming monitors fall here.
+          - listitem [ref=e539]:
+            - strong [ref=e540]: "15-25ms:"
+            - text: Acceptable for competitive play. General gaming monitors, may feel slightly delayed.
+          - listitem [ref=e541]:
+            - strong [ref=e542]: "25-50ms:"
+            - text: Noticeable lag in fast-paced games. Better for casual gaming.
+          - listitem [ref=e543]:
+            - strong [ref=e544]: "50ms+:"
+            - text: Significant lag. Not suitable for competitive gaming.
+        - paragraph [ref=e545]: Remember that mouse, keyboard, and GPU latency also contribute to total system input lag. A low-lag monitor helps, but the entire chain needs to be optimized for competitive play.
+    - generic [ref=e546]:
+      - button "Does overdrive setting reduce input lag? ▼" [ref=e547] [cursor=pointer]:
+        - generic [ref=e548]: Does overdrive setting reduce input lag?
+        - generic [ref=e549]: ▼
+      - generic [ref=e550]:
+        - paragraph [ref=e551]:
+          - strong [ref=e552]: Overdrive primarily reduces pixel response time
+          - text: ", which indirectly affects perceived input lag by reducing ghosting and motion blur. However, extreme overdrive settings can sometimes add slight processing delay."
+        - paragraph [ref=e553]:
+          - strong [ref=e554]: "Overdrive works by:"
+          - text: Overshooting pixel transitions to speed up color changes. This reduces response time from 5ms to 1ms, making motion appear clearer and more responsive. Lower response time means less motion blur, making tracking targets feel more immediate.
+        - paragraph [ref=e555]:
+          - strong [ref=e556]: "Overdrive Settings:"
+        - list [ref=e557]:
+          - listitem [ref=e558]:
+            - strong [ref=e559]: "Off:"
+            - text: No overdrive, slower response, no artifacts, adds ~3ms response time penalty.
+          - listitem [ref=e560]:
+            - strong [ref=e561]: "Normal:"
+            - text: Balanced overdrive, good response time, minimal artifacts, recommended for most gaming.
+          - listitem [ref=e562]:
+            - strong [ref=e563]: "Extreme/Fast:"
+            - text: Maximum response speed, but can cause inverse ghosting (corona effects), may add 1ms processing overhead in some monitors.
+        - paragraph [ref=e564]: For competitive gaming, use Normal overdrive. Extreme overdrive reduces response time further but may introduce visual artifacts that distract from gameplay. The response time improvement from Normal to Extreme is often negligible compared to the risk of inverse ghosting.
+    - generic [ref=e565]:
+      - button "Does temperature affect monitor response time? ▼" [ref=e566] [cursor=pointer]:
+        - generic [ref=e567]: Does temperature affect monitor response time?
+        - generic [ref=e568]: ▼
+      - generic [ref=e569]:
+        - paragraph [ref=e570]:
+          - strong [ref=e571]: Yes! Temperature significantly affects monitor response times.
+          - text: Standard professional testing occurs at 20°C after 1+ hour warm-up period. Cold monitors can have dramatically slower response times, especially during the first 20-30 minutes of use.
+        - paragraph [ref=e572]:
+          - strong [ref=e573]: "LCD panels are temperature-sensitive:"
+          - text: VA panels especially show severe problems in dark tones when cold, with response times that can double or triple. IPS panels show the most consistent performance across temperatures, which is one reason they're popular for professional use.
+        - paragraph [ref=e574]:
+          - strong [ref=e575]: "Best Practice:"
+          - text: Let your monitor warm up for 20-30 minutes before critical gaming sessions or benchmarking. Cold panels can show significantly worse ghosting and slower transitions. If you're testing response times or comparing monitors, always allow adequate warm-up time and test at room temperature (20-25°C).
+        - paragraph [ref=e576]:
+          - strong [ref=e577]: "Temperature Impact:"
+          - text: VA panels at 10°C can have response times 2-3x slower than at 20°C. IPS panels are more stable, typically showing only 10-20% variation. TN panels fall somewhere in between. For competitive gaming, this is why it's important to allow warm-up time - cold panels can significantly impact performance.
+    - generic [ref=e578]:
+      - generic [ref=e579]: 💰
+      - heading "Buying Decisions Questions" [level=3] [ref=e580]
+    - generic [ref=e581]:
+      - button "What size monitor is best for gaming? ▼" [ref=e582] [cursor=pointer]:
+        - generic [ref=e583]: What size monitor is best for gaming?
+        - generic [ref=e584]: ▼
+      - generic [ref=e585]:
+        - paragraph [ref=e586]:
+          - strong [ref=e587]: "VIEWING DISTANCE MATTERS:"
+          - text: Professional players sit 18-24 inches from 24" monitors, keeping the entire screen in peripheral vision without head movement. This allows instant target acquisition in corners. With 27" monitors, sit 24-30 inches. With 32", you'll need 30-36 inches or accept head movement.
+          - strong [ref=e588]: Larger isn't always better
+          - text: "- if you can't see corners in peripheral vision, you'll be slower than smaller monitor users. This is why tournaments standardize on 24-25\" despite 27\" being 'better' for casual gaming."
+        - paragraph [ref=e589]:
+          - strong [ref=e590]: "For Competitive Gaming:"
+          - text: 24-25" is optimal. Most esports pros use 24-25" monitors because they can see the entire screen without head movement, enabling faster corner checking and target acquisition.
+        - paragraph [ref=e591]:
+          - strong [ref=e592]: "For Immersive Gaming:"
+          - text: 27-32" is great for single-player games, RPGs, and casual gaming where you're sitting back and enjoying the visuals.
+        - paragraph [ref=e593]:
+          - strong [ref=e594]: "For Ultrawide:"
+          - text: 34" ultrawide monitors offer incredible immersion but require more desk space and aren't suitable for competitive FPS gaming due to peripheral vision limitations.
+        - paragraph [ref=e595]:
+          - strong [ref=e596]: 24-27 inches is the sweet spot
+          - text: for most gaming. Competitive FPS players typically prefer 24-25 inches, while general gamers often choose 27 inches for better immersion without requiring excessive head movement.
+        - paragraph [ref=e597]:
+          - strong [ref=e598]: "24 inches:"
+          - text: Most popular for competitive gaming. Fits entire screen in peripheral vision, easy to track targets, standard tournament size, optimal for 1080p and 1440p.
+        - paragraph [ref=e599]:
+          - strong [ref=e600]: "27 inches:"
+          - text: Best balance for most gamers. More immersive, better for 1440p resolution, still manageable viewing distance, most popular size overall.
+        - paragraph [ref=e601]:
+          - strong [ref=e602]: "32 inches+:"
+          - text: Great for immersive single-player games, but too large for competitive FPS. Requires more head movement, harder to see entire screen at once, best for 1440p or 4K.
+        - paragraph [ref=e603]: For competitive gaming, stick with 24-25 inches. For varied gaming or content creation, 27 inches provides the best balance. Consider your desk space and viewing distance when choosing size.
+    - generic [ref=e604]:
+      - button "Should I get 1080p, 1440p, or 4K for gaming? ▼" [ref=e605] [cursor=pointer]:
+        - generic [ref=e606]: Should I get 1080p, 1440p, or 4K for gaming?
+        - generic [ref=e607]: ▼
+      - generic [ref=e608]:
+        - paragraph [ref=e609]:
+          - strong [ref=e610]: "1080p (Full HD):"
+          - text: Best for competitive gaming, highest frame rates, most affordable, easier to achieve high refresh rates (240Hz+), preferred by esports players. Limited to 24-27" sizes for pixel density.
+        - paragraph [ref=e611]:
+          - strong [ref=e612]: "1440p (2K/QHD):"
+          - text: Sweet spot for most gamers, significantly sharper than 1080p, good balance of clarity and performance, 144-240Hz available, best for 27" monitors, requires mid-to-high-end GPU.
+        - paragraph [ref=e613]:
+          - strong [ref=e614]: "4K (Ultra HD):"
+          - text: Maximum visual quality, stunning clarity, best for single-player games and media, requires powerful GPU (RTX 3080/4080+), limited high refresh rate options, expensive.
+        - paragraph [ref=e615]:
+          - strong [ref=e616]: "Recommendation:"
+          - text: For competitive gaming, choose 1080p 240Hz. For varied gaming, choose 1440p 144Hz. For visual-focused gaming with high-end hardware, 4K is stunning but compromises frame rates. Most gamers find 1440p provides the best balance of visual quality and performance.
+    - generic [ref=e617]:
+      - 'button "What''s more important: refresh rate or resolution? ▼" [ref=e618] [cursor=pointer]':
+        - generic [ref=e619]: "What's more important: refresh rate or resolution?"
+        - generic [ref=e620]: ▼
+      - generic [ref=e621]:
+        - paragraph [ref=e622]:
+          - strong [ref=e623]: "For competitive gaming: Refresh rate is more important."
+          - text: Higher refresh rates directly improve responsiveness and motion clarity, providing a tangible performance advantage. Competitive players prioritize 1080p 240Hz over 1440p 144Hz.
+        - paragraph [ref=e624]:
+          - strong [ref=e625]: "For immersive gaming: Resolution is more important."
+          - text: Higher resolution provides better image quality, sharper textures, and more immersive visuals. Single-player gamers often prefer 1440p 144Hz over 1080p 240Hz.
+        - paragraph [ref=e626]: The choice depends on your priorities. If you play competitive FPS games and want every advantage, prioritize refresh rate. If you play varied games and want better visuals, prioritize resolution. Most gamers find 1440p 144Hz offers the best compromise—high enough resolution for great visuals and high enough refresh rate for smooth gameplay.
+        - paragraph [ref=e627]: Your GPU must be able to drive your chosen resolution at your target refresh rate. A 4K monitor is wasted if you only get 60 FPS. Match your monitor choice to your GPU's capabilities.
+    - generic [ref=e628]:
+      - button "Do I need G-Sync or FreeSync? ▼" [ref=e629] [cursor=pointer]:
+        - generic [ref=e630]: Do I need G-Sync or FreeSync?
+        - generic [ref=e631]: ▼
+      - generic [ref=e632]:
+        - paragraph [ref=e633]:
+          - strong [ref=e634]: Yes, adaptive sync (G-Sync/FreeSync) is highly recommended
+          - text: for modern gaming. It eliminates screen tearing and stuttering without the input lag penalty of traditional V-Sync. Both technologies do the same thing—sync monitor refresh rate to GPU frame rate.
+        - paragraph [ref=e635]:
+          - strong [ref=e636]: "G-Sync:"
+          - text: NVIDIA's proprietary technology, requires compatible NVIDIA GPU and G-Sync monitor. More expensive but often higher quality implementations. G-Sync Ultimate offers HDR support.
+        - paragraph [ref=e637]:
+          - strong [ref=e638]: "FreeSync:"
+          - text: AMD's open standard, works with AMD and NVIDIA GPUs (NVIDIA calls it "G-Sync Compatible"), cheaper, widely available. FreeSync Premium adds low frame rate compensation.
+        - paragraph [ref=e639]:
+          - strong [ref=e640]: "Benefits:"
+          - text: Eliminates screen tearing, reduces stuttering when FPS drops, minimal input lag (1-3ms vs 20-50ms for V-Sync), smoother gameplay experience. If you have an NVIDIA GPU, look for "G-Sync Compatible" FreeSync monitors to save money while getting the same benefits.
+        - paragraph [ref=e641]: Unless you always maintain perfect frame rates matching your refresh rate, adaptive sync provides a noticeably smoother experience with virtually no downside.
+    - generic [ref=e642]:
+      - button "How much should I spend on a gaming monitor? ▼" [ref=e643] [cursor=pointer]:
+        - generic [ref=e644]: How much should I spend on a gaming monitor?
+        - generic [ref=e645]: ▼
+      - generic [ref=e646]:
+        - paragraph [ref=e647]:
+          - strong [ref=e648]: "Monitor budget depends on your priorities and GPU capability:"
+        - paragraph [ref=e649]:
+          - strong [ref=e650]: "$150-300:"
+          - text: Budget gaming monitors, 1080p 144Hz IPS, good for entry-level gaming, decent performance, some compromises in build quality or features.
+        - paragraph [ref=e651]:
+          - strong [ref=e652]: "$300-500:"
+          - text: Mid-range sweet spot, 1080p 240Hz or 1440p 144Hz, excellent value, Fast IPS panels, good for most gamers. This range offers the best performance per dollar.
+        - paragraph [ref=e653]:
+          - strong [ref=e654]: "$500-800:"
+          - text: High-end gaming, 1440p 240Hz or premium 1080p 360Hz, top-tier features, excellent build quality, premium panels, best for competitive players or enthusiasts.
+        - paragraph [ref=e655]:
+          - strong [ref=e656]: "$800+:"
+          - text: Premium/elite tier, 1440p 240Hz premium models, 4K 144Hz, OLED options, cutting-edge features, for enthusiasts with high-end GPUs.
+        - paragraph [ref=e657]:
+          - strong [ref=e658]: "Recommendation:"
+          - text: Spend $300-500 for the best value. This gets you a Fast IPS 1440p 144Hz or 1080p 240Hz monitor that covers most gaming needs. Only spend more if you need specific features or have a high-end GPU that can drive higher specs.
+    - generic [ref=e659]:
+      - generic [ref=e660]: 🔧
+      - heading "Technical Questions" [level=3] [ref=e661]
+    - generic [ref=e662]:
+      - button "What is screen tearing and how do I fix it? ▼" [ref=e663] [cursor=pointer]:
+        - generic [ref=e664]: What is screen tearing and how do I fix it?
+        - generic [ref=e665]: ▼
+      - generic [ref=e666]:
+        - paragraph [ref=e667]:
+          - strong [ref=e668]: Screen tearing
+          - text: occurs when your GPU sends frames faster than your monitor can display them, causing horizontal "tears" across the screen where two different frames are visible simultaneously. This happens when frame rate doesn't match refresh rate.
+        - paragraph [ref=e669]:
+          - strong [ref=e670]: "How to Fix Screen Tearing:"
+        - list [ref=e671]:
+          - listitem [ref=e672]:
+            - strong [ref=e673]: "G-Sync/FreeSync (Best):"
+            - text: Adaptive sync technology that eliminates tearing with minimal input lag. Enable in monitor settings and GPU control panel.
+          - listitem [ref=e674]:
+            - strong [ref=e675]: "V-Sync:"
+            - text: Caps frame rate to refresh rate, eliminates tearing but adds significant input lag (20-50ms). Not recommended for competitive gaming.
+          - listitem [ref=e676]:
+            - strong [ref=e677]: "Frame Rate Capping:"
+            - text: Cap FPS to your refresh rate using in-game or driver settings. Reduces tearing but can cause stuttering if FPS dips.
+          - listitem [ref=e678]:
+            - strong [ref=e679]: "Increase Refresh Rate:"
+            - text: Higher refresh rate monitors show frames faster, reducing perceived tearing even without sync.
+        - paragraph [ref=e680]: G-Sync or FreeSync is the modern solution—it eliminates tearing without the input lag penalty of V-Sync. Most modern gaming monitors support FreeSync (G-Sync Compatible on NVIDIA GPUs), so enable it in your GPU settings.
+    - generic [ref=e681]:
+      - button "What does \"adaptive sync\" mean? ▼" [ref=e682] [cursor=pointer]:
+        - generic [ref=e683]: What does "adaptive sync" mean?
+        - generic [ref=e684]: ▼
+      - generic [ref=e685]:
+        - paragraph [ref=e686]:
+          - strong [ref=e687]: Adaptive sync
+          - text: (G-Sync, FreeSync, VRR) is technology that dynamically adjusts your monitor's refresh rate to match your GPU's frame rate in real-time. This eliminates screen tearing and stuttering without adding significant input lag.
+        - paragraph [ref=e688]: Traditional monitors have a fixed refresh rate (e.g., 144Hz). If your GPU outputs 90 FPS, the monitor still refreshes at 144Hz, showing some frames twice and creating stutter. With adaptive sync, the monitor automatically adjusts to 90Hz, displaying each frame exactly once for smooth motion.
+        - paragraph [ref=e689]:
+          - strong [ref=e690]: "Benefits:"
+          - text: Eliminates screen tearing, reduces stuttering when FPS fluctuates, minimal input lag (1-3ms vs 20-50ms for V-Sync), works across a range of frame rates (typically 48-144Hz or higher).
+        - paragraph [ref=e691]: Both G-Sync and FreeSync use the same underlying VESA Adaptive Sync standard. NVIDIA GPUs can use FreeSync monitors (labeled "G-Sync Compatible"), making adaptive sync widely accessible. Enable it in your GPU control panel for the smoothest gaming experience.
+    - generic [ref=e692]:
+      - button "What is VRR (Variable Refresh Rate)? ▼" [ref=e693] [cursor=pointer]:
+        - generic [ref=e694]: What is VRR (Variable Refresh Rate)?
+        - generic [ref=e695]: ▼
+      - generic [ref=e696]:
+        - paragraph [ref=e697]:
+          - strong [ref=e698]: VRR (Variable Refresh Rate)
+          - text: is the technical term for adaptive sync technology that allows monitors to change their refresh rate dynamically to match the GPU's frame rate. G-Sync and FreeSync are both implementations of VRR.
+        - paragraph [ref=e699]: VRR solves the fundamental problem of mismatched frame rates and refresh rates. Instead of the monitor running at a fixed rate and causing tearing or stuttering, VRR lets the monitor adapt to whatever frame rate the GPU produces, within a supported range (e.g., 48-144Hz).
+        - paragraph [ref=e700]:
+          - strong [ref=e701]: "VRR Benefits:"
+          - text: Smoother gameplay when FPS fluctuates, no screen tearing, reduced input lag compared to V-Sync, works automatically once enabled, supported on consoles (PS5, Xbox Series X) and PCs.
+        - paragraph [ref=e702]: Modern gaming monitors and GPUs all support VRR through G-Sync or FreeSync. It's become a standard feature, and you should enable it for the best gaming experience. Look for "G-Sync Compatible" or "FreeSync" labels when shopping for monitors.
+    - generic [ref=e703]:
+      - button "What are gamma-corrected response time measurements? ▼" [ref=e704] [cursor=pointer]:
+        - generic [ref=e705]: What are gamma-corrected response time measurements?
+        - generic [ref=e706]: ▼
+      - generic [ref=e707]:
+        - paragraph [ref=e708]:
+          - strong [ref=e709]: Professional reviewers adopted gamma-corrected measurements in 2020-2021
+          - text: because traditional 10-90% voltage threshold measurements failed to account for display gamma curves, creating systematic errors especially in dark tones.
+        - paragraph [ref=e710]:
+          - strong [ref=e711]: Old methods
+          - text: measured to RGB 80 (mid-dark grey), but
+          - strong [ref=e712]: accurate gamma-corrected methods
+          - text: measure to RGB 25 (true 10% brightness). TFTCentral and Hardware Unboxed now use gamma correction. Hardware Unboxed's extremely stringent 3-97% threshold produces results 30-100% slower than traditional methods.
+        - paragraph [ref=e713]: This explains why modern professional testing shows 'slower' response times than manufacturer specs - they're measuring more accurately, not worse performance. When comparing monitors, ensure the testing methodology is consistent.
+        - paragraph [ref=e714]:
+          - strong [ref=e715]: "Why This Matters:"
+          - text: Manufacturer specs use older methods that appear 2-3x faster than real-world performance. Professional gamma-corrected testing reveals the true response times you'll experience during actual gaming.
+    - generic [ref=e716]:
+      - button "How do professionals test monitor response time? ▼" [ref=e717] [cursor=pointer]:
+        - generic [ref=e718]: How do professionals test monitor response time?
+        - generic [ref=e719]: ▼
+      - generic [ref=e720]:
+        - paragraph [ref=e721]:
+          - strong [ref=e722]: "Professional reviewers use three types of equipment:"
+        - list [ref=e723]:
+          - listitem [ref=e724]:
+            - strong [ref=e725]: Leo Bodnar lag testers
+            - text: "(RTings, DisplayLag): Output test signals and measure time to photon change, providing combined input lag and response time"
+          - listitem [ref=e726]:
+            - strong [ref=e727]: Oscilloscopes with photosensors
+            - text: "(TFTCentral, Hardware Unboxed): Capture actual pixel transition curves for precise GtG measurements"
+          - listitem [ref=e728]:
+            - strong [ref=e729]: Pursuit cameras
+            - text: "(Blur Busters): Move at the same speed as on-screen motion, photographing real-world perceived motion clarity. This methodology is validated by peer-reviewed research and shows what your eyes actually see during gaming."
+        - paragraph [ref=e730]: Manufacturer specs rarely use these methods, which is why independent testing often shows 2-3x slower real-world performance. For accurate measurements, always rely on professional reviews from RTings, TFTCentral, Hardware Unboxed, or DisplayLag.
+    - generic [ref=e731]:
+      - button "Why don't manufacturers publish input lag specifications? ▼" [ref=e732] [cursor=pointer]:
+        - generic [ref=e733]: Why don't manufacturers publish input lag specifications?
+        - generic [ref=e734]: ▼
+      - generic [ref=e735]:
+        - paragraph [ref=e736]:
+          - strong [ref=e737]: Manufacturers have no incentive to disclose input lag
+          - text: because it would reveal competitive disadvantages. The trend toward increased image processing (sharpening, dynamic contrast, local dimming algorithms) increases input lag, making disclosure competitively harmful.
+        - paragraph [ref=e738]: Manufacturers only advertise response time (GtG) because they can cherry-pick the fastest transitions and use favorable testing methods. Input lag requires expensive professional testing equipment and reveals the complete picture including processing delays.
+        - paragraph [ref=e739]:
+          - text: This is why you must rely on independent reviewers like RTings, TFTCentral, Hardware Unboxed, and DisplayLag who test with Leo Bodnar lag testers and oscilloscopes.
+          - strong [ref=e740]: If a monitor has no professional reviews, there's NO WAY to know its real input lag
+          - text: "- manufacturer response time specs tell you almost nothing about actual gaming performance."
+        - paragraph [ref=e741]:
+          - strong [ref=e742]: This is why our calculator and professional reviews matter
+          - text: "- they provide the transparency manufacturers won't give you."
+    - generic [ref=e743]:
+      - button "What does \"1ms GtG\" actually mean? ▼" [ref=e744] [cursor=pointer]:
+        - generic [ref=e745]: What does "1ms GtG" actually mean?
+        - generic [ref=e746]: ▼
+      - generic [ref=e747]:
+        - paragraph [ref=e748]:
+          - strong [ref=e749]: "Technical detail:"
+          - text: An 8-bit display has 256 grey levels per channel, creating 65,536 possible grey-to-grey transitions. Manufacturers test only a small subset (typically 10-20 transitions) and report the single fastest result.
+        - paragraph [ref=e750]:
+          - text: The 1ms specification might represent just the 150→200 grey transition, while 255→0 (black to white) takes 8ms+, and 0→255 takes 10ms+.
+          - strong [ref=e751]: Most of your actual gaming content uses the SLOWER transitions, not the cherry-picked fast one.
+        - paragraph [ref=e752]: This is why professional reviewers test hundreds of transitions and report average response time, not best-case. The "1ms" you see advertised is the absolute best-case scenario, not representative of real-world performance.
+    - generic [ref=e753]:
+      - button "How do I compare monitor specs from different sources? ▼" [ref=e754] [cursor=pointer]:
+        - generic [ref=e755]: How do I compare monitor specs from different sources?
+        - generic [ref=e756]: ▼
+      - generic [ref=e757]:
+        - paragraph [ref=e758]:
+          - strong [ref=e759]: "⚠️ METHODOLOGY MATTERS:"
+          - text: Hardware Unboxed uses an extremely stringent 3-97% brightness threshold that produces response times 30-100% SLOWER than TFTCentral's 10-90% gamma-corrected measurements. Both are accurate, but they're measuring different things.
+        - paragraph [ref=e760]:
+          - text: A monitor measuring 5ms on Hardware Unboxed might measure 3ms on TFTCentral - both correct! This is arguably too strict for practical gaming relevance, but shows worst-case performance.
+          - strong [ref=e761]: When comparing monitors, always compare reviews from the SAME testing source
+          - text: ", or understand the methodology differences."
+        - paragraph [ref=e762]: "Professional testing sources and their methods:"
+        - list [ref=e763]:
+          - listitem [ref=e764]:
+            - strong [ref=e765]: "RTings:"
+            - text: Leo Bodnar tester, oscilloscope measurements, standardized methodology
+          - listitem [ref=e766]:
+            - strong [ref=e767]: "TFTCentral:"
+            - text: 10-90% gamma-corrected, oscilloscope-based, comprehensive transition testing
+          - listitem [ref=e768]:
+            - strong [ref=e769]: "Hardware Unboxed:"
+            - text: 3-97% threshold (most stringent), gamma-corrected, worst-case emphasis
+          - listitem [ref=e770]:
+            - strong [ref=e771]: "DisplayLag:"
+            - text: Leo Bodnar testing, input lag focus
+    - generic [ref=e772]:
+      - button "Monitor Recommendations for Console Gaming (PS5/Xbox Series X) ▼" [ref=e773] [cursor=pointer]:
+        - generic [ref=e774]: Monitor Recommendations for Console Gaming (PS5/Xbox Series X)
+        - generic [ref=e775]: ▼
+      - generic [ref=e776]:
+        - paragraph [ref=e777]:
+          - strong [ref=e778]: "Console Gaming Monitor Requirements:"
+        - list [ref=e779]:
+          - listitem [ref=e780]:
+            - strong [ref=e781]: Maximum 120Hz
+            - text: (consoles cap at 120fps) - don't waste money on 240Hz+ monitors
+          - listitem [ref=e782]:
+            - strong [ref=e783]: VRR support essential
+            - text: (both consoles support FreeSync/HDMI VRR)
+          - listitem [ref=e784]:
+            - strong [ref=e785]: HDMI 2.1 required
+            - text: for 4K 120Hz
+          - listitem [ref=e786]:
+            - strong [ref=e787]: Response time less critical
+            - text: than PC (60-120fps max)
+          - listitem [ref=e788]:
+            - strong [ref=e789]: Consider 27-32"
+            - text: for couch gaming distance
+          - listitem [ref=e790]:
+            - strong [ref=e791]: 4K matters more
+            - text: on console than PC (living room viewing distance)
+        - paragraph [ref=e792]:
+          - strong [ref=e793]: "Popular Console Picks:"
+          - text: LG C3 OLED (48"), Samsung Odyssey Neo G7, ASUS TUF Gaming VG28UQL1A, LG 27GP950-B, Samsung Odyssey G7.
+        - paragraph [ref=e794]:
+          - strong [ref=e795]: "Why 120Hz Max:"
+          - text: PS5 and Xbox Series X are capped at 120fps, so a 240Hz monitor provides no benefit. Focus on 4K 120Hz or 1440p 120Hz with excellent VRR support instead.
+    - generic [ref=e796]:
+      - button "Does response time affect FPS? ▼" [ref=e797] [cursor=pointer]:
+        - generic [ref=e798]: Does response time affect FPS?
+        - generic [ref=e799]: ▼
+      - generic [ref=e800]:
+        - paragraph [ref=e801]:
+          - strong [ref=e802]: No, response time does not affect FPS (frames per second).
+          - text: Response time and FPS are completely independent. Your GPU determines FPS, while response time is a monitor panel characteristic.
+        - paragraph [ref=e803]:
+          - strong [ref=e804]: "What Response Time Does Affect:"
+          - text: Motion clarity, ghosting/blur trails, how crisp moving objects appear, perceived smoothness of motion (not frame rate itself).
+        - paragraph [ref=e805]:
+          - strong [ref=e806]: "What FPS Does Affect:"
+          - text: How many frames your GPU renders per second, smoothness of gameplay, responsiveness, how well your monitor refresh rate is utilized.
+        - paragraph [ref=e807]: A monitor with 1ms response time and a monitor with 5ms response time will both display the same FPS from your GPU. However, the 1ms monitor will show clearer motion with less ghosting. Faster response time makes each frame appear crisper, but it doesn't change how many frames per second your GPU produces.
+        - paragraph [ref=e808]: For optimal gaming, you want both high FPS (from powerful GPU) and low response time (from quality monitor panel). They work together but don't directly affect each other.
+    - generic [ref=e809]:
+      - button "What is ghosting and how do I reduce it? ▼" [ref=e810] [cursor=pointer]:
+        - generic [ref=e811]: What is ghosting and how do I reduce it?
+        - generic [ref=e812]: ▼
+      - generic [ref=e813]:
+        - paragraph [ref=e814]:
+          - strong [ref=e815]: Ghosting
+          - text: appears as faint trails or "ghosts" behind moving objects, caused by pixels transitioning too slowly. When a pixel can't change colors fast enough, previous frames leave visible artifacts, creating blur trails that make motion appear smeared.
+        - paragraph [ref=e816]:
+          - strong [ref=e817]: "How to Reduce Ghosting:"
+        - list [ref=e818]:
+          - listitem [ref=e819]:
+            - strong [ref=e820]: "Lower Response Time:"
+            - text: Monitors with faster response times (1ms vs 5ms) produce less ghosting. Choose Fast IPS or TN panels for competitive gaming.
+          - listitem [ref=e821]:
+            - strong [ref=e822]: "Enable Overdrive:"
+            - text: Normal overdrive setting speeds up pixel transitions, reducing ghosting. Avoid Extreme overdrive which can cause inverse ghosting (corona effects).
+          - listitem [ref=e823]:
+            - strong [ref=e824]: "Avoid VA Panels:"
+            - text: VA panels have slower response times (3-5ms) and are more prone to ghosting, especially in dark scenes. IPS or TN panels have less ghosting.
+          - listitem [ref=e825]:
+            - strong [ref=e826]: "Higher Refresh Rate:"
+            - text: More frequent refreshes reduce perceived ghosting even with slower response times. 240Hz shows less ghosting than 144Hz.
+        - paragraph [ref=e827]: Ghosting is most noticeable in fast-paced competitive games during rapid movements. For competitive gaming, prioritize monitors with 1ms response times and avoid VA panels. Ghosting is less noticeable in slower-paced games or single-player experiences.
+    - generic [ref=e828]:
+      - generic [ref=e829]: 🔧
+      - heading "Technical Questions" [level=3] [ref=e830]
+    - generic [ref=e831]:
+      - button "Can I overclock my 144Hz monitor to 240Hz? ▼" [ref=e832] [cursor=pointer]:
+        - generic [ref=e833]: Can I overclock my 144Hz monitor to 240Hz?
+        - generic [ref=e834]: ▼
+      - generic [ref=e835]:
+        - paragraph [ref=e836]:
+          - strong [ref=e837]: No, and attempting this can damage your monitor.
+          - text: "Refresh rate is a physical hardware limitation, not a software setting. Here's why:"
+        - paragraph [ref=e838]:
+          - strong [ref=e839]: "How Monitors Work:"
+          - text: Each pixel must physically transition between colors. The panel's liquid crystals, backlight strobing, and internal electronics are designed and validated for a specific maximum refresh rate. The timing controller (TCON) chip coordinates millions of pixel transitions per second at precise intervals.
+        - paragraph [ref=e840]:
+          - strong [ref=e841]: "Why Overclocking Fails:"
+        - list [ref=e842]:
+          - listitem [ref=e843]: Liquid crystals can't physically transition faster than their design allows
+          - listitem [ref=e844]: Panel voltage controllers aren't rated for higher frequencies
+          - listitem [ref=e845]: Signal integrity degrades above spec (you'll see artifacts, corruption, or blank screens)
+          - listitem [ref=e846]: Backlight strobing timing becomes misaligned
+          - listitem [ref=e847]: Heat dissipation isn't designed for higher frequencies
+        - paragraph [ref=e848]:
+          - strong [ref=e849]: "What Actually Happens:"
+          - text: "Most monitors reject overclocking attempts outright. Some may appear to accept 165Hz or 175Hz on a 144Hz panel, but they're either:"
+        - list [ref=e850]:
+          - listitem [ref=e851]: Frame-skipping (dropping every 5th frame, so you're still seeing 144Hz effective)
+          - listitem [ref=e852]: Running outside validated specs, reducing lifespan and causing instability
+        - paragraph [ref=e853]:
+          - strong [ref=e854]: "Validated Overclocks:"
+          - text: Some monitors (very few) officially support mild overclocking with manufacturer validation. For example, 144Hz → 165Hz on specific models with factory testing. Check professional reviews - if it's not documented as working, don't try it.
+        - paragraph [ref=e855]:
+          - strong [ref=e856]: "Reality:"
+          - text: If you want 240Hz, buy a 240Hz monitor. The panel, TCON, and electronics are fundamentally different hardware. You can't software-upgrade physical limitations any more than you can overclock a 1080p panel to 4K.
+    - generic [ref=e857]:
+      - button "Do expensive DisplayPort/HDMI cables actually matter for gaming? ▼" [ref=e858] [cursor=pointer]:
+        - generic [ref=e859]: Do expensive DisplayPort/HDMI cables actually matter for gaming?
+        - generic [ref=e860]: ▼
+      - generic [ref=e861]:
+        - paragraph [ref=e862]:
+          - strong [ref=e863]: Yes, but only for high refresh rate gaming.
+          - text: "Here's what actually matters:"
+        - paragraph [ref=e864]:
+          - strong [ref=e865]: "DisplayPort Cable Quality (Critical for 144Hz+):"
+        - list [ref=e866]:
+          - listitem [ref=e867]: "Cheap/long cables can cause: flickering, black screens, refresh rate drops, signal degradation"
+          - listitem [ref=e868]: "VESA certified DP 1.4 cables: Required for stable 1080p 360Hz, 1440p 240Hz, 4K 144Hz"
+          - listitem [ref=e869]: "Cable length matters: Over 6 feet (2m) increases signal loss risk. Use 3-6 foot cables when possible."
+          - listitem [ref=e870]:
+            - strong [ref=e871]: Bad cables feel like high input lag
+            - text: because frames are dropped/delayed during signal transmission
+        - paragraph [ref=e872]:
+          - strong [ref=e873]: "What to Buy:"
+        - list [ref=e874]:
+          - listitem [ref=e875]: ✅ VESA Certified DisplayPort 1.4 cables (look for certification logo)
+          - listitem [ref=e876]: ✅ Club3D, CableMatters, StarTech (reputable brands)
+          - listitem [ref=e877]: ❌ Generic Amazon Basics for high refresh (fine for 60Hz, fails at 240Hz+)
+          - listitem [ref=e878]: ❌ Cables over 10 feet without active signal boosting
+        - paragraph [ref=e879]:
+          - strong [ref=e880]: "HDMI Cables:"
+        - list [ref=e881]:
+          - listitem [ref=e882]: HDMI 2.1 required for 4K 120Hz (consoles)
+          - listitem [ref=e883]: Ultra High Speed HDMI certification required (not just '2.1 compatible')
+          - listitem [ref=e884]: Many 'HDMI 2.1' cables are fraudulent - buy certified only
+        - paragraph [ref=e885]:
+          - strong [ref=e886]: "Real Example:"
+          - text: Users report their 240Hz monitors 'feeling laggy' at high refresh rates. Swapping to certified DP 1.4 cable fixes it. The cheap cable was frame-skipping every 3-5 frames due to signal errors, creating perceived 'input lag' that wasn't the monitor's fault.
+        - paragraph [ref=e887]:
+          - strong [ref=e888]: "Bottom Line:"
+          - text: Spend $15-25 on a proper certified cable. Don't waste $500 on a 240Hz monitor then use a $5 cable that can't handle the bandwidth.
+    - generic [ref=e889]:
+      - button "Should I get a flat or curved gaming monitor? ▼" [ref=e890] [cursor=pointer]:
+        - generic [ref=e891]: Should I get a flat or curved gaming monitor?
+        - generic [ref=e892]: ▼
+      - generic [ref=e893]:
+        - paragraph [ref=e894]: "Curvature is purely preference for most gaming, but there are specific considerations:"
+        - paragraph [ref=e895]:
+          - strong [ref=e896]: "When Curved Makes Sense:"
+        - list [ref=e897]:
+          - listitem [ref=e898]:
+            - strong [ref=e899]: "Ultrawide monitors (34\"+):"
+            - text: 1800R or 1000R curvature prevents edge distortion, maintains equal viewing distance to all screen areas
+          - listitem [ref=e900]:
+            - strong [ref=e901]: "Immersive single-player games:"
+            - text: Racing sims, flight sims, RPGs benefit from wraparound effect
+          - listitem [ref=e902]:
+            - strong [ref=e903]: "Desk depth allows it:"
+            - text: You need to sit close enough (50-80cm) to benefit from curve
+        - paragraph [ref=e904]:
+          - strong [ref=e905]: "When Flat Is Better:"
+        - list [ref=e906]:
+          - listitem [ref=e907]:
+            - strong [ref=e908]: "Competitive FPS (24-27\"):"
+            - text: Curved panels can warp straight edges (walls, angles), affecting aim perception. Most esports tournaments use flat panels.
+          - listitem [ref=e909]:
+            - strong [ref=e910]: "Multi-monitor setups:"
+            - text: Curved monitors don't align cleanly side-by-side
+          - listitem [ref=e911]:
+            - strong [ref=e912]: "Content creation:"
+            - text: Photo/video editing requires accurate straight lines
+          - listitem [ref=e913]:
+            - strong [ref=e914]: "Viewing angles:"
+            - text: Curved monitors must be centered - worse for group viewing
+        - paragraph [ref=e915]:
+          - strong [ref=e916]: "Curvature Numbers Explained:"
+        - list [ref=e917]:
+          - listitem [ref=e918]:
+            - strong [ref=e919]: "1000R (aggressive curve):"
+            - text: 1-meter radius - very immersive, requires close sitting, most curved
+          - listitem [ref=e920]:
+            - strong [ref=e921]: "1500R (moderate curve):"
+            - text: 1.5-meter radius - balanced, common for gaming
+          - listitem [ref=e922]:
+            - strong [ref=e923]: "1800R (subtle curve):"
+            - text: 1.8-meter radius - gentle, suits most users
+          - listitem [ref=e924]:
+            - strong [ref=e925]: "Flat (∞R):"
+            - text: No curve, universally compatible
+        - paragraph [ref=e926]:
+          - strong [ref=e927]: "Performance Impact:"
+          - text: Curvature does NOT affect response time or input lag. Samsung's Odyssey G7 (1000R VA panel) has same performance regardless of curve. Some users report curved VA panels have more uniform response times across the screen.
+        - paragraph [ref=e928]:
+          - strong [ref=e929]: "Bottom Line:"
+          - text: For 24-27" competitive gaming → Flat. For 32-34" ultrawide immersion → Curved (1500R-1800R). For 49" super ultrawide → Curved (1000R) mandatory. The 'curve' debate is 90% preference, 10% use-case optimization.
+    - generic [ref=e930]:
+      - button "Can firmware updates change my monitor's response time or input lag? ▼" [ref=e931] [cursor=pointer]:
+        - generic [ref=e932]: Can firmware updates change my monitor's response time or input lag?
+        - generic [ref=e933]: ▼
+      - generic [ref=e934]:
+        - paragraph [ref=e935]:
+          - strong [ref=e936]: Yes, significantly!
+          - text: "Manufacturers release firmware updates that can improve OR worsen performance:"
+        - paragraph [ref=e937]:
+          - strong [ref=e938]: "Documented Examples:"
+        - list [ref=e939]:
+          - listitem [ref=e940]:
+            - strong [ref=e941]: "Samsung Odyssey G9:"
+            - text: Firmware update reduced input lag by 5ms and fixed VRR flickering
+          - listitem [ref=e942]:
+            - strong [ref=e943]: "ASUS ROG monitors:"
+            - text: Updates added new overdrive settings, changing response time profiles
+          - listitem [ref=e944]:
+            - strong [ref=e945]: "LG UltraGear series:"
+            - text: Firmware improved VRR range and reduced overshoot on 'Fast' mode
+        - paragraph [ref=e946]:
+          - strong [ref=e947]: "What Can Change:"
+        - list [ref=e948]:
+          - listitem [ref=e949]: Overdrive voltage curves (affecting response time and overshoot)
+          - listitem [ref=e950]: VRR range and behavior
+          - listitem [ref=e951]: Processing delays (Game Mode optimizations)
+          - listitem [ref=e952]: Color accuracy and gamma curves
+          - listitem [ref=e953]: Backlight strobing implementations
+        - paragraph [ref=e954]:
+          - strong [ref=e955]: "How to Update Monitor Firmware:"
+          - text: "Most users never do this! Check manufacturer website for: 1) Download monitor firmware utility (Windows/Mac app), 2) Connect via USB-B cable (not just DisplayPort), 3) Run update tool - NEVER interrupt during update, 4) Power cycle monitor after update."
+        - paragraph [ref=e956]:
+          - strong [ref=e957]: "Check for Updates When:"
+          - text: You experience VRR flickering or stuttering, black screen issues at high refresh rates, excessive ghosting/overshoot, or after seeing professional reviewer mention 'firmware improved performance'.
+        - paragraph [ref=e958]:
+          - strong [ref=e959]: "Warning:"
+          - text: Some firmware updates are irreversible. Check reviews/forums before updating to ensure it's stable. The ASUS VG27AQ had a firmware update that INCREASED input lag - users couldn't downgrade.
+        - paragraph [ref=e960]:
+          - strong [ref=e961]: "Where to Find Info:"
+          - text: Monitor manufacturer support page (search '[model] firmware'), r/Monitors subreddit for user experiences, TFTCentral/RTings sometimes note 'tested with firmware X.XX'.
+        - paragraph [ref=e962]:
+          - strong [ref=e963]: "Bottom Line:"
+          - text: If professional reviews are 6+ months old, check if newer firmware exists. Your monitor may perform differently than tested. This is why real-world user reports matter alongside professional testing.
+    - generic [ref=e964]:
+      - button "Is it safe to buy a used gaming monitor? ▼" [ref=e965] [cursor=pointer]:
+        - generic [ref=e966]: Is it safe to buy a used gaming monitor?
+        - generic [ref=e967]: ▼
+      - generic [ref=e968]:
+        - paragraph [ref=e969]:
+          - strong [ref=e970]: Risky, especially for high-refresh competitive monitors.
+          - text: "Here's what degrades over time:"
+        - paragraph [ref=e971]:
+          - strong [ref=e972]: "What Worsens with Age:"
+        - list [ref=e973]:
+          - listitem [ref=e974]:
+            - strong [ref=e975]: "Backlight brightness:"
+            - text: Degrades 10-30% over 20,000-30,000 hours (3-5 years heavy use)
+          - listitem [ref=e976]:
+            - strong [ref=e977]: "Response times:"
+            - text: Can increase 20-50% as liquid crystals age and overdrive voltage degrades
+          - listitem [ref=e978]:
+            - strong [ref=e979]: "Backlight uniformity:"
+            - text: Yellow tinting, edge glow worsening
+          - listitem [ref=e980]:
+            - strong [ref=e981]: "Burn-in risk (OLED):"
+            - text: Used OLEDs may already have permanent image retention
+          - listitem [ref=e982]:
+            - strong [ref=e983]: "G-Sync/FreeSync modules:"
+            - text: Can develop flickering or VRR range degradation
+          - listitem [ref=e984]:
+            - strong [ref=e985]: "Firmware version:"
+            - text: May be outdated, no way to verify update history
+        - paragraph [ref=e986]:
+          - strong [ref=e987]: "High-Risk Used Purchases:"
+          - text: ❌ OLED monitors (burn-in risk, no warranty transfer usually), ❌ Competitive esports monitors (likely abused with heavy daily use), ❌ Monitors over 3 years old (backlight/response time degradation), ❌ Any monitor without returns/warranty
+        - paragraph [ref=e988]:
+          - strong [ref=e989]: "Lower-Risk Used Purchases:"
+          - text: ✅ Office monitors under 2 years old (light use), ✅ From reputable sellers with return policy (eBay, Amazon Renewed), ✅ Models with transferable manufacturer warranty, ✅ Budget 60-75Hz monitors (less stressed, cheaper to replace if fails)
+        - paragraph [ref=e990]:
+          - strong [ref=e991]: "How to Test Used Monitors:"
+          - text: TestUFO motion test, dead pixel check, backlight bleed test, VRR flickering test, verify stated refresh rate actually works without artifacts.
+        - paragraph [ref=e992]:
+          - strong [ref=e993]: "Price Guidance:"
+          - text: Used gaming monitors should be 40-60% of new retail price to account for degradation risk and lack of warranty. If a used 240Hz monitor is only $50 cheaper than new → buy new.
+        - paragraph [ref=e994]:
+          - strong [ref=e995]: "Bottom Line:"
+          - text: For competitive gaming where every millisecond matters, buy new with warranty. Response times and input lag may have degraded on used units. For casual gaming, used monitors under 2 years old from reputable sellers can be okay if significantly cheaper and returnable.
+    - generic [ref=e996]:
+      - button "Is HDR worth it for gaming monitors? ▼" [ref=e997] [cursor=pointer]:
+        - generic [ref=e998]: Is HDR worth it for gaming monitors?
+        - generic [ref=e999]: ▼
+      - generic [ref=e1000]:
+        - paragraph [ref=e1001]:
+          - strong [ref=e1002]: Only if you buy HDR600 or better - HDR400 is marketing theater.
+        - paragraph [ref=e1003]:
+          - strong [ref=e1004]: "HDR Tiers Explained:"
+        - list [ref=e1005]:
+          - listitem [ref=e1006]:
+            - strong [ref=e1007]: "HDR400:"
+            - text: Minimum 400 nits peak brightness, basic 8-bit panel.
+            - strong [ref=e1008]: This is fake HDR
+            - text: "- barely brighter than SDR, no local dimming, looks identical to SDR in practice. Marketing checkbox only."
+          - listitem [ref=e1009]:
+            - strong [ref=e1010]: "HDR600:"
+            - text: 600 nits peak, 10-bit color, usually has local dimming.
+            - strong [ref=e1011]: Minimum viable HDR
+            - text: "- noticeable improvement in bright scenes, still disappointing in dark scenes without FALD."
+          - listitem [ref=e1012]:
+            - strong [ref=e1013]: "HDR1000:"
+            - text: 1000 nits peak, proper FALD or Mini-LED.
+            - strong [ref=e1014]: Actually good HDR
+            - text: "- dramatic difference from SDR, worth paying for."
+          - listitem [ref=e1015]:
+            - strong [ref=e1016]: "HDR1400/True Black 400 (OLED):"
+            - text: Infinite contrast, perfect blacks.
+            - strong [ref=e1017]: Best HDR available
+            - text: "- OLED can hit different tier with lower brightness due to perfect blacks."
+        - paragraph [ref=e1018]:
+          - strong [ref=e1019]: "The Problem with Gaming Monitor HDR:"
+          - text: "Most gaming monitors advertise 'HDR' but only have HDR400 certification: No local dimming zones (or only edge-lit, 8-16 zones), can't actually display bright highlights AND dark shadows simultaneously, peak brightness of 400 nits is barely brighter than SDR's 300 nits, Windows HDR implementation is still buggy (washes out desktop)."
+        - paragraph [ref=e1020]:
+          - strong [ref=e1021]: "What Games Actually Need HDR:"
+          - text: "Racing games: Bright sun glare, dark tunnels (benefits from HDR1000+). Open-world exploration: Sky/water highlights (benefits from HDR600+). Horror games: Dark shadows with bright flashlight (needs OLED or Mini-LED). Competitive FPS: HDR is DISABLED - brightness variation is competitive disadvantage."
+        - paragraph [ref=e1022]:
+          - strong [ref=e1023]: "Real Talk:"
+          - text: HDR400 = waste of money (adds $50-100 to price for imperceptible difference). HDR600 = marginal (noticeable in some games, not worth $200 premium). HDR1000+ or OLED = transformative (actually worth paying for if budget allows).
+        - paragraph [ref=e1024]:
+          - strong [ref=e1025]: "Windows HDR Problems:"
+          - text: "Even with good HDR monitor, Windows desktop HDR is broken: Makes SDR content look washed out, requires manual toggle on/off for gaming, color accuracy issues in creative apps, most users just leave HDR off even on HDR monitors."
+        - paragraph [ref=e1026]:
+          - strong [ref=e1027]: "Buying Recommendation:"
+          - text: 1) If budget under $500 → ignore HDR entirely, focus on response time/refresh rate. 2) If budget $500-800 → HDR600 okay if you play cinematic games, skip for competitive. 3) If budget $1000+ → consider OLED (perfect HDR) or Mini-LED (HDR1000+). 4) For competitive gaming only → actively AVOID HDR (variable brightness is bad).
+        - paragraph [ref=e1028]:
+          - strong [ref=e1029]: "How to Check Real HDR Quality:"
+          - text: "Search '[monitor model] HDR review RTings' - they test peak brightness and local dimming. Look for 'full array local dimming' (FALD) zone count: <100 zones = not enough. OLED bypass all this - infinite zones due to per-pixel control."
+    - generic [ref=e1030]:
+      - button "What monitor features reduce eye strain for long gaming sessions? ▼" [ref=e1031] [cursor=pointer]:
+        - generic [ref=e1032]: What monitor features reduce eye strain for long gaming sessions?
+        - generic [ref=e1033]: ▼
+      - generic [ref=e1034]:
+        - paragraph [ref=e1035]:
+          - strong [ref=e1036]: "Flicker-free backlight and Low Blue Light matter more than most realize:"
+        - paragraph [ref=e1037]:
+          - strong [ref=e1038]: "Flicker-Free Backlight (Critical):"
+          - text: "Most monitors use PWM (Pulse Width Modulation) to control brightness. PWM flickers backlight 200-1000+ times per second (invisible but causes fatigue). Symptoms: Eye strain, headaches, fatigue after 4-6 hours. Solution: Look for 'Flicker-Free' or 'DC Dimming' certification."
+          - strong [ref=e1039]: All modern gaming monitors are flicker-free above 90% brightness
+          - text: . Problem occurs at 30-70% brightness where PWM kicks in.
+        - paragraph [ref=e1040]:
+          - strong [ref=e1041]: "How to Verify Your Monitor is Flicker-Free:"
+          - text: 1) Point phone camera at screen. 2) Lower brightness to 50%. 3) If you see horizontal bars/lines in camera = PWM flicker detected. 4) No bars = flicker-free.
+        - paragraph [ref=e1042]:
+          - strong [ref=e1043]: "Low Blue Light / Blue Light Filter:"
+          - text: Short wavelength blue light suppresses melatonin, disrupts sleep. Gaming late night with blue light = sleeping at 4am even if you stop at midnight. Most monitors have 'Eye Care' or 'Low Blue Light' mode.
+          - strong [ref=e1044]: But these modes add yellow tint and reduce contrast
+          - text: ". Better solution: Windows Night Light, f.lux, or gaming glasses."
+        - paragraph [ref=e1045]:
+          - strong [ref=e1046]: "Matte vs Glossy Screens:"
+          - strong [ref=e1047]: "Matte (anti-glare):"
+          - text: Reduces reflections but slightly blurs image, causes 'grainy' look.
+          - strong [ref=e1048]: "Glossy:"
+          - text: "Sharper image, better colors, but reflections cause severe eye strain in bright rooms. For 8+ hour sessions → Matte is less fatiguing despite slightly worse image quality. Exception: OLED glossy coatings are good enough that benefits outweigh reflection issues."
+        - paragraph [ref=e1049]:
+          - strong [ref=e1050]: "Monitor Position for Eye Health:"
+          - text: Top of screen at eye level (looking slightly down, not up). 50-80cm viewing distance (arm's length). Slightly recline monitor 5-10° (perpendicular to sight line). Brightness matching room lighting (not maximum brightness in dark room).
+        - paragraph [ref=e1051]:
+          - strong [ref=e1052]: "20-20-20 Rule:"
+          - text: Every 20 minutes, look at something 20 feet away for 20 seconds. This prevents accommodation fatigue (eye muscles locked focusing at screen distance).
+        - paragraph [ref=e1053]:
+          - strong [ref=e1054]: "Settings That Reduce Eye Strain:"
+          - text: 1) Enable monitor's flicker-free mode (usually on by default). 2) Reduce blue light after 8pm (Windows Night Light 3400K). 3) Set brightness to match ambient room lighting (use light meter app). 4) Reduce contrast if you game in very dark rooms (100% contrast is too high). 5) Enable Dark Mode in Windows (less white area straining eyes).
+        - paragraph [ref=e1055]:
+          - strong [ref=e1056]: "Gaming Glasses (Worth It?):"
+          - text: Gunnar, HyperX, etc. block 35-65% blue light. Add yellow/amber tint (same as monitor's blue light filter). Reduce glare and filter some PWM flicker.
+          - strong [ref=e1057]: Work for some people, placebo for others
+          - text: . Try cheap $20 Amazon gaming glasses before spending $80 on Gunnars.
+        - paragraph [ref=e1058]:
+          - strong [ref=e1059]: "Medical Red Flags (See Eye Doctor):"
+          - text: New floaters or flashes of light, persistent headaches above/behind eyes, double vision or 'halos' around lights, vision changes lasting hours after stopping gaming, dry eyes despite artificial tears.
+        - paragraph [ref=e1060]:
+          - strong [ref=e1061]: "Reality Check:"
+          - text: If you're gaming 10+ hours daily, eye health matters as much as input lag. A 'slower' 5ms monitor with flicker-free backlight and good ergonomics beats a 2ms monitor that gives you migraines after 6 hours.
+    - generic [ref=e1062]:
+      - button "Can I trust YouTube monitor reviews? ▼" [ref=e1063] [cursor=pointer]:
+        - generic [ref=e1064]: Can I trust YouTube monitor reviews?
+        - generic [ref=e1065]: ▼
+      - generic [ref=e1066]:
+        - paragraph [ref=e1067]:
+          - strong [ref=e1068]: "Yes for some things, no for others - cameras lie about what matters most:"
+        - paragraph [ref=e1069]:
+          - strong [ref=e1070]: "What Cameras CAN Show Accurately:"
+          - text: ✅
+          - strong [ref=e1071]: "Build quality:"
+          - text: Stand, ergonomics, materials, button layout. ✅
+          - strong [ref=e1072]: "Colors:"
+          - text: Vibrancy, saturation (though affected by camera color profile). ✅
+          - strong [ref=e1073]: "Viewing angles:"
+          - text: How colors shift when viewed off-center. ✅
+          - strong [ref=e1074]: "Screen coating:"
+          - text: Matte vs glossy texture. ✅
+          - strong [ref=e1075]: "Backlight bleed:"
+          - text: Visible in camera when room is dark. ✅
+          - strong [ref=e1076]: "Dead pixels:"
+          - text: If reviewer bothers to check (rare).
+        - paragraph [ref=e1077]:
+          - strong [ref=e1078]: "What Cameras CANNOT Show:"
+          - text: ❌
+          - strong [ref=e1079]: "Motion blur / ghosting:"
+          - text: Cameras have their own motion blur that overwhelms monitor's. TestUFO looks smooth on ANY monitor when recorded. ❌
+          - strong [ref=e1080]: "Input lag:"
+          - text: YouTube videos can't convey millisecond differences in responsiveness. You can't 'feel' input lag through video. ❌
+          - strong [ref=e1081]: "Refresh rate smoothness:"
+          - text: 60fps YouTube video makes 240Hz and 60Hz monitors look identical. YouTube compression destroys the smoothness differences. ❌
+          - strong [ref=e1082]: "VRR behavior:"
+          - text: Adaptive sync flicker, frame drops, stuttering - all invisible or misrepresented on camera. ❌
+          - strong [ref=e1083]: "True HDR:"
+          - text: YouTube's HDR is limited to ~1000 nits, can't show how 1400+ nits looks. Also most people watch on SDR displays anyway.
+        - paragraph [ref=e1084]:
+          - strong [ref=e1085]: "Trustworthy YouTube Reviewers (Use Equipment, Not Just Eyes):"
+          - text: ✅
+          - strong [ref=e1086]: "Hardware Unboxed:"
+          - text: Uses oscilloscope for response time measurements, pursuit cameras, input lag testing. ✅
+          - strong [ref=e1087]: "Optimum Tech:"
+          - text: Focuses on competitive gaming, tests with Leo Bodnar lag tester. ✅
+          - strong [ref=e1088]: "Monitors Unboxed:"
+          - text: Deep technical analysis, gamma-corrected measurements. ✅
+          - strong [ref=e1089]: "Linus Tech Tips:"
+          - text: Mixed - entertaining but sometimes lacks depth on technical measurements.
+        - paragraph [ref=e1090]:
+          - strong [ref=e1091]: "Red Flag YouTube Reviews (Don't Trust):"
+          - text: ❌ Sponsored content without disclosure. ❌ No test equipment shown (just subjective opinion). ❌ Claims they can 'feel' 1-2ms differences without testing equipment. ❌ Shows TestUFO on camera and says 'look how smooth' (camera blur makes everything look the same). ❌ No mention of professional testing sources (RTings, TFTCentral).
+        - paragraph [ref=e1092]:
+          - strong [ref=e1093]: "How to Use YouTube Reviews Properly:"
+          - text: 1)
+          - strong [ref=e1094]: Watch for build quality, features, ergonomics
+          - text: "- this is what video can show. 2)"
+          - strong [ref=e1095]: Skip motion tests in video
+          - text: "- go to written reviews with measurements instead. 3)"
+          - strong [ref=e1096]: Check description for links
+          - text: to professional testing data. 4)
+          - strong [ref=e1097]: Cross-reference claims
+          - text: "- if they say '1ms response', check if RTings measured 3ms. 5)"
+          - strong [ref=e1098]: Watch multiple reviewers
+          - text: "- consensus matters more than one opinion."
+        - paragraph [ref=e1099]:
+          - strong [ref=e1100]: "Best Practice Research Method:"
+          - text: 1) YouTube review for visual overview and features (5-10 min). 2) RTings review for measured input lag and response times (written). 3) TFTCentral for detailed oscilloscope data (written). 4) Reddit r/Monitors for real user experiences 3-6 months after launch. 5) Amazon reviews filtered by 'verified purchase' and '3 stars' (honest critiques).
+        - paragraph [ref=e1101]:
+          - strong [ref=e1102]: "Example of Camera Lies:"
+          - text: A VA panel with 15ms black transition smearing looks IDENTICAL on YouTube to an IPS with 3ms response because the camera recording at 60fps has 16.67ms exposure time - longer than the monitor's response time. Camera blur overwhelms monitor blur. This is why professional reviewers use pursuit cameras that move with the motion.
+        - paragraph [ref=e1103]:
+          - strong [ref=e1104]: "Bottom Line:"
+          - text: Use YouTube for entertainment and visual overview. Use professional testing databases for performance data. Don't trust subjective 'feel' claims without measurements to back them up.
+    - generic [ref=e1105]:
+      - button "My new monitor has issues - should I return it or exchange for same model? ▼" [ref=e1106] [cursor=pointer]:
+        - generic [ref=e1107]: My new monitor has issues - should I return it or exchange for same model?
+        - generic [ref=e1108]: ▼
+      - generic [ref=e1109]:
+        - paragraph [ref=e1110]:
+          - strong [ref=e1111]: "Depends entirely on whether it's a model defect or unit-specific defect:"
+        - paragraph [ref=e1112]:
+          - strong [ref=e1113]: "EXCHANGE FOR SAME MODEL (QC Lottery Issues):"
+          - text: "These are panel defects that vary unit-to-unit. Try again with different unit: ✅"
+          - strong [ref=e1114]: "Dead pixels:"
+          - text: Rare, random QC issue - exchange. ✅
+          - strong [ref=e1115]: "Excessive backlight bleed:"
+          - text: Some units are worse than others - exchange. ✅
+          - strong [ref=e1116]: "IPS glow asymmetry:"
+          - text: One corner much worse - exchange. ✅
+          - strong [ref=e1117]: "Coil whine:"
+          - text: Electronic component defect - exchange. ✅
+          - strong [ref=e1118]: "VRR flickering:"
+          - text: Sometimes GPU incompatibility, but often panel defect - exchange once, if persists then return. ✅
+          - strong [ref=e1119]: "Dust under screen:"
+          - text: QC failure - exchange.
+        - paragraph [ref=e1120]:
+          - strong [ref=e1121]: "RETURN & CHOOSE DIFFERENT MODEL (Model Design Flaws):"
+          - text: "These affect ALL units of that model. Exchanging won't help: ❌"
+          - strong [ref=e1122]: "Inverse ghosting on all overdrive settings:"
+          - text: Design flaw, professional reviews confirm - return. ❌
+          - strong [ref=e1123]: "Black smearing (VA panel):"
+          - text: Inherent to this VA panel design - return, buy IPS instead. ❌
+          - strong [ref=e1124]: "Aggressive coating grain:"
+          - text: Every unit has same coating - return if bothers you. ❌
+          - strong [ref=e1125]: "Poor viewing angles:"
+          - text: TN panel limitation - return, buy IPS. ❌
+          - strong [ref=e1126]: "Gamma shift:"
+          - text: Panel design issue, affects all units - return. ❌
+          - strong [ref=e1127]: "Excessive input lag:"
+          - text: Won't vary between units - return, confirmed by professional testing.
+        - paragraph [ref=e1128]:
+          - strong [ref=e1129]: "How to Determine Which Category:"
+          - text: 1)
+          - strong [ref=e1130]: Search '[model] [issue] reddit'
+          - text: "- if many users report same issue = model flaw. 2)"
+          - strong [ref=e1131]: Check professional reviews
+          - text: "- did they mention this issue? If yes = design flaw. 3)"
+          - strong [ref=e1132]: TestUFO before returning
+          - text: "- objectively measure ghosting/blur. 4)"
+          - strong [ref=e1133]: Compare to professional measurements
+          - text: "- if you're seeing 15ms ghosting but TFTCentral measured 5ms on same model = bad unit, exchange."
+        - paragraph [ref=e1134]:
+          - strong [ref=e1135]: "Exchange Strategy (Maximize Chances):"
+          - text: "First exchange: Different unit (QC variance). Second exchange (if issue persists): Different retailer stock (different manufacturing batch). Third attempt: Different model entirely (clearly a design flaw)."
+        - paragraph [ref=e1136]:
+          - strong [ref=e1137]: "Real Examples:"
+          - strong [ref=e1138]: "Should Exchange:"
+          - text: "User: 'My ASUS VG27AQ has 1 dead pixel in corner' - Answer: Exchange - professional reviews show <0.5% dead pixel rate, you got unlucky."
+          - strong [ref=e1139]: "Should Return:"
+          - text: "User: 'My Samsung Odyssey G7 has severe flickering with VRR' - Answer: Return - known widespread issue with this model's VRR implementation, affects most/all units."
+        - paragraph [ref=e1140]:
+          - strong [ref=e1141]: "Timing Matters:"
+          - strong [ref=e1142]: "Week 1-2:"
+          - text: Test everything, build your return case.
+          - strong [ref=e1143]: "Week 3:"
+          - text: Make decision - most retailers have 30-day window.
+          - strong [ref=e1144]: "After 30 days:"
+          - text: Stuck with manufacturer warranty (much harder RMA process).
+        - paragraph [ref=e1145]:
+          - strong [ref=e1146]: "Documentation for Returns:"
+          - text: "Take photos/videos of: Dead pixels (use phone macro mode). Backlight bleed (dark room, black screen, long exposure photo). Ghosting (record TestUFO at 240fps on phone if possible). Packaging when opened (protects against restocking fees)."
+        - paragraph [ref=e1147]:
+          - strong [ref=e1148]: "Bottom Line:"
+          - text: Exchange once if it's a QC issue (dead pixels, excessive bleed, coil whine). Return immediately if it's a model-wide design flaw confirmed by research. Don't exchange 3+ times hoping for a miracle - the model just isn't good.
+    - generic [ref=e1149]:
+      - button "Do high refresh rate monitors use significantly more power? ▼" [ref=e1150] [cursor=pointer]:
+        - generic [ref=e1151]: Do high refresh rate monitors use significantly more power?
+        - generic [ref=e1152]: ▼
+      - generic [ref=e1153]:
+        - paragraph [ref=e1154]:
+          - strong [ref=e1155]: "Yes - 240Hz monitors use 2-3x the power of 60Hz monitors:"
+        - paragraph [ref=e1156]:
+          - strong [ref=e1157]: "Power Consumption by Monitor Type:"
+        - list [ref=e1158]:
+          - listitem [ref=e1159]:
+            - strong [ref=e1160]: "60Hz 1080p IPS:"
+            - text: 20-30W typical, 5-10W idle
+          - listitem [ref=e1161]:
+            - strong [ref=e1162]: "144Hz 1440p IPS:"
+            - text: 40-60W gaming, 15-20W desktop
+          - listitem [ref=e1163]:
+            - strong [ref=e1164]: "240Hz 1080p Fast IPS:"
+            - text: 50-80W gaming, 20-30W desktop
+          - listitem [ref=e1165]:
+            - strong [ref=e1166]: "360Hz 1080p IPS:"
+            - text: 60-100W gaming, 25-35W desktop
+          - listitem [ref=e1167]:
+            - strong [ref=e1168]: "4K 144Hz IPS:"
+            - text: 70-120W gaming, 30-40W desktop
+          - listitem [ref=e1169]:
+            - strong [ref=e1170]: "OLED (any refresh):"
+            - text: 30-60W (varies by brightness, power efficient)
+        - paragraph [ref=e1171]:
+          - strong [ref=e1172]: "Annual Cost Impact (US Average $0.12/kWh):"
+          - text: "Gaming 4 hours/day, 365 days/year: 60Hz monitor: ~$15/year. 240Hz monitor: ~$35/year. Difference: $20/year (~$100 over 5-year lifespan)."
+        - paragraph [ref=e1173]:
+          - strong [ref=e1174]: "Why High Refresh Uses More Power:"
+          - text: 1) Panel refreshes 4x more often (240Hz vs 60Hz). 2) Higher voltage overdrive for fast response times. 3) More powerful TCON (timing controller) chip. 4) Additional processing for G-Sync modules.
+        - paragraph [ref=e1175]:
+          - strong [ref=e1176]: "Eco-Friendly Options:"
+          - strong [ref=e1177]: "OLED:"
+          - text: Most power-efficient despite high refresh (no backlight).
+          - strong [ref=e1178]: "Auto brightness:"
+          - text: Reduces power 20-40% without hurting experience.
+          - strong [ref=e1179]: "Power saving mode:"
+          - text: Dims when idle after 5-10 minutes.
+          - strong [ref=e1180]: "Turn off when not in use:"
+          - text: Most monitors use 5-20W 'off' (not fully off).
+        - paragraph [ref=e1181]:
+          - strong [ref=e1182]: "Hidden Cost - Heat Generation:"
+          - text: 240Hz monitor generates ~80W heat (like a laptop). In summer, adds cooling cost (AC working harder). In winter, reduces heating cost (free heat). Room temperature can increase 1-2°F with multiple high-refresh monitors.
+        - paragraph [ref=e1183]:
+          - strong [ref=e1184]: "G-Sync Module Power Tax:"
+          - text: "Hardware G-Sync modules add 10-20W constant power draw. G-Sync Compatible (FreeSync) monitors don't have this overhead. Annual difference: ~$10-15/year more for hardware G-Sync."
+        - paragraph [ref=e1185]:
+          - strong [ref=e1186]: "Gaming PC Total System Power:"
+          - text: "For perspective: Gaming PC: 400-800W (GPU is 200-400W alone). Monitor: 50-100W. Monitor is ~10-15% of total system power. Upgrading GPU matters WAY more for power consumption than monitor choice."
+        - paragraph [ref=e1187]:
+          - strong [ref=e1188]: "Bottom Line:"
+          - text: Don't choose monitor based on power consumption unless you're extremely environmentally conscious. The $20/year difference between 60Hz and 240Hz is negligible compared to the competitive advantage. But DO enable power saving features - no reason to use 60W when monitor is idle showing static desktop.
+    - generic [ref=e1189]:
+      - button "How long do gaming monitors last before needing replacement? ▼" [ref=e1190] [cursor=pointer]:
+        - generic [ref=e1191]: How long do gaming monitors last before needing replacement?
+        - generic [ref=e1192]: ▼
+      - generic [ref=e1193]:
+        - paragraph [ref=e1194]:
+          - strong [ref=e1195]: "5-7 years typical lifespan, but performance degrades gradually:"
+        - paragraph [ref=e1196]:
+          - strong [ref=e1197]: "Physical Component Lifespan:"
+        - paragraph [ref=e1198]:
+          - strong [ref=e1199]: "Backlight (Biggest Failure Point):"
+          - text: LED backlights rated for 30,000-50,000 hours. 8 hours/day = 3,000 hours/year.
+          - strong [ref=e1200]: "Math:"
+          - text: 50,000 hours ÷ 3,000 hours/year = ~16 years until complete failure.
+          - strong [ref=e1201]: "Reality:"
+          - text: Brightness degrades 20-30% after 20,000 hours (6-7 years heavy use). After 5 years, monitor is noticeably dimmer (350 nits → 250 nits).
+        - paragraph [ref=e1202]:
+          - strong [ref=e1203]: "Panel Response Time Degradation:"
+          - text: Liquid crystals age and slow down. Professional testing shows 20-40% response time increase after 3-5 years. Your 1ms monitor might be 1.4ms after 5 years. VA panels degrade faster than IPS (liquid crystal viscosity changes).
+        - paragraph [ref=e1204]:
+          - strong [ref=e1205]: "Electronics & Capacitors:"
+          - text: "Power supply capacitors dry out after 5-7 years. Symptoms: longer warm-up time, flickering, won't turn on. Cheap monitors (sub-$200) use lower quality caps = 3-5 year lifespan. Premium monitors (ASUS, BenQ) use Japanese caps = 7-10 year lifespan."
+        - paragraph [ref=e1206]:
+          - strong [ref=e1207]: "OLED Specific (Different Failure Mode):"
+          - text: "No backlight to fail (per-pixel emission). Burn-in risk increases after 2-3 years with static content. Brightness degrades 10-15% per year with heavy use. Blue subpixels degrade fastest (subtle color shift over time). Modern OLEDs with 3-year warranties are much improved. Expected lifespan: 3-5 years before burn-in or color shift."
+        - paragraph [ref=e1208]:
+          - strong [ref=e1209]: "Functional Obsolescence (More Common Than Failure):"
+        - paragraph [ref=e1210]:
+          - strong [ref=e1211]: "Technology Advancement:"
+          - text: "2015: 144Hz was cutting edge. 2020: 240Hz became standard. 2025: 360Hz mainstream, 480Hz emerging. Your 144Hz monitor still WORKS but falls behind competitively."
+        - paragraph [ref=e1212]:
+          - strong [ref=e1213]: "When to Upgrade (Not Because It Failed):"
+          - text: Refresh rate standards increased 2x (144Hz → 360Hz revolution). New panel tech arrived (IPS → Fast IPS → OLED progression). New features became mandatory (VRR wasn't standard 5 years ago). Resolution standards increased (1080p → 1440p → 4K adoption).
+        - paragraph [ref=e1214]:
+          - strong [ref=e1215]: "Realistic Replacement Timeline:"
+        - paragraph [ref=e1216]:
+          - strong [ref=e1217]: "Budget Monitors ($150-250):"
+          - text: "Physical lifespan: 3-5 years (cheaper components). Obsolescence: 2-3 years (rapid tech advancement)."
+          - strong [ref=e1218]: "Recommendation:"
+          - text: Expect to replace every 3-4 years.
+        - paragraph [ref=e1219]:
+          - strong [ref=e1220]: "Mid-Range ($250-500):"
+          - text: "Physical lifespan: 5-7 years (better components). Obsolescence: 4-5 years (still competitive)."
+          - strong [ref=e1221]: "Recommendation:"
+          - text: Expect to replace every 5-6 years.
+        - paragraph [ref=e1222]:
+          - strong [ref=e1223]: "Premium ($500-1200):"
+          - text: "Physical lifespan: 7-10 years (highest quality). Obsolescence: 5-7 years (cutting edge takes longer to age)."
+          - strong [ref=e1224]: "Recommendation:"
+          - text: Should last 7-8 years before upgrade itch.
+        - paragraph [ref=e1225]:
+          - strong [ref=e1226]: "OLED ($800-1500):"
+          - text: "Physical lifespan: 3-5 years (burn-in risk). Obsolescence: 5+ years (OLED tech evolves slower)."
+          - strong [ref=e1227]: "Recommendation:"
+          - text: Plan for 4-5 year replacement cycle.
+        - paragraph [ref=e1228]:
+          - strong [ref=e1229]: "Signs Your Monitor Is Dying:"
+          - text: Backlight taking 5+ minutes to reach full brightness. Flickering that wasn't present when new. Color tint (yellowing, pink cast that wasn't there before). Response time feeling noticeably slower (ghosting increased). Random shutdowns or failure to wake from sleep. Dead pixel multiplication (1 dead pixel → 3+ over months).
+        - paragraph [ref=e1230]:
+          - strong [ref=e1231]: "Extend Monitor Lifespan:"
+          - text: ✅ Use power saving (turn off when not in use) - reduces backlight hours. ✅ Moderate brightness (60-70% instead of 100%) - extends backlight life. ✅ Keep ventilation clear (dust buildup causes overheating). ✅ Update firmware (can fix issues that feel like hardware failure). ✅ Use voltage regulator/UPS (prevents power surge damage).
+        - paragraph [ref=e1232]:
+          - strong [ref=e1233]: "Cost Per Year Analysis:"
+          - text: $300 monitor ÷ 5 years = $60/year. $600 monitor ÷ 7 years = $85/year. $1200 OLED ÷ 4 years = $300/year.
+          - strong [ref=e1234]: "Surprisingly:"
+          - text: Budget monitors aren't always cheaper long-term. They fail faster and become obsolete sooner.
+        - paragraph [ref=e1235]:
+          - strong [ref=e1236]: "Bottom Line:"
+          - text: Budget for replacement every 5 years. Physical failure is rare (usually 7-10 years), but technology advancement and gradual performance degradation mean you'll WANT to upgrade before it actually dies. Premium monitors last longer physically but get replaced due to feature obsolescence anyway.
+    - generic [ref=e1237]:
+      - button "Which games actually benefit from 240Hz+ monitors? ▼" [ref=e1238] [cursor=pointer]:
+        - generic [ref=e1239]: Which games actually benefit from 240Hz+ monitors?
+        - generic [ref=e1240]: ▼
+      - generic [ref=e1241]:
+        - paragraph [ref=e1242]:
+          - strong [ref=e1243]: "Competitive FPS and fighting games benefit dramatically. Many genres see zero benefit:"
+        - paragraph [ref=e1244]:
+          - strong [ref=e1245]: "MASSIVE BENEFIT (Worth 240Hz+):"
+        - paragraph [ref=e1246]:
+          - strong [ref=e1247]: "🎯 Competitive FPS (CS2, Valorant, R6 Siege):"
+          - text: "Why: Sub-100ms TTK (Time To Kill), pixel-perfect aiming. Benefit: 15-25% firefight win rate improvement vs 60Hz. Reality: Professional players unanimously use 240Hz+. Minimum: 144Hz. Ideal: 240Hz-360Hz."
+        - paragraph [ref=e1248]:
+          - strong [ref=e1249]: "🥊 Fighting Games (SF6, Tekken 8, Guilty Gear):"
+          - text: "Why: Frame-perfect inputs, 16.67ms windows at 60fps game logic. Benefit: Consistent execution of 1-frame links. Reality: Input lag matters MORE than refresh rate. Minimum: 144Hz with <10ms input lag. 240Hz doesn't help much (game runs at 60fps internally)."
+        - paragraph [ref=e1250]:
+          - strong [ref=e1251]: "🏎️ Racing Sims (iRacing, Assetto Corsa, GT7):"
+          - text: "Why: 200+ km/h requires instant feedback for car control. Benefit: Faster reaction to oversteer, better apex precision. Reality: VR headsets (90-120Hz) often chosen over flat 240Hz. Minimum: 144Hz. Ideal: 165-240Hz."
+        - paragraph [ref=e1252]:
+          - strong [ref=e1253]: "⚡ Fast Arena FPS (Quake Champions, Diabotical):"
+          - text: "Why: 400+ km/h movement speed, flick rails. Benefit: Tracking fast-moving targets. Reality: Higher skill ceiling players benefit more. Minimum: 240Hz. Ideal: 360Hz."
+        - paragraph [ref=e1254]:
+          - strong [ref=e1255]: "MODERATE BENEFIT (144Hz-165Hz Sweet Spot):"
+        - paragraph [ref=e1256]:
+          - strong [ref=e1257]: "⚔️ Fast Action Games (Apex Legends, COD, Overwatch):"
+          - text: "Why: Faster than tactical FPS but more forgiving. Benefit: 10-15% improvement in tracking. Reality: 144Hz → 240Hz barely noticeable for average players. Minimum: 144Hz. Ideal: 165Hz (best value)."
+        - paragraph [ref=e1258]:
+          - strong [ref=e1259]: "🔫 Tactical Shooters (PUBG, Tarkov, Hunt):"
+          - text: "Why: Slower pace but precision matters. Benefit: 5-10% clearer motion when scanning. Reality: Positioning/strategy matters more than refresh rate. Minimum: 120Hz. Ideal: 144Hz."
+        - paragraph [ref=e1260]:
+          - strong [ref=e1261]: "🎮 Action Adventure (Elden Ring, God of War):"
+          - text: "Why: Combat requires reaction but not competitive. Benefit: Smoother camera movement, more cinematic feel. Reality: Visual quality > refresh rate for these games. Minimum: 60Hz (many capped at 60fps anyway). Ideal: 120Hz."
+        - paragraph [ref=e1262]:
+          - strong [ref=e1263]: "MINIMAL BENEFIT (60-120Hz Sufficient):"
+        - paragraph [ref=e1264]:
+          - strong [ref=e1265]: "🧙 MOBAs (League, Dota 2):"
+          - text: "Why: Strategy > reaction time, isometric camera. Benefit: Smoother camera panning, <5% advantage. Reality: Most pros use 144Hz out of habit, not necessity. Minimum: 60Hz. Ideal: 144Hz (overkill but cheap now)."
+        - paragraph [ref=e1266]:
+          - strong [ref=e1267]: "🎯 Tactical Strategy (XCOM, Civilization):"
+          - text: "Why: Turn-based or slow real-time. Benefit: Literally zero competitive advantage. Reality: 60Hz is perfectly fine."
+        - paragraph [ref=e1268]:
+          - strong [ref=e1269]: "📖 Story-Driven (Cyberpunk, RDR2, The Last of Us):"
+          - text: "Why: Cinematic experience, no competitive element. Benefit: Smoother camera BUT many capped at 60-90fps anyway. Reality: 4K resolution > high refresh for these games. Minimum: 60Hz. Ideal: 60-90Hz at 4K."
+        - paragraph [ref=e1270]:
+          - strong [ref=e1271]: "🏗️ Simulation (Cities Skylines, Farming Sim):"
+          - text: "Why: Slow-paced, strategic camera movement. Benefit: Literally zero - these games run at 30-60fps. Reality: Bigger screen resolution matters way more."
+        - paragraph [ref=e1272]:
+          - strong [ref=e1273]: "🎲 Roguelikes (Hades, Dead Cells, Binding of Isaac):"
+          - text: "Why: Fast gameplay but not competitive. Benefit: 5-10% smoother but doesn't affect skill expression. Reality: 60fps cap on many indie roguelikes anyway. Minimum: 60Hz. Ideal: 120Hz (nice to have)."
+        - paragraph [ref=e1274]:
+          - strong [ref=e1275]: "Real Example Game Library Analysis:"
+        - paragraph [ref=e1276]:
+          - strong [ref=e1277]: "Profile A: Competitive Player"
+          - text: "- 80% time: Valorant, CS2. 15% time: Apex Legends. 5% time: Single-player."
+          - strong [ref=e1278]: "Recommendation:"
+          - text: 240Hz 1080p ($400) - fully justified.
+        - paragraph [ref=e1279]:
+          - strong [ref=e1280]: "Profile B: Varied Gamer"
+          - text: "- 40% time: COD, Overwatch. 30% time: Cyberpunk, Elden Ring. 30% time: League of Legends."
+          - strong [ref=e1281]: "Recommendation:"
+          - text: 144Hz 1440p ($350) - better value, still smooth for COD.
+        - paragraph [ref=e1282]:
+          - strong [ref=e1283]: "Profile C: Single-Player Focused"
+          - text: "- 70% time: Story games, RPGs. 20% time: Strategy/sim. 10% time: Casual multiplayer."
+          - strong [ref=e1284]: "Recommendation:"
+          - text: 60Hz 4K ($400) - resolution > refresh for this library.
+        - paragraph [ref=e1285]:
+          - strong [ref=e1286]: "Profile D: Fighting Game Main"
+          - text: "- 90% time: Street Fighter 6, Tekken 8. 10% time: other."
+          - strong [ref=e1287]: "Recommendation:"
+          - text: 144Hz with <8ms input lag ($300) - refresh beyond 144Hz doesn't help 60fps fighting games.
+        - paragraph [ref=e1288]:
+          - strong [ref=e1289]: "Reality Check Questions:"
+          - text: 1) "Do I play competitive FPS 20+ hours/week?" → If NO, don't buy 240Hz+. 2) "Am I ranked Diamond+ in my main game?" → If NO, 144Hz is enough. 3) "Can my GPU maintain 240+ fps?" → If NO, you're wasting money. 4) "Do I play story games more than competitive?" → If YES, prioritize resolution over refresh.
+        - paragraph [ref=e1290]:
+          - strong [ref=e1291]: "The Harsh Truth:"
+          - text: Most gamers play 60-80% single-player or casual games but buy 240Hz monitors for the 20% competitive gaming. This is poor value optimization. Match your monitor to your ACTUAL play patterns, not aspirational competitive dreams.
+        - paragraph [ref=e1292]:
+          - strong [ref=e1293]: "Bottom Line by Play Style:"
+          - strong [ref=e1294]: "Esports competitor:"
+          - text: 240Hz+ mandatory.
+          - strong [ref=e1295]: "Competitive enthusiast:"
+          - text: 165-240Hz sweet spot.
+          - strong [ref=e1296]: "Mixed gamer:"
+          - text: 144Hz 1440p best value.
+          - strong [ref=e1297]: "Single-player main:"
+          - text: 60Hz 4K better than 240Hz 1080p.
+          - strong [ref=e1298]: "Strategy/sim player:"
+          - text: Refresh rate irrelevant, buy for resolution/size.
+    - generic [ref=e1299]:
+      - button "Should I get a gaming monitor for work-from-home productivity too? ▼" [ref=e1300] [cursor=pointer]:
+        - generic [ref=e1301]: Should I get a gaming monitor for work-from-home productivity too?
+        - generic [ref=e1302]: ▼
+      - generic [ref=e1303]:
+        - paragraph [ref=e1304]:
+          - strong [ref=e1305]: "Gaming monitors make TERRIBLE productivity displays - opposite priorities:"
+        - paragraph [ref=e1306]:
+          - strong [ref=e1307]: "Gaming Monitor Priorities:"
+          - text: 1) Low input lag / fast response. 2) High refresh rate. 3) TN or Fast IPS (speed over color accuracy). 4) 24-25" (competitive gaming size). 5) 1080p or 1440p (high fps over resolution).
+        - paragraph [ref=e1308]:
+          - strong [ref=e1309]: "Productivity Monitor Priorities:"
+          - text: 1) High resolution (more screen real estate). 2) Color accuracy (sRGB 99%+, factory calibration). 3) IPS (wide viewing angles). 4) 27-32" (more comfortable for documents/spreadsheets). 5) 4K or ultrawide (multiple windows side-by-side).
+        - paragraph [ref=e1310]:
+          - strong [ref=e1311]: "Where They Conflict:"
+        - paragraph [ref=e1312]:
+          - strong [ref=e1313]: "Screen Size:"
+          - text: "Gaming: 24-25\" optimal (peripheral vision covers entire screen). Productivity: 27-32\" optimal (more windows open, less zooming)."
+          - strong [ref=e1314]: "Compromise:"
+          - text: 27" (acceptable for both, great for neither).
+        - paragraph [ref=e1315]:
+          - strong [ref=e1316]: "Resolution:"
+          - text: "Gaming: 1080p 240Hz (high fps priority). Productivity: 4K 60Hz (text clarity, multiple windows)."
+          - strong [ref=e1317]: "Compromise:"
+          - text: 1440p 144-165Hz (mediocre at both).
+        - paragraph [ref=e1318]:
+          - strong [ref=e1319]: "Panel Type:"
+          - text: "Gaming: TN or Fast IPS (fastest response, acceptable colors). Productivity: IPS or OLED (perfect colors, slower acceptable)."
+          - strong [ref=e1320]: "Compromise:"
+          - text: IPS (good at both).
+        - paragraph [ref=e1321]:
+          - strong [ref=e1322]: "Refresh Rate Investment:"
+          - text: "Gaming: $400 for 240Hz pays off in competitive advantage. Productivity: That $400 could buy 4K or ultrawide instead."
+          - strong [ref=e1323]: "Compromise:"
+          - text: Wasting money on refresh rate you don't need for Excel.
+        - paragraph [ref=e1324]:
+          - strong [ref=e1325]: "Real-World Solutions:"
+        - paragraph [ref=e1326]:
+          - strong [ref=e1327]: "Strategy 1: Two Monitors (Best Solution)"
+          - text: "- Primary: 24-27\" gaming monitor (240Hz, Fast IPS, 1080p-1440p) - $350-500. Secondary: 27-32\" productivity (4K 60Hz, color accurate) - $300-400. Total: $650-900. Benefit: Optimal for each use case, disable secondary during competitive gaming. Drawback: Desk space required, potential Windows refresh rate issues."
+        - paragraph [ref=e1328]:
+          - strong [ref=e1329]: "Strategy 2: Single Compromise Monitor"
+          - text: "- 27\" 1440p 144-165Hz IPS - $350-450. Good enough for both but optimal for neither. Benefit: Cheaper, simpler setup. Drawback: 1440p isn't sharp enough for productivity vs 4K, 144Hz overkill for work."
+        - paragraph [ref=e1330]:
+          - strong [ref=e1331]: "Strategy 3: Ultrawide (Expensive Compromise)"
+          - text: "- 34-38\" ultrawide 1440p 144Hz - $600-1200. Acts like two 24\" monitors side-by-side for productivity. Gaming immersion benefits in single-player. Benefit: Best single-monitor solution. Drawback: Expensive, competitive FPS worse (too wide), GPU requirements high."
+        - paragraph [ref=e1332]:
+          - strong [ref=e1333]: "Strategy 4: Prioritize Primary Use"
+          - text: "- If 80%+ gaming → 24\" 240Hz ($400). If 80%+ productivity → 32\" 4K 60Hz ($400). Don't compromise - optimize for dominant use case. Use laptop/old monitor for secondary use."
+        - paragraph [ref=e1334]:
+          - strong [ref=e1335]: "Productivity-Specific Considerations:"
+        - paragraph [ref=e1336]:
+          - strong [ref=e1337]: "Text Clarity (Critical for 8+ hour workdays):"
+          - text: 1080p 24" = 92 PPI (text is chunky, eye strain). 1440p 27" = 108 PPI (acceptable, most common). 4K 27" = 163 PPI (sharp, ideal for text).
+          - strong [ref=e1338]: "Winner:"
+          - text: 4K for productivity, but requires GPU scaling power.
+        - paragraph [ref=e1339]:
+          - strong [ref=e1340]: "Color Accuracy (If You Do Design/Photo/Video):"
+          - text: "Gaming monitors: 95-98% sRGB typical (good enough). Productivity monitors: 99%+ sRGB, factory calibrated."
+          - strong [ref=e1341]: "If you do creative work professionally:"
+          - text: Buy dedicated productivity monitor, don't compromise.
+        - paragraph [ref=e1342]:
+          - strong [ref=e1343]: "Eye Strain (8-hour workdays vs 2-hour gaming sessions):"
+          - text: "Gaming: Blue light filter nice-to-have. Productivity: Blue light filter + flicker-free mandatory. Gaming monitors often don't prioritize eye comfort."
+          - strong [ref=e1344]: "Winner:"
+          - text: Productivity monitors for long-duration comfort.
+        - paragraph [ref=e1345]:
+          - strong [ref=e1346]: "Ergonomics:"
+          - text: "Gaming monitors: Tilt, basic height adjust. Productivity monitors: Full ergonomic stand (tilt, swivel, pivot portrait, height)."
+          - strong [ref=e1347]: "Pivot to portrait mode:"
+          - text: Essential for reading documents/code, rare on gaming monitors.
+        - paragraph [ref=e1348]:
+          - strong [ref=e1349]: "Real Budget Optimization Examples:"
+        - paragraph [ref=e1350]:
+          - strong [ref=e1351]: "$400 Budget - Gaming Priority:"
+          - text: "❌ Buy: 27\" 1440p 144Hz \"gaming + productivity\" monitor. ✅ Buy: 24\" 1080p 240Hz gaming ($350) + keep old 1080p as secondary. Result: Better gaming, acceptable productivity with dual setup."
+        - paragraph [ref=e1352]:
+          - strong [ref=e1353]: "$400 Budget - Productivity Priority:"
+          - text: "❌ Buy: 27\" 1440p 144Hz \"gaming + productivity\" monitor. ✅ Buy: 27\" 4K 60Hz IPS ($350). Result: Great productivity, adequate for casual gaming (most games play fine at 60fps)."
+        - paragraph [ref=e1354]:
+          - strong [ref=e1355]: "$800 Budget - Best of Both:"
+          - text: "✅ Buy: 24\" 240Hz gaming ($400) + 27\" 4K 60Hz productivity ($350). Result: Optimal for both use cases."
+        - paragraph [ref=e1356]:
+          - strong [ref=e1357]: "Survey Your Actual Usage:"
+          - text: "Track one week honestly: Hours gaming: ___. Hours productivity: ___. If gaming > 60% → buy gaming monitor. If productivity > 60% → buy productivity monitor. If 50/50 split → buy two monitors or 27\" 1440p 144Hz compromise."
+        - paragraph [ref=e1358]:
+          - strong [ref=e1359]: "Bottom Line:"
+          - text: Gaming monitors optimize for milliseconds and smoothness. Productivity monitors optimize for hours of comfort and screen real estate. These are fundamentally different tools. If you genuinely split 50/50, either buy two monitors or accept mediocrity in both use cases with a compromise.
+    - generic [ref=e1360]:
+      - button "Will upgrading from 144Hz to 240Hz improve my rank/K/D? ▼" [ref=e1361] [cursor=pointer]:
+        - generic [ref=e1362]: Will upgrading from 144Hz to 240Hz improve my rank/K/D?
+        - generic [ref=e1363]: ▼
+      - generic [ref=e1364]:
+        - paragraph [ref=e1365]:
+          - strong [ref=e1366]: "Brutal honesty: Probably not, unless you're already Diamond+ and mechanically skilled."
+        - paragraph [ref=e1367]:
+          - strong [ref=e1368]: "The Uncomfortable Truth:"
+          - text: "If you're hardstuck Gold/Platinum, the problem is: ❌ NOT your 144Hz monitor. ❌ NOT your 5ms response time. ❌ NOT your mouse/keyboard. ✅ Your aim, game sense, positioning, and decision-making."
+        - paragraph [ref=e1369]:
+          - strong [ref=e1370]: "When Gear Actually Matters:"
+        - paragraph [ref=e1371]:
+          - strong [ref=e1372]: "Professional/Semi-Pro (Top 0.1%):"
+          - text: Every millisecond IS perceivable and exploitable. 240Hz → 360Hz upgrade provides 1-2% advantage. This 1-2% is the difference between tournament placement.
+          - strong [ref=e1373]: "Gear matters:"
+          - text: 40% of performance.
+        - paragraph [ref=e1374]:
+          - strong [ref=e1375]: "High Competitive (Top 5% - Radiant/Global):"
+          - text: Mechanical skill ceiling is high enough to benefit. 144Hz → 240Hz provides 5-10% smoother tracking. Noticeable improvement in consistency.
+          - strong [ref=e1376]: "Gear matters:"
+          - text: 20% of performance.
+        - paragraph [ref=e1377]:
+          - strong [ref=e1378]: "Mid Competitive (Top 20% - Diamond/Ascendant):"
+          - text: 60Hz → 144Hz provides huge improvement (20-30%). 144Hz → 240Hz provides marginal improvement (2-5%). Most improvement comes from practice, not gear.
+          - strong [ref=e1379]: "Gear matters:"
+          - text: 10% of performance.
+        - paragraph [ref=e1380]:
+          - strong [ref=e1381]: "Casual/Average (50th percentile - Gold/Plat):"
+          - text: 60Hz → 144Hz feels amazing (+10-15% subjective). 144Hz → 240Hz is barely noticeable in actual gameplay. Game sense and positioning matter infinitely more.
+          - strong [ref=e1382]: "Gear matters:"
+          - text: 5% of performance.
+        - paragraph [ref=e1383]:
+          - strong [ref=e1384]: "Real Data from Competitive Studies:"
+        - paragraph [ref=e1385]:
+          - strong [ref=e1386]: "Blur Busters Research:"
+          - text: "Highly skilled players (Immortal+) identified 240Hz vs 144Hz in blind tests: 87% accuracy. Average players (Plat): 52% accuracy (basically guessing)."
+          - strong [ref=e1387]: "Conclusion:"
+          - text: You must already be mechanically elite to perceive the difference.
+        - paragraph [ref=e1388]:
+          - strong [ref=e1389]: "NVIDIA Latency Study:"
+          - text: System latency reduction from 30ms → 15ms correlated with 8-12% K/D improvement. BUT sample was professional players (already 2+ K/D). No improvement observed for <1.0 K/D players (other issues dominating).
+        - paragraph [ref=e1390]:
+          - strong [ref=e1391]: "Before Upgrading Monitor, Ask:"
+          - text: 1)
+          - strong [ref=e1392]: "\"Is my aim consistent?\""
+          - text: "- If you miss stationary bots in aim trainers → monitor won't help. Practice aim first, upgrade hardware second. 2)"
+          - strong [ref=e1393]: "\"Do I maintain 240+ fps consistently?\""
+          - text: "- If GPU only does 120fps → 240Hz monitor is wasted. Upgrade GPU before monitor. 3)"
+          - strong [ref=e1394]: "\"Am I already top 10% rank in my game?\""
+          - text: "- If no → you have bigger issues than 8ms of input lag. Focus on fundamentals first. 4)"
+          - strong [ref=e1395]: "\"Can I consistently demonstrate mechanical skill?\""
+          - text: "- Record your gameplay - are you missing due to bad aim or bad timing? If aim is off by 20 pixels, saving 4ms input lag won't fix it."
+        - paragraph [ref=e1396]:
+          - strong [ref=e1397]: "What Actually Improves Rank (In Order):"
+          - text: 1)
+          - strong [ref=e1398]: "Game sense (40%):"
+          - text: Positioning, timing, map knowledge, strategy. 2)
+          - strong [ref=e1399]: "Mechanical practice (30%):"
+          - text: Aim trainers, deathmatch, 10,000 hours. 3)
+          - strong [ref=e1400]: "Mental game (15%):"
+          - text: Tilt control, focus, consistency, teamwork. 4)
+          - strong [ref=e1401]: "Fundamentals (10%):"
+          - text: Movement, ability usage, economy management. 5)
+          - strong [ref=e1402]: "Hardware (5%):"
+          - text: Monitor, mouse, keyboard, PC performance.
+        - paragraph [ref=e1403]:
+          - strong [ref=e1404]: "The Gear Trap:"
+          - text: "Players often upgrade gear hoping it will shortcut the hard work of improvement: Stuck in Gold → Buy 240Hz monitor → Still stuck in Gold. \"The monitor didn't help, maybe I need new mouse?\" \"New mouse didn't help, maybe I need new GPU?\" Endless gear cycle instead of practicing fundamentals."
+        - paragraph [ref=e1405]:
+          - strong [ref=e1406]: "When Upgrading IS Justified:"
+          - text: ✅ You're already mechanically skilled (Diamond+) and hit skill ceiling. ✅ Your current gear is severely limiting (stuck on 60Hz in competitive FPS). ✅ You can maintain FPS matching the refresh rate upgrade. ✅ You've exhausted fundamental improvements and need competitive edge. ✅ You can afford it without impacting ability to practice (time > gear).
+        - paragraph [ref=e1407]:
+          - strong [ref=e1408]: "When Upgrading is NOT Justified:"
+          - text: ❌ You're hoping gear will compensate for lack of practice. ❌ You're using gear as excuse for not ranking up. ❌ You can't maintain FPS matching the refresh rate. ❌ You're below Diamond and missing shots by poor aim, not input lag.
+        - paragraph [ref=e1409]:
+          - strong [ref=e1410]: "Harsh Reality Examples:"
+        - paragraph [ref=e1411]:
+          - strong [ref=e1412]: "Player A:"
+          - text: "Current: 60Hz monitor, Gold rank, 0.8 K/D. Buys: 240Hz monitor ($500). Result: Still Gold, 0.85 K/D (5% improvement from placebo effect)."
+          - strong [ref=e1413]: "Verdict:"
+          - text: Wasted money. 300 hours of aim practice would have done more.
+        - paragraph [ref=e1414]:
+          - strong [ref=e1415]: "Player B:"
+          - text: "Current: 144Hz monitor, Radiant rank, 1.8 K/D. Buys: 360Hz monitor ($700). Result: Still Radiant, 1.85 K/D (3% improvement from tighter tracking)."
+          - strong [ref=e1416]: "Verdict:"
+          - text: Justified. Already at skill ceiling, every edge matters.
+        - paragraph [ref=e1417]:
+          - strong [ref=e1418]: "The Math:"
+          - text: "Time to grind Gold → Diamond: 200+ hours of focused practice. Cost: $0 (just time and effort). Monitor upgrade Gold → Diamond: $500, 5% improvement = still Gold."
+          - strong [ref=e1419]: "Better investment:"
+          - text: $0 practice > $500 gear.
+        - paragraph [ref=e1420]:
+          - strong [ref=e1421]: "What Pros Actually Say:"
+          - text: "Interview quotes from professional players: \"I'd rather have a Silver player with 360Hz than a Bronze player with 60Hz, but I'd rather have a Diamond player with 60Hz than a Gold player with 360Hz.\" \"Gear gets you from 95th percentile to 99th percentile. It doesn't get you from 50th to 95th.\" \"The 240Hz monitor didn't make me pro. Being pro made the 240Hz monitor matter.\""
+        - paragraph [ref=e1422]:
+          - strong [ref=e1423]: "Bottom Line Flowchart:"
+          - text: "Are you Diamond+ rank? → YES: Gear upgrades provide meaningful competitive edge. → NO: Practice fundamentals, gear isn't your bottleneck. Can you consistently hit 240+ FPS? → YES: 240Hz monitor makes sense. → NO: Upgrade GPU first, or stick with 144Hz. Did you record and analyze 10+ gameplay sessions to identify weaknesses? → YES: If mechanical skill is identified bottleneck, upgrade gear. → NO: Don't blame gear until you've identified real problems."
+        - paragraph [ref=e1424]:
+          - strong [ref=e1425]: "Reality:"
+          - text: For 90% of players, spending $500 on 1000 hours of aim trainer practice ($0) or coaching ($50-100) would improve rank more than spending $500 on 240Hz monitor. Gear matters at the top 5%. Below that, it's expensive placebo.
+    - generic [ref=e1426]:
+      - button "I'm switching from console to PC - what monitor refresh rate do I need? ▼" [ref=e1427] [cursor=pointer]:
+        - generic [ref=e1428]: I'm switching from console to PC - what monitor refresh rate do I need?
+        - generic [ref=e1429]: ▼
+      - generic [ref=e1430]:
+        - paragraph [ref=e1431]:
+          - strong [ref=e1432]: This is your biggest advantage in the transition - don't waste it with 60Hz.
+        - paragraph [ref=e1433]:
+          - strong [ref=e1434]: "Console Gaming Reality Check:"
+          - text: "PS5/Xbox Series X: 60fps most games, 120fps rare. You've been gaming at 60Hz your ENTIRE console life. PC can do 240+ fps → massive competitive advantage awaits."
+          - strong [ref=e1435]: DO NOT buy a 60Hz monitor for PC gaming
+        - paragraph [ref=e1436]:
+          - strong [ref=e1437]: "The Console → PC Monitor Hierarchy:"
+        - paragraph [ref=e1438]:
+          - strong [ref=e1439]: "Minimum Viable (Don't Go Lower):"
+          - strong [ref=e1440]: 144Hz 1080p IPS ($250-350)
+          - text: "- Why: 2.4x smoother than console. Experience: Mind-blowing upgrade from 60Hz console life. Competitive: Adequate for ranked competitive."
+          - strong [ref=e1441]: This should be your MINIMUM, not your target
+        - paragraph [ref=e1442]:
+          - strong [ref=e1443]: "Recommended Sweet Spot:"
+          - strong [ref=e1444]: 240Hz 1080p Fast IPS ($400-550)
+          - text: "- Why: 4x smoother than console, real competitive edge. Experience: Transformative - you can't go back. Competitive: Professional-tier smoothness."
+          - strong [ref=e1445]: Best value for ex-console competitive players
+        - paragraph [ref=e1446]:
+          - strong [ref=e1447]: "Premium (If Budget Allows):"
+          - strong [ref=e1448]: 360Hz 1080p or 240Hz 1440p ($600-800)
+          - text: "- Why: Maximum competitive edge, still affordable. Experience: Absolute smoothness, no compromises. Competitive: Used by semi-pro players."
+          - strong [ref=e1449]: Only if you're serious about competitive PC gaming
+        - paragraph [ref=e1450]:
+          - strong [ref=e1451]: "Common Console Transition Mistakes:"
+        - paragraph [ref=e1452]:
+          - strong [ref=e1453]: "Mistake 1: Buying 60Hz \"Because That's What I'm Used To\""
+          - text: "- ❌ \"I'm used to 60Hz on console, so 60Hz PC monitor is fine\". ✅"
+          - strong [ref=e1454]: Wrong!
+          - text: The whole point of PC is HIGHER fps. PC can run CS2/Valorant at 300+ fps. Buying 60Hz throws away PC's biggest advantage. You're basically making your PC perform like a console.
+        - paragraph [ref=e1455]:
+          - strong [ref=e1456]: "Mistake 2: Buying 4K 60Hz \"For Graphics\""
+          - text: "- ❌ \"I want 4K like my PS5 games\". ✅"
+          - strong [ref=e1457]: Wrong for competitive!
+          - text: 4K requires 3-4x more GPU power. Competitive games prioritize FPS over graphics. 1080p 240Hz > 4K 60Hz for FPS/competitive. 4K makes sense for single-player story games only.
+        - paragraph [ref=e1458]:
+          - strong [ref=e1459]: "Mistake 3: \"144Hz Seems Like Enough\""
+          - text: "- ⚠️"
+          - strong [ref=e1460]: It IS enough... but you're selling yourself short
+          - text: . You've never experienced 240Hz coming from console. The jump from 60Hz → 240Hz is MASSIVE. Going from 60Hz → 144Hz then wanting 240Hz later = buying twice.
+        - paragraph [ref=e1461]:
+          - strong [ref=e1462]: "GPU Considerations for Ex-Console Players:"
+        - paragraph [ref=e1463]:
+          - strong [ref=e1464]: "If You Built Budget PC ($800-1200 GPU: RTX 4060, RX 7600):"
+          - text: "Target: 1080p 144-165Hz in competitive games ✅. Reality: 80-120fps in AAA games (still better than console)."
+          - strong [ref=e1465]: "Recommendation:"
+          - text: 144Hz 1080p ($300).
+        - paragraph [ref=e1466]:
+          - strong [ref=e1467]: "If You Built Mid-Range PC ($1500-2000 GPU: RTX 4070, RX 7800 XT):"
+          - text: "Target: 1080p 240Hz in competitive, 1440p 144Hz in AAA ✅. Reality: Solid 200+ fps in competitive games."
+          - strong [ref=e1468]: "Recommendation:"
+          - text: 240Hz 1080p ($450) or 165Hz 1440p ($400).
+        - paragraph [ref=e1469]:
+          - strong [ref=e1470]: "If You Built High-End PC ($2500+ GPU: RTX 4080/4090):"
+          - text: "Target: 1440p 240Hz or 1080p 360Hz ✅. Reality: 300+ fps in most games."
+          - strong [ref=e1471]: "Recommendation:"
+          - text: 240Hz 1440p ($650) or 360Hz 1080p ($600).
+        - paragraph [ref=e1472]:
+          - strong [ref=e1473]: "What To Expect in Your Transition:"
+        - paragraph [ref=e1474]:
+          - strong [ref=e1475]: "Week 1: \"Holy shit, PC gaming is SMOOTH\""
+          - text: "- Everything feels incredible vs console. Even 144Hz is 2.4x smoother than what you're used to. You'll miss easy shots due to overcompensating (too smooth)."
+        - paragraph [ref=e1476]:
+          - strong [ref=e1477]: "Week 2-4: Adjustment Period"
+          - text: "- Mouse aim learning curve (harder than controller at first). Getting used to higher sensitivity possibilities. Realizing you can track targets you couldn't on console."
+        - paragraph [ref=e1478]:
+          - strong [ref=e1479]: "Month 2-3: Competitive Advantage Realized"
+          - text: "- Your aim is now more precise than controller allows. You're winning duels you'd lose on console. Higher refresh rate + mouse aim = significant edge."
+        - paragraph [ref=e1480]:
+          - strong [ref=e1481]: "Month 6+: \"Can Never Go Back\""
+          - text: "- Playing on friend's console feels like slideshow. 60Hz is physically painful to look at now. You understand why PC players dominate cross-play."
+        - paragraph [ref=e1482]:
+          - strong [ref=e1483]: "Console-Specific Questions:"
+        - paragraph [ref=e1484]:
+          - strong [ref=e1485]: "Q: \"Should I get ultrawide since I'm used to TV gaming?\""
+          - text: "A: No. Competitive PC gaming uses 16:9. Ultrawide is for immersion, not competition. Most competitive games don't even support ultrawide properly."
+        - paragraph [ref=e1486]:
+          - strong [ref=e1487]: "Q: \"I sit far from my TV - should I get 32\" monitor?\""
+          - text: "A: No. PC gaming is desk-based, 24-27\" is standard. You'll sit 50-80cm from screen, not 2-3 meters like console couch gaming."
+        - paragraph [ref=e1488]:
+          - strong [ref=e1489]: "Q: \"Do I need G-Sync since PS5 has VRR?\""
+          - text: "A: Yes, but it's called G-Sync/FreeSync on PC. Works the same way. Essential for smooth gaming when FPS fluctuates."
+        - paragraph [ref=e1490]:
+          - strong [ref=e1491]: "Q: \"My PS5 uses HDMI 2.1, what about PC?\""
+          - text: "A: PC uses DisplayPort 1.4 (better). Your GPU has DisplayPort, use that instead of HDMI. DisplayPort supports higher refresh rates."
+        - paragraph [ref=e1492]:
+          - strong [ref=e1493]: "Console Player Monitor Buying Checklist:"
+          - text: ✅ At MINIMUM 144Hz (don't settle for 60Hz). ✅ IPS or Fast IPS panel (avoid TN unless budget). ✅ 1-5ms response time (lower is better). ✅ G-Sync Compatible or FreeSync (must have). ✅ DisplayPort 1.4 input (not just HDMI). ✅ 1080p for competitive (1440p if budget allows + strong GPU). ✅ 24-27" screen size (not 32"+, you're sitting closer now).
+        - paragraph [ref=e1494]:
+          - strong [ref=e1495]: "Budget Allocation for Ex-Console Players:"
+        - paragraph [ref=e1496]:
+          - strong [ref=e1497]: "$1500 Total PC + Monitor Budget:"
+          - text: "- $1000-1100 on PC (RTX 4060, good CPU). - $400-500 on monitor (240Hz 1080p). - Don't cheap out on monitor - it's your interface to the PC."
+        - paragraph [ref=e1498]:
+          - strong [ref=e1499]: "$2500 Total Budget:"
+          - text: "- $1800-2000 on PC (RTX 4070 Super). - $500-700 on monitor (240Hz 1440p or 360Hz 1080p)."
+        - paragraph [ref=e1500]:
+          - strong [ref=e1501]: "$3500+ Total Budget:"
+          - text: "- $2500-3000 on PC (RTX 4080+). - $700-1000 on monitor (360Hz 1080p, 240Hz 1440p, or OLED)."
+        - paragraph [ref=e1502]:
+          - strong [ref=e1503]: "The Console Killer Setup (Best Value):"
+          - text: "- GPU: RTX 4070 ($550). - Monitor: 240Hz 1080p Fast IPS ($450). - Result: 3-4x smoother than console, competitive advantage. - Total: $1000 for competitive PC gaming superiority."
+        - paragraph [ref=e1504]:
+          - strong [ref=e1505]: "Reality Check:"
+          - text: You're leaving the 60fps console ecosystem for unlimited FPS on PC. Buying a 60Hz monitor is like buying a Ferrari and never taking it out of first gear. The 60Hz → 240Hz jump is THE reason to switch to PC for competitive gaming. Don't waste it.
+  - generic [ref=e1507]:
+    - heading "✅ Did I Buy The Right Monitor?" [level=2] [ref=e1508]
+    - generic [ref=e1509]:
+      - paragraph [ref=e1510]: "Just bought a monitor and second-guessing? Use this validation checklist to confirm you made the right choice (or identify if you should return it):"
+      - generic [ref=e1511]:
+        - generic [ref=e1512]:
+          - heading "✅ You Made a GREAT Purchase If:" [level=3] [ref=e1513]
+          - list [ref=e1514]:
+            - listitem [ref=e1515]:
+              - strong [ref=e1516]: ✓
+              - text: Your GPU can maintain fps matching the refresh rate (240fps for 240Hz)
+            - listitem [ref=e1517]:
+              - strong [ref=e1518]: ✓
+              - text: Professional reviews exist (RTings, TFTCentral) confirming good performance
+            - listitem [ref=e1519]:
+              - strong [ref=e1520]: ✓
+              - text: Total input lag under 15ms (use our calculator to verify)
+            - listitem [ref=e1521]:
+              - strong [ref=e1522]: ✓
+              - text: Panel type matches your use case (IPS/TN for competitive, VA/OLED for immersive)
+            - listitem [ref=e1523]:
+              - strong [ref=e1524]: ✓
+              - text: Resolution matches your GPU capability (not forcing 4K on mid-range GPU)
+            - listitem [ref=e1525]:
+              - strong [ref=e1526]: ✓
+              - text: Price is within 20% of market average for specs
+            - listitem [ref=e1527]:
+              - strong [ref=e1528]: ✓
+              - text: Has G-Sync/FreeSync support
+            - listitem [ref=e1529]:
+              - strong [ref=e1530]: ✓
+              - text: No dead pixels, minimal backlight bleed (test with TestUFO)
+          - paragraph [ref=e1531]: If 6+ of these are true → You're good. Stop second-guessing and enjoy your monitor.
+        - generic [ref=e1532]:
+          - heading "⚠️ You MIGHT Have Buyer's Remorse If:" [level=3] [ref=e1533]
+          - list [ref=e1534]:
+            - listitem [ref=e1535]:
+              - strong [ref=e1536]: ⚠
+              - text: Bought 240Hz but GPU only does 120fps (wasted money on refresh rate)
+            - listitem [ref=e1537]:
+              - strong [ref=e1538]: ⚠
+              - text: Bought 4K but GPU struggles to hit 60fps (should have bought 1440p)
+            - listitem [ref=e1539]:
+              - strong [ref=e1540]: ⚠
+              - text: Bought TN panel and hate the colors (should have spent $50 more for IPS)
+            - listitem [ref=e1541]:
+              - strong [ref=e1542]: ⚠
+              - text: Bought VA panel and noticing black smearing (should have bought IPS)
+            - listitem [ref=e1543]:
+              - strong [ref=e1544]: ⚠
+              - text: Panel doesn't have professional testing data (no way to verify real performance)
+            - listitem [ref=e1545]:
+              - strong [ref=e1546]: ⚠
+              - text: Paid >$600 for 1080p monitor (overpaid vs market rate)
+          - paragraph [ref=e1547]: If 3+ of these are true → Consider returning if within return window, or optimize what you have.
+        - generic [ref=e1548]:
+          - heading "❌ You Should RETURN It If:" [level=3] [ref=e1549]
+          - list [ref=e1550]:
+            - listitem [ref=e1551]:
+              - strong [ref=e1552]: ✗
+              - text: 3+ dead pixels in center of screen (unacceptable QC)
+            - listitem [ref=e1553]:
+              - strong [ref=e1554]: ✗
+              - text: Severe backlight bleed (bright corners on black screen)
+            - listitem [ref=e1555]:
+              - strong [ref=e1556]: ✗
+              - text: Inverse ghosting (corona effects) even on Normal overdrive
+            - listitem [ref=e1557]:
+              - strong [ref=e1558]: ✗
+              - text: VRR flickering that can't be fixed with settings
+            - listitem [ref=e1559]:
+              - strong [ref=e1560]: ✗
+              - text: Total input lag over 30ms (measured with calculator)
+            - listitem [ref=e1561]:
+              - strong [ref=e1562]: ✗
+              - text: Response time way worse than professional reviews stated
+            - listitem [ref=e1563]:
+              - strong [ref=e1564]: ✗
+              - text: Bought 360Hz for console gaming (can only use 120Hz maximum)
+            - listitem [ref=e1565]:
+              - strong [ref=e1566]: ✗
+              - text: Physically uncomfortable (can't adjust to eye level, stand wobbles)
+          - paragraph [ref=e1567]: If 2+ of these are true → RETURN IMMEDIATELY. You have a defective unit or made a spec mismatch purchase.
+        - generic [ref=e1568]:
+          - heading "🧠 Buyer's Remorse vs Real Problem" [level=3] [ref=e1569]
+          - paragraph [ref=e1570]:
+            - strong [ref=e1571]: "Normal Buyer's Remorse (Not Real Problems):"
+          - list [ref=e1572]:
+            - listitem [ref=e1573]: "\"Maybe I should have gotten 240Hz instead of 144Hz\" → No, 144Hz is fine for your use case"
+            - listitem [ref=e1574]: "\"The IPS glow is annoying\" → Normal for IPS, not a defect, will get used to it"
+            - listitem [ref=e1575]: "\"Colors aren't as vibrant as my phone OLED\" → Unrealistic expectation, phone costs $1000"
+            - listitem [ref=e1576]: "\"I feel like I'm still missing shots\" → Gear doesn't fix skill, practice more"
+            - listitem [ref=e1577]: "\"My friend has fancier monitor\" → Your specs meet your needs, ignore peer pressure"
+          - paragraph [ref=e1578]:
+            - strong [ref=e1579]: "Real Problems (Legitimate Returns):"
+          - list [ref=e1580]:
+            - listitem [ref=e1581]: "\"I can't maintain the refresh rate with my GPU\" → Spec mismatch, return"
+            - listitem [ref=e1582]: "\"Ghosting is worse than my old monitor\" → Real problem, return/exchange"
+            - listitem [ref=e1583]: "\"Multiple dead pixels cluster in view area\" → QC failure, exchange"
+            - listitem [ref=e1584]: "\"VRR causes constant flickering\" → Incompatibility issue, return"
+            - listitem [ref=e1585]: "\"Causes headaches after 30 minutes\" → PWM flicker or other issue, return"
+          - paragraph [ref=e1587]:
+            - text: 💡
+            - strong [ref=e1588]: "The 48-Hour Rule:"
+            - text: Wait 48 hours of actual gaming before deciding to return. Initial "this feels different" often becomes "this is amazing" after adjustment period. But actual defects (dead pixels, excessive bleed) won't improve with time.
+  - generic [ref=e1590]:
+    - 'heading "⚙️ First 30 Minutes: Quick Setup Guide" [level=2] [ref=e1591]'
+    - paragraph [ref=e1592]: Just unboxed your monitor? Do these settings IMMEDIATELY before gaming
+    - generic [ref=e1593]:
+      - generic [ref=e1594]:
+        - generic [ref=e1595]: 1️⃣
+        - heading "Enable Maximum Refresh Rate" [level=3] [ref=e1596]
+        - paragraph [ref=e1597]:
+          - strong [ref=e1598]: "Windows:"
+          - text: Right-click Desktop → Display Settings → Advanced Display → Refresh Rate → Select Maximum (144Hz, 240Hz, etc.)
+        - paragraph [ref=e1599]:
+          - strong [ref=e1600]: "NVIDIA:"
+          - text: NVIDIA Control Panel → Change Resolution → Refresh Rate → Select Maximum
+        - paragraph [ref=e1602]: "⚠️ Windows defaults to 60Hz even on 240Hz monitors! This is the #1 cause of \"my new monitor feels laggy\""
+      - generic [ref=e1603]:
+        - generic [ref=e1604]: 2️⃣
+        - heading "Enable G-Sync/FreeSync" [level=3] [ref=e1605]
+        - paragraph [ref=e1606]:
+          - strong [ref=e1607]: "NVIDIA:"
+          - text: NVIDIA Control Panel → Set up G-SYNC → Enable for windowed and fullscreen
+        - paragraph [ref=e1608]:
+          - strong [ref=e1609]: "AMD:"
+          - text: AMD Software → Display → Enable FreeSync
+        - paragraph [ref=e1610]:
+          - strong [ref=e1611]: "Monitor OSD:"
+          - text: Menu button → FreeSync/Adaptive Sync → ON
+        - paragraph [ref=e1613]: 💡 Must enable in BOTH GPU control panel AND monitor settings for VRR to work
+      - generic [ref=e1614]:
+        - generic [ref=e1615]: 3️⃣
+        - heading "Enable Game Mode" [level=3] [ref=e1616]
+        - paragraph [ref=e1617]:
+          - text: Press monitor's physical button → Picture Mode →
+          - strong [ref=e1618]: Game Mode
+          - text: (or Gaming, FPS, Response Time)
+        - paragraph [ref=e1619]: Game Mode disables image processing (sharpening, noise reduction, dynamic contrast) that adds 20-50ms input lag.
+        - paragraph [ref=e1621]: ⚠️ Monitors ship in "Vivid" or "Standard" mode with heavy processing = lag city
+      - generic [ref=e1622]:
+        - generic [ref=e1623]: 4️⃣
+        - heading "Test Overdrive Settings" [level=3] [ref=e1624]
+        - paragraph [ref=e1625]:
+          - text: Go to
+          - strong [ref=e1626]: testufo.com/ghosting
+          - text: → Open monitor OSD → Response Time setting
+        - paragraph [ref=e1627]: "Test: Off, Normal, Fast, Extreme (varies by brand)"
+        - paragraph [ref=e1628]:
+          - strong [ref=e1629]: "Look for:"
+          - text: Less trail = good, Corona/halo = inverse ghosting (too aggressive)
+        - paragraph [ref=e1631]: ✅ Usually "Normal" or "Fast" is optimal. "Extreme" often causes artifacts.
+      - generic [ref=e1632]:
+        - generic [ref=e1633]: 5️⃣
+        - heading "Check for Dead Pixels" [level=3] [ref=e1634]
+        - paragraph [ref=e1635]:
+          - text: Go to
+          - strong [ref=e1636]: jasonfarrell.com/misc/deadpixeltest.php
+        - paragraph [ref=e1637]: "Click through: Black, White, Red, Green, Blue screens"
+        - paragraph [ref=e1638]: "Look for: Stuck pixels (bright on black), Dead pixels (dark on white)"
+        - paragraph [ref=e1640]: ⏰ Do this within 24 hours - easier to return/exchange early
+      - generic [ref=e1641]:
+        - generic [ref=e1642]: 6️⃣
+        - heading "Disable V-Sync Everywhere" [level=3] [ref=e1643]
+        - paragraph [ref=e1644]:
+          - strong [ref=e1645]: "NVIDIA Control Panel:"
+          - text: Manage 3D Settings → Vertical Sync → OFF
+        - paragraph [ref=e1646]:
+          - strong [ref=e1647]: "In-game settings:"
+          - text: V-Sync → OFF (check EVERY game)
+        - paragraph [ref=e1649]: ⚠️ V-Sync adds 20-50ms input lag! With G-Sync/FreeSync enabled, V-Sync is OBSOLETE
+    - generic [ref=e1650]:
+      - heading "✅ Quick Verification Checklist" [level=3] [ref=e1651]
+      - generic [ref=e1652]:
+        - generic [ref=e1653]:
+          - paragraph [ref=e1654]:
+            - strong [ref=e1655]: ☐
+            - text: Windows shows max refresh rate
+          - paragraph [ref=e1656]:
+            - strong [ref=e1657]: ☐
+            - text: G-Sync/FreeSync enabled in GPU panel
+          - paragraph [ref=e1658]:
+            - strong [ref=e1659]: ☐
+            - text: Monitor OSD shows Game Mode
+          - paragraph [ref=e1660]:
+            - strong [ref=e1661]: ☐
+            - text: Tested all overdrive settings
+        - generic [ref=e1662]:
+          - paragraph [ref=e1663]:
+            - strong [ref=e1664]: ☐
+            - text: Zero dead pixels found
+          - paragraph [ref=e1665]:
+            - strong [ref=e1666]: ☐
+            - text: V-Sync disabled globally
+          - paragraph [ref=e1667]:
+            - strong [ref=e1668]: ☐
+            - text: DisplayPort cable (not HDMI)
+          - paragraph [ref=e1669]:
+            - strong [ref=e1670]: ☐
+            - text: Backlight bleed acceptable
+      - paragraph [ref=e1671]:
+        - strong [ref=e1672]: All checked?
+        - text: You're ready to game! Now go to your main game and verify fps counter shows 144+/240+ fps matching your refresh rate.
+  - generic [ref=e1674]:
+    - generic [ref=e1675]:
+      - heading "Popular Gaming Monitors 2025" [level=2] [ref=e1676]
+      - paragraph [ref=e1677]: Detailed specs and performance analysis
+    - generic [ref=e1678]:
+      - generic [ref=e1679]:
+        - generic [ref=e1680]: "15"
+        - generic [ref=e1681]: Gaming Monitors
+      - generic [ref=e1682]:
+        - generic [ref=e1683]: $478
+        - generic [ref=e1684]: Average Price
+      - generic [ref=e1685]:
+        - generic [ref=e1686]: 208Hz
+        - generic [ref=e1687]: Avg Refresh Rate
+      - generic [ref=e1688]:
+        - generic [ref=e1689]: 0.9ms
+        - generic [ref=e1690]: Avg Response Time
+    - generic [ref=e1691]:
+      - button "All Monitors" [ref=e1692] [cursor=pointer]
+      - button "💰 Budget ($150-$250)" [ref=e1693] [cursor=pointer]
+      - button "💵 Mid-Range ($250-$500)" [ref=e1694] [cursor=pointer]
+      - button "💎 High-End ($500-$800)" [ref=e1695] [cursor=pointer]
+      - button "👑 Premium ($800+)" [ref=e1696] [cursor=pointer]
+      - button "🏆 Competitive FPS" [ref=e1697] [cursor=pointer]
+      - button "🖥️ 1440p Gaming" [ref=e1698] [cursor=pointer]
+      - button "📐 Ultrawide" [ref=e1699] [cursor=pointer]
+    - generic [ref=e1700]:
+      - generic [ref=e1701]:
+        - generic [ref=e1702]: "Sort By:"
+        - combobox [ref=e1703]:
+          - 'option "Price: Low to High" [selected]'
+          - 'option "Price: High to Low"'
+          - option "Highest Rated"
+          - option "Refresh Rate"
+          - option "Response Time"
+      - generic [ref=e1704]:
+        - generic [ref=e1705]: "Refresh Rate:"
+        - combobox [ref=e1706]:
+          - option "All" [selected]
+          - option "144Hz+"
+          - option "240Hz+"
+          - option "360Hz+"
+      - generic [ref=e1707]:
+        - generic [ref=e1708]: "Panel Type:"
+        - combobox [ref=e1709]:
+          - option "All Panels" [selected]
+          - option "IPS"
+          - option "TN"
+          - option "VA"
+          - option "OLED"
+      - generic [ref=e1710]:
+        - generic [ref=e1711]: "Max Price:"
+        - slider [ref=e1712]: "1500"
+        - generic [ref=e1713]: $1500
+    - generic [ref=e1714]:
+      - heading "Can't Find Your Monitor?" [level=3] [ref=e1715]
+      - paragraph [ref=e1716]: Our database includes only professionally tested monitors with verified input lag measurements. If your monitor isn't listed, it likely hasn't been tested by RTings, TFTCentral, or Hardware Unboxed yet.
+      - generic [ref=e1717]:
+        - generic [ref=e1718]:
+          - generic [ref=e1719]: 🔍
+          - heading "Search Professional Reviews" [level=4] [ref=e1720]
+          - paragraph [ref=e1721]: "Check if your monitor has been tested:"
+          - generic [ref=e1722]:
+            - link "→ RTings Database" [ref=e1723] [cursor=pointer]:
+              - /url: https://www.rtings.com/monitor/reviews
+            - link "→ TFTCentral Reviews" [ref=e1724] [cursor=pointer]:
+              - /url: https://tftcentral.co.uk/
+            - link "→ DisplayLag Database" [ref=e1725] [cursor=pointer]:
+              - /url: https://www.displaylag.com/display-database/
+        - generic [ref=e1726]:
+          - generic [ref=e1727]: ⚠️
+          - heading "No Reviews = High Risk" [level=4] [ref=e1728]
+          - paragraph [ref=e1729]: If your monitor has zero professional reviews, there's NO WAY to know its real input lag. Manufacturer specs are unreliable. Consider choosing a tested monitor instead, or wait for reviews before purchasing.
+        - generic [ref=e1730]:
+          - generic [ref=e1731]: 📧
+          - heading "Request Testing" [level=4] [ref=e1732]
+          - paragraph [ref=e1733]: "Contact reviewers directly to request testing of specific models:"
+          - generic [ref=e1734]:
+            - link "→ Suggest to RTings" [ref=e1735] [cursor=pointer]:
+              - /url: https://www.rtings.com/monitor/suggestions
+            - link "→ Contact TFTCentral" [ref=e1736] [cursor=pointer]:
+              - /url: https://twitter.com/TFTCentral
+  - generic [ref=e1738]:
+    - heading "Already Own a Monitor? Optimize It First" [level=2] [ref=e1739]
+    - generic [ref=e1740]:
+      - generic [ref=e1741]:
+        - generic [ref=e1742]: "01"
+        - heading "Test Your Current Monitor's Real Performance" [level=3] [ref=e1743]
+        - paragraph [ref=e1744]: "Before buying new, verify you've actually optimized your current monitor:"
+        - list [ref=e1745]:
+          - listitem [ref=e1746]:
+            - text: ✅ Go to
+            - link "TestUFO Ghosting Test" [ref=e1747] [cursor=pointer]:
+              - /url: https://www.testufo.com/ghosting
+          - listitem [ref=e1748]: ✅ Test EVERY overdrive setting (Off, Normal, Fast, Extreme)
+          - listitem [ref=e1749]: ✅ Look for inverse ghosting (corona effects) - often worse than regular ghosting
+          - listitem [ref=e1750]: ✅ Check Windows Display Settings - is 144Hz actually enabled?
+          - listitem [ref=e1751]: ✅ Verify Game Mode is ON (disables 20-50ms of processing lag)
+        - generic [ref=e1752]:
+          - strong [ref=e1753]: "Reality Check:"
+          - text: 70% of "laggy monitor" complaints are fixed by enabling Game Mode and selecting proper overdrive. Test optimization before spending $500 on new hardware.
+      - generic [ref=e1754]:
+        - generic [ref=e1755]: "02"
+        - heading "Check Firmware Updates" [level=3] [ref=e1756]
+        - paragraph [ref=e1757]: "Manufacturers sometimes release firmware fixing input lag or ghosting:"
+        - list [ref=e1758]:
+          - listitem [ref=e1759]: ✅ Visit manufacturer support page for your exact model
+          - listitem [ref=e1760]: ✅ Download firmware update utility (requires USB-B cable to monitor)
+          - listitem [ref=e1761]: ✅ Check r/Monitors subreddit for "[your model] firmware" user experiences
+          - listitem [ref=e1762]: ✅ Some updates improve performance by 5-10ms (Samsung Odyssey series)
+        - generic [ref=e1763]:
+          - strong [ref=e1764]: "Warning:"
+          - text: Firmware updates are sometimes irreversible. Research first - some updates made things worse (ASUS VG27AQ firmware 27 increased lag).
+      - generic [ref=e1765]:
+        - generic [ref=e1766]: "03"
+        - heading "Optimize GPU & Game Settings" [level=3] [ref=e1767]
+        - paragraph [ref=e1768]: "Monitor performance depends on proper GPU configuration:"
+        - list [ref=e1769]:
+          - listitem [ref=e1770]: ✅ Disable V-Sync (adds 20-50ms lag) → Enable G-Sync/FreeSync instead
+          - listitem [ref=e1771]: ✅ Set max pre-rendered frames to 1 in GPU control panel
+          - listitem [ref=e1772]: ✅ Disable "Ultra Low Latency Mode" if it causes stuttering
+          - listitem [ref=e1773]: ✅ Cap FPS to (refresh rate - 3) when using G-Sync for optimal VRR
+          - listitem [ref=e1774]: ✅ Use exclusive fullscreen (not borderless window) in older games
+        - generic [ref=e1775]:
+          - strong [ref=e1776]: "Common Mistake:"
+          - text: V-Sync ON + G-Sync adds massive input lag. Disable V-Sync in all games when using adaptive sync.
+      - generic [ref=e1777]:
+        - generic [ref=e1778]: "04"
+        - heading "Calculate If Upgrade Is Worth It" [level=3] [ref=e1779]
+        - paragraph [ref=e1780]: "Use this calculator to see real improvement from upgrading:"
+        - list [ref=e1781]:
+          - listitem [ref=e1782]: ✅ Calculate your CURRENT monitor's total input lag
+          - listitem [ref=e1783]: ✅ Calculate your TARGET monitor's input lag
+          - listitem [ref=e1784]: ✅ If difference is less than 5ms → not worth $400+ upgrade
+          - listitem [ref=e1785]: ✅ If difference is 10ms+ → noticeable improvement for competitive play
+          - listitem [ref=e1786]: ✅ If difference is 15ms+ → major upgrade, worth the cost
+        - generic [ref=e1787]:
+          - strong [ref=e1788]: "ROI Reality:"
+          - text: Going from 20ms → 15ms input lag ($400 monitor upgrade) has less impact than going from 80fps → 144fps ($200 GPU upgrade). Optimize FPS first, then monitor.
+      - generic [ref=e1789]:
+        - generic [ref=e1790]: "05"
+        - heading "Return Window Strategy" [level=3] [ref=e1791]
+        - paragraph [ref=e1792]: "If you recently bought a monitor and it's disappointing:"
+        - list [ref=e1793]:
+          - listitem [ref=e1794]: "✅ Amazon: 30-day return, even if opened (free return shipping)"
+          - listitem [ref=e1795]: "✅ Best Buy: 15-day return (30 days with Elite membership)"
+          - listitem [ref=e1796]: "✅ Newegg: 30 days BUT charges 15% restocking fee for opened monitors"
+          - listitem [ref=e1797]: "✅ Manufacturer direct: Varies, often 30 days but you pay return shipping"
+        - generic [ref=e1798]:
+          - strong [ref=e1799]: "Act Fast:"
+          - text: "Test your monitor thoroughly within the first week. Check for: ghosting (TestUFO), dead pixels (solid color screens), backlight bleed (dark room test), input lag feel (play your main game)."
+      - generic [ref=e1800]:
+        - generic [ref=e1801]: ⚠️
+        - heading "When to Just Upgrade (Don't Optimize)" [level=3] [ref=e1802]
+        - paragraph [ref=e1803]: "Some monitors are beyond saving with optimization:"
+        - list [ref=e1804]:
+          - listitem [ref=e1805]: ❌ 60Hz monitors for competitive gaming → upgrade to 144Hz minimum
+          - listitem [ref=e1806]: ❌ VA panels with severe black smearing → switch to IPS
+          - listitem [ref=e1807]: ❌ Generic office monitors claiming "5ms" → they're 25ms+ actual lag
+          - listitem [ref=e1808]: ❌ Monitors with broken G-Sync/FreeSync → not worth fighting with
+          - listitem [ref=e1809]: ❌ Any monitor measuring over 30ms total input lag → upgrade immediately
+        - generic [ref=e1810]:
+          - strong [ref=e1811]: "Hard Truth:"
+          - text: You can't optimize a fundamentally bad monitor into a good one. A 60Hz office monitor will never compete with a 240Hz gaming monitor, no matter what settings you change.
+  - generic [ref=e1813]:
+    - heading "🏪 How to Test Monitors In-Store" [level=2] [ref=e1814]
+    - generic [ref=e1815]:
+      - paragraph [ref=e1816]: "Best Buy and Micro Center usually have gaming monitors on display. Here's how to actually test them (bring your phone):"
+      - generic [ref=e1817]:
+        - generic [ref=e1818]:
+          - heading "📱 Tests You Can Do With Your Smartphone" [level=3] [ref=e1819]
+          - generic [ref=e1820]:
+            - heading "1. PWM Flicker Test (5 seconds)" [level=4] [ref=e1821]
+            - list [ref=e1822]:
+              - listitem [ref=e1823]: Open phone camera app
+              - listitem [ref=e1824]: Point at monitor (any content on screen is fine)
+              - listitem [ref=e1825]: If you see horizontal bars/waves = PWM flicker detected (bad for eye strain)
+              - listitem [ref=e1826]: No bars = flicker-free (good)
+            - heading "2. TestUFO Ghosting Test (2 minutes)" [level=4] [ref=e1827]
+            - list [ref=e1828]:
+              - listitem [ref=e1829]: Ask staff to open browser on display PC
+              - listitem [ref=e1830]: Go to testufo.com/ghosting
+              - listitem [ref=e1831]: Look for trails behind UFOs - less trail = better response time
+              - listitem [ref=e1832]: Test all overdrive settings (ask staff to access monitor OSD)
+              - listitem [ref=e1833]: Take video on your phone for later comparison
+            - heading "3. Dead Pixel Check (1 minute)" [level=4] [ref=e1834]
+            - list [ref=e1835]:
+              - listitem [ref=e1836]: "Open browser to: jasonfarrell.com/misc/deadpixeltest.php"
+              - listitem [ref=e1837]: Click through solid colors (black, white, red, green, blue)
+              - listitem [ref=e1838]: Look for stuck pixels (bright dots on black) or dead pixels (dark dots on white)
+              - listitem [ref=e1839]: Store displays often have damaged units - don't buy floor model
+            - heading "4. Backlight Bleed Test (30 seconds)" [level=4] [ref=e1840]
+            - list [ref=e1841]:
+              - listitem [ref=e1842]: Display full black screen (testufo.com/blacklevel)
+              - listitem [ref=e1843]: Look at corners - light glow is 'IPS glow' (normal for IPS)
+              - listitem [ref=e1844]: Light bleeding from edges = backlight bleed (QC issue)
+              - listitem [ref=e1845]: Take photo with your phone to remember which model had issues
+        - generic [ref=e1846]:
+          - heading "👁️ Subjective Tests (No Tools Needed)" [level=3] [ref=e1847]
+          - generic [ref=e1848]:
+            - heading "Compare Side-by-Side (Critical!)" [level=4] [ref=e1849]
+            - paragraph [ref=e1850]: "Store displays usually show multiple monitors. Directly compare:"
+            - list [ref=e1851]:
+              - listitem [ref=e1852]:
+                - strong [ref=e1853]: "Color accuracy:"
+                - text: Does skin tone look natural or orange/green?
+              - listitem [ref=e1854]:
+                - strong [ref=e1855]: "Viewing angles:"
+                - text: IPS > TN. Stand off-center to test
+              - listitem [ref=e1856]:
+                - strong [ref=e1857]: "Contrast:"
+                - text: VA panels have deepest blacks, IPS more washed out
+              - listitem [ref=e1858]:
+                - strong [ref=e1859]: "Motion clarity:"
+                - text: Wave your hand in front of screen - less blur = better
+              - listitem [ref=e1860]:
+                - strong [ref=e1861]: "Screen coating:"
+                - text: Matte (grainy texture) vs Glossy (glass-like)
+            - heading "Check Refresh Rate Setting" [level=4] [ref=e1862]
+            - paragraph [ref=e1863]:
+              - strong [ref=e1864]: Most store displays run at 60Hz even if they're 240Hz monitors!
+              - text: "Ask staff to:"
+            - list [ref=e1865]:
+              - listitem [ref=e1866]: Right-click desktop → Display Settings → Advanced Display
+              - listitem [ref=e1867]: Change refresh rate to maximum (144Hz, 240Hz, etc.)
+              - listitem [ref=e1868]: Go back to testufo.com to see motion at proper refresh rate
+              - listitem [ref=e1869]: This is WHY store displays often look 'laggy' - they're set to 60Hz!
+        - generic [ref=e1870]:
+          - heading "❌ What You CAN'T Test In-Store" [level=3] [ref=e1871]
+          - list [ref=e1872]:
+            - listitem [ref=e1873]:
+              - strong [ref=e1874]: "Actual input lag:"
+              - text: Store PCs have different GPUs, settings, cables - can't trust feel
+            - listitem [ref=e1875]:
+              - strong [ref=e1876]: "Long-term reliability:"
+              - text: Can't test burn-in risk, backlight degradation, firmware
+            - listitem [ref=e1877]:
+              - strong [ref=e1878]: "Your specific GPU compatibility:"
+              - text: Store uses different hardware setup
+            - listitem [ref=e1879]:
+              - strong [ref=e1880]: "VRR/G-Sync:"
+              - text: Store setups rarely have this configured properly
+            - listitem [ref=e1881]:
+              - strong [ref=e1882]: "Overdrive fine-tuning:"
+              - text: Need to test at home with your games/GPU
+          - paragraph [ref=e1884]:
+            - text: 💡
+            - strong [ref=e1885]: "Pro Strategy:"
+            - text: Test multiple models in-store to eliminate obvious problems (bad panel, excessive glow, ugly colors), then order your final choice online from a retailer with easy returns (Amazon, Best Buy). Test thoroughly at home with TestUFO and your actual games within the return window.
+        - generic [ref=e1886]:
+          - heading "⚠️ Store Display Warnings" [level=3] [ref=e1887]
+          - list [ref=e1888]:
+            - listitem [ref=e1889]:
+              - strong [ref=e1890]: Never buy the floor model
+              - text: "- It's been on 24/7 for months, backlight degraded, may have pixel damage"
+            - listitem [ref=e1891]:
+              - strong [ref=e1892]: Store lighting is terrible
+              - text: "- Bright overhead fluorescents make all monitors look washed out"
+            - listitem [ref=e1893]:
+              - strong [ref=e1894]: 60Hz default settings
+              - text: "- Always verify they set refresh rate to max before judging"
+            - listitem [ref=e1895]:
+              - strong [ref=e1896]: Terrible demo content
+              - text: "- Store loops aren't representative of gaming performance"
+            - listitem [ref=e1897]:
+              - strong [ref=e1898]: Price tags lie
+              - text: "- Store 'sale' prices often match online prices, check Amazon before buying"
+  - generic [ref=e1900]:
+    - heading "Why Input Lag Actually Affects Your Rank" [level=2] [ref=e1901]
+    - paragraph [ref=e1902]: Not just esports theory - here's the math on how milliseconds affect competitive performance
+    - generic [ref=e1903]:
+      - generic [ref=e1904]:
+        - generic [ref=e1905]: 🎯
+        - heading "FPS Games (Valorant, CS2)" [level=3] [ref=e1906]
+        - generic [ref=e1907]:
+          - paragraph [ref=e1908]:
+            - strong [ref=e1909]: "Enemy runs across doorway at 5m/s:"
+          - list [ref=e1910]:
+            - listitem [ref=e1911]: 10ms lag = 5cm behind where you see them
+            - listitem [ref=e1912]: 20ms lag = 10cm behind = missed headshot
+            - listitem [ref=e1913]: 30ms lag = 15cm behind = hitting air
+          - paragraph [ref=e1914]:
+            - strong [ref=e1915]: "Impact:"
+            - text: Players with 10ms total lag consistently land shots players with 30ms lag miss. Estimated 15-20% firefight advantage. This is the difference between Diamond 3 and Ascendant in Valorant.
+      - generic [ref=e1916]:
+        - generic [ref=e1917]: 🥊
+        - heading "Fighting Games" [level=3] [ref=e1918]
+        - generic [ref=e1919]:
+          - paragraph [ref=e1920]:
+            - strong [ref=e1921]: "Frame-perfect inputs in Street Fighter 6:"
+          - list [ref=e1922]:
+            - listitem [ref=e1923]: 16.67ms = 1 frame at 60fps
+            - listitem [ref=e1924]: 8ms monitor lag = missing every other frame-perfect input
+            - listitem [ref=e1925]: 67ms human reaction + 8ms display = 75ms total
+          - paragraph [ref=e1926]:
+            - strong [ref=e1927]: "Impact:"
+            - text: Frame-perfect links and parries become inconsistent with high input lag. Competitive fighting game scene requires sub-10ms displays. One dropped combo = lost round.
+      - generic [ref=e1928]:
+        - generic [ref=e1929]: 🏎️
+        - heading "Racing Sims" [level=3] [ref=e1930]
+        - generic [ref=e1931]:
+          - paragraph [ref=e1932]:
+            - strong [ref=e1933]: "iRacing at Monza chicane (200km/h):"
+          - list [ref=e1934]:
+            - listitem [ref=e1935]: 20ms lag = 1.1 meters traveled before seeing feedback
+            - listitem [ref=e1936]: Turn-in point delayed by 1 meter = clipping apex
+            - listitem [ref=e1937]: Oversteer correction 20ms late = spin
+          - paragraph [ref=e1938]:
+            - strong [ref=e1939]: "Impact:"
+            - text: Professional sim racers use 5-10ms displays. Above 15ms, precise car control at limit becomes guesswork. Estimated 0.2-0.5 seconds per lap (massive in competitive racing).
+    - generic [ref=e1940]:
+      - heading "The Placebo Effect Works Both Ways" [level=3] [ref=e1941]
+      - paragraph [ref=e1942]: Upgrading from 30ms to 10ms input lag WILL improve your aim and reactions. But going from 10ms to 8ms? You probably won't notice unless you're already top 500 rank.
+      - generic [ref=e1943]:
+        - generic [ref=e1944]:
+          - strong [ref=e1945]: "✅ Worth Upgrading:"
+          - list [ref=e1946]:
+            - listitem [ref=e1947]: 25ms+ → 15ms or better
+            - listitem [ref=e1948]: 60Hz → 144Hz+
+            - listitem [ref=e1949]: VA ghosting → IPS clarity
+        - generic [ref=e1950]:
+          - strong [ref=e1951]: "❌ Marginal Gains:"
+          - list [ref=e1952]:
+            - listitem [ref=e1953]: 12ms → 10ms (placebo mostly)
+            - listitem [ref=e1954]: 240Hz → 360Hz (unless pro)
+            - listitem [ref=e1955]: 2ms → 1ms response (imperceptible)
+  - generic [ref=e1957]:
+    - generic [ref=e1958]:
+      - generic [ref=e1959]: 💡 BUYING GUIDE
+      - heading "How to Choose Your Perfect Gaming Monitor" [level=2] [ref=e1960]
+      - paragraph [ref=e1961]: Expert advice to help you make the right decision
+    - generic [ref=e1962]:
+      - generic [ref=e1963]:
+        - generic [ref=e1964]: "01"
+        - heading "Match Your PC Performance" [level=3] [ref=e1965]
+        - paragraph [ref=e1966]: Don't buy a 240Hz monitor if your GPU can only do 100 FPS. Use our calculators to determine your actual FPS in games, then choose a refresh rate your PC can support. A 144Hz monitor with high FPS is better than a 240Hz monitor running at 100 FPS.
+        - generic [ref=e1967]:
+          - strong [ref=e1968]: "Pro Tip:"
+          - text: If you get 165 FPS in your main game, get a 165Hz or 144Hz monitor. Save money instead of buying 240Hz you won't utilize.
+      - generic [ref=e1969]:
+        - generic [ref=e1970]: "02"
+        - heading "Prioritize Refresh Rate Over Resolution" [level=3] [ref=e1971]
+        - paragraph [ref=e1972]: For competitive gaming, 1080p 240Hz beats 1440p 144Hz every time. Higher refresh rate gives you smoother motion and lower input lag. Resolution is less important when you're focused on performance. Pro players use 1080p 240-360Hz monitors because competitive edge matters more than pixel density.
+        - generic [ref=e1973]:
+          - strong [ref=e1974]: "Pro Tip:"
+          - text: Only go 1440p if you can maintain 144+ FPS consistently. Otherwise, stick with 1080p at higher refresh rates.
+      - generic [ref=e1975]:
+        - generic [ref=e1976]: "03"
+        - heading "Don't Ignore Input Lag" [level=3] [ref=e1977]
+        - paragraph [ref=e1978]: Response time isn't everything. Total input lag (which includes display latency and processing delay) matters more. A monitor with 1ms response time but 20ms input lag feels slower than one with 5ms response time and 10ms input lag. Use our calculator to check total input lag before buying.
+        - generic [ref=e1979]:
+          - strong [ref=e1980]: "Pro Tip:"
+          - text: For competitive gaming, aim for under 15ms total input lag. Our calculator shows you the real number.
+      - generic [ref=e1981]:
+        - generic [ref=e1982]: "04"
+        - heading "Consider Panel Type Carefully" [level=3] [ref=e1983]
+        - paragraph [ref=e1984]: "TN is fastest but ugly colors. IPS has great colors and good speed (1-2ms). VA has best contrast but ghosting issues. OLED is perfect but expensive with burn-in risk. For competitive FPS: TN or Fast IPS. For immersive single-player: IPS or OLED. For movies + gaming: VA or OLED."
+        - generic [ref=e1985]:
+          - strong [ref=e1986]: "Pro Tip:"
+          - text: Modern "Fast IPS" panels (1ms) offer the best balance of speed and image quality for most gamers.
+      - generic [ref=e1987]:
+        - generic [ref=e1988]: "05"
+        - heading "Enable Adaptive Sync" [level=3] [ref=e1989]
+        - paragraph [ref=e1990]: G-Sync (Nvidia) or FreeSync (AMD) eliminates screen tearing and stuttering without V-Sync's input lag penalty. This is essential for smooth gaming, especially when FPS drops below your refresh rate. Most modern monitors support both technologies now. Don't buy a monitor without adaptive sync in 2025.
+        - generic [ref=e1991]:
+          - strong [ref=e1992]: "Pro Tip:"
+          - text: "\"G-Sync Compatible\" (cheaper) works great with Nvidia cards. You don't need expensive \"G-Sync Ultimate\" unless you want premium features."
+      - generic [ref=e1993]:
+        - generic [ref=e1994]: "06"
+        - heading "Size Matters for Competitive Gaming" [level=3] [ref=e1995]
+        - paragraph [ref=e1996]: Most esports pros use 24-25" monitors. Larger screens (27"+) require more eye movement and make it harder to track corners. For competitive FPS, stick with 24-25". For immersive gaming or single-player, 27-32" is great. Ultrawide (34"+) is amazing for immersion but bad for competitive.
+        - generic [ref=e1997]:
+          - strong [ref=e1998]: "Pro Tip:"
+          - text: Sit closer to a 24" monitor than a 27" monitor. Viewing distance matters as much as size for competitive gaming.
+      - generic [ref=e1999]:
+        - generic [ref=e2000]: "07"
+        - heading "Understand Warranty & Dead Pixel Policies (They Vary Wildly)" [level=3] [ref=e2001]
+        - paragraph [ref=e2002]: "Monitor warranties aren't equal - some manufacturers make RMA nearly impossible:"
+        - generic [ref=e2003]:
+          - heading "Manufacturer Warranty Comparison:" [level=4] [ref=e2004]
+          - generic [ref=e2005]:
+            - strong [ref=e2006]: "✅ BEST (Easy RMA):"
+            - list [ref=e2007]:
+              - listitem [ref=e2008]:
+                - strong [ref=e2009]: "ASUS:"
+                - text: 3-year warranty, cross-ship advanced replacement, 0 dead pixel tolerance (some models)
+              - listitem [ref=e2010]:
+                - strong [ref=e2011]: "BenQ/Zowie:"
+                - text: 3 years, excellent support, pixel-perfect guarantee on premium models
+              - listitem [ref=e2012]:
+                - strong [ref=e2013]: "LG:"
+                - text: 3 years, allows 1-2 dead pixels but good about replacements in practice
+          - generic [ref=e2014]:
+            - strong [ref=e2015]: "⚠️ MIXED (Read Fine Print):"
+            - list [ref=e2016]:
+              - listitem [ref=e2017]:
+                - strong [ref=e2018]: "Dell/Alienware:"
+                - text: 3 years, but premium panel guarantee only on specific SKUs
+              - listitem [ref=e2019]:
+                - strong [ref=e2020]: "MSI:"
+                - text: 3 years, allows 3-5 dead pixels depending on location, slower RMA
+              - listitem [ref=e2021]:
+                - strong [ref=e2022]: "Gigabyte:"
+                - text: 3 years, requires 5+ dead pixels for replacement (frustrating)
+          - generic [ref=e2023]:
+            - strong [ref=e2024]: "❌ WORST (Avoid Unless Cheap):"
+            - list [ref=e2025]:
+              - listitem [ref=e2026]:
+                - strong [ref=e2027]: "Sceptre:"
+                - text: 1 year only, allows up to 8 dead pixels, poor support reputation
+              - listitem [ref=e2028]:
+                - strong [ref=e2029]: "Budget brands:"
+                - text: Often 1-2 years, require dozens of dead pixels to RMA
+              - listitem [ref=e2030]:
+                - strong [ref=e2031]: "Amazon house brands:"
+                - text: Limited warranty, hit-or-miss replacement
+        - generic [ref=e2032]:
+          - strong [ref=e2033]: "⚠️ OLED Burn-In Warranties:"
+          - paragraph [ref=e2034]: ASUS and LG now offer 3-year burn-in coverage on OLED monitors (massive improvement from no coverage). Dell Alienware QD-OLED has 3-year premium panel guarantee. This makes OLED much less risky than 2 years ago. Always verify burn-in coverage before buying OLED - some retailers/regions exclude it.
+        - generic [ref=e2035]:
+          - strong [ref=e2036]: "Pro Tip:"
+          - text: Extended warranties from retailers (Best Buy, Micro Center) often cover dead pixels that manufacturer warranties exclude. For $500+ monitors, consider $40-80 extended warranty with "no questions asked" pixel protection. Also buy with credit cards offering extended warranty benefits (doubles manufacturer warranty automatically).
+    - generic [ref=e2037]:
+      - heading "📊 SPEC PRIORITY PYRAMID (Most Important to Least)" [level=3] [ref=e2038]
+      - generic [ref=e2039]:
+        - generic [ref=e2040]:
+          - heading "🔺 TIER 1 - Critical for Gaming Performance:" [level=4] [ref=e2041]
+          - list [ref=e2042]:
+            - listitem [ref=e2043]:
+              - strong [ref=e2044]: Total Input Lag
+              - text: (under 15ms for competitive)
+            - listitem [ref=e2045]:
+              - strong [ref=e2046]: Refresh Rate
+              - text: matching your GPU's FPS
+            - listitem [ref=e2047]:
+              - strong [ref=e2048]: Panel response time consistency
+              - text: (not just advertised spec)
+        - generic [ref=e2049]:
+          - heading "🔺 TIER 2 - Important for Experience:" [level=4] [ref=e2050]
+          - list [ref=e2051]:
+            - listitem [ref=e2052]:
+              - strong [ref=e2053]: Resolution
+              - text: matching your GPU capability
+            - listitem [ref=e2054]:
+              - strong [ref=e2055]: Adaptive Sync
+              - text: (G-Sync/FreeSync) support
+            - listitem [ref=e2056]:
+              - strong [ref=e2057]: Panel type
+              - text: for your use case
+        - generic [ref=e2058]:
+          - heading "🔺 TIER 3 - Nice to Have:" [level=4] [ref=e2059]
+          - list [ref=e2060]:
+            - listitem [ref=e2061]:
+              - strong [ref=e2062]: HDR support
+              - text: (requires HDR600+ minimum)
+            - listitem [ref=e2063]:
+              - strong [ref=e2064]: Color gamut
+              - text: (for content creation)
+            - listitem [ref=e2065]:
+              - strong [ref=e2066]: Ergonomics and build quality
+        - generic [ref=e2067]:
+          - heading "🔺 TIER 4 - Marketing Fluff:" [level=4] [ref=e2068]
+          - list [ref=e2069]:
+            - listitem [ref=e2070]: Advertised "1ms" response time
+            - listitem [ref=e2071]: Contrast ratio specs (often inflated)
+            - listitem [ref=e2072]: Speaker quality (use headphones)
+      - paragraph [ref=e2074]: "⚠️ IGNORE: Any spec not independently verified by professional reviewers"
+    - generic [ref=e2075]:
+      - generic [ref=e2076]: 🏆
+      - heading "What Professional Esports Players Actually Use" [level=3] [ref=e2077]
+      - paragraph [ref=e2078]:
+        - strong [ref=e2079]: "CS2/Valorant Pros:"
+        - text: "24-25\" monitors, 240-360Hz, TN or Fast IPS panels. Most common: BenQ Zowie XL2546K, ASUS ROG Swift PG259QN. They prioritize sub-10ms input lag over everything else."
+      - paragraph [ref=e2080]:
+        - strong [ref=e2081]: Why 24" not 27"?
+        - text: Tournament standard, entire screen in peripheral vision, less eye movement needed. Pros sit 18-20 inches from screen - closer than casual gamers.
+      - paragraph [ref=e2082]:
+        - strong [ref=e2083]: Why 1080p not 1440p?
+        - text: Easier to maintain 300+ FPS for consistent input lag. In competitive FPS, frame rate > visual quality. Most competitive games are optimized for 1080p visibility.
+      - paragraph [ref=e2084]:
+        - strong [ref=e2085]: "Why Some Pros Still Use TN:"
+        - text: 0.5ms response vs 1-2ms Fast IPS. At professional level, 0.5-1.5ms difference is perceivable. However, newer pros increasingly choose Fast IPS for better colors with minimal speed penalty.
+      - generic [ref=e2086]:
+        - strong [ref=e2087]: "Reality Check:"
+        - text: If you're not playing at professional/semi-pro level, you don't need pro-level equipment. The difference between 8ms and 10ms input lag won't affect your rank. Focus on specs matching YOUR skill level and budget.
+  - generic [ref=e2089]:
+    - generic [ref=e2090]:
+      - heading "More Free Gaming Tools" [level=2] [ref=e2091]
+      - paragraph [ref=e2092]: Complete your gaming setup optimization
+    - generic [ref=e2093]:
+      - link "🖱️ DPI Calculator Test your mouse DPI, calculate eDPI, and optimize sensitivity for competitive gaming 🔥 Popular" [ref=e2094] [cursor=pointer]:
+        - /url: /dpi-calculator/
+        - generic [ref=e2095]: 🖱️
+        - heading "DPI Calculator" [level=4] [ref=e2096]
+        - paragraph [ref=e2097]: Test your mouse DPI, calculate eDPI, and optimize sensitivity for competitive gaming
+        - generic [ref=e2098]: 🔥 Popular
+      - link "💎 Robux Calculator Convert Roblox currency to real money instantly Gaming" [ref=e2099] [cursor=pointer]:
+        - /url: /gaming-calculators/robux/
+        - generic [ref=e2100]: 💎
+        - heading "Robux Calculator" [level=4] [ref=e2101]
+        - paragraph [ref=e2102]: Convert Roblox currency to real money instantly
+        - generic [ref=e2103]: Gaming
+      - link "🎯 V-Bucks Calculator Fortnite currency converter with all pricing tiers Gaming" [ref=e2104] [cursor=pointer]:
+        - /url: /gaming-calculators/vbucks/
+        - generic [ref=e2105]: 🎯
+        - heading "V-Bucks Calculator" [level=4] [ref=e2106]
+        - paragraph [ref=e2107]: Fortnite currency converter with all pricing tiers
+        - generic [ref=e2108]: Gaming
+      - link "🎮 All Gaming Calculators Browse our complete collection of gaming tools and calculators Hub" [ref=e2109] [cursor=pointer]:
+        - /url: /gaming-calculators/
+        - generic [ref=e2110]: 🎮
+        - heading "All Gaming Calculators" [level=4] [ref=e2111]
+        - paragraph [ref=e2112]: Browse our complete collection of gaming tools and calculators
+        - generic [ref=e2113]: Hub
+      - link "🔫 Apex Coins Calculator Apex Legends currency conversion tool Gaming" [ref=e2114] [cursor=pointer]:
+        - /url: /gaming-calculators/apex-coins/
+        - generic [ref=e2115]: 🔫
+        - heading "Apex Coins Calculator" [level=4] [ref=e2116]
+        - paragraph [ref=e2117]: Apex Legends currency conversion tool
+        - generic [ref=e2118]: Gaming
+      - link "⚔️ COD Points Calculator Call of Duty in-game currency calculator Gaming" [ref=e2119] [cursor=pointer]:
+        - /url: /gaming-calculators/cod-points/
+        - generic [ref=e2120]: ⚔️
+        - heading "COD Points Calculator" [level=4] [ref=e2121]
+        - paragraph [ref=e2122]: Call of Duty in-game currency calculator
+        - generic [ref=e2123]: Gaming
+  - generic [ref=e2125]:
+    - heading "✅ Pre-Purchase Verification Checklist" [level=2] [ref=e2126]
+    - generic [ref=e2127]:
+      - heading "Before Buying ANY Gaming Monitor:" [level=3] [ref=e2128]
+      - generic [ref=e2129]:
+        - heading "□ Check Professional Reviews" [level=4] [ref=e2130]
+        - list [ref=e2131]:
+          - listitem [ref=e2132]: □ Search "[Monitor Model] RTings" - check actual input lag measurement
+          - listitem [ref=e2133]: □ Search "[Monitor Model] TFTCentral" - check gamma-corrected response times
+          - listitem [ref=e2134]: □ Search "[Monitor Model] Hardware Unboxed" - check worst-case response times
+          - listitem [ref=e2135]: □ If NO professional reviews exist, DO NOT BUY (no way to verify real performance)
+      - generic [ref=e2136]:
+        - heading "□ Verify Your GPU Can Handle It" [level=4] [ref=e2137]
+        - list [ref=e2138]:
+          - listitem [ref=e2139]: □ Can your GPU maintain FPS matching the refresh rate in YOUR games?
+          - listitem [ref=e2140]: □ At the monitor's native resolution?
+          - listitem [ref=e2141]: □ Use this calculator's visualizer to check GPU-monitor matching
+          - listitem [ref=e2142]: □ Don't buy 240Hz if you only get 120 FPS - waste of money
+      - generic [ref=e2143]:
+        - heading "□ Understand Real Specifications" [level=4] [ref=e2144]
+        - list [ref=e2145]:
+          - listitem [ref=e2146]: □ Ignore manufacturer "1ms" claims - check professional average response time
+          - listitem [ref=e2147]: □ Total input lag under 15ms for competitive? (This calculator shows real lag)
+          - listitem [ref=e2148]: □ Panel type appropriate for use case? (Competitive=IPS/TN, Immersive=IPS/OLED)
+          - listitem [ref=e2149]: □ Does it have variable overdrive or will you need to adjust per-game?
+      - generic [ref=e2150]:
+        - heading "□ Check Return Policy" [level=4] [ref=e2151]
+        - list [ref=e2152]:
+          - listitem [ref=e2153]: □ Can you return within 30 days if response time isn't as expected?
+          - listitem [ref=e2154]: □ Test with TestUFO motion tests immediately upon receiving
+          - listitem [ref=e2155]: □ Test ALL overdrive settings for inverse ghosting
+          - listitem [ref=e2156]: □ Test input lag with subjective feel in your main games
+      - generic [ref=e2157]:
+        - paragraph [ref=e2158]:
+          - text: ⚠️
+          - strong [ref=e2159]: "RED FLAGS - DON'T BUY IF:"
+        - list [ref=e2160]:
+          - listitem [ref=e2161]: No professional reviews exist (launch day purchases are risky)
+          - listitem [ref=e2162]: Only manufacturer specs available (they're lying)
+          - listitem [ref=e2163]: Amazon reviews complain about "ghosting" or "input lag"
+          - listitem [ref=e2164]: Price seems too good (quality panels cost money)
+          - listitem [ref=e2165]: VA panel claiming "1ms" (physically impossible without severe artifacts)
+      - button "🖨️ Print This Checklist" [ref=e2167] [cursor=pointer]
+  - generic [ref=e2170]:
+    - generic [ref=e2171]:
+      - heading "Found Your Perfect Monitor?" [level=2] [ref=e2172]
+      - paragraph [ref=e2173]: Bookmark this page for future reference. Our monitor calculator suite is 100% free, ad-supported, and always will be. Share it with your gaming friends!
+      - generic [ref=e2174]:
+        - button "Calculate Again ↑" [ref=e2175] [cursor=pointer]
+        - link "Optimize Mouse DPI →" [ref=e2176] [cursor=pointer]:
+          - /url: /dpi-calculator/
+    - generic [ref=e2177]:
+      - generic [ref=e2178]:
+        - generic [ref=e2179]: 30K+
+        - generic [ref=e2180]: Gamers Helped
+      - generic [ref=e2181]:
+        - generic [ref=e2182]: 100%
+        - generic [ref=e2183]: Free Forever
+      - generic [ref=e2184]:
+        - generic [ref=e2185]: "0"
+        - generic [ref=e2186]: Data Collected
+  - contentinfo [ref=e2187]:
+    - generic [ref=e2188]:
+      - generic [ref=e2189]:
+        - generic [ref=e2190]:
+          - link [ref=e2191] [cursor=pointer]:
+            - /url: /
+            - img [ref=e2192]: Forge APIs
+          - paragraph [ref=e2206]: Professional gaming tools for competitive players.
+          - paragraph [ref=e2207]: © 2024 Forge APIs. All rights reserved.
+        - generic [ref=e2208]:
+          - generic [ref=e2209]:
+            - heading "Free Tools" [level=4] [ref=e2210]
+            - link "DPI Calculator" [ref=e2211] [cursor=pointer]:
+              - /url: /dpi-calculator/
+            - link "Monitor Calculator" [ref=e2212] [cursor=pointer]:
+              - /url: /monitor-calculator/
+            - link "Gaming Currency Calculators" [ref=e2213] [cursor=pointer]:
+              - /url: /gaming-calculators/
+            - link "GST Calculator India" [ref=e2214] [cursor=pointer]:
+              - /url: /gst-calculator/
+          - generic [ref=e2215]:
+            - heading "Company" [level=4] [ref=e2216]
+            - link "Forge APIs" [ref=e2217] [cursor=pointer]:
+              - /url: https://forgeapis.com
+            - link "Contact Us" [ref=e2218] [cursor=pointer]:
+              - /url: mailto:hello@forgeapis.com
+          - generic [ref=e2219]:
+            - heading "Testing Resources" [level=4] [ref=e2220]
+            - link "RTings Monitor Database" [ref=e2221] [cursor=pointer]:
+              - /url: https://www.rtings.com/monitor
+            - link "TFTCentral Reviews" [ref=e2222] [cursor=pointer]:
+              - /url: https://tftcentral.co.uk/
+            - link "Hardware Unboxed" [ref=e2223] [cursor=pointer]:
+              - /url: https://www.youtube.com/@Hardware_Unboxed
+            - link "DisplayLag Database" [ref=e2224] [cursor=pointer]:
+              - /url: https://www.displaylag.com/
+            - link "Blur Busters Research" [ref=e2225] [cursor=pointer]:
+              - /url: https://blurbusters.com/
+            - link "Tom's Hardware" [ref=e2226] [cursor=pointer]:
+              - /url: https://www.tomshardware.com/reviews
+          - generic [ref=e2227]:
+            - heading "Legal" [level=4] [ref=e2228]
+            - link "Privacy Policy" [ref=e2229] [cursor=pointer]:
+              - /url: /privacy.html
+            - link "Cookie Policy" [ref=e2230] [cursor=pointer]:
+              - /url: /cookies.html
+            - link "Terms of Service" [ref=e2231] [cursor=pointer]:
+              - /url: /terms.html
+      - paragraph [ref=e2233]: © 2024 Forge APIs. All rights reserved. • Building tools that gamers actually use.
+```

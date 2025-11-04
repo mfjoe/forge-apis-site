@@ -75,8 +75,11 @@ export default defineConfig({
   ],
 
   // Run local dev server before starting tests
+  // Serve from forge-apis-site directory to access both dpi-calculator and monitor-calculator
   webServer: {
-    command: 'cd ../../dpi-calculator && python -m http.server 8080',
+    command: process.platform === 'win32' 
+      ? 'python -m http.server 8080'
+      : 'python3 -m http.server 8080',
     port: 8080,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
