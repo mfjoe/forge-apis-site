@@ -3380,85 +3380,8 @@
     </div>
 
     <!-- Gaming Calculator Footer - Hub Version -->
-    <footer
-      style="
-        background: #1a1f2e;
-        color: #9ca3af;
-        margin-top: 4rem;
-        padding: 3rem 0;
-      "
-    >
-      <div class="footer-content">
-        <!-- Column 1 - More Gaming Calculators -->
-        <div class="footer-column">
-          <h4>More Gaming Calculators</h4>
-          <ul>
-            <li>
-              <a href="./robux/">Robux to USD Calculator</a>
-            </li>
-            <li>
-              <a href="./vbucks/"
-                >V-Bucks to USD Calculator</a
-              >
-            </li>
-            <li>
-              <a href="./minecoins/"
-                >Minecoins to USD Calculator</a
-              >
-            </li>
-            <li>
-              <a href="./fifa-points/"
-                >FIFA Points Calculator</a
-              >
-            </li>
-            <li>
-              <a href="./cod-points/"
-                >COD Points Calculator</a
-              >
-            </li>
-            <li>
-              <a href="./apex-coins/"
-                >Apex Coins Calculator</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <!-- Column 2 - Free Tools by Forge APIs -->
-        <div class="footer-column">
-          <h4>Free Tools by Forge APIs</h4>
-          <ul>
-            <li><a href="/gst-calculator/">GST Calculator India</a></li>
-            <li>
-              <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-            </li>
-            <li>
-              <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-            </li>
-            <li><a href="/tip-calculator/">Restaurant Tip Calculator</a></li>
-            <li><a href="/">All Tools</a></li>
-          </ul>
-          <p style="margin-top: 1rem; font-size: 12px; color: #6b7280">
-            Powered by Forge APIs
-          </p>
-        </div>
-
-        <!-- Column 3 - Legal -->
-        <div class="footer-column">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Service</a></li>
-            <li><a href="/cookies.html">Cookies</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        © 2024 Forge APIs. Gaming calculators are estimates only. Not affiliated
-        with game companies.
-      </div>
-    </footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
 
     <style>
       .footer-content {
@@ -3678,5 +3601,9 @@
         }
       }
     </style>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>

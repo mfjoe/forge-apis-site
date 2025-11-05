@@ -4983,58 +4983,8 @@
       </div>
 
       <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-content">
-            <div class="footer-brand-section">
-              <div class="footer-brand">DupeCheck</div>
-              <p>Instant duplicate invoice detection</p>
-              <p class="footer-powered">
-                Built by
-                <a href="https://forgeapis.com" style="color: var(--primary)"
-                  >Forge APIs</a
-                >
-              </p>
-            </div>
-
-            <div class="footer-links" style="display: flex; gap: 4rem">
-              <div class="footer-column">
-                <h4>Product</h4>
-                <a href="#pricingSection">Pricing</a>
-                <a href="#how-it-works">How It Works</a>
-              </div>
-
-              <div class="footer-column">
-                <h4>Support</h4>
-                <a href="mailto:hello@forgeapis.com">Contact Us</a>
-                <a href="https://forgeapis.com">About Forge APIs</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-bottom">
-            <div>
-              <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-              <p class="footer-note">
-                Your data is deleted immediately after processing. We never
-                store invoice information.
-              </p>
-            </div>
-            <div style="display: flex; gap: 1.5rem; font-size: 0.85rem">
-              <a
-                href="https://forgeapis.com/privacy"
-                style="color: var(--text-secondary)"
-                >Privacy Policy</a
-              >
-              <a
-                href="https://forgeapis.com/terms"
-                style="color: var(--text-secondary)"
-                >Terms of Service</a
-              >
-            </div>
-          </div>
-        </div>
-      </footer>
+          <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
     </div>
 
     <!-- Loading Overlay -->
@@ -7116,5 +7066,9 @@ Visit dupecheck.forgeapis.com for more
         }
       });
     </script>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>

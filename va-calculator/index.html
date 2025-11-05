@@ -6902,77 +6902,8 @@
     </button>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="logo">VA Disability Calculator</div>
-            <p>
-              Free VA disability calculator for accurate compensation estimates
-            </p>
-            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-          </div>
-
-          <div class="footer-links">
-            <!-- Column 1 - Products -->
-            <div class="footer-column">
-              <h4>Products</h4>
-              <div class="footer-subsection">
-                <h5>Premium APIs</h5>
-                <a href="../riskscore/">RiskScore API</a>
-                <a href="../dupecheck/">DupeCheck</a>
-                <a href="#">Coming Soon</a>
-              </div>
-              <div class="footer-subsection">
-                <h5>Free Tools</h5>
-                <a href="../dpi-calculator/">DPI Calculator</a>
-                <a href="../gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="../gst-calculator/">GST Calculator India</a>
-                <a href="index.html">VA Disability Benefits Calculator</a>
-                <a href="../tip-calculator/">Restaurant Tip Calculator</a>
-              </div>
-            </div>
-
-            <!-- Column 2 - Company -->
-            <div class="footer-column">
-              <h4>Company</h4>
-              <a href="https://forgeapis.com">Forge APIs</a>
-              <a href="mailto:hello@forgeapis.com">Contact Us</a>
-            </div>
-
-            <!-- Column 3 - Legal -->
-            <div class="footer-column">
-              <h4>Legal</h4>
-              <a href="../privacy.html">Privacy Policy</a>
-              <a href="../cookies.html">Cookie Policy</a>
-              <a href="../terms.html">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Footer Links (hidden on desktop) -->
-        <div class="footer-mobile-links">
-          <a href="../privacy.html">Privacy</a>
-          <a href="../terms.html">Terms</a>
-          <a href="../cookies.html">Cookies</a>
-          <a href="https://forgeapis.com">More Tools</a>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="footer-bottom-left">
-            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-            <p class="footer-note">
-              Free tools for everyone. Accurate calculations, always.
-            </p>
-          </div>
-          <div class="footer-bottom-right">
-            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
-              📧 Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
 
     <!-- Mobile Sticky Results Bar -->
     <div class="mobile-results-sticky" id="mobileResultsSticky" style="display: none;">
@@ -6990,5 +6921,9 @@
         </button>
       </div>
     </div>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>

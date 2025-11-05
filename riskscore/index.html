@@ -2755,66 +2755,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="logo">RiskScore</div>
-            <p>Intelligent risk assessment for modern applications</p>
-            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-          </div>
-
-          <div class="footer-links">
-            <!-- Column 1 - Products -->
-            <div class="footer-column">
-              <h4>Products</h4>
-              <div class="footer-subsection">
-                <h5>Premium APIs</h5>
-                <a href="/riskscore/">RiskScore API</a>
-                <a href="/dupecheck/">DupeCheck</a>
-                <a href="#">Coming Soon</a>
-              </div>
-              <div class="footer-subsection">
-                <h5>Free Tools</h5>
-                <a href="/gst-calculator/">GST Calculator India</a>
-                <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="/va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="/tip-calculator/">Restaurant Tip Calculator</a>
-              </div>
-            </div>
-
-            <!-- Column 2 - Company -->
-            <div class="footer-column">
-              <h4>Company</h4>
-              <a href="https://forgeapis.com">Forge APIs</a>
-              <a href="mailto:hello@forgeapis.com">Contact Us</a>
-            </div>
-
-            <!-- Column 3 - Legal -->
-            <div class="footer-column">
-              <h4>Legal</h4>
-              <a href="/privacy.html">Privacy Policy</a>
-              <a href="/cookies.html">Cookie Policy</a>
-              <a href="/terms.html">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="footer-bottom-left">
-            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-            <p class="footer-note">
-              Risk intelligence only. Not for legal compliance verification.
-            </p>
-          </div>
-          <div class="footer-bottom-right">
-            <a href="mailto:hello@forgeapis.com" class="footer-contact-link">
-              📧 Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
     <script src="/cookie-consent-secure.js" defer></script>
     <script>
       // Mobile menu toggle
@@ -2869,5 +2811,9 @@
         }
       });
     </script>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>

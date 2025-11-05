@@ -2673,61 +2673,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <a href="/" class="logo">
-              <svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
-                <g transform="translate(15, 15)">
-                  <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#0066FF" stroke-width="0.5"/>
-                  <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
-                  <rect x="16" y="28" width="28" height="2" fill="#475569"/>
-                  <line x1="20" y1="32" x2="40" y2="32" stroke="#0066FF" stroke-width="0.5" opacity="0.6"/>
-                  <line x1="22" y1="34" x2="38" y2="34" stroke="#00D4AA" stroke-width="0.5" opacity="0.6"/>
-                  <g transform="rotate(-30 30 25)">
-                    <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
-                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
-                  </g>
-                  <g transform="rotate(30 30 25)">
-                    <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
-                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
-                  </g>
-                  <path d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z" fill="#FF6B35" opacity="0.9"/>
-                </g>
-                <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Forge</text>
-                <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9CA3AF">APIs</text>
-              </svg>
-            </a>
-            <p>Professional gaming tools for competitive players.</p>
-            <p style="margin-top: 20px;">© 2024 Forge APIs. All rights reserved.</p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Free Tools</h4>
-            <a href="/dpi-calculator/">DPI Calculator</a>
-            <a href="/monitor-calculator/">Monitor Calculator</a>
-            <a href="/gaming-calculators/">Gaming Currency Calculators</a>
-            <a href="/gst-calculator/">GST Calculator India</a>
-          </div>
-          <div class="footer-column">
-            <h4>Company</h4>
-            <a href="https://forgeapis.com">Forge APIs</a>
-            <a href="mailto:hello@forgeapis.com">Contact Us</a>
-          </div>
-          <div class="footer-column">
-            <h4>Legal</h4>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/cookies.html">Cookie Policy</a>
-            <a href="/terms.html">Terms of Service</a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2024 Forge APIs. All rights reserved. • Building tools that gamers actually use.</p>
-        </div>
-      </div>
-    </footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
 
     <!-- Cookie Consent Banner -->
     <div id="cookieConsent">
@@ -3190,6 +3137,10 @@
       ]
     }
     </script>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>
 

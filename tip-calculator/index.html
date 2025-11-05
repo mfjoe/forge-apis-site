@@ -2612,58 +2612,8 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="logo">Tip Calculator</div>
-            <p>Free tip calculator for accurate bill splitting</p>
-            <p class="footer-powered">Powered by <strong>Forge APIs</strong></p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>Products</h4>
-              <div class="footer-subsection">
-                <h5>Premium APIs</h5>
-                <a href="../riskscore/">RiskScore API</a>
-                <a href="../dupecheck/">DupeCheck</a>
-              </div>
-              <div class="footer-subsection">
-                <h5>Free Tools</h5>
-                <a href="../gst-calculator/">GST Calculator India</a>
-                <a href="../gaming-calculators/">Gaming Currency Calculators</a>
-                <a href="../va-calculator/">VA Disability Benefits Calculator</a>
-                <a href="index.html">Restaurant Tip Calculator</a>
-              </div>
-            </div>
-            <div class="footer-column">
-              <h4>Company</h4>
-              <a href="https://forgeapis.com">Forge APIs</a>
-              <a href="mailto:hello@forgeapis.com">Contact Us</a>
-            </div>
-            <div class="footer-column">
-              <h4>Legal</h4>
-              <a href="../privacy.html">Privacy Policy</a>
-              <a href="../cookies.html">Cookie Policy</a>
-              <a href="../terms.html">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <div class="footer-bottom-left">
-            <p>&copy; 2024 Forge APIs. All rights reserved.</p>
-            <p class="footer-note">
-              Free tools for everyone. Accurate calculations, always.
-            </p>
-          </div>
-          <div class="footer-bottom-right">
-            <a href="mailto:hello@forgeapis.com" class="footer-contact-link"
-              >📧 Contact Us</a
-            >
-          </div>
-        </div>
-      </div>
-    </footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
 
     <script>
       // Tip Calculator JavaScript
@@ -3075,5 +3025,9 @@
         icon.classList.toggle("rotated");
       }
     </script>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../footer-config.js"></script>
+    <script src="../footer.js"></script>
   </body>
 </html>

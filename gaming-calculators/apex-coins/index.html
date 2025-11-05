@@ -5381,12 +5381,17 @@
     </div>
 
     <!-- Gaming Calculator Footer -->
-    <footer id="footer-container"></footer>
+        <!-- Footer Container - Populated by footer.js -->
+    <div id="footer-container"></div>
     <script>
       // Load shared footer
       if (typeof loadGamingFooter === "function") {
         loadGamingFooter();
       }
     </script>
+      
+    <!-- Footer System - Load config first, then generator -->
+    <script src="../../footer-config.js"></script>
+    <script src="../../footer.js"></script>
   </body>
 </html>
