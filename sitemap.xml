@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
+  
+  <!-- Main Pages -->
   <url>
     <loc>https://forgeapis.com/</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,165 +12,36 @@
   <!-- Legal Pages -->
   <url>
     <loc>https://forgeapis.com/terms.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/cookies.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/privacy.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
-  <!-- Utility Tools -->
   <url>
-    <loc>https://forgeapis.com/dupecheck/</loc>
-    <lastmod>2025-01-24</lastmod>
+    <loc>https://forgeapis.com/cookies.html</loc>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.3</priority>
   </url>
   
+  <!-- API Products -->
   <url>
     <loc>https://forgeapis.com/riskscore/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Financial Calculators -->
-  <url>
-    <loc>https://forgeapis.com/tip-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/gst-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/gst-calculator/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://forgeapis.com/va-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/va-calculator/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Gaming Performance Calculators -->
-  <url>
-    <loc>https://forgeapis.com/dpi-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/monitor-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- FPS Calculator Game Pages -->
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/valorant.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/cs2.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/fortnite.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/warzone.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/apex-legends.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/overwatch-2.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/cyberpunk-2077.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/gta-v.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/minecraft.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/fps-calculator/games/cod-modern-warfare.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <loc>https://forgeapis.com/dupecheck/</loc>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -177,115 +49,174 @@
   <!-- Gaming Calculators Hub -->
   <url>
     <loc>https://forgeapis.com/gaming-calculators/</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
-  <!-- Gaming Calculators - Individual -->
+  <!-- Main Gaming Currency Calculators -->
   <url>
     <loc>https://forgeapis.com/gaming-calculators/robux/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/robux/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/robux/tax-calculator.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/vbucks/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/vbucks/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/minecoins/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/minecoins/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/gaming-calculators/cod-points/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://forgeapis.com/gaming-calculators/cod-points/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/fifa-points/</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/gaming-calculators/fifa-points/guide.html</loc>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://forgeapis.com/gaming-calculators/fifa-points/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <loc>https://forgeapis.com/gaming-calculators/cod-points/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/gaming-calculators/cod-points/guide.html</loc>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/apex-coins/</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/apex-coins/guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Gaming Calculator Guides -->
+  <!-- Gaming Calculator Guide Pages -->
   <url>
     <loc>https://forgeapis.com/gaming-calculators/guides/comparison.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://forgeapis.com/gaming-calculators/guides/parents-guide.html</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+  <!-- Other Calculators -->
+  <url>
+    <loc>https://forgeapis.com/tip-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/gst-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/gst-calculator/guide.html</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/va-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/va-calculator/guide.html</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/dpi-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forgeapis.com/monitor-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- FPS Calculator -->
+  <url>
+    <loc>https://forgeapis.com/fps-calculator/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
