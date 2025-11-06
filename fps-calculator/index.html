@@ -316,6 +316,83 @@
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(96, 165, 250, 0.15));
       }
 
+      /* Breadcrumb Navigation - Dark Theme */
+      #breadcrumb-container {
+        margin-top: 120px; /* Account for fixed nav */
+        position: relative;
+        z-index: 998;
+      }
+
+      .breadcrumb {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 26, 0.95) 50%, rgba(0, 0, 0, 0.9) 100%);
+        backdrop-filter: blur(10px);
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        z-index: 999;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .breadcrumb-item:not(:last-child)::after {
+        content: "›";
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        margin-left: 4px;
+      }
+
+      .breadcrumb-link {
+        color: #60a5fa;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .breadcrumb-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      .breadcrumb-current {
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      /* Responsive Breadcrumb */
+      @media (max-width: 768px) {
+        #breadcrumb-container {
+          margin-top: 90px; /* Slightly less for mobile but still safe */
+        }
+
+        .breadcrumb {
+          padding: 10px 0;
+        }
+
+        .breadcrumb-list {
+          font-size: 12px;
+          gap: 6px;
+        }
+
+        .breadcrumb-item::after {
+          font-size: 14px;
+          margin-left: 2px;
+        }
+      }
+
       /* Hero Section - Sleek & Modern */
       .hero {
         background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
@@ -1353,9 +1430,17 @@
 
       .footer-content {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr 2fr;
+        gap: 80px;
         margin-bottom: 40px;
+        align-items: start;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 60px;
+        justify-items: start;
       }
 
       .footer-brand {
@@ -1657,6 +1742,11 @@
         .footer-content {
           grid-template-columns: 1fr;
           gap: 30px;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 40px;
         }
 
         .footer-bottom {
@@ -2018,6 +2108,23 @@
         </button>
       </div>
     </nav>
+
+    <!-- Breadcrumb Container -->
+    <div id="breadcrumb-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+          <ol class="breadcrumb-list" style="list-style: none; margin: 0; padding: 0;">
+            <li class="breadcrumb-item" style="display: inline;">
+              <a href="/" class="breadcrumb-link" style="color: #60a5fa; text-decoration: none;">Home</a>
+              <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">›</span>
+            </li>
+            <li class="breadcrumb-item" style="display: inline;">
+              <span class="breadcrumb-current" style="color: #ffffff; font-weight: 600;">FPS Calculator</span>
+            </li>
+          </ol>
+        </div>
+      </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">

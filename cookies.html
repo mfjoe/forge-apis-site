@@ -22,10 +22,33 @@
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
 
-    <title>Cookie Policy - Forge APIs</title>
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Cookie Policy - Forge APIs | Cookie Usage & Privacy Controls</title>
     <meta
       name="description"
-      content="Forge APIs cookie policy. Learn how we use cookies and similar technologies."
+      content="Forge APIs cookie policy explaining how we use cookies, third-party cookies, consent requirements, and how to manage your cookie preferences. API services are cookie-free."
+    />
+    <meta
+      name="keywords"
+      content="forge apis cookies, cookie policy, cookie consent, gdpr cookies, api cookies, tracking cookies, browser cookies, cookie management"
+    />
+
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="Cookie Policy - Forge APIs" />
+    <meta
+      property="og:description"
+      content="Learn how Forge APIs uses cookies, manage your preferences, and understand our cookie-free API architecture."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forgeapis.com/cookies" />
+    <meta property="og:site_name" content="Forge APIs" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Cookie Policy - Forge APIs" />
+    <meta
+      name="twitter:description"
+      content="Transparent cookie policy with full control over your preferences. APIs are cookie-free."
     />
 
     <!-- Google Fonts -->
@@ -63,8 +86,8 @@
         background: white;
       }
 
-      /* Navigation */
-      nav {
+      /* Navigation - FIXED: More specific selector to avoid affecting nav elements inside content */
+      body > nav {
         position: fixed;
         top: 0;
         width: 100%;
@@ -73,6 +96,45 @@
         z-index: 1000;
         padding: 20px 0;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Breadcrumb */
+      .breadcrumb-container {
+        max-width: 1200px;
+        margin: 90px auto 0;
+        padding: 12px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .breadcrumb-container nav {
+        font-size: 14px;
+        color: #6b7280;
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .breadcrumb-container a {
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .breadcrumb-container a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb-container span {
+        margin: 0 8px;
+        color: #6b7280;
+      }
+
+      .breadcrumb-current {
+        color: #374151;
       }
 
       .container {
@@ -163,26 +225,28 @@
       /* Legal Content */
       .legal-header {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 140px 0 60px;
+        padding: 60px 0;
         color: white;
-        margin-top: 70px;
+        margin-top: 0;
       }
 
       .legal-header h1 {
         font-size: 48px;
         font-weight: 800;
         margin-bottom: 16px;
+        text-align: center;
       }
 
       .legal-header .last-updated {
         font-size: 16px;
         opacity: 0.9;
+        text-align: center;
       }
 
       .legal-content {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
       }
 
       .legal-content h2 {
@@ -341,18 +405,35 @@
         font-weight: 600;
       }
 
-      /* Table of Contents */
+      /* Table of Contents - FIXED: nav element inside toc should be static */
       .toc {
         background: var(--light-gray);
         border-radius: 12px;
         padding: 24px;
-        margin-bottom: 40px;
+        margin: 40px 0;
+      }
+
+      .toc nav {
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .toc h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: var(--dark);
+        font-weight: 700;
       }
 
       .toc h3 {
         font-size: 18px;
         margin-bottom: 16px;
         color: var(--dark);
+        display: none;
       }
 
       .toc ul {
@@ -368,17 +449,12 @@
       .toc a {
         color: var(--gray);
         text-decoration: none;
-        display: flex;
-        align-items: center;
+        display: inline-block;
+        transition: color 0.2s;
       }
 
       .toc a:hover {
         color: var(--primary);
-      }
-
-      .toc a::before {
-        content: "→";
-        margin-right: 8px;
       }
 
       /* Cookie Settings Button */
@@ -472,8 +548,21 @@
           display: none;
         }
 
+        .breadcrumb-container {
+          margin-top: 70px;
+          padding: 10px 15px;
+        }
+
+        .legal-header {
+          padding: 40px 0;
+        }
+
         .legal-header h1 {
           font-size: 36px;
+        }
+
+        .legal-content {
+          padding: 30px 15px;
         }
 
         .footer-content {
@@ -523,6 +612,33 @@
       gtag("config", "G-5YPCMTRSNN");
     </script>
     <!-- End Google Analytics -->
+
+    <!-- Cookie Policy Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Forge APIs Cookie Policy",
+      "description": "Complete cookie policy for Forge APIs explaining cookie usage, types, consent requirements, and how to manage cookies across our services.",
+      "author": {
+        "@type": "Organization",
+        "name": "Forge APIs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      },
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-08-17",
+      "articleSection": "Legal",
+      "inLanguage": "en-US",
+      "version": "1.1"
+    }
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -687,6 +803,36 @@
       </div>
     </nav>
 
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+      <nav aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Cookie Policy</span>
+      </nav>
+    </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://forgeapis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cookie Policy",
+          "item": "https://forgeapis.com/cookies"
+        }
+      ]
+    }
+    </script>
+
     <!-- Header -->
     <div class="legal-header">
       <div class="container">
@@ -717,18 +863,23 @@
       </div>
 
       <div class="toc">
-        <h3>Table of Contents</h3>
-        <ul>
-          <li><a href="#how-we-use">How We Use Cookies</a></li>
-          <li><a href="#consent">Cookie Consent</a></li>
-          <li><a href="#types">Types of Cookies</a></li>
-          <li><a href="#specific">Specific Cookies We Use</a></li>
-          <li><a href="#third-party">Third-Party Cookies</a></li>
-          <li><a href="#managing">Managing Cookies</a></li>
-          <li><a href="#api-services">API Services and Cookies</a></li>
-          <li><a href="#changes">Changes to This Policy</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
+        <h2 style="font-size: 20px; margin-bottom: 20px; color: var(--dark);">Table of Contents</h2>
+        <nav aria-label="Table of Contents">
+          <ul>
+            <li><a href="#how-we-use">How We Use Cookies</a></li>
+            <li><a href="#consent">Cookie Consent Requirements</a></li>
+            <li><a href="#types">Types of Cookies We Use</a></li>
+            <li><a href="#specific">Specific Cookies List</a></li>
+            <li><a href="#third-party">Third-Party Cookies</a></li>
+            <li><a href="#managing">Managing Your Cookie Preferences</a></li>
+            <li><a href="#api-services">API Services & Cookies</a></li>
+            <li><a href="#local-storage">Local Storage & Similar Technologies</a></li>
+            <li><a href="#privacy-rights">Your Privacy Rights</a></li>
+            <li><a href="#faq" style="font-weight: 600;">Cookie FAQs</a></li>
+            <li><a href="#changes">Changes to This Policy</a></li>
+            <li><a href="#contact">Contact Information</a></li>
+          </ul>
+        </nav>
       </div>
 
       <h2 id="how-we-use">How We Use Cookies</h2>
@@ -766,7 +917,7 @@
         </p>
       </div>
 
-      <h2 id="consent">Cookie Consent</h2>
+      <h2 id="consent">Cookie Consent Requirements</h2>
       <h3>For EU/UK Visitors</h3>
       <ul>
         <li>
@@ -790,7 +941,7 @@
         <li>You can still manage cookies through your browser settings</li>
       </ul>
 
-      <h2 id="types">Types of Cookies</h2>
+      <h2 id="types">Types of Cookies We Use</h2>
 
       <h3>Essential Cookies (Always Active)</h3>
       <p>
@@ -815,7 +966,7 @@
         cookies, some or all of these services may not function properly.
       </p>
 
-      <h2 id="specific">Specific Cookies We Use</h2>
+      <h2 id="specific">Specific Cookies List</h2>
 
       <table>
         <thead>
@@ -938,7 +1089,7 @@
         use such information.
       </p>
 
-      <h2 id="managing">Managing Cookies</h2>
+      <h2 id="managing">Managing Your Cookie Preferences</h2>
 
       <h3>Browser Settings</h3>
       <p>
@@ -1024,7 +1175,7 @@
         changes, we will update this policy and request your consent.
       </p>
 
-      <h2 id="api-services">API Services and Cookies</h2>
+      <h2 id="api-services">API Services & Cookies</h2>
 
       <div class="success-box">
         <h4>Important for API Users</h4>
@@ -1085,6 +1236,151 @@
         </li>
       </ul>
 
+      <h2 id="faq">Frequently Asked Questions About Cookies</h2>
+
+      <div style="margin: 2rem 0;">
+        
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Do I need to accept cookies to use Forge APIs?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">It depends on what you're using. <strong>For API services: No cookies required</strong> - our APIs authenticate via headers and are completely cookie-free. <strong>For the dashboard: Essential cookies are required</strong> to maintain your login session and security. You can disable analytics and functional cookies while still using the dashboard, but essential cookies must remain active for authentication and security purposes.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What's the difference between essential and non-essential cookies?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>Essential cookies</strong> are strictly necessary for our website to function - they enable login, security features, and basic functionality. You cannot opt out of these. <strong>Non-essential cookies</strong> include analytics (tracking usage patterns) and functional cookies (storing preferences). These are optional and can be disabled without preventing you from using our core services. Under GDPR, we must request consent for non-essential cookies but not for essential ones.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Does Forge APIs use tracking or advertising cookies?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>No, we do not use advertising or marketing cookies.</strong> We use minimal Google Analytics for understanding website usage, but we don't use social media trackers, remarketing pixels, or third-party advertising networks. Our philosophy is privacy-first - we only track what's necessary to improve our service. You can disable even our analytics cookies without affecting functionality.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">How do I block or delete cookies?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">You can manage cookies through your browser settings. In Chrome, Firefox, Safari, and Edge, go to Settings → Privacy → Cookies to view, delete, or block cookies. You can delete all cookies, specific cookies from our site, or block future cookies entirely. Note that blocking essential cookies will prevent you from logging into the dashboard. For analytics cookies specifically, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color: var(--primary); text-decoration: underline;">Google Analytics Opt-Out Browser Add-on</a>.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What cookies does Stripe use for payments?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Stripe sets cookies only on payment and checkout pages for secure payment processing and fraud prevention. These include cookies for session management, fraud detection, and payment form functionality. Stripe's cookies are essential for completing transactions and comply with PCI DSS security standards. They're automatically deleted after your session ends or within a short period. For complete details, see <a href="https://stripe.com/privacy" target="_blank" style="color: var(--primary); text-decoration: underline;">Stripe's Privacy Policy</a>.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">How long do cookies last on my device?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Cookie duration varies by type: <strong>Session cookies</strong> (session_id, csrf_token) expire when you close your browser. <strong>Authentication cookies</strong> (api_auth) last 7 days so you stay logged in. <strong>Preference cookies</strong> (preferences, locale) last 1 year to remember your settings. <strong>Google Analytics cookies</strong> (_ga) last 2 years to track long-term trends, while _gid lasts 24 hours. You can manually delete any cookie at any time through your browser settings.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Are your APIs affected by cookie consent requirements?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>No, our APIs are completely unaffected by cookie consent.</strong> Since our APIs don't use cookies at all (they authenticate via API keys in headers), you don't need cookie consent banners for API usage. This makes compliance much simpler for your applications. Cookie consent is only required for users visiting our marketing website or dashboard, not for applications integrating our APIs. This is a major advantage for privacy-conscious developers.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What is local storage and how do you use it?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Local storage is browser storage similar to cookies but with more capacity and different behavior. We use local storage to store your authentication tokens, dashboard preferences, and UI settings. Unlike cookies, local storage data is never sent to our servers automatically - it stays in your browser. Local storage persists until you explicitly clear it or we programmatically remove it. You can view and delete local storage data through your browser's developer tools (F12 → Application/Storage tab).</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Do you honor "Do Not Track" browser settings?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>Yes, we honor "Do Not Track" (DNT) signals.</strong> If your browser has DNT enabled, we will not set analytics cookies or track your browsing behavior. Essential cookies required for site functionality will still be set (login, security), but all optional tracking is disabled. To enable DNT, go to your browser's privacy settings and turn on the "Do Not Track" option. Note that DNT is being phased out in favor of more comprehensive privacy controls like Global Privacy Control (GPC).</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What happens if I disable all cookies?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">If you disable all cookies: <strong>You cannot log into the dashboard</strong> because authentication requires session cookies. <strong>Security features won't work</strong> - CSRF protection requires cookies. <strong>Preferences won't be saved</strong> between visits. <strong>Our APIs will work perfectly</strong> since they don't use cookies. We recommend keeping essential cookies enabled and only disabling analytics/functional cookies if privacy is a concern. This gives you dashboard access while minimizing tracking.</p>
+        </div>
+
+      </div>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need to accept cookies to use Forge APIs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For API services: No cookies required - our APIs authenticate via headers and are completely cookie-free. For the dashboard: Essential cookies are required to maintain your login session and security. You can disable analytics and functional cookies while still using the dashboard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the difference between essential and non-essential cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Essential cookies are strictly necessary for our website to function - they enable login, security features, and basic functionality. You cannot opt out of these. Non-essential cookies include analytics and functional cookies. These are optional and can be disabled. Under GDPR, we must request consent for non-essential cookies."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Forge APIs use tracking or advertising cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, we do not use advertising or marketing cookies. We use minimal Google Analytics for understanding website usage, but we don't use social media trackers, remarketing pixels, or third-party advertising networks. You can disable analytics cookies without affecting functionality."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I block or delete cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can manage cookies through your browser settings. In Chrome, Firefox, Safari, and Edge, go to Settings → Privacy → Cookies to view, delete, or block cookies. Note that blocking essential cookies will prevent you from logging into the dashboard. For analytics cookies, install the Google Analytics Opt-Out Browser Add-on."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What cookies does Stripe use for payments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stripe sets cookies only on payment and checkout pages for secure payment processing and fraud prevention. These include cookies for session management, fraud detection, and payment form functionality. They're essential for completing transactions and comply with PCI DSS security standards."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long do cookies last on my device?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Session cookies expire when you close your browser. Authentication cookies last 7 days. Preference cookies last 1 year. Google Analytics cookies (_ga) last 2 years while _gid lasts 24 hours. You can manually delete any cookie at any time through your browser settings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are your APIs affected by cookie consent requirements?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, our APIs are completely unaffected by cookie consent. Since our APIs don't use cookies at all (they authenticate via API keys in headers), you don't need cookie consent banners for API usage. Cookie consent is only required for users visiting our marketing website or dashboard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is local storage and how do you use it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Local storage is browser storage similar to cookies but with more capacity. We use it to store authentication tokens, dashboard preferences, and UI settings. Unlike cookies, local storage data is never sent to our servers automatically. You can view and delete local storage through your browser's developer tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you honor Do Not Track browser settings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we honor 'Do Not Track' (DNT) signals. If your browser has DNT enabled, we will not set analytics cookies or track your browsing behavior. Essential cookies for login and security will still be set. Enable DNT in your browser's privacy settings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I disable all cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If you disable all cookies: You cannot log into the dashboard, security features won't work (CSRF protection), and preferences won't be saved. However, our APIs will work perfectly since they don't use cookies. We recommend keeping essential cookies enabled and only disabling analytics/functional cookies."
+            }
+          }
+        ]
+      }
+      </script>
+
       <h2 id="changes">Changes to This Policy</h2>
       <ul>
         <li>Current Version: 1.1</li>
@@ -1095,15 +1391,15 @@
         <li>Previous versions available upon request</li>
       </ul>
 
-      <h2 id="contact">Contact Us</h2>
-      <p>
-        If you have questions about our use of cookies or this Cookie Policy:
-      </p>
+      <h2 id="contact">Contact Information</h2>
+      <p>If you have questions about our use of cookies or this Cookie Policy:</p>
       <ul>
-        <li><strong>Email:</strong> privacy@forgeapis.com</li>
-        <li><strong>General:</strong> hello@forgeapis.com</li>
-        <li><strong>Website:</strong> forgeapis.com</li>
+        <li><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@forgeapis.com">privacy@forgeapis.com</a></li>
+        <li><strong>General Inquiries:</strong> <a href="mailto:hello@forgeapis.com">hello@forgeapis.com</a></li>
+        <li><strong>Website:</strong> <a href="https://forgeapis.com">forgeapis.com</a></li>
         <li><strong>Location:</strong> London, England, United Kingdom</li>
+        <li><strong>Privacy Policy:</strong> <a href="/privacy">View our Privacy Policy</a></li>
+        <li><strong>Terms of Service:</strong> <a href="/terms">View our Terms of Service</a></li>
       </ul>
 
       <div class="info-box" style="margin-top: 40px">
@@ -1124,5 +1420,80 @@
     <!-- Footer System - Load config first, then generator -->
     <script src="footer-config.js"></script>
     <script src="footer.js"></script>
+
+    <!-- WebPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://forgeapis.com/cookies",
+      "url": "https://forgeapis.com/cookies",
+      "name": "Cookie Policy - Forge APIs",
+      "description": "Forge APIs cookie policy. Learn how we use cookies and similar technologies across our services.",
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-08-17",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://forgeapis.com/#website",
+        "url": "https://forgeapis.com",
+        "name": "Forge APIs"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Cookie Policy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "url": "https://forgeapis.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      }
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Forge APIs",
+      "url": "https://forgeapis.com",
+      "logo": "https://forgeapis.com/logo.png",
+      "description": "Production-ready APIs for fraud detection, risk assessment, and data validation",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressRegion": "England",
+        "addressCountry": "GB"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "privacy@forgeapis.com",
+        "contactType": "Privacy Inquiries",
+        "availableLanguage": "English"
+      }
+    }
+    </script>
+
+    <!-- DigitalDocument Schema for Policy Version -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DigitalDocument",
+      "name": "Forge APIs Cookie Policy",
+      "version": "1.1",
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-08-17",
+      "author": {
+        "@type": "Organization",
+        "name": "Forge APIs"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
   </body>
 </html>

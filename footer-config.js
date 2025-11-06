@@ -1,67 +1,69 @@
-// Footer Configuration - Single Source of Truth for All Footer Links
-// Update this file when adding new tools/categories
+// footer-config.js - Configuration for footer content
+// This file should be customized for each site
 
-const footerConfig = {
+const FOOTER_CONFIG = {
+  // Brand Information
   brand: {
     name: "Forge APIs",
-    tagline: "Production-ready APIs for modern applications.",
-    logo: {
-      enabled: true,
-      href: "/"
-    }
+    tagline: "PRODUCTION-READY APIS",
+    description: "Professional gaming tools and calculators. 100% free, privacy-focused, no data collection."
   },
-  
-  tools: {
-    gaming: {
+
+  // Footer Columns Configuration
+  columns: [
+    {
       title: "Gaming Tools",
-      items: [
-        { name: "FPS Calculator", url: "/fps-calculator/", icon: "⚡" },
-        { name: "Monitor Calculator", url: "/monitor-calculator/", icon: "🖥️" },
-        { name: "DPI Calculator", url: "/dpi-calculator/", icon: "🖱️" },
-        { name: "Gaming Currency Calculators", url: "/gaming-calculators/", icon: "💎" }
+      links: [
+        { text: "DPI Calculator", url: "/dpi-calculator/" },
+        { text: "Robux Calculator", url: "/gaming-calculators/robux/" },
+        { text: "V-Bucks Calculator", url: "/gaming-calculators/vbucks/" },
+        { text: "Minecoins Calculator", url: "/gaming-calculators/minecoins/" },
+        { text: "FIFA Points Calculator", url: "/gaming-calculators/fifa-points/" },
+        { text: "All Gaming Calculators", url: "/gaming-calculators/" }
       ]
     },
-    financial: {
-      title: "Financial Tools",
-      items: [
-        { name: "GST Calculator India", url: "/gst-calculator/", icon: "🧮" },
-        { name: "Restaurant Tip Calculator", url: "/tip-calculator/", icon: "💰" },
-        { name: "VA Disability Benefits Calculator", url: "/va-calculator/", icon: "🎖️" }
+    {
+      title: "Business Tools",
+      links: [
+        { text: "GST Calculator", url: "/gst-calculator/" },
+        { text: "VA Disability Calculator", url: "/va-disability-calculator/" },
+        { text: "API Documentation", url: "/docs/" }
       ]
     },
-    apis: {
-      title: "Premium APIs",
-      items: [
-        { name: "RiskScore API", url: "/riskscore/", icon: "🔒" },
-        { name: "DupeCheck", url: "/dupecheck/", icon: "🔍" }
+    {
+      title: "Company",
+      links: [
+        { text: "About Us", url: "/about/" },
+        { text: "Contact", url: "/contact/" },
+        { text: "Privacy Policy", url: "/privacy/" },
+        { text: "Terms of Service", url: "/terms/" }
       ]
     }
+  ],
+
+  // Social Media Links (optional)
+  social: {
+    twitter: "https://twitter.com/forgeapis",
+    github: "https://github.com/forgeapis",
+    // Add more as needed: linkedin, facebook, etc.
   },
-  
-  company: {
-    title: "Company",
-    items: [
-      { name: "Forge APIs", url: "https://forgeapis.com" },
-      { name: "Contact Us", url: "mailto:hello@forgeapis.com" }
-    ]
+
+  // Copyright Information
+  copyright: {
+    year: new Date().getFullYear(), // Auto-updates to current year
+    entity: "Forge APIs",
+    allRightsReserved: true
   },
-  
-  legal: {
-    title: "Legal",
-    items: [
-      { name: "Privacy Policy", url: "/privacy.html" },
-      { name: "Cookie Policy", url: "/cookies.html" },
-      { name: "Terms of Service", url: "/terms.html" }
-    ]
-  },
-  
-  bottom: {
-    copyright: `© ${new Date().getFullYear()} Forge APIs. All rights reserved.`,
-    tagline: "Building the future of APIs, one endpoint at a time.",
-    contact: {
-      text: "📧 Contact Us",
-      url: "mailto:hello@forgeapis.com"
-    }
-  }
+
+  // Additional Footer Links (appear in bottom bar)
+  bottomLinks: [
+    { text: "Privacy Policy", url: "/privacy/" },
+    { text: "Terms", url: "/terms/" },
+    { text: "Contact", url: "/contact/" }
+  ]
 };
 
+// Make config globally available
+if (typeof window !== 'undefined') {
+  window.FOOTER_CONFIG = FOOTER_CONFIG;
+}

@@ -22,10 +22,33 @@
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
 
-    <title>Privacy Policy - Forge APIs</title>
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Privacy Policy - Forge APIs | Data Protection & GDPR Compliance</title>
     <meta
       name="description"
-      content="Forge APIs privacy policy. Learn how we collect, use, and protect your data across all our products including DupeCheck and RiskScore API."
+      content="Forge APIs privacy policy explaining how we collect, protect, and use your data. Learn about GDPR compliance, data retention, security measures, and your privacy rights for DupeCheck and RiskScore API."
+    />
+    <meta
+      name="keywords"
+      content="forge apis privacy, data protection policy, gdpr compliance, api privacy policy, dupecheck privacy, riskscore privacy, data security, privacy rights"
+    />
+
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="Privacy Policy - Forge APIs" />
+    <meta
+      property="og:description"
+      content="Learn how Forge APIs protects your data across DupeCheck, RiskScore API, and all services. Full GDPR compliance and transparency."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forgeapis.com/privacy" />
+    <meta property="og:site_name" content="Forge APIs" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Privacy Policy - Forge APIs" />
+    <meta
+      name="twitter:description"
+      content="Learn how Forge APIs protects your data with GDPR compliance and industry-standard security."
     />
 
     <!-- Google Fonts -->
@@ -62,8 +85,8 @@
         background: white;
       }
 
-      /* Navigation */
-      nav {
+      /* Navigation - FIXED: More specific selector to avoid affecting nav elements inside content */
+      body > nav {
         position: fixed;
         top: 0;
         width: 100%;
@@ -72,6 +95,45 @@
         z-index: 1000;
         padding: 20px 0;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Breadcrumb */
+      .breadcrumb-container {
+        max-width: 1200px;
+        margin: 90px auto 0;
+        padding: 12px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .breadcrumb-container nav {
+        font-size: 14px;
+        color: #6b7280;
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .breadcrumb-container a {
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .breadcrumb-container a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb-container span {
+        margin: 0 8px;
+        color: #6b7280;
+      }
+
+      .breadcrumb-current {
+        color: #374151;
       }
 
       .container {
@@ -162,26 +224,28 @@
       /* Legal Content */
       .legal-header {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 140px 0 60px;
+        padding: 60px 0;
         color: white;
-        margin-top: 70px;
+        margin-top: 0;
       }
 
       .legal-header h1 {
         font-size: 48px;
         font-weight: 800;
         margin-bottom: 16px;
+        text-align: center;
       }
 
       .legal-header .last-updated {
         font-size: 16px;
         opacity: 0.9;
+        text-align: center;
       }
 
       .legal-content {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
       }
 
       .legal-content h2 {
@@ -318,18 +382,35 @@
         margin-bottom: 12px;
       }
 
-      /* Table of Contents */
+      /* Table of Contents - FIXED: nav element inside toc should be static */
       .toc {
         background: var(--light-gray);
         border-radius: 12px;
         padding: 24px;
-        margin-bottom: 40px;
+        margin: 40px 0;
+      }
+
+      .toc nav {
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .toc h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: var(--dark);
+        font-weight: 700;
       }
 
       .toc h3 {
         font-size: 18px;
         margin-bottom: 16px;
         color: var(--dark);
+        display: none;
       }
 
       .toc ul {
@@ -345,17 +426,12 @@
       .toc a {
         color: var(--gray);
         text-decoration: none;
-        display: flex;
-        align-items: center;
+        display: inline-block;
+        transition: color 0.2s;
       }
 
       .toc a:hover {
         color: var(--primary);
-      }
-
-      .toc a::before {
-        content: "→";
-        margin-right: 8px;
       }
 
       /* Footer */
@@ -431,8 +507,21 @@
           display: none;
         }
 
+        .breadcrumb-container {
+          margin-top: 70px;
+          padding: 10px 15px;
+        }
+
+        .legal-header {
+          padding: 40px 0;
+        }
+
         .legal-header h1 {
           font-size: 36px;
+        }
+
+        .legal-content {
+          padding: 30px 15px;
         }
 
         .footer-content {
@@ -472,6 +561,33 @@
       gtag("config", "G-5YPCMTRSNN");
     </script>
     <!-- End Google Analytics -->
+
+    <!-- Privacy Policy Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Forge APIs Privacy Policy",
+      "description": "Complete privacy policy for Forge APIs explaining data collection, usage, security, GDPR compliance, and user rights for DupeCheck, RiskScore API, and all services.",
+      "author": {
+        "@type": "Organization",
+        "name": "Forge APIs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      },
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-01-15",
+      "articleSection": "Legal",
+      "inLanguage": "en-US",
+      "version": "1.2"
+    }
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -636,6 +752,36 @@
       </div>
     </nav>
 
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+      <nav aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Privacy Policy</span>
+      </nav>
+    </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://forgeapis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://forgeapis.com/privacy"
+        }
+      ]
+    }
+    </script>
+
     <!-- Header -->
     <div class="legal-header">
       <div class="container">
@@ -660,26 +806,27 @@
       </div>
 
       <div class="toc">
-        <h3>Table of Contents</h3>
-        <ul>
-          <li><a href="#information-collect">Information We Collect</a></li>
-          <li>
-            <a href="#product-specific">Product-Specific Data Handling</a>
-          </li>
-          <li><a href="#legal-basis">Legal Basis for Processing</a></li>
-          <li><a href="#how-we-use">How We Use Your Information</a></li>
-          <li><a href="#sharing">Information Sharing</a></li>
-          <li><a href="#security">Data Security</a></li>
-          <li><a href="#retention">Data Retention</a></li>
-          <li><a href="#your-rights">Your Rights</a></li>
-          <li><a href="#gdpr">GDPR Compliance</a></li>
-          <li><a href="#ccpa">California Privacy Rights</a></li>
-          <li><a href="#cookies">Cookies & Local Storage</a></li>
-          <li><a href="#age">Age Restrictions</a></li>
-          <li><a href="#breach">Data Breach Notification</a></li>
-          <li><a href="#changes">Changes to This Policy</a></li>
-          <li><a href="#contact">Contact Information</a></li>
-        </ul>
+        <h2 style="font-size: 20px; margin-bottom: 20px; color: var(--dark);">Table of Contents</h2>
+        <nav aria-label="Table of Contents">
+          <ul>
+            <li><a href="#information-collect">Information We Collect</a></li>
+            <li><a href="#product-specific">Product-Specific Data Handling</a></li>
+            <li><a href="#legal-basis">Legal Basis for Processing</a></li>
+            <li><a href="#how-we-use">How We Use Your Information</a></li>
+            <li><a href="#sharing">Information Sharing & Disclosure</a></li>
+            <li><a href="#security">Data Security Measures</a></li>
+            <li><a href="#retention">Data Retention Periods</a></li>
+            <li><a href="#your-rights">Your Privacy Rights</a></li>
+            <li><a href="#gdpr">GDPR Compliance (EU/UK)</a></li>
+            <li><a href="#ccpa">California Privacy Rights (CCPA)</a></li>
+            <li><a href="#cookies">Cookies & Local Storage</a></li>
+            <li><a href="#age">Age Restrictions</a></li>
+            <li><a href="#breach">Data Breach Notification</a></li>
+            <li><a href="#faq" style="font-weight: 600;">Privacy FAQs</a></li>
+            <li><a href="#changes">Changes to This Policy</a></li>
+            <li><a href="#contact">Contact Information</a></li>
+          </ul>
+        </nav>
       </div>
 
       <h2 id="information-collect">Information We Collect</h2>
@@ -812,7 +959,7 @@
         <li>Complying with legal obligations</li>
       </ul>
 
-      <h2 id="sharing">Information Sharing</h2>
+      <h2 id="sharing">Information Sharing & Disclosure</h2>
       <p>
         We do not sell, trade, or rent your personal information. We may share
         information with:
@@ -843,7 +990,7 @@
         </li>
       </ul>
 
-      <h2 id="security">Data Security</h2>
+      <h2 id="security">Data Security Measures</h2>
       <p>
         We implement appropriate technical and organizational measures to
         protect your data:
@@ -862,7 +1009,7 @@
         we cannot guarantee absolute security.
       </p>
 
-      <h2 id="retention">Data Retention</h2>
+      <h2 id="retention">Data Retention Periods</h2>
       <p>
         We retain your information for as long as necessary to provide our
         services and comply with legal obligations:
@@ -894,7 +1041,7 @@
         <li><strong>Password Reset Tokens:</strong> 1 hour</li>
       </ul>
 
-      <h2 id="your-rights">Your Rights</h2>
+      <h2 id="your-rights">Your Privacy Rights</h2>
       <p>
         Depending on your location, you may have certain rights regarding your
         personal data:
@@ -924,7 +1071,7 @@
         To exercise these rights, please contact us at privacy@forgeapis.com.
       </p>
 
-      <h2 id="gdpr">GDPR Compliance</h2>
+      <h2 id="gdpr">GDPR Compliance (EU/UK)</h2>
       <p>For users in the European Economic Area (EEA) and United Kingdom:</p>
       <ul>
         <li>
@@ -1026,6 +1173,151 @@
         <li>We will advise on steps you can take to protect yourself</li>
       </ul>
 
+      <h2 id="faq">Frequently Asked Questions About Privacy</h2>
+
+      <div style="margin: 2rem 0;">
+        
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Does Forge APIs sell my personal data?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>No, we never sell your personal data.</strong> We do not sell, rent, or trade your personal information to third parties for marketing purposes or any other reason. Your data is used solely to provide our services to you. We may share data with essential service providers (like payment processors) but only to the extent necessary to operate our services.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What data does DupeCheck store from my uploaded invoices?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;"><strong>DupeCheck never stores your actual invoice data.</strong> When you upload a file, we process it entirely in server memory and immediately delete it after analysis. We only retain high-level summaries (like "analyzed 500 invoices, found 12 duplicates on January 15th") for 90 days to show in your dashboard history. We never store vendor names, amounts, invoice numbers, or any sensitive financial information.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Is Forge APIs GDPR compliant?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, we are fully GDPR compliant for EU and UK users. We act as a data processor for your data, implement appropriate security measures, respect all data subject rights (access, deletion, portability, etc.), maintain processing records, provide data breach notifications within 72 hours, and use Standard Contractual Clauses for any data transfers outside the EEA. You can exercise your GDPR rights by contacting privacy@forgeapis.com.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">How long do you keep my data?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Retention periods vary by data type: <strong>DupeCheck analysis summaries</strong> are kept for 90 days then automatically deleted; <strong>API request logs</strong> are retained for 30 days; <strong>account information</strong> is kept while your account is active plus 90 days after closure; <strong>payment records</strong> are retained for 7 years (legal requirement); and <strong>uploaded files</strong> are immediately deleted after processing. You can request deletion of your data at any time by contacting us.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What security measures protect my data?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">We implement industry-standard security including: TLS 1.3 encryption for all data transmission, bcrypt password hashing (never storing plain text), encrypted API key storage, regular security audits, rate limiting to prevent abuse, secure data centers with physical security, limited staff access on a need-to-know basis, and automatic session expiration. However, no internet transmission is 100% secure, so we recommend you also follow security best practices like using strong passwords and enabling two-factor authentication.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Can I request a copy of all my data?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, you have the right to data portability. You can request a complete export of your personal data in a machine-readable format (JSON or CSV) by emailing privacy@forgeapis.com with your account details. We'll respond within 30 days with your data export. This includes your account information, analysis summaries, API usage logs, and any other personal data we hold about you.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Do you use cookies or tracking?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">We use minimal tracking. <strong>DupeCheck</strong> stores authentication tokens and user preferences in localStorage, plus an anonymous device identifier for free usage limits (automatically deleted after 7 days). We do not use advertising cookies, social media trackers, or third-party analytics cookies. Our APIs authenticate via headers and don't use cookies at all. The dashboard may use session cookies only for login authentication, which expire when you close your browser.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What happens if there's a data breach?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">In the unlikely event of a data breach affecting your personal information, we will notify affected users within 72 hours of discovery via email. We'll explain what data was compromised, what we're doing to address it, and steps you can take to protect yourself. We'll also notify relevant supervisory authorities as required by GDPR and other privacy laws. All breaches are documented and investigated thoroughly to prevent recurrence.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Can I delete my account and all my data?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, you can delete your account at any time through your account settings or by contacting privacy@forgeapis.com. Upon deletion, we immediately remove access to your account and schedule all associated data for permanent deletion. Most data is deleted within 90 days, except payment records which we must retain for 7 years for legal compliance. You'll receive confirmation once the deletion is complete.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Who has access to my data at Forge APIs?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Access to personal data is strictly limited on a need-to-know basis. Only authorized employees and contractors who require access to provide or improve our services can view your data. All staff sign confidentiality agreements and receive privacy training. We use role-based access controls, audit logs to track data access, and revoke access immediately when no longer needed. We never share access credentials and require multi-factor authentication for all internal systems.</p>
+        </div>
+
+      </div>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does Forge APIs sell my personal data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, we never sell your personal data. We do not sell, rent, or trade your personal information to third parties for marketing purposes or any other reason. Your data is used solely to provide our services to you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What data does DupeCheck store from my uploaded invoices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DupeCheck never stores your actual invoice data. When you upload a file, we process it entirely in server memory and immediately delete it after analysis. We only retain high-level summaries for 90 days. We never store vendor names, amounts, invoice numbers, or any sensitive financial information."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Forge APIs GDPR compliant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we are fully GDPR compliant for EU and UK users. We act as a data processor, implement appropriate security measures, respect all data subject rights, maintain processing records, provide data breach notifications within 72 hours, and use Standard Contractual Clauses for data transfers outside the EEA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long do you keep my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Retention periods vary by data type: DupeCheck analysis summaries (90 days), API request logs (30 days), account information (active + 90 days after closure), payment records (7 years for legal compliance), and uploaded files (immediately deleted after processing)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What security measures protect my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We implement TLS 1.3 encryption for all data transmission, bcrypt password hashing, encrypted API key storage, regular security audits, rate limiting, secure data centers, limited staff access, and automatic session expiration. We recommend using strong passwords and enabling two-factor authentication."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I request a copy of all my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can request a complete export of your personal data in machine-readable format (JSON or CSV) by emailing privacy@forgeapis.com. We'll respond within 30 days with your data export including account information, analysis summaries, and API usage logs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you use cookies or tracking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We use minimal tracking. DupeCheck stores authentication tokens and an anonymous device identifier (deleted after 7 days). We do not use advertising cookies, social media trackers, or third-party analytics. APIs don't use cookies and authenticate via headers only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if there's a data breach?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In the event of a data breach, we will notify affected users within 72 hours via email, explain what data was compromised, detail our response, and advise on protective steps. We'll also notify relevant supervisory authorities as required by law and document all breaches thoroughly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I delete my account and all my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can delete your account anytime through account settings or by contacting privacy@forgeapis.com. Most data is deleted within 90 days, except payment records retained for 7 years for legal compliance. You'll receive confirmation once deletion is complete."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who has access to my data at Forge APIs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Access is strictly limited on a need-to-know basis. Only authorized employees and contractors who require access can view your data. All staff sign confidentiality agreements, receive privacy training, and we use role-based access controls with audit logs."
+            }
+          }
+        ]
+      }
+      </script>
+
       <h2 id="changes">Changes to This Policy</h2>
       <ul>
         <li><strong>Current Version:</strong> 1.2</li>
@@ -1038,10 +1330,12 @@
       <h2 id="contact">Contact Information</h2>
       <p>For questions about this Privacy Policy or our data practices:</p>
       <ul>
-        <li><strong>Email:</strong> privacy@forgeapis.com</li>
-        <li><strong>General Inquiries:</strong> hello@forgeapis.com</li>
-        <li><strong>Website:</strong> forgeapis.com</li>
-        <li><strong>Response Time:</strong> Within 48 hours</li>
+        <li><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@forgeapis.com">privacy@forgeapis.com</a></li>
+        <li><strong>General Inquiries:</strong> <a href="mailto:hello@forgeapis.com">hello@forgeapis.com</a></li>
+        <li><strong>Website:</strong> <a href="https://forgeapis.com">forgeapis.com</a></li>
+        <li><strong>Response Time:</strong> Within 48 hours (within 30 days for GDPR requests)</li>
+        <li><strong>Terms of Service:</strong> <a href="/terms">View our Terms of Service</a></li>
+        <li><strong>Data Processing Agreement:</strong> Contact us for enterprise DPA</li>
       </ul>
 
       <div class="critical-notice" style="margin-top: 40px">
@@ -1065,5 +1359,92 @@
     <!-- Footer System - Load config first, then generator -->
     <script src="footer-config.js"></script>
     <script src="footer.js"></script>
+
+    <!-- WebPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://forgeapis.com/privacy",
+      "url": "https://forgeapis.com/privacy",
+      "name": "Privacy Policy - Forge APIs",
+      "description": "Forge APIs privacy policy. Learn how we collect, use, and protect your data across all our products including DupeCheck and RiskScore API.",
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-01-15",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://forgeapis.com/#website",
+        "url": "https://forgeapis.com",
+        "name": "Forge APIs"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Privacy Policy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "url": "https://forgeapis.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      }
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Forge APIs",
+      "url": "https://forgeapis.com",
+      "logo": "https://forgeapis.com/logo.png",
+      "description": "Production-ready APIs for fraud detection, risk assessment, and data validation",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressRegion": "England",
+        "addressCountry": "GB"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "privacy@forgeapis.com",
+          "contactType": "Privacy Inquiries",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "hello@forgeapis.com",
+          "contactType": "Customer Service",
+          "availableLanguage": "English"
+        }
+      ],
+      "sameAs": [
+        "https://twitter.com/forgeapis",
+        "https://github.com/forgeapis"
+      ]
+    }
+    </script>
+
+    <!-- DigitalDocument Schema for Policy Version -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DigitalDocument",
+      "name": "Forge APIs Privacy Policy",
+      "version": "1.2",
+      "datePublished": "2024-06-01",
+      "dateModified": "2025-01-15",
+      "author": {
+        "@type": "Organization",
+        "name": "Forge APIs"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
   </body>
 </html>

@@ -1,20 +1,95 @@
-// Footer Generator - Dynamically creates footer from footer-config.js
+// footer.js - Universal footer generator
+// Works with footer-config.js to generate consistent footers across all sites
 
 (function() {
   'use strict';
-  
-  // Wait for config to be available
-  if (typeof footerConfig === 'undefined') {
-    console.error('footer-config.js must be loaded before footer.js');
-    return;
+
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFooter);
+  } else {
+    initFooter();
   }
-  
-  function generateFooter() {
-    const config = footerConfig;
+
+  function initFooter() {
+    // Check if config is loaded
+    if (typeof FOOTER_CONFIG === 'undefined') {
+      console.error('FOOTER_CONFIG not found. Make sure footer-config.js is loaded before footer.js');
+      return;
+    }
+
+    // Find footer container
+    const footerContainer = document.getElementById('footer-container');
+    if (!footerContainer) {
+      console.warn('Footer container (#footer-container) not found in page');
+      return;
+    }
+
+    // Generate and insert footer HTML
+    footerContainer.innerHTML = generateFooterHTML();
+
+    // Add footer styles if not already present
+    if (!document.getElementById('footer-styles')) {
+      addFooterStyles();
+    }
+  }
+
+  function generateFooterHTML() {
+    const config = FOOTER_CONFIG;
     
-    // Generate logo SVG (same as in index.html)
-    const logoSVG = `
-      <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+    return `
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+              ${generateLogoSVG(config.brand.name, config.brand.tagline)}
+              <p>${config.brand.description}</p>
+            </div>
+
+            <!-- Link Columns -->
+            <div class="footer-links">
+              ${config.columns.map(column => generateColumnHTML(column)).join('')}
+            </div>
+          </div>
+
+          <!-- Footer Bottom -->
+          <div class="footer-bottom">
+            <p>
+              © ${config.copyright.year} ${config.copyright.entity}${config.copyright.allRightsReserved ? '. All rights reserved.' : ''}
+            </p>
+            ${config.bottomLinks && config.bottomLinks.length > 0 ? `
+              <div class="footer-bottom-links">
+                ${config.bottomLinks.map((link, index) => `
+                  <a href="${link.url}">${link.text}</a>${index < config.bottomLinks.length - 1 ? '<span class="footer-separator">•</span>' : ''}
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      </footer>
+    `;
+  }
+
+  function generateColumnHTML(column) {
+    return `
+      <div class="footer-column">
+        <h4>${column.title}</h4>
+        ${column.links.map(link => `
+          <a href="${link.url}"${link.external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${link.text}</a>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function generateLogoSVG(brandName, tagline) {
+    // Parse brand name (e.g., "Forge APIs" -> "Forge" + "APIs")
+    const words = brandName.split(' ');
+    const firstWord = words[0] || '';
+    const secondWord = words.slice(1).join(' ') || '';
+
+    return `
+      <svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
         <g transform="translate(15, 15)">
           <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#0066FF" stroke-width="0.5"/>
           <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
@@ -38,136 +113,196 @@
           <path d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z" fill="#FFA500" opacity="0.8"/>
           <rect x="12" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
           <rect x="46" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
-          <rect x="10" y="25" width="1.5" height="1.5" fill="#FFD700" opacity="0.7"/>
-          <rect x="48" y="25" width="1.5" height="1.5" fill="#FFD700" opacity="0.7"/>
         </g>
-        <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Forge</text>
-        <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9CA3AF">APIs</text>
-        <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">PRODUCTION-READY APIS</text>
+        <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#ffffff">${firstWord}</text>
+        ${secondWord ? `<text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9CA3AF">${secondWord}</text>` : ''}
+        <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280" letter-spacing="0.5">${tagline.toUpperCase()}</text>
       </svg>
     `;
-    
-    // Generate tools section HTML
-    function generateToolsSection() {
-      let html = '<div class="footer-column"><h4>Products</h4>';
-      
-      // Premium APIs
-      if (config.tools.apis && config.tools.apis.items.length > 0) {
-        html += '<div class="footer-subsection"><h5>Premium APIs</h5>';
-        config.tools.apis.items.forEach(item => {
-          html += `<a href="${item.url}">${item.name}</a>`;
-        });
-        html += '</div>';
+  }
+
+  function addFooterStyles() {
+    const styleElement = document.createElement('style');
+    styleElement.id = 'footer-styles';
+    styleElement.textContent = `
+      /* Footer Styles - Generated by footer.js */
+      .footer {
+        background: #0a0e27;
+        color: white;
+        padding: 60px 0 30px;
+        margin-top: 80px;
       }
-      
-      // Free Tools section (combines gaming and financial tools)
-      let hasFreeTools = (config.tools.gaming && config.tools.gaming.items.length > 0) || 
-                         (config.tools.financial && config.tools.financial.items.length > 0);
-      
-      if (hasFreeTools) {
-        html += '<div class="footer-subsection"><h5>Free Tools</h5>';
-        
-        // Gaming Tools
-        if (config.tools.gaming && config.tools.gaming.items.length > 0) {
-          config.tools.gaming.items.forEach(item => {
-            html += `<a href="${item.url}">${item.name}</a>`;
-          });
-        }
-        
-        // Financial Tools
-        if (config.tools.financial && config.tools.financial.items.length > 0) {
-          config.tools.financial.items.forEach(item => {
-            html += `<a href="${item.url}">${item.name}</a>`;
-          });
-        }
-        
-        html += '</div>';
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
       }
-      
-      html += '</div>';
-      return html;
-    }
-    
-    // Generate company section
-    function generateCompanySection() {
-      let html = '<div class="footer-column"><h4>Company</h4>';
-      config.company.items.forEach(item => {
-        html += `<a href="${item.url}">${item.name}</a>`;
-      });
-      html += '</div>';
-      return html;
-    }
-    
-    // Generate legal section
-    function generateLegalSection() {
-      let html = '<div class="footer-column"><h4>Legal</h4>';
-      config.legal.items.forEach(item => {
-        html += `<a href="${item.url}">${item.name}</a>`;
-      });
-      html += '</div>';
-      return html;
-    }
-    
-    // Build complete footer HTML
-    const footerHTML = `
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-content">
-            <div class="footer-brand">
-              <a href="${config.brand.logo.href || '/'}" class="logo">
-                ${logoSVG}
-              </a>
-              <p>${config.brand.tagline}</p>
-              <p style="margin-top: 20px">${config.bottom.copyright}</p>
-            </div>
-            
-            <div class="footer-links">
-              ${generateToolsSection()}
-              ${generateCompanySection()}
-              ${generateLegalSection()}
-            </div>
-          </div>
-          
-          <div class="footer-bottom">
-            <div class="footer-bottom-left">
-              <p>${config.bottom.copyright}</p>
-              <p class="footer-note">${config.bottom.tagline}</p>
-            </div>
-            <div class="footer-bottom-right">
-              <a href="${config.bottom.contact.url}" class="footer-contact-link">
-                ${config.bottom.contact.text}
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+        margin-bottom: 30px;
+      }
+
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-brand p {
+        color: #9ca3af;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .footer-logo {
+        max-width: 240px;
+        height: auto;
+        margin-bottom: 8px;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 60px;
+        justify-items: start;
+      }
+
+      .footer-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 16px 0;
+        color: white;
+      }
+
+      .footer-column a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: #6b7280;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-bottom-links a {
+        color: #6b7280;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 14px;
+      }
+
+      .footer-bottom-links a:hover {
+        color: white;
+      }
+
+      .footer-separator {
+        color: #6b7280;
+        margin: 0 4px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .footer {
+          padding: 40px 0 20px;
+          margin-top: 60px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .footer-column {
+          gap: 10px;
+        }
+
+        .footer-column h4 {
+          margin-bottom: 12px;
+        }
+
+        .footer-bottom {
+          padding-top: 20px;
+          font-size: 13px;
+        }
+
+        .footer-bottom-links {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .footer-separator {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer {
+          padding: 30px 0 20px;
+          margin-top: 40px;
+        }
+
+        .footer-logo {
+          max-width: 200px;
+        }
+
+        .footer-brand p {
+          font-size: 13px;
+        }
+
+        .footer-column a {
+          font-size: 13px;
+        }
+
+        .footer-bottom {
+          font-size: 12px;
+        }
+      }
     `;
     
-    return footerHTML;
-  }
-  
-  // Insert footer when DOM is ready
-  function initFooter() {
-    const footerContainer = document.getElementById('footer-container');
-    if (footerContainer) {
-      footerContainer.innerHTML = generateFooter();
-    } else {
-      // If no container, try to find existing footer and replace it
-      const existingFooter = document.querySelector('footer.footer');
-      if (existingFooter) {
-        existingFooter.outerHTML = generateFooter();
-      } else {
-        // Insert at end of body
-        document.body.insertAdjacentHTML('beforeend', generateFooter());
-      }
-    }
-  }
-  
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFooter);
-  } else {
-    initFooter();
+    document.head.appendChild(styleElement);
   }
 })();
-

@@ -59,74 +59,55 @@
     <meta property="og:url" content="https://forgeapis.com/va-calculator" />
 
     <!-- Schema Markup for SEO -->
+    <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "VA Disability Calculator 2025",
-        "description": "Free online Veterans Affairs disability calculator to estimate monthly compensation.",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Any",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://forgeapis.com/"
         },
-        "provider": {
-          "@type": "Organization",
-          "name": "Forge APIs",
-          "url": "https://forgeapis.com"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "VA Disability Calculator",
+          "item": "https://forgeapis.com/va-calculator"
         }
-      }
-    </script>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://forgeapis.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "VA Disability Calculator",
-      "item": "https://forgeapis.com/va-calculator/"
+      ]
     }
-  ]
-}
     </script>
 
+    <!-- Review Snippets Schema with AggregateRating -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "VA Disability Calculator 2025",
-  "description": "Free Veterans Affairs disability calculator to estimate monthly compensation with combined ratings and dependent benefits. 2025 payment rates included.",
-  "url": "https://forgeapis.com/va-calculator/",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "2943",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "ForgeAPIs"
-  }
-}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "VA Disability Calculator 2025",
+      "description": "Free Veterans Affairs disability calculator to estimate monthly compensation with combined ratings and dependent benefits. 2025 payment rates included.",
+      "url": "https://forgeapis.com/va-calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2943",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ForgeAPIs"
+      }
+    }
     </script>
 
     <script type="application/ld+json">
@@ -231,7 +212,7 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        padding: 100px 0 0 0;
+        padding: 80px 0 0 0;
         color: var(--dark);
         line-height: 1.6;
       }
@@ -240,36 +221,110 @@
         max-width: 1200px;
         width: 100%;
         margin: 0 auto;
+        padding: 0 20px;
       }
 
       /* Navigation */
       nav {
         position: fixed;
         top: 0;
-        left: 0;
-        right: 0;
+        width: 100%;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem 0;
         z-index: 1000;
-        height: 80px;
+        padding: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Breadcrumb Navigation */
+      #breadcrumb-container {
+        margin-top: 120px; /* Account for fixed nav */
+        position: relative;
+        z-index: 998;
+      }
+
+      .breadcrumb {
+        background: white;
+        padding: 12px 0;
+        border-bottom: 1px solid #e5e7eb;
+        position: relative;
+        z-index: 999;
+      }
+
+      .breadcrumb-list {
         display: flex;
         align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .breadcrumb-item:not(:last-child)::after {
+        content: "›";
+        color: #9ca3af;
+        font-size: 16px;
+        margin-left: 4px;
+      }
+
+      .breadcrumb-link {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .breadcrumb-link:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      .breadcrumb-current {
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      /* Responsive Breadcrumb */
+      @media (max-width: 768px) {
+        #breadcrumb-container {
+          margin-top: 90px; /* Slightly less for mobile but still safe */
+        }
+
+        .breadcrumb {
+          top: 70px;
+          padding: 10px 0;
+        }
+
+        .breadcrumb-list {
+          font-size: 12px;
+          gap: 6px;
+        }
+
+        .breadcrumb-item::after {
+          font-size: 14px;
+          margin-left: 2px;
+        }
       }
 
       nav .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
       }
 
-      .logo svg {
-        width: 250px;
-        height: 80px;
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.3s;
+      }
+
+      .logo:hover {
+        opacity: 0.8;
       }
 
       .nav-links {
@@ -289,156 +344,36 @@
         color: var(--primary);
       }
 
-      /* Tools Dropdown */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-btn {
-        background: none;
-        border: none;
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
-        cursor: pointer;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .dropdown-btn:hover {
-        color: var(--primary);
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #1f2937;
-        color: white;
-        width: 224px;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-          0 4px 6px -2px rgba(0, 0, 0, 0.2);
-        z-index: 1001;
-        padding: 8px 0;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .dropdown.active .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .dropdown-section {
-        margin-bottom: 8px;
-      }
-
-      .dropdown-section:last-child {
-        margin-bottom: 0;
-      }
-
-      .dropdown-section-title {
-        padding: 4px 12px;
-        font-size: 12px;
-        color: #9ca3af;
-        text-transform: uppercase;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-      }
-
-      .dropdown-section a {
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        transition: background-color 0.2s ease;
-        border-radius: 6px;
-        margin: 2px 8px;
-      }
-
-      .dropdown-section a:hover {
-        background-color: #374151;
-        transition: background-color 0.2s ease;
-      }
-
-      .dropdown-divider {
-        border-top: 1px solid #374151;
-        margin: 8px 0;
-      }
-
-      .mobile-menu-toggle {
+      /* Mobile Menu */
+      .mobile-menu-btn {
         display: none;
         flex-direction: column;
-        gap: 4px;
-        background: none;
+        justify-content: space-around;
+        width: 30px;
+        height: 30px;
+        background: transparent;
         border: none;
         cursor: pointer;
-        padding: 8px;
+        padding: 0;
+        z-index: 1001;
       }
 
-      .mobile-menu-toggle span {
+      .hamburger-line {
         width: 25px;
         height: 3px;
         background: var(--dark);
-        transition: all 0.3s;
-        border-radius: 2px;
+        transition: all 0.3s ease;
       }
 
-      .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
 
-      .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      /* Mobile Menu */
-      .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        flex-direction: column;
-        gap: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-height: 70vh;
-        overflow-y: auto;
-      }
-
-      .mobile-menu.active {
-        display: flex;
-      }
-
-      .mobile-menu a {
-        padding: 0.75rem;
-        color: var(--dark);
-        text-decoration: none;
-        border-radius: 6px;
-        transition: background 0.3s;
-        font-size: 0.95rem;
-      }
-
-      .mobile-menu a:hover {
-        background: var(--light-gray);
+        .mobile-menu-btn {
+          display: flex;
+        }
       }
 
       /* Calculator Layout */
@@ -1138,32 +1073,14 @@
 
       @media (max-width: 768px) {
         body {
-          padding-top: 50px; /* Reduced from 60px */
+          padding-top: 80px; /* Account for fixed navbar */
           padding-left: 0.5rem;
           padding-right: 0.5rem;
           padding-bottom: 60px; /* Reduced from 80px */
         }
 
-        nav {
-          height: 50px; /* Reduced from 60px */
-          padding: 0.35rem 0; /* Reduced from 0.5rem */
-        }
-
-        nav .container {
-          padding: 0 1rem;
-        }
-
-        .logo svg {
-          width: 160px; /* Reduced from 180px */
-          height: 45px; /* Reduced from 50px */
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .mobile-menu-toggle {
-          display: flex;
+        .breadcrumb {
+          margin-top: 70px; /* Slightly less for mobile */
         }
 
         /* Compact header */
@@ -2029,10 +1946,6 @@
           max-width: 100%;
         }
 
-        /* Hide navbar and footer on mobile */
-        nav {
-          display: none !important;
-        }
 
         .footer {
           display: none !important;
@@ -3550,309 +3463,73 @@
     </script>
   </head>
   <body>
-    <div class="main-content-wrapper" style="flex: 1;">
-    <!-- Navigation -->
     <nav>
       <div class="container">
         <a href="/" class="logo">
-          <svg
-            width="300"
-            height="100"
-            viewBox="0 0 240 80"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <!-- Digital/Tech Anvil with Crossed Hammers -->
+          <svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(15, 15)">
-              <!-- Digital Anvil (geometric/tech style) -->
-              <path
-                d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
-                fill="#1E293B"
-                stroke="#0066FF"
-                stroke-width="0.5"
-              />
-              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1" />
-              <rect x="16" y="28" width="28" height="2" fill="#475569" />
-              <!-- Tech pattern on anvil -->
-              <line
-                x1="20"
-                y1="32"
-                x2="40"
-                y2="32"
-                stroke="#0066FF"
-                stroke-width="0.5"
-                opacity="0.6"
-              />
-              <line
-                x1="22"
-                y1="34"
-                x2="38"
-                y2="34"
-                stroke="#00D4AA"
-                stroke-width="0.5"
-                opacity="0.6"
-              />
-              <!-- Crossed Hammers (geometric style) -->
-              <!-- Left hammer -->
+              <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#0066FF" stroke-width="0.5"/>
+              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
+              <rect x="16" y="28" width="28" height="2" fill="#475569"/>
+              <line x1="20" y1="32" x2="40" y2="32" stroke="#0066FF" stroke-width="0.5" opacity="0.6"/>
+              <line x1="22" y1="34" x2="38" y2="34" stroke="#00D4AA" stroke-width="0.5" opacity="0.6"/>
               <g transform="rotate(-30 30 25)">
-                <rect
-                  x="28"
-                  y="15"
-                  width="4"
-                  height="18"
-                  fill="#0066FF"
-                  rx="0.5"
-                />
-                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
-                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA"/>
+                <rect x="34" y="13" width="2" height="2" fill="#00D4AA"/>
               </g>
-              <!-- Right hammer -->
               <g transform="rotate(30 30 25)">
-                <rect
-                  x="28"
-                  y="15"
-                  width="4"
-                  height="18"
-                  fill="#0066FF"
-                  rx="0.5"
-                />
-                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
-                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
-                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+                <rect x="28" y="15" width="4" height="18" fill="#0066FF" rx="0.5"/>
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC"/>
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA"/>
+                <rect x="34" y="13" width="2" height="2" fill="#00D4AA"/>
               </g>
-              <!-- Digital Fire/Energy (geometric flames) -->
-              <path
-                d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
-                fill="#FF6B35"
-                opacity="0.9"
-              />
-              <path
-                d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
-                fill="#FFA500"
-                opacity="0.8"
-              />
-              <path
-                d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
-                fill="#FFA500"
-                opacity="0.8"
-              />
-              <!-- Tech sparks (pixels) -->
-              <rect
-                x="12"
-                y="20"
-                width="2"
-                height="2"
-                fill="#00D4AA"
-                opacity="0.8"
-              />
-              <rect
-                x="46"
-                y="20"
-                width="2"
-                height="2"
-                fill="#00D4AA"
-                opacity="0.8"
-              />
-              <rect
-                x="10"
-                y="25"
-                width="1.5"
-                height="1.5"
-                fill="#FFD700"
-                opacity="0.7"
-              />
-              <rect
-                x="48"
-                y="25"
-                width="1.5"
-                height="1.5"
-                fill="#FFD700"
-                opacity="0.7"
-              />
+              <path d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z" fill="#FF6B35" opacity="0.9"/>
+              <path d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z" fill="#FFA500" opacity="0.8"/>
+              <path d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z" fill="#FFA500" opacity="0.8"/>
+              <rect x="12" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
+              <rect x="46" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
             </g>
-            <!-- Text: Forge -->
-            <text
-              x="75"
-              y="45"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="28"
-              font-weight="800"
-              fill="#0A0E27"
-            >
-              Forge
-            </text>
-            <!-- Text: APIs -->
-            <text
-              x="150"
-              y="45"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="28"
-              font-weight="400"
-              fill="#6B7280"
-            >
-              APIs
-            </text>
-            <!-- Tagline -->
-            <text
-              x="75"
-              y="63"
-              font-family="Inter, system-ui, -apple-system, sans-serif"
-              font-size="9"
-              fill="#9CA3AF"
-              letter-spacing="0.5"
-            >
-              PRODUCTION-READY APIS
-            </text>
+            <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#0A0E27">Forge</text>
+            <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#6B7280">APIs</text>
+            <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">PRODUCTION-READY APIS</text>
           </svg>
         </a>
         <div class="nav-links">
-          <div class="dropdown" id="toolsDropdown">
-            <button class="dropdown-btn" id="toolsDropdownBtn">
-              Tools <span style="font-size: 12px">▼</span>
-            </button>
-            <div class="dropdown-content">
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Premium Tools</div>
-                <a href="../riskscore/"> RiskScore API </a>
-                <a href="../dupecheck/"> DupeCheck </a>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-              <div class="dropdown-section">
-                <div class="dropdown-section-title">Free Tools</div>
-                <a href="../gst-calculator/"> GST Calculator India </a>
-                <a href="../gaming-calculators/"> Gaming Currency Calculators </a>
-                <a href="#">
-                  VA Disability Benefits Calculator
-                </a>
-                <a href="../tip-calculator/"> Restaurant Tip Calculator </a>
-              </div>
-            </div>
-          </div>
+          <a href="#calculator">Calculator</a>
           <a href="#how-to-use-calculator">How To Use</a>
+          <a href="#faq">FAQ</a>
         </div>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <a href="/">Home</a>
-
-          <div
-            style="
-              border-top: 1px solid #e2e8f0;
-              margin: 0.75rem 0;
-              padding-top: 0.5rem;
-            "
-          >
-            <span
-              style="
-                padding: 0.5rem 0.75rem;
-                display: block;
-                color: var(--gray);
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-              "
-              >Free Calculators</span
-            >
-          </div>
-
-          <a href="../gst-calculator/">GST Calculator</a>
-          <a href="#">VA Disability Calculator</a>
-          <a href="../tip-calculator/">Tip Calculator</a>
-          <a href="../gaming-calculators/">Gaming Calculators</a>
-
-          <div
-            style="
-              border-top: 1px solid #e2e8f0;
-              margin: 0.75rem 0;
-              padding-top: 0.5rem;
-            "
-          >
-            <span
-              style="
-                padding: 0.5rem 0.75rem;
-                display: block;
-                color: var(--gray);
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-              "
-              >Premium APIs</span
-            >
-          </div>
-
-          <a href="/riskscore/">RiskScore API</a>
-          <a href="/dupecheck/">DupeCheck</a>
-
-          <div style="border-top: 1px solid #e2e8f0; margin: 0.75rem 0"></div>
-
-          <a href="mailto:hello@forgeapis.com">Contact</a>
-        </div>
       </div>
     </nav>
 
-    <!-- Breadcrumb Navigation -->
-    <div class="breadcrumb" style="background: var(--light-gray); padding: 1rem 0; border-bottom: 1px solid rgba(0, 40, 104, 0.15); margin-bottom: 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); position: relative; z-index: 10;">
-      <div class="container">
-        <nav class="breadcrumb-list" aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gray); padding: 0 2rem;">
-          <div class="breadcrumb-item" style="display: flex; align-items: center;">
-            <a href="/" class="breadcrumb-link" style="color: var(--primary); text-decoration: none; transition: all 0.3s ease; border-radius: 6px; padding: 0.25rem 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
-              <svg width="120" height="20" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
-                <!-- Digital/Tech Anvil with Crossed Hammers -->
-                <g transform="translate(15, 15)">
-                  <!-- Digital Anvil (geometric/tech style) -->
-                  <path d="M 15 35 L 12 40 L 48 40 L 45 35 Z" fill="#1E293B" stroke="#002868" stroke-width="0.5"/>
-                  <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1"/>
-                  <rect x="16" y="28" width="28" height="2" fill="#475569"/>
-                  <line x1="20" y1="32" x2="40" y2="32" stroke="#002868" stroke-width="0.5" opacity="0.6"/>
-                  <line x1="22" y1="34" x2="38" y2="34" stroke="#bf0a30" stroke-width="0.5" opacity="0.6"/>
-                  <!-- Crossed Hammers -->
-                  <g transform="rotate(-30 30 25)">
-                    <rect x="28" y="15" width="4" height="18" fill="#002868" rx="0.5"/>
-                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#001a4a"/>
-                    <rect x="24" y="13" width="2" height="2" fill="#bf0a30"/>
-                    <rect x="34" y="13" width="2" height="2" fill="#bf0a30"/>
-                  </g>
-                  <g transform="rotate(30 30 25)">
-                    <rect x="28" y="15" width="4" height="18" fill="#002868" rx="0.5"/>
-                    <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#001a4a"/>
-                    <rect x="24" y="13" width="2" height="2" fill="#bf0a30"/>
-                    <rect x="34" y="13" width="2" height="2" fill="#bf0a30"/>
-                  </g>
-                  <!-- Digital Fire/Energy -->
-                  <path d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z" fill="#bf0a30" opacity="0.9"/>
-                  <path d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z" fill="#ffd700" opacity="0.8"/>
-                  <path d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z" fill="#ffd700" opacity="0.8"/>
-                  <rect x="12" y="20" width="2" height="2" fill="#bf0a30" opacity="0.8"/>
-                  <rect x="46" y="20" width="2" height="2" fill="#bf0a30" opacity="0.8"/>
-                </g>
-                <!-- Text: Forge -->
-                <text x="75" y="45" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#0A0E27">Forge</text>
-                <!-- Text: APIs -->
-                <text x="150" y="45" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="400" fill="#6B7280">APIs</text>
-                <!-- Tagline -->
-                <text x="75" y="63" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">PRODUCTION-READY APIS</text>
-              </svg>
-            </a>
-          </div>
-          <div class="breadcrumb-item" style="display: flex; align-items: center;">
-            <span style="color: var(--gray); margin: 0 0.25rem;">›</span>
-            <span class="breadcrumb-current" style="color: var(--dark); font-weight: 500;">VA Disability Calculator</span>
-          </div>
-        </nav>
-      </div>
+    <!-- Breadcrumb Container -->
+    <div id="breadcrumb-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+          <ol class="breadcrumb-list" style="list-style: none; margin: 0; padding: 0;">
+            <li class="breadcrumb-item" style="display: inline;">
+              <a href="/" class="breadcrumb-link" style="color: #0066ff; text-decoration: none;">Home</a>
+              <span style="color: #9ca3af; margin: 0 8px;">›</span>
+            </li>
+            <li class="breadcrumb-item" style="display: inline;">
+              <span class="breadcrumb-current" style="color: #1a1a2e; font-weight: 600;">VA Disability Calculator</span>
+            </li>
+          </ol>
+        </div>
+      </nav>
     </div>
+    
+    <div class="main-content-wrapper" style="flex: 1;">
 
     <!-- Calculator Layout -->
-    <div class="calculator-wrapper">
+    <div id="calculator" class="calculator-wrapper" style="scroll-margin-top: 100px;">
       <!-- Main Calculator -->
       <main class="calculator-main">
         <div class="calculator-card">
@@ -5114,7 +4791,7 @@
     <!-- End main content wrapper -->
 
       <!-- FAQ Section -->
-      <section style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem;">
+      <section id="faq" style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem; scroll-margin-top: 100px;">
       <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 40, 104, 0.1); border: 1px solid rgba(0, 40, 104, 0.1);">
         <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid var(--secondary); padding-bottom: 1rem;">
           🇺🇸 Frequently Asked Questions
@@ -5309,55 +4986,9 @@
         setupEventListeners();
         generatePayChart();
 
-        // Mobile menu functionality
-        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (mobileMenuToggle && mobileMenu) {
-          mobileMenuToggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.classList.toggle("active");
-            mobileMenu.classList.toggle("active");
-          });
-
-          // Close when clicking outside
-          document.addEventListener("click", function (e) {
-            if (
-              !mobileMenuToggle.contains(e.target) &&
-              !mobileMenu.contains(e.target)
-            ) {
-              mobileMenuToggle.classList.remove("active");
-              mobileMenu.classList.remove("active");
-            }
-          });
-        }
       });
 
       function setupEventListeners() {
-        // Tools dropdown
-        const toolsDropdownBtn = document.getElementById("toolsDropdownBtn");
-        const toolsDropdown = document.getElementById("toolsDropdown");
-
-        toolsDropdownBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          toolsDropdown.classList.toggle("active");
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener("click", function (e) {
-          if (!toolsDropdown.contains(e.target)) {
-            toolsDropdown.classList.remove("active");
-          }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-        mobileMenuToggle.addEventListener("click", function () {
-          // Mobile menu functionality can be added here
-          console.log("Mobile menu clicked");
-        });
-
         // Add disability button
         document
           .getElementById("addDisabilityBtn")

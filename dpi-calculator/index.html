@@ -143,6 +143,80 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
 
+      /* Breadcrumb Navigation */
+      #breadcrumb-container {
+        margin-top: 120px; /* Account for fixed nav */
+        position: relative;
+        z-index: 998;
+      }
+
+      .breadcrumb {
+        background: white;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        z-index: 999;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .breadcrumb-item:not(:last-child)::after {
+        content: "›";
+        color: var(--text-tertiary);
+        font-size: 16px;
+        margin-left: 4px;
+      }
+
+      .breadcrumb-link {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .breadcrumb-link:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      .breadcrumb-current {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Responsive Breadcrumb */
+      @media (max-width: 768px) {
+        #breadcrumb-container {
+          margin-top: 90px; /* Slightly less for mobile but still safe */
+        }
+
+        .breadcrumb {
+          top: 70px;
+          padding: 10px 0;
+        }
+
+        .breadcrumb-list {
+          font-size: 12px;
+          gap: 6px;
+        }
+
+        .breadcrumb-item::after {
+          font-size: 14px;
+          margin-left: 2px;
+        }
+      }
+
       nav .container {
         display: flex;
         justify-content: space-between;
@@ -591,8 +665,9 @@
 
       .footer-links {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 60px;
+        justify-items: start;
       }
 
       .footer-column h4 {
@@ -1609,7 +1684,6 @@
           <a href="#calculators">Calculators</a>
           <a href="#pro-settings">Pro Settings</a>
           <a href="#faq">FAQ</a>
-          <a href="#tools">More Tools</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <span class="hamburger-line"></span>
@@ -1618,6 +1692,23 @@
         </button>
       </div>
     </nav>
+
+    <!-- Breadcrumb Container -->
+    <div id="breadcrumb-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+          <ol class="breadcrumb-list" style="list-style: none; margin: 0; padding: 0;">
+            <li class="breadcrumb-item" style="display: inline;">
+              <a href="/" class="breadcrumb-link" style="color: #0066ff; text-decoration: none;">Home</a>
+              <span style="color: #9ca3af; margin: 0 8px;">›</span>
+            </li>
+            <li class="breadcrumb-item" style="display: inline;">
+              <span class="breadcrumb-current" style="color: #1a1a2e; font-weight: 600;">DPI Calculator</span>
+            </li>
+          </ol>
+        </div>
+      </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -6162,6 +6253,7 @@
       </script>
       
     <!-- Footer System - Load config first, then generator -->
+    
     <script src="../footer-config.js"></script>
     <script src="../footer.js"></script>
   </body>

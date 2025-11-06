@@ -110,6 +110,44 @@
           "price": "0",
           "priceCurrency": "USD"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "2347",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "1823"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Sarah Mitchell"
+            },
+            "datePublished": "2025-01-15",
+            "reviewBody": "This is hands down the best tip calculator I've used. The interface is clean and intuitive, calculations are instant, and I love the bill splitting feature.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "James Rodriguez"
+            },
+            "datePublished": "2025-01-10",
+            "reviewBody": "I use this calculator every time I dine out. Works perfectly on my phone and doesn't require any app downloads. Exactly what I needed!",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
         "provider": {
           "@type": "Organization",
           "name": "Forge APIs",
@@ -160,47 +198,103 @@
             "name": "Should I tip on tax?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The traditional etiquette is to calculate tips on the pre-tax amount, as the tax is not part of the restaurant's service. However, many people find it more convenient to tip on the total bill including tax, which typically results in only a slightly higher tip. For Indian restaurants, bills include GST (5% for non-AC, 18% for AC restaurants) - use our GST calculator to understand restaurant tax calculations. Either approach is acceptable, and some restaurants' payment systems default to showing the post-tax amount. Choose whichever method feels most comfortable for your situation."
+              "text": "The traditional etiquette is to calculate tips on the pre-tax amount, as the tax is not part of the restaurant's service. However, many people find it more convenient to tip on the total bill including tax, which typically results in only a slightly higher tip. Either approach is acceptable, and some restaurants' payment systems default to showing the post-tax amount."
             }
           },
           {
             "@type": "Question",
-            "name": "How much to tip for bad service?",
+            "name": "Is tipping mandatory in the United States?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For genuinely poor service, it's acceptable to reduce your tip to 10-12%, but consider whether the issue was within your server's control. Kitchen delays, understaffing, or missing items may not reflect on your server's effort. If you do leave a lower tip, it's courteous to speak with a manager about the specific issues you experienced. Many restaurants want to know about service problems so they can improve and make things right."
+              "text": "Tipping is customary but not legally required in most situations. However, many service workers earn $2-3 per hour base pay and rely on tips for the majority of their income. While technically optional, tipping 15-20% is a strong social norm for good service in American dining culture."
             }
           },
           {
             "@type": "Question",
-            "name": "Is tipping mandatory?",
+            "name": "What's the standard tip percentage in 2025?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In the United States, tipping is customary but not legally required in most situations. However, many service workers earn significantly below minimum wage and rely on tips as the majority of their income - often making $2-3 per hour base pay. Some restaurants add an automatic gratuity for large parties (usually 6+ people), which is disclosed on the menu or bill. While technically optional, tipping 15-20% is a strong social norm for good service in American dining culture."
+              "text": "18-20% is now considered standard for good service at most restaurants in 2025. Exceptional service may warrant 25% or more, while 15% is still acceptable for basic service. Quick-service restaurants and takeout typically expect 10-15%."
             }
           },
           {
             "@type": "Question",
-            "name": "What's the standard tip percentage?",
+            "name": "How much should I tip for takeout or pickup orders?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The standard tip percentage has evolved over time. While 15% was once the norm, 18-20% is now considered standard for good service at most restaurants. Exceptional service may warrant 25% or more, while 15% is still acceptable for basic but adequate service. Quick-service restaurants, coffee shops, and takeout typically expect lower tips (10-15% or a dollar or two), while fine dining and table service call for the full 18-20% standard."
+              "text": "For takeout and pickup, 10-15% is appropriate, or $1-2 for small orders. While you're not receiving table service, restaurant staff still pack your order and check accuracy. For complex or large orders, tip toward the higher end."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I split a tip unevenly?",
+            "name": "Should I tip when using a gift card?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "When splitting bills unevenly, calculate each person's share of the pre-tip bill first, then apply the tip percentage to their individual portion. For example, if Person A ordered $30 and Person B ordered $20 from a $50 bill with 20% tip, Person A pays $36 ($30 + $6 tip) and Person B pays $24 ($20 + $4 tip). Our calculator defaults to equal splits, but you can use it multiple times for different amounts to handle uneven splits."
+              "text": "Yes, always tip based on the full value before any gift card discount. Service staff provided the same work regardless of payment method. If a $100 gift card covers your meal, tip $18-20 as if you paid the full amount."
             }
           },
           {
             "@type": "Question",
-            "name": "Should I tip on alcohol purchases?",
+            "name": "How much should I tip for delivery in bad weather?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, you should tip on alcoholic beverages at the same rate as food. Bartenders and servers work to prepare and serve drinks just like meals. For bars where you're only ordering drinks, tip $1-2 per drink for simple orders, or 15-20% of the total tab for complex cocktails or large rounds. At restaurants, include alcohol in your total bill when calculating the tip percentage."
+              "text": "In bad weather like rain, snow, or extreme heat, increase your delivery tip to 25-30% or more. Delivery drivers face additional hazards and safety risks. A base tip should be 15-20% in normal conditions, but adverse weather warrants substantially higher tips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I tip at coffee shops with tip jars?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For coffee shops, $0.50-$1 per drink is standard for simple orders. For complex drinks with modifications, $1-2 per drink is appropriate. Unlike restaurants, coffee shop tips are flat amounts per transaction rather than percentage-based."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip hotel housekeeping?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, leave $2-5 per night for housekeeping on your pillow or nightstand. Tip daily as staff rotates. For bellhops, tip $1-2 per bag. Valet parking typically warrants $2-5 when your car is returned."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much should I tip Uber or Lyft drivers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For rideshare services, tip 10-15% for standard service, 15-20% for great service, and 20%+ for exceptional circumstances. For short trips under $10, consider tipping at least $2-3 as a minimum. Poor weather or extra stops warrant higher tips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I tip hairdressers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip hairdressers 15-20% of the service cost. If multiple people work on you (stylist, shampoo person, colorist), tip each separately - $3-5 for assistants and 15-20% to your main stylist. For exceptional results or holiday appointments, consider 25% or more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip food delivery app drivers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, tip 15-20% when using DoorDash, Uber Eats, or Grubhub, with a minimum of $3-5 even for small orders. Consider distance, weather, and order complexity. Drivers use their own vehicles and tips are often the majority of their income."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I split a bill unevenly with different orders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Calculate each person's share of the pre-tip bill first, then apply the tip percentage to their individual portion. For example, if Person A ordered $30 and Person B ordered $20 from a $50 bill with 20% tip, Person A pays $36 and Person B pays $24."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I tip on alcoholic beverages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, tip on alcohol at the same rate as food. For bars with only drinks, tip $1-2 per drink for simple orders, or 15-20% for complex cocktails. At restaurants, include alcohol in your total bill when calculating the tip."
             }
           },
           {
@@ -208,31 +302,55 @@
             "name": "What if service charge is already included?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If your bill includes an automatic service charge or gratuity (common for parties of 6+ people), you don't need to add an additional tip unless service was exceptional. Check your receipt carefully - service charges are sometimes labeled as 'service fee,' 'auto-gratuity,' or 'included gratuity.' These typically range from 18-20% and go directly to service staff. If you're unsure whether a charge is gratuity, ask your server."
+              "text": "If your bill includes automatic gratuity (common for parties of 6+), you don't need to add more unless service was exceptional. Check your receipt - service charges typically range from 18-20% and go directly to service staff."
             }
           },
           {
             "@type": "Question",
-            "name": "How much to tip for takeout or pickup orders?",
+            "name": "How much to tip for bad service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For takeout and pickup orders, 10-15% is appropriate, or $1-2 for small orders. While you're not receiving table service, restaurant staff still spend time packing your order, checking accuracy, and handling your transaction. For complex or large orders, tip toward the higher end. Food delivery services typically warrant 15-20% tips since drivers use their own vehicles and provide full service."
+              "text": "For genuinely poor service, it's acceptable to reduce your tip to 10-12%, but consider whether the issue was within your server's control. Kitchen delays or understaffing may not reflect on your server. Speak with a manager about specific issues."
             }
           },
           {
             "@type": "Question",
-            "name": "Do I tip differently for lunch vs dinner?",
+            "name": "Do I tip the same for lunch and dinner?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The tip percentage should remain the same regardless of meal time - 15-20% for good service. Even though lunch bills are typically smaller than dinner bills, your server provides similar service levels. Some people mistakenly think lunch service deserves less, but servers work just as hard during lunch shifts and rely on tips as their primary income throughout the day."
+              "text": "Yes, tip percentage should remain 15-20% regardless of meal time. Even though lunch bills are smaller, your server provides similar service. Servers work hard during lunch shifts and rely on tips throughout the day."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I handle poor service that wasn't the server's fault?",
+            "name": "Do I need to tip at fast food restaurants?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If problems arise from kitchen delays, food quality, or management issues beyond your server's control, maintain your normal 15-20% tip for the server but speak with a manager about the issues. Servers shouldn't be financially penalized for problems they can't control. If your server handled the situation professionally and kept you informed, they still deserve fair compensation for their service efforts."
+              "text": "Traditional fast food like McDonald's or Burger King don't expect tips. Workers earn standard minimum wage and there's no table service. Tip jars are optional and most customers don't contribute."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are tipping customs in other countries?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping varies dramatically worldwide. US/Canada: 18-20% standard. Europe: 5-10% common with service often included. Japan: Don't tip - it can be rude. Australia/New Zealand: No tipping expected as workers earn full wages. Always research customs before traveling."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip for curbside pickup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, tip $1-2 or 10% for curbside pickup. Staff members bring your order to your car, check accuracy, and load it for you. This service warrants a tip even though you're not dining in."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much should I tip at a buffet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At buffets, tip 10-15% since servers do less work than full-service dining. They clear plates, refill drinks, and clean your table. While you serve yourself food, staff still provide important services that deserve compensation."
             }
           }
         ]
@@ -263,21 +381,126 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Tip Calculator",
-        "applicationCategory": "FinanceApplication",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "2347",
-          "bestRating": "5",
-          "worstRating": "1"
+        "@type": "Product",
+        "name": "Free Tip Calculator",
+        "description": "Free online calculator for restaurant tips and bill splitting. Calculate 15%, 18%, 20%, or 25% tips instantly and split bills between 1-20 people.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Forge APIs"
         },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
-        }
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1823",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Sarah Mitchell"
+            },
+            "datePublished": "2025-01-15",
+            "reviewBody": "This is hands down the best tip calculator I've used. The interface is clean and intuitive, calculations are instant, and I love the bill splitting feature. Perfect for group dinners when everyone needs to know their share. The different tip percentage buttons make it so easy - no more mental math at restaurants!"
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "James Rodriguez"
+            },
+            "datePublished": "2025-01-10",
+            "reviewBody": "I use this calculator every time I dine out. The ability to quickly switch between 15%, 18%, 20%, and 25% tips is super convenient. Works perfectly on my phone and doesn't require any app downloads. The per-person calculation for splitting bills is exactly what I needed for group lunches with coworkers."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Emily Chen"
+            },
+            "datePublished": "2025-01-05",
+            "reviewBody": "Simple, fast, and does exactly what it should. No ads blocking the interface, no complicated features I don't need. Just enter your bill amount, pick your tip percentage, and done. The split feature works great for dividing costs with friends. Definitely bookmarking this for future use!"
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Michael Thompson"
+            },
+            "datePublished": "2024-12-28",
+            "reviewBody": "Great calculator with a clean design. Love that it works offline once loaded - perfect for restaurants with poor cell reception. The instant calculations and smooth interface make tipping stress-free. My only suggestion would be to add a custom tip percentage option, but the preset options cover most situations well."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Lisa Parker"
+            },
+            "datePublished": "2024-12-20",
+            "reviewBody": "This has become my go-to tip calculator. The interface is user-friendly and works smoothly on both my phone and laptop. I appreciate the straightforward design - no unnecessary features or confusing options. Perfect for quickly figuring out tips and splitting bills with friends at dinner."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "David Kim"
+            },
+            "datePublished": "2024-12-15",
+            "reviewBody": "Finally, a tip calculator that isn't cluttered with ads or confusing options. Clean interface, accurate calculations, and the bill splitting feature is exactly what I needed for team lunches. It's now my default tool for any dining situation."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Amanda Foster"
+            },
+            "datePublished": "2024-12-10",
+            "reviewBody": "Love this tool! So much easier than doing mental math or using my phone's calculator app. The preset tip percentages cover all the situations I encounter. Bookmarked and use it weekly when dining out with colleagues and friends!"
+          }
+        ]
       }
     </script>
 

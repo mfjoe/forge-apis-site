@@ -22,10 +22,33 @@
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
 
-    <title>Terms of Service - Forge APIs</title>
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Terms of Service - Forge APIs | API Usage Terms & Service Agreements</title>
     <meta
       name="description"
-      content="Forge APIs terms of service. Learn about our API usage terms, payment terms, and service agreements."
+      content="Official Forge APIs Terms of Service. Review our API usage policies, payment terms, data processing agreements, rate limits, and service-specific terms for RiskScore and other APIs."
+    />
+    <meta
+      name="keywords"
+      content="forge apis terms, api terms of service, api usage policy, api payment terms, riskscore terms, api legal terms, saas terms of service"
+    />
+
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="Terms of Service - Forge APIs" />
+    <meta
+      property="og:description"
+      content="Official Forge APIs Terms of Service including API usage policies, payment terms, and service agreements."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forgeapis.com/terms" />
+    <meta property="og:site_name" content="Forge APIs" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Terms of Service - Forge APIs" />
+    <meta
+      name="twitter:description"
+      content="Official Forge APIs Terms of Service including API usage policies and service agreements."
     />
 
     <!-- Google Fonts -->
@@ -62,8 +85,8 @@
         background: white;
       }
 
-      /* Navigation */
-      nav {
+      /* Navigation - FIXED: More specific selector to avoid affecting nav elements inside content */
+      body > nav {
         position: fixed;
         top: 0;
         width: 100%;
@@ -159,29 +182,70 @@
         }
       }
 
+      /* Breadcrumb */
+      .breadcrumb-container {
+        max-width: 1200px;
+        margin: 90px auto 0;
+        padding: 12px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .breadcrumb-container nav {
+        font-size: 14px;
+        color: #6b7280;
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .breadcrumb-container a {
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .breadcrumb-container a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb-container span {
+        margin: 0 8px;
+        color: #6b7280;
+      }
+
+      .breadcrumb-current {
+        color: #374151;
+      }
+
       /* Legal Content */
       .legal-header {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 140px 0 60px;
+        padding: 60px 0;
         color: white;
-        margin-top: 70px;
+        margin-top: 0;
       }
 
       .legal-header h1 {
         font-size: 48px;
         font-weight: 800;
         margin-bottom: 16px;
+        text-align: center;
       }
 
       .legal-header .last-updated {
         font-size: 16px;
         opacity: 0.9;
+        text-align: center;
       }
 
       .legal-content {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
       }
 
       .legal-content h2 {
@@ -299,18 +363,35 @@
         margin-top: 0;
       }
 
-      /* Table of Contents */
+      /* Table of Contents - FIXED: nav element inside toc should be static */
       .toc {
         background: var(--light-gray);
         border-radius: 12px;
         padding: 24px;
-        margin-bottom: 40px;
+        margin: 40px 0;
+      }
+
+      .toc nav {
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .toc h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: var(--dark);
+        font-weight: 700;
       }
 
       .toc h3 {
         font-size: 18px;
         margin-bottom: 16px;
         color: var(--dark);
+        display: none;
       }
 
       .toc ul {
@@ -326,17 +407,12 @@
       .toc a {
         color: var(--gray);
         text-decoration: none;
-        display: flex;
-        align-items: center;
+        display: inline-block;
+        transition: color 0.2s;
       }
 
       .toc a:hover {
         color: var(--primary);
-      }
-
-      .toc a::before {
-        content: "→";
-        margin-right: 8px;
       }
 
       .toc .service-link {
@@ -421,8 +497,21 @@
           display: none;
         }
 
+        .breadcrumb-container {
+          margin-top: 70px;
+          padding: 10px 15px;
+        }
+
+        .legal-header {
+          padding: 40px 0;
+        }
+
         .legal-header h1 {
           font-size: 36px;
+        }
+
+        .legal-content {
+          padding: 30px 15px;
         }
 
         .footer-content {
@@ -462,6 +551,32 @@
       gtag("config", "G-5YPCMTRSNN");
     </script>
     <!-- End Google Analytics -->
+
+    <!-- Article Schema for Legal Document -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Forge APIs Terms of Service",
+      "description": "Complete terms of service for Forge APIs including general terms, payment terms, API usage policies, and service-specific terms for RiskScore and other APIs.",
+      "author": {
+        "@type": "Organization",
+        "name": "Forge APIs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      },
+      "datePublished": "2025-01-15",
+      "dateModified": "2025-08-17",
+      "articleSection": "Legal",
+      "inLanguage": "en-US"
+    }
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -626,6 +741,36 @@
       </div>
     </nav>
 
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+      <nav aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Terms of Service</span>
+      </nav>
+    </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://forgeapis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms of Service",
+          "item": "https://forgeapis.com/terms"
+        }
+      ]
+    }
+    </script>
+
     <!-- Header -->
     <div class="legal-header">
       <div class="container">
@@ -646,32 +791,34 @@
       </div>
 
       <div class="toc">
-        <h3>Table of Contents</h3>
-        <ul>
-          <li><a href="#agreement">1. Agreement to Terms</a></li>
-          <li><a href="#use">2. Use of Services</a></li>
-          <li><a href="#accounts">3. Accounts</a></li>
-          <li><a href="#payment">4. Payment Terms</a></li>
-          <li><a href="#api">5. API Usage</a></li>
-          <li><a href="#restrictions">6. Restrictions</a></li>
-          <li><a href="#intellectual">7. Intellectual Property</a></li>
-          <li><a href="#liability">8. Limitation of Liability</a></li>
-          <li><a href="#indemnification">9. Indemnification</a></li>
-          <li><a href="#termination">10. Termination</a></li>
-          <li><a href="#changes">11. Changes to Terms</a></li>
-          <li><a href="#governing">12. Governing Law</a></li>
-          <li><a href="#severability">13. Severability</a></li>
-          <li><a href="#entire">14. Entire Agreement</a></li>
-          <li><a href="#contact">15. Contact Information</a></li>
-          <li>
-            <a href="#service-specific"
-              ><strong>16. SERVICE-SPECIFIC TERMS</strong></a
-            >
-          </li>
-          <li class="service-link">
-            <a href="#riskscore">→ RiskScore API Terms</a>
-          </li>
-        </ul>
+        <h2 style="font-size: 20px; margin-bottom: 20px; color: var(--dark);">Table of Contents</h2>
+        <nav aria-label="Table of Contents">
+          <ul>
+            <li><a href="#agreement">1. Agreement to Terms</a></li>
+            <li><a href="#use">2. Use of Services</a></li>
+            <li><a href="#accounts">3. Accounts & Security</a></li>
+            <li><a href="#payment">4. Payment Terms & Subscriptions</a></li>
+            <li><a href="#api">5. API Usage & Rate Limits</a></li>
+            <li><a href="#restrictions">6. Usage Restrictions</a></li>
+            <li><a href="#intellectual">7. Intellectual Property Rights</a></li>
+            <li><a href="#liability">8. Limitation of Liability & Warranties</a></li>
+            <li><a href="#indemnification">9. User Indemnification</a></li>
+            <li><a href="#termination">10. Account Termination</a></li>
+            <li><a href="#changes">11. Changes to Terms</a></li>
+            <li><a href="#governing">12. Governing Law & Disputes</a></li>
+            <li><a href="#severability">13. Severability</a></li>
+            <li><a href="#entire">14. Entire Agreement</a></li>
+            <li><a href="#contact">15. Contact Information</a></li>
+            <li style="margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--primary);">
+              <a href="#service-specific" style="font-weight: 700; font-size: 15px;">
+                <strong>16. SERVICE-SPECIFIC TERMS</strong>
+              </a>
+            </li>
+            <li class="service-link">
+              <a href="#riskscore">→ RiskScore API Additional Terms</a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <!-- GENERAL TERMS -->
@@ -699,7 +846,7 @@
         <li>You will comply with all applicable laws and regulations</li>
       </ul>
 
-      <h2 id="accounts">3. Accounts</h2>
+      <h2 id="accounts">3. Accounts & Security</h2>
       <h3>Account Creation</h3>
       <p>To use our Services, you must create an account. You agree to:</p>
       <ul>
@@ -717,7 +864,7 @@
         generate a new one.
       </p>
 
-      <h2 id="payment">4. Payment Terms</h2>
+      <h2 id="payment">4. Payment Terms & Subscriptions</h2>
       <h3>Subscription Plans</h3>
       <p>
         We offer various subscription plans with different features and usage
@@ -747,7 +894,7 @@
         payments are non-refundable except where required by law.
       </p>
 
-      <h2 id="api">5. API Usage</h2>
+      <h2 id="api">5. API Usage & Rate Limits</h2>
       <h3>Rate Limits</h3>
       <p>Each plan includes specific rate limits and monthly usage quotas:</p>
       <ul>
@@ -779,7 +926,7 @@
         </p>
       </div>
 
-      <h2 id="restrictions">6. Restrictions</h2>
+      <h2 id="restrictions">6. Usage Restrictions</h2>
       <p>You are specifically restricted from:</p>
       <ul>
         <li>Reverse engineering or attempting to extract source code</li>
@@ -792,7 +939,7 @@
         <li>Misrepresenting your affiliation with Forge APIs</li>
       </ul>
 
-      <h2 id="intellectual">7. Intellectual Property</h2>
+      <h2 id="intellectual">7. Intellectual Property Rights</h2>
       <p>
         The Service and its original content, features, and functionality are
         owned by Forge APIs and are protected by international copyright,
@@ -804,7 +951,7 @@
         the purpose of providing the Services.
       </p>
 
-      <h2 id="liability">8. Limitation of Liability</h2>
+      <h2 id="liability">8. Limitation of Liability & Warranties</h2>
       <h3>Disclaimer of Warranties</h3>
       <p>
         Our Services are provided "as is" and "as available" without warranties
@@ -836,7 +983,7 @@
         >
       </p>
 
-      <h2 id="indemnification">9. Indemnification</h2>
+      <h2 id="indemnification">9. User Indemnification</h2>
       <p>
         You agree to indemnify, defend, and hold harmless Forge APIs, its
         officers, directors, employees, and agents from any claims, damages,
@@ -855,7 +1002,7 @@
         </li>
       </ul>
 
-      <h2 id="termination">10. Termination</h2>
+      <h2 id="termination">10. Account Termination</h2>
       <p>
         We may terminate or suspend your account immediately, without prior
         notice, for any reason, including but not limited to:
@@ -879,7 +1026,7 @@
         changes constitutes acceptance of the modified Terms.
       </p>
 
-      <h2 id="governing">12. Governing Law</h2>
+      <h2 id="governing">12. Governing Law & Disputes</h2>
       <p>
         These Terms shall be governed by and construed in accordance with the
         laws of England and Wales, without regard to its conflict of law
@@ -901,12 +1048,134 @@
         understandings.
       </p>
 
+      <h2 id="faq">Frequently Asked Questions</h2>
+
+      <div style="margin: 2rem 0;">
+        
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Can I cancel my subscription anytime?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, you can cancel your Forge APIs subscription at any time through your account settings. You'll continue to have access until the end of your current billing period. We don't offer prorated refunds, but you won't be charged for subsequent billing cycles after cancellation.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What happens if I exceed my API rate limits?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">If you exceed your plan's rate limits, your API requests will be throttled and return HTTP 429 (Too Many Requests) errors. We recommend implementing exponential backoff in your code. To avoid interruptions, monitor your usage dashboard and upgrade your plan before reaching limits. Unused monthly quotas do not roll over to the next month.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Are my API keys and data secure?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes. We use industry-standard encryption for all data transmission (TLS 1.3) and storage. API keys are hashed and salted in our database. We never log or store sensitive data passed through our APIs longer than necessary for processing. You're responsible for keeping your API keys secure - never commit them to public repositories or expose them in client-side code.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Can I use Forge APIs for commercial projects?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, all Forge APIs plans (including Free tier) can be used for commercial projects. However, you cannot resell or redistribute our API services without written permission. If you're building a competing service or need custom licensing terms, please contact us at hello@forgeapis.com to discuss enterprise options.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What payment methods do you accept?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">We accept all major credit cards (Visa, Mastercard, American Express, Discover) and debit cards through our payment processor, Stripe. All transactions are processed securely, and we never store your complete payment information on our servers. Payments are charged monthly in USD on your subscription anniversary date.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Do you offer refunds?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">We offer a 7-day free trial for new customers to test our services risk-free. After the trial period, all payments are final and non-refundable except where required by law. If you experience technical issues or have concerns about billing, please contact our support team at hello@forgeapis.com within 7 days of being charged.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">Is the RiskScore API GDPR compliant?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">Yes, Forge APIs operates as a data processor under GDPR. You remain the data controller and are responsible for ensuring you have legal basis to submit data to our APIs. We provide data processing agreements (DPAs) for Enterprise customers. We do not store personal data longer than necessary for processing, and we comply with data subject rights requests when properly submitted by data controllers.</p>
+        </div>
+
+        <div style="background: white; border: 2px solid var(--light-gray); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0 0 1rem; color: var(--primary-dark); font-size: 1.2rem;">What happens if Forge APIs experiences downtime?</h3>
+          <p style="margin: 0; color: #374151; line-height: 1.8;">While we maintain 99.9% uptime targets, we provide services "as is" without uptime guarantees. We do not offer SLA credits or compensation for downtime on standard plans. Enterprise plans may include custom SLAs. We recommend implementing error handling and fallback mechanisms in your applications. You can monitor our service status at status.forgeapis.com.</p>
+        </div>
+
+      </div>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I cancel my subscription anytime?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can cancel your Forge APIs subscription at any time through your account settings. You'll continue to have access until the end of your current billing period. We don't offer prorated refunds, but you won't be charged for subsequent billing cycles after cancellation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I exceed my API rate limits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If you exceed your plan's rate limits, your API requests will be throttled and return HTTP 429 (Too Many Requests) errors. We recommend implementing exponential backoff in your code. To avoid interruptions, monitor your usage dashboard and upgrade your plan before reaching limits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my API keys and data secure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We use industry-standard encryption for all data transmission (TLS 1.3) and storage. API keys are hashed and salted in our database. We never log or store sensitive data passed through our APIs longer than necessary for processing. You're responsible for keeping your API keys secure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use Forge APIs for commercial projects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, all Forge APIs plans (including Free tier) can be used for commercial projects. However, you cannot resell or redistribute our API services without written permission. For custom licensing terms, contact us at hello@forgeapis.com."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What payment methods do you accept?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We accept all major credit cards (Visa, Mastercard, American Express, Discover) and debit cards through Stripe. All transactions are processed securely, and we never store your complete payment information on our servers. Payments are charged monthly in USD."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer refunds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer a 7-day free trial for new customers to test our services risk-free. After the trial period, all payments are final and non-refundable except where required by law. Contact support within 7 days if you have billing concerns."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the RiskScore API GDPR compliant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Forge APIs operates as a data processor under GDPR. You remain the data controller and are responsible for ensuring legal basis to submit data. We provide data processing agreements (DPAs) for Enterprise customers and comply with data subject rights requests."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if Forge APIs experiences downtime?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While we maintain 99.9% uptime targets, we provide services 'as is' without uptime guarantees. We do not offer SLA credits on standard plans. Enterprise plans may include custom SLAs. Implement error handling and fallback mechanisms in your applications."
+            }
+          }
+        ]
+      }
+      </script>
+
       <h2 id="contact">15. Contact Information</h2>
       <p>For questions about these Terms of Service, please contact us:</p>
       <ul>
-        <li><strong>Email:</strong> hello@forgeapis.com</li>
-        <li><strong>Website:</strong> forgeapis.com</li>
+        <li><strong>Email:</strong> <a href="mailto:hello@forgeapis.com">hello@forgeapis.com</a></li>
+        <li><strong>Website:</strong> <a href="https://forgeapis.com">forgeapis.com</a></li>
         <li><strong>Location:</strong> London, England, United Kingdom</li>
+        <li><strong>Privacy Policy:</strong> <a href="/privacy">View our Privacy Policy</a></li>
+        <li><strong>API Documentation:</strong> <a href="/docs">Visit our API Docs</a></li>
+        <li><strong>Support:</strong> <a href="/support">Get Support</a></li>
       </ul>
 
       <!-- SERVICE-SPECIFIC TERMS -->
@@ -1054,5 +1323,87 @@
     <!-- Footer System - Load config first, then generator -->
     <script src="footer-config.js"></script>
     <script src="footer.js"></script>
+
+    <!-- WebPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://forgeapis.com/terms",
+      "url": "https://forgeapis.com/terms",
+      "name": "Terms of Service - Forge APIs",
+      "description": "Forge APIs terms of service. Learn about our API usage terms, payment terms, and service agreements.",
+      "datePublished": "2025-01-15",
+      "dateModified": "2025-08-17",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://forgeapis.com/#website",
+        "url": "https://forgeapis.com",
+        "name": "Forge APIs"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "API Terms of Service"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Forge APIs",
+        "url": "https://forgeapis.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forgeapis.com/logo.png"
+        }
+      }
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Forge APIs",
+      "url": "https://forgeapis.com",
+      "logo": "https://forgeapis.com/logo.png",
+      "description": "Production-ready APIs for fraud detection, risk assessment, and data validation",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressRegion": "England",
+        "addressCountry": "GB"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@forgeapis.com",
+        "contactType": "Customer Service",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://twitter.com/forgeapis",
+        "https://github.com/forgeapis"
+      ],
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "ForgeAPIs Team"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Worldwide"
+      }
+    }
+    </script>
+
+    <!-- Last Updated Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPageElement",
+      "name": "Terms of Service Last Updated",
+      "text": "Last updated: August 17, 2025",
+      "dateModified": "2025-08-17"
+    }
+    </script>
   </body>
 </html>
