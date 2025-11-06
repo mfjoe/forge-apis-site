@@ -398,8 +398,8 @@
         background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
         background-size: 400% 400%;
         animation: gradientShift 15s ease infinite;
-        min-height: 70vh;
-        display: flex;
+        min-height: 50vh;
+        display: flex;  
         align-items: center;
         justify-content: center;
         position: relative;
@@ -3240,6 +3240,61 @@
           "position": 3,
           "name": "FPS Calculator",
           "item": "https://forgeapis.com/fps-calculator/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the FPS Calculator to Test Your Gaming PC Performance",
+      "description": "Step-by-step guide to calculate expected FPS, system latency, and identify bottlenecks for your gaming PC using our professional FPS calculator tool.",
+      "image": "https://forgeapis.com/images/fps-calculator-og.jpg",
+      "totalTime": "PT3M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Select Your GPU",
+          "text": "Enter or select your graphics card (GPU) from the dropdown menu. The calculator supports all major GPUs including NVIDIA RTX 4090, 4080, 4070, 3060, AMD RX 7900 XTX, 7800 XT, and more. Start typing your GPU model name to see autocomplete suggestions. Accurate GPU selection is crucial for precise FPS estimates.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Select Your CPU",
+          "text": "Enter or select your processor (CPU) from the dropdown menu. The calculator supports all major CPUs including Intel Core i9, i7, i5, i3 series and AMD Ryzen 9, 7, 5, 3 series. Start typing your CPU model name to see autocomplete suggestions. CPU selection affects FPS, especially at 1080p resolution and in CPU-intensive games.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose Your Game",
+          "text": "Select the game you want to test from the dropdown menu. The calculator supports 20+ popular games including Valorant, Call of Duty, Apex Legends, Fortnite, CS2, Warzone, Overwatch 2, and more. Each game has specific benchmark data based on professional reviews from Tom's Hardware, Hardware Unboxed, and TechPowerUp.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Configure System Settings",
+          "text": "Select your RAM amount (8GB, 16GB, 32GB, or 64GB), resolution (1080p, 1440p, or 4K), and graphics settings (Low, Medium, High, Ultra). These settings significantly impact FPS estimates. Higher resolution and graphics settings require more GPU power, while RAM affects overall system performance.",
+          "position": 4
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate and Review Results",
+          "text": "Click the 'Calculate FPS' button to see your estimated FPS, system latency, bottleneck analysis, and performance across different games. Review the results to understand your PC's gaming performance, identify potential bottlenecks, and see upgrade recommendations. The calculator also shows performance comparisons across multiple games to help you optimize your settings.",
+          "position": 5
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "FPS Calculator"
         }
       ]
     }

@@ -156,35 +156,52 @@
       }
     </script>
 
+    <!-- HowTo Schema Markup - Enhanced Version -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "HowTo",
         "name": "How to Calculate Tips and Split Bills",
-        "description": "Simple guide to calculating tips and splitting restaurant bills",
+        "description": "Step-by-step guide to calculate restaurant tips and split bills using our free tip calculator. Learn how to calculate tip percentages (15%, 18%, 20%, 25%), split bills between multiple people, and determine per-person costs instantly.",
+        "image": "https://forgeapis.com/tip-calculator-preview.png",
+        "totalTime": "PT1M",
+        "estimatedCost": {
+          "@type": "MonetaryAmount",
+          "currency": "USD",
+          "value": "0"
+        },
         "step": [
           {
             "@type": "HowToStep",
             "name": "Enter Bill Amount",
-            "text": "Type your total bill amount in dollars"
+            "text": "Type your total bill amount in dollars in the input field. Enter the amount before tax or after tax - the calculator works with either. You can enter any amount from $0.01 to $99,999.99. The calculator updates results automatically as you type.",
+            "position": 1
           },
           {
             "@type": "HowToStep",
             "name": "Select Tip Percentage",
-            "text": "Choose 15%, 18%, 20%, or 25% tip rate"
+            "text": "Choose your desired tip percentage by clicking one of the preset buttons: 15% (standard service), 18% (good service - default), 20% (excellent service), or 25% (exceptional service). The calculator uses standard US tipping rates. Your selection will be highlighted to show which percentage is active.",
+            "position": 2
           },
           {
             "@type": "HowToStep",
             "name": "Set Number of People",
-            "text": "Use +/- buttons to split bill between 1-20 people"
+            "text": "Use the plus (+) and minus (-) buttons to adjust how many people are splitting the bill. You can split between 1 and 20 people. The number in the center shows the current split count. This determines how the total bill (including tip) will be divided.",
+            "position": 3
           },
           {
             "@type": "HowToStep",
             "name": "View Results",
-            "text": "See tip amount, total, and per-person cost instantly"
+            "text": "The calculator instantly displays your results in the Receipt section: Tip Amount (the dollar amount of the tip), Total with Tip (bill amount plus tip), and Per Person (the total divided by the number of people). Results update automatically as you change any input. The calculator also shows a tip quality rating based on the percentage selected.",
+            "position": 4
           }
         ],
-        "totalTime": "PT1M"
+        "tool": [
+          {
+            "@type": "HowToTool",
+            "name": "Restaurant Tip Calculator"
+          }
+        ]
       }
     </script>
 
@@ -499,7 +516,7 @@
             },
             "datePublished": "2024-12-10",
             "reviewBody": "Love this tool! So much easier than doing mental math or using my phone's calculator app. The preset tip percentages cover all the situations I encounter. Bookmarked and use it weekly when dining out with colleagues and friends!"
-          }
+        }
         ]
       }
     </script>

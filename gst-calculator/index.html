@@ -126,45 +126,52 @@
 }
 </script>
 
+    <!-- HowTo Schema Markup - Enhanced Version -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to Use the GST Calculator India",
-  "description": "Learn how to calculate GST, CGST, SGST, and IGST using our free GST calculator",
+  "description": "Step-by-step guide to calculate GST, CGST, SGST, and IGST using our free GST calculator. Learn how to calculate GST on invoices, reverse calculate GST, and understand GST rates (0%, 5%, 12%, 18%, 28%) for goods and services in India.",
+  "image": "https://forgeapis.com/gst-calculator-preview.png",
+  "totalTime": "PT2M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "INR",
+    "value": "0"
+  },
   "step": [
     {
       "@type": "HowToStep",
       "name": "Enter the Amount",
-      "text": "Enter the base amount (price before GST) or the total amount (price including GST) in the input field. The calculator accepts values in Indian Rupees (₹).",
+      "text": "Enter the base price (before GST) or total price (including GST) in Indian Rupees (₹). The calculator accepts any numerical value. You can enter amounts for invoices, purchases, or any transaction that requires GST calculation.",
       "position": 1
     },
     {
       "@type": "HowToStep",
       "name": "Select GST Rate",
-      "text": "Choose the applicable GST rate from the dropdown menu. Available rates are 0%, 5%, 12%, 18%, and 28% based on the GST Council's classification of goods and services.",
+      "text": "Choose the applicable GST rate from the dropdown menu: 0% (nil rate for essential items), 5% (basic necessities), 12% (standard items), 18% (most services and goods), or 28% (luxury items). Rates are based on GST Council classifications and the type of goods or services.",
       "position": 2
     },
     {
       "@type": "HowToStep",
-      "name": "Choose Calculation Type",
-      "text": "Select whether your entered amount is GST exclusive (amount before adding tax) or GST inclusive (amount already includes tax). This determines how the calculator processes your input.",
+      "name": "Choose Inclusive or Exclusive",
+      "text": "Select GST Exclusive if your entered amount is before tax (base price), or GST Inclusive if your amount already includes tax (total price). This determines how the calculator processes your input - whether to add GST to the amount or extract GST from the amount.",
       "position": 3
     },
     {
       "@type": "HowToStep",
-      "name": "View Results",
-      "text": "The calculator instantly displays the base amount, GST amount, CGST/SGST or IGST breakdown, and total amount. Results update automatically as you change any input values.",
+      "name": "View Detailed Breakdown",
+      "text": "The calculator instantly displays a complete breakdown showing: base amount, GST amount, CGST/SGST split (for intra-state transactions) or IGST (for inter-state transactions), and total amount. Results update automatically as you change any input values. Use the copy button to save results for invoicing or accounting records.",
       "position": 4
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Copy or Export Results",
-      "text": "Use the copy button to save your calculation results for invoicing, accounting records, or further analysis. Results show complete breakdown including CGST and SGST components.",
-      "position": 5
     }
   ],
-  "totalTime": "PT1M"
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "GST Calculator India"
+    }
+  ]
 }
 </script>
 
@@ -5820,7 +5827,7 @@
 
     <!-- Footer Container -->
     <div id="footer-container"></div>
-
+      
     <!-- Footer System - Load config first, then generator -->
     <script src="../footer-config.js"></script>
     <script src="../footer.js"></script>

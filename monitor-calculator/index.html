@@ -429,7 +429,7 @@
         background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
         background-size: 400% 400%;
         animation: gradientShift 15s ease infinite;
-        min-height: 70vh;
+        min-height: 50vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -8362,6 +8362,61 @@
             "ratingValue": "4.7",
             "reviewCount": "2103"
           }
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo Schema Markup - Enhanced Version -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Monitor Response Time Calculator",
+      "description": "Step-by-step guide to calculate total input lag, compare gaming monitors, and find your perfect display using our free monitor response time calculator. Learn how to measure monitor latency, understand GtG vs MPRT response times, and optimize your gaming setup.",
+      "image": "https://forgeapis.com/images/monitor-calculator-og.png",
+      "totalTime": "PT3M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter Monitor Response Time",
+          "text": "Enter your monitor's response time in milliseconds (0.5-20ms) in the input field. This is typically found in your monitor's specifications. Note that manufacturer specs often use older measurement methods that appear 2-3x faster than real-world performance measured by professional reviewers.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Select Response Time Type",
+          "text": "Choose the response time type: GtG (Gray to Gray) for manufacturer specs, MPRT (Motion Picture Response Time) for motion blur measurements, or Actual measured for professional review data. MPRT is often more accurate for gaming as it reflects actual motion clarity during gameplay.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Select Refresh Rate and Panel Type",
+          "text": "Choose your monitor's refresh rate (60Hz, 144Hz, 240Hz, 360Hz, etc.) and panel type (IPS, TN, VA, or OLED). Panel type affects response time consistency, with TN and Fast IPS typically offering faster response times than standard IPS or VA panels.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Configure Overdrive and Signal Processing",
+          "text": "Select your overdrive setting (Off, Normal, or Extreme/Fast) and signal processing mode. Normal overdrive achieves 3-6ms on IPS with minimal artifacts. Always use Gaming Mode for competitive gaming to minimize processing delay (2-3ms vs 60-110ms in TV Picture Mode).",
+          "position": 4
+        },
+        {
+          "@type": "HowToStep",
+          "name": "View Total Input Lag Results",
+          "text": "Click 'Calculate Total Input Lag' to see your complete system latency breakdown. The calculator displays total input lag, individual component breakdowns (response time, refresh rate delay, signal processing), and analysis of your monitor's suitability for different game types and competitive play.",
+          "position": 5
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Monitor Response Time Calculator"
         }
       ]
     }

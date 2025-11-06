@@ -110,46 +110,77 @@
     }
     </script>
 
+    <!-- HowTo Schema Markup - Enhanced Version -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to Calculate Your VA Disability Rating and Benefits",
-  "description": "Learn how to calculate your combined VA disability rating and estimate monthly compensation using our Veterans Affairs calculator",
+  "description": "Step-by-step guide to calculate your combined VA disability rating and estimate monthly compensation using our Veterans Affairs calculator. Learn how to use VA math, add dependents, understand bilateral factors, and calculate 2025 payment rates.",
+  "image": "https://forgeapis.com/va-calculator-preview.png",
+  "totalTime": "PT3M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Enter Your Individual Disability Ratings",
-      "text": "Input each of your VA-assigned disability ratings (0% to 100%) from your official rating decision letter. You can add multiple disabilities using the 'Add Another Disability' button. The calculator accepts all standard VA rating percentages.",
+      "name": "Enter Your Disability Ratings",
+      "text": "Input each individual disability rating (0% to 100%) from your VA rating decision letter. Use the 'Add Another Disability' button for multiple conditions. The calculator accepts all standard VA percentages in 10% increments.",
       "position": 1
     },
     {
       "@type": "HowToStep",
-      "name": "Add Your Dependents",
-      "text": "Check the boxes for applicable dependents including spouse, children under 18, children over 18 in school, parents, and spouse requiring aid and attendance. These dependents increase your monthly compensation at ratings of 30% or higher.",
+      "name": "Mark Bilateral Disabilities",
+      "text": "For disabilities affecting paired body parts (arms, legs, hands, feet, knees, shoulders, etc.), check the 'Left Side' or 'Right Side' boxes. When you have disabilities on BOTH sides of paired body parts, the calculator automatically applies a 10% bilateral factor bonus to recognize the increased impact.",
       "position": 2
     },
     {
       "@type": "HowToStep",
-      "name": "Review Your Combined Rating",
-      "text": "The calculator automatically computes your combined VA disability rating using the official VA combined ratings table formula. This combined rating determines your compensation tier and is always rounded to the nearest 10%.",
+      "name": "Add Your Dependents",
+      "text": "Check boxes for spouse, children under 18, children over 18 in school, parents, and spouse requiring aid and attendance. Dependent benefits apply only if you're rated 30% or higher. These dependents increase your monthly compensation at ratings of 30% or higher.",
       "position": 3
     },
     {
       "@type": "HowToStep",
-      "name": "View Your Monthly Payment",
-      "text": "See your estimated monthly VA disability compensation based on 2025 rates. The calculator shows your base payment plus any additional dependent allowances, providing a complete breakdown of your total monthly benefit.",
+      "name": "Enable TDIU if Applicable",
+      "text": "If you qualify for Total Disability Individual Unemployability (TDIU), check the TDIU box. This automatically calculates your payment at the 100% rate even if your combined rating is 70-90%, reflecting your inability to maintain substantially gainful employment.",
       "position": 4
     },
     {
       "@type": "HowToStep",
-      "name": "Save or Print Your Results",
-      "text": "Use the save button to store your calculation in your browser, or print your results for your records. You can also copy the results to share with VSO representatives or family members.",
+      "name": "Review Combined Rating & Calculation Breakdown",
+      "text": "The calculator shows your combined VA disability rating using the official formula, always rounded to nearest 10%. Click 'Show Step-by-Step Calculation' to see exactly how each disability was combined, including any bilateral factor bonuses applied.",
       "position": 5
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Check Path to 100%",
+      "text": "If you're rated between 70-94%, the calculator shows you exactly what additional rating percentage you need to reach 95% (which rounds to 100%). This helps you understand how close you are to maximum compensation.",
+      "position": 6
+    },
+    {
+      "@type": "HowToStep",
+      "name": "View Monthly Payment with Full Breakdown",
+      "text": "See your estimated monthly VA compensation based on 2025 rates. The calculator shows base payment, dependent allowances, total monthly benefit, and annual payment. It also displays a month-by-month breakdown if you have retroactive effective dates.",
+      "position": 7
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Save or Print Results",
+      "text": "Use the save button to store your calculation locally, or print your results for VSO appointments, financial planning, or personal records. Results can also be copied to clipboard for sharing with VSO representatives or family members.",
+      "position": 8
     }
   ],
-  "totalTime": "PT2M"
-      }
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "VA Disability Calculator 2025"
+    }
+  ]
+}
     </script>
 
     <!-- FAQPage Schema - Merged Single Schema -->
