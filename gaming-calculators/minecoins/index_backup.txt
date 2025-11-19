@@ -40,7 +40,7 @@
     />
     <link
       rel="canonical"
-      href="https://forgeapis.com/gaming-calculators/minecoins/"
+      href="https://forgeapis.com/gaming-calculators/robux/"
     />
     <meta
       property="og:title"
@@ -53,7 +53,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://forgeapis.com/gaming-calculators/minecoins/"
+      content="https://forgeapis.com/gaming-calculators/robux/"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -4032,7 +4032,7 @@
         "@type": "WebApplication",
         "name": "Minecoins Currency Converter",
         "description": "Free Minecoins converter for multiple currencies. Convert Minecoins to USD, EUR, GBP, CAD, AUD instantly for Minecraft Marketplace.",
-        "url": "https://forgeapis.com/gaming-calculators/minecoins/",
+        "url": "https://forgeapis.com/gaming-calculators/robux/",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -4069,7 +4069,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "Minecoins Calculator",
-            "item": "https://forgeapis.com/gaming-calculators/minecoins/"
+            "item": "https://forgeapis.com/gaming-calculators/robux/"
           }
         ]
       }

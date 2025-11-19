@@ -17,17 +17,20 @@ function loadGamingFooter() {
 
   const footerHTML = `
     <div class="footer-content">
-      <!-- Column 1 - More Gaming Calculators -->
+      <!-- Column 1 - Featured Calculators -->
       <div class="footer-column">
-        <h4>More Gaming Calculators</h4>
+        <h4>Featured Calculators</h4>
         <ul>
           <li><a href="/gaming-calculators/robux/">Robux to USD Calculator</a></li>
           <li><a href="/gaming-calculators/vbucks/">V-Bucks to USD Calculator</a></li>
-          <li><a href="/gaming-calculators/minecoins/">Minecoins to USD Calculator</a></li>
-          <li><a href="/gaming-calculators/fifa-points/">FIFA Points Calculator</a></li>
           <li><a href="/gaming-calculators/cod-points/">COD Points Calculator</a></li>
-          <li><a href="/gaming-calculators/apex-coins/">Apex Coins Calculator</a></li>
         </ul>
+        <p style="margin-top: 1rem; font-size: 12px; color: #6b7280;">
+          Legacy tools for Minecoins, FIFA Points, and Apex Coins are being rebuilt. You can still access them from the hub.
+        </p>
+        <p style="margin-top: 0.25rem; font-size: 12px;">
+          <a href="/gaming-calculators/" style="color: #60a5fa;">View all gaming calculators →</a>
+        </p>
       </div>
 
       <!-- Column 2 - Free Tools by Forge APIs -->
@@ -35,7 +38,7 @@ function loadGamingFooter() {
         <h4>Free Tools by Forge APIs</h4>
         <ul>
           <li><a href="/gst-calculator/">GST Calculator India</a></li>
-          <li><a href="/gaming-calculators/">Gaming Currency Calculators</a></li>
+          <li><a href="/gaming-calculators/">Gaming Currency Hub</a></li>
           <li><a href="/va-calculator/">VA Disability Benefits Calculator</a></li>
           <li><a href="/tip-calculator/">Restaurant Tip Calculator</a></li>
           <li><a href="/">All Tools</a></li>

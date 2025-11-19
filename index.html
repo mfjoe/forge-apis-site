@@ -63,10 +63,10 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
       crossorigin="anonymous"
     ></script>
-    <title>Forge APIs - Ship Faster with Production-Ready APIs</title>
+    <title>ForgeAPIs - Free Calculators & Tools That Actually Work</title>
     <meta
       name="description"
-      content="Production-ready APIs for modern applications. Fraud detection, email validation, data enrichment, and more."
+      content="Free online calculators for gaming currencies, GST, VA benefits, and more. No signups, no fees. Convert V-Bucks, Robux, calculate taxes, check benefits instantly."
     />
 
     <!-- System fonts only - no external font loading -->
@@ -84,15 +84,25 @@
       }
 
       :root {
-        /* Enhanced Color Palette */
+        /* Enhanced Color Palette with More Vibrant Colors */
         --primary: #0066ff;
         --primary-light: #3385ff;
         --primary-dark: #0052cc;
         --accent: #00d4aa;
         --accent-light: #33ddbb;
         --accent-dark: #00a888;
+        --purple: #8b5cf6;
+        --purple-light: #a78bfa;
+        --orange: #ff6b35;
+        --orange-light: #ff8c61;
+        --pink: #ec4899;
+        --pink-light: #f472b6;
+        --yellow: #fbbf24;
+        --yellow-light: #fcd34d;
         --background: #ffffff;
         --surface: #f8f9fa;
+        --surface-warm: #fef3f2;
+        --surface-cool: #f0f9ff;
         --border: #e5e7eb;
         --text-primary: #1a1a2e;
         --text-secondary: #4a5568;
@@ -103,6 +113,7 @@
         --shadow-sm: 0 1px 2px rgba(0, 102, 255, 0.05);
         --shadow-md: 0 4px 6px rgba(0, 102, 255, 0.08);
         --shadow-lg: 0 10px 20px rgba(0, 102, 255, 0.12);
+        --shadow-colorful: 0 8px 24px rgba(139, 92, 246, 0.15);
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
@@ -238,40 +249,65 @@
         display: none;
       }
 
-      /* Minimal Hero Section */
+      /* Enhanced Hero Section with Color */
       .hero {
-        background: var(--background);
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #fef3f2 100%);
         border-bottom: 1px solid var(--border);
         padding: 140px 0 100px;
         min-height: auto;
+        position: relative;
+        overflow: hidden;
       }
 
-      .hero::before,
-      .hero::after,
-      .hero-shapes {
-        display: none;
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        display: block;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -5%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        display: block;
       }
 
       .hero-content {
         max-width: 720px;
         margin: 0 auto;
         padding: 0 24px;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: var(--surface);
-        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 170, 0.1));
+        border: 1px solid rgba(0, 102, 255, 0.2);
         border-radius: 24px;
         padding: 6px 16px;
         font-size: 12px;
         font-weight: 500;
-        color: var(--text-secondary);
+        color: var(--primary);
         margin-bottom: 32px;
         letter-spacing: 0.02em;
         text-transform: uppercase;
+        box-shadow: 0 2px 8px rgba(0, 102, 255, 0.1);
       }
 
       .hero-badge::before {
@@ -290,7 +326,10 @@
         font-size: 56px;
         font-weight: 600;
         margin-bottom: 24px;
-        color: var(--text-primary);
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 50%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         letter-spacing: -0.03em;
         line-height: 1.1;
       }
@@ -326,7 +365,7 @@
 
       /* Animations - removed for minimal design */
 
-      /* Minimal Sections */
+      /* Enhanced Sections with Color */
       .section-header {
         text-align: center;
         margin-bottom: 64px;
@@ -335,15 +374,16 @@
       .section-tag {
         display: inline-block;
         padding: 4px 12px;
-        background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 170, 0.1));
+        background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 212, 170, 0.15));
         color: var(--primary);
-        border: 1px solid rgba(0, 102, 255, 0.2);
+        border: 1px solid rgba(0, 102, 255, 0.25);
         border-radius: 20px;
         font-size: 11px;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         margin-bottom: 16px;
+        box-shadow: 0 2px 6px rgba(0, 102, 255, 0.1);
       }
 
       .section-header h2 {
@@ -362,50 +402,36 @@
         line-height: 1.6;
       }
 
-      /* Sections */
+      /* Sections with Colorful Backgrounds */
       .products {
         padding: 100px 0;
         background: var(--background);
       }
 
       .free-tools {
-        background: var(--surface);
-        padding: 100px 0;
+        background: linear-gradient(180deg, var(--surface-cool) 0%, var(--background) 100%);
+        padding: 60px 0;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
       }
 
       .features {
-        padding: 100px 0;
-        background: var(--background);
+        padding: 60px 0;
+        background: linear-gradient(180deg, var(--background) 0%, var(--surface-warm) 100%);
       }
 
-      .about-forge,
-      .free-tools-impact {
-        padding: 100px 0;
-        background: var(--surface);
+      .about-forge {
+        padding: 60px 0;
+        background: linear-gradient(180deg, var(--surface) 0%, var(--surface-cool) 100%);
         border-top: 1px solid var(--border);
       }
 
-      .trust-section {
-        padding: 100px 0;
-        background: var(--background);
-      }
-
-      .who-we-serve {
-        padding: 100px 0;
-        background: var(--text-primary);
-        color: var(--background);
-        border-top: 1px solid var(--border);
-      }
 
       /* Remove all gradients */
       .products,
       .free-tools,
       .features,
-      .about-forge,
-      .trust-section,
-      .free-tools-impact {
+      .about-forge {
         background-image: none;
       }
 
@@ -426,8 +452,8 @@
       }
 
       .product-card:hover {
-        border-color: var(--text-primary);
-        box-shadow: var(--shadow-lg);
+        border-color: var(--primary);
+        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.15);
         transform: translateY(-2px);
       }
 
@@ -633,8 +659,7 @@
       .features-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 48px;
-        margin-top: 60px;
+        gap: 32px;
       }
 
       .feature {
@@ -659,15 +684,42 @@
         transition: all 0.3s ease;
       }
 
+      .feature:nth-child(1) .feature-icon {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 212, 170, 0.15));
+        border-color: rgba(16, 185, 129, 0.3);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--success);
+      }
+
+      .feature:nth-child(2) .feature-icon {
+        background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 102, 255, 0.15));
+        border-color: rgba(0, 212, 170, 0.3);
+      }
+
+      .feature:nth-child(3) .feature-icon {
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(251, 191, 36, 0.15));
+        border-color: rgba(255, 107, 53, 0.3);
+      }
+
+      .feature:nth-child(4) .feature-icon {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15));
+        border-color: rgba(236, 72, 153, 0.3);
+      }
+
+      .feature:nth-child(5) .feature-icon {
+        background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 102, 255, 0.15));
+        border-color: rgba(0, 212, 170, 0.3);
+      }
+
+      .feature:nth-child(6) .feature-icon {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+        border-color: rgba(139, 92, 246, 0.3);
+      }
+
       .feature:hover .feature-icon {
-        background: linear-gradient(
-          135deg,
-          rgba(0, 102, 255, 0.25),
-          rgba(0, 212, 170, 0.25)
-        );
-        border-color: var(--primary);
-        transform: scale(1.1);
-        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.25);
       }
 
       .feature h3 {
@@ -683,21 +735,10 @@
       }
 
       /* New Section Styles */
-      .about-forge p,
-      .trust-section p,
-      .free-tools-impact p,
-      .who-we-serve p {
+      .about-forge p {
         font-size: 17px;
         line-height: 1.8;
         margin-bottom: 20px;
-      }
-
-      .about-forge h3,
-      .free-tools-impact h3 {
-        color: var(--dark);
-        font-size: 28px;
-        font-weight: 700;
-        margin: 40px 0 20px;
       }
 
       /* Footer */
@@ -721,7 +762,7 @@
       }
 
       .footer-brand .logo::before {
-        content: "Forge APIs";
+        content: "ForgeAPIs";
       }
 
       .footer-brand p {
@@ -1200,22 +1241,12 @@
 
       /* Mobile styles for new sections */
       @media (max-width: 768px) {
-        .about-forge,
-        .trust-section,
-        .free-tools-impact,
-        .who-we-serve {
+        .about-forge {
           padding: 60px 0 !important;
         }
 
-        .about-forge p,
-        .trust-section p,
-        .free-tools-impact p {
+        .about-forge p {
           font-size: 16px !important;
-        }
-
-        .about-forge h3,
-        .free-tools-impact h3 {
-          font-size: 24px !important;
         }
       }
 
@@ -1223,6 +1254,14 @@
       .featured-tool-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .featured-tool-card {
+        color: var(--text-primary);
+      }
+
+      .featured-tool-card h3 {
+        color: var(--text-primary);
       }
 
       .carousel-track {
@@ -1254,7 +1293,12 @@
       .compact-tool-card:hover {
         transform: translateY(-4px);
         border-color: var(--primary) !important;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 12px 24px rgba(0, 102, 255, 0.2);
+      }
+
+      .compact-tool-card[data-category="gaming"]:hover {
+        border-color: var(--purple) !important;
+        box-shadow: 0 12px 24px rgba(139, 92, 246, 0.25);
       }
 
       .category-tab:hover {
@@ -1263,9 +1307,15 @@
       }
 
       .category-tab.active {
-        background: var(--primary) !important;
+        background: linear-gradient(135deg, var(--primary), var(--purple)) !important;
         color: white !important;
         border-color: var(--primary) !important;
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+      }
+
+      .category-tab[data-category="gaming"]:hover {
+        background: rgba(139, 92, 246, 0.1) !important;
+        border-color: var(--purple) !important;
       }
 
       #tool-search:focus {
@@ -1481,12 +1531,13 @@
               fill="#999999"
               letter-spacing="0.5"
             >
-              PRODUCTION-READY APIS
+              FREE CALCULATORS & TOOLS
             </text>
           </svg>
         </a>
         <div class="nav-links">
           <a href="#tools">Free Tools</a>
+          <a href="#about">About</a>
           <a href="mailto:hello@forgeapis.com" class="nav-contact">Contact</a>
         </div>
 
@@ -1500,6 +1551,9 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
           <div class="mobile-menu-content">
+            <a href="#about" class="mobile-menu-link"
+              >About</a
+            >
             <a href="mailto:hello@forgeapis.com" class="mobile-menu-link"
               >Contact</a
             >
@@ -1534,67 +1588,71 @@
     <!-- Enhanced Hero Section -->
     <section class="hero">
       <div class="container hero-content">
-        <div class="hero-badge">Production-Ready • Developer-First</div>
+        <div class="hero-badge">100% Free • No Account Required</div>
 
-        <h1>Ship Faster with Production-Ready APIs</h1>
-        <p>Developer tools that actually work. No complexity, just results.</p>
+        <h1>Free Calculators & Tools That Actually Work</h1>
+        <p>Gaming currencies, taxes, benefits – calculate anything instantly. No ads blocking content, no surprise paywalls, just accurate results.</p>
 
         <div class="hero-buttons">
-          <a href="#tools" class="btn btn-primary">Try Free Tools</a>
+          <a href="#tools" class="btn btn-primary">Explore Free Tools</a>
         </div>
       </div>
     </section>
 
-    <!-- Premium APIs Section -->
-
-
-    <!-- Free Tools Section -->
+    <!-- Unified Free Tools Section -->
     <section
       id="tools"
       class="free-tools"
-      style="padding: 80px 0; background: white"
+      style="padding: 60px 0; background: linear-gradient(180deg, var(--surface-cool) 0%, var(--background) 100%);"
     >
       <div class="container">
         <div class="section-header">
           <span class="section-tag free-tag">FREE TOOLS</span>
-          <h2>Popular Free Tools</h2>
-          <p>Most used calculators and utilities - no signup required</p>
+          <h2>Free Tools & Calculators</h2>
+          <p>Accurate calculators and utilities - no signup required</p>
         </div>
 
-        <!-- Featured Tools Carousel -->
+        <!-- Featured Tools (Top 3) -->
         <div
-          class="featured-tools-carousel"
-          style="position: relative; margin-bottom: 60px"
+          class="featured-tools-grid"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+          "
         >
-          <div
-            class="carousel-track"
+          <!-- Gaming Calculator Card - Consolidated Hub -->
+          <a
+            href="/gaming-calculators/"
+            class="featured-tool-card"
             style="
-              display: flex;
-              gap: 24px;
-              overflow-x: auto;
-              scroll-behavior: smooth;
-              padding: 20px 0;
-              -webkit-overflow-scrolling: touch;
+              background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(0, 102, 255, 0.05) 50%, rgba(0, 212, 170, 0.05) 100%);
+              padding: 32px;
+              border-radius: 16px;
+              border: 2px solid var(--purple);
+              box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+              transition: all 0.3s;
+              position: relative;
+              overflow: hidden;
+              text-decoration: none;
+              display: block;
             "
           >
-            <!-- Gaming Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--success);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
+              <div style="
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 200px;
+                height: 200px;
+                background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+              "></div>
               <span
                 style="
                   display: inline-block;
-                  background: var(--success);
+                  background: linear-gradient(135deg, var(--purple), var(--primary));
                   color: white;
                   padding: 4px 12px;
                   border-radius: 20px;
@@ -1602,10 +1660,11 @@
                   font-weight: 700;
                   letter-spacing: 0.5px;
                   margin-bottom: 16px;
+                  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
                 "
-                >⭐ POPULAR</span
+                >⭐ ALL-IN-ONE HUB</span
               >
-              <div style="font-size: 64px; margin: 20px 0; text-align: center">
+              <div style="font-size: 64px; margin: 20px 0; text-align: center; filter: drop-shadow(0 4px 8px rgba(139, 92, 246, 0.2));">
                 🎮
               </div>
               <h3
@@ -1614,9 +1673,13 @@
                   font-weight: 700;
                   margin-bottom: 12px;
                   text-align: center;
+                  background: linear-gradient(135deg, var(--purple), var(--primary));
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
                 "
               >
-                Gaming Calculators
+                Gaming Calculators Hub
               </h3>
               <p
                 style="
@@ -1627,47 +1690,50 @@
                   line-height: 1.5;
                 "
               >
-                Convert Robux, V-Bucks, Minecoins & more to real currency
+                All gaming currency calculators in one place: Robux, V-Bucks, Minecoins, FIFA Points, COD Points, Apex Coins & more
               </p>
               <div
                 style="
-                  background: rgba(0, 0, 0, 0.05);
+                  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 102, 255, 0.1));
                   padding: 12px;
                   border-radius: 8px;
                   margin-bottom: 20px;
                   font-size: 13px;
                   text-align: center;
+                  border: 1px solid rgba(139, 92, 246, 0.2);
                 "
               >
-                <strong>50K+ monthly users</strong>
+                <strong style="color: var(--purple);">50K+ monthly users</strong>
               </div>
-              <a
-                href="/gaming-calculators/"
+              <div
                 class="btn btn-primary"
                 style="
                   display: block;
                   width: 100%;
                   text-align: center;
                   text-decoration: none;
+                  background: linear-gradient(135deg, var(--purple), var(--primary));
+                  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
                 "
-                >Use Free Tool →</a
+                >Explore All Calculators →</div
               >
-            </div>
+          </a>
 
-            <!-- GST Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--success);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
+          <!-- GST Calculator Card -->
+          <a
+            href="/gst-calculator/"
+            class="featured-tool-card"
+            style="
+              background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, rgba(0, 102, 255, 0.05) 100%);
+              padding: 32px;
+              border-radius: 16px;
+              border: 2px solid var(--success);
+              box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+              transition: all 0.3s;
+              text-decoration: none;
+              display: block;
+            "
+          >
               <span
                 style="
                   display: inline-block;
@@ -1718,8 +1784,7 @@
               >
                 <strong>30K+ monthly users</strong>
               </div>
-              <a
-                href="/gst-calculator/"
+              <div
                 class="btn btn-primary"
                 style="
                   display: block;
@@ -1727,24 +1792,25 @@
                   text-align: center;
                   text-decoration: none;
                 "
-                >Use Free Tool →</a
+                >Use Free Tool →</div
               >
-            </div>
+          </a>
 
-            <!-- VA Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--success);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
+          <!-- VA Calculator Card -->
+          <a
+            href="/va-calculator/"
+            class="featured-tool-card"
+            style="
+              background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+              padding: 32px;
+              border-radius: 16px;
+              border: 2px solid var(--success);
+              box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+              transition: all 0.3s;
+              text-decoration: none;
+              display: block;
+            "
+          >
               <span
                 style="
                   display: inline-block;
@@ -1795,85 +1861,7 @@
               >
                 <strong>20K+ monthly users</strong>
               </div>
-              <a
-                href="/va-calculator/"
-                class="btn btn-primary"
-                style="
-                  display: block;
-                  width: 100%;
-                  text-align: center;
-                  text-decoration: none;
-                "
-                >Use Free Tool →</a
-              >
-            </div>
-
-            <!-- FPS Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--primary);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
-              <span
-                style="
-                  display: inline-block;
-                  background: var(--primary);
-                  color: white;
-                  padding: 4px 12px;
-                  border-radius: 20px;
-                  font-size: 11px;
-                  font-weight: 700;
-                  letter-spacing: 0.5px;
-                  margin-bottom: 16px;
-                "
-                >⭐ NEW</span
-              >
-              <div style="font-size: 64px; margin: 20px 0; text-align: center">
-                ⚡
-              </div>
-              <h3
-                style="
-                  font-size: 24px;
-                  font-weight: 700;
-                  margin-bottom: 12px;
-                  text-align: center;
-                "
-              >
-                FPS Calculator
-              </h3>
-              <p
-                style="
-                  color: var(--gray);
-                  margin-bottom: 20px;
-                  font-size: 15px;
-                  text-align: center;
-                  line-height: 1.5;
-                "
-              >
-                Calculate FPS for Valorant, COD, Apex, Fortnite & 20+ games
-              </p>
               <div
-                style="
-                  background: rgba(0, 0, 0, 0.05);
-                  padding: 12px;
-                  border-radius: 8px;
-                  margin-bottom: 20px;
-                  font-size: 13px;
-                  text-align: center;
-                "
-              >
-                <strong>10K+ monthly users</strong>
-              </div>
-              <a
-                href="/fps-calculator/"
                 class="btn btn-primary"
                 style="
                   display: block;
@@ -1881,386 +1869,142 @@
                   text-align: center;
                   text-decoration: none;
                 "
-                >Use Free Tool →</a
+                >Use Free Tool →</div
               >
-            </div>
-
-            <!-- Monitor Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--accent);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
-              <span
-                style="
-                  display: inline-block;
-                  background: var(--accent);
-                  color: white;
-                  padding: 4px 12px;
-                  border-radius: 20px;
-                  font-size: 11px;
-                  font-weight: 700;
-                  letter-spacing: 0.5px;
-                  margin-bottom: 16px;
-                "
-                >⭐ NEW</span
-              >
-              <div style="font-size: 64px; margin: 20px 0; text-align: center">
-                🖥️
-              </div>
-              <h3
-                style="
-                  font-size: 24px;
-                  font-weight: 700;
-                  margin-bottom: 12px;
-                  text-align: center;
-                "
-              >
-                Monitor Calculator
-              </h3>
-              <p
-                style="
-                  color: var(--gray);
-                  margin-bottom: 20px;
-                  font-size: 15px;
-                  text-align: center;
-                  line-height: 1.5;
-                "
-              >
-                Find the perfect gaming monitor size and PPI
-              </p>
-              <div
-                style="
-                  background: rgba(0, 0, 0, 0.05);
-                  padding: 12px;
-                  border-radius: 8px;
-                  margin-bottom: 20px;
-                  font-size: 13px;
-                  text-align: center;
-                "
-              >
-                <strong>8K+ monthly users</strong>
-              </div>
-              <a
-                href="/monitor-calculator/"
-                class="btn btn-primary"
-                style="
-                  display: block;
-                  width: 100%;
-                  text-align: center;
-                  text-decoration: none;
-                "
-                >Use Free Tool →</a
-              >
-            </div>
-
-            <!-- DPI Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--success);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
-              <span
-                style="
-                  display: inline-block;
-                  background: var(--success);
-                  color: white;
-                  padding: 4px 12px;
-                  border-radius: 20px;
-                  font-size: 11px;
-                  font-weight: 700;
-                  letter-spacing: 0.5px;
-                  margin-bottom: 16px;
-                "
-                >⭐ POPULAR</span
-              >
-              <div style="font-size: 64px; margin: 20px 0; text-align: center">
-                🖱️
-              </div>
-              <h3
-                style="
-                  font-size: 24px;
-                  font-weight: 700;
-                  margin-bottom: 12px;
-                  text-align: center;
-                "
-              >
-                DPI Calculator
-              </h3>
-              <p
-                style="
-                  color: var(--gray);
-                  margin-bottom: 20px;
-                  font-size: 15px;
-                  text-align: center;
-                  line-height: 1.5;
-                "
-              >
-                Test DPI, calculate eDPI, optimize sensitivity for gaming
-              </p>
-              <div
-                style="
-                  background: rgba(0, 0, 0, 0.05);
-                  padding: 12px;
-                  border-radius: 8px;
-                  margin-bottom: 20px;
-                  font-size: 13px;
-                  text-align: center;
-                "
-              >
-                <strong>25K+ monthly users</strong>
-              </div>
-              <a
-                href="/dpi-calculator/"
-                class="btn btn-primary"
-                style="
-                  display: block;
-                  width: 100%;
-                  text-align: center;
-                  text-decoration: none;
-                "
-                >Use Free Tool →</a
-              >
-            </div>
-
-            <!-- Tip Calculator Card -->
-            <div
-              class="featured-tool-card"
-              style="
-                min-width: 300px;
-                flex-shrink: 0;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                padding: 32px;
-                border-radius: 16px;
-                border: 2px solid var(--light-gray);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-              "
-            >
-              <span
-                style="
-                  display: inline-block;
-                  background: var(--gray);
-                  color: white;
-                  padding: 4px 12px;
-                  border-radius: 20px;
-                  font-size: 11px;
-                  font-weight: 700;
-                  letter-spacing: 0.5px;
-                  margin-bottom: 16px;
-                "
-                >NEW</span
-              >
-              <div style="font-size: 64px; margin: 20px 0; text-align: center">
-                💰
-              </div>
-              <h3
-                style="
-                  font-size: 24px;
-                  font-weight: 700;
-                  margin-bottom: 12px;
-                  text-align: center;
-                "
-              >
-                Tip Calculator
-              </h3>
-              <p
-                style="
-                  color: var(--gray);
-                  margin-bottom: 20px;
-                  font-size: 15px;
-                  text-align: center;
-                  line-height: 1.5;
-                "
-              >
-                Calculate tips and split bills easily for restaurants
-              </p>
-              <div
-                style="
-                  background: rgba(0, 0, 0, 0.05);
-                  padding: 12px;
-                  border-radius: 8px;
-                  margin-bottom: 20px;
-                  font-size: 13px;
-                  text-align: center;
-                "
-              >
-                <strong>10K+ monthly users</strong>
-              </div>
-              <a
-                href="/tip-calculator/"
-                class="btn btn-primary"
-                style="
-                  display: block;
-                  width: 100%;
-                  text-align: center;
-                  text-decoration: none;
-                "
-                >Use Free Tool →</a
-              >
-            </div>
-          </div>
+          </a>
         </div>
 
-        <!-- Browse All Tools Button -->
-        <div style="text-align: center">
-          <a
-            href="#all-tools"
-            class="btn btn-secondary"
+        <!-- All Tools with Search & Filter -->
+        <div style="margin-top: 60px">
+          <div style="text-align: center; margin-bottom: 40px">
+            <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">All Tools</h3>
+            <p style="color: var(--text-secondary); font-size: 16px;">Browse by category or search for what you need</p>
+          </div>
+
+          <!-- Search Bar -->
+          <div style="max-width: 600px; margin: 0 auto 32px">
+            <input
+              type="text"
+              id="tool-search"
+              placeholder="🔍 Search for a calculator..."
+              style="
+                width: 100%;
+                padding: 16px 24px;
+                font-size: 16px;
+                border: 2px solid #e5e7eb;
+                border-radius: 12px;
+                outline: none;
+                transition: border-color 0.3s;
+              "
+            />
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div
             style="
-              display: inline-block;
-              padding: 16px 40px;
-              font-size: 18px;
-              text-decoration: none;
+              display: flex;
+              gap: 12px;
+              justify-content: center;
+              margin-bottom: 40px;
+              flex-wrap: wrap;
             "
-            >Browse All Free Tools →</a
           >
+            <button
+              class="category-tab active"
+              data-category="all"
+              style="
+                padding: 12px 24px;
+                background: var(--primary);
+                color: white;
+                border: none;
+                border-radius: 24px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 14px;
+              "
+            >
+              All Tools
+            </button>
+            <button
+              class="category-tab"
+              data-category="gaming"
+              style="
+                padding: 12px 24px;
+                background: white;
+                color: var(--dark);
+                border: 2px solid var(--light-gray);
+                border-radius: 24px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 14px;
+              "
+            >
+              🎮 Gaming
+            </button>
+            <button
+              class="category-tab"
+              data-category="financial"
+              style="
+                padding: 12px 24px;
+                background: white;
+                color: var(--dark);
+                border: 2px solid var(--light-gray);
+                border-radius: 24px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 14px;
+              "
+            >
+              💰 Financial
+            </button>
+            <button
+              class="category-tab"
+              data-category="business"
+              style="
+                padding: 12px 24px;
+                background: white;
+                color: var(--dark);
+                border: 2px solid var(--light-gray);
+                border-radius: 24px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 14px;
+              "
+            >
+              📊 Business
+            </button>
+            <button
+              class="category-tab"
+              data-category="government"
+              style="
+                padding: 12px 24px;
+                background: white;
+                color: var(--dark);
+                border: 2px solid var(--light-gray);
+                border-radius: 24px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 14px;
+              "
+            >
+              🏛️ Government
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Browse All Tools Section -->
+    <!-- All Tools Grid Section -->
     <section
       id="all-tools"
-      style="padding: 80px 0; background: var(--light-gray)"
+      style="padding: 0 0 60px 0; background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);"
     >
       <div class="container">
-        <div class="section-header">
-          <h2>All Free Tools</h2>
-          <p>Browse by category or search for what you need</p>
-        </div>
-
-        <!-- Search Bar -->
-        <div style="max-width: 600px; margin: 0 auto 40px">
-          <input
-            type="text"
-            id="tool-search"
-            placeholder="🔍 Search for a calculator..."
-            style="
-              width: 100%;
-              padding: 16px 24px;
-              font-size: 16px;
-              border: 2px solid #e5e7eb;
-              border-radius: 12px;
-              outline: none;
-              transition: border-color 0.3s;
-            "
-          />
-        </div>
-
-        <!-- Category Filter Pills -->
-        <div
-          style="
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-          "
-        >
-          <button
-            class="category-tab active"
-            data-category="all"
-            style="
-              padding: 12px 24px;
-              background: var(--primary);
-              color: white;
-              border: none;
-              border-radius: 24px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s;
-              font-size: 14px;
-            "
-          >
-            All Tools
-          </button>
-          <button
-            class="category-tab"
-            data-category="gaming"
-            style="
-              padding: 12px 24px;
-              background: white;
-              color: var(--dark);
-              border: 2px solid var(--light-gray);
-              border-radius: 24px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s;
-              font-size: 14px;
-            "
-          >
-            🎮 Gaming
-          </button>
-          <button
-            class="category-tab"
-            data-category="financial"
-            style="
-              padding: 12px 24px;
-              background: white;
-              color: var(--dark);
-              border: 2px solid var(--light-gray);
-              border-radius: 24px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s;
-              font-size: 14px;
-            "
-          >
-            💰 Financial
-          </button>
-          <button
-            class="category-tab"
-            data-category="business"
-            style="
-              padding: 12px 24px;
-              background: white;
-              color: var(--dark);
-              border: 2px solid var(--light-gray);
-              border-radius: 24px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s;
-              font-size: 14px;
-            "
-          >
-            📊 Business
-          </button>
-          <button
-            class="category-tab"
-            data-category="government"
-            style="
-              padding: 12px 24px;
-              background: white;
-              color: var(--dark);
-              border: 2px solid var(--light-gray);
-              border-radius: 24px;
-              cursor: pointer;
-              font-weight: 600;
-              transition: all 0.3s;
-              font-size: 14px;
-            "
-          >
-            🏛️ Government
-          </button>
-        </div>
-
         <!-- Tools Grid -->
         <div
           class="tools-grid-compact"
@@ -2270,18 +2014,18 @@
             gap: 20px;
           "
         >
-          <!-- Gaming Tools -->
+            <!-- Gaming Tools -->
           <a
             href="/fps-calculator/"
             class="compact-tool-card"
             data-category="gaming"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(0, 102, 255, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2303,12 +2047,12 @@
             class="compact-tool-card"
             data-category="gaming"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(0, 212, 170, 0.03) 0%, rgba(0, 102, 255, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(0, 212, 170, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2330,12 +2074,12 @@
             class="compact-tool-card"
             data-category="gaming"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(251, 191, 36, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(255, 107, 53, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2352,166 +2096,54 @@
             </p>
           </a>
 
+          <!-- Consolidated Gaming Calculators Hub Card -->
           <a
-            href="/gaming-calculators/robux/"
+            href="/gaming-calculators/"
             class="compact-tool-card"
             data-category="gaming"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(0, 102, 255, 0.05) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid var(--purple);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
               align-items: center;
               text-align: center;
+              position: relative;
+              overflow: hidden;
             "
           >
-            <div style="font-size: 48px; margin-bottom: 12px">💎</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              Robux Calculator
+            <div style="
+              position: absolute;
+              top: -20px;
+              right: -20px;
+              width: 100px;
+              height: 100px;
+              background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+              border-radius: 50%;
+              pointer-events: none;
+            "></div>
+            <div style="font-size: 48px; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(139, 92, 246, 0.2));">🎮</div>
+            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, var(--purple), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+              Gaming Calculators Hub
             </h4>
             <p style="font-size: 13px; color: var(--gray); margin: 0">
-              Convert Roblox currency
+              All gaming currencies in one place
             </p>
-          </a>
-
-          <a
-            href="/gaming-calculators/vbucks/"
-            class="compact-tool-card"
-            data-category="gaming"
-            style="
-              background: white;
-              padding: 24px;
+            <span style="
+              display: inline-block;
+              margin-top: 8px;
+              padding: 2px 8px;
+              background: linear-gradient(135deg, var(--purple), var(--primary));
+              color: white;
               border-radius: 12px;
-              text-decoration: none;
-              color: var(--dark);
-              border: 2px solid transparent;
-              transition: all 0.3s;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 12px">🎯</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              V-Bucks Calculator
-            </h4>
-            <p style="font-size: 13px; color: var(--gray); margin: 0">
-              Fortnite currency
-            </p>
-          </a>
-
-          <a
-            href="/gaming-calculators/minecoins/"
-            class="compact-tool-card"
-            data-category="gaming"
-            style="
-              background: white;
-              padding: 24px;
-              border-radius: 12px;
-              text-decoration: none;
-              color: var(--dark);
-              border: 2px solid transparent;
-              transition: all 0.3s;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 12px">⛏️</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              Minecoins Calculator
-            </h4>
-            <p style="font-size: 13px; color: var(--gray); margin: 0">
-              Minecraft currency
-            </p>
-          </a>
-
-          <a
-            href="/gaming-calculators/fifa-points/"
-            class="compact-tool-card"
-            data-category="gaming"
-            style="
-              background: white;
-              padding: 24px;
-              border-radius: 12px;
-              text-decoration: none;
-              color: var(--dark);
-              border: 2px solid transparent;
-              transition: all 0.3s;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 12px">⚽</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              FIFA Points
-            </h4>
-            <p style="font-size: 13px; color: var(--gray); margin: 0">
-              EA Sports currency
-            </p>
-          </a>
-
-          <a
-            href="/gaming-calculators/cod-points/"
-            class="compact-tool-card"
-            data-category="gaming"
-            style="
-              background: white;
-              padding: 24px;
-              border-radius: 12px;
-              text-decoration: none;
-              color: var(--dark);
-              border: 2px solid transparent;
-              transition: all 0.3s;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 12px">🎮</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              COD Points
-            </h4>
-            <p style="font-size: 13px; color: var(--gray); margin: 0">
-              Call of Duty currency
-            </p>
-          </a>
-
-          <a
-            href="/gaming-calculators/apex-coins/"
-            class="compact-tool-card"
-            data-category="gaming"
-            style="
-              background: white;
-              padding: 24px;
-              border-radius: 12px;
-              text-decoration: none;
-              color: var(--dark);
-              border: 2px solid transparent;
-              transition: all 0.3s;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 12px">🔫</div>
-            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px">
-              Apex Coins
-            </h4>
-            <p style="font-size: 13px; color: var(--gray); margin: 0">
-              Apex Legends currency
-            </p>
+              font-size: 10px;
+              font-weight: 600;
+            ">6+ Calculators</span>
           </a>
 
           <!-- Financial/Business Tools -->
@@ -2520,12 +2152,12 @@
             class="compact-tool-card"
             data-category="business financial"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(0, 212, 170, 0.03) 0%, rgba(0, 102, 255, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(0, 212, 170, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2547,12 +2179,12 @@
             class="compact-tool-card"
             data-category="financial"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(251, 191, 36, 0.03) 0%, rgba(255, 107, 53, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(251, 191, 36, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2575,12 +2207,12 @@
             class="compact-tool-card"
             data-category="government"
             style="
-              background: white;
+              background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(236, 72, 153, 0.03) 100%);
               padding: 24px;
               border-radius: 12px;
               text-decoration: none;
               color: var(--dark);
-              border: 2px solid transparent;
+              border: 2px solid rgba(139, 92, 246, 0.1);
               transition: all 0.3s;
               display: flex;
               flex-direction: column;
@@ -2600,71 +2232,13 @@
       </div>
     </section>
 
-    <!-- What is Forge APIs Section -->
-    <section class="about-forge" style="padding: 80px 0; background: white">
+    <!-- About ForgeAPIs Section -->
+    <section id="about" class="about-forge" style="padding: 60px 0; background: linear-gradient(180deg, var(--surface) 0%, var(--surface-cool) 100%);">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">ABOUT FORGE APIS</span>
-          <h2>What is Forge APIs?</h2>
-        </div>
-
-        <div
-          style="
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--gray);
-          "
-        >
-          <p style="margin-bottom: 20px">
-            Forge APIs is a developer-first platform that provides
-            production-ready APIs and free tools to help developers, businesses,
-            and individuals solve real-world problems. Founded in 2024, we've
-            built our reputation on creating reliable, well-documented APIs that
-            just work—no complex setup, no hidden fees, no surprises.
-          </p>
-
-          <p style="margin-bottom: 20px">
-            Our mission is simple: make powerful technology accessible to
-            everyone. Whether you're a startup building your first product, an
-            enterprise scaling to millions of users, or an individual looking
-            for a quick calculator, we've got you covered. Every API and tool we
-            build is designed with three principles in mind: simplicity,
-            reliability, and performance.
-          </p>
-
-          <p style="margin-bottom: 20px">
-            What makes Forge APIs different? We're developers building for
-            developers. We understand the frustration of poorly documented APIs,
-            unreliable services, and predatory pricing. That's why we offer
-            generous free tiers, clear documentation, and responsive support. We
-            believe great tools should be accessible to everyone, which is why
-            we provide completely free calculators and utilities alongside our
-            premium APIs.
-          </p>
-
-          <p>
-            Today, Forge APIs serves thousands of developers and users across
-            the globe, processing millions of API requests monthly. Our free
-            tools have helped countless individuals calculate taxes, convert
-            gaming currencies, and understand VA benefits. We're constantly
-            expanding our offerings based on community feedback and real-world
-            needs.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- How Our Free Tools Help Section -->
-    <section
-      class="free-tools-impact"
-      style="padding: 80px 0; background: white"
-    >
-      <div class="container">
-        <div class="section-header">
-          <h2>Free Tools That Make a Difference</h2>
-          <p>Real problems solved, no signup required</p>
+          <span class="section-tag">ABOUT</span>
+          <h2>What is ForgeAPIs?</h2>
+          <p>A free calculator platform built for accuracy and ease of use</p>
         </div>
 
         <div
@@ -2676,447 +2250,378 @@
             color: var(--gray);
           "
         >
-          <h3 style="color: var(--dark); font-size: 28px; margin: 40px 0 20px">
-            Why We Build Free Tools
-          </h3>
           <p style="margin-bottom: 20px">
-            Not everything needs to be monetized. We believe in giving back to
-            the community by creating genuinely useful tools that anyone can
-            access instantly—no signups, no paywalls, no BS. Our free
-            calculators have helped thousands of people make better financial
-            decisions, understand their benefits, and calculate costs
-            accurately.
+            ForgeAPIs started with a simple observation: most online calculators are terrible. They're slow, covered in ads, use outdated data, and often require signups for basic features. We knew there had to be a better way.
           </p>
 
-          <h3 style="color: var(--dark); font-size: 28px; margin: 40px 0 20px">
-            🧮 GST Calculator India
-          </h3>
           <p style="margin-bottom: 20px">
-            India's GST system can be confusing with multiple tax rates (5%,
-            12%, 18%, 28%) and component taxes (CGST, SGST, IGST). Our GST
-            calculator instantly shows you the exact breakdown of taxes on any
-            amount. Whether you're a small business owner filing returns, a
-            freelancer invoicing clients, or a consumer checking restaurant
-            bills, our calculator provides accurate results every time.
-          </p>
-          <p style="margin-bottom: 20px">
-            The calculator supports inclusive and exclusive GST calculations,
-            reverse GST calculations, and provides detailed breakdowns of CGST,
-            SGST, and IGST components. It's particularly useful for e-commerce
-            sellers, retailers, and service providers who need to quickly
-            calculate tax obligations.
+            Today, we're proud to serve over 100,000 users monthly with our growing suite of free calculators. From gaming currency converters that help players understand the real cost of in-game purchases, to GST calculators that save Indian businesses hours of tax calculations, to VA disability calculators that help veterans understand their benefits – every tool we build solves a real problem.
           </p>
 
-          <h3 style="color: var(--dark); font-size: 28px; margin: 40px 0 20px">
-            🎮 Gaming Currency Calculators
-          </h3>
-          <p style="margin-bottom: 20px">
-            Gaming has become a massive industry with billions spent on in-game
-            currencies annually. Our gaming calculators help players understand
-            the real-world value of virtual currencies like Robux (Roblox),
-            V-Bucks (Fortnite), Minecoins (Minecraft), FIFA Points, COD Points,
-            and Apex Coins.
-          </p>
-          <p style="margin-bottom: 20px">
-            Parents use these calculators to set reasonable spending limits for
-            their children. Gamers use them to find the best value packages and
-            avoid overspending. Content creators use them to explain costs to
-            their audiences. Each calculator includes current pricing tiers,
-            best value recommendations, and historical rate changes.
-          </p>
-          <p style="margin-bottom: 20px">
-            We update our rates regularly to reflect official pricing changes
-            and regional variations. Whether you're converting 1,000 Robux to
-            USD or comparing V-Bucks packages, our calculators provide instant,
-            accurate conversions with support for multiple currencies (USD, EUR,
-            GBP, CAD, AUD).
-          </p>
-
-          <h3 style="color: var(--dark); font-size: 28px; margin: 40px 0 20px">
-            🎖️ VA Disability Calculator
-          </h3>
-          <p style="margin-bottom: 20px">
-            Veterans Affairs disability compensation can be complex, especially
-            when calculating combined ratings and dependent benefits. Our VA
-            Disability Calculator uses the official 2025 VA compensation rates
-            and the exact combined ratings formula used by the VA to provide
-            accurate monthly payment estimates.
-          </p>
-          <p style="margin-bottom: 20px">
-            Veterans use our calculator to estimate their benefits before filing
-            claims, understand how additional disabilities might affect their
-            ratings, and plan their finances. The calculator accounts for all
-            variables including marital status, number of children, children in
-            school, dependent parents, and special circumstances like Aid &
-            Attendance.
-          </p>
-          <p style="margin-bottom: 20px">
-            We include comprehensive guides explaining VA math, the combined
-            ratings formula, and how dependent benefits work. This helps
-            veterans understand not just what they'll receive, but why the
-            calculations work the way they do. The calculator is updated
-            annually with new COLA adjustments to ensure accuracy.
-          </p>
-
-          <h3 style="color: var(--dark); font-size: 28px; margin: 40px 0 20px">
-            Our Commitment to Free Tools
-          </h3>
-          <p style="margin-bottom: 20px">
-            These tools will always remain free and accessible to everyone. We
-            don't require signups, we don't sell your data, and we don't bombard
-            you with ads. They're funded by our premium APIs and built because
-            we believe in making useful information accessible to everyone.
-          </p>
           <p>
-            Have an idea for a free tool we should build? Email us at
-            hello@forgeapis.com. We're always looking for ways to help our
-            community solve real problems.
+            What makes us different? We obsess over accuracy. Our gaming rates are updated monthly from official sources. Our tax calculators reflect the latest regulations. Our benefits calculators use current government tables. We believe that if you're going to offer a calculator, it should give the right answer – not an approximation, not last year's rates, but the actual correct result.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Why Choose Our Tools Section -->
+    <section class="features" style="padding: 60px 0; background: linear-gradient(180deg, var(--background) 0%, var(--surface-warm) 100%);">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">WHY FORGE</span>
-          <h2>Built for Developers, By Developers</h2>
-          <p>Everything you need to integrate and scale.</p>
+          <span class="section-tag">WHY CHOOSE OUR TOOLS</span>
+          <h2>Finally, Calculators Without the Nonsense</h2>
+          <p>No popups, no mandatory signups, no premium versions hiding the features you need</p>
         </div>
 
-        <div class="features-grid">
+        <div class="features-grid" style="margin-top: 50px;">
           <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Lightning Fast</h3>
+            <div class="feature-icon">✓</div>
+            <h3>100% Accurate Results</h3>
             <p>
-              Sub-100ms response times with global CDN distribution and
-              optimized code.
+              Updated monthly with official rates from game publishers, government sources, and financial institutions. We verify every formula and rate to ensure you get the right answer every time.
             </p>
           </div>
 
           <div class="feature">
-            <div class="feature-icon">🔧</div>
-            <h3>Simple Integration</h3>
+            <div class="feature-icon">⚡</div>
+            <h3>Lightning Fast</h3>
             <p>
-              RESTful APIs with clear documentation. Get running in under 5
-              minutes.
+              All calculations run instantly in your browser. No server delays, no loading screens, no waiting. Get your answer in milliseconds, not minutes.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Your Privacy Matters</h3>
+            <p>
+              Zero data collection on calculations. Everything runs locally in your browser. We don't track, store, or sell your information because we never see it.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Works on Everything</h3>
+            <p>
+              Mobile-optimized and works on any device with a browser. Save to your home screen for instant access. Works offline once loaded.
             </p>
           </div>
 
           <div class="feature">
             <div class="feature-icon">💰</div>
-            <h3>Fair Pricing</h3>
-            <p>Start free, scale as you grow. No surprises, no hidden fees.</p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">🔒</div>
-            <h3>Secure by Default</h3>
+            <h3>Actually Free Forever</h3>
             <p>
-              Enterprise-grade security with encryption, rate limiting, and
-              compliance.
+              No premium tiers, no paywalls, no 'free trials.' Every feature of every calculator is 100% free. We make money from ads, not from locking features.
             </p>
           </div>
 
           <div class="feature">
-            <div class="feature-icon">📊</div>
-            <h3>Real-time Analytics</h3>
+            <div class="feature-icon">💬</div>
+            <h3>Real Support</h3>
             <p>
-              Monitor usage, track performance, and optimize with detailed
-              insights.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">🌍</div>
-            <h3>Global Scale</h3>
-            <p>
-              Built to handle millions of requests with 99.9% uptime guarantee.
+              Found an issue? Have a suggestion? Email us and get a real response from a real person. We actually read and respond to feedback.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Trust Forge APIs Section -->
-    <section
-      class="trust-section"
-      style="padding: 80px 0; background: var(--light-gray)"
-    >
+    <!-- Trust Indicators Section -->
+    <section style="padding: 60px 0; background: linear-gradient(180deg, var(--surface-warm) 0%, var(--surface) 100%);">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">TRUST & TRANSPARENCY</span>
-          <h2>Why Developers Trust Forge APIs</h2>
-          <p>Built on principles of transparency, reliability, and community</p>
+          <h2>Trusted by Gamers, Businesses & Veterans</h2>
+          <p>Over 100,000 calculations performed monthly across all our tools</p>
         </div>
 
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-          "
-        >
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              🔒 Security First
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              Every API request is encrypted with TLS 1.3. We implement rate
-              limiting, DDoS protection, and regular security audits. Your data
-              is never stored unnecessarily, and we're fully GDPR compliant. We
-              take security seriously because your trust is our most valuable
-              asset.
-            </p>
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 32px;
+          margin: 50px 0;
+        ">
+          <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">50,000+</div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">Gaming currency conversions every month</p>
           </div>
-
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              📊 99.9% Uptime
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              Our infrastructure is built on modern cloud architecture with
-              automatic failover and global CDN distribution. We monitor every
-              endpoint 24/7 and maintain comprehensive status pages. When issues
-              arise, we communicate transparently and resolve them quickly.
-            </p>
+          <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">30,000+</div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">GST calculations for Indian businesses</p>
           </div>
-
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              💬 Real Support
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              No automated responses or ticket systems that go nowhere. Email us
-              at hello@forgeapis.com and get real answers from real developers
-              who built the APIs. We typically respond within 24 hours and love
-              helping developers succeed.
-            </p>
+          <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; font-weight: 700; color: var(--purple); margin-bottom: 8px;">20,000+</div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">Veterans checking their benefits</p>
           </div>
-
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              📖 Clear Documentation
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              Every API comes with comprehensive documentation, code examples in
-              multiple languages, and interactive testing environments. No
-              guesswork, no confusion—just clear instructions that get you up
-              and running in minutes, not hours.
-            </p>
-          </div>
-
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              💰 Fair Pricing
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              Start with generous free tiers and only pay for what you use. No
-              surprise charges, no hidden fees, no mandatory minimums. We
-              believe in transparent pricing that scales with your success.
-              Cancel anytime, no questions asked.
-            </p>
-          </div>
-
-          <div
-            style="
-              background: white;
-              padding: 40px;
-              border-radius: 16px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            "
-          >
-            <h3
-              style="
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--dark);
-              "
-            >
-              🌍 Global Community
-            </h3>
-            <p style="color: var(--gray); line-height: 1.7; font-size: 16px">
-              Join thousands of developers worldwide who trust Forge APIs for
-              their production applications. From startups in San Francisco to
-              enterprises in London, our APIs power applications across
-              industries and continents.
-            </p>
+          <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; font-weight: 700; color: var(--orange); margin-bottom: 8px;">7+</div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">Free calculators and growing</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Who We Serve Section -->
-    <section
-      class="who-we-serve"
-      style="
-        padding: 80px 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-      "
-    >
-      <div class="container">
-        <div class="section-header">
-          <h2 style="color: white">Built for Everyone</h2>
-          <p style="color: rgba(255, 255, 255, 0.9)">
-            From solo developers to enterprise teams
+        <div style="
+          max-width: 900px;
+          margin: 60px auto 0;
+          background: var(--background);
+          padding: 40px;
+          border-radius: 16px;
+          border: 1px solid var(--border);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        ">
+          <h3 style="
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+          ">Why We Built These Tools</h3>
+          <p style="
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 16px;
+            margin: 0;
+          ">
+            We were frustrated with calculator sites that were 90% ads and 10% tool. Sites that made you create an account just to calculate a tip. Tools using outdated rates giving wrong answers. So we built something better – clean, accurate calculators that respect your time and intelligence. No tricks, no dark patterns, just tools that work exactly as they should.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 60px;
-          "
-        >
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.1);
-              backdrop-filter: blur(10px);
-              padding: 32px;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-            "
-          >
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">
-              👨‍💻 Developers
-            </h3>
-            <p style="opacity: 0.9; line-height: 1.7">
-              Build faster with APIs that actually work. Clear documentation,
-              generous free tiers, and support when you need it. Integrate in
-              minutes, not days.
-            </p>
+    <!-- Tool Categories Section -->
+    <section style="padding: 60px 0; background: linear-gradient(180deg, var(--surface-cool) 0%, var(--background) 100%);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Free Calculators for Every Need</h2>
+          <p>Professional-grade tools organized by category</p>
+        </div>
+
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 32px;
+          margin-top: 50px;
+        ">
+          <!-- Gaming Calculators Card -->
+          <div style="
+            background: var(--background);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+          ">
+            <div style="font-size: 64px; margin-bottom: 20px; text-align: center;">🎮</div>
+            <h3 style="
+              font-size: 24px;
+              font-weight: 700;
+              margin-bottom: 16px;
+              text-align: center;
+              color: var(--text-primary);
+            ">Gaming Calculators</h3>
+            <p style="
+              color: var(--text-secondary);
+              margin-bottom: 24px;
+              text-align: center;
+              line-height: 1.6;
+            ">The internet's most comprehensive gaming calculator suite. Convert currencies for all major games, optimize your gaming setup, and understand the real cost of in-game purchases.</p>
+            <ul style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            ">
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>6 gaming currencies: V-Bucks, Robux, COD Points, and more</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Smart package finder shows best deals</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>FPS calculator for performance optimization</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Monitor size and DPI calculators</span>
+              </li>
+            </ul>
           </div>
 
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.1);
-              backdrop-filter: blur(10px);
-              padding: 32px;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-            "
-          >
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">
-              🚀 Startups
-            </h3>
-            <p style="opacity: 0.9; line-height: 1.7">
-              Scale without breaking the bank. Start free and grow with us. No
-              mandatory minimums, no surprise charges. Focus on your product,
-              not infrastructure.
-            </p>
+          <!-- Financial Calculators Card -->
+          <div style="
+            background: var(--background);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+          ">
+            <div style="font-size: 64px; margin-bottom: 20px; text-align: center;">💰</div>
+            <h3 style="
+              font-size: 24px;
+              font-weight: 700;
+              margin-bottom: 16px;
+              text-align: center;
+              color: var(--text-primary);
+            ">Financial & Business Tools</h3>
+            <p style="
+              color: var(--text-secondary);
+              margin-bottom: 24px;
+              text-align: center;
+              line-height: 1.6;
+            ">Essential calculators for taxes, tips, and business operations. Built with accuracy and compliance in mind, supporting multiple currencies and regional requirements.</p>
+            <ul style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            ">
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Indian GST with CGST/SGST breakdown</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Restaurant tip calculator with bill splitting</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Multi-currency support with live rates</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Regional tax compliance built-in</span>
+              </li>
+            </ul>
           </div>
 
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.1);
-              backdrop-filter: blur(10px);
-              padding: 32px;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-            "
-          >
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">
-              🏢 Enterprises
-            </h3>
-            <p style="opacity: 0.9; line-height: 1.7">
-              Enterprise-grade reliability with 99.9% uptime SLAs, dedicated
-              support, and compliance certifications. Built to handle millions
-              of requests.
-            </p>
-          </div>
-
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.1);
-              backdrop-filter: blur(10px);
-              padding: 32px;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-            "
-          >
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px">
-              👥 Individuals
-            </h3>
-            <p style="opacity: 0.9; line-height: 1.7">
-              Free tools for everyday problems. Calculate taxes, convert
-              currencies, estimate benefits—all without signups or hidden costs.
-            </p>
+          <!-- Benefits Calculators Card -->
+          <div style="
+            background: var(--background);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+          ">
+            <div style="font-size: 64px; margin-bottom: 20px; text-align: center;">🎖️</div>
+            <h3 style="
+              font-size: 24px;
+              font-weight: 700;
+              margin-bottom: 16px;
+              text-align: center;
+              color: var(--text-primary);
+            ">Benefits & Compensation</h3>
+            <p style="
+              color: var(--text-secondary);
+              margin-bottom: 24px;
+              text-align: center;
+              line-height: 1.6;
+            ">Official benefits calculators using 2025 government rates. Help veterans and their families understand their entitlements with accurate, up-to-date calculations.</p>
+            <ul style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            ">
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>VA disability compensation calculator</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Dependent and spouse benefits included</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Combined rating calculator</span>
+              </li>
+              <li style="
+                padding: 8px 0;
+                color: var(--text-secondary);
+                font-size: 14px;
+                display: flex;
+                align-items: start;
+                gap: 8px;
+              ">
+                <span style="color: var(--success); font-weight: 600;">✓</span>
+                <span>Updated with 2025 official rates</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -3280,8 +2785,9 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "ForgeAPI Gaming Calculators",
+        "name": "ForgeAPIs - Free Calculators & Tools",
         "url": "https://forgeapis.com",
+        "description": "Free online calculators for gaming currencies, GST, VA benefits, and more. No signups, no fees.",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -3292,7 +2798,7 @@
         },
         "publisher": {
           "@type": "Organization",
-          "name": "ForgeAPI",
+          "name": "ForgeAPIs",
           "logo": {
             "@type": "ImageObject",
             "url": "https://forgeapis.com/logo.png"

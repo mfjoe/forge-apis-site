@@ -1,197 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Mobile Optimization Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Apex Coins Converter">
-    <meta name="theme-color" content="#ff1744">
-    <meta name="format-detection" content="telephone=no">
-
-    <!-- Google Site Verification -->
-    <meta
-      name="google-site-verification"
-      content="thYv9L2n1x3OAc20MYSQzfqLdZbjqRPHkPi6Um61xXk"
-    />
-
-    <!-- Additional SEO meta tags -->
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="googlebot"
-      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    />
-    <meta
-      name="bingbot"
-      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    />
-
-    <title>Apex Coins Converter - Convert to USD, EUR, GBP & More (2025)</title>
-    <meta
-      name="description"
-      content="Free Apex Coins converter to convert between Apex Coins and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly for Apex Legends."
-    />
-    <meta
-      name="keywords"
-      content="apex coins calculator, apex legends currency converter, apex coins to usd, apex legends money calculator, apex coins value, battle pass calculator"
-    />
+    <meta charset="utf-8" />
+    <title>Apex Coins Calculator Moved | Forge APIs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="canonical"
-      href="https://gaming-tools.co.uk/gaming-calculators/apex-coins/"
+      href="https://forgeapis.com/gaming-calculators/vbucks/"
     />
     <meta
-      property="og:title"
-      content="Apex Coins Converter - Convert to USD, EUR, GBP & More"
+      http-equiv="refresh"
+      content="0; url=https://forgeapis.com/gaming-calculators/vbucks/"
     />
-    <meta
-      property="og:description"
-      content="Free Apex Coins converter to convert between Apex Coins and multiple currencies. Calculate value in USD, EUR, GBP, CAD, AUD instantly for Apex Legends."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://gaming-tools.co.uk/gaming-calculators/apex-coins/"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Apex Coins Converter - Convert to USD, EUR, GBP & More"
-    />
-    <meta
-      name="twitter:description"
-      content="Free Apex Legends currency converter. Convert Apex Coins to USD, EUR, GBP, CAD, AUD instantly."
-    />
-
+    <meta name="robots" content="noindex, follow" />
     <style>
-      /* Critical CSS - Inline for performance */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      :root {
+        color-scheme: light dark;
       }
 
       body {
-        font-family: "Rajdhani", "Orbitron", "Inter", -apple-system,
-          BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 2rem;
+      }
+
+      main {
+        text-align: center;
+        max-width: 480px;
+        background: rgba(15, 23, 42, 0.85);
+        padding: 2.5rem 2rem;
+        border-radius: 16px;
+        box-shadow: 0 25px 55px rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(96, 165, 250, 0.35);
+      }
+
+      h1 {
+        font-size: 1.85rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
         line-height: 1.6;
-        color: var(--white);
-        background: var(--dark);
-        position: relative;
-        overflow-x: hidden;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        color: #e2e8f0;
       }
 
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: repeating-linear-gradient(
-            0deg,
-            rgba(0, 212, 255, 0.03) 0px,
-            transparent 1px,
-            transparent 2px,
-            rgba(0, 212, 255, 0.03) 3px
-          ),
-          repeating-linear-gradient(
-            90deg,
-            rgba(0, 212, 255, 0.03) 0px,
-            transparent 1px,
-            transparent 2px,
-            rgba(0, 212, 255, 0.03) 3px
-          ),
-          radial-gradient(
-            circle at 20% 80%,
-            rgba(255, 23, 68, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(0, 212, 255, 0.15) 0%,
-            transparent 50%
-          );
-        background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
-        animation: gridMove 20s linear infinite;
-        z-index: -1;
-        pointer-events: none;
+      a.redirect-link {
+        display: inline-block;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #6366f1, #7c3aed);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35);
       }
 
-      body::after {
-        content: "APEX";
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 25rem;
-        font-weight: 900;
-        color: rgba(255, 23, 68, 0.02);
-        z-index: -1;
-        pointer-events: none;
-        letter-spacing: 2rem;
+      a.redirect-link:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 32px rgba(99, 102, 241, 0.45);
       }
-
-      :root {
-        --primary: #ff1744;
-        --primary-dark: #cc0e35;
-        --secondary: #00d4ff;
-        --accent: #ffb800;
-        --highlight: #ff6b9d;
-        --dark: #0a0e1a;
-        --gray: #4a5568;
-        --light-gray: #1a202c;
-        --white: #ffffff;
-        --gradient: linear-gradient(
-          135deg,
-          #ff1744 0%,
-          #ff6b9d 50%,
-          #00d4ff 100%
-        );
-        --legendary: #ffb800;
-        --epic: #9c27b0;
-        --rare: #00bcd4;
-        --common: #718096;
-        --glass-bg: rgba(255, 23, 68, 0.1);
-        --glass-border: rgba(0, 212, 255, 0.3);
-        --glow-red: 0 0 20px rgba(255, 23, 68, 0.5);
-        --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5);
-        --glow-gold: 0 0 20px rgba(255, 184, 0, 0.5);
-      }
-
-      /* Keyframe Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Apex Coins Calculator Is Moving</h1>
+      <p>
+        We&rsquo;re rebuilding this calculator with better live pricing, bundle
+        tracking, and conversion tools.
+      </p>
+      <p>
+        You&rsquo;ll be redirected shortly. If nothing happens, continue to our
+        V-Bucks calculator below.
+      </p>
+      <a
+        class="redirect-link"
+        href="https://forgeapis.com/gaming-calculators/vbucks/"
+      >
+        Go to V-Bucks Calculator
+      </a>
+    </main>
+  </body>
+</html>
       @keyframes gridMove {
         0% {
           background-position: 0 0, 0 0, 0% 50%, 0% 50%;
@@ -390,7 +286,6 @@
       .breadcrumb-link:hover::before {
         transform: translateX(100%);
       }
-
       .breadcrumb-link:hover {
         color: var(--primary);
         background: rgba(255, 23, 68, 0.15);
@@ -584,7 +479,6 @@
         content: " >";
         color: var(--secondary);
       }
-
       .faq-item {
         border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         margin-bottom: 1rem;
@@ -782,7 +676,6 @@
         font-weight: 700;
         text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
-
       /* Currency Selector */
       .currency-selector {
         display: flex;
@@ -969,7 +862,6 @@
         gap: 1rem;
         margin-bottom: 2rem;
       }
-
       .quick-btn {
         padding: 1rem;
         border: 2px solid var(--primary);
@@ -1170,7 +1062,6 @@
         backdrop-filter: blur(5px);
         border: 2px solid var(--secondary);
       }
-
       .pricing-table th,
       .pricing-table td {
         padding: 1rem;
@@ -1368,7 +1259,6 @@
         transition: left 0.3s ease;
         overflow-y: auto;
       }
-
       .mobile-drawer.open {
         left: 0;
       }
@@ -1561,7 +1451,6 @@
           align-items: center;
           justify-content: center;
         }
-
         .calculator-title {
           font-size: 1.3rem;
           margin-bottom: 0;
@@ -1761,7 +1650,6 @@
         .action-buttons {
           display: none;
         }
-
         /* Compact deal finder with Apex colors */
         .deal-finder {
           margin-top: 12px;
@@ -1962,7 +1850,6 @@
         gap: 0.75rem;
         justify-content: flex-end;
       }
-
       .modal-btn {
         padding: 0.75rem 1.5rem;
         border: none;
@@ -2160,7 +2047,6 @@
         margin-bottom: 1rem;
         font-weight: 600;
       }
-
       .footer-column ul {
         list-style: none;
         padding: 0;
@@ -2279,7 +2165,7 @@
           </a>
         </li>
         <li>
-          <a href="../minecoins/">
+          <a href="https://forgeapis.com/gaming-calculators/robux/">
             <span class="menu-icon">⛏️</span>
             <span>Minecoins Calculator</span>
           </a>
@@ -2325,7 +2211,6 @@
         </nav>
       </div>
     </div>
-
     <div class="container">
       <div class="main-content">
         <!-- Calculator -->
@@ -2478,7 +2363,6 @@
               </p>
             </div>
           </section>
-
           <!-- How to Use This Calculator -->
           <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
             <div style="background: rgba(0, 212, 255, 0.1); border: 2px solid var(--secondary); border-radius: 0; padding: 1.5rem; box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(255, 23, 68, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); position: relative;">
@@ -2649,7 +2533,6 @@
             </div>
           </div>
         </div>
-
         <!-- EA Play Discount Toggle -->
         <div style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem;">
           <div style="background: rgba(255, 140, 0, 0.08); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 140, 0, 0.3); backdrop-filter: blur(10px);">
@@ -2836,7 +2719,6 @@
             </ul>
           </div>
         </section>
-
         <!-- Battle Pass Changes Info Section -->
         <div style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
           <div style="background: rgba(255, 193, 7, 0.08); padding: 1.5rem; border-radius: 12px; border: 2px solid #ffc107; backdrop-filter: blur(10px);">
@@ -2988,7 +2870,7 @@
               <div style="background: linear-gradient(135deg, rgba(145, 200, 72, 0.2) 0%, rgba(145, 200, 72, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(145, 200, 72, 0.4); box-shadow: 0 0 15px rgba(145, 200, 72, 0.3), inset 0 0 10px rgba(145, 200, 72, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #ffffff; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(145, 200, 72, 0.8);">⛏️ Minecoins (Minecraft)</h3>
                 <p style="line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gray); font-family: -apple-system, sans-serif;">Minecoins cost $0.00568-$0.00799 per coin, making them 20-43% cheaper than Apex Coins depending on package size.</p>
-                <a href="../minecoins/" style="display: inline-block; background: rgba(145, 200, 72, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(145, 200, 72, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate Minecoins →</a>
+                <a href="https://forgeapis.com/gaming-calculators/robux/" style="display: inline-block; background: rgba(145, 200, 72, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 0; text-decoration: none; font-weight: 700; margin-top: 0.5rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(145, 200, 72, 1); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);">Calculate Minecoins →</a>
               </div>
 
               <div style="background: linear-gradient(135deg, rgba(230, 126, 34, 0.2) 0%, rgba(230, 126, 34, 0.05) 100%); padding: 1.5rem; border-radius: 0; border: 2px solid rgba(230, 126, 34, 0.4); box-shadow: 0 0 15px rgba(230, 126, 34, 0.3), inset 0 0 10px rgba(230, 126, 34, 0.1); backdrop-filter: blur(10px); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));">
@@ -3190,7 +3072,6 @@
             </tbody>
           </table>
         </div>
-
         <!-- Apex Coins to USD Exchange Rate Table -->
         <div class="content-section">
           <h2 class="section-title">Apex Coins to USD Exchange Rate Table</h2>
@@ -3381,7 +3262,6 @@
               social media accounts helps you stay informed about upcoming sales.
             </div>
           </div>
-
           <div class="faq-item">
             <div class="faq-question">
               <span>Do larger Apex Coins packages include bonus coins?</span>
@@ -3431,7 +3311,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              Yes! The Premium Battle Pass (950 AC) can still be purchased with Apex Coins. However, Ultimate ($10) and Ultimate+ ($20) tiers require real money and cannot be bought with AC. The Premium tier remains self-sustainable - if you complete it, you earn enough coins to buy the next season's Premium pass.
+              Yes! The Premium Battle Pass (950 AC) can still be purchased with Apex Coins. However, Ultimate ($10) and Ultimate+ ($20) tiers require real money and cannot be bought with AC. The Premium tier remains self-sustaining - if you complete it, you earn enough coins to buy the next season's Premium pass.
             </div>
           </div>
 
@@ -3570,7 +3450,6 @@
         sanitizeFilename(filename) {
           return filename.replace(/[^a-zA-Z0-9._-]/g, "_").substring(0, 100);
         },
-
         // 6. HTTPS redirect (if not on localhost)
         enforceHTTPS() {
           if (
@@ -3736,7 +3615,6 @@
           affordablePackages.reduce((best, current) => 
             (current.total / current.price) > (best.total / best.price) ? current : best
           ) : null;
-        
         // Generate recommendation based on amount (dynamically scaled to currency)
         const pkg0 = packages[0]; // 500 AC
         const pkg1 = packages[1]; // 1,000 AC
@@ -3937,7 +3815,6 @@
           warningDiv.style.display = 'block';
         }
       }
-
       function hidePackageWarning() {
         const warningDiv = document.getElementById('package-warning');
         if (warningDiv) {
@@ -4100,7 +3977,6 @@
         updatePricingTables();
         loadSavedCalculation();
       });
-
       function handleApexInput() {
         if (isUpdating) return;
 
@@ -4300,7 +4176,6 @@
           cell.textContent = `${symbol}${convertedValue.toFixed(2)}`;
         });
       }
-
       // Legacy function name for backward compatibility
       function updatePricingTables() {
         updateAllTables();
@@ -4493,7 +4368,6 @@
             );
           }
         }
-
         addCalculation(gameAmount, gameCurrency, currencyAmount, currencyType) {
           const calculation = {
             timestamp: Date.now(),
@@ -4655,7 +4529,6 @@
           showNotification("History exported successfully!");
         }
       }
-
       // Better Deal Finder
       class DealFinder {
         constructor() {
@@ -4855,7 +4728,6 @@
         );
       });
     </script>
-
     <!-- Schema Markup -->
     <script type="application/ld+json">
       {
@@ -5282,7 +5154,7 @@
           >V-Bucks to Dollar Converter</a
         >
         <a
-          href="../minecoins/"
+          href="https://forgeapis.com/gaming-calculators/robux/"
           style="
             padding: 0.75rem 1.5rem;
             background: rgba(10, 14, 26, 0.8);

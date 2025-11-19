@@ -51,7 +51,7 @@ const navbarConfig = {
   },
   links: [
     { name: "Calculators", url: "#calculators" },
-    { name: "Pro Settings", url: "#pro-settings" },
+    { name: "Currency Comparison", url: "#currency-comparison" },
     { name: "FAQ", url: "#faq" }
   ],
   mobileMenu: {
@@ -59,11 +59,11 @@ const navbarConfig = {
       {
         title: "Free Tools",
         links: [
+          { name: "Gaming Currency Converter", url: "/gaming-currency-converter/" },
           { name: "FPS Calculator", url: "/fps-calculator/" },
           { name: "Monitor Calculator", url: "/monitor-calculator/" },
           { name: "DPI Calculator", url: "/dpi-calculator/" },
           { name: "GST Calculator India", url: "/gst-calculator/" },
-          { name: "Gaming Currency Calculators", url: "/gaming-calculators/" },
           { name: "VA Disability Benefits Calculator", url: "/va-calculator/" },
           { name: "Restaurant Tip Calculator", url: "/tip-calculator/" }
         ]

@@ -12,14 +12,12 @@ const FOOTER_CONFIG = {
   // Footer Columns Configuration
   columns: [
     {
-      title: "Gaming Tools",
+      title: "Featured Gaming Tools",
       links: [
-        { text: "DPI Calculator", url: "/dpi-calculator/" },
         { text: "Robux Calculator", url: "/gaming-calculators/robux/" },
         { text: "V-Bucks Calculator", url: "/gaming-calculators/vbucks/" },
-        { text: "Minecoins Calculator", url: "/gaming-calculators/minecoins/" },
-        { text: "FIFA Points Calculator", url: "/gaming-calculators/fifa-points/" },
-        { text: "All Gaming Calculators", url: "/gaming-calculators/" }
+        { text: "COD Points Calculator", url: "/gaming-calculators/cod-points/" },
+        { text: "Gaming Calculators Hub", url: "/gaming-calculators/" }
       ]
     },
     {
