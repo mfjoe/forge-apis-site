@@ -79,6 +79,88 @@
             "@type": "Answer",
             "text": "No, gaming currencies are not interchangeable. V-Bucks only work in Fortnite, Robux only in Roblox, etc. This calculator helps you compare the real-money value of each currency, but they cannot be directly exchanged between games."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are the conversion rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our calculator uses official pricing data directly from game publishers (Epic Games, Roblox, Activision, EA, Microsoft) and updates monthly. Exchange rates for converting to EUR, GBP, CAD, and AUD are updated daily using current market rates. All package prices and bonus amounts reflect the official pricing as of the last update."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the smart package mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smart package mode automatically finds the best combination of official packages to get the exact amount you need (or closest to it) while maximizing value. It compares all available packages and their bonus amounts to recommend the most cost-effective purchase strategy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any fees when buying gaming currency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fees depend on your payment method and region. Credit cards, PayPal, and digital wallets may charge processing fees. Some regions also include taxes (like VAT in Europe). The calculator shows base package prices - always check your payment provider and local tax laws for final costs."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Convert Gaming Currencies to Real Money",
+      "description": "Step-by-step guide to using the gaming currency converter",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Select your gaming currency",
+          "text": "Choose from V-Bucks, Robux, COD Points, FIFA Points, Apex Coins, or Minecoins from the dropdown menu"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter the amount",
+          "text": "Input how many gaming currency units you want to convert, or use the popular amounts buttons for quick selection"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Choose your real currency",
+          "text": "Select USD, EUR, GBP, CAD, or AUD from the currency selector"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "View results",
+          "text": "See instant conversion with smart package recommendations showing the best value options"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://forgeapis.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Gaming Currency Converter",
+          "item": "https://forgeapis.com/gaming-currency-converter/"
         }
       ]
     }
@@ -1525,6 +1607,7 @@
         backdrop-filter: blur(10px);
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow-x: hidden;
       }
       
       .faq-section {
@@ -2127,15 +2210,26 @@
         .pricing-section {
           margin: 2rem auto;
           padding: 1.5rem 15px;
+          overflow-x: hidden;
         }
 
         .comparison-section {
           margin: 2rem auto;
           padding: 1.5rem 15px;
+          overflow-x: hidden;
         }
 
         .pricing-table {
           padding: 1rem;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .pricing-table table {
+          min-width: 100%;
+          width: auto;
+          font-size: 0.8rem;
         }
 
         .pricing-table h3 {
@@ -2143,18 +2237,15 @@
           margin-bottom: 1rem;
         }
 
-        .pricing-table table {
-          font-size: 0.8rem;
-        }
-
         .pricing-table th,
         .pricing-table td {
-          padding: 0.6rem 0.4rem;
+          padding: 0.6rem 0.3rem;
+          white-space: nowrap;
         }
 
         .pricing-table th {
           font-size: 0.7rem;
-          padding: 0.7rem 0.4rem;
+          padding: 0.7rem 0.3rem;
         }
 
         .pricing-table td {
@@ -2163,16 +2254,26 @@
 
         .comparison-table {
           padding: 1.5rem;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table table {
+          min-width: 100%;
+          width: auto;
         }
 
         .comparison-table th {
-          padding: 0.8rem 0.6rem;
+          padding: 0.8rem 0.4rem;
           font-size: 0.7rem;
+          white-space: nowrap;
         }
 
         .comparison-table td {
-          padding: 0.8rem 0.6rem;
+          padding: 0.8rem 0.4rem;
           font-size: 0.75rem;
+          white-space: nowrap;
         }
 
         .comparison-table td:first-child {
@@ -2182,6 +2283,48 @@
         .last-updated {
           font-size: 0.75rem;
           margin-top: 1rem;
+        }
+
+        /* Package cards in View Packages mode - mobile optimization */
+        .package-grid {
+          grid-template-columns: 1fr !important;
+          gap: 0.5rem !important;
+        }
+
+        .package-card {
+          padding: 0.5rem !important;
+          margin-bottom: 0 !important;
+        }
+
+        .conversion-result h3 {
+          font-size: 1rem !important;
+          margin-bottom: 0.75rem !important;
+        }
+
+        .package-card > div:first-child {
+          font-size: 0.75rem !important;
+          margin-bottom: 0.3rem !important;
+        }
+
+        .package-card > div:nth-child(2) {
+          font-size: 0.9rem !important;
+        }
+
+        .package-card > div:nth-child(3) {
+          font-size: 0.7rem !important;
+          margin-bottom: 0.35rem !important;
+        }
+
+        .package-card > div:nth-child(4) {
+          font-size: 0.85rem !important;
+        }
+
+        .package-card > div:nth-child(5) {
+          font-size: 0.7rem !important;
+        }
+
+        .conversion-result {
+          padding: 0.75rem !important;
         }
       }
 
@@ -2271,15 +2414,26 @@
         .pricing-section {
           margin: 1.5rem auto;
           padding: 1rem 10px;
+          overflow-x: hidden;
         }
 
         .comparison-section {
           margin: 1.5rem auto;
           padding: 1rem 10px;
+          overflow-x: hidden;
         }
 
         .pricing-table {
           padding: 0.75rem;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .pricing-table table {
+          min-width: 100%;
+          width: auto;
+          font-size: 0.7rem;
         }
 
         .pricing-table h3 {
@@ -2287,18 +2441,15 @@
           margin-bottom: 0.75rem;
         }
 
-        .pricing-table table {
-          font-size: 0.7rem;
-        }
-
         .pricing-table th,
         .pricing-table td {
-          padding: 0.5rem 0.3rem;
+          padding: 0.5rem 0.25rem;
+          white-space: nowrap;
         }
 
         .pricing-table th {
           font-size: 0.65rem;
-          padding: 0.6rem 0.3rem;
+          padding: 0.6rem 0.25rem;
         }
 
         .pricing-table td {
@@ -2307,16 +2458,26 @@
 
         .comparison-table {
           padding: 1rem;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table table {
+          min-width: 100%;
+          width: auto;
         }
 
         .comparison-table th {
-          padding: 0.7rem 0.5rem;
+          padding: 0.7rem 0.35rem;
           font-size: 0.65rem;
+          white-space: nowrap;
         }
 
         .comparison-table td {
-          padding: 0.7rem 0.5rem;
+          padding: 0.7rem 0.35rem;
           font-size: 0.7rem;
+          white-space: nowrap;
         }
 
         .comparison-table td:first-child {
@@ -2330,6 +2491,46 @@
         .last-updated {
           font-size: 0.7rem;
           margin-top: 0.75rem;
+        }
+
+        /* Package cards in View Packages mode - small mobile optimization */
+        .package-grid {
+          gap: 0.4rem !important;
+        }
+
+        .package-card {
+          padding: 0.45rem !important;
+        }
+
+        .conversion-result h3 {
+          font-size: 0.9rem !important;
+          margin-bottom: 0.6rem !important;
+        }
+
+        .package-card > div:first-child {
+          font-size: 0.7rem !important;
+          margin-bottom: 0.25rem !important;
+        }
+
+        .package-card > div:nth-child(2) {
+          font-size: 0.85rem !important;
+        }
+
+        .package-card > div:nth-child(3) {
+          font-size: 0.65rem !important;
+          margin-bottom: 0.3rem !important;
+        }
+
+        .package-card > div:nth-child(4) {
+          font-size: 0.8rem !important;
+        }
+
+        .package-card > div:nth-child(5) {
+          font-size: 0.65rem !important;
+        }
+
+        .conversion-result {
+          padding: 0.6rem !important;
         }
 
         .section-header h2 {
@@ -3847,6 +4048,7 @@
       function showPackageComparison() {
         const resultContainer = document.getElementById('conversionResult');
         resultContainer.innerHTML = '';
+        // Padding will be overridden by CSS on mobile
         resultContainer.style.padding = '2rem';
         
         const data = packageData[currentCurrency];
@@ -3865,12 +4067,14 @@
         
         // Package grid
         const packageGrid = document.createElement('div');
+        packageGrid.className = 'package-grid';
         packageGrid.style.display = 'grid';
         packageGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
         packageGrid.style.gap = '1rem';
         
         data.packages.forEach((pkg, index) => {
           const packageCard = document.createElement('div');
+          packageCard.className = 'package-card';
           packageCard.style.padding = '1rem';
           packageCard.style.background = 'rgba(20, 24, 35, 0.9)';
           packageCard.style.borderRadius = '10px';
