@@ -1,12 +1,24 @@
 # Robots.txt for forgeapis.com
+# Free Calculators & Tools Platform
+
 User-agent: *
 Allow: /
 
-# Directories
+# Disallow any admin or private directories (if they exist)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /node_modules/
+
+# Allow all calculator directories
 Allow: /gaming-calculators/
 Allow: /gst-calculator/
 Allow: /va-calculator/
 Allow: /tip-calculator/
+Allow: /fps-calculator/
+Allow: /monitor-calculator/
+Allow: /dpi-calculator/
 
 # Sitemap location
 Sitemap: https://forgeapis.com/sitemap.xml

@@ -556,11 +556,11 @@
       /* Responsive Breadcrumb */
       @media (max-width: 768px) {
         #breadcrumb-container {
-          margin-top: 70px; /* Account for mobile navbar */
+          margin-top: 55px; /* Account for smaller mobile navbar */
         }
 
         .breadcrumb {
-          padding: 10px 0;
+          padding: 8px 0;
         }
 
         .breadcrumb-list {
@@ -578,7 +578,7 @@
       .hero {
         position: relative;
         color: white;
-        padding: 30px 20px 60px;
+        padding: 20px 20px 40px;
         text-align: center;
         overflow: hidden;
         background: linear-gradient(-45deg, #00ff88, #7b2ff7, #ff00ff, #00ffff);
@@ -665,9 +665,9 @@
 
       .hero h1 {
         font-family: 'Russo One', sans-serif;
-        font-size: 3.5rem;
+        font-size: 3rem;
         font-weight: 900;
-        margin: 0 auto 1.25rem;
+        margin: 0 auto 1rem;
         text-shadow: 0 0 20px rgba(0, 255, 136, 0.5), 
                      0 4px 8px rgba(0, 0, 0, 0.5),
                      2px 0 var(--accent-primary), 
@@ -688,15 +688,14 @@
       }
 
       .hero p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         opacity: 0.95;
-        max-width: 1200px;
+        max-width: 800px;
         margin: 0 auto;
         padding: 0 20px;
         animation: fadeInUp 0.8s ease-out;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         font-weight: 300;
-        white-space: nowrap;
         line-height: 1.5;
         text-align: center;
       }
@@ -1961,12 +1960,47 @@
 
       /* Responsive */
       @media (max-width: 768px) {
+        /* Smaller navbar on mobile */
+        nav {
+          padding: 8px 0;
+        }
+
+        nav .logo svg {
+          height: 45px;
+        }
+
+        nav.scrolled {
+          padding: 6px 0;
+        }
+
+        nav.scrolled .logo svg {
+          height: 40px;
+        }
+
+        .mobile-menu-content {
+          top: 65px;
+        }
+
+        #breadcrumb-container {
+          margin-top: 55px;
+        }
+
+        .breadcrumb {
+          padding: 8px 0;
+        }
+
         .nav-links {
           display: none;
         }
 
         .mobile-menu-btn {
           display: flex;
+          padding: 6px;
+        }
+
+        .hamburger-line {
+          width: 22px;
+          height: 2.5px;
         }
 
         .mobile-menu {
@@ -1975,11 +2009,12 @@
 
 
         .hero h1 {
-          font-size: 2rem;
+          font-size: 1.75rem;
+          margin-bottom: 0.75rem;
         }
 
         .hero p {
-          font-size: 1rem;
+          font-size: 0.95rem;
           white-space: normal;
         }
 
@@ -2018,37 +2053,283 @@
           font-size: 0.7rem;
         }
 
+        /* Mode buttons - single row on mobile */
+        .mode-buttons {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.3rem;
+        }
+
+        .mode-btn {
+          padding: 0.5rem 0.2rem;
+          font-size: 0.65rem;
+          flex-direction: row;
+          gap: 0.2rem;
+          min-height: auto;
+          align-items: center;
+          justify-content: center;
+          min-width: 0;
+          width: 100%;
+        }
+
+        .mode-btn .mode-icon {
+          font-size: 0.85rem;
+          flex-shrink: 0;
+        }
+
+        .mode-btn span:not(.mode-icon) {
+          font-size: 0.6rem;
+          white-space: normal;
+          text-align: center;
+          line-height: 1.1;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto;
+          flex: 1;
+          min-width: 0;
+        }
+
+        .mode-label {
+          font-size: 0.75rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .calculation-mode {
+          padding: 1rem;
+        }
 
         .quick-amounts {
-          flex-direction: column;
-          align-items: stretch;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .quick-amounts-label {
+          font-size: 0.85rem;
+          margin-right: 0.5rem;
+          margin-bottom: 0.5rem;
+          width: 100%;
+          flex-basis: 100%;
         }
 
         .quick-btn {
-          width: 100%;
+          flex: 1;
+          min-width: calc(50% - 0.25rem);
+          padding: 0.5rem 0.75rem;
+          font-size: 0.85rem;
         }
 
         .section-title {
           font-size: 1.8rem;
         }
 
+        .pricing-section {
+          margin: 2rem auto;
+          padding: 1.5rem 15px;
+        }
+
+        .comparison-section {
+          margin: 2rem auto;
+          padding: 1.5rem 15px;
+        }
+
         .pricing-table {
-          padding: 1.5rem;
+          padding: 1rem;
+        }
+
+        .pricing-table h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
         }
 
         .pricing-table table {
-          font-size: 0.9rem;
+          font-size: 0.8rem;
         }
 
         .pricing-table th,
         .pricing-table td {
-          padding: 0.75rem 0.5rem;
+          padding: 0.6rem 0.4rem;
+        }
+
+        .pricing-table th {
+          font-size: 0.7rem;
+          padding: 0.7rem 0.4rem;
+        }
+
+        .pricing-table td {
+          font-size: 0.75rem;
+        }
+
+        .comparison-table {
+          padding: 1.5rem;
+        }
+
+        .comparison-table th {
+          padding: 0.8rem 0.6rem;
+          font-size: 0.7rem;
+        }
+
+        .comparison-table td {
+          padding: 0.8rem 0.6rem;
+          font-size: 0.75rem;
+        }
+
+        .comparison-table td:first-child {
+          font-size: 0.8rem;
+        }
+
+        .last-updated {
+          font-size: 0.75rem;
+          margin-top: 1rem;
         }
       }
 
       @media (max-width: 480px) {
+        .quick-amounts {
+          gap: 0.4rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .quick-amounts-label {
+          font-size: 0.75rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .quick-btn {
+          min-width: calc(50% - 0.2rem);
+          padding: 0.4rem 0.5rem;
+          font-size: 0.75rem;
+        }
+
+        /* Even smaller navbar on very small screens */
+        nav {
+          padding: 6px 0;
+        }
+
+        nav .logo svg {
+          height: 40px;
+        }
+
+        nav.scrolled {
+          padding: 5px 0;
+        }
+
+        nav.scrolled .logo svg {
+          height: 35px;
+        }
+
+        .mobile-menu-content {
+          top: 55px;
+          right: 10px;
+          min-width: 220px;
+          padding: 1rem;
+        }
+
+        #breadcrumb-container {
+          margin-top: 50px;
+        }
+
+        .breadcrumb {
+          padding: 6px 0;
+        }
+
+        .mobile-menu-btn {
+          padding: 4px;
+        }
+
+        .hamburger-line {
+          width: 20px;
+          height: 2px;
+        }
+
         .hero h1 {
-          font-size: 1.6rem;
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+          font-size: 0.85rem;
+        }
+
+        .quick-amounts {
+          gap: 0.4rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .quick-amounts-label {
+          font-size: 0.75rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .quick-btn {
+          min-width: calc(50% - 0.2rem);
+          padding: 0.4rem 0.5rem;
+          font-size: 0.75rem;
+        }
+
+        .pricing-section {
+          margin: 1.5rem auto;
+          padding: 1rem 10px;
+        }
+
+        .comparison-section {
+          margin: 1.5rem auto;
+          padding: 1rem 10px;
+        }
+
+        .pricing-table {
+          padding: 0.75rem;
+        }
+
+        .pricing-table h3 {
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .pricing-table table {
+          font-size: 0.7rem;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+          padding: 0.5rem 0.3rem;
+        }
+
+        .pricing-table th {
+          font-size: 0.65rem;
+          padding: 0.6rem 0.3rem;
+        }
+
+        .pricing-table td {
+          font-size: 0.7rem;
+        }
+
+        .comparison-table {
+          padding: 1rem;
+        }
+
+        .comparison-table th {
+          padding: 0.7rem 0.5rem;
+          font-size: 0.65rem;
+        }
+
+        .comparison-table td {
+          padding: 0.7rem 0.5rem;
+          font-size: 0.7rem;
+        }
+
+        .comparison-table td:first-child {
+          font-size: 0.75rem;
+        }
+
+        .comparison-table td strong {
+          font-size: 0.8rem;
+        }
+
+        .last-updated {
+          font-size: 0.7rem;
+          margin-top: 0.75rem;
         }
 
         .section-header h2 {
@@ -2088,6 +2369,42 @@
           padding: 1rem;
           font-size: 1rem;
         }
+
+        /* Mode buttons - even more compact on very small screens */
+        .mode-btn {
+          padding: 0.4rem 0.15rem;
+          font-size: 0.6rem;
+          gap: 0.15rem;
+          min-width: 0;
+        }
+
+        .mode-btn .mode-icon {
+          font-size: 0.75rem;
+        }
+
+        .mode-btn span:not(.mode-icon) {
+          font-size: 0.55rem;
+          line-height: 1.1;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+        }
+
+        .mode-buttons {
+          gap: 0.25rem;
+        }
+
+        .mode-label {
+          font-size: 0.7rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .calculation-mode {
+          padding: 0.75rem;
+        }
+
+        .mode-buttons {
+          gap: 0.35rem;
+        }
       }
     </style>
 
@@ -2118,7 +2435,7 @@
     <section class="hero" id="heroSection">
       <div class="hero-content">
         <h1>Gaming Currency Converter</h1>
-        <p>Convert between all major gaming currencies with real-time pricing. Compare V-Bucks, Robux, COD Points, FIFA Points, Apex Coins, and Minecoins instantly.</p>
+        <p>Convert V-Bucks, Robux, COD Points, FIFA Points, Apex Coins & Minecoins with real-time rates.</p>
       </div>
       
       <!-- Dynamic Hero Images (hidden by default, shown based on selection) -->
