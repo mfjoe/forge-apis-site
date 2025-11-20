@@ -31,10 +31,10 @@ const FOOTER_CONFIG = {
     {
       title: "Company",
       links: [
-        { text: "About Us", url: "/about/" },
-        { text: "Contact", url: "/contact/" },
-        { text: "Privacy Policy", url: "/privacy/" },
-        { text: "Terms of Service", url: "/terms/" }
+        { text: "About Us", url: "/about.html" },
+        { text: "Contact", url: "mailto:hello@forgeapis.com" },
+        { text: "Privacy Policy", url: "/privacy.html" },
+        { text: "Terms of Service", url: "/terms.html" }
       ]
     }
   ],

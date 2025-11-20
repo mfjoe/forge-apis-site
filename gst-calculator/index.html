@@ -31,7 +31,7 @@
 
     <script
       async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973653082164"
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2499973683982164"
       crossorigin="anonymous"
     ></script>
     <title>GST Calculator India 2025 - Free CGST SGST Calculator</title>
@@ -3127,11 +3127,7 @@
       }
     </style>
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"
-    ></script>
+    <!-- Google Analytics loaded via cookie-consent-secure.js after user consent -->
     <script>
       // Check if running in embed mode
       const urlParams = new URLSearchParams(window.location.search);
@@ -3150,14 +3146,7 @@
         document.body.style.paddingTop = '20px';
         document.body.style.background = 'white';
       }
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-5YPCMTRSNN");
     </script>
-    <!-- End Google Analytics -->
   </head>
   <body>
     <!-- Navigation -->
@@ -3643,7 +3632,18 @@
             </div>
           </div>
 
-          <!-- AdSense will go here -->
+          <!-- AdSense Display Ad -->
+          <div class="ad-container" style="text-align: center; margin: 30px auto; max-width: 728px; padding: 0 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-2499973683982164"
+                 data-ad-slot=""></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
 
           <!-- Results -->
           <div class="results">
@@ -5825,11 +5825,92 @@
       }
     </script>
 
+    <!-- AdSense Display Ad - Before Footer -->
+    <div class="ad-container" style="text-align: center; margin: 40px auto 60px; max-width: 970px; padding: 0 20px;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2499973683982164"
+           data-ad-slot=""
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
     <!-- Footer Container -->
     <div id="footer-container"></div>
-      
+
     <!-- Footer System - Load config first, then generator -->
     <script src="../footer-config.js"></script>
     <script src="../footer.js"></script>
+    
+    <!-- Cookie Consent Banner -->
+    <div
+      id="cookieConsent"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #1a1a2e;
+        color: white;
+        padding: 20px;
+        display: none;
+        z-index: 9999;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+      "
+    >
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+        "
+      >
+        <div style="flex: 1; min-width: 300px">
+          <p style="margin: 0; font-size: 14px">
+            🍪 We use cookies to improve your experience and analyze site
+            traffic.
+            <a href="../cookies.html" style="color: #00d4aa">Learn more</a>
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px">
+          <button
+            id="cookie-accept-btn"
+            style="
+              background: #00d4aa;
+              color: #1a1a2e;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 5px;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            Accept All
+          </button>
+          <button
+            id="cookie-reject-btn"
+            style="
+              background: transparent;
+              color: white;
+              border: 1px solid white;
+              padding: 10px 20px;
+              border-radius: 5px;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            Reject Non-Essential
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../cookie-consent-secure.js" defer></script>
   </body>
 </html>

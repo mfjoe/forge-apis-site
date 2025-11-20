@@ -137,24 +137,19 @@
             // Only load GA if truly consented
             if (CookieManager.get(this.CONSENT_COOKIE) !== 'accepted') return;
             
-            // Your GA code here (example)
-            console.log('Loading Google Analytics...');
-            
-            // Uncomment and add your GA ID when ready:
-            /*
+            // Load Google Analytics with consent
             const script = document.createElement('script');
             script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN';
             document.head.appendChild(script);
             
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID', {
+            gtag('config', 'G-5YPCMTRSNN', {
                 'anonymize_ip': true,  // GDPR compliance
                 'cookie_flags': 'SameSite=Strict;Secure'
             });
-            */
             
             this.GA_LOADED = true;
         },

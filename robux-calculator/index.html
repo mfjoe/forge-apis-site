@@ -18,15 +18,7 @@
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="thYv9L2n1x3OAc20MYSQzfqLdZbjqRPHkPi6Um61xXk">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5YPCMTRSNN');
-    </script>
-    <!-- End Google Analytics -->
+    <!-- Google Analytics loaded via cookie-consent-secure.js after user consent -->
     
     <style>
         * {
@@ -38,130 +30,228 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #e2231a 0%, #c41e17 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0;
+            background: #f8f9fa;
         }
         
         .container {
-            background: white;
-            border-radius: 20px;
+            max-width: 800px;
+            margin: 40px auto;
             padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         h1 {
             color: #1a1a2e;
-            font-size: 2.5em;
             margin-bottom: 20px;
+            font-size: 2.5em;
             font-weight: 700;
         }
         
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
         p {
-            color: #4a5568;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
         }
         
-        .loading {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #e2231a;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .redirect-notice {
+            background: linear-gradient(135deg, #e2231a, #c41e17);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .redirect-notice h2 {
+            color: white;
+            margin: 0 0 15px 0;
+        }
+        
+        .redirect-notice p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 10px;
+        }
+        
+        .faq-item {
             margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #e2231a;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .redirect-text {
+        .faq-item h3 {
             color: #e2231a;
-            font-weight: 600;
-            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
         }
         
-        .manual-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
+        .faq-item p {
+            color: #555;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
             background: #e2231a;
             color: white;
-            text-decoration: none;
-            border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.2s, background 0.2s;
         }
         
-        .manual-link:hover {
-            transform: translateY(-2px);
-            background: #c41e17;
+        tr:last-child td {
+            border-bottom: none;
         }
         
-        /* Mobile Responsive */
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            
             .container {
-                padding: 30px 20px;
+                margin: 20px;
+                padding: 25px;
             }
             
             h1 {
                 font-size: 2em;
             }
             
-            p {
-                font-size: 1em;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.75em;
-            }
-            
-            .container {
-                padding: 25px 15px;
+            h2 {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Robux Calculator</h1>
-        <p>Convert Roblox Robux to real money instantly with our advanced calculator. See all official packages, find the best deals, and understand exactly how much your Robux costs in USD, EUR, GBP, and more.</p>
+        <h1>Robux to USD Calculator</h1>
         
-        <div class="loading"></div>
+        <p>Robux is the official virtual currency of Roblox, the world's largest user-generated gaming platform with over 300 million monthly active users. Whether you're buying avatar accessories, game passes, or developer tools, understanding the real-world value of Robux is essential for making informed purchasing decisions. Our Robux calculator helps you convert between Robux and real money across multiple currencies, compare all official Roblox packages, and find the best deals. With rates updated monthly from Roblox's official pricing, you'll always know exactly how much your Robux costs in USD, EUR, GBP, CAD, and AUD.</p>
         
-        <p class="redirect-text">Loading the enhanced calculator...</p>
+        <div class="redirect-notice">
+            <h2>🎮 Accessing Advanced Calculator...</h2>
+            <p>You'll be redirected to our enhanced gaming currency converter with Robux pre-selected.</p>
+            <p>This calculator includes smart package recommendations, multi-currency support, and real-time conversion.</p>
+        </div>
         
-        <noscript>
-            <p>JavaScript is required for the calculator.</p>
-            <a href="/gaming-currency-converter/?currency=robux" class="manual-link">
-                Open Robux Calculator →
-            </a>
-        </noscript>
+        <h2>Current Robux Packages & Pricing</h2>
+        <table>
+            <tr>
+                <th>Package</th>
+                <th>Robux Amount</th>
+                <th>Price (USD)</th>
+                <th>Value per Robux</th>
+            </tr>
+            <tr>
+                <td>Starter</td>
+                <td>400 Robux</td>
+                <td>$4.99</td>
+                <td>$0.01248</td>
+            </tr>
+            <tr>
+                <td>Economy</td>
+                <td>800 Robux</td>
+                <td>$9.99</td>
+                <td>$0.01248</td>
+            </tr>
+            <tr>
+                <td>Value</td>
+                <td>1,700 Robux</td>
+                <td>$19.99</td>
+                <td>$0.01176</td>
+            </tr>
+            <tr>
+                <td>Best Value</td>
+                <td>4,500 Robux</td>
+                <td>$49.99</td>
+                <td>$0.01111</td>
+            </tr>
+            <tr>
+                <td>Ultimate</td>
+                <td>10,000 Robux</td>
+                <td>$99.99</td>
+                <td>$0.01000</td>
+            </tr>
+        </table>
+        
+        <h2>Why Use Our Robux Calculator?</h2>
+        <ul>
+            <li><strong>Updated monthly</strong> with official Roblox rates from the Roblox website</li>
+            <li><strong>Shows all available packages</strong> including bonus Robux offers and premium membership benefits</li>
+            <li><strong>Converts to USD, EUR, GBP, CAD, and AUD</strong> using current exchange rates</li>
+            <li><strong>Finds the best value packages</strong> automatically based on cost per Robux</li>
+            <li><strong>No signup required</strong> - 100% free to use with no account needed</li>
+            <li><strong>Works on all devices</strong> - mobile, tablet, and desktop optimized</li>
+        </ul>
+        
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How much does 1,000 Robux cost?</h3>
+            <p>1,000 Robux costs approximately $12.48 USD when purchased in the 800 Robux package (the closest option). However, buying the 1,700 Robux package for $19.99 gives you better value at $0.01176 per Robux, meaning 1,000 Robux effectively costs $11.76. For the absolute best value, the 10,000 Robux package costs $0.01 per Robux.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>What's the best Robux package to buy?</h3>
+            <p>The 10,000 Robux package offers the best value at $0.01 per Robux, providing a 20% savings compared to smaller packages. However, you should only purchase packages you'll actually use. If you're a casual player, the 1,700 Robux package ($19.99) offers a good balance between value and affordability with 11% savings compared to the starter packages.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Can I convert Robux back to real money?</h3>
+            <p>No, Robux cannot be directly converted back to real money. Once purchased, Robux can only be used within the Roblox platform to buy avatar items, game passes, developer tools, and premium membership. However, developers who create successful games can earn Robux through the Developer Exchange (DevEx) program, which allows them to exchange earned Robux for real money (subject to Roblox's terms and requirements).</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Does Roblox Premium give bonus Robux?</h3>
+            <p>Yes! Roblox Premium members receive a monthly Robux stipend (450, 1,000, or 2,200 Robux depending on the tier) and get a 10% bonus when purchasing Robux. Premium membership also unlocks the ability to sell items on the Roblox marketplace, which can help you earn additional Robux.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Are Robux prices the same worldwide?</h3>
+            <p>Robux pricing varies by region due to local currency exchange rates and regional pricing strategies. While the base USD price is standard, prices in EUR, GBP, and other currencies may differ. Our calculator automatically converts to your preferred currency using current exchange rates, helping international players understand the real cost.</p>
+        </div>
     </div>
     
     <script>
-        // Immediate redirect with currency pre-selected
+        // Delay redirect to 5 seconds to allow content reading
         setTimeout(() => {
             window.location.href = '/gaming-currency-converter/?currency=robux';
-        }, 1500);
+        }, 5000);
     </script>
 </body>
 </html>
-

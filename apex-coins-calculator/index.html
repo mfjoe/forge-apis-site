@@ -4,164 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Meta Tags -->
     <title>Apex Coins Calculator - Apex Legends Currency Converter (2025)</title>
     <meta name="description" content="Convert Apex Coins to USD. Apex Legends currency calculator with bonus coins and package comparisons.">
     <meta name="keywords" content="apex coins calculator, apex coins to usd, apex legends currency converter, apex coins converter, apex calculator">
     <link rel="canonical" href="https://forgeapis.com/gaming-currency-converter/?currency=apex">
     
-    <!-- Standard Meta -->
     <meta name="robots" content="index, follow">
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <!-- Google Site Verification -->
     <meta name="google-site-verification" content="thYv9L2n1x3OAc20MYSQzfqLdZbjqRPHkPi6Um61xXk">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YPCMTRSNN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5YPCMTRSNN');
-    </script>
-    <!-- End Google Analytics -->
+    <!-- Google Analytics loaded via cookie-consent-secure.js after user consent -->
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        
-        h1 {
-            color: #1a1a2e;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        p {
-            color: #4a5568;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        
-        .loading {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #00d4ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px 0;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .redirect-text {
-            color: #00d4ff;
-            font-weight: 600;
-            margin-top: 20px;
-        }
-        
-        .manual-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: #00d4ff;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.2s, background 0.2s;
-        }
-        
-        .manual-link:hover {
-            transform: translateY(-2px);
-            background: #0099cc;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            p {
-                font-size: 1em;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.75em;
-            }
-            
-            .container {
-                padding: 25px 15px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background: #f8f9fa; }
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #1a1a2e; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; }
+        h2 { color: #333; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        p { color: #666; line-height: 1.8; margin-bottom: 20px; font-size: 1.05em; }
+        .redirect-notice { background: linear-gradient(135deg, #00d4ff, #0099cc); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0; }
+        .redirect-notice h2 { color: white; margin: 0 0 15px 0; }
+        .redirect-notice p { color: rgba(255,255,255,0.95); margin-bottom: 10px; }
+        .faq-item { margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #00d4ff; }
+        .faq-item h3 { color: #00d4ff; margin-bottom: 10px; font-size: 1.2em; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #00d4ff; color: white; font-weight: 600; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background: #f8f9fa; }
+        ul { margin-left: 20px; margin-bottom: 20px; }
+        li { margin-bottom: 10px; color: #666; line-height: 1.7; }
+        @media (max-width: 768px) { .container { margin: 20px; padding: 25px; } h1 { font-size: 2em; } h2 { font-size: 1.5em; } }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Apex Coins Calculator</h1>
-        <p>Calculate Apex Legends coins value with our comprehensive converter. See all EA packages including bonus coins, compare prices, and make informed decisions about your Apex Coins purchases.</p>
         
-        <div class="loading"></div>
+        <p>Apex Coins are the official virtual currency for Apex Legends, Respawn Entertainment's popular battle royale game with over 100 million players worldwide. Whether you're purchasing battle passes, Legend skins, weapon skins, Apex Packs, or event cosmetics, understanding the real-world value of Apex Coins helps you make informed purchasing decisions. Our Apex Coins calculator converts between Apex Coins and real money across multiple currencies, compares all official EA packages including bonus coins, and identifies the best value deals. With rates updated monthly from EA's official pricing, you'll always know exactly how much your Apex Coins cost in USD, EUR, GBP, CAD, and AUD.</p>
         
-        <p class="redirect-text">Loading the enhanced calculator...</p>
+        <div class="redirect-notice">
+            <h2>🎮 Accessing Advanced Calculator...</h2>
+            <p>You'll be redirected to our enhanced gaming currency converter with Apex Coins pre-selected.</p>
+            <p>This calculator includes smart package recommendations, multi-currency support, and real-time conversion.</p>
+        </div>
         
-        <noscript>
-            <p>JavaScript is required for the calculator.</p>
-            <a href="/gaming-currency-converter/?currency=apex" class="manual-link">
-                Open Apex Coins Calculator →
-            </a>
-        </noscript>
+        <h2>Current Apex Coins Packages & Pricing</h2>
+        <table>
+            <tr><th>Package</th><th>Apex Coins</th><th>Price (USD)</th><th>Value per Coin</th></tr>
+            <tr><td>Starter</td><td>1,000 Coins</td><td>$9.99</td><td>$0.00999</td></tr>
+            <tr><td>Standard</td><td>2,150 Coins</td><td>$19.99</td><td>$0.00930</td></tr>
+            <tr><td>Deluxe</td><td>4,350 Coins</td><td>$39.99</td><td>$0.00919</td></tr>
+            <tr><td>Ultimate (Best Value)</td><td>11,500 Coins</td><td>$99.99</td><td>$0.00870</td></tr>
+        </table>
+        
+        <h2>Why Use Our Apex Coins Calculator?</h2>
+        <ul>
+            <li><strong>Updated monthly</strong> with official EA rates from Origin, Steam, and platform stores</li>
+            <li><strong>Shows all available packages</strong> including bonus coin offers</li>
+            <li><strong>Converts to USD, EUR, GBP, CAD, and AUD</strong> using current exchange rates</li>
+            <li><strong>Finds the best value packages</strong> automatically based on cost per coin</li>
+            <li><strong>No signup required</strong> - 100% free to use</li>
+        </ul>
+        
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How much does 2,150 Apex Coins cost?</h3>
+            <p>2,150 Apex Coins costs $19.99 USD in the Standard package. This package offers 7% better value than the Starter package with bonus coins included. For the best value, the Ultimate package with 11,500 Coins costs $99.99, providing 13% savings compared to smaller packages.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>What's the best Apex Coins package to buy?</h3>
+            <p>The Ultimate package with 11,500 Coins ($99.99) offers the best value at $0.00870 per coin, providing 13% savings. However, the Standard package (2,150 Coins for $19.99) offers good value for most players with enough coins for a battle pass and several cosmetics.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Can I convert Apex Coins back to real money?</h3>
+            <p>No, Apex Coins cannot be converted back to real money. Once purchased, they can only be used within Apex Legends to purchase battle passes, Legend skins, weapon skins, Apex Packs, and event cosmetics.</p>
+        </div>
     </div>
     
     <script>
-        // Immediate redirect with currency pre-selected
-        setTimeout(() => {
-            window.location.href = '/gaming-currency-converter/?currency=apex';
-        }, 1500);
+        setTimeout(() => { window.location.href = '/gaming-currency-converter/?currency=apex'; }, 5000);
     </script>
 </body>
 </html>
-

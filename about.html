@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Site Verification -->
+    <meta
+      name="google-site-verification"
+      content="thYv9L2n1x3OAc20MYSQzfqLdZbjqRPHkPi6Um61xXk"
+    />
+    <link rel="canonical" href="https://forgeapis.com/about" />
+
+    <!-- Additional SEO meta tags -->
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta
+      name="bingbot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Enhanced SEO Meta Tags -->
+    <title>About ForgeAPIs - Free Calculator Platform</title>
+    <meta
+      name="description"
+      content="Learn about ForgeAPIs, the free calculator platform serving 100,000+ users monthly with gaming, financial, and benefits calculators."
+    />
+    <meta
+      name="keywords"
+      content="forge apis about, calculator platform, free tools, gaming calculators, forge apis mission"
+    />
+
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="About ForgeAPIs - Free Calculator Platform" />
+    <meta
+      property="og:description"
+      content="Learn about ForgeAPIs, serving 100,000+ users monthly with free, accurate calculators."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forgeapis.com/about" />
+    <meta property="og:site_name" content="Forge APIs" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="About ForgeAPIs" />
+    <meta
+      name="twitter:description"
+      content="Free calculator platform serving 100,000+ users monthly with gaming, financial, and benefits calculators."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #0066ff;
+        --primary-dark: #0052cc;
+        --secondary: #00d4aa;
+        --dark: #0a0e27;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: white;
+      }
+
+      /* Navigation */
+      body > nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .breadcrumb-container {
+        max-width: 1200px;
+        margin: 90px auto 0;
+        padding: 12px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .breadcrumb-container nav {
+        font-size: 14px;
+        color: #6b7280;
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        z-index: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .breadcrumb-container a {
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .breadcrumb-container a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb-container span {
+        margin: 0 8px;
+        color: #6b7280;
+      }
+
+      .breadcrumb-current {
+        color: #374151;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.3s;
+      }
+
+      .logo:hover {
+        opacity: 0.8;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: var(--dark);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 999;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      /* Content */
+      .about-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 60px 0;
+        color: white;
+        margin-top: 0;
+        text-align: center;
+      }
+
+      .about-header h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .about-content h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 40px 0 20px;
+        color: var(--dark);
+      }
+
+      .about-content h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 30px 0 15px;
+        color: var(--dark);
+      }
+
+      .about-content p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: #374151;
+        font-size: 16px;
+      }
+
+      .about-content ul {
+        margin: 20px 0;
+        padding-left: 30px;
+      }
+
+      .about-content li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+        color: #374151;
+      }
+
+      .about-content a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .about-content a:hover {
+        text-decoration: underline;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .stat-card {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid #e5e7eb;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        color: var(--gray);
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        .breadcrumb-container {
+          margin-top: 70px;
+          padding: 10px 15px;
+        }
+
+        .about-header {
+          padding: 40px 0;
+        }
+
+        .about-header h1 {
+          font-size: 36px;
+        }
+
+        .about-content {
+          padding: 40px 15px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <!-- Google Analytics loaded via cookie-consent-secure.js after user consent -->
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <svg
+            width="300"
+            height="100"
+            viewBox="0 0 240 80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Digital/Tech Anvil with Crossed Hammers -->
+            <g transform="translate(15, 15)">
+              <!-- Digital Anvil (geometric/tech style) -->
+              <path
+                d="M 15 35 L 12 40 L 48 40 L 45 35 Z"
+                fill="#1E293B"
+                stroke="#0066FF"
+                stroke-width="0.5"
+              />
+              <rect x="18" y="30" width="24" height="5" fill="#334155" rx="1" />
+              <rect x="16" y="28" width="28" height="2" fill="#475569" />
+              <!-- Tech pattern on anvil -->
+              <line
+                x1="20"
+                y1="32"
+                x2="40"
+                y2="32"
+                stroke="#0066FF"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <line
+                x1="22"
+                y1="34"
+                x2="38"
+                y2="34"
+                stroke="#00D4AA"
+                stroke-width="0.5"
+                opacity="0.6"
+              />
+              <!-- Crossed Hammers (geometric style) -->
+              <!-- Left hammer -->
+              <g transform="rotate(-30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#0066FF"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+              </g>
+              <!-- Right hammer -->
+              <g transform="rotate(30 30 25)">
+                <rect
+                  x="28"
+                  y="15"
+                  width="4"
+                  height="18"
+                  fill="#0066FF"
+                  rx="0.5"
+                />
+                <path d="M 25 12 L 35 12 L 36 16 L 24 16 Z" fill="#0052CC" />
+                <rect x="24" y="13" width="2" height="2" fill="#00D4AA" />
+                <rect x="34" y="13" width="2" height="2" fill="#00D4AA" />
+              </g>
+              <!-- Digital Fire/Energy (geometric flames) -->
+              <path
+                d="M 28 10 L 30 5 L 31 8 L 33 3 L 33 10 L 31 8 L 29 11 Z"
+                fill="#FF6B35"
+                opacity="0.9"
+              />
+              <path
+                d="M 26 12 L 27 9 L 28 11 L 29 8 L 29 13 Z"
+                fill="#FFA500"
+                opacity="0.8"
+              />
+              <path
+                d="M 31 12 L 32 9 L 33 11 L 34 8 L 34 13 Z"
+                fill="#FFA500"
+                opacity="0.8"
+              />
+              <!-- Tech sparks (pixels) -->
+              <rect
+                x="12"
+                y="20"
+                width="2"
+                height="2"
+                fill="#00D4AA"
+                opacity="0.8"
+              />
+              <rect
+                x="46"
+                y="20"
+                width="2"
+                height="2"
+                fill="#00D4AA"
+                opacity="0.8"
+              />
+              <rect
+                x="10"
+                y="25"
+                width="1.5"
+                height="1.5"
+                fill="#FFD700"
+                opacity="0.7"
+              />
+              <rect
+                x="48"
+                y="25"
+                width="1.5"
+                height="1.5"
+                fill="#FFD700"
+                opacity="0.7"
+              />
+            </g>
+            <!-- Text: Forge -->
+            <text
+              x="75"
+              y="45"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="28"
+              font-weight="800"
+              fill="#0A0E27"
+            >
+              Forge
+            </text>
+            <!-- Text: APIs -->
+            <text
+              x="150"
+              y="45"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="28"
+              font-weight="400"
+              fill="#6B7280"
+            >
+              APIs
+            </text>
+            <!-- Tagline -->
+            <text
+              x="75"
+              y="63"
+              font-family="Inter, system-ui, -apple-system, sans-serif"
+              font-size="9"
+              fill="#9CA3AF"
+              letter-spacing="0.5"
+            >
+              PRODUCTION-READY APIS
+            </text>
+          </svg>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#tools">Free Tools</a>
+          <a href="about.html">About</a>
+          <a href="mailto:hello@forgeapis.com">Contact</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="index.html#tools">Free Tools</a>
+          <a href="about.html">About</a>
+          <a href="mailto:hello@forgeapis.com">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+      <nav aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span class="breadcrumb-current">About</span>
+      </nav>
+    </div>
+
+    <!-- Header -->
+    <div class="about-header">
+      <div class="container">
+        <h1>About ForgeAPIs</h1>
+        <p style="font-size: 18px; opacity: 0.95;">Free calculators that actually work</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="about-content">
+      <h2>Our Mission</h2>
+      <p>ForgeAPIs provides free, accurate calculators without the typical annoyances of calculator sites. No forced signups, no paywalls, no outdated data - just tools that work.</p>
+
+      <h2>What We Offer</h2>
+      <ul>
+        <li><strong>Gaming Calculators:</strong> Currency converters for V-Bucks, Robux, COD Points, FIFA Points, Apex Coins, and Minecoins, plus FPS, DPI, and monitor calculators</li>
+        <li><strong>Financial Tools:</strong> GST calculator for Indian businesses, tip calculators with bill splitting</li>
+        <li><strong>Benefits Calculators:</strong> VA disability calculator with 2025 official rates</li>
+      </ul>
+
+      <h2>Why We're Different</h2>
+      <p>We update our rates monthly from official sources. Every calculator is completely free with no premium versions. Your privacy matters - calculations run in your browser, we don't collect or store your data.</p>
+
+      <h2>Our Story</h2>
+      <p>Founded in 2024, ForgeAPIs started when we got frustrated with existing calculator sites covered in ads and requiring accounts for basic functions. We built something better - clean, fast, accurate calculators that respect users' time and intelligence.</p>
+
+      <h2>Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">100,000+</div>
+          <div class="stat-label">Monthly Calculations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7+</div>
+          <div class="stat-label">Free Calculators</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Gaming Currencies</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Monthly</div>
+          <div class="stat-label">Rate Updates</div>
+        </div>
+      </div>
+
+      <h2>Contact Us</h2>
+      <p>Have feedback or found an issue? Email us at <a href="mailto:hello@forgeapis.com">hello@forgeapis.com</a></p>
+    </div>
+
+    <!-- Footer System -->
+    <script src="footer-config.js"></script>
+    <script src="footer.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('active');
+        });
+      }
+    </script>
+  </body>
+</html>
+
