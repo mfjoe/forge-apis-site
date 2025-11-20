@@ -216,7 +216,7 @@
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com data:;
     img-src 'self' data: https:;
-    connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.adtrafficquality.google https://pagead2.googlesyndication.com https://*.googlesyndication.com;
     frame-src 'self' https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google;
     base-uri 'self';
     form-action 'self';
@@ -786,9 +786,9 @@
         position: absolute;
         right: 10%;
         bottom: 0;
-        height: 200px;
+        height: 350px;
         width: auto;
-        max-width: 300px;
+        max-width: 500px;
         object-fit: contain;
         object-position: center bottom;
         opacity: 0;
@@ -1388,6 +1388,7 @@
         margin-bottom: 8px;
         transform-style: preserve-3d;
         position: relative;
+        transform: rotate(90deg);
       }
       
       .swap-btn::before {
@@ -2106,8 +2107,8 @@
         }
 
         .hero-image {
-          height: 120px;
-          max-width: 150px;
+          height: 200px;
+          max-width: 250px;
           right: 5%;
           bottom: 10px;
         }
@@ -2407,8 +2408,8 @@
         }
 
         .hero-image {
-          height: 100px;
-          max-width: 120px;
+          height: 160px;
+          max-width: 200px;
           right: 2%;
           bottom: 5px;
         }
@@ -2787,7 +2788,7 @@
           />
         </div>
 
-        <button class="swap-btn" id="swapBtn" title="Swap conversion direction">⇄</button>
+        <button class="swap-btn" id="swapBtn" title="Swap conversion direction">⇅</button>
 
         <div class="input-group">
           <label for="realMoney">Real Money</label>
@@ -4466,6 +4467,8 @@
       }
 
       // Swap button - actually swap the input fields
+      let swapRotation = 90; // Track current rotation angle (starts at 90 degrees)
+      let rotationDirection = 1; // 1 for clockwise, -1 for counterclockwise
       document.getElementById('swapBtn').addEventListener('click', function() {
         const calculatorInputs = document.querySelector('.calculator-inputs');
         const inputGroups = calculatorInputs.querySelectorAll('.input-group');
@@ -4475,8 +4478,10 @@
           const secondGroup = inputGroups[1];
           const swapBtn = document.getElementById('swapBtn');
           
-          // Visual rotation effect
-          this.style.transform = 'rotate(180deg)';
+          // Rotate 180 degrees, alternating direction each time
+          swapRotation += 180 * rotationDirection;
+          rotationDirection *= -1; // Alternate direction for next click
+          this.style.transform = `rotate(${swapRotation}deg)`;
           
           // Remove elements
           firstGroup.remove();
@@ -4485,11 +4490,6 @@
           // Insert them back in swapped order
           calculatorInputs.insertBefore(secondGroup, swapBtn);
           calculatorInputs.insertBefore(firstGroup, swapBtn.nextSibling);
-          
-          // Reset rotation after animation
-          setTimeout(() => {
-            this.style.transform = 'rotate(0deg)';
-          }, 300);
           
           // Recalculate based on whichever field has a value
           const gamingAmount = document.getElementById('gamingAmount').value;
