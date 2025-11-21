@@ -3982,8 +3982,18 @@
         // Update quick amount buttons to show purchasable amounts
         updateQuickAmountButtons(currentCurrency);
         
-        // Update URL without page reload
-        const newUrl = `${window.location.pathname}?currency=${currentCurrency}`;
+        // Update URL with hash navigation (for redirect compatibility)
+        // Map currency codes to hash-friendly names
+        const hashMap = {
+          'vbucks': 'vbucks',
+          'robux': 'robux',
+          'cod': 'cod-points',
+          'fifa': 'fifa-points',
+          'apex': 'apex-coins',
+          'minecoins': 'minecoins'
+        };
+        const hashName = hashMap[currentCurrency] || currentCurrency;
+        const newUrl = `${window.location.pathname}#${hashName}`;
         window.history.replaceState({currency: currentCurrency}, '', newUrl);
         
         // Update meta tags for SEO

@@ -112,7 +112,6 @@
       }
 
       html {
-        scroll-behavior: smooth;
         scroll-padding-top: 100px;
       }
 
@@ -123,6 +122,7 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         background: var(--light-gray);
+        scroll-behavior: smooth;
       }
 
       .container {
@@ -185,10 +185,6 @@
         transition: color 0.2s;
       }
 
-      .breadcrumb-link:hover {
-        color: var(--primary-dark);
-        text-decoration: underline;
-      }
 
       .breadcrumb-current {
         color: var(--text-primary);
@@ -230,9 +226,6 @@
         transition: opacity 0.3s;
       }
 
-      .logo:hover {
-        opacity: 0.8;
-      }
 
       .nav-links {
         display: flex;
@@ -247,94 +240,110 @@
         transition: color 0.3s;
       }
 
-      .nav-links a:hover {
-        color: var(--primary);
-      }
 
-      /* Gaming Hero Section */
+      /* Hero Section - Ultra Simple */
       .hero {
-        padding: 140px 0 80px;
-        background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 50%, #f8f9ff 100%);
-        position: relative;
-        overflow: hidden;
-        min-height: 50vh;
+        background: #1a1a1a;
+        min-height: 60vh;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #0066ff 0%, #00d4aa 100%);
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        top: 20%;
-        right: 10%;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
+        justify-content: center;
+        position: relative;
+        padding: 120px 0 80px;
       }
 
       .hero-content {
         position: relative;
         z-index: 2;
         text-align: center;
-        color: #1a1a2e;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
-        border: 1px solid #bfdbfe;
-        border-radius: 20px;
-        padding: 6px 16px;
-        font-size: 12px;
-        font-weight: 600;
-        margin-bottom: 24px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #0066ff;
-        box-shadow: 0 2px 8px rgba(0, 102, 255, 0.1);
+        color: white;
+        max-width: 900px;
+        padding: 0 20px;
+        width: 100%;
       }
 
       .hero h1 {
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 700;
-        margin-bottom: 20px;
-        line-height: 1.1;
-        color: #1a1a2e;
-        letter-spacing: -0.02em;
-      }
-
-      .hero h1 span {
-        color: #0066ff;
-        background: linear-gradient(135deg, #0066ff 0%, #00d4aa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        margin-bottom: 16px;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        color: #ffffff;
       }
 
       .hero p {
-        font-size: 20px;
-        margin-bottom: 32px;
-        color: #4a5568;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 18px;
         line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
         font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto 40px;
+      }
+
+      /* 3-Step Guide */
+      .hero-steps {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .hero-step {
+        flex: 1;
+        min-width: 200px;
+        max-width: 250px;
+        text-align: center;
+      }
+
+      .hero-step-number {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+      }
+
+      .hero-step-text {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      /* Start Here Button */
+      .hero-cta {
+        margin-top: 40px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-cta-btn {
+        display: inline-block;
+        padding: 16px 40px;
+        background: var(--primary);
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        min-height: 56px;
+      }
+
+      .hero-cta-btn-secondary {
+        background: white;
+        color: var(--primary);
+        border: 2px solid var(--primary);
       }
 
       /* Introduction Section */
@@ -365,19 +374,13 @@
       }
 
       .privacy-badge {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: var(--primary);
         color: white;
         padding: 16px 24px;
         border-radius: 12px;
         text-align: center;
         font-weight: 600;
         margin-top: 32px;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-      }
-
-      .privacy-badge::before {
-        content: "🔒";
-        margin-right: 8px;
       }
 
       /* Calculator Tabs */
@@ -386,15 +389,478 @@
         background: var(--light-gray);
       }
 
-      .calculator-tabs {
+      /* Wizard Styles */
+      .wizard-section {
+        padding: 60px 0;
+        background: var(--light-gray);
+      }
+
+      .wizard-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Progress Indicator */
+      .wizard-progress {
         display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+        position: relative;
+      }
+
+      .wizard-progress::before {
+        content: '';
+        position: absolute;
+        top: 24px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #e5e7eb;
+        z-index: 0;
+      }
+
+      .progress-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+      }
+
+      .progress-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #e5e7eb;
+        display: flex;
+        align-items: center;
         justify-content: center;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--gray);
+        margin-bottom: 12px;
+      }
+
+      .progress-circle.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+
+      .progress-circle.completed {
+        background: #10b981;
+        border-color: #10b981;
+        color: white;
+      }
+
+      .progress-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--gray);
+      }
+
+      .progress-step.active .progress-label {
+        color: var(--primary);
+      }
+
+      /* Wizard Steps */
+      .wizard-step {
+        display: none;
+      }
+
+      .wizard-step.active {
+        display: block;
+      }
+
+      .wizard-step h2 {
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--dark);
+      }
+
+      /* Game Selection */
+      .game-select {
+        width: 100%;
+        padding: 16px 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        background: white;
+        color: var(--dark);
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        min-height: 56px;
+        margin-bottom: 32px;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23334155' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+        padding-right: 50px;
+        transition: all 0.2s;
+      }
+
+      .game-select:hover {
+        border-color: var(--primary);
+      }
+
+      .game-select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+      }
+
+      /* DPI Selection */
+      .dpi-selection {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .dpi-preset-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .dpi-preset-card {
+        padding: 24px;
+        border: 3px solid #e5e7eb;
+        border-radius: 12px;
+        background: white;
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dpi-preset-card:hover,
+      .dpi-preset-card.selected {
+        border-color: var(--primary);
+        background: #f0f9ff;
+      }
+
+      .dpi-custom-input {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .dpi-custom-input label {
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .dpi-custom-input input {
+        padding: 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 18px;
+        min-height: 56px;
+      }
+
+      .dpi-dont-know-btn {
+        width: 100%;
+        padding: 16px;
+        border: 2px solid var(--primary);
+        background: white;
+        color: var(--primary);
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        min-height: 56px;
+      }
+
+      /* DPI Tester in Wizard */
+      .dpi-tester-wizard {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .dpi-tester-instructions {
+        text-align: center;
+      }
+
+      .dpi-tester-instructions p {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .dpi-distance {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 20px;
+      }
+
+      .dpi-tracking-area {
+        background: #f0f9ff;
+        border: 3px dashed var(--primary);
+        border-radius: 12px;
+        padding: 60px 40px;
+        text-align: center;
+        cursor: crosshair;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tracking-display {
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--primary);
+      }
+
+      .dpi-tester-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      /* Sensitivity Wizard */
+      .sensitivity-wizard {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .sensitivity-slider-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .sensitivity-slider-wrapper input[type="range"] {
+        width: 100%;
+        height: 12px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: #e5e7eb;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      .sensitivity-slider-wrapper input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 32px;
+        height: 32px;
+        background: var(--primary);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .sensitivity-slider-wrapper input[type="range"]::-moz-range-thumb {
+        width: 32px;
+        height: 32px;
+        background: var(--primary);
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+      }
+
+      .sensitivity-value-display-wizard {
+        text-align: center;
+      }
+
+      .sensitivity-value-display-wizard input {
+        padding: 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        width: 150px;
+        min-height: 56px;
+      }
+
+      .sensitivity-presets-wizard {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .sensitivity-preset-wizard {
+        padding: 12px 24px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        background: white;
+        font-weight: 600;
+        cursor: pointer;
+        min-height: 48px;
+      }
+
+      .sensitivity-preset-wizard:hover,
+      .sensitivity-preset-wizard.selected {
+        border-color: var(--primary);
+        background: #f0f9ff;
+      }
+
+      /* Wizard Result */
+      .wizard-result {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .result-main {
+        text-align: center;
+        padding: 32px;
+        background: #f0f9ff;
+        border-radius: 12px;
+        border: 2px solid var(--primary);
+      }
+
+      .result-breakdown {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+        background: #f9fafb;
+        border-radius: 8px;
+      }
+
+      .breakdown-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .breakdown-label {
+        color: var(--gray);
+        font-weight: 600;
+      }
+
+      .breakdown-value {
+        color: var(--dark);
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .result-recommendation {
+        padding: 20px;
+        background: #fffbeb;
+        border: 2px solid #f59e0b;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #d97706;
+        display: none;
+      }
+
+      .result-recommendation.show {
+        display: block;
+      }
+
+      /* Wizard Navigation */
+      .wizard-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        gap: 12px;
+      }
+
+      .wizard-btn-prev,
+      .wizard-btn-next,
+      .wizard-btn-start-over {
+        min-height: 56px;
+        padding: 16px 32px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .wizard-btn-prev.hidden,
+      .wizard-btn-next.hidden,
+      .wizard-btn-start-over.hidden {
+        display: none;
+      }
+
+      .advanced-tools-link-wizard {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .advanced-tools-link-wizard a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .advanced-calculators {
+        margin-top: 60px;
+      }
+
+      /* Mobile Styles for Wizard */
+      @media (max-width: 768px) {
+        .wizard-container {
+          padding: 24px;
+        }
+
+        .wizard-step h2 {
+          font-size: 24px;
+        }
+
+        .game-select {
+          font-size: 16px;
+          padding: 14px 18px;
+          padding-right: 45px;
+        }
+
+        .dpi-preset-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .wizard-progress {
+          margin-bottom: 32px;
+        }
+
+        .progress-circle {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+
+        .progress-label {
+          font-size: 12px;
+        }
+
+        .wizard-navigation {
+          flex-direction: column;
+        }
+
+        .wizard-btn-prev,
+        .wizard-btn-next,
+        .wizard-btn-start-over {
+          width: 100%;
+        }
+      }
+
+      .calculator-tabs {
+        display: none; /* Hidden by default */
+        flex-direction: column;
         gap: 12px;
         margin-bottom: 32px;
-        overflow-x: auto;
         padding: 4px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
+      }
+
+      .calculator-tabs.show-advanced {
+        display: flex; /* Show when advanced tools are revealed */
+        flex-direction: column;
       }
 
       .calculator-tabs::-webkit-scrollbar {
@@ -413,29 +879,23 @@
 
       .calc-tab {
         background: white;
-        border: 2px solid transparent;
+        border: 2px solid #e5e7eb;
         padding: 16px 24px;
         border-radius: 12px;
         cursor: pointer;
-        transition: all 0.3s;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 16px;
         color: var(--gray);
         white-space: nowrap;
-        min-width: 180px;
+        width: 100%;
         text-align: center;
-      }
-
-      .calc-tab:hover {
-        border-color: var(--primary);
-        transform: translateY(-2px);
+        min-height: 56px;
       }
 
       .calc-tab.active {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        background: var(--primary);
         color: white;
         border-color: var(--primary);
-        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
       }
 
       .calc-tab-icon {
@@ -450,27 +910,38 @@
 
       .calculator-content.active {
         display: block;
-        animation: fadeIn 0.3s ease-in;
       }
 
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+      /* Hide other calculators by default (only eDPI is visible with active class) */
+      /* When advanced tools are shown, normal tab switching will work */
+
+      /* Advanced tools link */
+      .advanced-tools-link {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid #e5e7eb;
       }
+
+      .advanced-tools-link a {
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 16px;
+        display: block;
+        padding: 16px;
+        min-height: 56px;
+        text-align: center;
+      }
+
 
       .calc-card {
         background: white;
-        border-radius: 16px;
+        border-radius: 12px;
         padding: 40px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        border: 2px solid transparent;
-        transition: all 0.3s;
+        border: 1px solid #e5e7eb;
+        min-height: 400px;
       }
 
-      .calc-card:hover {
-        border-color: var(--primary);
-        box-shadow: 0 8px 30px rgba(0, 102, 255, 0.15);
-      }
 
       .calc-header {
         text-align: center;
@@ -507,25 +978,24 @@
       .input-group input,
       .input-group select {
         width: 100%;
-        padding: 14px 18px;
+        padding: 18px 20px;
         border: 2px solid #e5e7eb;
         border-radius: 8px;
-        font-size: 16px;
-        transition: all 0.3s;
+        font-size: 18px;
         font-family: inherit;
+        min-height: 56px;
       }
 
       .input-group input:focus,
       .input-group select:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
       }
 
       /* Result Display */
       .result-display {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 2px solid var(--primary);
+        background: white;
+        border: 2px solid #e5e7eb;
         border-radius: 12px;
         padding: 24px;
         margin-top: 24px;
@@ -546,40 +1016,342 @@
       }
 
       .result-value {
-        font-size: 48px;
+        font-size: 72px;
         font-weight: 900;
         color: var(--primary);
-        margin-bottom: 8px;
+        margin-bottom: 16px;
+        line-height: 1;
       }
 
       .result-subtext {
-        font-size: 14px;
-        color: var(--gray);
+        font-size: 20px;
+        color: var(--dark);
+        font-weight: 600;
+        margin-top: 8px;
       }
 
-      /* Buttons */
-      .btn {
-        padding: 14px 32px;
-        border-radius: 8px;
+      /* Experience Level Buttons */
+      .experience-level-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .experience-btn {
+        width: 100%;
+        padding: 20px 24px;
+        border: 2px solid var(--primary);
+        background: white;
+        color: var(--primary);
+        border-radius: 12px;
         font-weight: 700;
+        font-size: 20px;
+        cursor: pointer;
+        min-height: 64px;
+      }
+
+      .experience-btn.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      /* Recommended Settings Display */
+      .recommended-settings {
+        margin-bottom: 32px;
+      }
+
+      .settings-breakdown {
+        margin-top: 24px;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .setting-label {
+        color: var(--gray);
+        font-weight: 600;
+      }
+
+      .setting-value {
+        color: var(--dark);
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      /* Result Feedback */
+      .result-feedback {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+        padding: 16px;
+        background: #f0fdf4;
+        border: 2px solid #10b981;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #059669;
+      }
+
+      .result-feedback.warning {
+        background: #fffbeb;
+        border-color: #f59e0b;
+        color: #d97706;
+      }
+
+      .feedback-icon {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .feedback-text {
+        flex: 1;
+      }
+
+      /* Customize Prompt */
+      .customize-prompt {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      /* Calculator Inputs */
+      .calculator-inputs {
+        margin-top: 32px;
+      }
+
+      .calculator-inputs.hidden {
+        display: none;
+      }
+
+      /* Preset Buttons (for backward compatibility) */
+      .preset-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .preset-btn {
+        width: 100%;
+        padding: 16px 24px;
+        border: 2px solid var(--primary);
+        background: white;
+        color: var(--primary);
+        border-radius: 8px;
+        font-weight: 600;
         font-size: 16px;
-        text-decoration: none;
-        transition: all 0.3s;
+        cursor: pointer;
+        min-height: 48px;
+      }
+
+
+      /* DPI Preset Buttons */
+      .dpi-preset-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .dpi-preset-btn {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e5e7eb;
+        background: white;
+        color: var(--gray);
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        min-height: 48px;
+      }
+
+
+      .dpi-preset-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      /* Sensitivity Preset Buttons */
+      .sensitivity-preset-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .sensitivity-preset-btn {
+        width: 100%;
+        padding: 12px 8px;
+        border: 2px solid #e5e7eb;
+        background: white;
+        color: var(--gray);
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        min-height: 48px;
+      }
+
+
+      .sensitivity-preset-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      /* Sensitivity Slider Container */
+      .sensitivity-slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .sensitivity-slider-container input[type="range"] {
+        width: 100%;
+        height: 12px;
+        border-radius: 6px;
+        background: #e5e7eb;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .sensitivity-slider-container input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+      }
+
+      .sensitivity-slider-container input[type="range"]::-moz-range-thumb {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--primary);
         cursor: pointer;
         border: none;
-        display: inline-block;
+      }
+
+      .sensitivity-value-display {
+        display: flex;
+        justify-content: center;
+      }
+
+      .sensitivity-value-display input {
+        width: 150px;
         text-align: center;
       }
 
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+      /* Live Preview */
+      .live-preview {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        margin-top: 16px;
+        margin-bottom: 16px;
       }
 
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+      .live-preview-text {
+        font-size: 16px;
+        color: var(--gray);
+      }
+
+      .live-preview-text strong {
+        color: var(--primary);
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      /* Reset Button */
+      .reset-button-container {
+        text-align: center;
+        margin-top: 24px;
+      }
+
+      /* Collapsible Learn More Section */
+      .learn-more-section {
+        margin-top: 32px;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 24px;
+      }
+
+      .learn-more-toggle {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 16px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 56px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .learn-more-toggle::after {
+        content: '▼';
+        font-size: 12px;
+      }
+
+      .learn-more-toggle.expanded::after {
+        transform: rotate(180deg);
+      }
+
+      .learn-more-content {
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .learn-more-content.expanded {
+        max-height: 1000px;
+        margin-top: 16px;
+      }
+
+      /* Buttons - Standardized */
+      .btn {
+        width: 100%;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid var(--primary);
+        display: block;
+        text-align: center;
+        background: var(--primary);
+        color: white;
+        min-height: 56px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        border: 2px solid var(--primary);
       }
 
       .btn-secondary {
@@ -588,15 +1360,10 @@
         border: 2px solid var(--primary);
       }
 
-      .btn-secondary:hover {
-        background: var(--primary);
-        color: white;
-      }
-
       /* Info Cards */
       .info-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 24px;
         margin-top: 40px;
       }
@@ -605,7 +1372,8 @@
         background: white;
         padding: 24px;
         border-radius: 12px;
-        border-left: 4px solid var(--gaming-purple);
+        border: 1px solid #e5e7eb;
+        min-height: 150px;
       }
 
       .info-card h4 {
@@ -639,15 +1407,41 @@
         width: 25px;
         height: 3px;
         background: var(--dark);
-        transition: all 0.3s ease;
       }
 
-      /* Footer */
+      /* Footer - Full Width - Break out of any container constraints */
+      #footer-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        position: relative;
+        left: 0;
+        right: 0;
+      }
+
+      #footer-container .footer,
       .footer {
-        background: var(--dark);
+        width: 100% !important;
+        max-width: 100% !important;
+        background: var(--dark) !important;
         color: white;
         padding: 60px 0 30px;
         margin-top: 80px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      /* Override footer.js container to keep content centered */
+      #footer-container .footer-container,
+      .footer-container {
+        max-width: 1200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 20px;
+        width: 100%;
       }
 
       .footer-content {
@@ -655,6 +1449,10 @@
         grid-template-columns: 1fr 2fr;
         gap: 60px;
         margin-bottom: 30px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px;
       }
 
       .footer-brand p {
@@ -664,10 +1462,9 @@
       }
 
       .footer-links {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 60px;
-        justify-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
       }
 
       .footer-column h4 {
@@ -687,9 +1484,6 @@
         font-size: 14px;
       }
 
-      .footer-column a:hover {
-        color: white;
-      }
 
       .footer-bottom {
         padding-top: 24px;
@@ -697,6 +1491,11 @@
         text-align: center;
         color: #6b7280;
         font-size: 14px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       /* Responsive */
@@ -710,16 +1509,49 @@
         }
 
         .hero {
-          padding: 100px 0 40px;
-          min-height: 60vh;
+          padding: 100px 0 60px;
+          min-height: auto;
         }
 
         .hero h1 {
           font-size: 36px;
+          letter-spacing: -0.5px;
+          margin-bottom: 16px;
         }
 
         .hero p {
           font-size: 16px;
+          margin-bottom: 32px;
+        }
+
+        .hero-steps {
+          gap: 24px;
+          margin: 32px 0;
+        }
+
+        .hero-step {
+          min-width: 150px;
+        }
+
+        .hero-step-number {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+        }
+
+        .hero-step-text {
+          font-size: 14px;
+        }
+
+        .hero-cta {
+          margin-top: 32px;
+          flex-direction: column;
+        }
+
+        .hero-cta-btn {
+          padding: 14px 32px;
+          font-size: 16px;
+          width: 100%;
         }
 
         .calculator-tabs {
@@ -750,8 +1582,50 @@
       }
 
       @media (max-width: 480px) {
+        .hero {
+          padding: 80px 0 40px;
+          min-height: auto;
+        }
+
         .hero h1 {
           font-size: 28px;
+        }
+
+        .hero p {
+          font-size: 15px;
+        }
+
+        .result-value {
+          font-size: 48px;
+        }
+
+        .result-subtext {
+          font-size: 18px;
+        }
+
+        .preset-buttons {
+          flex-direction: column;
+        }
+
+        .preset-btn {
+          width: 100%;
+        }
+
+        .hero-steps {
+          flex-direction: column;
+          gap: 20px;
+          margin: 24px 0;
+        }
+
+        .hero-step {
+          min-width: 100%;
+        }
+
+        .hero-cta-btn {
+          padding: 12px 28px;
+          font-size: 15px;
+          width: 100%;
+          max-width: 300px;
         }
 
         .intro-content h2 {
@@ -807,12 +1681,7 @@
         font-size: 16px;
         color: var(--dark);
         user-select: none;
-        min-height: 44px;
-        transition: background 0.3s;
-      }
-
-      .faq-question:hover {
-        background: rgba(0, 102, 255, 0.05);
+        min-height: 56px;
       }
 
       .faq-question:focus {
@@ -822,7 +1691,6 @@
 
       .faq-icon {
         font-size: 20px;
-        transition: transform 0.3s ease;
         color: var(--primary);
         flex-shrink: 0;
         margin-left: 16px;
@@ -860,6 +1728,139 @@
       .faq-answer-content strong {
         color: var(--dark);
         font-weight: 600;
+      }
+
+      /* Progressive Disclosure - FAQ */
+      .faq-item.hidden-faq {
+        display: none;
+      }
+
+      .faq-item.hidden-faq.show-all {
+        display: block;
+      }
+
+      .show-all-faqs-btn {
+        text-align: center;
+        margin-top: 32px;
+      }
+
+      .show-all-faqs-btn button {
+        padding: 12px 32px;
+        background: white;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .show-all-faqs-btn button:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      /* Progressive Disclosure - Pro Settings */
+      .pro-settings-section.hidden {
+        display: none;
+      }
+
+
+      /* Tooltip Styles */
+      .tooltip-wrapper {
+        display: inline-block;
+        position: relative;
+        margin-left: 6px;
+      }
+
+      .tooltip-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: help;
+        vertical-align: middle;
+        transition: all 0.3s ease;
+      }
+
+      .tooltip-icon:hover {
+        background: var(--primary-dark);
+        transform: scale(1.1);
+      }
+
+      .tooltip-content {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 8px;
+        padding: 12px 16px;
+        background: var(--dark);
+        color: white;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.6;
+        width: 280px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .tooltip-content::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: var(--dark);
+      }
+
+      .tooltip-wrapper:hover .tooltip-content {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Show More Details Button */
+      .show-more-details {
+        text-align: center;
+        margin-top: 24px;
+      }
+
+      .show-more-details button {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+      }
+
+      .show-more-details button:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      .more-details-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        margin-top: 16px;
+      }
+
+      .more-details-content.expanded {
+        max-height: 2000px;
       }
 
       .faq-answer-content ul {
@@ -942,12 +1943,10 @@
 
       .pro-settings-tabs {
         display: flex;
+        flex-direction: column;
         gap: 12px;
         margin-bottom: 40px;
-        overflow-x: auto;
         padding: 4px;
-        scrollbar-width: thin;
-        -webkit-overflow-scrolling: touch;
       }
 
       .pro-settings-tabs::-webkit-scrollbar {
@@ -975,15 +1974,11 @@
         color: var(--gray);
         white-space: nowrap;
         transition: all 0.3s;
-        min-height: 44px;
+        min-height: 56px;
         display: flex;
         align-items: center;
       }
 
-      .pro-tab:hover {
-        border-color: var(--primary);
-        background: rgba(0, 102, 255, 0.05);
-      }
 
       .pro-tab.active {
         background: var(--primary);
@@ -997,18 +1992,6 @@
 
       .pro-content.active {
         display: block;
-        animation: fadeIn 0.3s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .pro-summary {
@@ -1042,8 +2025,8 @@
       }
 
       .pro-cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 20px;
         margin-bottom: 40px;
       }
@@ -1052,14 +2035,8 @@
         background: white;
         padding: 24px;
         border-radius: 12px;
-        border: 2px solid #e5e7eb;
-        transition: all 0.3s;
-      }
-
-      .pro-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.1);
+        border: 1px solid #e5e7eb;
+        min-height: 150px;
       }
 
       .pro-name {
@@ -1297,8 +2274,8 @@
       }
 
       .tips-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 32px;
         max-width: 1200px;
         margin: 0 auto;
@@ -1308,23 +2285,17 @@
       .tip-card {
         background: white;
         padding: 32px;
-        border-radius: 16px;
-        border-left: 4px solid var(--primary);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        min-height: 150px;
         position: relative;
-      }
-
-      .tip-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.15);
       }
 
       .tip-number {
         position: absolute;
         top: -12px;
         left: 24px;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        background: var(--primary);
         color: white;
         width: 48px;
         height: 48px;
@@ -1380,37 +2351,24 @@
       }
 
       .related-tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 24px;
         margin-top: 40px;
       }
 
       .related-tool-card {
-        background: var(--light-gray);
+        background: white;
         padding: 32px 24px;
         border-radius: 12px;
         text-decoration: none;
-        border: 2px solid transparent;
-        transition: all 0.3s;
+        border: 1px solid #e5e7eb;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         position: relative;
         min-height: 200px;
-      }
-
-      .related-tool-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-8px);
-        box-shadow: 0 12px 32px rgba(0, 102, 255, 0.15);
-        background: white;
-      }
-
-      .related-tool-card.highlight {
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border-color: var(--primary);
       }
 
       .tool-icon-large {
@@ -1484,8 +2442,8 @@
 
       .cta-buttons {
         display: flex;
+        flex-direction: column;
         gap: 16px;
-        flex-wrap: wrap;
       }
 
       .cta-buttons .btn {
@@ -1506,48 +2464,13 @@
         color: white;
       }
 
-      .cta-buttons .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      }
 
-      .cta-stats {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: 24px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .stat-number {
-        font-size: 48px;
-        font-weight: 900;
-        color: white;
-        margin-bottom: 8px;
-      }
-
-      .stat-label {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.8);
-        font-weight: 600;
-      }
 
       @media (max-width: 968px) {
         .cta-box {
           grid-template-columns: 1fr;
           padding: 40px 32px;
           gap: 40px;
-        }
-
-        .cta-stats {
-          grid-template-columns: repeat(3, 1fr);
         }
 
         .tips-grid {
@@ -1574,29 +2497,9 @@
           font-size: 28px;
         }
 
-        .cta-stats {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
-        }
-
-        .stat-number {
-          font-size: 36px;
-        }
       }
 
       @media (max-width: 640px) {
-        .cta-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .related-tools-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .tips-grid {
-          grid-template-columns: 1fr;
-        }
-
         .tip-card {
           padding: 24px;
         }
@@ -1604,6 +2507,88 @@
         .related-tool-card {
           padding: 24px 20px;
           min-height: 180px;
+        }
+      }
+
+      /* Desktop: Allow side-by-side layouts */
+      @media (min-width: 769px) {
+        .experience-level-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .experience-btn {
+          width: auto;
+          min-width: 200px;
+        }
+
+        .calculator-tabs {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .pro-settings-tabs {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .preset-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .dpi-preset-buttons {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .sensitivity-preset-buttons {
+          grid-template-columns: repeat(6, 1fr);
+        }
+
+        .btn {
+          width: auto;
+          display: inline-block;
+        }
+
+        .calc-tab {
+          width: auto;
+          min-width: 180px;
+        }
+
+        .info-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .pro-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .tips-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .related-tools-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        }
+
+        .footer-links {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 60px;
+        }
+
+        .cta-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .comparison-inputs-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
       }
 
@@ -1630,8 +2615,216 @@
           padding: 32px 24px;
         }
 
-        .stat-number {
-          font-size: 32px;
+      }
+
+      /* Custom Modal Styles - Dark Theme */
+      .custom-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .custom-modal-overlay.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .custom-modal {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 0;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 
+          0 20px 60px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        animation: slideUp 0.3s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .custom-modal::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ffffff 0%, #60a5fa 50%, #e5e5e5 100%);
+        opacity: 0.6;
+      }
+
+      .custom-modal-header {
+        padding: 24px 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .custom-modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .custom-modal-title span {
+        font-size: 24px;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+      }
+
+      .custom-modal-body {
+        padding: 24px 32px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.7;
+      }
+
+      .custom-modal-message {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .custom-modal-checklist {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0;
+      }
+
+      .custom-modal-checklist li {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .custom-modal-checklist li::before {
+        content: '✓';
+        color: #10b981;
+        font-weight: 700;
+        font-size: 18px;
+        filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.5));
+      }
+
+      .custom-modal-instruction {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .custom-modal-footer {
+        padding: 20px 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      .custom-modal-btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 100px;
+      }
+
+      .custom-modal-btn-cancel {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .custom-modal-btn-cancel:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .custom-modal-btn-ok {
+        background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+      }
+
+      .custom-modal-btn-ok:hover {
+        background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
+        box-shadow: 0 6px 16px rgba(0, 102, 255, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .custom-modal-btn:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .custom-modal {
+          width: 95%;
+          max-width: none;
+        }
+
+        .custom-modal-header,
+        .custom-modal-body,
+        .custom-modal-footer {
+          padding: 20px 24px;
+        }
+
+        .custom-modal-title {
+          font-size: 18px;
+        }
+
+        .custom-modal-message {
+          font-size: 15px;
+        }
+
+        .custom-modal-checklist li {
+          font-size: 14px;
+        }
+
+        .custom-modal-footer {
+          flex-direction: column;
+        }
+
+        .custom-modal-btn {
+          width: 100%;
         }
       }
     </style>
@@ -1639,6 +2832,32 @@
     <!-- Google Analytics loaded via cookie-consent-secure.js after user consent -->
   </head>
   <body>
+    <!-- Custom Modal -->
+    <div id="customModal" class="custom-modal-overlay">
+      <div class="custom-modal">
+        <div class="custom-modal-header">
+          <h3 class="custom-modal-title">
+            <span>⚙️</span>
+            Settings Confirmation
+          </h3>
+        </div>
+        <div class="custom-modal-body">
+          <p class="custom-modal-message">Before starting DPI test, please confirm:</p>
+          <ul class="custom-modal-checklist">
+            <li>Windows pointer acceleration is OFF</li>
+            <li>Windows pointer speed at default (6/11)</li>
+            <li>Browser zoom is 100%</li>
+            <li>Windows display scaling is 100%</li>
+          </ul>
+          <p class="custom-modal-instruction">Click OK if these settings are correct, or Cancel to adjust them first.</p>
+        </div>
+        <div class="custom-modal-footer">
+          <button class="custom-modal-btn custom-modal-btn-cancel" id="modalCancelBtn">Cancel</button>
+          <button class="custom-modal-btn custom-modal-btn-ok" id="modalOkBtn">OK</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
       <div class="container">
@@ -1674,8 +2893,8 @@
           </svg>
         </a>
         <div class="nav-links">
-          <a href="#calculators">Calculators</a>
-          <a href="#pro-settings">Pro Settings</a>
+          <a href="#wizard">Calculators</a>
+          <a href="#pro-settings">Pro Player Settings</a>
           <a href="#faq">FAQ</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1706,43 +2925,226 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container hero-content">
-        <div class="hero-badge">
-          <span>🎮</span> Professional Gaming Tool
+        <h1>Find Your Perfect Gaming Mouse Settings</h1>
+        <p>Easy calculator to optimize your mouse for any game</p>
+        
+        <div class="hero-steps">
+          <div class="hero-step">
+            <div class="hero-step-number">1</div>
+            <div class="hero-step-text">Enter your mouse DPI</div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-number">2</div>
+            <div class="hero-step-text">Add your game sensitivity</div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-number">3</div>
+            <div class="hero-step-text">Get your perfect settings</div>
+          </div>
         </div>
-        <h1>DPI Calculator <span>Suite</span></h1>
-        <p>Professional mouse sensitivity tools used by esports players. Test your DPI, calculate eDPI, optimize cm/360°, and find your perfect gaming settings.</p>
+
+        <div class="hero-cta">
+          <a href="#wizard" class="hero-cta-btn">Guide Me</a>
+          <a href="#edpi-calc" class="hero-cta-btn hero-cta-btn-secondary">Quick Calculator</a>
+        </div>
       </div>
     </section>
 
-    <!-- Calculator Section -->
-    <section id="calculators" class="calculator-section">
+    <!-- Wizard Section -->
+    <section id="wizard" class="wizard-section">
       <div class="container">
-        <!-- Calculator Tabs -->
-        <div class="calculator-tabs">
-          <div class="calc-tab active" data-calc="dpi-tester">
-            <span class="calc-tab-icon">🖱️</span>
-            DPI Tester
+        <!-- Wizard Container -->
+        <div class="wizard-container">
+          <!-- Progress Indicator -->
+          <div class="wizard-progress">
+            <div class="progress-step" data-step="1">
+              <div class="progress-circle active">1</div>
+              <div class="progress-label">Game</div>
+            </div>
+            <div class="progress-step" data-step="2">
+              <div class="progress-circle">2</div>
+              <div class="progress-label">DPI</div>
+            </div>
+            <div class="progress-step" data-step="3">
+              <div class="progress-circle">3</div>
+              <div class="progress-label">Sensitivity</div>
+            </div>
+            <div class="progress-step" data-step="4">
+              <div class="progress-circle">4</div>
+              <div class="progress-label">Result</div>
+            </div>
           </div>
-          <div class="calc-tab" data-calc="edpi-calc">
-            <span class="calc-tab-icon">📊</span>
-            eDPI Calculator
+
+          <!-- Step 1: Game Selection -->
+          <div class="wizard-step active" id="wizard-step-1">
+            <h2>What game do you play?</h2>
+            <select id="wizard-game-select" class="game-select">
+                <option value="">Select a game...</option>
+                <optgroup label="Tactical Shooters">
+                  <option value="cs2">Counter-Strike 2</option>
+                  <option value="valorant">Valorant</option>
+                  <option value="r6siege">Rainbow Six Siege</option>
+                  <option value="tarkov">Escape from Tarkov</option>
+                </optgroup>
+                <optgroup label="Battle Royales">
+                  <option value="apex">Apex Legends</option>
+                  <option value="fortnite">Fortnite</option>
+                  <option value="pubg">PUBG</option>
+                  <option value="warzone2">Warzone 2/MW3</option>
+                  <option value="thefinals">The Finals</option>
+                </optgroup>
+                <optgroup label="Arena Shooters">
+                  <option value="overwatch">Overwatch 2</option>
+                  <option value="quake">Quake Champions</option>
+                  <option value="diabotical">Diabotical</option>
+                </optgroup>
+                <optgroup label="Team Shooters">
+                  <option value="cod">Call of Duty (MW2/MW3)</option>
+                  <option value="bf2042">Battlefield 2042</option>
+                  <option value="halo">Halo Infinite</option>
+                  <option value="destiny2">Destiny 2</option>
+                  <option value="tf2">Team Fortress 2</option>
+                </optgroup>
+                <optgroup label="Survival/Extraction">
+                  <option value="rust">Rust</option>
+                  <option value="hunt">Hunt: Showdown</option>
+                  <option value="cycle">The Cycle: Frontier</option>
+                </optgroup>
+                <optgroup label="Realistic Shooters">
+                  <option value="squad">Squad</option>
+                  <option value="hll">Hell Let Loose</option>
+                  <option value="insurgency">Insurgency Sandstorm</option>
+                  <option value="readyornot">Ready or Not</option>
+                </optgroup>
+                <optgroup label="Additional Games">
+                  <option value="rogue">Rogue Company</option>
+                  <option value="paladins">Paladins</option>
+                  <option value="splitgate">Splitgate</option>
+                  <option value="back4blood">Back 4 Blood</option>
+                </optgroup>
+              </select>
           </div>
-          <div class="calc-tab" data-calc="cm360-calc">
-            <span class="calc-tab-icon">📏</span>
-            cm/360° Calculator
+
+          <!-- Step 2: DPI Selection -->
+          <div class="wizard-step" id="wizard-step-2">
+            <h2>What's your mouse DPI?</h2>
+            <div class="dpi-selection">
+              <div class="dpi-preset-grid">
+                <button class="dpi-preset-card" data-dpi="400">400</button>
+                <button class="dpi-preset-card" data-dpi="800">800</button>
+                <button class="dpi-preset-card" data-dpi="1600">1600</button>
+                <button class="dpi-preset-card" data-dpi="3200">3200</button>
+              </div>
+              <div class="dpi-custom-input">
+                <label for="wizard-dpi-input">Or enter custom DPI:</label>
+                <input type="number" id="wizard-dpi-input" placeholder="e.g., 1200" min="100" max="30000">
+              </div>
+              <button class="dpi-dont-know-btn" id="dpi-dont-know">I don't know</button>
+            </div>
           </div>
-          <div class="calc-tab" data-calc="sensitivity-analyzer">
-            <span class="calc-tab-icon">🎯</span>
-            Sensitivity Analyzer
+
+          <!-- Step 2b: DPI Tester (shown when "I don't know" is clicked) -->
+          <div class="wizard-step" id="wizard-step-2b">
+            <h2>Let's find your DPI</h2>
+            <div class="dpi-tester-wizard">
+              <div class="dpi-tester-instructions">
+                <p>Move your mouse horizontally from left to right</p>
+                <p class="dpi-distance">Move exactly <span id="wizard-distance">2</span> inches</p>
+              </div>
+              <div class="dpi-tracking-area" id="wizard-tracking-area">
+                <div class="tracking-display">
+                  <div class="pixels-display" id="wizard-pixels">0 pixels</div>
+                </div>
+              </div>
+              <div class="dpi-tester-actions">
+                <button class="btn btn-primary" id="wizard-calculate-dpi">Calculate My DPI</button>
+                <button class="btn btn-secondary" id="wizard-skip-dpi">Skip for now</button>
+              </div>
+            </div>
           </div>
-          <div class="calc-tab" data-calc="dpi-comparison">
-            <span class="calc-tab-icon">⚖️</span>
-            DPI Comparison
+
+          <!-- Step 3: Sensitivity Selection -->
+          <div class="wizard-step" id="wizard-step-3">
+            <h2>What's your in-game sensitivity?</h2>
+            <div class="sensitivity-wizard">
+              <div class="sensitivity-slider-wrapper">
+                <input type="range" id="wizard-sensitivity-slider" min="0.01" max="10" step="0.01" value="0.5">
+                <div class="sensitivity-value-display-wizard">
+                  <input type="number" id="wizard-sensitivity-input" placeholder="0.5" min="0.01" max="10" step="0.01">
+                </div>
+              </div>
+              <div class="sensitivity-presets-wizard" id="wizard-sensitivity-presets">
+                <!-- Will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Result -->
+          <div class="wizard-step" id="wizard-step-4">
+            <h2>Your Perfect Settings</h2>
+            <div class="wizard-result">
+              <div class="result-main">
+                <div class="result-label">Your eDPI</div>
+                <div class="result-value" id="wizard-result-edpi">-</div>
+              </div>
+              <div class="result-breakdown">
+                <div class="breakdown-item">
+                  <span class="breakdown-label">Mouse DPI:</span>
+                  <span class="breakdown-value" id="wizard-result-dpi">-</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="breakdown-label">In-Game Sensitivity:</span>
+                  <span class="breakdown-value" id="wizard-result-sensitivity">-</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="breakdown-label">Game:</span>
+                  <span class="breakdown-value" id="wizard-result-game">-</span>
+                </div>
+              </div>
+              <div class="result-feedback" id="wizard-result-feedback">
+                <span class="feedback-icon">✓</span>
+                <span class="feedback-text">Good to go!</span>
+              </div>
+              <div class="result-recommendation" id="wizard-recommendation"></div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="wizard-navigation">
+            <button class="btn btn-secondary wizard-btn-prev hidden" id="wizard-prev">Back</button>
+            <button class="btn btn-primary wizard-btn-next" id="wizard-next">Next</button>
+            <button class="btn btn-primary wizard-btn-start-over hidden" id="wizard-start-over">Start Over</button>
+          </div>
+
+          <!-- Advanced Tools Link -->
+          <div class="advanced-tools-link-wizard">
+            <a href="#" id="show-advanced-tools-wizard">I need advanced tools</a>
           </div>
         </div>
 
+        <!-- Advanced Calculators (Hidden by default) -->
+        <div class="advanced-calculators hidden" id="advanced-calculators">
+          <!-- Calculator Tabs -->
+          <div class="calculator-tabs">
+            <div class="calc-tab" data-calc="dpi-tester">
+              Test My Mouse
+            </div>
+            <div class="calc-tab" data-calc="edpi-calc">
+              Quick Calculator
+            </div>
+            <div class="calc-tab" data-calc="cm360-calc">
+              Distance Calculator
+            </div>
+            <div class="calc-tab" data-calc="sensitivity-analyzer">
+              Check My Settings
+            </div>
+            <div class="calc-tab" data-calc="dpi-comparison">
+              Compare Settings
+            </div>
+          </div>
+
         <!-- Calculator 1: DPI Tester -->
-        <div class="calculator-content active" id="dpi-tester">
+        <div class="calculator-content" id="dpi-tester">
           <div class="calc-card">
             <div id="mobile-dpi-warning" style="display: none; background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border: 2px solid #ef4444; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
               <h4 style="font-size: 16px; font-weight: 700; color: #991b1b; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
@@ -1753,7 +3155,7 @@
               </p>
             </div>
             <div class="calc-header">
-              <h3>🖱️ Interactive DPI Tester</h3>
+              <h3>Test My Mouse</h3>
               <p>Move your mouse exactly the specified distance to test your actual DPI <span style="font-size: 13px; color: var(--gray);">(Desktop/laptop with mouse required)</span></p>
             </div>
             
@@ -1813,17 +3215,186 @@
 
             <div class="info-cards">
               <div class="info-card">
-                <h4>💡 How This Works</h4>
-                <p>Move your mouse the specified distance. We track the pixels traveled and calculate your DPI using the formula: <strong>DPI = Pixels Moved ÷ Inches Moved</strong>. This measurement requires specific Windows settings (no pointer acceleration, default speed, 100% scaling) to be accurate. For best results, move slowly in a perfectly straight horizontal line.</p>
+                <h4>How This Works
+                  <span class="tooltip-wrapper">
+                    <span class="tooltip-icon">?</span>
+                    <span class="tooltip-content">Move your mouse the specified distance. We track the pixels traveled and calculate your DPI using the formula: <strong>DPI = Pixels Moved ÷ Inches Moved</strong>. This measurement requires specific Windows settings (no pointer acceleration, default speed, 100% scaling) to be accurate. For best results, move slowly in a perfectly straight horizontal line.</span>
+                  </span>
+                </h4>
               </div>
               <div class="info-card">
-                <h4>✅ Tips for Accurate Testing</h4>
+                <h4>Tips for Accurate Testing</h4>
                 <p><strong>Before testing:</strong> Disable Windows pointer acceleration (Control Panel → Mouse → Pointer Options → uncheck "Enhance pointer precision"). Set Windows pointer speed to default (6/11 middle position). Ensure browser zoom is 100% (Ctrl+0) and Windows display scaling is 100%.</p>
                 <p><strong>During testing:</strong> Use a ruler or measuring tape to mark the exact distance. Keep your mouse movement perfectly horizontal and smooth. Test 2-3 times and average the results for the most accurate DPI measurement.</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Quick Calculator Section -->
+    <section class="calculator-section">
+      <div class="container">
+        <!-- Calculator 2: eDPI Calculator (Quick Calculator) -->
+        <div class="calculator-content active" id="edpi-calc">
+          <div class="calc-card">
+            <div class="calc-header">
+              <h3>Quick Calculator</h3>
+              <p>Get your perfect mouse settings in seconds</p>
+            </div>
+            
+            <!-- Experience Level Buttons -->
+            <div class="experience-level-buttons" id="experience-level-buttons">
+              <button class="experience-btn" data-level="beginner">I'm a Beginner</button>
+              <button class="experience-btn" data-level="intermediate">I'm Intermediate</button>
+              <button class="experience-btn" data-level="advanced">I'm Advanced</button>
+            </div>
+
+            <!-- Recommended Settings Display -->
+            <div class="recommended-settings hidden" id="recommended-settings">
+              <div class="result-display">
+                <div class="result-label">Recommended Settings</div>
+                <div class="result-value" id="recommended-edpi">-</div>
+                <div class="settings-breakdown" id="settings-breakdown">
+                  <div class="setting-item">
+                    <span class="setting-label">Mouse DPI:</span>
+                    <span class="setting-value" id="recommended-dpi">-</span>
+                  </div>
+                  <div class="setting-item">
+                    <span class="setting-label">In-Game Sensitivity:</span>
+                    <span class="setting-value" id="recommended-sensitivity">-</span>
+                  </div>
+                  <div class="setting-item">
+                    <span class="setting-label">Game:</span>
+                    <span class="setting-value" id="recommended-game">-</span>
+                  </div>
+                </div>
+                <div class="result-feedback" id="result-feedback">
+                  <span class="feedback-icon">✓</span>
+                  <span class="feedback-text">Good to go!</span>
+                </div>
+              </div>
+
+              <!-- Customize Button -->
+              <div class="customize-prompt">
+                <button class="btn btn-secondary" id="customize-settings-btn">Want to customize these?</button>
+              </div>
+            </div>
+
+            <!-- Calculator Inputs (Hidden by default) -->
+            <div class="calculator-inputs hidden" id="calculator-inputs">
+              <div class="input-group">
+                <label for="edpi-mouse-dpi">Mouse DPI</label>
+                <!-- DPI Preset Buttons -->
+                <div class="dpi-preset-buttons">
+                  <button type="button" class="dpi-preset-btn" data-dpi="400">400</button>
+                  <button type="button" class="dpi-preset-btn" data-dpi="800">800</button>
+                  <button type="button" class="dpi-preset-btn" data-dpi="1600">1600</button>
+                  <button type="button" class="dpi-preset-btn" data-dpi="3200">3200</button>
+                </div>
+                <input type="number" id="edpi-mouse-dpi" placeholder="Enter your mouse DPI (e.g., 800)" value="" min="100" max="30000">
+              </div>
+
+              <div class="input-group">
+                <label for="edpi-sensitivity">In-Game Sensitivity</label>
+                <!-- Sensitivity Preset Buttons (game-specific) -->
+                <div class="sensitivity-preset-buttons" id="sensitivity-presets">
+                  <!-- Will be populated by JavaScript based on selected game -->
+                </div>
+                <!-- Slider + Number Display -->
+                <div class="sensitivity-slider-container">
+                  <input type="range" id="edpi-sensitivity-slider" min="0.01" max="10" step="0.01" value="0.5">
+                  <div class="sensitivity-value-display">
+                    <input type="number" id="edpi-sensitivity" placeholder="Enter in-game sens (e.g., 0.5)" value="" min="0.01" max="10" step="0.01">
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Game</label>
+                <select id="edpi-game" required>
+                  <optgroup label="Tactical Shooters">
+                    <option value="cs2">Counter-Strike 2</option>
+                    <option value="valorant" selected>Valorant</option>
+                    <option value="r6siege">Rainbow Six Siege</option>
+                    <option value="tarkov">Escape from Tarkov</option>
+                  </optgroup>
+                  <optgroup label="Battle Royales">
+                    <option value="apex">Apex Legends</option>
+                    <option value="fortnite">Fortnite</option>
+                    <option value="pubg">PUBG</option>
+                    <option value="warzone2">Warzone 2/MW3</option>
+                    <option value="thefinals">The Finals</option>
+                  </optgroup>
+                  <optgroup label="Arena Shooters">
+                    <option value="overwatch">Overwatch 2</option>
+                    <option value="quake">Quake Champions</option>
+                    <option value="diabotical">Diabotical</option>
+                  </optgroup>
+                  <optgroup label="Team Shooters">
+                    <option value="cod">Call of Duty (MW2/MW3)</option>
+                    <option value="bf2042">Battlefield 2042</option>
+                    <option value="halo">Halo Infinite</option>
+                    <option value="destiny2">Destiny 2</option>
+                    <option value="tf2">Team Fortress 2</option>
+                  </optgroup>
+                  <optgroup label="Survival/Extraction">
+                    <option value="rust">Rust</option>
+                    <option value="hunt">Hunt: Showdown</option>
+                    <option value="cycle">The Cycle: Frontier</option>
+                  </optgroup>
+                  <optgroup label="Realistic Shooters">
+                    <option value="squad">Squad</option>
+                    <option value="hll">Hell Let Loose</option>
+                    <option value="insurgency">Insurgency Sandstorm</option>
+                    <option value="readyornot">Ready or Not</option>
+                  </optgroup>
+                  <optgroup label="Additional Games">
+                    <option value="rogue">Rogue Company</option>
+                    <option value="paladins">Paladins</option>
+                    <option value="splitgate">Splitgate</option>
+                    <option value="back4blood">Back 4 Blood</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- Custom Result Display -->
+              <div class="result-display hidden" id="edpi-result">
+                <div class="result-label">Your Settings</div>
+                <div class="result-value" id="calculated-edpi">0</div>
+                <div class="result-feedback" id="custom-result-feedback">
+                  <span class="feedback-icon">✓</span>
+                  <span class="feedback-text">Good to go!</span>
+                </div>
+              </div>
+
+              <!-- Reset Button -->
+              <div class="reset-button-container">
+                <button type="button" class="btn btn-secondary" id="reset-edpi-calc">Start Over</button>
+              </div>
+            </div>
+
+            <!-- Learn More Section -->
+            <div class="learn-more-section">
+              <button class="learn-more-toggle" id="learn-more-toggle">Learn More</button>
+              <div class="learn-more-content" id="learn-more-content">
+                <div class="info-cards">
+                  <div class="info-card">
+                    <h4>What is eDPI?</h4>
+                    <p>eDPI (effective DPI) is your true sensitivity across all games. It's calculated by multiplying your mouse DPI by your in-game sensitivity. This lets you compare settings across different games and understand your actual sensitivity.</p>
+                  </div>
+                  <div class="info-card">
+                    <h4>Pro Player eDPI Ranges</h4>
+                    <p><strong>Valorant:</strong> 200-380 (avg 250-300) • <strong>CS2:</strong> 600-1000 (avg 800-900) • <strong>Apex:</strong> 800-1600 (avg 1000-1400) • <strong>Fortnite:</strong> 40-80 (different scale, avg 50-65) • <strong>Call of Duty:</strong> 1000-2000 • <strong>Overwatch 2:</strong> 3000-5500. Most tactical shooter pros favor lower eDPI (200-400) for precision headshots.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Pro Player Settings Section -->
     <section id="pro-settings" class="pro-settings-section">
@@ -1845,7 +3416,7 @@
           <div class="pro-content active" id="valorant-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="valorant-summary">
@@ -1962,7 +3533,7 @@
           <div class="pro-content" id="cs2-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="cs2-summary">
@@ -2069,7 +3640,7 @@
           <div class="pro-content" id="apex-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="apex-summary">
@@ -2156,7 +3727,7 @@
           <div class="pro-content" id="fortnite-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="fortnite-summary">
@@ -2233,7 +3804,7 @@
           <div class="pro-content" id="cod-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="cod-summary">
@@ -2310,7 +3881,7 @@
           <div class="pro-content" id="overwatch-content">
             <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
               <p style="font-size: 13px; color: #856404; margin: 0; line-height: 1.6;">
-                <strong>📌 Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
+                <strong>Note:</strong> Pro settings are current as of January 2025 but change frequently. Use these as reference ranges to find what works for <em>your</em> playstyle.
               </p>
             </div>
             <div class="pro-summary" id="overwatch-summary">
@@ -2384,9 +3955,9 @@
           </div>
 
           <div class="pro-settings-note">
-            <h4>📚 Important Notes About Pro Settings</h4>
+            <h4>Important Notes About Pro Settings</h4>
             <ul>
-              <li><strong>⚠️ Settings change frequently:</strong> Pros like TenZ adjust sensitivity constantly (he's used 200-400 eDPI over his career). These are snapshots from January 2025, not permanent settings. Focus on the <em>ranges</em>, not exact numbers.</li>
+              <li><strong>Settings change frequently:</strong> Pros like TenZ adjust sensitivity constantly (he's used 200-400 eDPI over his career). These are snapshots from January 2025, not permanent settings. Focus on the <em>ranges</em>, not exact numbers.</li>
               <li>Don't blindly copy pro settings - they've trained for thousands of hours with their sensitivity, and they change it frequently based on feel and meta shifts</li>
               <li>Pro settings are optimized for their playstyle, mousepad size, and hardware</li>
               <li>Use these as a reference point, not as absolute rules</li>
@@ -2396,7 +3967,7 @@
           </div>
 
           <div class="pro-disclaimer" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-top: 32px; text-align: center;">
-            <h4 style="font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">⚠️ Important: Pro Settings Change Frequently</h4>
+            <h4 style="font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">Important: Pro Settings Change Frequently</h4>
             <p style="font-size: 14px; color: var(--gray); margin-bottom: 8px; line-height: 1.6;">
               <strong>Last Updated: January 2025</strong> • Professional players frequently adjust their settings—sometimes multiple times per month. Notable examples: TenZ has changed his sensitivity 50+ times over his career, ranging from 200-400 eDPI. ImperialHal now primarily uses controller.
             </p>
@@ -2430,74 +4001,14 @@
       </div>
     </section>
 
-        <!-- Calculator 2: eDPI Calculator -->
-        <div class="calculator-content" id="edpi-calc">
-          <div class="calc-card">
-            <div class="calc-header">
-              <h3>📊 eDPI Calculator</h3>
-              <p>Calculate your effective DPI (eDPI) = Mouse DPI × In-Game Sensitivity</p>
-            </div>
-            
-            <div class="input-group">
-              <label for="edpi-mouse-dpi">Mouse DPI</label>
-              <input type="number" id="edpi-mouse-dpi" placeholder="Enter your mouse DPI (e.g., 800)" value="800" min="100" max="30000">
-            </div>
-
-            <div class="input-group">
-              <label for="edpi-sensitivity">In-Game Sensitivity</label>
-              <input type="number" id="edpi-sensitivity" placeholder="Enter in-game sens (e.g., 0.5)" value="0.5" min="0.01" max="10" step="0.01">
-            </div>
-
-            <div class="input-group">
-              <label>Game (Optional - for context)</label>
-              <select id="edpi-game">
-                <option value="">Select game...</option>
-                <option value="valorant">Valorant</option>
-                <option value="cs2">Counter-Strike 2</option>
-                <option value="fortnite">Fortnite</option>
-                <option value="apex">Apex Legends</option>
-                <option value="cod">Call of Duty</option>
-                <option value="overwatch">Overwatch 2</option>
-              </select>
-            </div>
-
-            <div style="text-align: center; margin-top: 32px;">
-              <button class="btn btn-primary" id="calculate-edpi">Calculate eDPI</button>
-            </div>
-
-            <div class="result-display hidden" id="edpi-result">
-              <div class="result-label">Your eDPI</div>
-              <div class="result-value" id="calculated-edpi">0</div>
-              <div class="result-subtext" id="edpi-analysis">Enter your settings to calculate</div>
-            </div>
-
-            <div id="edpi-share-buttons" class="hidden" style="text-align: center; margin-top: 16px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-              <button class="btn btn-secondary" id="copy-edpi-settings" style="font-size: 14px; padding: 10px 20px;">
-                📋 Copy Settings
-              </button>
-              <button class="btn btn-secondary" id="tweet-edpi-settings" style="font-size: 14px; padding: 10px 20px;">
-                🐦 Share on X/Twitter
-              </button>
-            </div>
-
-            <div class="info-cards">
-              <div class="info-card">
-                <h4>🎮 What is eDPI?</h4>
-                <p>eDPI (effective DPI) is your true sensitivity across all games. It's calculated by multiplying your mouse DPI by your in-game sensitivity. This lets you compare settings across different games and understand your actual sensitivity.</p>
-              </div>
-              <div class="info-card">
-                <h4>📊 Pro Player eDPI Ranges</h4>
-                <p><strong>Valorant:</strong> 200-380 (avg 250-300) • <strong>CS2:</strong> 600-1000 (avg 800-900) • <strong>Apex:</strong> 800-1600 (avg 1000-1400) • <strong>Fortnite:</strong> 40-80 (different scale, avg 50-65) • <strong>Call of Duty:</strong> 1000-2000 • <strong>Overwatch 2:</strong> 3000-5500. Most tactical shooter pros favor lower eDPI (200-400) for precision headshots.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <!-- Advanced Calculators Section -->
+    <section class="calculator-section">
+      <div class="container">
         <!-- Calculator 3: cm/360° Calculator -->
         <div class="calculator-content" id="cm360-calc">
           <div class="calc-card">
             <div class="calc-header">
-              <h3>📏 cm/360° Calculator</h3>
+              <h3>Distance Calculator</h3>
               <p>Calculate how many centimeters of mouse movement = 360° in-game turn</p>
             </div>
             
@@ -2514,12 +4025,48 @@
             <div class="input-group">
               <label>Game</label>
               <select id="cm360-game">
-                <option value="cs2">Counter-Strike 2</option>
-                <option value="valorant">Valorant</option>
-                <option value="apex">Apex Legends</option>
-                <option value="overwatch">Overwatch 2</option>
-                <option value="fortnite">Fortnite</option>
-                <option value="cod">Call of Duty</option>
+                <optgroup label="Tactical Shooters">
+                  <option value="cs2">Counter-Strike 2</option>
+                  <option value="valorant">Valorant</option>
+                  <option value="r6siege">Rainbow Six Siege</option>
+                  <option value="tarkov">Escape from Tarkov</option>
+                </optgroup>
+                <optgroup label="Battle Royales">
+                  <option value="apex">Apex Legends</option>
+                  <option value="fortnite">Fortnite</option>
+                  <option value="pubg">PUBG</option>
+                  <option value="warzone2">Warzone 2/MW3</option>
+                  <option value="thefinals">The Finals</option>
+                </optgroup>
+                <optgroup label="Arena Shooters">
+                  <option value="overwatch">Overwatch 2</option>
+                  <option value="quake">Quake Champions</option>
+                  <option value="diabotical">Diabotical</option>
+                </optgroup>
+                <optgroup label="Team Shooters">
+                  <option value="cod">Call of Duty (MW2/MW3)</option>
+                  <option value="bf2042">Battlefield 2042</option>
+                  <option value="halo">Halo Infinite</option>
+                  <option value="destiny2">Destiny 2</option>
+                  <option value="tf2">Team Fortress 2</option>
+                </optgroup>
+                <optgroup label="Survival/Extraction">
+                  <option value="rust">Rust</option>
+                  <option value="hunt">Hunt: Showdown</option>
+                  <option value="cycle">The Cycle: Frontier</option>
+                </optgroup>
+                <optgroup label="Realistic Shooters">
+                  <option value="squad">Squad</option>
+                  <option value="hll">Hell Let Loose</option>
+                  <option value="insurgency">Insurgency Sandstorm</option>
+                  <option value="readyornot">Ready or Not</option>
+                </optgroup>
+                <optgroup label="Additional Games">
+                  <option value="rogue">Rogue Company</option>
+                  <option value="paladins">Paladins</option>
+                  <option value="splitgate">Splitgate</option>
+                  <option value="back4blood">Back 4 Blood</option>
+                </optgroup>
               </select>
             </div>
 
@@ -2548,14 +4095,14 @@
               <div class="result-subtext" id="mousepad-details">Based on your cm/360° and gaming needs</div>
               
               <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; border: 2px solid #e5e7eb;">
-                <h4 style="font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">📏 Mousepad Calculation</h4>
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">Mousepad Calculation</h4>
                 <div id="mousepad-math" style="font-size: 13px; color: var(--gray); line-height: 1.8;">
                   <!-- Will be populated by JavaScript -->
                 </div>
               </div>
               
               <div style="margin-top: 16px; padding: 16px; background: #f0f9ff; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h4 style="font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">🛒 Popular Mousepad Options</h4>
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">Popular Mousepad Options</h4>
                 <div id="mousepad-products" style="font-size: 13px; color: var(--gray); line-height: 1.8;">
                   <!-- Will be populated by JavaScript -->
                 </div>
@@ -2564,11 +4111,11 @@
 
             <div class="info-cards">
               <div class="info-card">
-                <h4>📏 What is cm/360°?</h4>
+                <h4>What is cm/360°?</h4>
                 <p>This measures how many centimeters you need to move your mouse to do a complete 360° turn in-game. Lower cm/360 = higher sensitivity (less movement needed). Most competitive FPS players use 20-40 cm/360.</p>
               </div>
               <div class="info-card">
-                <h4>🎯 Ideal cm/360 Ranges</h4>
+                <h4>Ideal cm/360 Ranges</h4>
                 <p><strong>Tactical FPS:</strong> 25-50 cm (low sens, high precision) • <strong>Arena Shooters:</strong> 15-30 cm (medium sens) • <strong>Battle Royale:</strong> 20-40 cm. Your mousepad size should support your cm/360 comfortably.</p>
               </div>
             </div>
@@ -2579,7 +4126,7 @@
         <div class="calculator-content" id="sensitivity-analyzer">
           <div class="calc-card">
             <div class="calc-header">
-              <h3>🎯 Sensitivity Analyzer</h3>
+              <h3>Check My Settings</h3>
               <p>Get personalized analysis of your sensitivity settings</p>
             </div>
             
@@ -2591,12 +4138,48 @@
             <div class="input-group">
               <label>Game</label>
               <select id="analyzer-game">
-                <option value="valorant">Valorant</option>
-                <option value="cs2">Counter-Strike 2</option>
-                <option value="apex">Apex Legends</option>
-                <option value="fortnite">Fortnite</option>
-                <option value="cod">Call of Duty</option>
-                <option value="overwatch">Overwatch 2</option>
+                <optgroup label="Tactical Shooters">
+                  <option value="cs2">Counter-Strike 2</option>
+                  <option value="valorant">Valorant</option>
+                  <option value="r6siege">Rainbow Six Siege</option>
+                  <option value="tarkov">Escape from Tarkov</option>
+                </optgroup>
+                <optgroup label="Battle Royales">
+                  <option value="apex">Apex Legends</option>
+                  <option value="fortnite">Fortnite</option>
+                  <option value="pubg">PUBG</option>
+                  <option value="warzone2">Warzone 2/MW3</option>
+                  <option value="thefinals">The Finals</option>
+                </optgroup>
+                <optgroup label="Arena Shooters">
+                  <option value="overwatch">Overwatch 2</option>
+                  <option value="quake">Quake Champions</option>
+                  <option value="diabotical">Diabotical</option>
+                </optgroup>
+                <optgroup label="Team Shooters">
+                  <option value="cod">Call of Duty (MW2/MW3)</option>
+                  <option value="bf2042">Battlefield 2042</option>
+                  <option value="halo">Halo Infinite</option>
+                  <option value="destiny2">Destiny 2</option>
+                  <option value="tf2">Team Fortress 2</option>
+                </optgroup>
+                <optgroup label="Survival/Extraction">
+                  <option value="rust">Rust</option>
+                  <option value="hunt">Hunt: Showdown</option>
+                  <option value="cycle">The Cycle: Frontier</option>
+                </optgroup>
+                <optgroup label="Realistic Shooters">
+                  <option value="squad">Squad</option>
+                  <option value="hll">Hell Let Loose</option>
+                  <option value="insurgency">Insurgency Sandstorm</option>
+                  <option value="readyornot">Ready or Not</option>
+                </optgroup>
+                <optgroup label="Additional Games">
+                  <option value="rogue">Rogue Company</option>
+                  <option value="paladins">Paladins</option>
+                  <option value="splitgate">Splitgate</option>
+                  <option value="back4blood">Back 4 Blood</option>
+                </optgroup>
               </select>
             </div>
 
@@ -2629,11 +4212,11 @@
         <div class="calculator-content" id="dpi-comparison">
           <div class="calc-card">
             <div class="calc-header">
-              <h3>⚖️ DPI Comparison Tool</h3>
+              <h3>Compare Settings</h3>
               <p>Compare two different DPI/sensitivity combinations side-by-side</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+            <div class="comparison-inputs-container" style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 32px;">
               <div>
                 <h4 class="comparison-input-label" style="text-align: center; margin-bottom: 16px; color: var(--primary);">Setup A (Current)</h4>
                 <div class="input-group">
@@ -2701,11 +4284,11 @@
 
             <div class="info-cards">
               <div class="info-card">
-                <h4>🔄 Same eDPI, Different Feel?</h4>
+                <h4>Same eDPI, Different Feel?</h4>
                 <p>Even with identical eDPI, different DPI/sensitivity combinations can feel different due to mouse sensor behavior, pixel skipping, and input lag. Higher DPI with lower sens often feels smoother.</p>
               </div>
               <div class="info-card">
-                <h4>💡 Finding Your Perfect Settings</h4>
+                <h4>Finding Your Perfect Settings</h4>
                 <p>Most pros prefer native DPI steps (400, 800, 1600, 3200) for optimal sensor performance. Experiment with different combinations of the same eDPI to find what feels best for your setup.</p>
               </div>
             </div>
@@ -2756,7 +4339,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-4">
               <span>Is higher DPI always better?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2768,7 +4351,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-5">
               <span>What is eDPI and how is it calculated?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2780,7 +4363,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-6">
               <span>How do I test my mouse DPI?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2792,7 +4375,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-7">
               <span>What is cm/360 and why should I care?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2804,7 +4387,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-8">
               <span>What's the difference between 400 DPI and 1600 DPI?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2816,7 +4399,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-9">
               <span>Does DPI affect input lag?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2828,7 +4411,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-10">
               <span>What are native DPI steps?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2840,7 +4423,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-11">
               <span>What's the best DPI for Valorant?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2852,7 +4435,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-12">
               <span>What's the best DPI for CS2/CS:GO?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2864,7 +4447,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-13">
               <span>What's the best DPI for Fortnite?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2876,7 +4459,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-14">
               <span>Should I use high DPI with low sens or low DPI with high sens?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2888,7 +4471,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-15">
               <span>How do I find my perfect sensitivity?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2900,7 +4483,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-16">
               <span>Do I need a gaming mouse for good DPI?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2912,7 +4495,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-17">
               <span>How often should I change my DPI settings?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2924,7 +4507,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-18">
               <span>What mousepad size do I need for low sensitivity?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2936,7 +4519,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-19">
               <span>Can I use different DPI for different games?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2948,7 +4531,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item hidden-faq">
             <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-20">
               <span>How do pro players choose their DPI?</span>
               <span class="faq-icon" aria-hidden="true">▼</span>
@@ -2959,46 +4542,15 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Technical Note Section -->
-    <section style="background: white; padding: 60px 0; border-top: 1px solid #e5e7eb;">
-      <div class="container">
-        <div class="intro-content">
-          <h2 style="text-align: center; font-size: 28px; margin-bottom: 24px;">Understanding "Native DPI" - A Technical Note</h2>
-          
-          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid var(--primary); padding: 24px; border-radius: 12px; margin-bottom: 24px;">
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 12px;">🔬 What We Mean by "Native DPI"</h3>
-            <p style="font-size: 16px; color: var(--gray); line-height: 1.8; margin-bottom: 12px;">
-              When we say <strong>"native DPI steps"</strong> like 400, 800, 1600, 3200, and 6400, we're referring to <strong>manufacturer preset DPI settings</strong> that gaming mice are optimized to support. These are the values you'll find in your mouse software (Logitech G Hub, Razer Synapse, etc.).
-            </p>
-            <p style="font-size: 16px; color: var(--gray); line-height: 1.8; margin-bottom: 12px;">
-              <strong>Technical distinction:</strong> A sensor's true "native DPI" is determined by its physical matrix size and lens magnification. For example, the popular PixArt PMW3360 sensor has a true native resolution around 840-1000 DPI based on its 30×30 pixel array. However, manufacturers configure mice to offer preset steps (400, 800, 1600, etc.) through a combination of sensor settings and digital processing.
-            </p>
-            <p style="font-size: 16px; color: var(--gray); line-height: 1.8;">
-              <strong>Why this matters for gamers:</strong> These preset values (400, 800, 1600, 3200, 6400) are what professional players actually use and what gaming mice are engineered to perform best at. While technically some involve interpolation from the sensor's true native resolution, they provide consistent, reliable performance that's been proven in competitive play. For practical gaming purposes, stick to these standard presets for optimal results.
-            </p>
-          </div>
-
-          <div class="info-cards" style="margin-top: 32px;">
-            <div class="info-card">
-              <h4>✅ For Gaming: Use Preset Steps</h4>
-              <p>Stick to 400, 800, 1600, 3200, or 6400 DPI. These are what 99% of professional gamers use because mice are optimized for these values. Don't overthink the sensor engineering—these presets work perfectly.</p>
-            </div>
-            <div class="info-card">
-              <h4>⚠️ Avoid Custom Values</h4>
-              <p>Using non-standard DPI values (like 450, 1200, or 2500) can introduce sensor interpolation, pixel skipping, or tracking inconsistencies. Gaming mice aren't optimized for these in-between values.</p>
-            </div>
-            <div class="info-card">
-              <h4>🎯 Bottom Line</h4>
-              <p>The distinction between "true sensor native DPI" and "preset native steps" is academically interesting but practically irrelevant. Use the standard presets (400/800/1600/3200/6400) and focus on finding your optimal eDPI.</p>
-            </div>
+          <!-- Show All Questions Button -->
+          <div class="show-all-faqs-btn">
+            <button id="show-all-faqs-btn">Show all questions</button>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- Gaming Tips Section -->
     <section class="gaming-tips-section">
@@ -3056,26 +4608,12 @@
             <h2>Found Your Perfect Settings?</h2>
             <p>Bookmark this page and share it with your gaming friends. Our DPI calculator suite is 100% free and always will be.</p>
             <div class="cta-buttons">
-              <button class="btn btn-primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+              <button class="btn btn-primary" onclick="window.scrollTo({top: 0})">
                 Calculate Again ↑
               </button>
               <a href="/gaming-calculators/" class="btn btn-secondary">
                 More Gaming Tools →
               </a>
-            </div>
-          </div>
-          <div class="cta-stats">
-            <div class="stat-item">
-              <div class="stat-number">50K+</div>
-              <div class="stat-label">Gamers Helped</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Free Forever</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">0</div>
-              <div class="stat-label">Data Collected</div>
             </div>
           </div>
         </div>
@@ -3165,6 +4703,102 @@
             'value': value
           });
         }
+      }
+
+      // ============================================
+      // Smooth Scrolling for Navigation Links
+      // ============================================
+      
+      // Handle smooth scrolling for nav links with offset for fixed header
+      document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        const headerOffset = 100; // Account for fixed nav header
+        
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      });
+
+      // ============================================
+      // Custom Modal Functions
+      // ============================================
+      
+      // Show custom modal and return a promise that resolves with true/false
+      function showCustomConfirm(message, title = 'Settings Confirmation') {
+        return new Promise((resolve) => {
+          const modal = document.getElementById('customModal');
+          const modalTitle = modal.querySelector('.custom-modal-title span');
+          const modalMessage = modal.querySelector('.custom-modal-message');
+          const okBtn = document.getElementById('modalOkBtn');
+          const cancelBtn = document.getElementById('modalCancelBtn');
+          
+          // Update modal content if needed (for future flexibility)
+          if (modalMessage && message) {
+            modalMessage.textContent = message;
+          }
+          
+          // Show modal
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          
+          // Handle Escape key
+          const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+              handleCancel();
+            }
+          };
+          
+          // Handle OK button
+          const handleOk = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resolve(true);
+            // Remove event listeners
+            okBtn.removeEventListener('click', handleOk);
+            cancelBtn.removeEventListener('click', handleCancel);
+            modal.removeEventListener('click', handleOverlayClick);
+            document.removeEventListener('keydown', handleEscape);
+          };
+          
+          // Handle Cancel button
+          const handleCancel = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resolve(false);
+            // Remove event listeners
+            okBtn.removeEventListener('click', handleOk);
+            cancelBtn.removeEventListener('click', handleCancel);
+            modal.removeEventListener('click', handleOverlayClick);
+            document.removeEventListener('keydown', handleEscape);
+          };
+          
+          // Handle overlay click (close on outside click)
+          const handleOverlayClick = (e) => {
+            if (e.target === modal) {
+              handleCancel();
+            }
+          };
+          
+          // Add event listeners
+          okBtn.addEventListener('click', handleOk);
+          cancelBtn.addEventListener('click', handleCancel);
+          modal.addEventListener('click', handleOverlayClick);
+          document.addEventListener('keydown', handleEscape);
+        });
       }
 
       // ============================================
@@ -3258,22 +4892,58 @@
         return text;
       }
 
+      // Helper function to switch to a calculator tab
+      function switchToCalculator(calcId) {
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.calculator-content').forEach(c => c.classList.remove('active'));
+        
+        // Find and activate the target tab
+        const targetTab = document.querySelector(`.calc-tab[data-calc="${calcId}"]`);
+        if (targetTab) {
+          targetTab.classList.add('active');
+        }
+        
+        // Show corresponding content
+        const targetContent = document.getElementById(calcId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+        
+        // Track calculator tab switch
+        trackCalculatorEvent('Calculator_Navigation', 'tab_switched', calcId, 0);
+      }
+
       // Tab switching functionality
       document.querySelectorAll('.calc-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-          // Remove active class from all tabs and contents
-          document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.calculator-content').forEach(c => c.classList.remove('active'));
-          
-          // Add active class to clicked tab
-          tab.classList.add('active');
-          
-          // Show corresponding content
           const calcId = tab.getAttribute('data-calc');
-          document.getElementById(calcId).classList.add('active');
+          switchToCalculator(calcId);
+        });
+      });
+
+      // Hero CTA button handlers - smooth scroll to target sections
+      document.querySelectorAll('.hero-cta-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
           
-          // Track calculator tab switch
-          trackCalculatorEvent('Calculator_Navigation', 'tab_switched', calcId, 0);
+          const href = btn.getAttribute('href');
+          
+          if (href === '#wizard') {
+            // Scroll to wizard section
+            const wizardSection = document.getElementById('wizard');
+            if (wizardSection) {
+              wizardSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            trackCalculatorEvent('Hero_CTA', 'guide_me_clicked', 'wizard', 0);
+          } else if (href === '#edpi-calc') {
+            // Scroll to Quick Calculator section
+            const edpiCalc = document.getElementById('edpi-calc');
+            if (edpiCalc) {
+              edpiCalc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            trackCalculatorEvent('Hero_CTA', 'quick_calculator_clicked', 'edpi-calc', 0);
+          }
         });
       });
 
@@ -3337,7 +5007,7 @@
 
       // Start DPI Test button handler
       if (startDpiTestBtn) {
-        startDpiTestBtn.addEventListener('click', (e) => {
+        startDpiTestBtn.addEventListener('click', async (e) => {
           e.preventDefault();
           
           // Check if user is on mobile device
@@ -3351,14 +5021,9 @@
             return; // Exit early, don't start test
           }
           
-          // Show settings verification dialog
-          const settingsConfirmed = confirm(
-            '⚙️ Before starting DPI test, please confirm:\n\n' +
-            '✓ Windows pointer acceleration is OFF\n' +
-            '✓ Windows pointer speed at default (6/11)\n' +
-            '✓ Browser zoom is 100%\n' +
-            '✓ Windows display scaling is 100%\n\n' +
-            'Click OK if these settings are correct, or Cancel to adjust them first.'
+          // Show settings verification dialog using custom modal
+          const settingsConfirmed = await showCustomConfirm(
+            'Before starting DPI test, please confirm:'
           );
           
           if (!settingsConfirmed) {
@@ -3523,15 +5188,7 @@
           // Show result display with animation
           if (dpiResult) {
             dpiResult.classList.remove('hidden');
-            dpiResult.style.opacity = '0';
-            dpiResult.style.transition = 'opacity 0.3s ease-in';
-            
-            setTimeout(() => {
-              dpiResult.style.opacity = '1';
-              
-              // Smooth scroll to result
-              dpiResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 10);
+            dpiResult.scrollIntoView({ block: 'nearest' });
           }
           
           // Stop tracking
@@ -3609,27 +5266,738 @@
       }
 
       // ============================================
+      // Wizard (Guide Me Mode)
+      // ============================================
+      
+      // Wizard state
+      const wizardState = {
+        currentStep: 1,
+        game: null,
+        dpi: null,
+        sensitivity: null,
+        edpi: null
+      };
+
+      // Load saved preferences from localStorage
+      function loadWizardPreferences() {
+        const saved = localStorage.getItem('dpiWizardPreferences');
+        if (saved) {
+          try {
+            const prefs = JSON.parse(saved);
+            wizardState.game = prefs.game || null;
+            wizardState.dpi = prefs.dpi || null;
+            wizardState.sensitivity = prefs.sensitivity || null;
+            
+            // If we have saved data, pre-fill the wizard
+            if (wizardState.game) {
+              const gameCard = document.querySelector(`.game-card[data-game="${wizardState.game}"]`);
+              if (gameCard) {
+                gameCard.classList.add('selected');
+              }
+            }
+          } catch (e) {
+            console.error('Error loading preferences:', e);
+          }
+        }
+      }
+
+      // Save preferences to localStorage
+      function saveWizardPreferences() {
+        localStorage.setItem('dpiWizardPreferences', JSON.stringify({
+          game: wizardState.game,
+          dpi: wizardState.dpi,
+          sensitivity: wizardState.sensitivity
+        }));
+      }
+
+      // Wizard DOM elements
+      const wizardSteps = document.querySelectorAll('.wizard-step');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const wizardNextBtn = document.getElementById('wizard-next');
+      const wizardPrevBtn = document.getElementById('wizard-prev');
+      const wizardStartOverBtn = document.getElementById('wizard-start-over');
+      const showAdvancedToolsWizard = document.getElementById('show-advanced-tools-wizard');
+      const advancedCalculators = document.getElementById('advanced-calculators');
+
+      // Game selection dropdown
+      const wizardGameSelect = document.getElementById('wizard-game-select');
+      if (wizardGameSelect) {
+        wizardGameSelect.addEventListener('change', () => {
+          wizardState.game = wizardGameSelect.value || null;
+          saveWizardPreferences();
+        });
+      }
+
+      // DPI selection
+      document.querySelectorAll('.dpi-preset-card').forEach(card => {
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.dpi-preset-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          wizardState.dpi = parseInt(card.dataset.dpi);
+          saveWizardPreferences();
+        });
+      });
+
+      const wizardDpiInput = document.getElementById('wizard-dpi-input');
+      if (wizardDpiInput) {
+        wizardDpiInput.addEventListener('input', () => {
+          const value = parseInt(wizardDpiInput.value);
+          if (value >= 100 && value <= 30000) {
+            wizardState.dpi = value;
+            document.querySelectorAll('.dpi-preset-card').forEach(c => c.classList.remove('selected'));
+            saveWizardPreferences();
+          }
+        });
+      }
+
+      // "I don't know" DPI button
+      const dpiDontKnowBtn = document.getElementById('dpi-dont-know');
+      if (dpiDontKnowBtn) {
+        dpiDontKnowBtn.addEventListener('click', () => {
+          goToStep(2.5); // Go to DPI tester step
+        });
+      }
+
+      // DPI tester in wizard
+      const wizardTrackingArea = document.getElementById('wizard-tracking-area');
+      const wizardPixelsDisplay = document.getElementById('wizard-pixels');
+      const wizardCalculateDpiBtn = document.getElementById('wizard-calculate-dpi');
+      const wizardSkipDpiBtn = document.getElementById('wizard-skip-dpi');
+      const wizardDistanceDisplay = document.getElementById('wizard-distance');
+
+      let wizardDpiTestState = {
+        isTracking: false,
+        startX: null,
+        currentX: null,
+        pixelsMoved: 0,
+        targetDistance: 2
+      };
+
+      if (wizardTrackingArea) {
+        wizardTrackingArea.addEventListener('mousemove', (e) => {
+          if (!wizardDpiTestState.isTracking) {
+            wizardDpiTestState.isTracking = true;
+            wizardDpiTestState.startX = e.clientX;
+          }
+          wizardDpiTestState.currentX = e.clientX;
+          wizardDpiTestState.pixelsMoved = Math.abs(wizardDpiTestState.currentX - wizardDpiTestState.startX);
+          if (wizardPixelsDisplay) {
+            wizardPixelsDisplay.textContent = Math.round(wizardDpiTestState.pixelsMoved) + ' pixels';
+          }
+        });
+      }
+
+      if (wizardCalculateDpiBtn) {
+        wizardCalculateDpiBtn.addEventListener('click', () => {
+          if (wizardDpiTestState.pixelsMoved > 0) {
+            const calculatedDPI = Math.round(wizardDpiTestState.pixelsMoved / wizardDpiTestState.targetDistance);
+            wizardState.dpi = calculatedDPI;
+            saveWizardPreferences();
+            goToStep(3); // Go to sensitivity step
+          }
+        });
+      }
+
+      if (wizardSkipDpiBtn) {
+        wizardSkipDpiBtn.addEventListener('click', () => {
+          // Use default DPI of 800
+          wizardState.dpi = 800;
+          saveWizardPreferences();
+          goToStep(3);
+        });
+      }
+
+      // Sensitivity slider
+      const wizardSensitivitySlider = document.getElementById('wizard-sensitivity-slider');
+      const wizardSensitivityInput = document.getElementById('wizard-sensitivity-input');
+      const wizardSensitivityPresets = document.getElementById('wizard-sensitivity-presets');
+
+      // Game-specific sensitivity presets for wizard
+      const wizardGameSensitivityPresets = {
+        valorant: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+        cs2: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        fortnite: [0.05, 0.06, 0.07, 0.08, 0.10, 0.12],
+        apex: [1.0, 1.5, 2.0, 2.5, 3.0, 4.0],
+        cod: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+        overwatch: [2.0, 3.0, 4.0, 5.0, 6.0, 8.0]
+      };
+
+      function updateWizardSensitivityPresets() {
+        if (!wizardSensitivityPresets || !wizardState.game) return;
+        
+        const presets = wizardGameSensitivityPresets[wizardState.game] || [];
+        wizardSensitivityPresets.innerHTML = '';
+        
+        presets.forEach(preset => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'sensitivity-preset-wizard';
+          btn.textContent = preset;
+          btn.addEventListener('click', () => {
+            wizardState.sensitivity = preset;
+            if (wizardSensitivitySlider) wizardSensitivitySlider.value = preset;
+            if (wizardSensitivityInput) wizardSensitivityInput.value = preset;
+            document.querySelectorAll('.sensitivity-preset-wizard').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            saveWizardPreferences();
+          });
+          wizardSensitivityPresets.appendChild(btn);
+        });
+      }
+
+      if (wizardSensitivitySlider && wizardSensitivityInput) {
+        wizardSensitivitySlider.addEventListener('input', () => {
+          wizardSensitivityInput.value = wizardSensitivitySlider.value;
+          wizardState.sensitivity = parseFloat(wizardSensitivitySlider.value);
+          document.querySelectorAll('.sensitivity-preset-wizard').forEach(b => b.classList.remove('selected'));
+          saveWizardPreferences();
+        });
+
+        wizardSensitivityInput.addEventListener('input', () => {
+          let value = parseFloat(wizardSensitivityInput.value);
+          if (isNaN(value) || value < 0.01) value = 0.01;
+          if (value > 10) value = 10;
+          wizardSensitivityInput.value = value;
+          wizardSensitivitySlider.value = value;
+          wizardState.sensitivity = value;
+          document.querySelectorAll('.sensitivity-preset-wizard').forEach(b => b.classList.remove('selected'));
+          saveWizardPreferences();
+        });
+      }
+
+      // Navigation functions
+      function goToStep(step) {
+        // Hide all steps
+        wizardSteps.forEach(s => s.classList.remove('active'));
+        
+        // Show target step
+        if (step === 2.5) {
+          // DPI tester step
+          const step2b = document.getElementById('wizard-step-2b');
+          if (step2b) step2b.classList.add('active');
+          updateProgress(2);
+        } else {
+          const targetStep = document.getElementById(`wizard-step-${step}`);
+          if (targetStep) {
+            targetStep.classList.add('active');
+            wizardState.currentStep = step;
+            updateProgress(step);
+          }
+        }
+
+        // Update navigation buttons
+        updateNavigationButtons();
+      }
+
+      function updateProgress(step) {
+        progressSteps.forEach((ps, index) => {
+          const circle = ps.querySelector('.progress-circle');
+          const label = ps.querySelector('.progress-label');
+          
+          ps.classList.remove('active');
+          circle.classList.remove('active', 'completed');
+          
+          if (index + 1 < step) {
+            circle.classList.add('completed');
+          } else if (index + 1 === step) {
+            ps.classList.add('active');
+            circle.classList.add('active');
+          }
+        });
+      }
+
+      function updateNavigationButtons() {
+        const step = wizardState.currentStep;
+        
+        // Hide all buttons
+        if (wizardPrevBtn) wizardPrevBtn.classList.add('hidden');
+        if (wizardNextBtn) wizardNextBtn.classList.add('hidden');
+        if (wizardStartOverBtn) wizardStartOverBtn.classList.add('hidden');
+
+        if (step === 1) {
+          // Step 1: Only Next button
+          if (wizardNextBtn) wizardNextBtn.classList.remove('hidden');
+        } else if (step === 2 || step === 2.5) {
+          // Step 2: Back and Next
+          if (wizardPrevBtn) wizardPrevBtn.classList.remove('hidden');
+          if (wizardNextBtn) wizardNextBtn.classList.remove('hidden');
+        } else if (step === 3) {
+          // Step 3: Back and Next
+          if (wizardPrevBtn) wizardPrevBtn.classList.remove('hidden');
+          if (wizardNextBtn) wizardNextBtn.classList.remove('hidden');
+        } else if (step === 4) {
+          // Step 4: Start Over
+          if (wizardStartOverBtn) wizardStartOverBtn.classList.remove('hidden');
+        }
+      }
+
+      // Next button handler
+      if (wizardNextBtn) {
+        wizardNextBtn.addEventListener('click', () => {
+          const step = wizardState.currentStep;
+          
+          if (step === 1) {
+            // Validate game selection
+            if (!wizardState.game) {
+              alert('Please select a game');
+              return;
+            }
+            goToStep(2);
+            updateWizardSensitivityPresets();
+          } else if (step === 2) {
+            // Validate DPI
+            if (!wizardState.dpi) {
+              alert('Please select or enter your DPI');
+              return;
+            }
+            goToStep(3);
+            updateWizardSensitivityPresets();
+          } else if (step === 3) {
+            // Validate sensitivity and calculate result
+            if (!wizardState.sensitivity) {
+              alert('Please set your sensitivity');
+              return;
+            }
+            
+            // Calculate eDPI
+            wizardState.edpi = wizardState.dpi * wizardState.sensitivity;
+            saveWizardPreferences();
+            
+            // Show result
+            showWizardResult();
+            goToStep(4);
+          }
+        });
+      }
+
+      // Previous button handler
+      if (wizardPrevBtn) {
+        wizardPrevBtn.addEventListener('click', () => {
+          const step = wizardState.currentStep;
+          if (step === 2.5) {
+            goToStep(2);
+          } else if (step > 1) {
+            goToStep(step - 1);
+          }
+        });
+      }
+
+      // Start over button handler
+      if (wizardStartOverBtn) {
+        wizardStartOverBtn.addEventListener('click', () => {
+          // Reset state
+          wizardState.currentStep = 1;
+          wizardState.game = null;
+          wizardState.dpi = null;
+          wizardState.sensitivity = null;
+          wizardState.edpi = null;
+          
+          // Clear selections
+          if (wizardGameSelect) wizardGameSelect.value = '';
+          document.querySelectorAll('.dpi-preset-card').forEach(c => c.classList.remove('selected'));
+          if (wizardDpiInput) wizardDpiInput.value = '';
+          if (wizardSensitivityInput) wizardSensitivityInput.value = '';
+          if (wizardSensitivitySlider) wizardSensitivitySlider.value = 0.5;
+          
+          // Reset DPI test
+          wizardDpiTestState = {
+            isTracking: false,
+            startX: null,
+            currentX: null,
+            pixelsMoved: 0,
+            targetDistance: 2
+          };
+          if (wizardPixelsDisplay) wizardPixelsDisplay.textContent = '0 pixels';
+          
+          goToStep(1);
+        });
+      }
+
+      // Show result
+      function showWizardResult() {
+        const resultEdpi = document.getElementById('wizard-result-edpi');
+        const resultDpi = document.getElementById('wizard-result-dpi');
+        const resultSensitivity = document.getElementById('wizard-result-sensitivity');
+        const resultGame = document.getElementById('wizard-result-game');
+        const resultFeedback = document.getElementById('wizard-result-feedback');
+        const recommendation = document.getElementById('wizard-recommendation');
+
+        if (resultEdpi) resultEdpi.textContent = Math.round(wizardState.edpi * 100) / 100;
+        if (resultDpi) resultDpi.textContent = wizardState.dpi;
+        if (resultSensitivity) resultSensitivity.textContent = wizardState.sensitivity;
+        
+        const gameNames = {
+          valorant: 'Valorant',
+          cs2: 'Counter-Strike 2',
+          fortnite: 'Fortnite',
+          apex: 'Apex Legends',
+          cod: 'Call of Duty',
+          overwatch: 'Overwatch 2'
+        };
+        if (resultGame) resultGame.textContent = gameNames[wizardState.game] || wizardState.game;
+
+        // Check if settings are optimal
+        if (gameRanges[wizardState.game]) {
+          const ranges = gameRanges[wizardState.game];
+          if (wizardState.edpi <= ranges.optimal) {
+            if (resultFeedback) {
+              resultFeedback.className = 'result-feedback';
+              resultFeedback.innerHTML = '<span class="feedback-icon">✓</span><span class="feedback-text">Good to go!</span>';
+            }
+            if (recommendation) {
+              recommendation.classList.remove('show');
+            }
+          } else {
+            if (resultFeedback) {
+              resultFeedback.className = 'result-feedback warning';
+              resultFeedback.innerHTML = '<span class="feedback-icon">⚠</span><span class="feedback-text">Try adjusting: Lower your sensitivity for better precision</span>';
+            }
+            if (recommendation) {
+              const suggestedSens = (ranges.optimal / wizardState.dpi).toFixed(2);
+              recommendation.textContent = `Try ${suggestedSens} sensitivity instead for optimal performance`;
+              recommendation.classList.add('show');
+            }
+          }
+        }
+      }
+
+      // Show advanced tools
+      if (showAdvancedToolsWizard) {
+        showAdvancedToolsWizard.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (advancedCalculators) {
+            advancedCalculators.classList.remove('hidden');
+            const wizardSection = document.getElementById('wizard');
+            if (wizardSection) wizardSection.scrollIntoView({ block: 'start' });
+          }
+        });
+      }
+
+      // Initialize wizard on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        loadWizardPreferences();
+        updateProgress(1);
+        updateNavigationButtons();
+        if (wizardState.game && wizardGameSelect) {
+          wizardGameSelect.value = wizardState.game;
+          updateWizardSensitivityPresets();
+        }
+        if (wizardState.dpi) {
+          // Pre-select DPI if saved
+          const dpiCard = document.querySelector(`.dpi-preset-card[data-dpi="${wizardState.dpi}"]`);
+          if (dpiCard) {
+            dpiCard.classList.add('selected');
+          } else if (wizardDpiInput) {
+            wizardDpiInput.value = wizardState.dpi;
+          }
+        }
+        if (wizardState.sensitivity) {
+          // Pre-fill sensitivity if saved
+          if (wizardSensitivityInput) wizardSensitivityInput.value = wizardState.sensitivity;
+          if (wizardSensitivitySlider) wizardSensitivitySlider.value = wizardState.sensitivity;
+        }
+      });
+
+      // ============================================
       // eDPI Calculator (Calculator #2)
       // ============================================
       
       // Game-specific optimal eDPI ranges
       const gameRanges = {
+        // Tactical Shooters
         valorant: { low: 250, optimal: 400 },
         cs2: { low: 600, optimal: 1000 },
+        r6siege: { low: 500, optimal: 1000 },
+        tarkov: { low: 400, optimal: 800 },
+        // Battle Royales
         apex: { low: 800, optimal: 1600 },
         fortnite: { low: 40, optimal: 80 },
+        pubg: { low: 500, optimal: 1000 },
+        warzone2: { low: 1000, optimal: 2000 },
+        thefinals: { low: 600, optimal: 1200 },
+        // Arena Shooters
+        overwatch: { low: 3000, optimal: 5000 },
+        quake: { low: 600, optimal: 1000 },
+        diabotical: { low: 600, optimal: 1000 },
+        // Team Shooters
         cod: { low: 1000, optimal: 2000 },
-        overwatch: { low: 3000, optimal: 5000 }
+        bf2042: { low: 800, optimal: 1600 },
+        halo: { low: 800, optimal: 1600 },
+        destiny2: { low: 3000, optimal: 5000 },
+        tf2: { low: 600, optimal: 1000 },
+        // Survival/Extraction
+        rust: { low: 800, optimal: 1600 },
+        hunt: { low: 600, optimal: 1200 },
+        cycle: { low: 600, optimal: 1200 },
+        // Realistic Shooters
+        squad: { low: 800, optimal: 1600 },
+        hll: { low: 600, optimal: 1200 },
+        insurgency: { low: 600, optimal: 1200 },
+        readyornot: { low: 600, optimal: 1200 },
+        // Additional Games
+        rogue: { low: 3000, optimal: 5000 },
+        paladins: { low: 3000, optimal: 5000 },
+        splitgate: { low: 600, optimal: 1000 },
+        back4blood: { low: 600, optimal: 1000 }
       };
 
       // Get DOM elements for eDPI calculator
       const edpiMouseDpiInput = document.getElementById('edpi-mouse-dpi');
       const edpiSensitivityInput = document.getElementById('edpi-sensitivity');
+      const edpiSensitivitySlider = document.getElementById('edpi-sensitivity-slider');
       const edpiGameSelect = document.getElementById('edpi-game');
-      const calculateEdpiBtn = document.getElementById('calculate-edpi');
       const edpiResult = document.getElementById('edpi-result');
       const calculatedEdpi = document.getElementById('calculated-edpi');
       const edpiAnalysis = document.getElementById('edpi-analysis');
+      const liveEdpiValue = document.getElementById('live-edpi-value');
+      const livePreview = document.getElementById('edpi-live-preview');
+      const sensitivityPresets = document.getElementById('sensitivity-presets');
+      const resetEdpiCalcBtn = document.getElementById('reset-edpi-calc');
+
+      // New elements for results-first approach
+      const experienceLevelButtons = document.getElementById('experience-level-buttons');
+      const recommendedSettings = document.getElementById('recommended-settings');
+      const calculatorInputs = document.getElementById('calculator-inputs');
+      const customizeSettingsBtn = document.getElementById('customize-settings-btn');
+      const recommendedEdpi = document.getElementById('recommended-edpi');
+      const recommendedDpi = document.getElementById('recommended-dpi');
+      const recommendedSensitivity = document.getElementById('recommended-sensitivity');
+      const recommendedGame = document.getElementById('recommended-game');
+      const resultFeedback = document.getElementById('result-feedback');
+      const customResultFeedback = document.getElementById('custom-result-feedback');
+
+      // Recommended settings by experience level (default game: Valorant)
+      const recommendedSettingsByLevel = {
+        beginner: {
+          dpi: 800,
+          sensitivity: 0.5,
+          game: 'valorant',
+          edpi: 400,
+          feedback: 'Good to go!'
+        },
+        intermediate: {
+          dpi: 800,
+          sensitivity: 0.4,
+          game: 'valorant',
+          edpi: 320,
+          feedback: 'Good to go!'
+        },
+        advanced: {
+          dpi: 400,
+          sensitivity: 0.6,
+          game: 'valorant',
+          edpi: 240,
+          feedback: 'Good to go!'
+        }
+      };
+
+      // Function to show recommended settings
+      function showRecommendedSettings(level) {
+        const settings = recommendedSettingsByLevel[level];
+        if (!settings) return;
+
+        // Update recommended settings display
+        if (recommendedEdpi) recommendedEdpi.textContent = settings.edpi;
+        if (recommendedDpi) recommendedDpi.textContent = settings.dpi;
+        if (recommendedSensitivity) recommendedSensitivity.textContent = settings.sensitivity;
+        if (recommendedGame) {
+          const gameNames = {
+            // Tactical Shooters
+            cs2: 'Counter-Strike 2',
+            valorant: 'Valorant',
+            r6siege: 'Rainbow Six Siege',
+            tarkov: 'Escape from Tarkov',
+            // Battle Royales
+            apex: 'Apex Legends',
+            fortnite: 'Fortnite',
+            pubg: 'PUBG',
+            warzone2: 'Warzone 2/MW3',
+            thefinals: 'The Finals',
+            // Arena Shooters
+            overwatch: 'Overwatch 2',
+            quake: 'Quake Champions',
+            diabotical: 'Diabotical',
+            // Team Shooters
+            cod: 'Call of Duty',
+            bf2042: 'Battlefield 2042',
+            halo: 'Halo Infinite',
+            destiny2: 'Destiny 2',
+            tf2: 'Team Fortress 2',
+            // Survival/Extraction
+            rust: 'Rust',
+            hunt: 'Hunt: Showdown',
+            cycle: 'The Cycle: Frontier',
+            // Realistic Shooters
+            squad: 'Squad',
+            hll: 'Hell Let Loose',
+            insurgency: 'Insurgency Sandstorm',
+            readyornot: 'Ready or Not',
+            // Additional Games
+            rogue: 'Rogue Company',
+            paladins: 'Paladins',
+            splitgate: 'Splitgate',
+            back4blood: 'Back 4 Blood'
+          };
+          recommendedGame.textContent = gameNames[settings.game] || settings.game;
+        }
+
+        // Show feedback
+        if (resultFeedback) {
+          resultFeedback.className = 'result-feedback';
+          resultFeedback.innerHTML = `
+            <span class="feedback-icon">✓</span>
+            <span class="feedback-text">${settings.feedback}</span>
+          `;
+        }
+
+        // Show recommended settings, hide experience buttons
+        if (recommendedSettings) recommendedSettings.classList.remove('hidden');
+        if (experienceLevelButtons) experienceLevelButtons.classList.add('hidden');
+        if (calculatorInputs) calculatorInputs.classList.add('hidden');
+      }
+
+      // Experience level button handlers
+      document.querySelectorAll('.experience-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const level = btn.dataset.level;
+          // Remove active class from all buttons
+          document.querySelectorAll('.experience-btn').forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+          showRecommendedSettings(level);
+        });
+      });
+
+      // Customize settings button handler
+      if (customizeSettingsBtn) {
+        customizeSettingsBtn.addEventListener('click', () => {
+          // Get current recommended settings
+          const activeBtn = document.querySelector('.experience-btn.active');
+          if (activeBtn) {
+            const level = activeBtn.dataset.level;
+            const settings = recommendedSettingsByLevel[level];
+            if (settings) {
+              // Pre-fill inputs with recommended settings
+              if (edpiMouseDpiInput) edpiMouseDpiInput.value = settings.dpi;
+              if (edpiSensitivityInput) {
+                edpiSensitivityInput.value = settings.sensitivity;
+              }
+              if (edpiSensitivitySlider) {
+                edpiSensitivitySlider.value = settings.sensitivity;
+              }
+              if (edpiGameSelect) {
+                edpiGameSelect.value = settings.game;
+                updateSensitivityPresets();
+              }
+              // Activate corresponding DPI preset button
+              document.querySelectorAll('.dpi-preset-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.dpi == settings.dpi);
+              });
+            }
+          }
+          // Show calculator inputs, hide recommended settings
+          if (calculatorInputs) calculatorInputs.classList.remove('hidden');
+          if (recommendedSettings) recommendedSettings.classList.add('hidden');
+          // Calculate immediately
+          if (validateEdpiInputs()) {
+            calculateEdpi();
+          }
+        });
+      }
+
+      // Game-specific sensitivity presets
+      const gameSensitivityPresets = {
+        // Tactical Shooters
+        valorant: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+        cs2: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        r6siege: [5, 10, 15, 20, 25, 30],
+        tarkov: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+        // Battle Royales
+        apex: [1.0, 1.5, 2.0, 2.5, 3.0, 4.0],
+        fortnite: [0.05, 0.06, 0.07, 0.08, 0.10, 0.12],
+        pubg: [30, 40, 50, 60, 70, 80],
+        warzone2: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+        thefinals: [1.0, 1.5, 2.0, 2.5, 3.0, 4.0],
+        // Arena Shooters
+        overwatch: [2.0, 3.0, 4.0, 5.0, 6.0, 8.0],
+        quake: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        diabotical: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        // Team Shooters
+        cod: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+        bf2042: [1.0, 1.5, 2.0, 2.5, 3.0, 4.0],
+        halo: [1.0, 1.5, 2.0, 2.5, 3.0, 4.0],
+        destiny2: [2.0, 3.0, 4.0, 5.0, 6.0, 8.0],
+        tf2: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        // Survival/Extraction
+        rust: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        hunt: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        cycle: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        // Realistic Shooters
+        squad: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        hll: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        insurgency: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        readyornot: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        // Additional Games
+        rogue: [2.0, 3.0, 4.0, 5.0, 6.0, 8.0],
+        paladins: [2.0, 3.0, 4.0, 5.0, 6.0, 8.0],
+        splitgate: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2],
+        back4blood: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2]
+      };
+
+      // Function to update sensitivity presets based on selected game
+      function updateSensitivityPresets() {
+        if (!sensitivityPresets || !edpiGameSelect) return;
+        
+        const selectedGame = edpiGameSelect.value;
+        const presets = gameSensitivityPresets[selectedGame] || [];
+        
+        sensitivityPresets.innerHTML = '';
+        presets.forEach(preset => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'sensitivity-preset-btn';
+          btn.textContent = preset;
+          btn.dataset.sensitivity = preset;
+          btn.addEventListener('click', () => {
+            setSensitivityValue(preset);
+            // Remove active class from all buttons
+            sensitivityPresets.querySelectorAll('.sensitivity-preset-btn').forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+          });
+          sensitivityPresets.appendChild(btn);
+        });
+      }
+
+      // Function to set sensitivity value (syncs slider and input)
+      function setSensitivityValue(value) {
+        if (edpiSensitivityInput) {
+          edpiSensitivityInput.value = value;
+        }
+        if (edpiSensitivitySlider) {
+          edpiSensitivitySlider.value = value;
+        }
+        updateLivePreview();
+        if (validateEdpiInputs()) {
+          calculateEdpi();
+        }
+      }
+
+      // Function to update live preview
+      function updateLivePreview() {
+        if (!liveEdpiValue || !livePreview) return;
+        
+        const dpi = parseFloat(edpiMouseDpiInput?.value) || 0;
+        const sensitivity = parseFloat(edpiSensitivityInput?.value) || 0;
+        
+        if (dpi > 0 && sensitivity > 0) {
+          const edpi = Math.round(dpi * sensitivity * 100) / 100;
+          liveEdpiValue.textContent = edpi.toLocaleString();
+          livePreview.style.display = 'block';
+        } else {
+          livePreview.style.display = 'none';
+        }
+      }
 
       // Debounce function for real-time calculation
       let edpiDebounceTimer = null;
@@ -3638,19 +6006,59 @@
         edpiDebounceTimer = setTimeout(func, delay);
       }
 
-      // Real-time calculation listeners (debounced)
-      if (edpiMouseDpiInput) {
-        edpiMouseDpiInput.addEventListener('input', () => {
-          debounceEdpiCalculation(() => {
+      // DPI Preset Buttons
+      document.querySelectorAll('.dpi-preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dpi = btn.dataset.dpi;
+          if (edpiMouseDpiInput) {
+            edpiMouseDpiInput.value = dpi;
+            // Remove active class from all buttons
+            document.querySelectorAll('.dpi-preset-btn').forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            updateLivePreview();
             if (validateEdpiInputs()) {
               calculateEdpi();
             }
-          });
+          }
+        });
+      });
+
+      // Slider and input sync
+      if (edpiSensitivitySlider && edpiSensitivityInput) {
+        edpiSensitivitySlider.addEventListener('input', () => {
+          edpiSensitivityInput.value = edpiSensitivitySlider.value;
+          updateLivePreview();
+          if (validateEdpiInputs()) {
+            calculateEdpi();
+          }
+        });
+
+        edpiSensitivityInput.addEventListener('input', () => {
+          let value = parseFloat(edpiSensitivityInput.value);
+          // Auto-correct to valid range
+          if (isNaN(value) || value < 0.01) value = 0.01;
+          if (value > 10) value = 10;
+          edpiSensitivityInput.value = value;
+          edpiSensitivitySlider.value = value;
+          updateLivePreview();
+          if (validateEdpiInputs()) {
+            calculateEdpi();
+          }
         });
       }
 
-      if (edpiSensitivityInput) {
-        edpiSensitivityInput.addEventListener('input', () => {
+      // Real-time calculation listeners (debounced for full calculation, immediate for live preview)
+      if (edpiMouseDpiInput) {
+        edpiMouseDpiInput.addEventListener('input', () => {
+          // Auto-correct DPI to valid range
+          let value = parseFloat(edpiMouseDpiInput.value);
+          if (!isNaN(value)) {
+            if (value < 100) value = 100;
+            if (value > 30000) value = 30000;
+            edpiMouseDpiInput.value = value;
+          }
+          updateLivePreview(); // Update immediately
           debounceEdpiCalculation(() => {
             if (validateEdpiInputs()) {
               calculateEdpi();
@@ -3661,49 +6069,104 @@
 
       if (edpiGameSelect) {
         edpiGameSelect.addEventListener('change', () => {
+          updateSensitivityPresets();
           if (validateEdpiInputs()) {
             calculateEdpi();
           }
         });
       }
 
-      // Input validation function
+      // Reset button - goes back to experience level selection
+      if (resetEdpiCalcBtn) {
+        resetEdpiCalcBtn.addEventListener('click', () => {
+          // Reset to initial state
+          if (experienceLevelButtons) experienceLevelButtons.classList.remove('hidden');
+          if (recommendedSettings) recommendedSettings.classList.add('hidden');
+          if (calculatorInputs) calculatorInputs.classList.add('hidden');
+          if (edpiResult) edpiResult.classList.add('hidden');
+          // Remove active classes
+          document.querySelectorAll('.experience-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.dpi-preset-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.sensitivity-preset-btn').forEach(b => b.classList.remove('active'));
+          // Clear inputs
+          if (edpiMouseDpiInput) edpiMouseDpiInput.value = '';
+          if (edpiSensitivityInput) edpiSensitivityInput.value = '';
+          if (edpiSensitivitySlider) edpiSensitivitySlider.value = 0.5;
+          if (edpiGameSelect) edpiGameSelect.value = 'valorant';
+          updateSensitivityPresets();
+        });
+      }
+
+      // Preset buttons (I play Valorant, CS2, Fortnite)
+      document.querySelectorAll('.preset-btn[data-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const preset = btn.dataset.preset;
+          const presets = {
+            valorant: { dpi: 800, sensitivity: 0.4, game: 'valorant' },
+            cs2: { dpi: 800, sensitivity: 0.8, game: 'cs2' },
+            fortnite: { dpi: 800, sensitivity: 0.08, game: 'fortnite' }
+          };
+          
+          if (presets[preset]) {
+            const config = presets[preset];
+            if (edpiMouseDpiInput) {
+              edpiMouseDpiInput.value = config.dpi;
+              // Activate corresponding DPI preset button
+              document.querySelectorAll('.dpi-preset-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.dpi == config.dpi);
+              });
+            }
+            setSensitivityValue(config.sensitivity);
+            if (edpiGameSelect) {
+              edpiGameSelect.value = config.game;
+              updateSensitivityPresets();
+            }
+            updateLivePreview();
+            if (validateEdpiInputs()) {
+              calculateEdpi();
+            }
+          }
+        });
+      });
+
+      // Initialize sensitivity presets on page load
+      updateSensitivityPresets();
+
+      // Input validation function (auto-corrects instead of showing alerts)
       function validateEdpiInputs() {
         if (!edpiMouseDpiInput || !edpiSensitivityInput) {
           return false;
         }
 
-        const dpi = parseFloat(edpiMouseDpiInput.value);
-        const sensitivity = parseFloat(edpiSensitivityInput.value);
+        let dpi = parseFloat(edpiMouseDpiInput.value);
+        let sensitivity = parseFloat(edpiSensitivityInput.value);
 
         // Check if inputs are empty
         if (!edpiMouseDpiInput.value.trim() || !edpiSensitivityInput.value.trim()) {
           if (edpiResult) {
             edpiResult.classList.add('hidden');
           }
-          if (calculateEdpiBtn) {
-            calculateEdpiBtn.disabled = true;
-          }
           return false;
         }
 
-        // Validate DPI range
-        if (isNaN(dpi) || dpi < 100 || dpi > 30000) {
-          alert('Mouse DPI must be between 100 and 30,000');
-          edpiMouseDpiInput.focus();
-          return false;
+        // Auto-correct DPI to valid range (no alerts)
+        if (isNaN(dpi) || dpi < 100) {
+          dpi = 100;
+          edpiMouseDpiInput.value = dpi;
+        } else if (dpi > 30000) {
+          dpi = 30000;
+          edpiMouseDpiInput.value = dpi;
         }
 
-        // Validate sensitivity range
-        if (isNaN(sensitivity) || sensitivity < 0.01 || sensitivity > 10) {
-          alert('In-game sensitivity must be between 0.01 and 10');
-          edpiSensitivityInput.focus();
-          return false;
-        }
-
-        // Enable button if validation passes
-        if (calculateEdpiBtn) {
-          calculateEdpiBtn.disabled = false;
+        // Auto-correct sensitivity to valid range (no alerts)
+        if (isNaN(sensitivity) || sensitivity < 0.01) {
+          sensitivity = 0.01;
+          edpiSensitivityInput.value = sensitivity;
+          if (edpiSensitivitySlider) edpiSensitivitySlider.value = sensitivity;
+        } else if (sensitivity > 10) {
+          sensitivity = 10;
+          edpiSensitivityInput.value = sensitivity;
+          if (edpiSensitivitySlider) edpiSensitivitySlider.value = sensitivity;
         }
 
         return true;
@@ -3738,61 +6201,48 @@
           calculatedEdpi.textContent = formattedEDPI;
         }
 
-        // Get game-specific analysis
-        let analysisText = '';
-        let analysisCategory = 'none'; // 'low', 'optimal', 'high', 'none'
-        let borderColor = 'var(--primary)'; // Default blue
+        // Simplified feedback based on game ranges
+        let feedbackText = 'Good to go!';
+        let feedbackClass = '';
+        let suggestion = '';
 
         if (selectedGame && gameRanges[selectedGame]) {
           const ranges = gameRanges[selectedGame];
-          const gameName = getGameDisplayName(selectedGame);
 
           if (calculatedEDPI < ranges.low) {
-            analysisCategory = 'low';
-            analysisText = `Your eDPI of ${formattedEDPI} is LOW for ${gameName}. Great for precision aiming! ✅`;
-            borderColor = 'var(--success)'; // Green
+            feedbackText = 'Good to go!';
+            suggestion = '';
           } else if (calculatedEDPI <= ranges.optimal) {
-            analysisCategory = 'optimal';
-            analysisText = `Your eDPI of ${formattedEDPI} is OPTIMAL for ${gameName}. Perfect balance! 🎯`;
-            borderColor = 'var(--primary)'; // Blue
+            feedbackText = 'Good to go!';
+            suggestion = '';
           } else {
-            analysisCategory = 'high';
-            analysisText = `Your eDPI of ${formattedEDPI} is HIGH for ${gameName}. Good for fast flicks! ⚡`;
-            borderColor = 'var(--warning)'; // Orange
+            // High sensitivity - suggest lowering
+            feedbackClass = 'warning';
+            feedbackText = 'Try adjusting: Lower your sensitivity for better precision';
+            suggestion = `Try ${(ranges.optimal / dpi).toFixed(2)} sensitivity instead`;
           }
-        } else {
-          // No game selected
-          analysisText = `Your eDPI is ${formattedEDPI}. Select a game above for personalized analysis.`;
-          borderColor = 'var(--primary)'; // Default blue
         }
 
-        // Display analysis
-        if (edpiAnalysis) {
-          edpiAnalysis.textContent = analysisText;
+        // Display simplified feedback in custom result
+        if (customResultFeedback) {
+          customResultFeedback.className = 'result-feedback' + (feedbackClass ? ' ' + feedbackClass : '');
+          customResultFeedback.innerHTML = `
+            <span class="feedback-icon">${feedbackClass ? '⚠' : '✓'}</span>
+            <span class="feedback-text">${feedbackText}</span>
+          `;
+          if (suggestion) {
+            const suggestionEl = document.createElement('div');
+            suggestionEl.style.marginTop = '12px';
+            suggestionEl.style.fontSize = '16px';
+            suggestionEl.style.color = 'var(--gray)';
+            suggestionEl.textContent = suggestion;
+            customResultFeedback.appendChild(suggestionEl);
+          }
         }
 
-        // Show result display with animation and color-coded border
+        // Show result display
         if (edpiResult) {
-          // Update border color based on analysis
-          edpiResult.style.borderColor = borderColor;
-          
-          // Show with fade-in animation
           edpiResult.classList.remove('hidden');
-          edpiResult.style.opacity = '0';
-          edpiResult.style.transition = 'opacity 0.3s ease-in';
-          
-          setTimeout(() => {
-            edpiResult.style.opacity = '1';
-            
-            // Smooth scroll to result
-            edpiResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 10);
-        }
-
-        // Show share buttons
-        const edpiShareButtons = document.getElementById('edpi-share-buttons');
-        if (edpiShareButtons) {
-          edpiShareButtons.classList.remove('hidden');
         }
 
         // Track eDPI calculation
@@ -3800,117 +6250,66 @@
         trackCalculatorEvent('eDPI_Calculator', 'edpi_category', analysisCategory, roundedEDPI);
       }
 
-      // eDPI Calculator - Copy Settings button
-      const copyEdpiBtn = document.getElementById('copy-edpi-settings');
-      if (copyEdpiBtn) {
-        copyEdpiBtn.addEventListener('click', () => {
-          const dpi = parseFloat(edpiMouseDpiInput.value);
-          const sensitivity = parseFloat(edpiSensitivityInput.value);
-          const edpi = Math.round((dpi * sensitivity) * 100) / 100;
-          const game = edpiGameSelect && edpiGameSelect.value ? getGameDisplayName(edpiGameSelect.value) : 'Not specified';
-          
-          const settingsText = generateSettingsText('edpi', {
-            dpi: dpi,
-            sensitivity: sensitivity,
-            edpi: edpi,
-            game: game,
-            category: edpiAnalysis ? edpiAnalysis.textContent : ''
-          });
-          
-          copyToClipboard(settingsText, copyEdpiBtn);
-          
-          // Track copy action
-          trackCalculatorEvent('eDPI_Calculator', 'settings_copied', 'eDPI: ' + edpi, edpi);
-        });
-      }
-
-      // eDPI Calculator - Tweet button
-      const tweetEdpiBtn = document.getElementById('tweet-edpi-settings');
-      if (tweetEdpiBtn) {
-        tweetEdpiBtn.addEventListener('click', () => {
-          const dpi = parseFloat(edpiMouseDpiInput.value);
-          const sensitivity = parseFloat(edpiSensitivityInput.value);
-          const edpi = Math.round((dpi * sensitivity) * 100) / 100;
-          const game = edpiGameSelect && edpiGameSelect.value ? getGameDisplayName(edpiGameSelect.value) : '';
-          
-          let tweetText = `🎮 My ${game} Settings:\n\n`;
-          tweetText += `📊 ${dpi} DPI × ${sensitivity} sens = ${edpi} eDPI\n\n`;
-          tweetText += `Calculate yours: https://forgeapis.com/dpi-calculator/\n\n`;
-          tweetText += `#GamingSettings #${game.replace(/\s+/g, '')} #eSports`;
-          
-          const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-          window.open(tweetUrl, '_blank', 'width=550,height=420');
-          
-          // Track tweet action
-          trackCalculatorEvent('eDPI_Calculator', 'settings_tweeted', 'eDPI: ' + edpi, edpi);
-        });
-      }
-
       // Helper function to get display name for games
       function getGameDisplayName(gameKey) {
         const gameNames = {
-          valorant: 'Valorant',
+          // Tactical Shooters
           cs2: 'Counter-Strike 2',
+          valorant: 'Valorant',
+          r6siege: 'Rainbow Six Siege',
+          tarkov: 'Escape from Tarkov',
+          // Battle Royales
           apex: 'Apex Legends',
           fortnite: 'Fortnite',
+          pubg: 'PUBG',
+          warzone2: 'Warzone 2/MW3',
+          thefinals: 'The Finals',
+          // Arena Shooters
+          overwatch: 'Overwatch 2',
+          quake: 'Quake Champions',
+          diabotical: 'Diabotical',
+          // Team Shooters
           cod: 'Call of Duty',
-          overwatch: 'Overwatch 2'
+          bf2042: 'Battlefield 2042',
+          halo: 'Halo Infinite',
+          destiny2: 'Destiny 2',
+          tf2: 'Team Fortress 2',
+          // Survival/Extraction
+          rust: 'Rust',
+          hunt: 'Hunt: Showdown',
+          cycle: 'The Cycle: Frontier',
+          // Realistic Shooters
+          squad: 'Squad',
+          hll: 'Hell Let Loose',
+          insurgency: 'Insurgency Sandstorm',
+          readyornot: 'Ready or Not',
+          // Additional Games
+          rogue: 'Rogue Company',
+          paladins: 'Paladins',
+          splitgate: 'Splitgate',
+          back4blood: 'Back 4 Blood'
         };
         return gameNames[gameKey] || gameKey;
       }
 
-      // Calculate eDPI button handler
-      if (calculateEdpiBtn) {
-        calculateEdpiBtn.addEventListener('click', (e) => {
-          e.preventDefault();
+      // Collapsible "Learn More" section handler
+      const learnMoreToggle = document.getElementById('learn-more-toggle');
+      const learnMoreContent = document.getElementById('learn-more-content');
+      
+      if (learnMoreToggle && learnMoreContent) {
+        learnMoreToggle.addEventListener('click', () => {
+          const isExpanded = learnMoreContent.classList.contains('expanded');
           
-          // Validate and calculate
-          if (validateEdpiInputs()) {
-            calculateEdpi();
-            
-            // Prevent double-clicking
-            calculateEdpiBtn.disabled = true;
-            setTimeout(() => {
-              calculateEdpiBtn.disabled = false;
-            }, 500);
+          if (isExpanded) {
+            learnMoreContent.classList.remove('expanded');
+            learnMoreToggle.classList.remove('expanded');
+          } else {
+            learnMoreContent.classList.add('expanded');
+            learnMoreToggle.classList.add('expanded');
           }
         });
       }
 
-      // Initialize: always enable button when inputs exist (validation happens on click)
-      function updateEdpiButtonState() {
-        if (!calculateEdpiBtn || !edpiMouseDpiInput || !edpiSensitivityInput) {
-          return;
-        }
-        
-        // Always enable button - validation happens on click anyway
-        // This allows invalid input to be tested properly
-        calculateEdpiBtn.disabled = false;
-      }
-      
-      // Make function globally accessible for tests/debugging
-      window.updateEdpiButtonState = updateEdpiButtonState;
-      
-      // Initialize button state
-      if (calculateEdpiBtn && edpiMouseDpiInput && edpiSensitivityInput) {
-        // Enable button immediately
-        updateEdpiButtonState();
-        
-        // Update button state when inputs change (multiple event types for robustness)
-        edpiMouseDpiInput.addEventListener('input', updateEdpiButtonState);
-        edpiMouseDpiInput.addEventListener('change', updateEdpiButtonState);
-        edpiMouseDpiInput.addEventListener('blur', updateEdpiButtonState);
-        edpiSensitivityInput.addEventListener('input', updateEdpiButtonState);
-        edpiSensitivityInput.addEventListener('change', updateEdpiButtonState);
-        edpiSensitivityInput.addEventListener('blur', updateEdpiButtonState);
-        
-        // Periodically check button state as fallback for programmatic changes
-        // This ensures button state updates even when value is set programmatically without events
-        // Don't stop on load event - keep running for tests
-        setInterval(() => {
-          updateEdpiButtonState();
-        }, 100); // Check every 100ms
-      }
 
       // ============================================
       // cm/360° Calculator (Calculator #3)
@@ -3920,25 +6319,86 @@
       // Formula: cm/360 = (360 × 2.54) / (DPI × Sensitivity × GameMultiplier)
       // Source: Mouse-Sensitivity.com, ProSettings.net, game engine documentation
       const gameMultipliers = {
-        cs2: 0.022,         // Counter-Strike 2 (Source Engine standard)
-        valorant: 0.07,     // Valorant (NOT Source Engine despite similar feel!)
+        // Tactical Shooters
+        cs2: 0.022,         // Counter-Strike 2 (Source Engine)
+        valorant: 0.07,     // Valorant (Unreal Engine - NOT Source!)
+        r6siege: 0.00223,   // Rainbow Six Siege (AnvilNext - requires ADS multiplier)
+        tarkov: 0.0174,     // Escape from Tarkov (Unity Engine)
+        
+        // Battle Royales
         apex: 0.022,        // Apex Legends (Source Engine)
+        fortnite: 0.5555,   // Fortnite (Percentage-based, assuming % input)
+        pubg: 0.002817,     // PUBG (Unreal Engine 4)
+        warzone2: 0.022,    // Warzone 2/MW3 (IW Engine)
+        thefinals: 0.01,    // The Finals (Unreal Engine 5)
+        
+        // Arena Shooters
         overwatch: 0.0066,  // Overwatch 2 (Blizzard proprietary)
-        // IMPORTANT: Fortnite multiplier assumes percentage input (8% = 0.08 decimal)
-        // If users input as whole numbers (8 instead of 0.08), results will be wrong
-        // Most Fortnite pros use percentage display, so we use the percentage multiplier
-        fortnite: 0.5555,   // Fortnite (percentage input: 10% = 0.10 decimal)
-        cod: 0.022          // Call of Duty (id Tech engine standard - most titles)
+        quake: 0.022,       // Quake Champions (id Tech)
+        diabotical: 0.022,  // Diabotical (Similar to Quake)
+        
+        // Team Shooters
+        cod: 0.022,         // Call of Duty (MW2/MW3) (IW Engine)
+        bf2042: 0.0444,     // Battlefield 2042 (Frostbite - GstInput.MouseSensitivity)
+        halo: 0.0311,       // Halo Infinite (Slipspace Engine)
+        destiny2: 0.0066,   // Destiny 2 (Similar to OW2)
+        tf2: 0.022,         // Team Fortress 2 (Source Engine)
+        
+        // Survival/Extraction
+        rust: 0.1111,       // Rust (Unity Engine)
+        hunt: 0.88,         // Hunt: Showdown (CryEngine)
+        cycle: 0.2,         // The Cycle: Frontier (Unreal Engine)
+        
+        // Realistic Shooters
+        squad: 0.1111,      // Squad (Unreal Engine 4)
+        hll: 0.0373,        // Hell Let Loose (Unreal Engine 4)
+        insurgency: 0.12,   // Insurgency Sandstorm (Unreal Engine 4)
+        readyornot: 0.0373, // Ready or Not (Unreal Engine 4)
+        
+        // Additional Games
+        rogue: 0.0066,      // Rogue Company (Unreal Engine)
+        paladins: 0.0066,   // Paladins (Same as OW2)
+        splitgate: 0.022,   // Splitgate (Unreal Engine)
+        back4blood: 0.022   // Back 4 Blood (Unreal Engine 4)
       };
 
       // Pro player cm/360 ranges for comparison
       const proRanges = {
-        cs2: '25-50 cm/360',    // CS2
-        valorant: '40-55 cm/360',  // Valorant
-        apex: '20-35 cm/360',      // Apex Legends
-        overwatch: '25-40 cm/360', // Overwatch 2
-        fortnite: '15-30 cm/360',  // Fortnite
-        cod: '20-40 cm/360'        // Call of Duty
+        // Tactical Shooters
+        cs2: '25-50 cm/360',
+        valorant: '40-55 cm/360',
+        r6siege: '20-40 cm/360',
+        tarkov: '25-45 cm/360',
+        // Battle Royales
+        apex: '20-35 cm/360',
+        fortnite: '15-30 cm/360',
+        pubg: '20-40 cm/360',
+        warzone2: '20-40 cm/360',
+        thefinals: '20-35 cm/360',
+        // Arena Shooters
+        overwatch: '25-40 cm/360',
+        quake: '25-50 cm/360',
+        diabotical: '25-50 cm/360',
+        // Team Shooters
+        cod: '20-40 cm/360',
+        bf2042: '20-40 cm/360',
+        halo: '20-40 cm/360',
+        destiny2: '25-40 cm/360',
+        tf2: '25-50 cm/360',
+        // Survival/Extraction
+        rust: '20-40 cm/360',
+        hunt: '20-40 cm/360',
+        cycle: '20-40 cm/360',
+        // Realistic Shooters
+        squad: '20-40 cm/360',
+        hll: '20-40 cm/360',
+        insurgency: '20-40 cm/360',
+        readyornot: '20-40 cm/360',
+        // Additional Games
+        rogue: '25-40 cm/360',
+        paladins: '25-40 cm/360',
+        splitgate: '25-50 cm/360',
+        back4blood: '20-40 cm/360'
       };
 
       // Get DOM elements for cm/360 calculator
@@ -4304,14 +6764,11 @@
           cm360Analysis.textContent = fullAnalysisText;
         }
 
-        // Show result display with animation and color-coded border
+        // Show result display
         if (cm360Result) {
-          // Update border color based on category
-          cm360Result.style.borderColor = categoryColor;
-          
-          // Update result value color
+          // Update result value
           if (calculatedCm360) {
-            calculatedCm360.style.color = categoryColor;
+            calculatedCm360.style.color = 'var(--primary)';
           }
           
           // CRITICAL: Remove hidden class using multiple methods for maximum compatibility
@@ -4329,7 +6786,6 @@
           // Use setProperty with 'important' flag to override CSS specificity
           cm360Result.style.setProperty('display', 'block', 'important');
           cm360Result.style.setProperty('visibility', 'visible', 'important');
-          cm360Result.style.setProperty('opacity', '1', 'important');
           
           // Force a reflow to ensure the display change takes effect
           void cm360Result.offsetHeight;
@@ -4539,13 +6995,42 @@
       // Helper function to get display name for games
       function getGameDisplayNameCm360(gameKey) {
         const gameNames = {
-          cs2: 'Counter-Strike 2',
           source: 'Source Engine',  // Keep for backwards compatibility
+          // Tactical Shooters
+          cs2: 'Counter-Strike 2',
           valorant: 'Valorant',
+          r6siege: 'Rainbow Six Siege',
+          tarkov: 'Escape from Tarkov',
+          // Battle Royales
           apex: 'Apex Legends',
-          overwatch: 'Overwatch 2',
           fortnite: 'Fortnite',
-          cod: 'Call of Duty'
+          pubg: 'PUBG',
+          warzone2: 'Warzone 2/MW3',
+          thefinals: 'The Finals',
+          // Arena Shooters
+          overwatch: 'Overwatch 2',
+          quake: 'Quake Champions',
+          diabotical: 'Diabotical',
+          // Team Shooters
+          cod: 'Call of Duty',
+          bf2042: 'Battlefield 2042',
+          halo: 'Halo Infinite',
+          destiny2: 'Destiny 2',
+          tf2: 'Team Fortress 2',
+          // Survival/Extraction
+          rust: 'Rust',
+          hunt: 'Hunt: Showdown',
+          cycle: 'The Cycle: Frontier',
+          // Realistic Shooters
+          squad: 'Squad',
+          hll: 'Hell Let Loose',
+          insurgency: 'Insurgency Sandstorm',
+          readyornot: 'Ready or Not',
+          // Additional Games
+          rogue: 'Rogue Company',
+          paladins: 'Paladins',
+          splitgate: 'Splitgate',
+          back4blood: 'Back 4 Blood'
         };
         return gameNames[gameKey] || gameKey;
       }
@@ -4605,6 +7090,7 @@
       
       // Game and playstyle specific optimal eDPI ranges
       const sensitivityRanges = {
+        // Tactical Shooters
         valorant: {
           precision: { optimal: { min: 200, max: 350 } },
           balanced: { optimal: { min: 250, max: 380 } },
@@ -4615,6 +7101,17 @@
           balanced: { optimal: { min: 700, max: 1100 } },
           aggressive: { optimal: { min: 900, max: 1400 } }
         },
+        r6siege: {
+          precision: { optimal: { min: 500, max: 800 } },
+          balanced: { optimal: { min: 600, max: 1000 } },
+          aggressive: { optimal: { min: 800, max: 1200 } }
+        },
+        tarkov: {
+          precision: { optimal: { min: 400, max: 700 } },
+          balanced: { optimal: { min: 500, max: 800 } },
+          aggressive: { optimal: { min: 700, max: 1000 } }
+        },
+        // Battle Royales
         apex: {
           precision: { optimal: { min: 800, max: 1400 } },
           balanced: { optimal: { min: 1000, max: 1600 } },
@@ -4625,26 +7122,160 @@
           balanced: { optimal: { min: 40, max: 80 } },
           aggressive: { optimal: { min: 60, max: 100 } }
         },
+        pubg: {
+          precision: { optimal: { min: 500, max: 800 } },
+          balanced: { optimal: { min: 600, max: 1000 } },
+          aggressive: { optimal: { min: 800, max: 1200 } }
+        },
+        warzone2: {
+          precision: { optimal: { min: 800, max: 1400 } },
+          balanced: { optimal: { min: 1000, max: 2000 } },
+          aggressive: { optimal: { min: 1500, max: 3000 } }
+        },
+        thefinals: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        // Arena Shooters
+        overwatch: {
+          precision: { optimal: { min: 2500, max: 4000 } },
+          balanced: { optimal: { min: 3000, max: 5500 } },
+          aggressive: { optimal: { min: 4000, max: 7000 } }
+        },
+        quake: {
+          precision: { optimal: { min: 600, max: 900 } },
+          balanced: { optimal: { min: 700, max: 1100 } },
+          aggressive: { optimal: { min: 900, max: 1400 } }
+        },
+        diabotical: {
+          precision: { optimal: { min: 600, max: 900 } },
+          balanced: { optimal: { min: 700, max: 1100 } },
+          aggressive: { optimal: { min: 900, max: 1400 } }
+        },
+        // Team Shooters
         cod: {
           precision: { optimal: { min: 800, max: 1400 } },
           balanced: { optimal: { min: 1000, max: 2000 } },
           aggressive: { optimal: { min: 1500, max: 3000 } }
         },
-        overwatch: {
+        bf2042: {
+          precision: { optimal: { min: 800, max: 1400 } },
+          balanced: { optimal: { min: 1000, max: 1600 } },
+          aggressive: { optimal: { min: 1400, max: 2000 } }
+        },
+        halo: {
+          precision: { optimal: { min: 800, max: 1400 } },
+          balanced: { optimal: { min: 1000, max: 1600 } },
+          aggressive: { optimal: { min: 1400, max: 2000 } }
+        },
+        destiny2: {
           precision: { optimal: { min: 2500, max: 4000 } },
           balanced: { optimal: { min: 3000, max: 5500 } },
           aggressive: { optimal: { min: 4000, max: 7000 } }
+        },
+        tf2: {
+          precision: { optimal: { min: 600, max: 900 } },
+          balanced: { optimal: { min: 700, max: 1100 } },
+          aggressive: { optimal: { min: 900, max: 1400 } }
+        },
+        // Survival/Extraction
+        rust: {
+          precision: { optimal: { min: 800, max: 1400 } },
+          balanced: { optimal: { min: 1000, max: 1600 } },
+          aggressive: { optimal: { min: 1400, max: 2000 } }
+        },
+        hunt: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        cycle: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        // Realistic Shooters
+        squad: {
+          precision: { optimal: { min: 800, max: 1400 } },
+          balanced: { optimal: { min: 1000, max: 1600 } },
+          aggressive: { optimal: { min: 1400, max: 2000 } }
+        },
+        hll: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        insurgency: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        readyornot: {
+          precision: { optimal: { min: 600, max: 1000 } },
+          balanced: { optimal: { min: 700, max: 1200 } },
+          aggressive: { optimal: { min: 1000, max: 1500 } }
+        },
+        // Additional Games
+        rogue: {
+          precision: { optimal: { min: 2500, max: 4000 } },
+          balanced: { optimal: { min: 3000, max: 5500 } },
+          aggressive: { optimal: { min: 4000, max: 7000 } }
+        },
+        paladins: {
+          precision: { optimal: { min: 2500, max: 4000 } },
+          balanced: { optimal: { min: 3000, max: 5500 } },
+          aggressive: { optimal: { min: 4000, max: 7000 } }
+        },
+        splitgate: {
+          precision: { optimal: { min: 600, max: 900 } },
+          balanced: { optimal: { min: 700, max: 1100 } },
+          aggressive: { optimal: { min: 900, max: 1400 } }
+        },
+        back4blood: {
+          precision: { optimal: { min: 600, max: 900 } },
+          balanced: { optimal: { min: 700, max: 1100 } },
+          aggressive: { optimal: { min: 900, max: 1400 } }
         }
       };
 
       // Pro player context for each game
       const proPlayerContext = {
+        // Tactical Shooters
         valorant: 'Most Valorant pros use 200-380 eDPI with an average around 250-300. Precision players favor 200-350, balanced players use 250-380, while aggressive players go up to 320-450. Very few competitive players exceed 400 eDPI.',
         cs2: 'CS2 pros typically use 600-1000 eDPI with an average around 800-900. Precision aiming prefers 600-900, balanced riflers use 700-1100, while aggressive entry fraggers use 900-1400. The game rewards lower sensitivity for holding angles.',
+        r6siege: 'Rainbow Six Siege pros typically use 500-1000 eDPI. Precision players favor lower sensitivity for holding angles, while aggressive players may use higher sensitivity for quick flicks.',
+        tarkov: 'Escape from Tarkov pros typically use 400-800 eDPI. The game rewards precision aiming, with most competitive players favoring lower sensitivity for accurate shots.',
+        // Battle Royales
         apex: 'Apex Legends pros range from 800-1600 eDPI with an average around 1200. Precision long-range players use 800-1400, balanced players use 1000-1600, while aggressive close-range players use 1400-1800. Very few pros exceed 1800 eDPI.',
         fortnite: 'Fortnite pros use 40-80 eDPI (different scale) with an average around 50-65. Precision editors prefer 30-60, balanced players use 40-80, while aggressive builders go 60-100. The 120+ range is extremely rare in competitive play.',
+        pubg: 'PUBG pros typically use 500-1000 eDPI. The game rewards precision for long-range engagements, with most competitive players using moderate to lower sensitivity.',
+        warzone2: 'Warzone 2/MW3 pros typically use 1000-2000 eDPI with variation by playstyle. Precision snipers use lower sensitivity, while aggressive players use higher sensitivity.',
+        thefinals: 'The Finals pros typically use 600-1200 eDPI. The fast-paced gameplay allows for variation, with most players using moderate sensitivity.',
+        // Arena Shooters
+        overwatch: 'Overwatch 2 pros use 3000-5500 eDPI with significant role-based variation. Precision hitscan DPS (Widowmaker, Cassidy) prefer 2500-4000, balanced heroes use 3000-5500, while aggressive tanks/flankers use 4000-7000. Higher sensitivity is common due to the game\'s vertical mobility.',
+        quake: 'Quake Champions pros typically use 600-1000 eDPI. The fast-paced arena shooter rewards both precision and quick movement, with most pros using moderate sensitivity.',
+        diabotical: 'Diabotical pros typically use 600-1000 eDPI, similar to Quake. The game rewards precision aiming with moderate sensitivity settings.',
+        // Team Shooters
         cod: 'Call of Duty pros typically use 1000-2000 eDPI with considerable variation by game mode and role. Precision snipers use 800-1400, balanced players use 1000-2000, while aggressive SMG players use 1500-3000.',
-        overwatch: 'Overwatch 2 pros use 3000-5500 eDPI with significant role-based variation. Precision hitscan DPS (Widowmaker, Cassidy) prefer 2500-4000, balanced heroes use 3000-5500, while aggressive tanks/flankers use 4000-7000. Higher sensitivity is common due to the game\'s vertical mobility.'
+        bf2042: 'Battlefield 2042 pros typically use 800-1600 eDPI. The large-scale combat allows for variation, with most players using moderate sensitivity.',
+        halo: 'Halo Infinite pros typically use 800-1600 eDPI. The game rewards precision aiming, with most competitive players using moderate sensitivity.',
+        destiny2: 'Destiny 2 pros typically use 3000-5500 eDPI, similar to Overwatch. The game\'s vertical mobility and fast-paced combat favor higher sensitivity.',
+        tf2: 'Team Fortress 2 pros typically use 600-1000 eDPI. The game rewards precision aiming, with most competitive players using moderate to lower sensitivity.',
+        // Survival/Extraction
+        rust: 'Rust pros typically use 800-1600 eDPI. The game allows for variation based on playstyle, with most competitive players using moderate sensitivity.',
+        hunt: 'Hunt: Showdown pros typically use 600-1200 eDPI. The game rewards precision for long-range engagements, with most players using moderate to lower sensitivity.',
+        cycle: 'The Cycle: Frontier pros typically use 600-1200 eDPI. The extraction shooter rewards precision aiming, with most competitive players using moderate sensitivity.',
+        // Realistic Shooters
+        squad: 'Squad pros typically use 800-1600 eDPI. The tactical gameplay rewards precision, with most competitive players using moderate sensitivity.',
+        hll: 'Hell Let Loose pros typically use 600-1200 eDPI. The realistic shooter rewards precision aiming, with most players using moderate to lower sensitivity.',
+        insurgency: 'Insurgency Sandstorm pros typically use 600-1200 eDPI. The tactical shooter rewards precision, with most competitive players using moderate sensitivity.',
+        readyornot: 'Ready or Not pros typically use 600-1200 eDPI. The tactical shooter rewards precision aiming, with most players using moderate to lower sensitivity.',
+        // Additional Games
+        rogue: 'Rogue Company pros typically use 3000-5500 eDPI, similar to Overwatch. The game\'s fast-paced combat favors higher sensitivity.',
+        paladins: 'Paladins pros typically use 3000-5500 eDPI, similar to Overwatch. The game\'s hero-based combat allows for variation based on role.',
+        splitgate: 'Splitgate pros typically use 600-1000 eDPI. The portal-based arena shooter rewards precision aiming, with most players using moderate sensitivity.',
+        back4blood: 'Back 4 Blood pros typically use 600-1000 eDPI. The co-op shooter rewards precision, with most competitive players using moderate sensitivity.'
       };
 
       // Get DOM elements for sensitivity analyzer
@@ -4736,12 +7367,41 @@
       // Get game display name
       function getGameDisplayNameAnalyzer(gameKey) {
         const gameNames = {
-          valorant: 'Valorant',
+          // Tactical Shooters
           cs2: 'Counter-Strike 2',
+          valorant: 'Valorant',
+          r6siege: 'Rainbow Six Siege',
+          tarkov: 'Escape from Tarkov',
+          // Battle Royales
           apex: 'Apex Legends',
           fortnite: 'Fortnite',
+          pubg: 'PUBG',
+          warzone2: 'Warzone 2/MW3',
+          thefinals: 'The Finals',
+          // Arena Shooters
+          overwatch: 'Overwatch 2',
+          quake: 'Quake Champions',
+          diabotical: 'Diabotical',
+          // Team Shooters
           cod: 'Call of Duty',
-          overwatch: 'Overwatch 2'
+          bf2042: 'Battlefield 2042',
+          halo: 'Halo Infinite',
+          destiny2: 'Destiny 2',
+          tf2: 'Team Fortress 2',
+          // Survival/Extraction
+          rust: 'Rust',
+          hunt: 'Hunt: Showdown',
+          cycle: 'The Cycle: Frontier',
+          // Realistic Shooters
+          squad: 'Squad',
+          hll: 'Hell Let Loose',
+          insurgency: 'Insurgency Sandstorm',
+          readyornot: 'Ready or Not',
+          // Additional Games
+          rogue: 'Rogue Company',
+          paladins: 'Paladins',
+          splitgate: 'Splitgate',
+          back4blood: 'Back 4 Blood'
         };
         return gameNames[gameKey] || gameKey;
       }
@@ -4990,7 +7650,7 @@
           const card2 = document.createElement('div');
           card2.className = 'info-card';
           card2.innerHTML = `
-            <h4>💡 Recommendations</h4>
+            <h4>Recommendations</h4>
             <p>${recommendations}</p>
           `;
           analyzerDetails.appendChild(card2);
@@ -5024,23 +7684,8 @@
 
         // Show result display with animation and color-coded border
         if (analyzerResult) {
-          // Update border color based on rating
-          analyzerResult.style.borderColor = ratingData.color;
-          
-          // Update background color
-          analyzerResult.style.background = `linear-gradient(135deg, ${ratingData.bgColor}15 0%, ${ratingData.bgColor}05 100%)`;
-          
-          // Show with fade-in animation
+          // Show result
           analyzerResult.classList.remove('hidden');
-          analyzerResult.style.opacity = '0';
-          analyzerResult.style.transition = 'opacity 0.3s ease-in';
-          
-          setTimeout(() => {
-            analyzerResult.style.opacity = '1';
-            
-            // Smooth scroll to result
-            analyzerResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 10);
         }
 
         // Track sensitivity analysis
@@ -5553,18 +8198,10 @@
           }
         }
 
-        // Show comparison results with animation
+        // Show comparison results
         if (comparisonResults) {
           comparisonResults.style.display = 'block';
-          comparisonResults.style.opacity = '0';
-          comparisonResults.style.transition = 'opacity 0.3s ease-in';
-          
-          setTimeout(() => {
-            comparisonResults.style.opacity = '1';
-            
-            // Smooth scroll to results
-            comparisonResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 10);
+          comparisonResults.scrollIntoView({ block: 'nearest' });
         }
 
         // Track comparison
@@ -5648,6 +8285,21 @@
       
       // FAQ accordion functionality
       document.addEventListener('DOMContentLoaded', function() {
+        // Progressive Disclosure: Show All FAQs
+        const showAllFaqsBtn = document.getElementById('show-all-faqs-btn');
+        if (showAllFaqsBtn) {
+          showAllFaqsBtn.addEventListener('click', () => {
+            const hiddenFaqs = document.querySelectorAll('.faq-item.hidden-faq');
+            hiddenFaqs.forEach(faq => {
+              faq.classList.add('show-all');
+            });
+            showAllFaqsBtn.style.display = 'none';
+            trackCalculatorEvent('Progressive_Disclosure', 'show_all_faqs', 'clicked', 0);
+          });
+        }
+
+        // Progressive Disclosure: View Pro Settings
+
         const faqQuestions = document.querySelectorAll('.faq-question');
         
         faqQuestions.forEach(question => {
