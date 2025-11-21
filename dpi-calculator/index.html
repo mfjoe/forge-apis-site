@@ -262,6 +262,53 @@
         width: 100%;
       }
 
+      .hero-title {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--primary);
+        margin-bottom: 20px;
+        margin-top: -40px;
+        display: inline-block;
+        padding: 10px 24px;
+        background: rgba(0, 102, 255, 0.1);
+        border: 1px solid rgba(0, 102, 255, 0.3);
+        border-radius: 4px;
+        position: relative;
+        text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+
+      .hero-title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);
+        animation: scan 3s linear infinite;
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 5px rgba(0, 102, 255, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 15px rgba(0, 102, 255, 0.6);
+        }
+      }
+
+      @keyframes scan {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
       .hero h1 {
         font-size: 48px;
         font-weight: 700;
@@ -2925,6 +2972,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container hero-content">
+        <div class="hero-title">DPI Calculator</div>
         <h1>Find Your Perfect Gaming Mouse Settings</h1>
         <p>Easy calculator to optimize your mouse for any game</p>
         
@@ -5667,8 +5715,15 @@
           e.preventDefault();
           if (advancedCalculators) {
             advancedCalculators.classList.remove('hidden');
-            const wizardSection = document.getElementById('wizard');
-            if (wizardSection) wizardSection.scrollIntoView({ block: 'start' });
+            // Hide the link after clicking
+            const advancedToolsLink = showAdvancedToolsWizard.closest('.advanced-tools-link-wizard');
+            if (advancedToolsLink) {
+              advancedToolsLink.style.display = 'none';
+            }
+            // Scroll to advanced calculators section smoothly
+            setTimeout(() => {
+              advancedCalculators.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
           }
         });
       }
