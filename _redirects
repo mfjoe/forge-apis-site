@@ -12,14 +12,26 @@
 /minecoins-calculator/ /gaming-currency-converter/#minecoins 301
 /minecoins-calculator/* /gaming-currency-converter/#minecoins 301
 
-# Gaming Calculators Subdirectory Redirects
-/gaming-calculators/robux /gaming-calculators/robux/ 301
-/gaming-calculators/vbucks /gaming-calculators/vbucks/ 301
-/gaming-calculators/minecoins /gaming-calculators/robux/ 301
-/gaming-calculators/cod-points /gaming-calculators/cod-points/ 301
-/gaming-calculators/apex-coins /gaming-calculators/vbucks/ 301
-/gaming-calculators/fifa-points /gaming-calculators/fifa-points/ 301
-/gaming-calculators/lol-rp /gaming-calculators/cod-points/ 301
+# Gaming Calculators Subdirectory Redirects (Consolidated to Gaming Currency Converter)
+/gaming-calculators/robux/ /gaming-currency-converter/#robux 301
+/gaming-calculators/robux/* /gaming-currency-converter/#robux 301
+/gaming-calculators/vbucks/ /gaming-currency-converter/#vbucks 301
+/gaming-calculators/vbucks/* /gaming-currency-converter/#vbucks 301
+/gaming-calculators/cod-points/ /gaming-currency-converter/#cod-points 301
+/gaming-calculators/cod-points/* /gaming-currency-converter/#cod-points 301
+/gaming-calculators/fifa-points/ /gaming-currency-converter/#fifa-points 301
+/gaming-calculators/fifa-points/* /gaming-currency-converter/#fifa-points 301
+/gaming-calculators/apex-coins/ /gaming-currency-converter/#apex-coins 301
+/gaming-calculators/apex-coins/* /gaming-currency-converter/#apex-coins 301
+/gaming-calculators/minecoins/ /gaming-currency-converter/#minecoins 301
+/gaming-calculators/minecoins/* /gaming-currency-converter/#minecoins 301
+/gaming-calculators/robux /gaming-currency-converter/#robux 301
+/gaming-calculators/vbucks /gaming-currency-converter/#vbucks 301
+/gaming-calculators/minecoins /gaming-currency-converter/#minecoins 301
+/gaming-calculators/cod-points /gaming-currency-converter/#cod-points 301
+/gaming-calculators/apex-coins /gaming-currency-converter/#apex-coins 301
+/gaming-calculators/fifa-points /gaming-currency-converter/#fifa-points 301
+/gaming-calculators/lol-rp /gaming-currency-converter/ 301
 
 # Other Calculator Redirects
 /gst-calculator /gst-calculator/ 301

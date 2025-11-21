@@ -17,15 +17,6 @@ const breadcrumbConfig = {
     
     // Gaming Calculators
     "/gaming-calculators/": [{ name: "Home", url: "/" }, { name: "Gaming Calculators" }],
-    "/gaming-calculators/robux/": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "Robux Calculator" }],
-    "/gaming-calculators/robux/guide.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "Robux Calculator", url: "/gaming-calculators/robux/" }, { name: "Guide" }],
-    "/gaming-calculators/robux/tax-calculator.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "Robux Calculator", url: "/gaming-calculators/robux/" }, { name: "Tax Calculator" }],
-    "/gaming-calculators/vbucks/": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "V-Bucks Calculator" }],
-    "/gaming-calculators/vbucks/guide.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "V-Bucks Calculator", url: "/gaming-calculators/vbucks/" }, { name: "Guide" }],
-    "/gaming-calculators/fifa-points/": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "FIFA Points Calculator" }],
-    "/gaming-calculators/fifa-points/guide.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "FIFA Points Calculator", url: "/gaming-calculators/fifa-points/" }, { name: "Guide" }],
-    "/gaming-calculators/cod-points/": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "COD Points Calculator" }],
-    "/gaming-calculators/cod-points/guide.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "COD Points Calculator", url: "/gaming-calculators/cod-points/" }, { name: "Guide" }],
     "/gaming-calculators/guides/comparison.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "Guide" }],
     "/gaming-calculators/guides/parents-guide.html": [{ name: "Home", url: "/" }, { name: "Gaming Calculators", url: "/gaming-calculators/" }, { name: "Parents Guide" }],
     
