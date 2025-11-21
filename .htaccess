@@ -1,47 +1,56 @@
 # Gaming Currency Calculator Redirects (Consolidated to Unified Converter)
 # All individual calculators redirect to /gaming-currency-converter/ with hash navigation
 
+# Enable Rewrite Engine (Primary method - works even when directories don't exist)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
 # Root-level Calculator Redirects
-Redirect 301 /robux-calculator/ https://forgeapis.com/gaming-currency-converter/#robux
-Redirect 301 /vbucks-calculator/ https://forgeapis.com/gaming-currency-converter/#vbucks
-Redirect 301 /cod-points-calculator/ https://forgeapis.com/gaming-currency-converter/#cod-points
-Redirect 301 /fifa-points-calculator/ https://forgeapis.com/gaming-currency-converter/#fifa-points
-Redirect 301 /apex-coins-calculator/ https://forgeapis.com/gaming-currency-converter/#apex-coins
-Redirect 301 /minecoins-calculator/ https://forgeapis.com/gaming-currency-converter/#minecoins
+RewriteRule ^robux-calculator/?$ /gaming-currency-converter/#robux [R=301,L]
+RewriteRule ^vbucks-calculator/?$ /gaming-currency-converter/#vbucks [R=301,L]
+RewriteRule ^cod-points-calculator/?$ /gaming-currency-converter/#cod-points [R=301,L]
+RewriteRule ^fifa-points-calculator/?$ /gaming-currency-converter/#fifa-points [R=301,L]
+RewriteRule ^apex-coins-calculator/?$ /gaming-currency-converter/#apex-coins [R=301,L]
+RewriteRule ^minecoins-calculator/?$ /gaming-currency-converter/#minecoins [R=301,L]
 
 # Gaming Calculators Subdirectory Redirects
+RewriteRule ^gaming-calculators/robux/?$ /gaming-currency-converter/#robux [R=301,L]
+RewriteRule ^gaming-calculators/robux/.*$ /gaming-currency-converter/#robux [R=301,L]
 
-# Robux Calculator
-Redirect 301 /gaming-calculators/robux/ https://forgeapis.com/gaming-currency-converter/#robux
-Redirect 301 /gaming-calculators/robux/index.html https://forgeapis.com/gaming-currency-converter/#robux
-Redirect 301 /gaming-calculators/robux/guide.html https://forgeapis.com/gaming-currency-converter/#robux
-Redirect 301 /gaming-calculators/robux/tax-calculator.html https://forgeapis.com/gaming-currency-converter/#robux
+RewriteRule ^gaming-calculators/vbucks/?$ /gaming-currency-converter/#vbucks [R=301,L]
+RewriteRule ^gaming-calculators/vbucks/.*$ /gaming-currency-converter/#vbucks [R=301,L]
 
-# V-Bucks Calculator
-Redirect 301 /gaming-calculators/vbucks/ https://forgeapis.com/gaming-currency-converter/#vbucks
-Redirect 301 /gaming-calculators/vbucks/index.html https://forgeapis.com/gaming-currency-converter/#vbucks
-Redirect 301 /gaming-calculators/vbucks/guide.html https://forgeapis.com/gaming-currency-converter/#vbucks
+RewriteRule ^gaming-calculators/cod-points/?$ /gaming-currency-converter/#cod-points [R=301,L]
+RewriteRule ^gaming-calculators/cod-points/.*$ /gaming-currency-converter/#cod-points [R=301,L]
 
-# COD Points Calculator
-Redirect 301 /gaming-calculators/cod-points/ https://forgeapis.com/gaming-currency-converter/#cod-points
-Redirect 301 /gaming-calculators/cod-points/index.html https://forgeapis.com/gaming-currency-converter/#cod-points
-Redirect 301 /gaming-calculators/cod-points/guide.html https://forgeapis.com/gaming-currency-converter/#cod-points
+RewriteRule ^gaming-calculators/fifa-points/?$ /gaming-currency-converter/#fifa-points [R=301,L]
+RewriteRule ^gaming-calculators/fifa-points/.*$ /gaming-currency-converter/#fifa-points [R=301,L]
 
-# FIFA Points Calculator
-Redirect 301 /gaming-calculators/fifa-points/ https://forgeapis.com/gaming-currency-converter/#fifa-points
-Redirect 301 /gaming-calculators/fifa-points/index.html https://forgeapis.com/gaming-currency-converter/#fifa-points
-Redirect 301 /gaming-calculators/fifa-points/guide.html https://forgeapis.com/gaming-currency-converter/#fifa-points
+RewriteRule ^gaming-calculators/apex-coins/?$ /gaming-currency-converter/#apex-coins [R=301,L]
+RewriteRule ^gaming-calculators/apex-coins/.*$ /gaming-currency-converter/#apex-coins [R=301,L]
 
-# Apex Coins Calculator
-Redirect 301 /gaming-calculators/apex-coins/ https://forgeapis.com/gaming-currency-converter/#apex-coins
-Redirect 301 /gaming-calculators/apex-coins/index.html https://forgeapis.com/gaming-currency-converter/#apex-coins
-Redirect 301 /gaming-calculators/apex-coins/guide.html https://forgeapis.com/gaming-currency-converter/#apex-coins
+RewriteRule ^gaming-calculators/minecoins/?$ /gaming-currency-converter/#minecoins [R=301,L]
+RewriteRule ^gaming-calculators/minecoins/.*$ /gaming-currency-converter/#minecoins [R=301,L]
 
-# Minecoins Calculator
-Redirect 301 /gaming-calculators/minecoins/ https://forgeapis.com/gaming-currency-converter/#minecoins
-Redirect 301 /gaming-calculators/minecoins/index.html https://forgeapis.com/gaming-currency-converter/#minecoins
-Redirect 301 /gaming-calculators/minecoins/guide.html https://forgeapis.com/gaming-currency-converter/#minecoins
+RewriteRule ^gaming-calculators/lol-rp/?$ /gaming-currency-converter/ [R=301,L]
+RewriteRule ^gaming-calculators/lol-rp/.*$ /gaming-currency-converter/ [R=301,L]
+</IfModule>
 
-# LoL RP Calculator (redirects to main converter)
-Redirect 301 /gaming-calculators/lol-rp/ https://forgeapis.com/gaming-currency-converter/
-Redirect 301 /gaming-calculators/lol-rp/index.html https://forgeapis.com/gaming-currency-converter/
+# Fallback: Use RedirectMatch if mod_rewrite is not available
+# Root-level Calculator Redirects
+RedirectMatch 301 ^/robux-calculator(/.*)?$ /gaming-currency-converter/#robux
+RedirectMatch 301 ^/vbucks-calculator(/.*)?$ /gaming-currency-converter/#vbucks
+RedirectMatch 301 ^/cod-points-calculator(/.*)?$ /gaming-currency-converter/#cod-points
+RedirectMatch 301 ^/fifa-points-calculator(/.*)?$ /gaming-currency-converter/#fifa-points
+RedirectMatch 301 ^/apex-coins-calculator(/.*)?$ /gaming-currency-converter/#apex-coins
+RedirectMatch 301 ^/minecoins-calculator(/.*)?$ /gaming-currency-converter/#minecoins
+
+# Gaming Calculators Subdirectory Redirects
+RedirectMatch 301 ^/gaming-calculators/robux(/.*)?$ /gaming-currency-converter/#robux
+RedirectMatch 301 ^/gaming-calculators/vbucks(/.*)?$ /gaming-currency-converter/#vbucks
+RedirectMatch 301 ^/gaming-calculators/cod-points(/.*)?$ /gaming-currency-converter/#cod-points
+RedirectMatch 301 ^/gaming-calculators/fifa-points(/.*)?$ /gaming-currency-converter/#fifa-points
+RedirectMatch 301 ^/gaming-calculators/apex-coins(/.*)?$ /gaming-currency-converter/#apex-coins
+RedirectMatch 301 ^/gaming-calculators/minecoins(/.*)?$ /gaming-currency-converter/#minecoins
+RedirectMatch 301 ^/gaming-calculators/lol-rp(/.*)?$ /gaming-currency-converter/

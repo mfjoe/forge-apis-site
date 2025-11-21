@@ -676,6 +676,90 @@
         justify-content: center;
       }
 
+      .distance-visual-guide {
+        margin: 24px 0;
+      }
+
+      .ruler-container {
+        position: relative;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ruler-line {
+        position: relative;
+        height: 60px;
+        border-left: 3px solid var(--primary);
+        border-right: 3px solid var(--primary);
+        background: rgba(0, 102, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 192px; /* Default 2 inches at 96 DPI */
+        transition: width 0.3s ease;
+      }
+
+      .ruler-label {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary);
+        white-space: nowrap;
+      }
+
+      .ruler-start,
+      .ruler-end {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--success);
+      }
+
+      .ruler-start {
+        left: -2px;
+      }
+
+      .ruler-end {
+        right: -2px;
+      }
+
+      .ruler-midpoint {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(0, 102, 255, 0.3);
+        transform: translateX(-50%);
+      }
+
+      /* Ruler width based on distance (at 96 DPI standard) */
+      .ruler-line[data-distance="1"] {
+        width: 96px; /* 1 inch = 96 pixels at 96 DPI */
+        min-width: 96px;
+      }
+
+      .ruler-line[data-distance="2"] {
+        width: 192px; /* 2 inches = 192 pixels at 96 DPI */
+        min-width: 192px;
+      }
+
+      .ruler-line[data-distance="3"] {
+        width: 288px; /* 3 inches = 288 pixels at 96 DPI */
+        min-width: 288px;
+      }
+
+      .ruler-line[data-distance="4"] {
+        width: 384px; /* 4 inches = 384 pixels at 96 DPI */
+        min-width: 384px;
+      }
+
       /* Sensitivity Wizard */
       .sensitivity-wizard {
         display: flex;
@@ -835,19 +919,6 @@
         display: none;
       }
 
-      .advanced-tools-link-wizard {
-        text-align: center;
-        margin-top: 32px;
-        padding-top: 32px;
-        border-top: 1px solid #e5e7eb;
-      }
-
-      .advanced-tools-link-wizard a {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-      }
-
       .advanced-calculators {
         margin-top: 60px;
       }
@@ -898,16 +969,11 @@
       }
 
       .calculator-tabs {
-        display: none; /* Hidden by default */
+        display: flex; /* Always visible */
         flex-direction: column;
         gap: 12px;
         margin-bottom: 32px;
         padding: 4px;
-      }
-
-      .calculator-tabs.show-advanced {
-        display: flex; /* Show when advanced tools are revealed */
-        flex-direction: column;
       }
 
       .calculator-tabs::-webkit-scrollbar {
@@ -2993,7 +3059,7 @@
 
         <div class="hero-cta">
           <a href="#wizard" class="hero-cta-btn">Guide Me</a>
-          <a href="#edpi-calc" class="hero-cta-btn hero-cta-btn-secondary">Quick Calculator</a>
+          <a href="#advanced-calculators" class="hero-cta-btn hero-cta-btn-secondary">Advanced Tools</a>
         </div>
       </div>
     </section>
@@ -3099,7 +3165,23 @@
                 <p>Move your mouse horizontally from left to right</p>
                 <p class="dpi-distance">Move exactly <span id="wizard-distance">2</span> inches</p>
               </div>
-              <div class="dpi-tracking-area" id="wizard-tracking-area">
+              <div class="dpi-tracking-area" id="wizard-tracking-area" style="position: relative;">
+                <!-- Visual 2-inch guide for wizard -->
+                <div class="distance-visual-guide" id="wizard-distance-visual-guide" style="margin: 24px auto; max-width: 100%; overflow-x: auto;">
+                  <div class="ruler-container" style="position: relative; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                    <div class="ruler-line" id="wizard-ruler-line" data-distance="2" style="position: relative; height: 60px; border-left: 3px solid var(--primary); border-right: 3px solid var(--primary); background: rgba(0, 102, 255, 0.1); display: flex; align-items: center; justify-content: center; width: 192px; min-width: 192px;">
+                      <div class="ruler-label" style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: 600; color: var(--primary); white-space: nowrap;">
+                        <span id="wizard-ruler-distance-text">2 inches</span>
+                      </div>
+                      <div class="ruler-start" style="position: absolute; left: -2px; top: 0; bottom: 0; width: 3px; background: var(--success);"></div>
+                      <div class="ruler-end" style="position: absolute; right: -2px; top: 0; bottom: 0; width: 3px; background: var(--success);"></div>
+                      <div class="ruler-midpoint" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(0, 102, 255, 0.3); transform: translateX(-50%);"></div>
+                    </div>
+                  </div>
+                  <p style="font-size: 12px; color: var(--gray); margin-top: 8px; font-style: italic; text-align: center;">
+                    Use a physical ruler to verify this distance matches 2 inches on your screen
+                  </p>
+                </div>
                 <div class="tracking-display">
                   <div class="pixels-display" id="wizard-pixels">0 pixels</div>
                 </div>
@@ -3164,30 +3246,28 @@
             <button class="btn btn-primary wizard-btn-start-over hidden" id="wizard-start-over">Start Over</button>
           </div>
 
-          <!-- Advanced Tools Link -->
-          <div class="advanced-tools-link-wizard">
-            <a href="#" id="show-advanced-tools-wizard">I need advanced tools</a>
-          </div>
         </div>
 
-        <!-- Advanced Calculators (Hidden by default) -->
-        <div class="advanced-calculators hidden" id="advanced-calculators">
+        <!-- Advanced Calculators -->
+        <div class="advanced-calculators" id="advanced-calculators">
+          <div class="calc-header" style="margin-bottom: 32px;">
+            <h2 style="font-size: 32px; font-weight: 700; color: var(--dark); margin-bottom: 8px;">Advanced Tools</h2>
+            <p style="font-size: 18px; color: var(--gray);">Powerful calculators to fine-tune your mouse settings</p>
+          </div>
+          
           <!-- Calculator Tabs -->
           <div class="calculator-tabs">
+            <div class="calc-tab active" data-calc="edpi-calc">
+              Quick Calculator
+            </div>
             <div class="calc-tab" data-calc="dpi-tester">
               Test My Mouse
-            </div>
-            <div class="calc-tab" data-calc="edpi-calc">
-              Quick Calculator
             </div>
             <div class="calc-tab" data-calc="cm360-calc">
               Distance Calculator
             </div>
             <div class="calc-tab" data-calc="sensitivity-analyzer">
               Check My Settings
-            </div>
-            <div class="calc-tab" data-calc="dpi-comparison">
-              Compare Settings
             </div>
           </div>
 
@@ -3199,7 +3279,7 @@
                 <span>📱</span> Mobile Device Detected
               </h4>
               <p style="font-size: 14px; color: #7f1d1d; line-height: 1.6; margin: 0;">
-                <strong>The Interactive DPI Tester requires a physical gaming mouse.</strong> It cannot work on mobile devices, tablets, or touchscreens. Please use a desktop or laptop computer with a mouse to test your DPI. The other calculators (eDPI, cm/360°, Sensitivity Analyzer, DPI Comparison) work perfectly on mobile!
+                <strong>The Interactive DPI Tester requires a physical gaming mouse.</strong> It cannot work on mobile devices, tablets, or touchscreens. Please use a desktop or laptop computer with a mouse to test your DPI. The other calculators (eDPI, cm/360°, Sensitivity Analyzer) work perfectly on mobile!
               </p>
             </div>
             <div class="calc-header">
@@ -3238,13 +3318,31 @@
             </div>
 
             <div id="dpi-test-area" style="display: none;">
-              <div style="background: #f0f9ff; border: 2px dashed var(--primary); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 24px; cursor: crosshair;" id="tracking-area">
+              <div style="background: #f0f9ff; border: 2px dashed var(--primary); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 24px; cursor: crosshair; position: relative;" id="tracking-area">
                 <p style="font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px;">
                   Move your mouse from <strong>LEFT to RIGHT</strong>
                 </p>
-                <p style="color: var(--gray); font-size: 14px;">
+                <p style="color: var(--gray); font-size: 14px; margin-bottom: 24px;">
                   Keep your mouse straight and move exactly <span id="distance-display">2</span> inches
                 </p>
+                
+                <!-- Visual 2-inch guide -->
+                <div class="distance-visual-guide" id="distance-visual-guide" style="margin: 24px auto; max-width: 100%; overflow-x: auto;">
+                  <div class="ruler-container" style="position: relative; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                    <div class="ruler-line" id="ruler-line" data-distance="2" style="position: relative; height: 60px; border-left: 3px solid var(--primary); border-right: 3px solid var(--primary); background: rgba(0, 102, 255, 0.1); display: flex; align-items: center; justify-content: center; width: 192px; min-width: 192px;">
+                      <div class="ruler-label" style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: 600; color: var(--primary); white-space: nowrap;">
+                        <span id="ruler-distance-text">2 inches</span>
+                      </div>
+                      <div class="ruler-start" style="position: absolute; left: -2px; top: 0; bottom: 0; width: 3px; background: var(--success);"></div>
+                      <div class="ruler-end" style="position: absolute; right: -2px; top: 0; bottom: 0; width: 3px; background: var(--success);"></div>
+                      <div class="ruler-midpoint" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(0, 102, 255, 0.3); transform: translateX(-50%);"></div>
+                    </div>
+                  </div>
+                  <p style="font-size: 12px; color: var(--gray); margin-top: 8px; font-style: italic;">
+                    Use a physical ruler to verify this distance matches 2 inches on your screen
+                  </p>
+                </div>
+                
                 <div style="margin-top: 24px; font-size: 32px; font-weight: 900; color: var(--primary);" id="pixels-moved">
                   0 pixels
                 </div>
@@ -3263,12 +3361,8 @@
 
             <div class="info-cards">
               <div class="info-card">
-                <h4>How This Works
-                  <span class="tooltip-wrapper">
-                    <span class="tooltip-icon">?</span>
-                    <span class="tooltip-content">Move your mouse the specified distance. We track the pixels traveled and calculate your DPI using the formula: <strong>DPI = Pixels Moved ÷ Inches Moved</strong>. This measurement requires specific Windows settings (no pointer acceleration, default speed, 100% scaling) to be accurate. For best results, move slowly in a perfectly straight horizontal line.</span>
-                  </span>
-                </h4>
+                <h4>How This Works</h4>
+                <p>Move your mouse the specified distance. We track the pixels traveled and calculate your DPI using the formula: <strong>DPI = Pixels Moved ÷ Inches Moved</strong>. This measurement requires specific Windows settings (no pointer acceleration, default speed, 100% scaling) to be accurate. For best results, move slowly in a perfectly straight horizontal line.</p>
               </div>
               <div class="info-card">
                 <h4>Tips for Accurate Testing</h4>
@@ -3277,6 +3371,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -3297,37 +3392,6 @@
               <button class="experience-btn" data-level="beginner">I'm a Beginner</button>
               <button class="experience-btn" data-level="intermediate">I'm Intermediate</button>
               <button class="experience-btn" data-level="advanced">I'm Advanced</button>
-            </div>
-
-            <!-- Recommended Settings Display -->
-            <div class="recommended-settings hidden" id="recommended-settings">
-              <div class="result-display">
-                <div class="result-label">Recommended Settings</div>
-                <div class="result-value" id="recommended-edpi">-</div>
-                <div class="settings-breakdown" id="settings-breakdown">
-                  <div class="setting-item">
-                    <span class="setting-label">Mouse DPI:</span>
-                    <span class="setting-value" id="recommended-dpi">-</span>
-                  </div>
-                  <div class="setting-item">
-                    <span class="setting-label">In-Game Sensitivity:</span>
-                    <span class="setting-value" id="recommended-sensitivity">-</span>
-                  </div>
-                  <div class="setting-item">
-                    <span class="setting-label">Game:</span>
-                    <span class="setting-value" id="recommended-game">-</span>
-                  </div>
-                </div>
-                <div class="result-feedback" id="result-feedback">
-                  <span class="feedback-icon">✓</span>
-                  <span class="feedback-text">Good to go!</span>
-                </div>
-              </div>
-
-              <!-- Customize Button -->
-              <div class="customize-prompt">
-                <button class="btn btn-secondary" id="customize-settings-btn">Want to customize these?</button>
-              </div>
             </div>
 
             <!-- Calculator Inputs (Hidden by default) -->
@@ -4257,91 +4321,6 @@
         </div>
 
         <!-- Calculator 5: DPI Comparison -->
-        <div class="calculator-content" id="dpi-comparison">
-          <div class="calc-card">
-            <div class="calc-header">
-              <h3>Compare Settings</h3>
-              <p>Compare two different DPI/sensitivity combinations side-by-side</p>
-            </div>
-            
-            <div class="comparison-inputs-container" style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 32px;">
-              <div>
-                <h4 class="comparison-input-label" style="text-align: center; margin-bottom: 16px; color: var(--primary);">Setup A (Current)</h4>
-                <div class="input-group">
-                  <label>DPI</label>
-                  <input type="number" id="compare-dpi-a" placeholder="DPI" value="800" min="100" max="30000">
-                </div>
-                <div class="input-group">
-                  <label>Sensitivity</label>
-                  <input type="number" id="compare-sens-a" placeholder="Sens" value="0.5" min="0.01" max="10" step="0.01">
-                </div>
-              </div>
-              <div>
-                <h4 class="comparison-input-label" style="text-align: center; margin-bottom: 16px; color: var(--secondary);">Setup B (New)</h4>
-                <div class="input-group">
-                  <label>DPI</label>
-                  <input type="number" id="compare-dpi-b" placeholder="DPI" value="1600" min="100" max="30000">
-                </div>
-                <div class="input-group">
-                  <label>Sensitivity</label>
-                  <input type="number" id="compare-sens-b" placeholder="Sens" value="0.25" min="0.01" max="10" step="0.01">
-                </div>
-              </div>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 32px; display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
-              <button class="btn btn-primary" id="compare-dpi">Compare Settings</button>
-              <button class="btn btn-secondary" id="swap-setups" style="display: inline-flex; align-items: center; gap: 8px;">
-                <span>🔄</span>
-                Swap A ↔ B
-              </button>
-            </div>
-
-            <div id="comparison-results" style="display: none;">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid var(--primary); border-radius: 12px; padding: 24px;">
-                  <h4 class="comparison-result-label" style="color: var(--primary); margin-bottom: 16px; text-align: center;">Setup A Results</h4>
-                  <div style="font-size: 14px; color: var(--gray); margin-bottom: 8px;">
-                    <strong>eDPI:</strong> <span id="result-edpi-a">-</span>
-                  </div>
-                  <div style="font-size: 14px; color: var(--gray); margin-bottom: 8px;">
-                    <strong>cm/360°:</strong> <span id="result-cm360-a">-</span>
-                  </div>
-                  <div style="font-size: 14px; color: var(--gray);">
-                    <strong>Category:</strong> <span id="result-cat-a">-</span>
-                  </div>
-                </div>
-                <div style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); border: 2px solid var(--secondary); border-radius: 12px; padding: 24px;">
-                  <h4 class="comparison-result-label" style="color: var(--secondary); margin-bottom: 16px; text-align: center;">Setup B Results</h4>
-                  <div style="font-size: 14px; color: var(--gray); margin-bottom: 8px;">
-                    <strong>eDPI:</strong> <span id="result-edpi-b">-</span>
-                  </div>
-                  <div style="font-size: 14px; color: var(--gray); margin-bottom: 8px;">
-                    <strong>cm/360°:</strong> <span id="result-cm360-b">-</span>
-                  </div>
-                  <div style="font-size: 14px; color: var(--gray);">
-                    <strong>Category:</strong> <span id="result-cat-b">-</span>
-                  </div>
-                </div>
-              </div>
-              <div style="background: var(--light-gray); border-radius: 12px; padding: 24px; margin-top: 24px; text-align: center;">
-                <h4 style="margin-bottom: 12px;">Verdict</h4>
-                <p id="comparison-verdict" style="color: var(--gray); font-size: 16px;">-</p>
-              </div>
-            </div>
-
-            <div class="info-cards">
-              <div class="info-card">
-                <h4>Same eDPI, Different Feel?</h4>
-                <p>Even with identical eDPI, different DPI/sensitivity combinations can feel different due to mouse sensor behavior, pixel skipping, and input lag. Higher DPI with lower sens often feels smoother.</p>
-              </div>
-              <div class="info-card">
-                <h4>Finding Your Perfect Settings</h4>
-                <p>Most pros prefer native DPI steps (400, 800, 1600, 3200) for optimal sensor performance. Experiment with different combinations of the same eDPI to find what feels best for your setup.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -4970,6 +4949,17 @@
         });
       });
 
+      // Initialize: Ensure Quick Calculator is active by default
+      document.addEventListener('DOMContentLoaded', () => {
+        // Remove active from all calculator content
+        document.querySelectorAll('.calculator-content').forEach(c => c.classList.remove('active'));
+        // Activate Quick Calculator (edpi-calc)
+        const edpiCalc = document.getElementById('edpi-calc');
+        if (edpiCalc) {
+          edpiCalc.classList.add('active');
+        }
+      });
+
       // Hero CTA button handlers - smooth scroll to target sections
       document.querySelectorAll('.hero-cta-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -4984,8 +4974,26 @@
               wizardSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
             trackCalculatorEvent('Hero_CTA', 'guide_me_clicked', 'wizard', 0);
+          } else if (href === '#advanced-calculators') {
+            // Scroll to Advanced Tools section
+            const advancedCalculators = document.getElementById('advanced-calculators');
+            if (advancedCalculators) {
+              // Get actual header height or use a larger offset to ensure header is visible
+              const header = document.querySelector('header');
+              const headerHeight = header ? header.offsetHeight : 100;
+              const headerOffset = headerHeight + 60; // Add extra padding to ensure header and title are fully visible
+              
+              const elementPosition = advancedCalculators.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = Math.max(0, elementPosition - headerOffset);
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+              });
+            }
+            trackCalculatorEvent('Hero_CTA', 'advanced_tools_clicked', 'advanced-calculators', 0);
           } else if (href === '#edpi-calc') {
-            // Scroll to Quick Calculator section
+            // Scroll to Quick Calculator section (legacy support)
             const edpiCalc = document.getElementById('edpi-calc');
             if (edpiCalc) {
               edpiCalc.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -5043,6 +5051,24 @@
         }
       }
 
+      // Function to update visual guide based on distance
+      function updateVisualGuide(distance) {
+        const rulerLine = document.getElementById('ruler-line');
+        const rulerDistanceText = document.getElementById('ruler-distance-text');
+        
+        if (rulerLine) {
+          rulerLine.setAttribute('data-distance', distance);
+          // Update width based on distance (at 96 DPI standard)
+          const widthInPixels = distance * 96; // 96 DPI is standard screen resolution
+          rulerLine.style.width = widthInPixels + 'px';
+          rulerLine.style.minWidth = widthInPixels + 'px';
+        }
+        
+        if (rulerDistanceText) {
+          rulerDistanceText.textContent = distance + (distance === 1 ? ' inch' : ' inches');
+        }
+      }
+
       // Update distance display when selection changes
       if (targetDistanceSelect) {
         targetDistanceSelect.addEventListener('change', () => {
@@ -5050,7 +5076,15 @@
           if (distanceDisplay) {
             distanceDisplay.textContent = dpiTestState.targetDistance;
           }
+          // Update visual guide
+          updateVisualGuide(dpiTestState.targetDistance);
         });
+      }
+
+      // Initialize visual guide on page load
+      if (targetDistanceSelect) {
+        const initialDistance = parseFloat(targetDistanceSelect.value);
+        updateVisualGuide(initialDistance);
       }
 
       // Start DPI Test button handler
@@ -5421,6 +5455,27 @@
         targetDistance: 2
       };
 
+      // Function to update wizard visual guide
+      function updateWizardVisualGuide(distance) {
+        const wizardRulerLine = document.getElementById('wizard-ruler-line');
+        const wizardRulerDistanceText = document.getElementById('wizard-ruler-distance-text');
+        
+        if (wizardRulerLine) {
+          wizardRulerLine.setAttribute('data-distance', distance);
+          // Update width based on distance (at 96 DPI standard)
+          const widthInPixels = distance * 96; // 96 DPI is standard screen resolution
+          wizardRulerLine.style.width = widthInPixels + 'px';
+          wizardRulerLine.style.minWidth = widthInPixels + 'px';
+        }
+        
+        if (wizardRulerDistanceText) {
+          wizardRulerDistanceText.textContent = distance + (distance === 1 ? ' inch' : ' inches');
+        }
+      }
+
+      // Initialize wizard visual guide (wizard always uses 2 inches)
+      updateWizardVisualGuide(2);
+
       if (wizardTrackingArea) {
         wizardTrackingArea.addEventListener('mousemove', (e) => {
           if (!wizardDpiTestState.isTracking) {
@@ -5709,24 +5764,6 @@
         }
       }
 
-      // Show advanced tools
-      if (showAdvancedToolsWizard) {
-        showAdvancedToolsWizard.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (advancedCalculators) {
-            advancedCalculators.classList.remove('hidden');
-            // Hide the link after clicking
-            const advancedToolsLink = showAdvancedToolsWizard.closest('.advanced-tools-link-wizard');
-            if (advancedToolsLink) {
-              advancedToolsLink.style.display = 'none';
-            }
-            // Scroll to advanced calculators section smoothly
-            setTimeout(() => {
-              advancedCalculators.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-          }
-        });
-      }
 
       // Initialize wizard on page load
       document.addEventListener('DOMContentLoaded', () => {
@@ -5846,70 +5883,6 @@
         }
       };
 
-      // Function to show recommended settings
-      function showRecommendedSettings(level) {
-        const settings = recommendedSettingsByLevel[level];
-        if (!settings) return;
-
-        // Update recommended settings display
-        if (recommendedEdpi) recommendedEdpi.textContent = settings.edpi;
-        if (recommendedDpi) recommendedDpi.textContent = settings.dpi;
-        if (recommendedSensitivity) recommendedSensitivity.textContent = settings.sensitivity;
-        if (recommendedGame) {
-          const gameNames = {
-            // Tactical Shooters
-            cs2: 'Counter-Strike 2',
-            valorant: 'Valorant',
-            r6siege: 'Rainbow Six Siege',
-            tarkov: 'Escape from Tarkov',
-            // Battle Royales
-            apex: 'Apex Legends',
-            fortnite: 'Fortnite',
-            pubg: 'PUBG',
-            warzone2: 'Warzone 2/MW3',
-            thefinals: 'The Finals',
-            // Arena Shooters
-            overwatch: 'Overwatch 2',
-            quake: 'Quake Champions',
-            diabotical: 'Diabotical',
-            // Team Shooters
-            cod: 'Call of Duty',
-            bf2042: 'Battlefield 2042',
-            halo: 'Halo Infinite',
-            destiny2: 'Destiny 2',
-            tf2: 'Team Fortress 2',
-            // Survival/Extraction
-            rust: 'Rust',
-            hunt: 'Hunt: Showdown',
-            cycle: 'The Cycle: Frontier',
-            // Realistic Shooters
-            squad: 'Squad',
-            hll: 'Hell Let Loose',
-            insurgency: 'Insurgency Sandstorm',
-            readyornot: 'Ready or Not',
-            // Additional Games
-            rogue: 'Rogue Company',
-            paladins: 'Paladins',
-            splitgate: 'Splitgate',
-            back4blood: 'Back 4 Blood'
-          };
-          recommendedGame.textContent = gameNames[settings.game] || settings.game;
-        }
-
-        // Show feedback
-        if (resultFeedback) {
-          resultFeedback.className = 'result-feedback';
-          resultFeedback.innerHTML = `
-            <span class="feedback-icon">✓</span>
-            <span class="feedback-text">${settings.feedback}</span>
-          `;
-        }
-
-        // Show recommended settings, hide experience buttons
-        if (recommendedSettings) recommendedSettings.classList.remove('hidden');
-        if (experienceLevelButtons) experienceLevelButtons.classList.add('hidden');
-        if (calculatorInputs) calculatorInputs.classList.add('hidden');
-      }
 
       // Experience level button handlers
       document.querySelectorAll('.experience-btn').forEach(btn => {
@@ -5919,46 +5892,39 @@
           document.querySelectorAll('.experience-btn').forEach(b => b.classList.remove('active'));
           // Add active class to clicked button
           btn.classList.add('active');
-          showRecommendedSettings(level);
-        });
-      });
-
-      // Customize settings button handler
-      if (customizeSettingsBtn) {
-        customizeSettingsBtn.addEventListener('click', () => {
-          // Get current recommended settings
-          const activeBtn = document.querySelector('.experience-btn.active');
-          if (activeBtn) {
-            const level = activeBtn.dataset.level;
-            const settings = recommendedSettingsByLevel[level];
-            if (settings) {
-              // Pre-fill inputs with recommended settings
-              if (edpiMouseDpiInput) edpiMouseDpiInput.value = settings.dpi;
-              if (edpiSensitivityInput) {
-                edpiSensitivityInput.value = settings.sensitivity;
-              }
-              if (edpiSensitivitySlider) {
-                edpiSensitivitySlider.value = settings.sensitivity;
-              }
-              if (edpiGameSelect) {
-                edpiGameSelect.value = settings.game;
-                updateSensitivityPresets();
-              }
-              // Activate corresponding DPI preset button
-              document.querySelectorAll('.dpi-preset-btn').forEach(b => {
-                b.classList.toggle('active', b.dataset.dpi == settings.dpi);
-              });
+          
+          // Get recommended settings and pre-fill calculator inputs directly
+          const settings = recommendedSettingsByLevel[level];
+          if (settings) {
+            // Pre-fill inputs with recommended settings
+            if (edpiMouseDpiInput) edpiMouseDpiInput.value = settings.dpi;
+            if (edpiSensitivityInput) {
+              edpiSensitivityInput.value = settings.sensitivity;
             }
+            if (edpiSensitivitySlider) {
+              edpiSensitivitySlider.value = settings.sensitivity;
+            }
+            if (edpiGameSelect) {
+              edpiGameSelect.value = settings.game;
+              updateSensitivityPresets();
+            }
+            // Activate corresponding DPI preset button
+            document.querySelectorAll('.dpi-preset-btn').forEach(b => {
+              b.classList.toggle('active', b.dataset.dpi == settings.dpi);
+            });
           }
-          // Show calculator inputs, hide recommended settings
+          
+          // Show calculator inputs, hide experience buttons
           if (calculatorInputs) calculatorInputs.classList.remove('hidden');
-          if (recommendedSettings) recommendedSettings.classList.add('hidden');
+          if (experienceLevelButtons) experienceLevelButtons.classList.add('hidden');
+          
           // Calculate immediately
           if (validateEdpiInputs()) {
             calculateEdpi();
           }
         });
-      }
+      });
+
 
       // Game-specific sensitivity presets
       const gameSensitivityPresets = {
@@ -6136,7 +6102,6 @@
         resetEdpiCalcBtn.addEventListener('click', () => {
           // Reset to initial state
           if (experienceLevelButtons) experienceLevelButtons.classList.remove('hidden');
-          if (recommendedSettings) recommendedSettings.classList.add('hidden');
           if (calculatorInputs) calculatorInputs.classList.add('hidden');
           if (edpiResult) edpiResult.classList.add('hidden');
           // Remove active classes
@@ -7830,509 +7795,6 @@
       
       // Native DPI steps for sensor performance
       const nativeDpiSteps = [400, 800, 1600, 3200, 6400];
-
-      // Get DOM elements for comparison tool
-      const compareDpiAInput = document.getElementById('compare-dpi-a');
-      const compareSensAInput = document.getElementById('compare-sens-a');
-      const compareDpiBInput = document.getElementById('compare-dpi-b');
-      const compareSensBInput = document.getElementById('compare-sens-b');
-      const compareDpiBtn = document.getElementById('compare-dpi');
-      const swapSetupsBtn = document.getElementById('swap-setups');
-      const comparisonResults = document.getElementById('comparison-results');
-      const resultEdpiA = document.getElementById('result-edpi-a');
-      const resultEdpiB = document.getElementById('result-edpi-b');
-      const resultCm360A = document.getElementById('result-cm360-a');
-      const resultCm360B = document.getElementById('result-cm360-b');
-      const resultCatA = document.getElementById('result-cat-a');
-      const resultCatB = document.getElementById('result-cat-b');
-      const comparisonVerdict = document.getElementById('comparison-verdict');
-
-      // Get sensitivity category based on eDPI (Source Engine scale)
-      function getSensitivityCategory(edpi) {
-        if (edpi < 200) {
-          return { name: 'Very Low', color: 'var(--success)', bgColor: 'rgba(16, 185, 129, 0.1)' };
-        } else if (edpi < 400) {
-          return { name: 'Low', color: 'var(--success)', bgColor: 'rgba(16, 185, 129, 0.1)' };
-        } else if (edpi < 800) {
-          return { name: 'Medium', color: 'var(--primary)', bgColor: 'rgba(0, 102, 255, 0.1)' };
-        } else if (edpi < 1500) {
-          return { name: 'High', color: 'var(--warning)', bgColor: 'rgba(245, 158, 11, 0.1)' };
-        } else {
-          return { name: 'Very High', color: 'var(--warning)', bgColor: 'rgba(245, 158, 11, 0.1)' };
-        }
-      }
-
-      // Check if DPI is a native step
-      function isNativeDpiStep(dpi) {
-        return nativeDpiSteps.includes(Math.round(dpi));
-      }
-
-      // Calculate cm/360 using Source Engine formula (helper function with parameters)
-      // NOTE: Renamed to avoid collision with main calculateCm360() function above
-      function calculateCm360FromParams(dpi, sensitivity) {
-        const multiplier = 0.022; // Source Engine
-        const numerator = 360 * 2.54;
-        const denominator = dpi * sensitivity * multiplier;
-        
-        if (denominator === 0) {
-          return null;
-        }
-        
-        return numerator / denominator;
-      }
-
-      // Calculate percentage difference
-      function calculatePercentageDifference(valueA, valueB) {
-        const average = (valueA + valueB) / 2;
-        if (average === 0) {
-          return 0;
-        }
-        return Math.abs(valueA - valueB) / average * 100;
-      }
-
-      // DPI Comparison Button State Management
-      // Note: Button stays enabled to allow validation on click, even with empty inputs
-      function updateCompareButtonState() {
-        if (!compareDpiAInput || !compareSensAInput || !compareDpiBInput || !compareSensBInput || !compareDpiBtn) {
-          return;
-        }
-
-        // Keep button enabled to allow validation dialogs even with empty inputs
-        // The validateComparisonInputs() function will handle empty input validation
-        compareDpiBtn.disabled = false;
-      }
-
-      // Add event listeners to all 4 comparison inputs
-      ['compare-dpi-a', 'compare-sens-a', 'compare-dpi-b', 'compare-sens-b'].forEach(id => {
-        const input = document.getElementById(id);
-        if (input) {
-          input.addEventListener('input', updateCompareButtonState);
-          input.addEventListener('change', updateCompareButtonState);
-        }
-      });
-
-      // Initialize button state on page load
-      updateCompareButtonState();
-
-      // Input validation function for comparison tool
-      function validateComparisonInputs() {
-        if (!compareDpiAInput || !compareSensAInput || !compareDpiBInput || !compareSensBInput) {
-          return false;
-        }
-
-        const dpiA = parseFloat(compareDpiAInput.value);
-        const sensA = parseFloat(compareSensAInput.value);
-        const dpiB = parseFloat(compareDpiBInput.value);
-        const sensB = parseFloat(compareSensBInput.value);
-
-        // Check if inputs are empty
-        if (!compareDpiAInput.value.trim() || !compareSensAInput.value.trim() ||
-            !compareDpiBInput.value.trim() || !compareSensBInput.value.trim()) {
-          alert('Please fill in all four fields (DPI and Sensitivity for both setups)');
-          return false;
-        }
-
-        // Validate DPI ranges
-        if (isNaN(dpiA) || dpiA < 100 || dpiA > 30000) {
-          alert('Setup A DPI must be between 100 and 30,000');
-          if (compareDpiAInput) {
-            compareDpiAInput.focus();
-          }
-          return false;
-        }
-
-        if (isNaN(dpiB) || dpiB < 100 || dpiB > 30000) {
-          alert('Setup B DPI must be between 100 and 30,000');
-          if (compareDpiBInput) {
-            compareDpiBInput.focus();
-          }
-          return false;
-        }
-
-        // Validate sensitivity ranges
-        if (isNaN(sensA) || sensA < 0.01 || sensA > 10) {
-          alert('Setup A sensitivity must be between 0.01 and 10');
-          if (compareSensAInput) {
-            compareSensAInput.focus();
-          }
-          return false;
-        }
-
-        if (isNaN(sensB) || sensB < 0.01 || sensB > 10) {
-          alert('Setup B sensitivity must be between 0.01 and 10');
-          if (compareSensBInput) {
-            compareSensBInput.focus();
-          }
-          return false;
-        }
-
-        return true;
-      }
-
-      // Helper function to detect potential sensor performance differences
-      function analyzeSensorPerformance(dpiA, dpiB) {
-        const insights = [];
-        
-        // Check for extreme DPI differences
-        const dpiRatio = Math.max(dpiA, dpiB) / Math.min(dpiA, dpiB);
-        
-        if (dpiRatio >= 4) {
-          const higherDpi = dpiA > dpiB ? 'A' : 'B';
-          const lowerDpi = higherDpi === 'A' ? 'B' : 'A';
-          insights.push(`⚡ Setup ${higherDpi} uses ${dpiRatio.toFixed(1)}x higher DPI than Setup ${lowerDpi}. Higher DPI can feel smoother but may introduce jitter on budget sensors.`);
-        }
-        
-        // Check for very low DPI (potential pixel skipping)
-        if (dpiA < 400 || dpiB < 400) {
-          const lowSetup = dpiA < 400 ? 'A' : 'B';
-          const lowDpi = Math.min(dpiA, dpiB);
-          insights.push(`⚠️ Setup ${lowSetup} uses very low DPI (${lowDpi}). This may cause pixel skipping on high-resolution monitors (1440p/4K). Consider 400+ DPI.`);
-        }
-        
-        // Check for very high DPI (potential issues)
-        if (dpiA > 3200 || dpiB > 3200) {
-          const highSetup = dpiA > 3200 ? 'A' : 'B';
-          const highDpi = Math.max(dpiA, dpiB);
-          insights.push(`⚠️ Setup ${highSetup} uses very high DPI (${highDpi}). This requires excellent sensor quality and may feel jittery. Most pros use 400-1600 DPI.`);
-        }
-        
-        // Check for polling rate recommendation based on DPI
-        if (dpiA >= 1600 || dpiB >= 1600) {
-          const highDpiSetup = dpiA >= 1600 ? 'A' : 'B';
-          insights.push(`💡 Setup ${highDpiSetup} benefits from 1000Hz polling rate to minimize input lag at high DPI.`);
-        }
-        
-        return insights;
-      }
-
-      // Generate comparison verdict
-      function generateVerdict(setupA, setupB, edpiA, edpiB, cm360A, cm360B) {
-        const percentDiff = calculatePercentageDifference(edpiA, edpiB);
-        const categoryA = getSensitivityCategory(edpiA);
-        const categoryB = getSensitivityCategory(edpiB);
-        const isNativeA = isNativeDpiStep(setupA.dpi);
-        const isNativeB = isNativeDpiStep(setupB.dpi);
-        
-        let verdict = '';
-        const insights = [];
-
-        // Check if identical
-        if (edpiA === edpiB) {
-          verdict = `✅ Both setups have IDENTICAL sensitivity! Setup A uses ${setupA.dpi.toLocaleString()}×${setupA.sensitivity} while Setup B uses ${setupB.dpi.toLocaleString()}×${setupB.sensitivity}, but they feel the same in-game (eDPI: ${edpiA.toLocaleString()}).`;
-        } else if (percentDiff <= 5) {
-          verdict = `✅ Both setups have essentially the SAME sensitivity! Setup A uses ${setupA.dpi.toLocaleString()}×${setupA.sensitivity} while Setup B uses ${setupB.dpi.toLocaleString()}×${setupB.sensitivity}, but they feel identical in-game (eDPI: ${edpiA.toLocaleString()} vs ${edpiB.toLocaleString()}).`;
-        } else if (categoryA.name === categoryB.name) {
-          const faster = edpiA > edpiB ? 'A' : 'B';
-          const slower = faster === 'A' ? 'B' : 'A';
-          const fasterEdpi = faster === 'A' ? edpiA : edpiB;
-          const slowerEdpi = faster === 'A' ? edpiB : edpiA;
-          const diff = Math.round(percentDiff);
-          verdict = `Both setups are in the ${categoryA.name} sensitivity range. Setup ${faster} is slightly faster by ${diff}%. Choose based on sensor preference.`;
-        } else {
-          const higher = edpiA > edpiB ? 'A' : 'B';
-          const lower = higher === 'A' ? 'B' : 'A';
-          const higherEdpi = higher === 'A' ? edpiA : edpiB;
-          const lowerEdpi = higher === 'A' ? edpiB : edpiA;
-          const formattedHigherEdpi = higherEdpi.toLocaleString('en-US', { maximumFractionDigits: 0 });
-          const formattedLowerEdpi = lowerEdpi.toLocaleString('en-US', { maximumFractionDigits: 0 });
-          
-          verdict = `Setup ${higher} (${formattedHigherEdpi} eDPI) is significantly HIGHER than Setup ${lower} (${formattedLowerEdpi} eDPI). Setup ${lower} is better for precision aiming, while Setup ${higher} favors speed and quick flicks.`;
-        }
-
-        // Add advanced insights
-        
-        // Add sensor performance analysis
-        const sensorInsights = analyzeSensorPerformance(setupA.dpi, setupB.dpi);
-        insights.push(...sensorInsights);
-        
-        // Native DPI insight
-        if (isNativeA && !isNativeB) {
-          insights.push(`💡 Setup A uses native DPI step (${setupA.dpi}), which may provide better sensor accuracy.`);
-        } else if (isNativeB && !isNativeA) {
-          insights.push(`💡 Setup B uses native DPI step (${setupB.dpi}), which may provide better sensor accuracy.`);
-        } else if (isNativeA && isNativeB) {
-          insights.push(`✅ Both setups use native DPI steps, ensuring optimal sensor performance.`);
-        }
-
-        // Add sensitivity "feel" comparison based on eDPI categories
-        if (categoryA.name === 'Very Low' && categoryB.name === 'Very Low') {
-          insights.push(`🎯 Both setups are Very Low sensitivity - excellent for precision but requires large mousepad and arm aiming.`);
-        } else if (categoryA.name === 'Very High' && categoryB.name === 'Very High') {
-          insights.push(`🚀 Both setups are Very High sensitivity - fast flicks and small mousepad, but precision aiming is very difficult.`);
-        }
-
-        // Polling rate / DPI difference insight
-        const dpiDiff = Math.abs(setupA.dpi - setupB.dpi);
-        if (dpiDiff > 1000) {
-          const higherDpi = setupA.dpi > setupB.dpi ? 'A' : 'B';
-          insights.push(`⚡ Higher DPI (Setup ${higherDpi}) may feel smoother but requires good mouse sensor quality.`);
-        }
-
-        // Mousepad size insight
-        if (cm360A && cm360A > 40) {
-          insights.push(`⚠️ Setup A requires a large mousepad (${cm360A.toFixed(1)} cm/360°).`);
-        }
-        if (cm360B && cm360B > 40) {
-          insights.push(`⚠️ Setup B requires a large mousepad (${cm360B.toFixed(1)} cm/360°).`);
-        }
-
-        // Add sensitivity conversion formula for users who want to match eDPI
-        if (Math.abs(edpiA - edpiB) > 50) {
-          const higherEdpi = edpiA > edpiB ? 'A' : 'B';
-          const lowerEdpi = higherEdpi === 'A' ? 'B' : 'A';
-          const targetSetup = higherEdpi === 'A' ? setupB : setupA;
-          const currentSetup = higherEdpi === 'A' ? setupA : setupB;
-          const targetEdpi = higherEdpi === 'A' ? edpiB : edpiA;
-          
-          const newSensitivity = (targetEdpi / currentSetup.dpi).toFixed(3);
-          
-          insights.push(`🔄 To match Setup ${lowerEdpi}'s eDPI (${targetEdpi.toFixed(0)}) using Setup ${higherEdpi}'s DPI (${currentSetup.dpi}), use sensitivity: ${newSensitivity}`);
-        }
-
-        // Game-specific recommendation (Source Engine games)
-        const optimalRange = { min: 400, max: 800 };
-        if (edpiA >= optimalRange.min && edpiA <= optimalRange.max && 
-            (edpiB < optimalRange.min || edpiB > optimalRange.max)) {
-          insights.push(`🎯 For games like Valorant/CS2, Setup A's ${edpiA.toLocaleString()} eDPI is closer to pro player averages (400-800).`);
-        } else if (edpiB >= optimalRange.min && edpiB <= optimalRange.max && 
-                   (edpiA < optimalRange.min || edpiA > optimalRange.max)) {
-          insights.push(`🎯 For games like Valorant/CS2, Setup B's ${edpiB.toLocaleString()} eDPI is closer to pro player averages (400-800).`);
-        } else if (edpiA >= optimalRange.min && edpiA <= optimalRange.max && 
-                   edpiB >= optimalRange.min && edpiB <= optimalRange.max) {
-          insights.push(`✅ Both setups are in the optimal range (400-800 eDPI) for tactical shooters like Valorant/CS2.`);
-        }
-
-        // Recommendation based on optimal range
-        if (edpiA >= optimalRange.min && edpiA <= optimalRange.max && 
-            (edpiB < optimalRange.min || edpiB > optimalRange.max)) {
-          insights.push(`💡 Setup A is more commonly used by competitive players. The ${edpiA.toLocaleString()} eDPI is optimal for tactical shooters.`);
-        } else if (edpiB >= optimalRange.min && edpiB <= optimalRange.max && 
-                   (edpiA < optimalRange.min || edpiA > optimalRange.max)) {
-          insights.push(`💡 Setup B is more commonly used by competitive players. The ${edpiB.toLocaleString()} eDPI is optimal for tactical shooters.`);
-        }
-
-        // Combine verdict and insights
-        if (insights.length > 0) {
-          verdict += '\n\n' + insights.join('\n');
-        }
-
-        return verdict;
-      }
-
-      // Main comparison function
-      function compareDpiSetups() {
-        // Validate inputs first
-        if (!validateComparisonInputs()) {
-          return;
-        }
-
-        // Get input values
-        const dpiA = parseFloat(compareDpiAInput.value);
-        const sensA = parseFloat(compareSensAInput.value);
-        const dpiB = parseFloat(compareDpiBInput.value);
-        const sensB = parseFloat(compareSensBInput.value);
-
-        // Handle edge case: identical settings
-        if (dpiA === dpiB && sensA === sensB) {
-          alert('Both setups are identical! Please use different values to compare.');
-          return;
-        }
-
-        // Calculate eDPI for both setups
-        const edpiA = Math.round((dpiA * sensA) * 100) / 100;
-        const edpiB = Math.round((dpiB * sensB) * 100) / 100;
-
-        // Calculate cm/360 for both setups (Source Engine formula)
-        const cm360A = calculateCm360FromParams(dpiA, sensA);
-        const cm360B = calculateCm360FromParams(dpiB, sensB);
-
-        // Get categories
-        const categoryA = getSensitivityCategory(edpiA);
-        const categoryB = getSensitivityCategory(edpiB);
-
-        // Format values for display
-        const formattedEdpiA = edpiA.toLocaleString('en-US', {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2
-        });
-        const formattedEdpiB = edpiB.toLocaleString('en-US', {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2
-        });
-
-        const formattedCm360A = cm360A ? cm360A.toFixed(1) : 'N/A';
-        const formattedCm360B = cm360B ? cm360B.toFixed(1) : 'N/A';
-
-        // Display results for Setup A
-        if (resultEdpiA) {
-          resultEdpiA.textContent = formattedEdpiA;
-        }
-        if (resultCm360A) {
-          resultCm360A.textContent = `${formattedCm360A} cm`;
-        }
-        if (resultCatA) {
-          resultCatA.textContent = categoryA.name;
-          resultCatA.style.color = categoryA.color;
-        }
-
-        // Display results for Setup B
-        if (resultEdpiB) {
-          resultEdpiB.textContent = formattedEdpiB;
-        }
-        if (resultCm360B) {
-          resultCm360B.textContent = `${formattedCm360B} cm`;
-        }
-        if (resultCatB) {
-          resultCatB.textContent = categoryB.name;
-          resultCatB.style.color = categoryB.color;
-        }
-
-        // Calculate percentage difference
-        const percentDiff = calculatePercentageDifference(edpiA, edpiB);
-
-        // Generate and display verdict
-        const verdict = generateVerdict(
-          { dpi: dpiA, sensitivity: sensA },
-          { dpi: dpiB, sensitivity: sensB },
-          edpiA,
-          edpiB,
-          cm360A,
-          cm360B
-        );
-
-        if (comparisonVerdict) {
-          comparisonVerdict.textContent = verdict;
-          // Add line breaks for better readability
-          comparisonVerdict.style.whiteSpace = 'pre-line';
-          comparisonVerdict.style.lineHeight = '1.8';
-        }
-
-        // Visual enhancements: highlight "better" setup
-        const setupACard = document.querySelector('#comparison-results > div > div:first-child');
-        const setupBCard = document.querySelector('#comparison-results > div > div:last-child');
-        
-        // Remove previous highlights
-        if (setupACard) {
-          setupACard.style.boxShadow = '';
-          setupACard.style.transform = '';
-        }
-        if (setupBCard) {
-          setupBCard.style.boxShadow = '';
-          setupBCard.style.transform = '';
-        }
-
-        // Determine which setup is "better" (closer to optimal 400-800 range)
-        const optimalRange = { min: 400, max: 800 };
-        const distanceA = Math.min(
-          Math.abs(edpiA - optimalRange.min),
-          Math.abs(edpiA - optimalRange.max),
-          edpiA < optimalRange.min ? optimalRange.min - edpiA : (edpiA > optimalRange.max ? edpiA - optimalRange.max : 0)
-        );
-        const distanceB = Math.min(
-          Math.abs(edpiB - optimalRange.min),
-          Math.abs(edpiB - optimalRange.max),
-          edpiB < optimalRange.min ? optimalRange.min - edpiB : (edpiB > optimalRange.max ? edpiB - optimalRange.max : 0)
-        );
-
-        // Highlight if very close or identical
-        if (percentDiff <= 5 && setupACard && setupBCard) {
-          // Add ≈ symbol between them
-          const comparisonContainer = document.querySelector('#comparison-results > div');
-          if (comparisonContainer && !comparisonContainer.querySelector('.equals-symbol')) {
-            const equalsSymbol = document.createElement('div');
-            equalsSymbol.className = 'equals-symbol';
-            equalsSymbol.textContent = '≈';
-            equalsSymbol.style.cssText = 'font-size: 32px; font-weight: 900; color: var(--success); display: flex; align-items: center; justify-content: center; grid-column: 1 / -1; margin: 8px 0;';
-            comparisonContainer.insertBefore(equalsSymbol, comparisonContainer.firstChild);
-          }
-        } else {
-          // Remove equals symbol if it exists
-          const equalsSymbol = document.querySelector('.equals-symbol');
-          if (equalsSymbol) {
-            equalsSymbol.remove();
-          }
-        }
-
-        // Show comparison results
-        if (comparisonResults) {
-          comparisonResults.style.display = 'block';
-          comparisonResults.scrollIntoView({ block: 'nearest' });
-        }
-
-        // Track comparison
-        trackCalculatorEvent('DPI_Comparison', 'comparison_completed', 'eDPI_diff: ' + Math.abs(edpiA - edpiB).toFixed(0), edpiA);
-
-        // Prevent double-clicking
-        if (compareDpiBtn) {
-          compareDpiBtn.disabled = true;
-          setTimeout(() => {
-            compareDpiBtn.disabled = false;
-          }, 500);
-        }
-      }
-
-      // Swap A ↔ B button handler
-      if (swapSetupsBtn) {
-        swapSetupsBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          if (!compareDpiAInput || !compareSensAInput || !compareDpiBInput || !compareSensBInput) {
-            return;
-          }
-
-          // Store current values
-          const tempDpi = compareDpiAInput.value;
-          const tempSens = compareSensAInput.value;
-
-          // Swap values
-          compareDpiAInput.value = compareDpiBInput.value;
-          compareSensAInput.value = compareSensBInput.value;
-          compareDpiBInput.value = tempDpi;
-          compareSensBInput.value = tempSens;
-
-          // Clear previous results
-          if (comparisonResults) {
-            comparisonResults.style.display = 'none';
-          }
-
-          // If both setups have values, auto-compare after swap
-          if (compareDpiAInput.value.trim() && compareSensAInput.value.trim() &&
-              compareDpiBInput.value.trim() && compareSensBInput.value.trim()) {
-            setTimeout(() => {
-              if (validateComparisonInputs()) {
-                compareDpiSetups();
-              }
-            }, 100);
-          }
-
-          // Prevent double-clicking
-          swapSetupsBtn.disabled = true;
-          setTimeout(() => {
-            swapSetupsBtn.disabled = false;
-          }, 300);
-        });
-      }
-
-      // Compare DPI button handler
-      if (compareDpiBtn) {
-        compareDpiBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          if (validateComparisonInputs()) {
-            compareDpiSetups();
-          }
-        });
-      }
-
-      // Hide results when inputs change (separate from button state)
-      if (compareDpiAInput && compareSensAInput && compareDpiBInput && compareSensBInput && comparisonResults) {
-        [compareDpiAInput, compareSensAInput, compareDpiBInput, compareSensBInput].forEach(input => {
-          input.addEventListener('input', () => {
-            // Hide results if inputs change
-            comparisonResults.style.display = 'none';
-          });
-        });
-      }
 
       // ============================================
       // FAQ Accordion Functionality
