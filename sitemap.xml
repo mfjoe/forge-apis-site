@@ -136,6 +136,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Other Tools -->
+  
+  <!-- Risk Score Calculator -->
+  <url>
+    <loc>https://forgeapis.com/riskscore/</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Duplicate Checker -->
+  <url>
+    <loc>https://forgeapis.com/dupecheck/</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
   <!-- Gaming Calculator Guides & Resources -->
   <url>

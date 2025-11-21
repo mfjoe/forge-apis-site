@@ -98,6 +98,92 @@
 }
 </script>
 
+    <!-- JSON-LD Structured Data - HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate GST in India",
+      "description": "Step-by-step guide to using the GST calculator",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter the amount",
+          "text": "Input the base amount (before GST) or GST-inclusive amount"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Select GST rate",
+          "text": "Choose the applicable GST rate: 0%, 5%, 12%, 18%, or 28%"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Choose calculation type",
+          "text": "Select whether you're calculating GST on base amount or extracting GST from inclusive amount"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "View results",
+          "text": "See the breakdown showing CGST, SGST, IGST, and total amount"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is GST and how is it calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GST (Goods and Services Tax) is a unified tax system in India. It's calculated as a percentage of the base amount. For intra-state transactions, GST is split into CGST and SGST (each half of the rate). For inter-state transactions, IGST is applied at the full rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the different GST rates in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The main GST rates in India are 0% (exempt), 5%, 12%, 18%, and 28%. Essential items like food grains are at 0% or 5%, while luxury items and services are typically at 18% or 28%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between CGST, SGST, and IGST?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CGST (Central GST) and SGST (State GST) apply to intra-state transactions, each at half the GST rate. IGST (Integrated GST) applies to inter-state transactions at the full GST rate and is collected by the central government."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate GST from a GST-inclusive amount?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To extract GST from an inclusive amount, use the formula: GST Amount = (Inclusive Amount × GST Rate) / (100 + GST Rate). The calculator automatically handles this when you select 'GST Inclusive' mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this GST calculator free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, this GST calculator is completely free to use. No registration or payment required. It works offline and can be used for unlimited calculations."
+          }
+        }
+      ]
+    }
+    </script>
+
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -3184,9 +3270,9 @@
           </svg>
         </a>
         <div class="nav-links">
-          <a href="#calculators">Calculators</a>
-          <a href="#pro-settings">Pro Settings</a>
-          <a href="#faq">FAQ</a>
+          <a href="#main-calculator">Calculator</a>
+          <a href="#learnMoreBtn" onclick="event.preventDefault(); expandAndScrollToLearnMore(); return false;">About</a>
+          <a href="#how-to-use">How To Use</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <span class="hamburger-line"></span>
@@ -3807,7 +3893,7 @@
           </section>
 
           <!-- How to Use This GST Calculator -->
-          <section style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
+          <section id="how-to-use" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem;">
             <div style="background: linear-gradient(135deg, rgba(19, 136, 8, 0.15), rgba(19, 136, 8, 0.05)); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 20px rgba(19, 136, 8, 0.3), inset 0 0 15px rgba(19, 136, 8, 0.1); backdrop-filter: blur(10px); position: relative;">
               <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); box-shadow: 0 0 10px rgba(19, 136, 8, 0.5);"></div>
               <h2 style="color: var(--dark); font-size: 1.3rem; margin-bottom: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
@@ -5160,6 +5246,30 @@
       }
 
       // Toggle Learn More content
+      function expandAndScrollToLearnMore() {
+        const wrapper = document.getElementById("seoContentWrapper");
+        const btn = document.getElementById("learnMoreBtn");
+        const learnMoreContainer = document.querySelector(".learn-more-container");
+        
+        // Expand the section if it's not already expanded
+        if (wrapper.style.display === "none" || !wrapper.style.display) {
+          toggleLearnMore();
+        }
+        
+        // Scroll to the learn more section with offset for navbar
+        setTimeout(() => {
+          if (learnMoreContainer) {
+            const offset = 100; // Account for fixed navbar
+            const elementPosition = learnMoreContainer.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
+      }
+
       function toggleLearnMore() {
         const wrapper = document.getElementById("seoContentWrapper");
         const btn = document.getElementById("learnMoreBtn");
