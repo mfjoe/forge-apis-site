@@ -235,6 +235,33 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Handle redirect from old calculator URLs with query parameters -->
+    <script>
+      // Convert query parameters to hash fragments for automatic navigation
+      (function() {
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const currency = urlParams.get('currency');
+        
+        // If currency parameter exists, redirect to hash fragment
+        if (currency) {
+          // Valid currencies
+          const validCurrencies = ['robux', 'vbucks', 'cod-points', 'fifa-points', 'apex-coins', 'minecoins'];
+          
+          if (validCurrencies.includes(currency)) {
+            // Remove query parameter and add hash
+            const newUrl = window.location.pathname + '#' + currency;
+            
+            // Replace current URL without adding to history
+            window.history.replaceState(null, '', newUrl);
+            
+            // Trigger hash change event for calculator to load correct currency
+            window.dispatchEvent(new HashChangeEvent('hashchange'));
+          }
+        }
+      })();
+    </script>
+
     <!-- Performance: Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

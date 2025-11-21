@@ -1,40 +1,54 @@
 # Individual Gaming Calculator Redirects (Consolidated to Gaming Currency Converter)
-/vbucks-calculator/ /gaming-currency-converter/#vbucks 301
-/vbucks-calculator/* /gaming-currency-converter/#vbucks 301
-/robux-calculator/ /gaming-currency-converter/#robux 301
-/robux-calculator/* /gaming-currency-converter/#robux 301
-/cod-points-calculator/ /gaming-currency-converter/#cod-points 301
-/cod-points-calculator/* /gaming-currency-converter/#cod-points 301
-/fifa-points-calculator/ /gaming-currency-converter/#fifa-points 301
-/fifa-points-calculator/* /gaming-currency-converter/#fifa-points 301
-/apex-coins-calculator/ /gaming-currency-converter/#apex-coins 301
-/apex-coins-calculator/* /gaming-currency-converter/#apex-coins 301
-/minecoins-calculator/ /gaming-currency-converter/#minecoins 301
-/minecoins-calculator/* /gaming-currency-converter/#minecoins 301
+# Using query parameters instead of hash fragments for better compatibility
+/vbucks-calculator/ /gaming-currency-converter/?currency=vbucks 301
+/vbucks-calculator/* /gaming-currency-converter/?currency=vbucks 301
+/robux-calculator/ /gaming-currency-converter/?currency=robux 301
+/robux-calculator/* /gaming-currency-converter/?currency=robux 301
+/cod-points-calculator/ /gaming-currency-converter/?currency=cod-points 301
+/cod-points-calculator/* /gaming-currency-converter/?currency=cod-points 301
+/fifa-points-calculator/ /gaming-currency-converter/?currency=fifa-points 301
+/fifa-points-calculator/* /gaming-currency-converter/?currency=fifa-points 301
+/apex-coins-calculator/ /gaming-currency-converter/?currency=apex-coins 301
+/apex-coins-calculator/* /gaming-currency-converter/?currency=apex-coins 301
+/minecoins-calculator/ /gaming-currency-converter/?currency=minecoins 301
+/minecoins-calculator/* /gaming-currency-converter/?currency=minecoins 301
 
 # Gaming Calculators Subdirectory Redirects (Consolidated to Gaming Currency Converter)
-/gaming-calculators/robux/ /gaming-currency-converter/#robux 301
-/gaming-calculators/robux/* /gaming-currency-converter/#robux 301
-/gaming-calculators/vbucks/ /gaming-currency-converter/#vbucks 301
-/gaming-calculators/vbucks/* /gaming-currency-converter/#vbucks 301
-/gaming-calculators/cod-points/ /gaming-currency-converter/#cod-points 301
-/gaming-calculators/cod-points/* /gaming-currency-converter/#cod-points 301
-/gaming-calculators/fifa-points/ /gaming-currency-converter/#fifa-points 301
-/gaming-calculators/fifa-points/* /gaming-currency-converter/#fifa-points 301
-/gaming-calculators/apex-coins/ /gaming-currency-converter/#apex-coins 301
-/gaming-calculators/apex-coins/* /gaming-currency-converter/#apex-coins 301
-/gaming-calculators/minecoins/ /gaming-currency-converter/#minecoins 301
-/gaming-calculators/minecoins/* /gaming-currency-converter/#minecoins 301
-/gaming-calculators/robux /gaming-currency-converter/#robux 301
-/gaming-calculators/vbucks /gaming-currency-converter/#vbucks 301
-/gaming-calculators/minecoins /gaming-currency-converter/#minecoins 301
-/gaming-calculators/cod-points /gaming-currency-converter/#cod-points 301
-/gaming-calculators/apex-coins /gaming-currency-converter/#apex-coins 301
-/gaming-calculators/fifa-points /gaming-currency-converter/#fifa-points 301
+# Main pages - with and without trailing slash
+/gaming-calculators/robux /gaming-currency-converter/?currency=robux 301
+/gaming-calculators/robux/ /gaming-currency-converter/?currency=robux 301
+/gaming-calculators/vbucks /gaming-currency-converter/?currency=vbucks 301
+/gaming-calculators/vbucks/ /gaming-currency-converter/?currency=vbucks 301
+/gaming-calculators/cod-points /gaming-currency-converter/?currency=cod-points 301
+/gaming-calculators/cod-points/ /gaming-currency-converter/?currency=cod-points 301
+/gaming-calculators/fifa-points /gaming-currency-converter/?currency=fifa-points 301
+/gaming-calculators/fifa-points/ /gaming-currency-converter/?currency=fifa-points 301
+/gaming-calculators/apex-coins /gaming-currency-converter/?currency=apex-coins 301
+/gaming-calculators/apex-coins/ /gaming-currency-converter/?currency=apex-coins 301
+/gaming-calculators/minecoins /gaming-currency-converter/?currency=minecoins 301
+/gaming-calculators/minecoins/ /gaming-currency-converter/?currency=minecoins 301
+
+# Guide pages
+/gaming-calculators/robux/guide.html /gaming-currency-converter/?currency=robux 301
+/gaming-calculators/vbucks/guide.html /gaming-currency-converter/?currency=vbucks 301
+/gaming-calculators/cod-points/guide.html /gaming-currency-converter/?currency=cod-points 301
+/gaming-calculators/fifa-points/guide.html /gaming-currency-converter/?currency=fifa-points 301
+/gaming-calculators/apex-coins/guide.html /gaming-currency-converter/?currency=apex-coins 301
+/gaming-calculators/minecoins/guide.html /gaming-currency-converter/?currency=minecoins 301
+
+# Catch-all for any other sub-pages
+/gaming-calculators/robux/* /gaming-currency-converter/?currency=robux 301
+/gaming-calculators/vbucks/* /gaming-currency-converter/?currency=vbucks 301
+/gaming-calculators/cod-points/* /gaming-currency-converter/?currency=cod-points 301
+/gaming-calculators/fifa-points/* /gaming-currency-converter/?currency=fifa-points 301
+/gaming-calculators/apex-coins/* /gaming-currency-converter/?currency=apex-coins 301
+/gaming-calculators/minecoins/* /gaming-currency-converter/?currency=minecoins 301
+
+# LoL RP Calculator (redirects to main converter)
 /gaming-calculators/lol-rp /gaming-currency-converter/ 301
+/gaming-calculators/lol-rp/* /gaming-currency-converter/ 301
 
 # Other Calculator Redirects
 /gst-calculator /gst-calculator/ 301
 /va-calculator /va-calculator/ 301
 /tip-calculator /tip-calculator/ 301
-

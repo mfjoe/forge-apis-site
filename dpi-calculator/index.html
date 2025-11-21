@@ -243,13 +243,53 @@
 
       /* Hero Section - Ultra Simple */
       .hero {
-        background: #1a1a1a;
-        min-height: 60vh;
+        background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 50vh;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        padding: 120px 0 80px;
+        padding: 80px 0 60px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 70%, rgba(128, 128, 128, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(200, 200, 200, 0.03) 0%, transparent 50%);
+        animation: rotate 20s linear infinite;
+        z-index: 1;
+      }
+
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+          linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%),
+          url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='dots' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.1)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23dots)'/%3E%3C/svg%3E");
+        opacity: 0.6;
+        z-index: 1;
       }
 
       .hero-content {
@@ -682,7 +722,8 @@
 
       .ruler-container {
         position: relative;
-        height: 80px;
+        height: 110px;
+        padding-top: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3168,7 +3209,7 @@
               <div class="dpi-tracking-area" id="wizard-tracking-area" style="position: relative;">
                 <!-- Visual 2-inch guide for wizard -->
                 <div class="distance-visual-guide" id="wizard-distance-visual-guide" style="margin: 24px auto; max-width: 100%; overflow-x: auto;">
-                  <div class="ruler-container" style="position: relative; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                  <div class="ruler-container" style="position: relative; height: 110px; padding-top: 30px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
                     <div class="ruler-line" id="wizard-ruler-line" data-distance="2" style="position: relative; height: 60px; border-left: 3px solid var(--primary); border-right: 3px solid var(--primary); background: rgba(0, 102, 255, 0.1); display: flex; align-items: center; justify-content: center; width: 192px; min-width: 192px;">
                       <div class="ruler-label" style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: 600; color: var(--primary); white-space: nowrap;">
                         <span id="wizard-ruler-distance-text">2 inches</span>
@@ -3328,7 +3369,7 @@
                 
                 <!-- Visual 2-inch guide -->
                 <div class="distance-visual-guide" id="distance-visual-guide" style="margin: 24px auto; max-width: 100%; overflow-x: auto;">
-                  <div class="ruler-container" style="position: relative; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                  <div class="ruler-container" style="position: relative; height: 110px; padding-top: 30px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
                     <div class="ruler-line" id="ruler-line" data-distance="2" style="position: relative; height: 60px; border-left: 3px solid var(--primary); border-right: 3px solid var(--primary); background: rgba(0, 102, 255, 0.1); display: flex; align-items: center; justify-content: center; width: 192px; min-width: 192px;">
                       <div class="ruler-label" style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: 600; color: var(--primary); white-space: nowrap;">
                         <span id="ruler-distance-text">2 inches</span>
@@ -4765,17 +4806,49 @@
       // ============================================
       
       // Show custom modal and return a promise that resolves with true/false
-      function showCustomConfirm(message, title = 'Settings Confirmation') {
+      function showCustomConfirm(message, title = 'Settings Confirmation', options = {}) {
         return new Promise((resolve) => {
           const modal = document.getElementById('customModal');
-          const modalTitle = modal.querySelector('.custom-modal-title span');
+          const modalTitle = modal.querySelector('.custom-modal-title');
+          const modalTitleSpan = modal.querySelector('.custom-modal-title span');
           const modalMessage = modal.querySelector('.custom-modal-message');
+          const modalChecklist = modal.querySelector('.custom-modal-checklist');
+          const modalInstruction = modal.querySelector('.custom-modal-instruction');
           const okBtn = document.getElementById('modalOkBtn');
           const cancelBtn = document.getElementById('modalCancelBtn');
           
-          // Update modal content if needed (for future flexibility)
+          // Update modal content
+          if (modalTitle && title) {
+            modalTitle.innerHTML = `<span>${options.icon || '⚙️'}</span> ${title}`;
+          }
+          
           if (modalMessage && message) {
-            modalMessage.textContent = message;
+            // Support both text and HTML
+            if (options.html) {
+              modalMessage.innerHTML = message;
+            } else {
+              modalMessage.textContent = message;
+            }
+          }
+          
+          // Show/hide checklist and instruction based on options
+          if (modalChecklist) {
+            modalChecklist.style.display = options.showChecklist !== false ? 'block' : 'none';
+          }
+          if (modalInstruction) {
+            modalInstruction.style.display = options.showInstruction !== false ? 'block' : 'none';
+          }
+          
+          // Store original button text to restore later (before updating)
+          const originalOkText = okBtn ? okBtn.textContent : 'OK';
+          const originalCancelText = cancelBtn ? cancelBtn.textContent : 'Cancel';
+          
+          // Update button text if provided
+          if (options.okText && okBtn) {
+            okBtn.textContent = options.okText;
+          }
+          if (options.cancelText && cancelBtn) {
+            cancelBtn.textContent = options.cancelText;
           }
           
           // Show modal
@@ -4793,6 +4866,9 @@
           const handleOk = () => {
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            // Restore original button text
+            if (okBtn) okBtn.textContent = originalOkText;
+            if (cancelBtn) cancelBtn.textContent = originalCancelText;
             resolve(true);
             // Remove event listeners
             okBtn.removeEventListener('click', handleOk);
@@ -4805,6 +4881,9 @@
           const handleCancel = () => {
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            // Restore original button text
+            if (okBtn) okBtn.textContent = originalOkText;
+            if (cancelBtn) cancelBtn.textContent = originalCancelText;
             resolve(false);
             // Remove event listeners
             okBtn.removeEventListener('click', handleOk);
@@ -5227,7 +5306,7 @@
 
       // Calculate DPI button handler
       if (calculateDpiBtn) {
-        calculateDpiBtn.addEventListener('click', (e) => {
+        calculateDpiBtn.addEventListener('click', async (e) => {
           e.preventDefault();
           
           // Validate that user has moved mouse
@@ -5238,9 +5317,18 @@
           
           // Validate minimum movement (at least 50 pixels for accuracy)
           if (dpiTestState.pixelsMoved < 50) {
-            const confirm = window.confirm(
-              `You've only moved ${Math.round(dpiTestState.pixelsMoved)} pixels. ` +
-              `For accurate results, try moving at least 100 pixels. Continue anyway?`
+            const pixelsMoved = Math.round(dpiTestState.pixelsMoved);
+            const confirm = await showCustomConfirm(
+              `You've only moved <strong>${pixelsMoved} pixels</strong>. For accurate results, try moving at least <strong>100 pixels</strong>. Continue anyway?`,
+              'Low Movement Detected',
+              {
+                icon: '⚠️',
+                html: true,
+                showChecklist: false,
+                showInstruction: false,
+                okText: 'Continue Anyway',
+                cancelText: 'Cancel'
+              }
             );
             if (!confirm) {
               return;
