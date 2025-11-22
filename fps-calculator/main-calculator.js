@@ -7,9 +7,45 @@ let currentConfig = null;
 let currentResults = null;
 
 /**
- * Get selected GPU from autocomplete
+ * Get selected GPU from select dropdown or autocomplete
  */
 function getSelectedGPU() {
+  // Check for select dropdown first (new simplified form)
+  const gpuSelect = document.getElementById('gpu-select');
+  if (gpuSelect && gpuSelect.value) {
+    const tier = gpuSelect.value;
+    const gpuTierMap = {
+      'high-end': 'NVIDIA RTX 4090',
+      'mid-range': 'NVIDIA RTX 3060',
+      'budget': 'NVIDIA GTX 1660',
+      'laptop': 'NVIDIA RTX 3050 Laptop',
+      'not-sure': 'NVIDIA RTX 3060'
+    };
+    const tierScores = {
+      'high-end': { score: 95, tier: 'ultra-high-end' },
+      'mid-range': { score: 60, tier: 'mid-range' },
+      'budget': { score: 35, tier: 'budget' },
+      'laptop': { score: 45, tier: 'mid-range' },
+      'not-sure': { score: 60, tier: 'mid-range' }
+    };
+    
+    const gpuName = gpuTierMap[tier] || 'NVIDIA RTX 3060';
+    const config = tierScores[tier] || tierScores['not-sure'];
+    
+    // Try to find in database
+    const gpuKey = Object.keys(performanceDatabase.gpus || {}).find(key => 
+      performanceDatabase.gpus[key].name === gpuName
+    );
+    
+    if (gpuKey) {
+      return performanceDatabase.gpus[gpuKey];
+    }
+    
+    // Return basic object based on tier
+    return { name: gpuName, performanceScore: config.score, tier: config.tier };
+  }
+  
+  // Fallback to autocomplete input (old form)
   const gpuInput = document.getElementById('gpu-input') || document.getElementById('gpu');
   const gpuValue = gpuInput ? gpuInput.value : '';
   
@@ -26,18 +62,55 @@ function getSelectedGPU() {
     return performanceDatabase.gpus[gpuKey];
   }
   
-  // Return basic object if not found
-  return { name: gpuValue, performanceScore: 50, tier: 'mid-range' };
+  // Default to mid-range if not found (silently, no error)
+  return { name: 'NVIDIA RTX 3060', performanceScore: 60, tier: 'mid-range' };
 }
 
 /**
- * Get selected CPU from autocomplete
+ * Get selected CPU from select dropdown or autocomplete
  */
 function getSelectedCPU() {
+  // Check for select dropdown first (new simplified form)
+  const cpuSelect = document.getElementById('cpu-select');
+  if (cpuSelect && cpuSelect.value) {
+    const tier = cpuSelect.value;
+    const cpuTierMap = {
+      'high-end': 'AMD Ryzen 9 7950X',
+      'mid-range': 'AMD Ryzen 5 5600X',
+      'budget': 'Intel Core i3-12100F',
+      'not-sure': 'AMD Ryzen 5 5600X'
+    };
+    const tierScores = {
+      'high-end': { score: 90, tier: 'high-end' },
+      'mid-range': { score: 70, tier: 'mid-range' },
+      'budget': { score: 50, tier: 'budget' },
+      'not-sure': { score: 70, tier: 'mid-range' }
+    };
+    
+    const cpuName = cpuTierMap[tier] || 'AMD Ryzen 5 5600X';
+    const config = tierScores[tier] || tierScores['not-sure'];
+    
+    // Try to find in database
+    const cpuKey = Object.keys(performanceDatabase.cpus || {}).find(key => 
+      performanceDatabase.cpus[key].name === cpuName
+    );
+    
+    if (cpuKey) {
+      return performanceDatabase.cpus[cpuKey];
+    }
+    
+    // Return basic object based on tier
+    return { name: cpuName, gamingScore: config.score, tier: config.tier };
+  }
+  
+  // Fallback to autocomplete input (old form)
   const cpuInput = document.getElementById('cpu-input') || document.getElementById('cpu');
   const cpuValue = cpuInput ? cpuInput.value : '';
   
-  if (!cpuValue) return null;
+  if (!cpuValue) {
+    // Default to mid-range if not found
+    return { name: 'AMD Ryzen 5 5600X', gamingScore: 70, tier: 'mid-range' };
+  }
   
   // Find CPU in database
   const cpuKey = Object.keys(performanceDatabase.cpus || {}).find(key => {
@@ -50,18 +123,63 @@ function getSelectedCPU() {
     return performanceDatabase.cpus[cpuKey];
   }
   
-  // Return basic object if not found
-  return { name: cpuValue, gamingScore: 70, tier: 'mid-range' };
+  // Default to mid-range if not found (silently, no error)
+  return { name: 'AMD Ryzen 5 5600X', gamingScore: 70, tier: 'mid-range' };
 }
 
 /**
- * Get selected Game from autocomplete
+ * Get selected Game from autocomplete or mobile dropdown or simple dropdown
  */
 function getSelectedGame() {
+  // Check simple dropdown first (progressive disclosure)
+  const gameSelectSimple = document.getElementById('game-select-simple');
+  if (gameSelectSimple && gameSelectSimple.value && gameSelectSimple.value !== 'other') {
+    const gameValue = gameSelectSimple.value;
+    if (!gameValue) {
+      // Default to popular game
+      return { name: 'Valorant', type: 'competitive' };
+    }
+    
+    // Determine game type
+    const gameType = gameValue.includes('Valorant') || gameValue.includes('Counter-Strike') || gameValue.includes('Fortnite') || gameValue.includes('Apex') ? 'competitive' : 
+                     gameValue.includes('Cyberpunk') || gameValue.includes('Warzone') || gameValue.includes('Baldur') ? 'aaa' : 'aaa';
+    return { name: gameValue, type: gameType };
+  }
+  
+  // Check mobile dropdown
+  const gameSelectMobile = document.getElementById('game-select-mobile');
+  if (gameSelectMobile && gameSelectMobile.value) {
+    const gameValue = gameSelectMobile.value;
+    if (!gameValue) {
+      // Default to popular game
+      return { name: 'Valorant', type: 'competitive' };
+    }
+    
+    // Find game in database (games is an array of strings)
+    const games = performanceDatabase.games || [];
+    const gameName = games.find(game => {
+      const gameLower = game.toLowerCase();
+      const valueLower = gameValue.toLowerCase();
+      return gameLower.includes(valueLower) || valueLower.includes(gameLower);
+    });
+    
+    if (gameName) {
+      const gameType = gameName.includes('Valorant') || gameName.includes('CS2') || gameName.includes('Fortnite') ? 'competitive' : 
+                       gameName.includes('Cyberpunk') || gameName.includes('Warzone') ? 'aaa' : 'aaa';
+      return { name: gameName, type: gameType };
+    }
+    
+    return { name: gameValue, type: 'aaa' };
+  }
+  
+  // Fallback to autocomplete input
   const gameInput = document.getElementById('game-input') || document.getElementById('game');
   const gameValue = gameInput ? gameInput.value : '';
   
-  if (!gameValue) return null;
+  if (!gameValue) {
+    // Default to popular game if nothing selected
+    return { name: 'Valorant', type: 'competitive' };
+  }
   
   // Find game in database (games is an array of strings)
   const games = performanceDatabase.games || [];
@@ -78,42 +196,58 @@ function getSelectedGame() {
     return { name: gameName, type: gameType };
   }
   
-  // Return basic object if not found
-  return { name: gameValue, type: 'aaa' };
+  // Return basic object if not found (always return something)
+  return { name: gameValue || 'Valorant', type: 'aaa' };
 }
 
 /**
  * Validate inputs
  */
 function validateInputs(config) {
+  // Silently set defaults instead of showing errors
+  
+  // Default GPU to mid-range if not provided
   if (!config.gpu || !config.gpu.name) {
-    showError('Please select a GPU');
-    return false;
+    config.gpu = createGPUFromTier('mid-range');
   }
   
+  // Default CPU to mid-range if not provided
   if (!config.cpu || !config.cpu.name) {
-    showError('Please select a CPU');
-    return false;
+    config.cpu = createCPUFromTier('mid-range');
   }
   
+  // Default game to a popular game if not provided
   if (!config.game || !config.game.name) {
-    showError('Please select a game');
-    return false;
+    config.game = { name: 'Valorant', type: 'competitive' };
   }
   
+  // Always set defaults for resolution, settings, and RAM
   if (!config.resolution) {
-    showError('Please select a resolution');
-    return false;
+    config.resolution = '1080p';
   }
   
   if (!config.settings) {
-    showError('Please select graphics settings');
-    return false;
+    config.settings = 'medium';
   }
   
   if (!config.ram || config.ram === '') {
-    showError('Please select RAM amount');
-    return false;
+    config.ram = '16';
+  }
+  
+  // Auto-adjust incompatible options
+  // If 4K selected with budget GPU, downgrade to 1440p
+  if (config.resolution === '4k' && config.gpu.tier === 'budget') {
+    config.resolution = '1440p';
+  }
+  
+  // If Ultra settings with budget GPU, downgrade to High
+  if (config.settings === 'ultra' && config.gpu.tier === 'budget') {
+    config.settings = 'high';
+  }
+  
+  // If 4K with Ultra and mid-range GPU, downgrade settings
+  if (config.resolution === '4k' && config.settings === 'ultra' && config.gpu.tier === 'mid-range') {
+    config.settings = 'high';
   }
   
   return true;
@@ -183,7 +317,84 @@ function getFPSContext(averageFPS) {
 }
 
 /**
- * Display FPS results
+ * Display simple FPS results
+ */
+function displaySimpleFPSResults(fpsResult, config) {
+  const simpleResultsEl = document.getElementById('simple-results');
+  const resultsContainer = document.getElementById('results-container');
+  
+  if (!simpleResultsEl || !resultsContainer) {
+    console.error('Simple results elements not found!');
+    return;
+  }
+
+  const avgFPS = fpsResult.average || 0;
+  const resolution = config.resolution || '1080p';
+  const settings = config.settings || 'medium';
+  const settingsCapitalized = settings.charAt(0).toUpperCase() + settings.slice(1);
+
+  // Update big FPS text
+  const fpsBigText = document.getElementById('fps-big-text');
+  if (fpsBigText) {
+    fpsBigText.textContent = `Expected Performance: ${avgFPS} FPS`;
+  }
+
+  // Update traffic light system
+  const trafficGreen = document.getElementById('traffic-green');
+  const trafficYellow = document.getElementById('traffic-yellow');
+  const trafficRed = document.getElementById('traffic-red');
+
+  // Remove active class from all
+  [trafficGreen, trafficYellow, trafficRed].forEach(el => {
+    if (el) el.classList.remove('active');
+  });
+
+  // Add active class based on FPS
+  if (avgFPS >= 60 && trafficGreen) {
+    trafficGreen.classList.add('active');
+  } else if (avgFPS >= 30 && trafficYellow) {
+    trafficYellow.classList.add('active');
+  } else if (trafficRed) {
+    trafficRed.classList.add('active');
+  }
+
+  // Update recommendation
+  const recommendationEl = document.getElementById('simple-recommendation');
+  if (recommendationEl) {
+    if (avgFPS >= 60) {
+      recommendationEl.textContent = `Your system will run this game well at ${resolution} ${settingsCapitalized} settings`;
+    } else if (avgFPS >= 30) {
+      recommendationEl.textContent = `Your system should run this game at ${resolution} ${settingsCapitalized} settings, but consider lowering settings for better performance`;
+    } else {
+      recommendationEl.textContent = `Consider lowering settings for better performance`;
+    }
+  }
+
+  // Show simple results and hide technical details
+  simpleResultsEl.style.display = 'block';
+  const technicalDetails = document.getElementById('technical-details');
+  if (technicalDetails) {
+    technicalDetails.style.display = 'none';
+  }
+  
+  // Show latency calculator link after calculation
+  const showLatencyLink = document.getElementById('show-latency-calculator-link');
+  if (showLatencyLink) {
+    showLatencyLink.style.display = 'block';
+  }
+
+  // Show results container
+  resultsContainer.style.display = 'block';
+  resultsContainer.classList.add('active');
+  
+  // Scroll to results
+  setTimeout(() => {
+    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+/**
+ * Display FPS results (detailed - for technical details section)
  */
 function displayFPSResults(fpsResult, config) {
   console.log('displayFPSResults called with:', { fpsResult, config });
@@ -601,13 +812,18 @@ function performCompleteCalculation() {
   const resolutionSelect = document.getElementById('resolution-select') || document.getElementById('resolution');
   const settingsSelect = document.getElementById('settings-select') || document.getElementById('graphics-settings');
   
+  // Use defaults if selects don't exist or are empty (advanced settings hidden)
+  const ram = ramSelect && ramSelect.value ? ramSelect.value : '16';
+  const resolution = resolutionSelect && resolutionSelect.value ? resolutionSelect.value : '1080p';
+  const settings = settingsSelect && settingsSelect.value ? settingsSelect.value : 'medium';
+  
   const config = {
     gpu: getSelectedGPU(),
     cpu: getSelectedCPU(),
-    ram: ramSelect ? ramSelect.value : null,
-    resolution: resolutionSelect ? resolutionSelect.value : null,
+    ram: ram,
+    resolution: resolution,
     game: getSelectedGame(),
-    settings: settingsSelect ? settingsSelect.value : null,
+    settings: settings,
     
     // Latency-specific inputs
     mousePollingRate: document.getElementById('mouse-polling-rate') ? parseInt(document.getElementById('mouse-polling-rate').value) || 1000 : 1000,
@@ -644,7 +860,11 @@ function performCompleteCalculation() {
     
     if (!fpsResult) {
       console.error('calculateFPS returned null');
-      showError('Unable to calculate FPS. Please check your inputs.');
+      // Silently use defaults and calculate anyway
+      if (!config.gpu) config.gpu = createGPUFromTier('mid-range');
+      if (!config.cpu) config.cpu = createCPUFromTier('mid-range');
+      if (!config.game) config.game = { name: 'Valorant', type: 'competitive' };
+      // Continue with calculation using defaults
       return;
     }
     
@@ -676,40 +896,32 @@ function performCompleteCalculation() {
     
     let latencyResult = null;
     try {
-      latencyResult = calculateSystemLatency(latencyConfig);
-      console.log('Latency result:', latencyResult);
-      
-      // Ensure components object exists
-      if (!latencyResult.components) {
-        console.warn('Latency result missing components, adding defaults');
-        latencyResult.components = {
-          inputSampling: 2.0,
-          cpuSimulation: 6.0,
-          renderQueue: 0,
-          gpuRender: 1000 / fpsResult.average,
-          displayProcessing: 2.0,
-          scanoutAverage: (1000 / latencyConfig.refreshRate) / 2,
-          pixelResponse: 3.0
-        };
+      // Only calculate latency if latency calculator section is visible (explicitly requested)
+      const latencySection = document.getElementById('latency-calculator-section');
+      if (latencySection && latencySection.style.display !== 'none') {
+        latencyResult = calculateSystemLatency(latencyConfig);
+        console.log('Latency result:', latencyResult);
+        
+        // Ensure components object exists
+        if (!latencyResult.components) {
+          console.warn('Latency result missing components, adding defaults');
+          latencyResult.components = {
+            inputSampling: 2.0,
+            cpuSimulation: 6.0,
+            renderQueue: 0,
+            gpuRender: 1000 / fpsResult.average,
+            displayProcessing: 2.0,
+            scanoutAverage: (1000 / latencyConfig.refreshRate) / 2,
+            pixelResponse: 3.0
+          };
+        }
+      } else {
+        // Latency calculator not requested - set to null
+        latencyResult = null;
       }
     } catch (error) {
       console.error('Error calculating latency:', error);
-      latencyResult = { 
-        total: 50, 
-        rating: 'GOOD', 
-        breakdown: { mouse: 1, pc: 30, display: 15, network: 4 },
-        components: {
-          inputSampling: 2.0,
-          cpuSimulation: 6.0,
-          renderQueue: 0,
-          gpuRender: 1000 / fpsResult.average,
-          displayProcessing: 2.0,
-          scanoutAverage: 3.47,
-          pixelResponse: 3.0
-        },
-        uncertainty: 5.0,
-        recommendation: 'Latency calculation encountered an error, showing estimate.'
-      };
+      latencyResult = null; // Don't show latency if there's an error and it wasn't requested
     }
     
     // Get upgrade recommendations (use fps-database version)
@@ -793,6 +1005,10 @@ function displayResults(fpsResult, bottleneckResult, latencyResult, config, reco
   }
   
   // Display FPS results (using existing function)
+  // Display simple results first
+  displaySimpleFPSResults(fpsResult, config);
+  
+  // Also prepare detailed results for technical details section (but don't show yet)
   displayFPSResults(fpsResult, config);
   
   // Display bottleneck analysis (using existing function if available)

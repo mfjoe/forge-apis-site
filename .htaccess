@@ -1,5 +1,12 @@
+# NOTE: This file is NOT used on GitHub Pages
+# GitHub Pages doesn't support .htaccess (Apache config)
+# Redirects are handled by /404.html instead
+# This file is kept for reference only
+#
+# ============================================================================
 # Gaming Currency Calculator Redirects (Consolidated to Unified Converter)
 # All individual calculators redirect to /gaming-currency-converter/ with query parameters
+# ============================================================================
 
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>

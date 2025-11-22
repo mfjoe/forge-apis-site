@@ -1,5 +1,12 @@
+# NOTE: This file is NOT used on GitHub Pages
+# _redirects is for Netlify/Vercel deployments
+# GitHub Pages uses /404.html for redirects
+# This file is kept for future migration to Netlify/Vercel
+#
+# ============================================================================
 # Individual Gaming Calculator Redirects (Consolidated to Gaming Currency Converter)
 # Using query parameters instead of hash fragments for better compatibility
+# ============================================================================
 /vbucks-calculator/ /gaming-currency-converter/?currency=vbucks 301
 /vbucks-calculator/* /gaming-currency-converter/?currency=vbucks 301
 /robux-calculator/ /gaming-currency-converter/?currency=robux 301

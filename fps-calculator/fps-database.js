@@ -84,19 +84,591 @@ const cpuGamingScores = {
   "AMD Ryzen 5 5600": 65
 };
 
-// Game Baseline Performance (FPS at 1080p Ultra with RTX 4090)
-const gameBaselines = {
-  "Valorant": 450, // Very light game
-  "CS2": 380, // Light game
-  "Fortnite": 280, // Medium-light
-  "Warzone 2": 180, // Medium-heavy
-  "Apex Legends": 240, // Medium
-  "Overwatch 2": 320, // Medium-light
-  "Cyberpunk 2077": 140, // Heavy
-  "GTA V": 200, // Medium
-  "Minecraft": 500, // Very light (depends on settings)
-  "Call of Duty Modern Warfare III": 190 // Medium-heavy
+// Game Database with detailed performance data
+const gamesDatabase = {
+  // COMPETITIVE FPS GAMES
+  valorant: {
+    id: 'valorant',
+    name: 'Valorant',
+    tier: 'competitive',
+    baselineMultiplier: 0.6, // Very well optimized
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 450
+  },
+  cs2: {
+    id: 'cs2',
+    name: 'Counter-Strike 2',
+    tier: 'competitive',
+    baselineMultiplier: 0.75,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 380
+  },
+  overwatch2: {
+    id: 'overwatch2',
+    name: 'Overwatch 2',
+    tier: 'competitive',
+    baselineMultiplier: 0.8,
+    cpuIntensive: false,
+    ramMinimum: 6,
+    ramRecommended: 8,
+    baselineFPS: 320
+  },
+  r6siege: {
+    id: 'r6siege',
+    name: 'Rainbow Six Siege',
+    tier: 'competitive',
+    baselineMultiplier: 0.85,
+    cpuIntensive: true,
+    ramMinimum: 6,
+    ramRecommended: 8,
+    baselineFPS: 300
+  },
+  rocket_league: {
+    id: 'rocket_league',
+    name: 'Rocket League',
+    tier: 'competitive',
+    baselineMultiplier: 0.5,
+    cpuIntensive: false,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 500
+  },
+  
+  // BATTLE ROYALE GAMES
+  fortnite: {
+    id: 'fortnite',
+    name: 'Fortnite',
+    tier: 'battle-royale',
+    baselineMultiplier: 0.7, // Well optimized
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 280
+  },
+  apex_legends: {
+    id: 'apex_legends',
+    name: 'Apex Legends',
+    tier: 'battle-royale',
+    baselineMultiplier: 0.9,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 240
+  },
+  warzone2: {
+    id: 'warzone2',
+    name: 'Call of Duty: Warzone 2.0',
+    tier: 'battle-royale',
+    baselineMultiplier: 1.2, // Demanding
+    cpuIntensive: true,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  pubg: {
+    id: 'pubg',
+    name: 'PUBG: Battlegrounds',
+    tier: 'battle-royale',
+    baselineMultiplier: 1.0,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 200
+  },
+  the_finals: {
+    id: 'the_finals',
+    name: 'The Finals',
+    tier: 'battle-royale',
+    baselineMultiplier: 1.1,
+    cpuIntensive: false,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 220
+  },
+  
+  // AAA SINGLE-PLAYER GAMES
+  cyberpunk2077: {
+    id: 'cyberpunk2077',
+    name: 'Cyberpunk 2077',
+    tier: 'aaa',
+    baselineMultiplier: 1.5, // Very demanding
+    cpuIntensive: true,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 140
+  },
+  rdr2: {
+    id: 'rdr2',
+    name: 'Red Dead Redemption 2',
+    tier: 'aaa',
+    baselineMultiplier: 1.4,
+    cpuIntensive: true,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 150
+  },
+  hogwarts_legacy: {
+    id: 'hogwarts_legacy',
+    name: 'Hogwarts Legacy',
+    tier: 'aaa',
+    baselineMultiplier: 1.3,
+    cpuIntensive: false,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 160
+  },
+  starfield: {
+    id: 'starfield',
+    name: 'Starfield',
+    tier: 'aaa',
+    baselineMultiplier: 1.4,
+    cpuIntensive: true,
+    ramMinimum: 16,
+    ramRecommended: 32,
+    baselineFPS: 150
+  },
+  tlou: {
+    id: 'tlou',
+    name: 'The Last of Us Part I',
+    tier: 'aaa',
+    baselineMultiplier: 1.6, // Extremely demanding
+    cpuIntensive: false,
+    ramMinimum: 16,
+    ramRecommended: 32,
+    baselineFPS: 130
+  },
+  spiderman: {
+    id: 'spiderman',
+    name: "Marvel's Spider-Man Remastered",
+    tier: 'aaa',
+    baselineMultiplier: 1.2,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 170
+  },
+  god_of_war: {
+    id: 'god_of_war',
+    name: 'God of War',
+    tier: 'aaa',
+    baselineMultiplier: 1.1,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  horizon_zero_dawn: {
+    id: 'horizon_zero_dawn',
+    name: 'Horizon Zero Dawn',
+    tier: 'aaa',
+    baselineMultiplier: 1.1,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  witcher3: {
+    id: 'witcher3',
+    name: 'The Witcher 3',
+    tier: 'aaa',
+    baselineMultiplier: 0.9, // Older, well optimized
+    cpuIntensive: false,
+    ramMinimum: 6,
+    ramRecommended: 8,
+    baselineFPS: 200
+  },
+  elden_ring: {
+    id: 'elden_ring',
+    name: 'Elden Ring',
+    tier: 'aaa',
+    baselineMultiplier: 1.0,
+    cpuIntensive: false,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 190
+  },
+  
+  // MULTIPLAYER SHOOTERS
+  cod_mw3: {
+    id: 'cod_mw3',
+    name: 'Call of Duty: Modern Warfare III',
+    tier: 'multiplayer',
+    baselineMultiplier: 1.1,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 190
+  },
+  battlefield_2042: {
+    id: 'battlefield_2042',
+    name: 'Battlefield 2042',
+    tier: 'multiplayer',
+    baselineMultiplier: 1.3,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 160
+  },
+  halo_infinite: {
+    id: 'halo_infinite',
+    name: 'Halo Infinite',
+    tier: 'multiplayer',
+    baselineMultiplier: 1.0,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 190
+  },
+  destiny2: {
+    id: 'destiny2',
+    name: 'Destiny 2',
+    tier: 'multiplayer',
+    baselineMultiplier: 0.9,
+    cpuIntensive: false,
+    ramMinimum: 6,
+    ramRecommended: 8,
+    baselineFPS: 200
+  },
+  hunt_showdown: {
+    id: 'hunt_showdown',
+    name: 'Hunt: Showdown',
+    tier: 'multiplayer',
+    baselineMultiplier: 1.1,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 12,
+    baselineFPS: 180
+  },
+  
+  // SURVIVAL/EXTRACTION
+  tarkov: {
+    id: 'tarkov',
+    name: 'Escape from Tarkov',
+    tier: 'survival',
+    baselineMultiplier: 1.3, // Poor optimization
+    cpuIntensive: true,
+    ramMinimum: 12,
+    ramRecommended: 32, // Known RAM hog
+    baselineFPS: 160
+  },
+  rust: {
+    id: 'rust',
+    name: 'Rust',
+    tier: 'survival',
+    baselineMultiplier: 1.2,
+    cpuIntensive: true,
+    ramMinimum: 10,
+    ramRecommended: 16,
+    baselineFPS: 170
+  },
+  dayz: {
+    id: 'dayz',
+    name: 'DayZ',
+    tier: 'survival',
+    baselineMultiplier: 1.1,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  scum: {
+    id: 'scum',
+    name: 'SCUM',
+    tier: 'survival',
+    baselineMultiplier: 1.2,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 170
+  },
+  
+  // RACING GAMES
+  forza_horizon5: {
+    id: 'forza_horizon5',
+    name: 'Forza Horizon 5',
+    tier: 'racing',
+    baselineMultiplier: 1.2,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 170
+  },
+  gran_turismo7: {
+    id: 'gran_turismo7',
+    name: 'Gran Turismo 7',
+    tier: 'racing',
+    baselineMultiplier: 1.0,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 8,
+    baselineFPS: 190
+  },
+  f1_24: {
+    id: 'f1_24',
+    name: 'F1 24',
+    tier: 'racing',
+    baselineMultiplier: 1.1,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  assetto_corsa_comp: {
+    id: 'assetto_corsa_comp',
+    name: 'Assetto Corsa Competizione',
+    tier: 'racing',
+    baselineMultiplier: 1.1,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 180
+  },
+  
+  // SPORTS GAMES
+  fifa24: {
+    id: 'fifa24',
+    name: 'EA Sports FC 24',
+    tier: 'sports',
+    baselineMultiplier: 0.8,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 8,
+    baselineFPS: 220
+  },
+  nba2k24: {
+    id: 'nba2k24',
+    name: 'NBA 2K24',
+    tier: 'sports',
+    baselineMultiplier: 0.9,
+    cpuIntensive: false,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 200
+  },
+  madden24: {
+    id: 'madden24',
+    name: 'Madden NFL 24',
+    tier: 'sports',
+    baselineMultiplier: 0.8,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 8,
+    baselineFPS: 220
+  },
+  
+  // POPULAR/CASUAL GAMES
+  minecraft: {
+    id: 'minecraft',
+    name: 'Minecraft (Java)',
+    tier: 'casual',
+    baselineMultiplier: 0.4, // Vanilla is light
+    cpuIntensive: true, // Single-threaded
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 500
+  },
+  minecraft_rtx: {
+    id: 'minecraft_rtx',
+    name: 'Minecraft RTX',
+    tier: 'casual',
+    baselineMultiplier: 1.3, // Ray tracing heavy
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 160
+  },
+  roblox: {
+    id: 'roblox',
+    name: 'Roblox',
+    tier: 'casual',
+    baselineMultiplier: 0.3, // Very light
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 600
+  },
+  gta5: {
+    id: 'gta5',
+    name: 'Grand Theft Auto V',
+    tier: 'popular',
+    baselineMultiplier: 0.8, // Old but optimized
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 200
+  },
+  gta_online: {
+    id: 'gta_online',
+    name: 'GTA Online',
+    tier: 'popular',
+    baselineMultiplier: 0.9, // More demanding than story
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 190
+  },
+  sims4: {
+    id: 'sims4',
+    name: 'The Sims 4',
+    tier: 'casual',
+    baselineMultiplier: 0.5,
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 400
+  },
+  
+  // MOBA GAMES
+  lol: {
+    id: 'lol',
+    name: 'League of Legends',
+    tier: 'moba',
+    baselineMultiplier: 0.4, // Extremely optimized
+    cpuIntensive: false,
+    ramMinimum: 2,
+    ramRecommended: 4,
+    baselineFPS: 600
+  },
+  dota2: {
+    id: 'dota2',
+    name: 'Dota 2',
+    tier: 'moba',
+    baselineMultiplier: 0.6,
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 450
+  },
+  smite: {
+    id: 'smite',
+    name: 'Smite',
+    tier: 'moba',
+    baselineMultiplier: 0.7,
+    cpuIntensive: false,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 380
+  },
+  
+  // HORROR GAMES
+  sons_of_forest: {
+    id: 'sons_of_forest',
+    name: 'Sons of the Forest',
+    tier: 'horror',
+    baselineMultiplier: 1.2,
+    cpuIntensive: true,
+    ramMinimum: 12,
+    ramRecommended: 16,
+    baselineFPS: 170
+  },
+  phasmophobia: {
+    id: 'phasmophobia',
+    name: 'Phasmophobia',
+    tier: 'horror',
+    baselineMultiplier: 0.7,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 8,
+    baselineFPS: 300
+  },
+  dead_by_daylight: {
+    id: 'dead_by_daylight',
+    name: 'Dead by Daylight',
+    tier: 'horror',
+    baselineMultiplier: 0.8,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 8,
+    baselineFPS: 280
+  },
+  
+  // SIMULATION GAMES
+  msfs2020: {
+    id: 'msfs2020',
+    name: 'Microsoft Flight Simulator',
+    tier: 'simulation',
+    baselineMultiplier: 1.8, // Extremely demanding
+    cpuIntensive: true,
+    ramMinimum: 16,
+    ramRecommended: 32,
+    baselineFPS: 110
+  },
+  cities_skylines2: {
+    id: 'cities_skylines2',
+    name: 'Cities: Skylines II',
+    tier: 'simulation',
+    baselineMultiplier: 1.5, // Poor optimization at launch
+    cpuIntensive: true,
+    ramMinimum: 16,
+    ramRecommended: 32,
+    baselineFPS: 130
+  },
+  euro_truck_sim2: {
+    id: 'euro_truck_sim2',
+    name: 'Euro Truck Simulator 2',
+    tier: 'simulation',
+    baselineMultiplier: 0.7,
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 300
+  },
+  
+  // STRATEGY GAMES
+  total_war_warhammer3: {
+    id: 'total_war_warhammer3',
+    name: 'Total War: Warhammer III',
+    tier: 'strategy',
+    baselineMultiplier: 1.3,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 160
+  },
+  age_of_empires4: {
+    id: 'age_of_empires4',
+    name: 'Age of Empires IV',
+    tier: 'strategy',
+    baselineMultiplier: 0.9,
+    cpuIntensive: true,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 200
+  },
+  civilization6: {
+    id: 'civilization6',
+    name: 'Civilization VI',
+    tier: 'strategy',
+    baselineMultiplier: 0.7,
+    cpuIntensive: true,
+    ramMinimum: 4,
+    ramRecommended: 8,
+    baselineFPS: 300
+  },
+  
+  // ADDITIONAL POPULAR GAMES
+  baldurs_gate3: {
+    id: 'baldurs_gate3',
+    name: "Baldur's Gate 3",
+    tier: 'aaa',
+    baselineMultiplier: 1.0,
+    cpuIntensive: false,
+    ramMinimum: 8,
+    ramRecommended: 16,
+    baselineFPS: 190
+  }
 };
+
+// Legacy gameBaselines for backward compatibility (calculated from gamesDatabase)
+const gameBaselines = {};
+Object.keys(gamesDatabase).forEach(gameId => {
+  const game = gamesDatabase[gameId];
+  gameBaselines[game.name] = game.baselineFPS;
+});
 
 // Resolution Multipliers (relative to 1080p)
 const resolutionMultipliers = {
@@ -114,18 +686,13 @@ const settingsMultipliers = {
 };
 
 // Game-specific CPU scaling (higher = more CPU dependent)
-const gameCPUScaling = {
-  "Valorant": 0.25, // GPU bound
-  "CS2": 0.30,
-  "Fortnite": 0.35,
-  "Warzone 2": 0.45, // More CPU dependent
-  "Apex Legends": 0.40,
-  "Overwatch 2": 0.35,
-  "Cyberpunk 2077": 0.20, // GPU bound
-  "GTA V": 0.40,
-  "Minecraft": 0.50, // Very CPU dependent
-  "Call of Duty Modern Warfare III": 0.45
-};
+// Generated from gamesDatabase
+const gameCPUScaling = {};
+Object.keys(gamesDatabase).forEach(gameId => {
+  const game = gamesDatabase[gameId];
+  // Map cpuIntensive to scaling factor
+  gameCPUScaling[game.name] = game.cpuIntensive ? 0.45 : 0.25;
+});
 
 /**
  * Performance Database Structure
@@ -133,7 +700,8 @@ const gameCPUScaling = {
 const performanceDatabase = {
   gpus: {},
   cpus: {},
-  games: Object.keys(gameBaselines),
+  games: Object.keys(gamesDatabase).map(id => gamesDatabase[id].name),
+  gamesDatabase: gamesDatabase, // Full game database with metadata
   
   // Initialize GPU data
   initGPUs() {
@@ -167,33 +735,48 @@ const performanceDatabase = {
   generateGameData(gpuName, gpuScore) {
     const games = {};
     
-    Object.keys(gameBaselines).forEach(gameName => {
-      const baseline = gameBaselines[gameName];
+    Object.keys(gamesDatabase).forEach(gameId => {
+      const game = gamesDatabase[gameId];
+      const gameName = game.name;
+      const baseline = game.baselineFPS;
       const gpuMultiplier = gpuScore / 100;
+      // Apply game-specific baseline multiplier
+      const adjustedBaseline = baseline * game.baselineMultiplier;
       
       games[gameName] = {
         "1080p": {
-          low: Math.round(baseline * gpuMultiplier * settingsMultipliers.low * 0.9),
-          medium: Math.round(baseline * gpuMultiplier * settingsMultipliers.medium * 0.9),
-          high: Math.round(baseline * gpuMultiplier * settingsMultipliers.high * 0.9),
-          ultra: Math.round(baseline * gpuMultiplier * 0.9)
+          low: Math.round(adjustedBaseline * gpuMultiplier * settingsMultipliers.low * 0.9),
+          medium: Math.round(adjustedBaseline * gpuMultiplier * settingsMultipliers.medium * 0.9),
+          high: Math.round(adjustedBaseline * gpuMultiplier * settingsMultipliers.high * 0.9),
+          ultra: Math.round(adjustedBaseline * gpuMultiplier * 0.9)
         },
         "1440p": {
-          low: Math.round(baseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.low * 0.9),
-          medium: Math.round(baseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.medium * 0.9),
-          high: Math.round(baseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.high * 0.9),
-          ultra: Math.round(baseline * gpuMultiplier * resolutionMultipliers["1440p"] * 0.9)
+          low: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.low * 0.9),
+          medium: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.medium * 0.9),
+          high: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["1440p"] * settingsMultipliers.high * 0.9),
+          ultra: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["1440p"] * 0.9)
         },
         "4k": {
-          low: Math.round(baseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.low * 0.9),
-          medium: Math.round(baseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.medium * 0.9),
-          high: Math.round(baseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.high * 0.9),
-          ultra: Math.round(baseline * gpuMultiplier * resolutionMultipliers["4k"] * 0.9)
+          low: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.low * 0.9),
+          medium: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.medium * 0.9),
+          high: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["4k"] * settingsMultipliers.high * 0.9),
+          ultra: Math.round(adjustedBaseline * gpuMultiplier * resolutionMultipliers["4k"] * 0.9)
         }
       };
     });
     
     return games;
+  },
+  
+  // Get game by ID or name
+  getGame(gameIdOrName) {
+    // Try by ID first
+    if (gamesDatabase[gameIdOrName]) {
+      return gamesDatabase[gameIdOrName];
+    }
+    // Try by name
+    const game = Object.values(gamesDatabase).find(g => g.name === gameIdOrName);
+    return game || null;
   },
   
   // Get VRAM for GPU
@@ -312,12 +895,26 @@ function estimateFPS(gpu, game, resolution, settings) {
   
   // Interpolate if no exact match
   const gpuScore = getGPUScore(gpu);
-  const baseline = gameBaselines[game] || 150;
+  // Find game in database
+  const gameData = performanceDatabase.getGame(game);
+  let baseline = 150;
+  let baselineMultiplier = 1.0;
+  
+  if (gameData) {
+    baseline = gameData.baselineFPS;
+    baselineMultiplier = gameData.baselineMultiplier;
+  } else {
+    // Fallback to legacy gameBaselines
+    baseline = gameBaselines[game] || 150;
+  }
+  
   const resMulti = resolutionMultipliers[resolution] || 1.0;
   const setMulti = settingsMultipliers[settings] || 1.0;
   
-  const result = Math.round(baseline * (gpuScore / 100) * resMulti * setMulti * 0.9);
-  console.log('estimateFPS:', { gpu, game, resolution, settings, gpuScore, baseline, resMulti, setMulti, result });
+  // Apply baseline multiplier for game demand
+  const adjustedBaseline = baseline * baselineMultiplier;
+  const result = Math.round(adjustedBaseline * (gpuScore / 100) * resMulti * setMulti * 0.9);
+  console.log('estimateFPS:', { gpu, game, resolution, settings, gpuScore, baseline, baselineMultiplier, adjustedBaseline, resMulti, setMulti, result });
   
   return result;
 }
