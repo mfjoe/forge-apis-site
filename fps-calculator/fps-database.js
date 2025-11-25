@@ -875,6 +875,30 @@ function getGPUScore(gpuName) {
   return gpuPerformanceScores[gpuName] || 50;
 }
 
+function getGameData(gameName) {
+  // Try exact match first
+  if (gamesDatabase[gameName]) {
+    return gamesDatabase[gameName];
+  }
+  
+  // Try matching by display name
+  const gameKey = Object.keys(gamesDatabase).find(key => {
+    const game = gamesDatabase[key];
+    return game.name && (
+      game.name.toLowerCase() === gameName.toLowerCase() ||
+      game.name.toLowerCase().includes(gameName.toLowerCase()) ||
+      gameName.toLowerCase().includes(game.name.toLowerCase())
+    );
+  });
+  
+  if (gameKey) {
+    return gamesDatabase[gameKey];
+  }
+  
+  // Return default if no match
+  return null;
+}
+
 /**
  * Core Calculation Functions
  */
@@ -982,10 +1006,36 @@ function calculateFPS(gpu, cpu, ram, resolution, game, settings) {
   baseFPS = Math.round(baseFPS * cpuMultiplier);
   console.log('After CPU scaling:', { cpuScore, cpuScaling, cpuMultiplier, baseFPS });
   
-  // Apply RAM scaling (minimal impact, but can bottleneck at 8GB)
-  if (parseInt(ram) === 8 && resolution === "4k") {
-    baseFPS = Math.round(baseFPS * 0.95); // ~5% penalty
-    console.log('Applied RAM penalty:', baseFPS);
+  // Apply RAM scaling based on game-specific requirements
+  const ramAmount = parseInt(ram);
+  const gameData = getGameData(game);
+  let ramMultiplier = 1.0;
+  
+  if (gameData && gameData.ramMinimum && gameData.ramRecommended) {
+    const minRAM = gameData.ramMinimum;
+    const recRAM = gameData.ramRecommended;
+    
+    if (ramAmount < minRAM) {
+      // Severe penalty for RAM below minimum
+      ramMultiplier = 0.60; // -40% FPS
+      console.log('RAM below minimum:', { ramAmount, minRAM, penalty: '-40%' });
+    } else if (ramAmount < recRAM) {
+      // Moderate penalty for RAM below recommended
+      ramMultiplier = 0.85; // -15% FPS
+      console.log('RAM below recommended:', { ramAmount, recRAM, penalty: '-15%' });
+    } else {
+      // No penalty if RAM meets or exceeds recommended
+      console.log('RAM meets requirements:', { ramAmount, recRAM });
+    }
+    
+    // Additional penalty for 4K with lower RAM (high memory usage)
+    if (resolution === "4k" && ramAmount < 16) {
+      ramMultiplier *= 0.90; // Additional -10% penalty
+      console.log('4K with low RAM: additional penalty applied');
+    }
+    
+    baseFPS = Math.round(baseFPS * ramMultiplier);
+    console.log('After RAM scaling:', { ramAmount, ramMultiplier, baseFPS });
   }
   
   // Check if we have direct benchmark data

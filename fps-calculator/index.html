@@ -109,9 +109,18 @@
 
       :root {
         --primary: #0066ff;
+        --primary-dark: #0052cc;
+        --secondary: #00d4aa;
+        --dark: #0a0e27;
         --gray: #6b7280;
-        --white: #ffffff;
         --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --gaming-purple: #8b5cf6;
+        --gaming-cyan: #06b6d4;
+        --gaming-pink: #ec4899;
       }
 
       html {
@@ -139,127 +148,48 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         z-index: 1000;
-        padding: 16px 0;
-        border-bottom: 1px solid #e5e7eb;
+        padding: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
 
       nav .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
       }
 
       .logo {
         text-decoration: none;
         display: flex;
         align-items: center;
+        transition: opacity 0.3s;
       }
 
       .nav-links {
         display: flex;
-        gap: 32px;
+        gap: 40px;
         align-items: center;
       }
 
       .nav-links a {
-        color: var(--gray);
+        color: var(--dark);
         text-decoration: none;
         font-weight: 500;
-        font-size: 15px;
-        padding: 8px 16px;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      /* Dropdown Menu Styles */
-      .nav-dropdown {
-        position: relative;
-      }
-
-      .nav-dropdown > a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .nav-dropdown > a::after {
-        content: '▼';
-        font-size: 10px;
-        transition: transform 0.3s ease;
-      }
-
-      .nav-dropdown.active > a::after {
-        transform: rotate(180deg);
-      }
-
-      .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        background: var(--white);
-        border: 1px solid #e5e7eb;
-        border-radius: 4px;
-        padding: 8px 0;
-        min-width: 200px;
-        display: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1001;
-      }
-
-      .nav-dropdown.active .dropdown-menu {
-        display: block;
-      }
-
-      .dropdown-menu a {
-        display: block;
-        padding: 12px 20px;
-        color: var(--gray);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 14px;
-      }
-
-      .dropdown-menu a:hover {
-        background: var(--light-gray);
-        color: var(--primary);
-      }
-
-      .dropdown-menu a::before {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        background: var(--white);
-        border: 1px solid #e5e7eb;
-        border-radius: 4px;
-        padding: 10px 12px;
-        cursor: pointer;
-      }
-
-      .hamburger-line {
-        width: 24px;
-        height: 2px;
-        background: var(--gray);
-        border-radius: 2px;
+        transition: color 0.3s;
       }
 
       /* Breadcrumb Navigation */
       #breadcrumb-container {
-        margin-top: 80px;
+        margin-top: 120px; /* Account for fixed nav */
         position: relative;
         z-index: 998;
       }
 
       .breadcrumb {
-        background: var(--white);
+        background: white;
         padding: 12px 0;
         border-bottom: 1px solid #e5e7eb;
         position: relative;
@@ -272,9 +202,6 @@
         gap: 8px;
         flex-wrap: wrap;
         font-size: 14px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
       }
 
       .breadcrumb-item {
@@ -285,7 +212,7 @@
 
       .breadcrumb-item:not(:last-child)::after {
         content: "›";
-        color: rgba(255, 255, 255, 0.5);
+        color: #9ca3af;
         font-size: 16px;
         margin-left: 4px;
       }
@@ -293,15 +220,32 @@
       .breadcrumb-link {
         color: var(--primary);
         text-decoration: none;
-      }
-
-      .breadcrumb-link:hover {
-        text-decoration: underline;
+        transition: color 0.2s;
       }
 
       .breadcrumb-current {
-        color: var(--gray);
-        font-weight: 500;
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+      }
+
+      .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: var(--dark);
       }
 
       /* Responsive Breadcrumb */
@@ -311,6 +255,7 @@
         }
 
         .breadcrumb {
+          top: 70px;
           padding: 10px 0;
         }
 
@@ -323,7 +268,16 @@
           font-size: 14px;
           margin-left: 2px;
         }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
       }
+
 
       /* Hero Section - Ultra Simple */
       .hero {
@@ -453,10 +407,11 @@
 
       .hero-cta {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 16px;
         margin-top: 32px;
+        justify-content: center;
       }
 
       .hero-btn-primary,
@@ -1717,12 +1672,10 @@
 
       /* Print Styles */
       @media print {
-        nav,
         footer,
         .cookie-consent,
         #calculate-btn,
         .calculator-form,
-        .breadcrumb,
         .notification {
           display: none !important;
         }
@@ -1771,13 +1724,6 @@
           background: inherit !important;
         }
 
-        .nav-links {
-          display: none;
-        }
-
-        .mobile-menu-btn {
-          display: flex;
-        }
 
         .hero h1 {
           font-size: 36px;
@@ -2319,12 +2265,15 @@
               <rect x="12" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
               <rect x="46" y="20" width="2" height="2" fill="#00D4AA" opacity="0.8"/>
             </g>
-            <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Forge</text>
+            <text x="75" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#0A0E27">Forge</text>
             <text x="150" y="45" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#6B7280">APIs</text>
             <text x="75" y="63" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="9" fill="#9CA3AF" letter-spacing="0.5">PRODUCTION-READY APIS</text>
           </svg>
         </a>
-        <div class="nav-links" style="display: none;">
+        <div class="nav-links">
+          <a href="#calculator">Calculator</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <span class="hamburger-line"></span>
@@ -2340,11 +2289,11 @@
         <div class="container">
           <ol class="breadcrumb-list" style="list-style: none; margin: 0; padding: 0;">
             <li class="breadcrumb-item" style="display: inline;">
-              <a href="/" class="breadcrumb-link" style="color: #60a5fa; text-decoration: none;">Home</a>
-              <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">›</span>
+              <a href="/" class="breadcrumb-link" style="color: #0066ff; text-decoration: none;">Home</a>
+              <span style="color: #9ca3af; margin: 0 8px;">›</span>
             </li>
             <li class="breadcrumb-item" style="display: inline;">
-              <span class="breadcrumb-current" style="color: #ffffff; font-weight: 600;">FPS Calculator</span>
+              <span class="breadcrumb-current" style="color: #1a1a2e; font-weight: 600;">FPS Calculator</span>
             </li>
           </ol>
         </div>
@@ -2358,8 +2307,7 @@
         <h1>Will My PC Run This Game?</h1>
         <p>Check if your computer can play any game smoothly</p>
         <div class="hero-cta">
-          <a href="#calculator" class="hero-btn-primary" id="start-simple-mode">Start Simple Mode</a>
-          <a href="#advanced-calculator" class="hero-link-secondary" id="show-advanced-calc">Advanced calculator</a>
+          <a href="#calculator" class="hero-btn-primary" id="start-calculator">Start Calculator</a>
         </div>
       </div>
     </section>
@@ -2376,8 +2324,8 @@
     <!-- Calculator Section -->
     <section class="calculator-section" id="calculator">
       <div class="container">
-        <!-- Simple Mode Wizard -->
-        <div id="simple-mode-wizard" class="simple-mode-wizard">
+        <!-- Calculator Wizard -->
+        <div id="calculator-wizard" class="calculator-wizard">
           <!-- Step 1: Game Selection -->
           <div class="wizard-step active" id="simple-step-1">
             <h2>What game do you want to play?</h2>
@@ -2526,6 +2474,25 @@
                 autocomplete="off" />
             </div>
 
+            <!-- RAM Selection (shown after GPU is selected or skipped) -->
+            <div id="ram-selection-container" class="form-group" style="display: none; margin-top: 24px;">
+              <label for="wizard-ram-select" style="font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 12px; display: block;">
+                How much RAM do you have?
+              </label>
+              <select id="wizard-ram-select" name="wizard-ram" style="width: 100%; padding: 12px 16px; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 15px; font-family: inherit; background: var(--white); color: var(--gray);">
+                <option value="8">8GB</option>
+                <option value="16" selected>16GB (Most Common)</option>
+                <option value="32">32GB</option>
+                <option value="64">64GB</option>
+              </select>
+              <p style="font-size: 13px; color: var(--gray); margin-top: 8px; line-height: 1.5;">
+                💡 RAM affects game performance, especially in demanding titles. Most modern games recommend 16GB.
+              </p>
+              <button type="button" class="btn-calculate" id="calculate-with-ram-btn" style="width: 100%; margin-top: 20px; padding: 14px 24px; font-size: 16px; font-weight: 600;">
+                Calculate Performance
+              </button>
+            </div>
+
             <!-- GPU Help Guide (shown when "No, help me find it" is clicked) -->
             <div id="gpu-help-guide" class="gpu-help-guide" style="display: none;">
               <div class="help-step">
@@ -2553,22 +2520,116 @@
             </div>
           </div>
 
-          <!-- Step 3: Results -->
-          <div class="wizard-step" id="simple-step-3">
-            <h2>Quick Results</h2>
-            <div class="simple-result">
-              <div class="result-status" id="simple-result-status">
-                <span class="status-text">This game will run: GREAT</span>
+          <!-- Step 3: Removed - goes directly to detailed analysis -->
+        </div>
+
+        <!-- Detailed Results Section (shown after wizard) -->
+        <div id="detailed-results" class="detailed-results" style="display: none; margin-top: 40px;">
+          <div class="calc-card">
+            <div class="calc-header" style="text-align: center; margin-bottom: 40px;">
+              <h2 style="font-size: 32px; margin-bottom: 12px;">Your Performance Analysis</h2>
+              <p id="detailed-results-subtitle" style="font-size: 18px; color: var(--gray);">Complete gaming performance breakdown for your PC</p>
+            </div>
+
+            <!-- Overall Performance Summary -->
+            <div id="performance-summary" style="background: linear-gradient(135deg, var(--primary) 0%, #0052cc 100%); color: white; padding: 32px; border-radius: 12px; margin-bottom: 32px; text-align: center;">
+              <div style="font-size: 48px; font-weight: 700; margin-bottom: 8px;" id="summary-fps">--</div>
+              <div style="font-size: 20px; opacity: 0.9;" id="summary-text">Average FPS at 1080p High Settings</div>
+              <div style="font-size: 14px; opacity: 0.8; margin-top: 8px;" id="summary-game">--</div>
+            </div>
+
+            <!-- FPS Breakdown Table -->
+            <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px; margin-bottom: 32px;">
+              <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--dark);">FPS Across Resolutions & Settings</h3>
+              <div style="overflow-x: auto;">
+                <table id="fps-breakdown-table" style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                  <thead>
+                    <tr style="background: var(--light-gray);">
+                      <th style="padding: 16px; text-align: left; font-weight: 600; color: var(--dark);">Resolution</th>
+                      <th style="padding: 16px; text-align: center; font-weight: 600; color: var(--dark);">Low</th>
+                      <th style="padding: 16px; text-align: center; font-weight: 600; color: var(--dark);">Medium</th>
+                      <th style="padding: 16px; text-align: center; font-weight: 600; color: var(--dark);">High</th>
+                      <th style="padding: 16px; text-align: center; font-weight: 600; color: var(--dark);">Ultra</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fps-table-body">
+                    <!-- Will be populated by JavaScript -->
+                  </tbody>
+                </table>
               </div>
-              <div class="result-recommendation" id="simple-result-recommendation">
-                Your PC can handle this game smoothly at high settings!
+              <div style="margin-top: 16px; padding: 16px; background: var(--light-gray); border-radius: 8px; font-size: 14px; color: var(--gray);">
+                <strong>💡 Reading the table:</strong> Green = Excellent (60+ FPS), Yellow = Playable (30-59 FPS), Red = Struggling (&lt;30 FPS)
               </div>
-              <a href="#advanced-calculator" class="detailed-analysis-link" id="show-detailed-analysis">See detailed analysis</a>
+            </div>
+
+            <!-- Performance Analysis Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px;">
+              <!-- Bottleneck Card -->
+              <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <div style="font-size: 32px;">⚖️</div>
+                  <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin: 0;">System Balance</h4>
+                </div>
+                <div id="bottleneck-info" style="font-size: 14px; color: var(--gray); line-height: 1.6;">
+                  <!-- Will be populated -->
+                </div>
+              </div>
+
+              <!-- Recommended Settings Card -->
+              <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <div style="font-size: 32px;">🎯</div>
+                  <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin: 0;">Best Settings</h4>
+                </div>
+                <div id="recommended-settings" style="font-size: 14px; color: var(--gray); line-height: 1.6;">
+                  <!-- Will be populated -->
+                </div>
+              </div>
+
+              <!-- Upgrade Advice Card -->
+              <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <div style="font-size: 32px;">🚀</div>
+                  <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin: 0;">Upgrade Tips</h4>
+                </div>
+                <div id="upgrade-advice" style="font-size: 14px; color: var(--gray); line-height: 1.6;">
+                  <!-- Will be populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- System Latency Section -->
+            <div id="latency-section" style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px; margin-bottom: 32px;">
+              <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: var(--dark);">System Latency Analysis</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <div style="text-align: center; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                  <div style="font-size: 32px; font-weight: 700; color: var(--primary);" id="total-latency">--</div>
+                  <div style="font-size: 14px; color: var(--gray); margin-top: 4px;">Total Latency</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                  <div style="font-size: 32px; font-weight: 700; color: var(--primary);" id="render-latency">--</div>
+                  <div style="font-size: 14px; color: var(--gray); margin-top: 4px;">Render Latency</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                  <div style="font-size: 32px; font-weight: 700; color: var(--primary);" id="latency-rating">--</div>
+                  <div style="font-size: 14px; color: var(--gray); margin-top: 4px;">Rating</div>
+                </div>
+              </div>
+              <div style="font-size: 14px; color: var(--gray); line-height: 1.8;">
+                <strong>What is latency?</strong> It's the delay between your input (mouse click/keyboard press) and seeing the result on screen. Lower is better for competitive gaming.
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div style="text-align: center;">
+              <button type="button" id="test-another-game-btn" class="btn-primary" style="padding: 16px 48px; font-size: 18px;">
+                Test Another Game
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Advanced Calculator (Hidden by default) -->
+        <!-- Advanced Calculator (Keep for backwards compatibility but hide) -->
         <div id="advanced-calculator" class="advanced-calculator" style="display: none;">
           <div class="calc-card">
             <div class="calc-header">
@@ -3114,7 +3175,7 @@
 
     <!-- Simple Mode Wizard Styles -->
     <style>
-      .simple-mode-wizard {
+      .calculator-wizard {
         max-width: 800px;
         margin: 0 auto;
         background: white;
@@ -3386,7 +3447,7 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        .simple-mode-wizard {
+        .calculator-wizard {
           padding: 24px;
         }
 
@@ -3485,6 +3546,7 @@
         <h2 style="text-align: center; margin-bottom: 40px; font-size: 32px; color: var(--dark); font-weight: 700;">Related Gaming Tools</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
           <a href="/dpi-calculator/" style="background: white; padding: 24px; border-radius: 12px; text-decoration: none; border: 2px solid var(--border); transition: all 0.3s; display: block;">
+            <div style="font-size: 48px; margin-bottom: 12px; text-align: center;">🖱️</div>
             <h3 style="font-size: 20px; color: var(--dark); margin-bottom: 8px; font-weight: 700;">DPI Calculator</h3>
             <p style="color: var(--gray); margin: 0; font-size: 14px; line-height: 1.6;">Optimize mouse sensitivity for gaming</p>
           </a>
@@ -3964,10 +4026,18 @@
                           window.performanceDatabase.gpus[key].name === item.name
                         );
                         selectedGPU = gpuKey ? window.performanceDatabase.gpus[gpuKey] : item;
-                        calculateSimpleResult();
+                        // Show RAM selection (don't calculate yet - wait for user to see RAM selection)
+                        const ramContainer = document.getElementById('ram-selection-container');
+                        if (ramContainer) {
+                          ramContainer.style.display = 'block';
+                          // Scroll to RAM selection
+                          setTimeout(() => {
+                            ramContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                          }, 100);
+                        }
                       }, 'gpu');
                     } catch (e) {
-                      console.error('Error initializing autocomplete:', e);
+                      // Error initializing autocomplete
                     }
                   } else {
                     // Retry after a short delay
@@ -3990,7 +4060,15 @@
           if (skipGpuBtn) {
             skipGpuBtn.addEventListener('click', () => {
               selectedGPU = defaultGPU;
-              calculateSimpleResult();
+              // Show RAM selection (don't calculate yet - wait for user to see RAM selection)
+              const ramContainer = document.getElementById('ram-selection-container');
+              if (ramContainer) {
+                ramContainer.style.display = 'block';
+                // Scroll to RAM selection
+                setTimeout(() => {
+                  ramContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+              }
             });
           }
 
@@ -4009,10 +4087,18 @@
                           window.performanceDatabase.gpus[key].name === item.name
                         );
                         selectedGPU = gpuKey ? window.performanceDatabase.gpus[gpuKey] : item;
-                        calculateSimpleResult();
+                        // Show RAM selection (don't calculate yet - wait for user to see RAM selection)
+                        const ramContainer = document.getElementById('ram-selection-container');
+                        if (ramContainer) {
+                          ramContainer.style.display = 'block';
+                          // Scroll to RAM selection
+                          setTimeout(() => {
+                            ramContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                          }, 100);
+                        }
                       }, 'gpu');
                     } catch (e) {
-                      console.error('Error initializing autocomplete:', e);
+                      // Error initializing autocomplete
                     }
                   } else {
                     // Retry after a short delay
@@ -4026,19 +4112,45 @@
           }
 
           // GPU input will be handled by autocomplete when initialized
-          // The autocomplete onSelect callback will trigger calculateSimpleResult()
+          // The autocomplete onSelect callback will show RAM selection (not calculate immediately)
 
-          // Detailed analysis link
-          const detailedAnalysisLink = document.getElementById('show-detailed-analysis');
-          if (detailedAnalysisLink) {
-            detailedAnalysisLink.addEventListener('click', (e) => {
-              e.preventDefault();
-              showAdvancedCalculator();
-              // Pre-fill the advanced form
+          // Calculate button click listener
+          const calculateWithRamBtn = document.getElementById('calculate-with-ram-btn');
+          if (calculateWithRamBtn) {
+            calculateWithRamBtn.addEventListener('click', () => {
               if (selectedGame && selectedGPU) {
-                setTimeout(() => {
-                  prefillAdvancedForm();
-                }, 100);
+                calculateSimpleResult();
+              }
+            });
+          }
+
+          // RAM selection change listener (optional - can recalculate on change if desired)
+          const wizardRamSelect = document.getElementById('wizard-ram-select');
+          if (wizardRamSelect) {
+            wizardRamSelect.addEventListener('change', () => {
+              // Don't auto-calculate on change - let user click Calculate button
+              // This gives them time to see the RAM selection before results appear
+            });
+          }
+
+          // Test another game button
+          const testAnotherGameBtn = document.getElementById('test-another-game-btn');
+          if (testAnotherGameBtn) {
+            testAnotherGameBtn.addEventListener('click', () => {
+              const detailed = document.getElementById('detailed-results');
+              const wizard = document.getElementById('calculator-wizard');
+              if (detailed) detailed.style.display = 'none';
+              if (wizard) {
+                wizard.style.display = 'block';
+                // Reset selections
+                selectedGame = null;
+                selectedGPU = null;
+                selectedCPU = defaultCPU;
+                // Hide RAM selection
+                const ramContainer = document.getElementById('ram-selection-container');
+                if (ramContainer) ramContainer.style.display = 'none';
+                showStep(1); // Back to game selection
+                wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             });
           }
@@ -4082,20 +4194,42 @@
             return;
           }
 
-          // Get game name
-          const gameName = gameNameMap[selectedGame] || selectedGame;
+          // Get game name - handle both object and string formats
+          let gameName;
+          if (typeof selectedGame === 'object' && selectedGame.name) {
+            gameName = selectedGame.name;
+          } else if (typeof selectedGame === 'string') {
+            gameName = gameNameMap[selectedGame] || selectedGame;
+          } else {
+            gameName = 'this game';
+          }
+          
+          let calculationCompleted = false;
+          let timeoutId = null;
           
           // Wait for calculateFPS to be available
           const checkCalculateFPS = setInterval(() => {
             if (window.calculateFPS && window.performanceDatabase) {
               clearInterval(checkCalculateFPS);
               
+              // Clear timeout since calculation is starting
+              if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
+              }
+              
               try {
+                // Get user's actual RAM selection (check wizard first, then advanced)
+                const wizardRamSelect = document.getElementById('wizard-ram-select');
+                const advancedRamSelect = document.getElementById('ram-select');
+                const ramSelect = wizardRamSelect || advancedRamSelect;
+                const ramAmount = parseInt(ramSelect?.value || 16);
+                
                 // Use the existing calculateFPS function
                 const fpsResult = window.calculateFPS(
                   selectedGPU.name || selectedGPU,
                   selectedCPU.name || selectedCPU,
-                  16, // Default RAM
+                  ramAmount, // User's RAM selection
                   '1080p', // Default resolution
                   gameName,
                   'high' // Default settings
@@ -4120,26 +4254,44 @@
                     recommendation = `Your PC may struggle with ${gameName}. Consider lowering settings or upgrading your GPU. Expected ${avgFPS} FPS.`;
                   }
 
-                  displaySimpleResult({ status, icon, recommendation });
+                  calculationCompleted = true;
+                  // Clear timeout to prevent it from running
+                  if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    timeoutId = null;
+                  }
+                  // Go directly to detailed results
+                  showDetailedResults();
                 } else {
-                  // Fallback
-                  displaySimpleResultFromGPU(selectedGPU, gameName);
+                  // Fallback - still show detailed results
+                  calculationCompleted = true;
+                  // Clear timeout to prevent it from running
+                  if (timeoutId) {
+                    clearTimeout(timeoutId);
+                    timeoutId = null;
+                  }
+                  showDetailedResults();
                 }
               } catch (e) {
-                console.error('Error calculating FPS:', e);
                 // Fallback: estimate based on GPU performance score
-                displaySimpleResultFromGPU(selectedGPU, gameName);
+                calculationCompleted = true;
+                // Clear timeout to prevent it from running
+                if (timeoutId) {
+                  clearTimeout(timeoutId);
+                  timeoutId = null;
+                }
+                showDetailedResults();
               }
-              
-              showStep(3);
             }
           }, 100);
 
-          // Timeout after 5 seconds
-          setTimeout(() => {
-            clearInterval(checkCalculateFPS);
-            displaySimpleResultFromGPU(selectedGPU, gameName);
-            showStep(3);
+          // Timeout after 5 seconds - only if calculation hasn't completed
+          timeoutId = setTimeout(() => {
+            if (!calculationCompleted) {
+              clearInterval(checkCalculateFPS);
+              calculationCompleted = true;
+              showDetailedResults();
+            }
           }, 5000);
         }
 
@@ -4184,26 +4336,229 @@
           }
         }
 
-        // Show advanced calculator
-        function showAdvancedCalculator() {
-          const wizard = document.getElementById('simple-mode-wizard');
-          const advanced = document.getElementById('advanced-calculator');
+        // Show detailed results with comprehensive analysis
+        function showDetailedResults() {
+          if (!selectedGame || !selectedGPU) {
+            return;
+          }
+
+          // Get game name
+          let gameName;
+          if (typeof selectedGame === 'object' && selectedGame.name) {
+            gameName = selectedGame.name;
+          } else if (typeof selectedGame === 'string') {
+            gameName = gameNameMap[selectedGame] || selectedGame;
+          } else {
+            gameName = 'this game';
+          }
+
+          // Hide wizard, show detailed results
+          const wizard = document.getElementById('calculator-wizard');
+          const detailed = document.getElementById('detailed-results');
           
           if (wizard) wizard.style.display = 'none';
-          if (advanced) {
-            advanced.style.display = 'block';
+          if (detailed) {
+            detailed.style.display = 'block';
+            
+            // Populate detailed results
+            generateDetailedAnalysis(gameName, selectedGPU, selectedCPU || defaultCPU);
+            
+            // Scroll to detailed results
             setTimeout(() => {
-              advanced.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              detailed.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
           }
         }
 
-        // Show simple mode wizard
-        function showSimpleMode() {
-          const wizard = document.getElementById('simple-mode-wizard');
-          const advanced = document.getElementById('advanced-calculator');
+        // Generate comprehensive detailed analysis
+        function generateDetailedAnalysis(gameName, gpu, cpu) {
+          // Update subtitle
+          const subtitle = document.getElementById('detailed-results-subtitle');
+          if (subtitle) {
+            subtitle.textContent = `${gameName} performance on your system`;
+          }
+
+          // Get user's actual RAM selection (check wizard first, then advanced)
+          const wizardRamSelect = document.getElementById('wizard-ram-select');
+          const advancedRamSelect = document.getElementById('ram-select');
+          const ramSelect = wizardRamSelect || advancedRamSelect;
+          const ramAmount = parseInt(ramSelect?.value || 16);
           
-          if (advanced) advanced.style.display = 'none';
+          // Calculate FPS across all resolutions and settings
+          const resolutions = ['1080p', '1440p', '4k'];
+          const settings = ['low', 'medium', 'high', 'ultra'];
+          const fpsData = {};
+
+          resolutions.forEach(resolution => {
+            fpsData[resolution] = {};
+            settings.forEach(setting => {
+              try {
+                if (window.calculateFPS && window.performanceDatabase) {
+                  const result = window.calculateFPS(
+                    gpu.name || gpu,
+                    cpu.name || cpu,
+                    ramAmount,
+                    resolution,
+                    gameName,
+                    setting
+                  );
+                  fpsData[resolution][setting] = result ? Math.round(result.average) : 0;
+                } else {
+                  // Fallback estimation
+                  const baseScore = gpu.performanceScore || 60;
+                  const resMultiplier = resolution === '1080p' ? 1 : (resolution === '1440p' ? 0.7 : 0.4);
+                  const settingsMultiplier = {low: 1.5, medium: 1.2, high: 1, ultra: 0.85}[setting];
+                  fpsData[resolution][setting] = Math.round(baseScore * resMultiplier * settingsMultiplier);
+                }
+              } catch (e) {
+                fpsData[resolution][setting] = 0;
+              }
+            });
+          });
+
+          // Update summary (1080p High as baseline)
+          const summary1080pHigh = fpsData['1080p']['high'] || 60;
+          document.getElementById('summary-fps').textContent = summary1080pHigh + ' FPS';
+          document.getElementById('summary-game').textContent = gameName;
+
+          // Populate FPS table
+          const tableBody = document.getElementById('fps-table-body');
+          if (tableBody) {
+            tableBody.innerHTML = resolutions.map(res => {
+              const resLabel = res === '1080p' ? '1920×1080 (1080p)' : (res === '1440p' ? '2560×1440 (1440p)' : '3840×2160 (4K)');
+              return `
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                  <td style="padding: 16px; font-weight: 600; color: var(--dark);">${resLabel}</td>
+                  ${settings.map(setting => {
+                    const fps = fpsData[res][setting];
+                    const color = fps >= 60 ? '#10b981' : (fps >= 30 ? '#f59e0b' : '#ef4444');
+                    const bgColor = fps >= 60 ? '#d1fae5' : (fps >= 30 ? '#fef3c7' : '#fee2e2');
+                    return `<td style="padding: 16px; text-align: center; background: ${bgColor}; font-weight: 700; color: ${color};">${fps}</td>`;
+                  }).join('')}
+                </tr>
+              `;
+            }).join('');
+          }
+
+          // Calculate bottleneck info
+          const gpuScore = gpu.performanceScore || 60;
+          const cpuScore = cpu.gamingScore || 70;
+          const bottleneckDiff = Math.abs(gpuScore - cpuScore);
+          
+          let bottleneckText = '';
+          if (bottleneckDiff < 15) {
+            bottleneckText = '<div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">✅ Well Balanced</div>Your CPU and GPU are well matched. Neither component is significantly holding back the other.';
+          } else if (gpuScore < cpuScore - 15) {
+            bottleneckText = '<div style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">⚠️ GPU Bottleneck</div>Your graphics card is the limiting factor. Upgrading your GPU would provide the biggest FPS improvement.';
+          } else {
+            bottleneckText = '<div style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">⚠️ CPU Bottleneck</div>Your processor is the limiting factor, especially at 1080p. A faster CPU would help, particularly in competitive games.';
+          }
+          
+          const bottleneckEl = document.getElementById('bottleneck-info');
+          if (bottleneckEl) {
+            bottleneckEl.innerHTML = bottleneckText;
+          }
+
+          // Recommended settings
+          let recommendedText = '';
+          if (fpsData['1080p']['ultra'] >= 60) {
+            recommendedText = '<div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">🎮 1080p Ultra</div>Your system can handle ultra settings at 1080p with smooth 60+ FPS.';
+          } else if (fpsData['1080p']['high'] >= 60) {
+            recommendedText = '<div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">🎮 1080p High</div>Play at high settings for the best balance of performance and visual quality.';
+          } else if (fpsData['1080p']['medium'] >= 60) {
+            recommendedText = '<div style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">🎮 1080p Medium</div>Medium settings will give you smooth 60 FPS gameplay.';
+          } else {
+            recommendedText = '<div style="color: #ef4444; font-weight: 600; margin-bottom: 8px;">🎮 1080p Low</div>Stick to low settings for the best performance, or consider upgrading your hardware.';
+          }
+          
+          const recommendedEl = document.getElementById('recommended-settings');
+          if (recommendedEl) {
+            recommendedEl.innerHTML = recommendedText;
+          }
+
+          // Check RAM requirements for the game
+          let ramWarning = '';
+          if (window.performanceDatabase && window.performanceDatabase.gamesDatabase) {
+            const gameKey = Object.keys(window.performanceDatabase.gamesDatabase).find(key => {
+              const game = window.performanceDatabase.gamesDatabase[key];
+              return game.name && (
+                game.name.toLowerCase() === gameName.toLowerCase() ||
+                game.name.toLowerCase().includes(gameName.toLowerCase()) ||
+                gameName.toLowerCase().includes(game.name.toLowerCase())
+              );
+            });
+            
+            if (gameKey) {
+              const gameData = window.performanceDatabase.gamesDatabase[gameKey];
+              if (gameData.ramMinimum && gameData.ramRecommended) {
+                if (ramAmount < gameData.ramMinimum) {
+                  ramWarning = '<div style="margin-top: 16px; padding: 12px; background: #fee2e2; border-left: 4px solid #ef4444; border-radius: 4px;"><div style="color: #ef4444; font-weight: 600; margin-bottom: 4px;">🔴 RAM Below Minimum</div><div style="font-size: 13px; color: #991b1b;">Your ' + ramAmount + 'GB RAM is below the ' + gameData.ramMinimum + 'GB minimum for ' + gameName + '. This will significantly impact performance. Upgrade to at least ' + gameData.ramRecommended + 'GB for optimal gameplay.</div></div>';
+                } else if (ramAmount < gameData.ramRecommended) {
+                  ramWarning = '<div style="margin-top: 16px; padding: 12px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;"><div style="color: #f59e0b; font-weight: 600; margin-bottom: 4px;">⚠️ RAM Below Recommended</div><div style="font-size: 13px; color: #92400e;">Your ' + ramAmount + 'GB RAM meets minimum requirements but is below the ' + gameData.ramRecommended + 'GB recommended. Consider upgrading to ' + gameData.ramRecommended + 'GB+ for better performance, especially at higher settings.</div></div>';
+                } else if (ramAmount >= gameData.ramRecommended) {
+                  ramWarning = '<div style="margin-top: 16px; padding: 12px; background: #d1fae5; border-left: 4px solid #10b981; border-radius: 4px;"><div style="color: #10b981; font-weight: 600; margin-bottom: 4px;">✅ RAM Optimal</div><div style="font-size: 13px; color: #065f46;">Your ' + ramAmount + 'GB RAM meets or exceeds the ' + gameData.ramRecommended + 'GB recommended for ' + gameName + '. Memory won\'t be a bottleneck.</div></div>';
+                }
+              }
+            }
+          }
+          
+          // Upgrade advice
+          let upgradeText = '';
+          if (summary1080pHigh >= 144) {
+            upgradeText = '<div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">🏆 High-End Performance</div>Your system is excellent! Consider upgrading your monitor to 144Hz+ to take full advantage.';
+          } else if (summary1080pHigh >= 60) {
+            upgradeText = '<div style="color: #0066ff; font-weight: 600; margin-bottom: 8px;">📈 Solid Performance</div>Your system is good! Upgrading to a better ' + (gpuScore < cpuScore ? 'GPU' : 'CPU') + ' would unlock higher settings or resolutions.';
+          } else {
+            upgradeText = '<div style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">⚡ Upgrade Recommended</div>Focus on upgrading your ' + (gpuScore < cpuScore ? 'graphics card' : 'processor') + ' first for the biggest performance improvement.';
+          }
+          
+          upgradeText += ramWarning; // Add RAM warning to upgrade text
+          
+          const upgradeEl = document.getElementById('upgrade-advice');
+          if (upgradeEl) {
+            upgradeEl.innerHTML = upgradeText;
+          }
+
+          // Calculate latency
+          try {
+            if (window.calculateLatency) {
+              const latencyResult = window.calculateLatency(summary1080pHigh, cpu.name || cpu, gpu.name || gpu, 60);
+              if (latencyResult) {
+                document.getElementById('total-latency').textContent = Math.round(latencyResult.total) + ' ms';
+                document.getElementById('render-latency').textContent = Math.round(latencyResult.renderLatency) + ' ms';
+                
+                let rating = '';
+                if (latencyResult.total < 40) {
+                  rating = 'Excellent';
+                } else if (latencyResult.total < 60) {
+                  rating = 'Good';
+                } else if (latencyResult.total < 80) {
+                  rating = 'Fair';
+                } else {
+                  rating = 'High';
+                }
+                document.getElementById('latency-rating').textContent = rating;
+              }
+            } else {
+              // Fallback latency estimation
+              const estimatedLatency = Math.round(1000 / summary1080pHigh + 15);
+              document.getElementById('total-latency').textContent = estimatedLatency + ' ms';
+              document.getElementById('render-latency').textContent = Math.round(estimatedLatency * 0.7) + ' ms';
+              document.getElementById('latency-rating').textContent = estimatedLatency < 40 ? 'Excellent' : 'Good';
+            }
+          } catch (e) {
+            document.getElementById('total-latency').textContent = '--';
+            document.getElementById('render-latency').textContent = '--';
+            document.getElementById('latency-rating').textContent = '--';
+          }
+        }
+
+        // Show calculator
+        function showCalculator() {
+          const wizard = document.getElementById('calculator-wizard');
+          const detailed = document.getElementById('detailed-results');
+          
+          if (detailed) detailed.style.display = 'none';
           if (wizard) {
             wizard.style.display = 'block';
             showStep(1);
@@ -4231,20 +4586,12 @@
         }
 
         // Hero button handlers
-        const startSimpleBtn = document.getElementById('start-simple-mode');
-        const showAdvancedBtn = document.getElementById('show-advanced-calc');
+        const startCalculatorBtn = document.getElementById('start-calculator');
 
-        if (startSimpleBtn) {
-          startSimpleBtn.addEventListener('click', (e) => {
+        if (startCalculatorBtn) {
+          startCalculatorBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            showSimpleMode();
-          });
-        }
-
-        if (showAdvancedBtn) {
-          showAdvancedBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showAdvancedCalculator();
+            showCalculator();
           });
         }
 
@@ -4252,13 +4599,13 @@
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', () => {
             initWizard();
-            // Show simple mode by default
-            showSimpleMode();
+            // Show calculator by default
+            showCalculator();
           });
         } else {
           initWizard();
-          // Show simple mode by default
-          showSimpleMode();
+          // Show calculator by default
+          showCalculator();
         }
       })();
     </script>
@@ -4326,7 +4673,6 @@
           if (typeof initAutocomplete !== 'undefined') {
             initAutocomplete('game-input', performanceDatabase, (item) => {
               selectedGame = item;
-              console.log('Game selected:', item);
             }, 'game');
           }
         }
@@ -4498,7 +4844,7 @@
               gameCard.appendChild(ratingBadge);
               resultsGrid.appendChild(gameCard);
             } catch (error) {
-              console.error('Error calculating FPS for', gameName, error);
+              // Error calculating FPS
             }
           });
 
@@ -4682,7 +5028,7 @@
               gameCard.appendChild(fpsValue);
               resultsGrid.appendChild(gameCard);
             } catch (error) {
-              console.error('Error calculating FPS for', gameName, error);
+              // Error calculating FPS
             }
           });
 
@@ -4991,13 +5337,11 @@
       function updateLatencyVisualization(latencyResult, optimizations) {
         // Safety check for components
         if (!latencyResult || !latencyResult.components) {
-          console.error('updateLatencyVisualization: latencyResult or components missing', latencyResult);
           return;
         }
         
         const latencyResultsEl = document.getElementById('latency-results');
         if (!latencyResultsEl) {
-          console.error('latency-results element not found');
           return;
         }
         
@@ -5031,7 +5375,6 @@
         const chartData = createLatencyChartData(latencyResult);
         const chartEl = document.getElementById('latency-breakdown-chart');
         if (!chartEl) {
-          console.error('latency-breakdown-chart element not found');
           return;
         }
         chartEl.innerHTML = chartData.map(item => `
@@ -5060,7 +5403,6 @@
         // Update components detail
         const componentsEl = document.getElementById('latency-components-detail');
         if (!componentsEl) {
-          console.error('latency-components-detail element not found');
           return;
         }
         componentsEl.innerHTML = `
@@ -5196,12 +5538,61 @@
 
       // Mobile menu functionality
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      if (mobileMenuBtn) {
+      const navLinks = document.querySelector('.nav-links');
+      if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
-          // Mobile menu functionality would go here
-          alert('Mobile menu - implement navigation menu');
+          const isVisible = navLinks.style.display === 'flex' || (navLinks.style.display === '' && window.getComputedStyle(navLinks).display === 'flex');
+          
+          if (isVisible) {
+            navLinks.style.display = 'none';
+            mobileMenuBtn.classList.remove('active');
+          } else {
+            navLinks.style.display = 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(255, 255, 255, 0.95)';
+            navLinks.style.backdropFilter = 'blur(10px)';
+            navLinks.style.borderTop = '1px solid #e5e7eb';
+            navLinks.style.padding = '16px 20px';
+            navLinks.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            navLinks.style.zIndex = '1000';
+            mobileMenuBtn.classList.add('active');
+          }
+        });
+        
+        // Close mobile menu when clicking on a nav link (only on mobile)
+        const navLinkElements = navLinks.querySelectorAll('a');
+        navLinkElements.forEach(link => {
+          link.addEventListener('click', function() {
+            // Only hide menu on mobile devices (when mobile menu button is visible)
+            if (window.getComputedStyle(mobileMenuBtn).display !== 'none') {
+              navLinks.style.display = 'none';
+              mobileMenuBtn.classList.remove('active');
+            }
+          });
         });
       }
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href !== '') {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const offsetTop = target.offsetTop - 120; // Account for fixed nav
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
 
       // FAQ Accordion Functionality
       document.addEventListener('DOMContentLoaded', () => {
@@ -5342,33 +5733,6 @@
     }
     </script>
 
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://forgeapis.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Tools",
-          "item": "https://forgeapis.com/tools/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "FPS Calculator",
-          "item": "https://forgeapis.com/fps-calculator/"
-        }
-      ]
-    }
-    </script>
 
     <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
