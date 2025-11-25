@@ -2536,6 +2536,10 @@
               <div style="font-size: 48px; font-weight: 700; margin-bottom: 8px;" id="summary-fps">--</div>
               <div style="font-size: 20px; opacity: 0.9;" id="summary-text">Average FPS at 1080p High Settings</div>
               <div style="font-size: 14px; opacity: 0.8; margin-top: 8px;" id="summary-game">--</div>
+              <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                <div style="font-size: 14px; opacity: 0.9; margin-bottom: 8px;">Overall Rating</div>
+                <div style="font-size: 32px; font-weight: 700;" id="summary-rating">--</div>
+              </div>
             </div>
 
             <!-- FPS Breakdown Table -->
@@ -4420,6 +4424,50 @@
           const summary1080pHigh = fpsData['1080p']['high'] || 60;
           document.getElementById('summary-fps').textContent = summary1080pHigh + ' FPS';
           document.getElementById('summary-game').textContent = gameName;
+
+          // Calculate overall rating based on weighted FPS performance
+          // Weight: 1080p (40%), 1440p (35%), 4K (25%)
+          // Within each resolution: High (40%), Ultra (30%), Medium (20%), Low (10%)
+          const weights = {
+            '1080p': { high: 0.16, ultra: 0.12, medium: 0.08, low: 0.04 },
+            '1440p': { high: 0.14, ultra: 0.105, medium: 0.07, low: 0.035 },
+            '4k': { high: 0.10, ultra: 0.075, medium: 0.05, low: 0.025 }
+          };
+          
+          let weightedFPS = 0;
+          resolutions.forEach(resolution => {
+            settings.forEach(setting => {
+              const fps = fpsData[resolution][setting] || 0;
+              const weight = weights[resolution]?.[setting] || 0;
+              weightedFPS += fps * weight;
+            });
+          });
+          
+          // Determine rating based on weighted average FPS
+          let rating, ratingColor;
+          if (weightedFPS >= 90) {
+            rating = 'Excellent';
+            ratingColor = '#10b981'; // Green
+          } else if (weightedFPS >= 60) {
+            rating = 'Great';
+            ratingColor = '#10b981'; // Green
+          } else if (weightedFPS >= 45) {
+            rating = 'Good';
+            ratingColor = '#3b82f6'; // Blue
+          } else if (weightedFPS >= 30) {
+            rating = 'Fair';
+            ratingColor = '#f59e0b'; // Yellow/Orange
+          } else {
+            rating = 'Poor';
+            ratingColor = '#ef4444'; // Red
+          }
+          
+          // Update rating display
+          const ratingEl = document.getElementById('summary-rating');
+          if (ratingEl) {
+            ratingEl.textContent = rating;
+            ratingEl.style.color = ratingColor;
+          }
 
           // Populate FPS table
           const tableBody = document.getElementById('fps-table-body');
